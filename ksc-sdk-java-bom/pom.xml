@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+	<groupId>com.ksc</groupId>
+	<artifactId>ksc-sdk-java</artifactId>
+	<version>0.1.5</version>
+  </parent>
+  <artifactId>ksc-sdk-java-bom</artifactId>
+  <packaging>pom</packaging>
+  <name>KSC SDK for Java - BOM</name>
+  <description>The KSC SDK for Java - BOM module holds the dependency mangements for individual java clients.</description>
+  <dependencyManagement>
+    <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
+    <dependencies>
+	<dependency>
+		<groupId>com.ksc</groupId>
+		<artifactId>ksc-sdk-java-core</artifactId>
+		<optional>false</optional>
+		<version>0.1.5</version>
+	</dependency>
+	<dependency>
+		<groupId>com.ksc</groupId>
+		<artifactId>ksc-sdk-java-kec</artifactId>
+		<optional>false</optional>
+		<version>0.1.5</version>
+	</dependency>
+	<dependency>
+		<groupId>com.ksc</groupId>
+		<artifactId>ksc-sdk-java-network</artifactId>
+		<optional>false</optional>
+		<version>0.1.5</version>
+	</dependency>
+	<dependency>
+		<groupId>com.ksc</groupId>
+		<artifactId>ksc-sdk-java-monitor</artifactId>
+		<optional>false</optional>
+		<version>0.1.5</version>
+	</dependency>
+	<dependency>
+		<groupId>com.ksc</groupId>
+		<artifactId>ksc-sdk-java-epc</artifactId>
+		<optional>false</optional>
+		<version>0.1.5</version>
+	</dependency>
+</dependencies>
+  </dependencyManagement>
+</project>

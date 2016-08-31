@@ -1,0 +1,45 @@
+{
+  "version": 3,
+  "partitions": [
+    {
+      "partition": "aws",
+      "partitionName": "AWS Standard",
+      "dnsSuffix": "api.ksyun.com",
+      "regionRegex": "^(cn)\\-\\w+\\-\\d+$",
+      "defaults": {
+        "hostname": "{service}.{region}.{dnsSuffix}",
+        "protocols": [
+          "http"
+        ],
+        "signatureVersions": [
+          "v4"
+        ]
+      },
+      "regions": {
+        "cn-beijing-6": {
+          "description": "CN (Beijing-6)"
+        },
+        "cn-shanghai-2": {
+          "description": "CN (Shanghai-2)"
+        },
+        "cn-shanghai-3": {
+          "description": "CN (Shanghai-3 Test Region)"
+        }
+      },
+      "services": {
+        "iam": {
+          "partitionEndpoint": "aws-global",
+          "isRegionalized": false,
+          "endpoints": {
+            "aws-global": {
+              "hostname": "iam.cn-beijing-6.api.ksyun.com",
+              "credentialScope": {
+                "region": "cn-beijing-6"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}

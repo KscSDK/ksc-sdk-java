@@ -1,0 +1,19 @@
+{ // AWS Java SDK internal configuration
+  "defaultSigner" : {
+    "signerType" : "AWS4SignerType"
+  },
+  // AWS http client internal configuration.
+  // Currently, only those http client with class name not following the usual
+  // convention of (Amazon|AWS).*(JavaClient|Client)
+  // needs to be explicitly configured.  Otherwise, the service name of an
+  // http client not explicitly configured will be derived automatically from
+  // the class name by removing the prefix and suffix as necessary.
+  "httpClients" : [ {
+    "key" : "AmazonIdentityManagementClient",
+    "config" : {
+      "serviceName" : "iam"
+    }
+  } ],
+  "hostRegexToRegionMappings" : [],
+  "userAgentTemplate": "ksc-sdk-{platform}/{version} {os.name}/{os.version} {java.vm.name}/{java.vm.version}/{java.version}{language.and.region}"
+}
