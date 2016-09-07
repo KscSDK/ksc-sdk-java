@@ -59,18 +59,18 @@ public void describeInstances() {
 	DescribeInstancesResult describe_instances_result = kec_client.describeInstances(describe_instances_request);
 }
 ```
-####调用sdk方法步骤
+#### 调用sdk方法步骤
 * 构建 AWSCredentials(根据需要)
 * 构建 KSCKECClient
 * 设置 Endpoint|ServiceName(或者设置Region 二选一)
 * 构建 DescribeInstancesRequest
 * 调用 describeInstances方法
 
-#####构建 AWSCredentials(根据需要)
+##### 构建 AWSCredentials(根据需要)
 ```java
 AWSCredentials credentials = new BasicAWSCredentials(ak,sk);
 ```
-#####构建 KSCKECClient
+##### 构建 KSCKECClient
 ```java
 KSCKECClient kec_client = new KSCKECClient();
 ```
@@ -79,7 +79,7 @@ or
 ```java
 KSCKECClient kec_client = new KSCKECClient(credentials);
 ```
-#####设置 Endpoint|ServiceName(或者设置Region 二选一)
+##### 设置 Endpoint|ServiceName(或者设置Region 二选一)
 
 ```java
 //设置endpoint
@@ -104,7 +104,7 @@ DescribeInstancesRequest describe_instances_request = new DescribeInstancesReque
 describe_instances_request.withInstanceIds(instanceIds);
 ```
 
-### 调用 describeInstances
+#### 调用 describeInstances
 
 ```java
 DescribeInstancesResult describe_instances_result = kec_client.describeInstances(describe_instances_request);
