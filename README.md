@@ -1,21 +1,20 @@
 # KSC SDK for Java 
 
-## API Docs ##
+## Table of Contents
+* Requirements
+* Usage
+* API Dosc
 
-
-* [KEC OpenAPI][KECOpenAPI]
-* [VPC OpenAPI][VPCOpenAPI]
-* [EIP OpenAPI][EIPOpenAPI]
-* [SLB OpenAPI][SLBOpenAPI]
-
-## Getting Started
-
-#### 使用要求 ####
-
+### Requirements ###
 运行 SDK需要jdk **Java 1.6+**. 你可以下载最新的版本： http://developers.sun.com/downloads/.
 
+### Usage ###
+* Getting Started
+* Example
 
-#### Install the SDK ####
+#### Getting Started ####
+
+##### Install the SDK #####
 在 GitHub 获取SDK : [KSC SDK for Java (GitHub)][ksc-sdk-java-github].
 
 在工程根目录下执行:
@@ -35,7 +34,7 @@
     <dependency>
       <groupId>com.ksc</groupId>
 	  <artifactId>ksc-sdk-java-bom</artifactId>
-	  <version>0.1.0</version>
+	  <version>0.1.7</version>
 	  <type>pom</type>
       <scope>import</scope>
     </dependency>
@@ -55,7 +54,7 @@
 </dependencies>
 ```
 
-#### Credentials 配置 ####
+##### Credentials 配置 #####
 
 **本地文件配置**:
 ```
@@ -71,10 +70,19 @@ aws_secret_access_key = your_secret_access_key
 ```
 
 **如不通过本地文件读入ak和sk信息，则需要在执行的类文件中增加以下代码**：
-```
+
+```java
 AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secret_access_key);
 ```
 
+#### Example ####
+可以在[user guide][example]查看更多详细信息
+## API Docs ##
+
+* [KEC OpenAPI][KECOpenAPI]
+* [VPC OpenAPI][VPCOpenAPI]
+* [EIP OpenAPI][EIPOpenAPI]
+* [SLB OpenAPI][SLBOpenAPI]
 
 
 ## Features
@@ -87,4 +95,5 @@ AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secr
 [VPCOpenAPI]: http://www.ksyun.com/doc/art/id/1661
 [EIPOpenAPI]: http://www.ksyun.com/doc/cat/id/561
 [SLBOpenAPI]: http://www.ksyun.com/doc/art/id/1662
-[ksc-sdk-java-github]: https://github.com/ZXM0228/ksc-sdk-java
+[ksc-sdk-java-github]: https://github.com/KscSDK/ksc-sdk-java
+[example]: https://github.com/KscSDK/ksc-sdk-java/blob/master/README_SAMPLE.md

@@ -75,7 +75,7 @@ public class KSCOpenAPISample {
 		 * profile by reading from the credentials file located at
 		 * (~/.aws/credentials).
 		 */
-		// Create the AmazonEC2Client object so we can call various APIs.
+		// Create the KSCKECClient object so we can call various APIs.
 		// DescribeInstances sample
 		KSCKECClient kec_client = new KSCKECClient();
 
