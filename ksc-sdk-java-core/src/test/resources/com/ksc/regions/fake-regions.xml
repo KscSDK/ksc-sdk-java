@@ -1,0 +1,17 @@
+<XML>
+  <Regions>
+    <Region>
+      <Name>cn-beijing-6</Name>
+      <Domain>hostname.com</Domain>
+      <Endpoint>
+        <ServiceName>cloudformation</ServiceName>
+        <Http>false</Http>
+        <Https>true</Https>
+        <Hostname>fake.hostname.com</Hostname>
+      </Endpoint>
+    </Region>
+    <Region>
+      <Name>cn-shanghai-2</Name>
+    </Region>
+  </Regions>
+</XML>
