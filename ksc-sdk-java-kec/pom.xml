@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.1.7</version>
+		<version>0.1.8</version>
 	</parent>
 	<artifactId>ksc-sdk-java-kec</artifactId>
 	<name>KSC SDK for Java - KEC</name>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>com.ksc</groupId>
 			<artifactId>ksc-sdk-java-core</artifactId>
-			<version>0.1.7</version>
+			<version>0.1.8</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
