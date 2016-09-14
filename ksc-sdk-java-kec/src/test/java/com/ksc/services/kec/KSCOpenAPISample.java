@@ -16,6 +16,8 @@ import com.ksc.kec.model.StartInstancesRequest;
 import com.ksc.kec.model.StartInstancesResult;
 import com.ksc.kec.model.StopInstancesRequest;
 import com.ksc.kec.model.StopInstancesResult;
+import com.ksc.regions.InMemoryRegionImpl;
+import com.ksc.regions.Region;
 
 public class KSCOpenAPISample {
 
@@ -96,6 +98,8 @@ public class KSCOpenAPISample {
 		KSCKECClient kec_client = new KSCKECClient();
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
 		kec_client.setServiceNameIntern("kec");
+		//Region region=new Region(new InMemoryRegionImpl("cn-shanghai-3",null,true));
+		//kec_client.setRegion(region);
 		DescribeImagesResult result=kec_client.describeImages(request);
 		log.info(result);
 	}
