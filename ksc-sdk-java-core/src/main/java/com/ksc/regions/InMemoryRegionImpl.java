@@ -14,14 +14,14 @@
  */
 package com.ksc.regions;
 
-import com.ksc.util.ValidationUtils;
-
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import com.ksc.util.ValidationUtils;
 
 /**
  * An implementation of {@link RegionImpl} that holds all information in memory.
@@ -30,10 +30,14 @@ import java.util.Map;
 public class InMemoryRegionImpl implements RegionImpl {
 
     private static final String DEFAULT_DOMAIN = "api.ksyun.com";
+    
+    private static final String INNER_DOMAIN = "inner.api.ksyun.com";
 
     private final String name;
 
     private final String domain;
+    
+    private final boolean isInner;
 
     private final Map<String, String> endpoints = new HashMap<String,
             String>();
@@ -41,11 +45,19 @@ public class InMemoryRegionImpl implements RegionImpl {
     private final List<String> https = new ArrayList<String>();
 
     private final List<String> http = new ArrayList<String>();
-
     public InMemoryRegionImpl(String name, String domain) {
+        this(name,domain,false);
+       
+    }
+    public InMemoryRegionImpl(String name, String domain,boolean isInner) {
         ValidationUtils.assertNotNull(name, "region name");
         this.name = name;
-        this.domain = domain == null ? DEFAULT_DOMAIN : domain;
+        if(isInner){
+        	this.domain = domain == null ? INNER_DOMAIN : domain;
+        }else{
+        	this.domain = domain == null ? DEFAULT_DOMAIN : domain;
+        }
+        this.isInner=isInner;
     }
 
     public InMemoryRegionImpl addEndpoint(String serviceName, String endpoint) {
@@ -105,4 +117,9 @@ public class InMemoryRegionImpl implements RegionImpl {
     public Collection<String> getAvailableEndpoints() {
         return Collections.unmodifiableCollection(endpoints.values());
     }
+	public boolean isInner() {
+		return isInner;
+	}
+	
+    
 }

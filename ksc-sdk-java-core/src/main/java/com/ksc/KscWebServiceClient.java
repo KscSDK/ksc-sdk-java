@@ -51,7 +51,7 @@ public abstract class KscWebServiceClient {
     private static final String KSYUN = "Ksyun";
     private static final String KSC = "KSC";
     public static final boolean LOGGING_AWS_REQUEST_METRIC = true;
-
+    
     private static final Log log =
         LogFactory.getLog(KscWebServiceClient.class);
 
@@ -107,7 +107,7 @@ public abstract class KscWebServiceClient {
      * The service name in region metadata, i.e. the prefix of endpoint.
      */
     private volatile String endpointPrefix;
-
+    
     /**
      * Constructs a new KscWebServiceClient object using the specified
      * configuration.
@@ -750,4 +750,5 @@ public abstract class KscWebServiceClient {
         @SuppressWarnings("unchecked") T t= (T)this;
         return t;
     }
+    
 }
