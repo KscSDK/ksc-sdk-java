@@ -74,8 +74,10 @@ public class KscHostNameUtils {
         if (regionNameInInternalConfig != null) {
             return regionNameInInternalConfig;
         }
-
-        if (host.endsWith(".api.ksyun.com")) {
+        if (host.endsWith(".inner.api.ksyun.com")) {
+            int index = host.length() - ".inner.api.ksyun.com".length();
+            return parseStandardRegionName(host.substring(0, index));
+        }else if (host.endsWith(".api.ksyun.com")) {
             int index = host.length() - ".api.ksyun.com".length();
             return parseStandardRegionName(host.substring(0, index));
         }
@@ -160,9 +162,12 @@ public class KscHostNameUtils {
                 + host
                 + ").");
         }
-
+        String substr=".api.ksyun.com";
+        if(host.endsWith(".inner.api.ksyun.com")){
+        	substr=".inner.api.ksyun.com";
+        }
         String serviceAndRegion =
-            host.substring(0, host.indexOf(".api.ksyun.com"));
+            host.substring(0, host.indexOf(substr));
 
         char separator = '.';
 

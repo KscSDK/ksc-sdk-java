@@ -58,7 +58,7 @@ public class InstanceNetworkStaxUnmarshaller implements
 							.unmarshall(context));
 					continue;
 				}
-				if (context.testExpression("NetworkSecurityGroup", targetDepth)) {
+				if (context.testExpression("GroupSet/Item", targetDepth)) {
 					n.withNetworkSecurityGroup(InstanceSecurityGroupStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;

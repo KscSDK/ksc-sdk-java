@@ -93,7 +93,12 @@ public class DescribeInstancesRequestMarshaller implements
             request.addParameter("Marker", StringUtils
                     .fromInteger(describeInstancesRequest.getMarker()));
         }
-
+        
+        if (describeInstancesRequest.getSearch() != null) {
+            request.addParameter("Search", StringUtils
+                    .fromString(describeInstancesRequest.getSearch()));
+        }
+        
         return request;
     }
 
