@@ -43,90 +43,64 @@ public class TestOffline {
 			}
 		KSCOFFJsonClient ksc = new KSCOFFJsonClient(credentials);
 		ksc.setEndpoint("http://offline.cn-beijing-6.api.ksyun.com/");
-		/*
-		 * 发送get请求，获取模板列表
-		 */
+
 		long expire = 600 + System.currentTimeMillis()/1000;
 		
-//		GetListRequest gitlistrequest = new GetListRequest();
-//		gitlistrequest.setExpire(expire);
-//		OfflineResult getpresetlistResult = ksc.GetPresetList(gitlistrequest);
-//		
+		GetListRequest gitlistrequest = new GetListRequest();
+		gitlistrequest.setExpire(expire);
+		OfflineResult getpresetlistResult = ksc.GetPresetList(gitlistrequest);
 		
-		/*
-		 * 发送get请求，删除模板
-		 */
-//		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
-//		deletePresetRequest.setPreset("liubohua1");
-//		OfflineErrResult deletePresetResult = ksc.DelPreset(deletePresetRequest);
+
+		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
+		deletePresetRequest.setPreset("liubohua1");
+		OfflineErrResult deletePresetResult = ksc.DelPreset(deletePresetRequest);
 				
-		/*
-		 * 发送post请求,建立模板
-		 */
-//		PresetRequest presetRequest = new PresetRequest();
-//		String data = PresetSet("liubohua9");
-//		presetRequest.setData(data);
-//		OfflineErrResult presetResult = ksc.Preset(presetRequest);
-		
-		/*
-		 * 发送post请求，更新模板
-		 */
-//		UpdatePersetRequest presetRequest = new UpdatePersetRequest();
-//		String data = PresetSet("liubohua9");
-//		presetRequest.setData(data);
-//		OfflineErrResult presetResult = ksc.UpdatePreset(presetRequest);
-		
-		/*
-		 * 发送get请求，获取模板详情
-		 */
-		
-//		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
-//		getPresetDetailRequest.setPreset("preset_avop1");
-//		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
-//		
+	
+		PresetRequest presetRequest = new PresetRequest();
+		String data = PresetSet("liubohua9");
+		presetRequest.setData(data);
+		OfflineErrResult presetResult = ksc.Preset(presetRequest);
 		
 		
-		/*
-		 * 发送post请求，新建任务
-		 *
-		 */
-//		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
-//		String data = setTask("preset_avop1","wangshuai9","ksyun_a.flv","ksyun.flv");
-//		createTaskRequest.setData(data);
-//		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
+		UpdatePersetRequest presetRequest1 = new UpdatePersetRequest();
+		String data1 = PresetSet("liubohua9");
+		presetRequest1.setData(data1);
+		OfflineErrResult presetResult1 = ksc.UpdatePreset(presetRequest1);
+		
+		
+		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
+		getPresetDetailRequest.setPreset("preset_avop1");
+		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
 		
 		
 		
 		
-		/*
-		 * 发送get请求，删除任务
-		 *
-		 */
+		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
+		String data2 = setTask("preset_avop1","wangshuai9","ksyun_a.flv","ksyun.flv");
+		createTaskRequest.setData(data2);
+		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
+
 		
-//		TaskRequest tashRequest = new TaskRequest();
-//		tashRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
-//		OfflineErrResult DelTaskByReqIDResult = ksc.DelTaskByTaskID(tashRequest);
-//		
+
 		
-		/*
-		 * 发送get请求，置顶任务
-		 */
-//		TopTaskByTaskIDRequest topTaskByReqIDRequest = new TopTaskByTaskIDRequest();
-//		topTaskByReqIDRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
-//		OfflineErrResult TopTaskByTaskIDResult = ksc.TopTaskByTaskID(topTaskByReqIDRequest);
+		TaskRequest tashRequest = new TaskRequest();
+		tashRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
+		OfflineErrResult DelTaskByReqIDResult = ksc.DelTaskByTaskID(tashRequest);
 		
-		/*
-		 * 发送get请求，查询任务列表
-		 */
-//		GetTaskListRequest getTaskListRequest = new GetTaskListRequest();
-//		GetTaskListResult getTaskListResult = ksc.GetTaskList(getTaskListRequest);
 		
-		/*
-		 * 发送个体请求，查询任务详情
-		 */
-//		GetTaskByTaskIDRequest getTaskByReqIDRequest = new GetTaskByTaskIDRequest();
-//		getTaskByReqIDRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
-//		GetTaskByTaskIDResult getTaskByReqIDResult = ksc.GetTaskByTaskID(getTaskByReqIDRequest);
+		
+		TopTaskByTaskIDRequest topTaskByReqIDRequest = new TopTaskByTaskIDRequest();
+		topTaskByReqIDRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
+		OfflineErrResult TopTaskByTaskIDResult = ksc.TopTaskByTaskID(topTaskByReqIDRequest);
+		
+		
+		GetTaskListRequest getTaskListRequest = new GetTaskListRequest();
+		GetTaskListResult getTaskListResult = ksc.GetTaskList(getTaskListRequest);
+		
+	
+		GetTaskByTaskIDRequest getTaskByReqIDRequest = new GetTaskByTaskIDRequest();
+		getTaskByReqIDRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
+		GetTaskByTaskIDResult getTaskByReqIDResult = ksc.GetTaskByTaskID(getTaskByReqIDRequest);
 		
 		
 		System.out.println("aaaaa");
@@ -139,11 +113,10 @@ public class TestOffline {
 		JSONObject param = new JSONObject();
 		JSONObject video = new JSONObject();
 		JSONObject audio = new JSONObject();
-		data.put("preset", preset);    //模板名
-		data.put("presettype",presettype);  //模板类型，固定为avop
-		data.put("description","desc:"+preset);   //模板描述
+		data.put("preset", preset);    
+		data.put("presettype",presettype);  
+		data.put("description","desc:"+preset);   
 		
-		//模板的参数设置，用户可自行设置
 		video.put("vr", "13");
 		video.put("vb", "780000");
 		video.put("vcodec", "h264");
@@ -167,11 +140,10 @@ public class TestOffline {
 	}
 	
 	
-	//设置新加任务的数据参数
 	
 		private static String setTask(String preset,String dst_bucket,String dst_object_key,String src_object_key) throws JSONException{
 			JSONObject data = new JSONObject();		
-			data.put("preset", preset);			//模板名称
+			data.put("preset", preset);			
 			data.put("srcInfo", TaskSrcInfo(dst_bucket,src_object_key));   
 			data.put("dstBucket", dst_bucket);
 			data.put("dstObjectKey",dst_object_key);
@@ -181,7 +153,7 @@ public class TestOffline {
 			return data.toString();
 		}
 		
-		//设置任务路径
+		
 		private static JSONArray TaskSrcInfo(String dst_bucket,String dst_object_key) throws JSONException{
 			JSONArray srcInfo = new JSONArray();
 			JSONObject insrcInfo = new JSONObject();

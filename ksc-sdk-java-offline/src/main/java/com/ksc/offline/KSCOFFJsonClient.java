@@ -216,9 +216,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		init();
 	}
 	
-	/*
-	 * 发起post请求，请求添加模板
-	 */
+
 	public OfflineErrResult Preset(PresetRequest presetRequest){
 		ExecutionContext executionContext = createExecutionContext(presetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -248,10 +246,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
-	/*
-	 * 发起get请求，请求获取模板列表
-	 */
-	
+
 	
 	public OfflineResult GetPresetList(GetListRequest offlineRequest) {
 		ExecutionContext executionContext = createExecutionContext(offlineRequest);
@@ -283,10 +278,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 
 	}
 	
-	/*
-	 * 发送get请求，删除模板
-	 * 
-	 */
+
 	public OfflineErrResult DelPreset(DeletePresetRequest deletePresetRequest){
 		ExecutionContext executionContext = createExecutionContext(deletePresetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -316,9 +308,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
-	/*
-	 * 发起get请求，更新模板
-	 */
+
 	public OfflineErrResult UpdatePreset(UpdatePersetRequest updatePersetRequest){
 		ExecutionContext executionContext = createExecutionContext(updatePersetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -348,9 +338,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
-	/*
-	 * 发起get请求，获取模板详情
-	 */
+
 	public GetPresetDetailResult GetPresetDetail(GetPresetDetailRequest getPresetDetailRequest){
 		ExecutionContext executionContext = createExecutionContext(getPresetDetailRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -381,9 +369,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 	}
 	
 	
-	/*
-	 * 发送post请求，新建模板
-	 */
+	
 	public CreateTasklResult CreateTask(CreateTaskRequest createTaskRequest){
 		ExecutionContext executionContext = createExecutionContext(createTaskRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -413,11 +399,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
-	/*
-	 * 使用get请求，删除任务
-	 * 
-	 */
-	
+
 	
 	public OfflineErrResult DelTaskByTaskID(TaskRequest tashRequest) {
 		// TODO Auto-generated method stub
@@ -449,10 +431,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
-	/*
-	 * 发送get请求，置顶任务
-	 * 
-	 */
+
 	public OfflineErrResult TopTaskByTaskID(TopTaskByTaskIDRequest topTaskByTaskIDRequest) {
 		ExecutionContext executionContext = createExecutionContext(topTaskByTaskIDRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -481,9 +460,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	/*
-	 * 发送get请求，获取任务列表
-	 */
+
 	public GetTaskListResult GetTaskList(GetTaskListRequest getTaskListRequest){
 		ExecutionContext executionContext = createExecutionContext(getTaskListRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -517,9 +494,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		
 	}
 	
-	/*
-	 * 发送get请求查询任务详情
-	 */
+
 	
 	public GetTaskByTaskIDResult GetTaskByTaskID(GetTaskByTaskIDRequest getTaskByTaskIDRequest) {
 		// TODO Auto-generated method stub
