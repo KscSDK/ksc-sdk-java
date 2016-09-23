@@ -32,8 +32,8 @@ public class TestOffline {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("AKLT8QD8WDFRSxmuqccfPXSx5A",
-						"OF9XpifwDTJ4gasNh9QfDPzxyK7AvwYvP3BiSRRg63vOAmqu91YemRg6iFYORtj/ow==");
+			credentials = new BasicAWSCredentials("ACCESS_KEY",
+						"SECRET_KEY");
 			} catch (Exception e) {
 				throw new KscClientException(
 						"Cannot load the credentials from the credential profiles file. "
