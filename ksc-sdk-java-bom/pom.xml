@@ -48,7 +48,7 @@
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-offline</artifactId>
 		<optional>false</optional>
-		<version>0.0。1</version>
+		<version>1.0.1</version>
 	</dependency>
 </dependencies>
   </dependencyManagement>
