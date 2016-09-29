@@ -8,16 +8,18 @@ import com.ksc.offline.model.transform.GetListRequestMarshaller;
 public class GetListRequest extends KscWebServiceRequest
 implements DryRunSupportedRequest<GetListRequest>{
 	
-	private long expire;
-
-	public long getExpire() {
-		return expire;
+	private int withDetail;
+	
+	
+	public int getWithDetail() {
+		return withDetail;
 	}
 
 
-	public void setExpire(long expire) {
-		this.expire = expire;
+	public void setWithDetail(int withDetail) {
+		this.withDetail = withDetail;
 	}
+
 
 	public Request<GetListRequest> getDryRunRequest() {
 		// TODO Auto-generated method stub

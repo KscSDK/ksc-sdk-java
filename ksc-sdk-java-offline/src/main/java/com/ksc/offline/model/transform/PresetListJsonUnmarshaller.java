@@ -37,7 +37,7 @@ public class PresetListJsonUnmarshaller implements Unmarshaller<Preset, JsonUnma
 				if (context.testExpression("preset", targetDepth)) {
 					context.nextToken();
 					preset.setPreset(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("presetType", targetDepth)) {
+				} else if (context.testExpression("presettype", targetDepth)) {
 					context.nextToken();
 					preset.setPresetType(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("description", targetDepth)) {
@@ -49,6 +49,9 @@ public class PresetListJsonUnmarshaller implements Unmarshaller<Preset, JsonUnma
 				} else if (context.testExpression("updateTime", targetDepth)) {
 					context.nextToken();
 					preset.setUpdateTime(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("param", targetDepth)) {
+					context.nextToken();
+					preset.setParam(ParamJsonUnmarshaller.getInstance().unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

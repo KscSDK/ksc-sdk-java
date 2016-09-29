@@ -6,6 +6,7 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.offline.model.GetListRequest;
 import com.ksc.transform.Marshaller;
+import com.ksc.util.StringUtils;
 
 public class GetListRequestMarshaller implements
 Marshaller<Request<GetListRequest>, GetListRequest> {
@@ -25,6 +26,9 @@ Marshaller<Request<GetListRequest>, GetListRequest> {
         	version="2016-09-19";
         }
         request.addParameter("Version", version);
+        
+   
+        request.addParameter("withDetail", StringUtils.fromInteger(offlineRequest.getWithDetail()));
         request.setHttpMethod(HttpMethodName.GET);
       
 		return request;

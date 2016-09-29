@@ -5,7 +5,7 @@ public class GetPresetDetailResult {
 	private String errMsg;
 	
 	private DetailPreset presetdetail;
-
+	
 	public DetailPreset getPresetdetail() {
 		return presetdetail;
 	}

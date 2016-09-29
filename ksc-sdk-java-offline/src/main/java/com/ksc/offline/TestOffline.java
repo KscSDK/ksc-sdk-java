@@ -32,8 +32,8 @@ public class TestOffline {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("ACCESS_KEY",
-						"SECRET_KEY");
+			credentials = new BasicAWSCredentials("AKLT8QD8WDFRSxmuqccfPXSx5A",
+						"OF9XpifwDTJ4gasNh9QfDPzxyK7AvwYvP3BiSRRg63vOAmqu91YemRg6iFYORtj/ow==");
 			} catch (Exception e) {
 				throw new KscClientException(
 						"Cannot load the credentials from the credential profiles file. "
@@ -43,21 +43,20 @@ public class TestOffline {
 			}
 		KSCOFFJsonClient ksc = new KSCOFFJsonClient(credentials);
 		ksc.setEndpoint("http://offline.cn-beijing-6.api.ksyun.com/");
-
-		long expire = 600 + System.currentTimeMillis()/1000;
+		
 		
 		GetListRequest gitlistrequest = new GetListRequest();
-		gitlistrequest.setExpire(expire);
+		gitlistrequest.setWithDetail(1);
 		OfflineResult getpresetlistResult = ksc.GetPresetList(gitlistrequest);
 		
-
+ 
 		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
 		deletePresetRequest.setPreset("liubohua1");
 		OfflineErrResult deletePresetResult = ksc.DelPreset(deletePresetRequest);
 				
-	
+		
 		PresetRequest presetRequest = new PresetRequest();
-		String data = PresetSet("liubohua9");
+		String data = PresetSet("preset");
 		presetRequest.setData(data);
 		OfflineErrResult presetResult = ksc.Preset(presetRequest);
 		
@@ -71,8 +70,6 @@ public class TestOffline {
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
 		getPresetDetailRequest.setPreset("preset_avop1");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
-		
-		
 		
 		
 		CreateTaskRequest createTaskRequest = new CreateTaskRequest();

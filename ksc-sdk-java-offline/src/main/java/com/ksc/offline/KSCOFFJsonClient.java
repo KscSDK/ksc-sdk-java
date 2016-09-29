@@ -246,8 +246,6 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
-
-	
 	public OfflineResult GetPresetList(GetListRequest offlineRequest) {
 		ExecutionContext executionContext = createExecutionContext(offlineRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
