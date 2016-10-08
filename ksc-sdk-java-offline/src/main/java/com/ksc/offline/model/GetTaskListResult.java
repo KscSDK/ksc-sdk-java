@@ -19,7 +19,7 @@ public class GetTaskListResult {
 	public void setErrNum(int errNum) {
 		this.errNum = errNum;
 	}
-	public com.ksc.internal.SdkInternalList<TaskInfo> getTaskInfoListt() {
+	public com.ksc.internal.SdkInternalList<TaskInfo> getTaskInfoList() {
 		return TaskInfoList;
 	}
 	public void setTaskInfoList(java.util.Collection<TaskInfo> taskInfoList) {
