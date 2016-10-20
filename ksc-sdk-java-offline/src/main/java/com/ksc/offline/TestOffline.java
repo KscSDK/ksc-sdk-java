@@ -21,6 +21,8 @@ import com.ksc.offline.model.GetTaskByTaskIDRequest;
 import com.ksc.offline.model.GetTaskByTaskIDResult;
 import com.ksc.offline.model.GetTaskListRequest;
 import com.ksc.offline.model.GetTaskListResult;
+import com.ksc.offline.model.GetTaskMetaRequest;
+import com.ksc.offline.model.GetTaskMetaResult;
 import com.ksc.offline.model.OfflineErrResult;
 import com.ksc.offline.model.OfflineResult;
 import com.ksc.offline.model.PresetRequest;
@@ -32,8 +34,8 @@ public class TestOffline {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("aws_access_key_id",
-					"aws_secret_access_key");
+			credentials = new BasicAWSCredentials("AKLT8QD8WDFRSxmuqccfPXSx5A",
+					"OF9XpifwDTJ4gasNh9QfDPzxyK7AvwYvP3BiSRRg63vOAmqu91YemRg6iFYORtj/ow==");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -44,6 +46,7 @@ public class TestOffline {
 
 		GetListRequest gitlistrequest = new GetListRequest();
 		gitlistrequest.setWithDetail(1);
+		gitlistrequest.setPresettype("avop");
 		OfflineResult getpresetlistResult = ksc.GetPresetList(gitlistrequest);
 
 		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
@@ -53,11 +56,13 @@ public class TestOffline {
 		PresetRequest presetRequest = new PresetRequest();
 		String data = PresetSet("preset");
 		presetRequest.setData(data);
+		System.out.println("创建模板JSON："+data);
 		OfflineErrResult presetResult = ksc.Preset(presetRequest);
 
 		UpdatePersetRequest presetRequest1 = new UpdatePersetRequest();
 		String data1 = PresetSet("liubohua9");
 		presetRequest1.setData(data1);
+		System.out.println("更新模板JSON："+data1);
 		OfflineErrResult presetResult1 = ksc.UpdatePreset(presetRequest1);
 
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
@@ -67,6 +72,7 @@ public class TestOffline {
 		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
 		String data2 = setTask("preset_avop1", "wangshuai9", "ksyun_a.flv", "ksyun.flv");
 		createTaskRequest.setData(data2);
+		System.out.println("创建任务JSON："+data2);
 		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
 
 		TaskRequest tashRequest = new TaskRequest();
@@ -84,6 +90,10 @@ public class TestOffline {
 		getTaskByTaskIDRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
 		GetTaskByTaskIDResult getTaskByTaskIDResult = ksc.GetTaskByTaskID(getTaskByTaskIDRequest);
 
+		GetTaskMetaRequest getTaskMetaInfoRequest = new GetTaskMetaRequest();
+		getTaskMetaInfoRequest.setTaskid("c3697fdd9c4c1240c0e5f29b7a63cba820160929");
+		GetTaskMetaResult GetTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
+		
 		System.out.println("aaaaa");
 
 	}
@@ -129,6 +139,11 @@ public class TestOffline {
 		data.put("dstObjectKey", dst_object_key);
 		data.put("dstDir", "");
 		data.put("isTop", 0);
+		data.put("dstAcl", "public-read");
+		data.put("cbUrl", "");
+		data.put("cbMethod", "POST");
+		data.put("extParam", "");
+		
 
 		return data.toString();
 	}

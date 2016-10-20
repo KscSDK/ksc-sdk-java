@@ -10,7 +10,19 @@ implements DryRunSupportedRequest<GetListRequest>{
 	
 	private int withDetail;
 	
+	private String presettype;
 	
+	
+	public String getPresettype() {
+		return presettype;
+	}
+
+
+	public void setPresettype(String presettype) {
+		this.presettype = presettype;
+	}
+
+
 	public int getWithDetail() {
 		return withDetail;
 	}

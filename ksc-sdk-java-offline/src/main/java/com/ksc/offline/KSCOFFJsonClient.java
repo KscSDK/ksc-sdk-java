@@ -25,6 +25,8 @@ import com.ksc.offline.model.GetTaskByTaskIDRequest;
 import com.ksc.offline.model.GetTaskByTaskIDResult;
 import com.ksc.offline.model.GetTaskListRequest;
 import com.ksc.offline.model.GetTaskListResult;
+import com.ksc.offline.model.GetTaskMetaRequest;
+import com.ksc.offline.model.GetTaskMetaResult;
 import com.ksc.offline.model.OfflineErrResult;
 import com.ksc.offline.model.OfflineResult;
 import com.ksc.offline.model.PresetRequest;
@@ -39,6 +41,8 @@ import com.ksc.offline.model.transform.GetTaskByTaskIDRequestMarshaller;
 import com.ksc.offline.model.transform.GetTaskByTaskIDResultJsonUnmarshaller;
 import com.ksc.offline.model.transform.GetTaskListRequestMarshaller;
 import com.ksc.offline.model.transform.GetTaskListResultJsonUnmarshaller;
+import com.ksc.offline.model.transform.GetTaskMetaRequestMarshaller;
+import com.ksc.offline.model.transform.GetTaskMetaResultJsonUnmarshaller;
 import com.ksc.offline.model.transform.OfflineCreateTaskResultJsonUnmarshaller;
 import com.ksc.offline.model.transform.OfflineDetailResultJsonUnmarshaller;
 import com.ksc.offline.model.transform.OfflineErrResultJsonUnmarshaller;
@@ -525,6 +529,38 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		}
 	}
 	
+	public GetTaskMetaResult GetTaskMetaInfo(GetTaskMetaRequest getTaskMetaInfoRequest) {
+		ExecutionContext executionContext = createExecutionContext(getTaskMetaInfoRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetTaskMetaRequest> request = null;
+		Response<GetTaskMetaResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetTaskMetaRequestMarshaller()
+							.marshall(super.beforeMarshalling(getTaskMetaInfoRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			
+			HttpResponseHandler<KscWebServiceResponse<GetTaskMetaResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetTaskMetaResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+			
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	
+	
 	private void init() {
 		setServiceNameIntern(DEFAULT_SIGNING_NAME);
 		setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
@@ -559,6 +595,7 @@ public class KSCOFFJsonClient extends KscWebServiceClient{
 		return client.execute(request, responseHandler, errorResponseHandler, executionContext);
 	}
 
+	
 	
 
 	
