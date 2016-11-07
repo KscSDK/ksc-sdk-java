@@ -8,9 +8,21 @@ package com.ksc.cdn;
  */
 public class KscClientException extends Exception{
     String message;
+    String requestId;
     public KscClientException(){}
     public KscClientException(String message){
         this.message=message;
+    }
+    public KscClientException(String message,String requestId){
+        this.message=message;
+        this.requestId=requestId;
+    }
+    public void setRequestId(String requestId) {
+        this.requestId = requestId;
+    }
+
+    public String getRequestId() {
+        return requestId;
     }
 
     @Override

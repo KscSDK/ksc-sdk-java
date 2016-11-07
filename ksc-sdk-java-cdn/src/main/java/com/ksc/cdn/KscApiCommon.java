@@ -5,8 +5,9 @@ import com.ksc.cdn.util.AwsSignerV4Util;
 import com.ksc.cdn.util.DateUtils;
 import com.ksc.cdn.util.HttpClientUtil;
 import com.ksc.cdn.util.HttpResponseCallback;
+import com.ksc.util.IOUtils;
 import org.apache.commons.lang3.StringUtils;
-import org.apache.commons.lang3.SystemUtils;
+import org.apache.http.Header;
 import org.apache.http.HttpStatus;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.entity.ContentType;
@@ -14,6 +15,9 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.InputStream;
 import java.net.URI;
 import java.nio.charset.Charset;
 import java.text.ParseException;
@@ -22,6 +26,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 import com.ksc.HttpMethod;
+import org.w3c.dom.Document;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import javax.activation.MimeType;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 
 /**
  * KscApiCommon
@@ -224,14 +235,55 @@ public class KscApiCommon {
      * @throws Exception
      */
     private <T> T handleResponse(String url, CloseableHttpResponse response, Class<T> clazz) throws Exception {
-        String responseString = EntityUtils.toString(response.getEntity(), Charset.forName("UTF-8"));
         int statusCode = response.getStatusLine().getStatusCode();
-        log.info("openAPI url:{}, response code:{}, response content:{}", url, statusCode, responseString);
-        T t = new Gson().fromJson(responseString, clazz);
+        String requestId="";
+        String responseString = "";
+
+        Header[] headers=response.getHeaders("Content-type");
+        if(headers.length>0&&headers[0].getValue().equals("application/xml;charset=UTF-8")&&statusCode==HttpStatus.SC_FORBIDDEN){
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            byte[] buffer = new byte[1024];
+            int len;
+            while ((len = response.getEntity().getContent().read(buffer)) > -1){
+                baos.write(buffer, 0, len);
+            }
+            baos.flush();
+            InputStream inputStream=new ByteArrayInputStream(baos.toByteArray());
+
+            if(log.isDebugEnabled()){
+                InputStream copy = new ByteArrayInputStream(baos.toByteArray());
+                log.info(IOUtils.toString(copy));
+            }
+
+            DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+            DocumentBuilder db = dbf.newDocumentBuilder();
+            Document dt =db.parse(inputStream);
+            NodeList childNodes = dt.getDocumentElement().getChildNodes();
+            for(int i=0;i<childNodes.getLength();i++){
+                Node item = childNodes.item(i);
+                if(item.getNodeName().equals("Error")){
+                    responseString=item.getLastChild().getTextContent();
+                }
+                if(item.getNodeName().equals("RequestId")){
+                    requestId=item.getTextContent();
+                }
+            }
+            throw new KscClientException(responseString,requestId);
+
+        }
+        responseString = EntityUtils.toString(response.getEntity(), Charset.forName("UTF-8"));
+        if(log.isDebugEnabled()){
+            log.info("openAPI url:{}, response code:{}, response content:{}", url, statusCode, responseString);
+        }
+
         if (statusCode == HttpStatus.SC_OK) {
+            T t = new Gson().fromJson(responseString, clazz);
             return t;
         } else {
-            throw new KscClientException(responseString);
+            Map error = new Gson().fromJson(responseString, Map.class);
+            responseString=((Map)error.get("Error")).get("Message").toString();
+            requestId=error.get("RequestId").toString();
+            throw new KscClientException(responseString,requestId);
         }
     }
 

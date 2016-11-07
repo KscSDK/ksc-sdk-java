@@ -1,7 +1,7 @@
 package com.ksc.cdn.test;
 
 import com.ksc.cdn.KscCdnClient;
-import com.ksc.cdn.model.domain.DomainStatus;
+import com.ksc.cdn.model.enums.DomainStatus;
 import com.ksc.cdn.model.domain.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.GetCdnDomainsResult;
 import org.junit.Assert;

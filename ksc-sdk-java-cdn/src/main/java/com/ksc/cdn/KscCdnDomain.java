@@ -17,6 +17,11 @@ public interface KscCdnDomain {
     String GETCDNDOMAINS_VERSION = "2016-09-01";
     String GETCDNDOMAINS_ACTION = "GetCdnDomains";
 
-
+    /**
+     * 获取域名列表
+     * @param getCdnDomainsRequest
+     * @return
+     * @throws Exception
+     */
     GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception;
 }

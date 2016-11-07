@@ -4,15 +4,17 @@ package com.ksc.cdn;
 import com.ksc.HttpMethod;
 import com.ksc.cdn.model.domain.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.GetCdnDomainsResult;
+import com.ksc.cdn.model.statistic.BpsResult;
+import com.ksc.cdn.model.statistic.StatisticsQuery;
 
 import java.util.Map;
 
-public class KscCdnClient extends KscApiCommon implements KscCdnDomain{
+public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnStatistics{
 
     private final String ENDPOINT="http://cdn.api.ksyun.com";
     private final String API_REGION="cn-shanghai-1";
-    private final String ACCESS_KEY="AKTPKpSIjlP9TAmNnyhoJhAu9w";
-    private final String SECRET_ACCESS_KEY="OEZh7MI3BWvFhkxlxMnEoh+9rvYPg5dCUuN3SnOT9qvZfEXgfZhX6FwbWfHs2upwNQ==";
+    private final String ACCESS_KEY="AKTPVehAgM_QRJO1qB0sp_UqOQ";
+    private final String SECRET_ACCESS_KEY="OBu94Km05RpidhuyL3Ryp72NR895q0nGCLjMCuWm7zkPK9xbaE5EnFwfidW0oCIHXw==";
     private final String API_SERVICE_NAME="cdn";
 
     public KscCdnClient(){
@@ -28,6 +30,13 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain{
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETCDNDOMAINS_VERSION, GETCDNDOMAINS_ACTION);
         GetCdnDomainsResult result = this.httpExecute(HttpMethod.GET, GETCDNDOMAINS_URL, getCdnDomainsRequest.buildParams(), buildHeaders, GetCdnDomainsResult.class);
+        return result;
+    }
+
+    @Override
+    public BpsResult getBandwidthData(StatisticsQuery statisticsQuery) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(BANDWIDTH_VERSION, BANDWIDTH_ACTION);
+        BpsResult result=this.httpExecute(HttpMethod.GET,BANDWIDTH_URL,statisticsQuery.buildParams(),buildHeaders,BpsResult.class);
         return result;
     }
 }
