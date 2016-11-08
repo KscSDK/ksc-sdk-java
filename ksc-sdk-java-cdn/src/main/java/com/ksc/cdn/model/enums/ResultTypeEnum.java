@@ -8,7 +8,7 @@ import lombok.Getter;
  * 0:多域名多计费区域数据做合并
  * 1：每个域名每个计费区域的数据分别返回
  */
-@Getter
+
 public enum ResultTypeEnum {
 
     MERGE("0", "合并返回"),
@@ -17,6 +17,22 @@ public enum ResultTypeEnum {
     private String code;
 
     private String value;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 
     ResultTypeEnum(String code, String value) {
         this.code = code;

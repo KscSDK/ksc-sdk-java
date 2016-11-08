@@ -1,17 +1,23 @@
 package com.ksc.cdn.model.enums;
 
-import lombok.Getter;
 
 /**
  * Created by CrazyHorse on 9/18/16.
  */
-@Getter
 public enum ActionTypeEnum {
 
     START("start"),
     STOP("stop");
 
     private String value;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
 
     ActionTypeEnum(String value) {
         this.value = value;

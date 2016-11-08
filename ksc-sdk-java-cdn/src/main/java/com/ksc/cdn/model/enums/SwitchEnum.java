@@ -1,11 +1,9 @@
 package com.ksc.cdn.model.enums;
 
-import lombok.Getter;
 
 /**
  * Created by CrazyHorse on 9/22/16.
  */
-@Getter
 public enum SwitchEnum {
 
     ON("on", "开"),
@@ -14,6 +12,22 @@ public enum SwitchEnum {
     private String value;
 
     private String desc;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     SwitchEnum(String value, String desc) {
         this.value = value;

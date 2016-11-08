@@ -1,5 +1,8 @@
 package com.ksc.cdn.model.statistic;
 
+import com.ksc.cdn.KscClientException;
+import com.ksc.cdn.model.valid.CommonValidUtil;
+import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
 
 import java.util.HashMap;
@@ -15,17 +18,20 @@ public class StatisticsQuery {
      * 获取数据起始时间点
      * 格式UTC时间：YYYY-MM-DD Thh:mmZ
      */
+    @FieldValidate
     private String startTime;
 
     /**
      * 获取数据结束时间点,结束时间应大于起始时间
      * 格式UTC时间：YYYY-MM-DD Thh:mmZ
      */
+    @FieldValidate
     private String endTime;
 
     /**
      * 产品类型只允许输入一种,下载download,直播live
      */
+    @FieldValidate
     private String cdnType;
 
     /**
@@ -45,6 +51,7 @@ public class StatisticsQuery {
      * 0:多域名多计费区域数据做合并
      * 1：每个域名每个计费区域的数据分别返回
      */
+    @FieldValidate
     private String resultType;
 
     /**
@@ -139,7 +146,8 @@ public class StatisticsQuery {
         this.hitType = hitType;
     }
 
-    public Map<String, String> buildParams() {
+    public Map<String, String> buildParams() throws KscClientException {
+        CommonValidUtil.check(this);
 
         Map params = new HashMap<String, String>();
 

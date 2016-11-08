@@ -30,7 +30,6 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import javax.activation.MimeType;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -236,11 +235,12 @@ public class KscApiCommon {
      */
     private <T> T handleResponse(String url, CloseableHttpResponse response, Class<T> clazz) throws Exception {
         int statusCode = response.getStatusLine().getStatusCode();
+        String errorCode="";
         String requestId="";
         String responseString = "";
 
         Header[] headers=response.getHeaders("Content-type");
-        if(headers.length>0&&headers[0].getValue().equals("application/xml;charset=UTF-8")&&statusCode==HttpStatus.SC_FORBIDDEN){
+        if(headers.length>0&&headers[0].getValue().equals("application/xml;charset=UTF-8")&&statusCode!=HttpStatus.SC_OK){
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
             byte[] buffer = new byte[1024];
             int len;
@@ -262,13 +262,19 @@ public class KscApiCommon {
             for(int i=0;i<childNodes.getLength();i++){
                 Node item = childNodes.item(i);
                 if(item.getNodeName().equals("Error")){
-                    responseString=item.getLastChild().getTextContent();
+                    for (int j=0;j<item.getChildNodes().getLength();j++){
+                        if(item.getChildNodes().item(j).getNodeName().equals("Code"))
+                            errorCode=item.getChildNodes().item(j).getTextContent();
+                        if(item.getChildNodes().item(j).getNodeName().equals("Message")){
+                            responseString=item.getChildNodes().item(j).getTextContent();
+                        }
+                    }
                 }
                 if(item.getNodeName().equals("RequestId")){
                     requestId=item.getTextContent();
                 }
             }
-            throw new KscClientException(responseString,requestId);
+            throw new KscClientException(errorCode,responseString,requestId);
 
         }
         responseString = EntityUtils.toString(response.getEntity(), Charset.forName("UTF-8"));
@@ -281,9 +287,10 @@ public class KscApiCommon {
             return t;
         } else {
             Map error = new Gson().fromJson(responseString, Map.class);
+            errorCode=((Map)error.get("Error")).get("Code").toString();
             responseString=((Map)error.get("Error")).get("Message").toString();
             requestId=error.get("RequestId").toString();
-            throw new KscClientException(responseString,requestId);
+            throw new KscClientException(errorCode,responseString,requestId);
         }
     }
 

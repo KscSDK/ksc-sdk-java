@@ -4,12 +4,11 @@ package com.ksc.cdn.model.enums;
  * Created by CrazyHorse on 9/23/16.
  */
 
-import lombok.Getter;
 
 /**
  * 回源类型.
  */
-@Getter
+
 public enum OriginTypeEnum {
 
     /**
@@ -37,6 +36,22 @@ public enum OriginTypeEnum {
      * 金山加速类型.
      */
     private String desc;
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
+
+    public void setDesc(String desc) {
+        this.desc = desc;
+    }
 
     public static OriginTypeEnum getByValue(String value) {
         for (OriginTypeEnum originTypeEnum : OriginTypeEnum.values()) {

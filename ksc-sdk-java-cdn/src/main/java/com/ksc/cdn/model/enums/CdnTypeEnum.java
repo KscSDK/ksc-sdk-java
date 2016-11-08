@@ -12,20 +12,18 @@ public enum CdnTypeEnum {
     /**
      * 下载业务
      */
-    download("download", "download", "下载"),
+    download("download", "下载"),
 
     /**
      * 直播业务
      */
-    live("live", "live", "直播");
+    live("live", "直播");
 
     private final String value;
-    private final String openApiValue;
     private final String desc;
 
-    CdnTypeEnum(String value, String openApiValue, String desc) {
+    CdnTypeEnum(String value, String desc) {
         this.value = value;
-        this.openApiValue = openApiValue;
         this.desc = desc;
     }
 
@@ -37,14 +35,11 @@ public enum CdnTypeEnum {
         return value;
     }
 
-    public String getOpenApiValue() {
-        return openApiValue;
-    }
 
     public static CdnTypeEnum getByOpenApiValue(String value) {
         CdnTypeEnum[] values = CdnTypeEnum.values();
         for (CdnTypeEnum cdnTypeEnum : values) {
-            if (StringUtils.equals(cdnTypeEnum.getOpenApiValue(), value)) {
+            if (StringUtils.equals(cdnTypeEnum.getValue(), value)) {
                 return cdnTypeEnum;
             }
         }

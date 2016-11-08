@@ -20,7 +20,7 @@ public class StatisticTest {
         StatisticsQuery statisticsQuery=new StatisticsQuery();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-18T08:00+0800");
-        statisticsQuery.setCdnType(CdnTypeEnum.download.getOpenApiValue());
+        statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
         statisticsQuery.setResultType("0");
         try {
             BpsResult bandwidthData = cdnClient.getBandwidthData(statisticsQuery);

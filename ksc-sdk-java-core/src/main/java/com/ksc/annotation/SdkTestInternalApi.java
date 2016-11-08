@@ -19,7 +19,7 @@ import java.lang.annotation.Target;
 
 /**
  * Marker interface for methods used by test code in the same module. Methods/Constructors annotated
- * with this method should not be accessed in production code. This annotation should be used
+ * with this method should not be accessed in production code. This valid should be used
  * sparingly as it's a code smell to need access to internal data/functionality to properly unit
  * test a class. Typically there is a better way to test a class.
  * <p>
