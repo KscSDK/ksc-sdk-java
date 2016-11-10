@@ -12,27 +12,27 @@ import java.util.Map;
  * @date 07/11/2016
  */
 public class GetCdnDomainsRequest {
-    private long PageSize;
-    private long PageNumber;
+    private Long PageSize;
+    private Long PageNumber;
     private String DomainName;
     private String DomainStatus;
     private String CdnType;
     private String FuzzyMatch;
 
 
-    public long getPageDomainsSize() {
+    public Long getPageDomainsSize() {
         return PageSize;
     }
 
-    public void setPageSize(long pageSize) {
+    public void setPageSize(Long pageSize) {
         PageSize = pageSize;
     }
 
-    public long getPageNumber() {
+    public Long getPageNumber() {
         return PageNumber;
     }
 
-    public void setPageNumber(long pageNumber) {
+    public void setPageNumber(Long pageNumber) {
         PageNumber = pageNumber;
     }
 

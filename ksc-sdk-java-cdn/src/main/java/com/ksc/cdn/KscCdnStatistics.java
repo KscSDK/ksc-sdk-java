@@ -1,11 +1,11 @@
 package com.ksc.cdn;
 
-import com.ksc.cdn.model.statistic.BpsResult;
-import com.ksc.cdn.model.statistic.FlowResult;
-import com.ksc.cdn.model.statistic.StatisticsQuery;
+import com.ksc.cdn.model.statistic.*;
 
 /**
- * Created by murongyifei on 03/11/2016.
+ * KscCdnStatistics
+ * 统计相关接口
+ * Created by jiangran@kingsoft.com on 03/11/2016.
  */
 public interface KscCdnStatistics {
     /**
@@ -21,7 +21,25 @@ public interface KscCdnStatistics {
     String FLOW_URL = "/2016-09-01/statistics/GetFlowData";
     String FLOW_VERSION = "2016-09-01";
     String FLOW_ACTION = "GetFlowData";
+    /**
+     * pv查询
+     */
+    String PV_URL = "/2016-09-01/statistics/GetPvData";
+    String PV_VERSION = "2016-09-01";
+    String PV_ACTION = "GetPvData";
 
+    /**
+     * 命中率查询
+     */
+    String HITRATE_URL = "/2016-09-01/statistics/GetHitRateData";
+    String HITRATE_VERSION = "2016-09-01";
+    String HITRATE_ACTION = "GetHitRateData";
+    /**
+     * 命中率详情查询
+     */
+    String HITRATE_DETAIL_URL = "/2016-09-01/statistics/GetHitRateDetailedData";
+    String HITRATE_DETAIL_VERSION = "2016-09-01";
+    String HITRATE_DETAIL_ACTION = "GetHitRateDetailedData";
     /**
      * 查询带宽
      * @param statisticsQuery
@@ -38,4 +56,27 @@ public interface KscCdnStatistics {
      */
     FlowResult getFlowDataByApi(StatisticsQuery statisticsQuery) throws Exception;
 
+    /**
+     * 命中率查询
+     * @param hitRateRequest
+     * @return
+     * @throws Exception
+     */
+    HitRateResult getHitRate(HitRateRequest hitRateRequest) throws Exception;
+
+    /**
+     * 命中率详情查询
+     * @param statisticsQuery
+     * @return
+     * @throws Exception
+     */
+    HitRateDetailResult getHitRateDetail(StatisticsQuery statisticsQuery) throws Exception;
+
+    /**
+     * 请求数查询
+     * @param statisticsQuery
+     * @return
+     * @throws Exception
+     */
+    PVResult getPV(StatisticsQuery statisticsQuery) throws Exception;
 }

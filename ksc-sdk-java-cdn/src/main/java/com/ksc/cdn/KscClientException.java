@@ -7,9 +7,13 @@ package com.ksc.cdn;
  * @date 04/11/2016
  */
 public class KscClientException extends Exception{
+
     String code;
+
     String message;
+
     String requestId;
+
     public KscClientException(){}
 
     public KscClientException(String message){

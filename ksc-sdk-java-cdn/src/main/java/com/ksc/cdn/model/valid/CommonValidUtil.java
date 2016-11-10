@@ -6,42 +6,81 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.lang.reflect.Field;
+import java.util.List;
 
 /**
  * CommonValidUtil
- *
+ * <p>
  * 验证请求参数是否合法
  *
  * @author jiangran@kingsoft.com
  * @date 08/11/2016
  */
 public class CommonValidUtil {
-    private final static Logger log= LoggerFactory.getLogger(CommonValidUtil.class);
+    private final static Logger log = LoggerFactory.getLogger(CommonValidUtil.class);
 
     /**
      * 验证请求参数是否合法
+     *
      * @param object
      * @throws KscClientException
      */
-    public static void check(Object object) throws KscClientException{
-        Class<? extends Object> clazz=object.getClass();
-        Field[] fields=clazz.getDeclaredFields();
-        for(Field field:fields){
+    public static void check(Object object) throws KscClientException {
+        Class<? extends Object> clazz = object.getClass();
+        Field[] fields = clazz.getDeclaredFields();
+
+        for (Field field : fields) {
+
+            checkFieldValid(field, object);
+
+            if (field.getType() == List.class) {
+                try {
+                    field.setAccessible(true);
+                    List<Object> list = (List<Object>) field.get(object);
+                    for (Object li : list
+                            ) {
+                        Field[] declaredFields = li.getClass().getDeclaredFields();
+                        for (Field f:declaredFields
+                                ) {
+                            checkFieldValid(f,li);
+                        }
+
+                    }
+                } catch (IllegalAccessException e) {
+                    log.warn("validate bean field {} cause illegal access exception", field.getName());
+                }finally {
+                    field.setAccessible(false);
+                }
+
+            }
+
+        }
+
+    }
+
+    private static void checkFieldValid(Field field, Object object) throws KscClientException {
+        try {
             field.setAccessible(true);
             FieldValidate annotation = field.getAnnotation(FieldValidate.class);
-            if(annotation!=null) {
-                if(!annotation.nullable()){
-                    try {
-                        Object value = field.get(object);
-                        if(value==null|| StringUtils.isBlank(value.toString())){
-                            throw new KscClientException(String.format("field %s not null",field.getName()));
-                        }
-                    } catch (IllegalAccessException e) {
-                        log.warn("validate bean field {} cause illegal access exception",field.getName());
-                    }
+            if (annotation != null) {
+                if (!annotation.nullable()) {
 
+                    Object value = field.get(object);
+                    if (field.getType() == String.class && (value == null || StringUtils.isBlank(value.toString()))) {
+                        throw new KscClientException(String.format("field %s not null", field.getName()));
+                    }
+                    if (field.getType() == Integer.class && ((Integer) value == 0)) {
+                        throw new KscClientException(String.format("field %s not null", field.getName()));
+                    }
+                    if (field.getType() == Long.class && ((Long) value == 0l)) {
+                        throw new KscClientException(String.format("field %s not null", field.getName()));
+                    }
                 }
             }
+
+        } catch (IllegalAccessException e) {
+            log.warn("validate bean field {} cause illegal access exception", field.getName());
+        }finally {
             field.setAccessible(false);
         }
     }

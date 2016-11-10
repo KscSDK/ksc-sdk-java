@@ -8,6 +8,7 @@ import com.ksc.cdn.model.enums.DomainConfigEnum;
 /**
  * KscCdnDomain
  *
+ * 域名配置相关接口
  * @author jiangran@kingsoft.com
  * @date 04/11/2016
  */
@@ -59,6 +60,50 @@ public interface KscCdnDomain {
     String CONFIG_URL = "/2016-09-01/domain/GetDomainConfigs";
     String CONFIG_VERSION="2016-09-01";
     String CONFIG_ACTION="GetDomainConfigs";
+
+    /**
+     * 设置过滤参数
+     */
+    String IGNORE_QUERY_STRING_URL = "/2016-09-01/domain/SetIgnoreQueryStringConfig";
+    String IGNORE_QUERY_STRING_VERSION="2016-09-01";
+    String IGNORE_QUERY_STRING_ACTION="SetIgnoreQueryStringConfig";
+    /**
+     * 设置回源host
+     */
+    String BACK_ORIGIN_URL = "/2016-09-01/domain/SetBackOriginHostConfig";
+    String BACK_ORIGIN_VERSION="2016-09-01";
+    String BACK_ORIGIN_ACTION="SetBackOriginHostConfig";
+    /**
+     * 设置refer防盗链
+     */
+    String REFER_PROTECTION_URL = "/2016-09-01/domain/SetReferProtectionConfig";
+    String REFER_PROTECTION_VERSION="2016-09-01";
+    String REFER_PROTECTION_ACTION="SetReferProtectionConfig";
+    /**
+     * 设置缓存策略
+     */
+    String SETCACHERULECONFIG_URL = "/2016-09-01/domain/SetCacheRuleConfig";
+    String SETCACHERULECONFIG_VERSION = "2016-09-01";
+    String SETCACHERULECONFIG_ACTION = "SetCacheRuleConfig";
+    /**
+     * 设置测试URL
+     */
+    String SETTESTURLCONFIG_URL = "/2016-09-01/domain/SetTestUrlConfig";
+    String SETTESTURLCONFIG_VERSION = "2016-09-01";
+    String SETTESTURLCONFIG_ACTION = "SetTestUrlConfig";
+
+    /**
+     * 设置高级回源
+     */
+    String SETORIGINADVANCEDCONFIG_URL = "/2016-09-01/domain/SetOriginAdvancedConfig";
+    String SETORIGINADVANCEDCONFIG_VERSION = "2016-09-01";
+    String SETORIGINADVANCEDCONFIG_ACTION = "SetOriginAdvancedConfig";
+    /**
+     * 设置备注信息
+     */
+    String SETREMARKCONFIG_URL = "/2016-09-01/domain/SetRemarkConfig";
+    String SETREMARKCONFIG_VERSION = "2016-09-01";
+    String SETREMARKCONFIG_ACTION = "SetRemarkConfig";
     /**
      * 获取域名列表
      * @param getCdnDomainsRequest
@@ -123,4 +168,57 @@ public interface KscCdnDomain {
      * @throws Exception
      */
     GetDomainConfigResult getDomainConfigs(String domainId, DomainConfigEnum... config) throws Exception;
+
+    /**
+     * 设置过滤参数
+     * @param domainId
+     * @param enable 配置是否开启或关闭 取值：on、off。默认值为on
+     * @throws Exception
+     */
+    void setIgnoreQueryStringConfig(String domainId, String enable) throws Exception;
+
+    /**
+     * 设置回源host功能
+     * @param domainId
+     * @param originHost 若源站为KS3域名，需将ks3域名设置为回源host（即源站域名），方可正常回源
+     * @throws Exception
+     */
+    void setBackOriginConfig(String domainId, String originHost) throws Exception;
+
+    /**
+     * 设置加速域名的Refer防盗链功能，加速域名创建后，默认不开启refer防盗链功能
+     * @param referProtection
+     * @throws Exception
+     */
+    void setReferProtectionConfig(ReferProtectionRequest referProtection) throws Exception;
+
+    /**
+     * 设置缓存规则
+     * @param cacheRuleConfig
+     * @throws Exception
+     */
+    void setCacheRule(CacheConfigRequest cacheRuleConfig) throws Exception;
+
+    /**
+     * 设置测试url
+     * @param domainId
+     * @param testUrl
+     * @throws Exception
+     */
+    void setTestUrl(String domainId, String testUrl) throws Exception;
+
+    /**
+     * 设置高级回源
+     * @param originAdvancedConfig
+     * @throws Exception
+     */
+    void setOriginAdvanced(OriginAdvancedConfigRequest originAdvancedConfig) throws Exception;
+
+    /**
+     * 设置备注信息
+     * @param domainId
+     * @param remark
+     * @throws Exception
+     */
+    void setRemark(String domainId, String remark) throws Exception;
 }

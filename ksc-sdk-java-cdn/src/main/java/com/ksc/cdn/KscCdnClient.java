@@ -5,9 +5,8 @@ import com.ksc.HttpMethod;
 import com.ksc.cdn.model.domain.*;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
-import com.ksc.cdn.model.statistic.BpsResult;
-import com.ksc.cdn.model.statistic.FlowResult;
-import com.ksc.cdn.model.statistic.StatisticsQuery;
+import com.ksc.cdn.model.statistic.*;
+import com.ksc.cdn.model.valid.CommonValidUtil;
 import org.apache.commons.lang3.StringUtils;
 
 
@@ -107,5 +106,83 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         params.put("ConfigList", StringUtils.substringBeforeLast(configList.toString(),","));
         GetDomainConfigResult getDomainConfigResult = this.httpExecute(HttpMethod.GET, CONFIG_URL, params, buildHeaders, GetDomainConfigResult.class);
         return getDomainConfigResult;
+    }
+
+    @Override
+    public void setIgnoreQueryStringConfig(String domainId, String enable) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(IGNORE_QUERY_STRING_VERSION, IGNORE_QUERY_STRING_ACTION);
+        Map<String,String> params=new HashMap<String, String>();
+        params.put("DomainId",domainId);
+        params.put("Enable",enable);
+        this.httpExecute(HttpMethod.GET, IGNORE_QUERY_STRING_URL, params, buildHeaders, Void.class);
+
+    }
+
+    @Override
+    public void setBackOriginConfig(String domainId, String originHost) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(BACK_ORIGIN_VERSION, BACK_ORIGIN_ACTION);
+        Map<String,String> params=new HashMap<String, String>();
+        params.put("DomainId",domainId);
+        params.put("BackOriginHost",originHost);
+        this.httpExecute(HttpMethod.GET, BACK_ORIGIN_URL, params, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setReferProtectionConfig(ReferProtectionRequest referProtection) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(REFER_PROTECTION_VERSION, REFER_PROTECTION_ACTION);
+        this.httpExecute(HttpMethod.GET,REFER_PROTECTION_URL,referProtection.buildParams(),buildHeaders,Void.class);
+    }
+
+    @Override
+    public void setCacheRule(CacheConfigRequest cacheRuleConfig) throws Exception {
+        CommonValidUtil.check(cacheRuleConfig);
+        Map<String, String> buildHeaders = this.buildHeaders(SETCACHERULECONFIG_VERSION, SETCACHERULECONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, SETCACHERULECONFIG_URL, cacheRuleConfig, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setTestUrl(String domainId, String testUrl) throws Exception {
+        Map<String, String> params = new HashMap();
+        params.put("DomainId", domainId);
+        params.put("TestUrl", testUrl);
+        Map<String, String> buildHeaders = this.buildHeaders(SETTESTURLCONFIG_VERSION, SETTESTURLCONFIG_ACTION);
+        this.httpExecute(HttpMethod.GET, SETTESTURLCONFIG_URL, params, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setOriginAdvanced(OriginAdvancedConfigRequest originAdvancedConfig) throws Exception {
+        CommonValidUtil.check(originAdvancedConfig);
+        Map<String, String> buildHeaders = this.buildHeaders(SETORIGINADVANCEDCONFIG_VERSION, SETORIGINADVANCEDCONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, SETORIGINADVANCEDCONFIG_URL, originAdvancedConfig, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setRemark(String domainId, String remark) throws Exception {
+        Map<String, String> params = new HashMap();
+        params.put("DomainId", domainId);
+        params.put("Remark", remark);
+        Map<String, String> buildHeaders = this.buildHeaders(SETREMARKCONFIG_VERSION, SETREMARKCONFIG_ACTION);
+        this.httpExecute(HttpMethod.GET, SETREMARKCONFIG_URL, params, buildHeaders, Void.class);
+    }
+
+    @Override
+    public HitRateResult getHitRate(HitRateRequest hitRateRequest) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(HITRATE_VERSION, HITRATE_ACTION);
+        HitRateResult hitRateResult = this.httpExecute(HttpMethod.GET, HITRATE_URL, hitRateRequest.buildParams(), buildHeaders, HitRateResult.class);
+        return hitRateResult;
+    }
+
+    @Override
+    public HitRateDetailResult getHitRateDetail(StatisticsQuery statisticsQuery) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(HITRATE_DETAIL_VERSION, HITRATE_DETAIL_ACTION);
+        HitRateDetailResult hitRateDetailResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, HitRateDetailResult.class);
+        return hitRateDetailResult;
+    }
+
+    @Override
+    public PVResult getPV(StatisticsQuery statisticsQuery) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(PV_VERSION, PV_ACTION);
+        PVResult pvResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, PVResult.class);
+        return pvResult;
     }
 }
