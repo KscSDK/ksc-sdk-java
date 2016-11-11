@@ -5,6 +5,7 @@ import com.ksc.HttpMethod;
 import com.ksc.cdn.model.domain.*;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
+import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.statistic.*;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import org.apache.commons.lang3.StringUtils;
@@ -17,8 +18,8 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
 
     private final String ENDPOINT="http://cdn.api.ksyun.com";
     private final String API_REGION="cn-shanghai-1";
-    private final String ACCESS_KEY="AKTPVehAgM_QRJO1qB0sp_UqOQ";
-    private final String SECRET_ACCESS_KEY="OBu94Km05RpidhuyL3Ryp72NR895q0nGCLjMCuWm7zkPK9xbaE5EnFwfidW0oCIHXw==";
+    private final String ACCESS_KEY="AKTPnBeE8s5_RUOdTNiyqt6MHQ";
+    private final String SECRET_ACCESS_KEY="ONV7B2Phe0rt4g35pIC9Ve8gLoWTuAU27bsyu92ZIXpLdZ/tESR2IVj1t2Ch5tQDxw==";
     private final String API_SERVICE_NAME="cdn";
 
     public KscCdnClient(){
@@ -68,20 +69,18 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     }
 
     @Override
-    public String updateDomainBase(ModifyDomainRequest modifyParam) throws Exception {
+    public void updateDomainBase(ModifyDomainRequest modifyParam) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(MODIFY_DOMAIN_VERSION, MODIFY_DOMAIN_ACTION);
-        String requestId = this.httpExecute(HttpMethod.GET, MODIFY_DOMAIN_URL, modifyParam.buildParams(), buildHeaders, String.class);
-        return requestId;
+        this.httpExecute(HttpMethod.GET, MODIFY_DOMAIN_URL, modifyParam.buildParams(), buildHeaders, Void.class);
     }
 
     @Override
-    public String startStopCdnDomain(String domainId, ActionTypeEnum action) throws Exception {
+    public void startStopCdnDomain(String domainId, ActionTypeEnum action) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(STARTSTOPCDNDOMAIN_VERSION, STARTSTOPCDNDOMAIN_ACTION);
         Map<String,String> params=new HashMap<String, String>();
         params.put("DomainId",domainId);
         params.put("ActionType",action.getValue());
-        String requestId = this.httpExecute(HttpMethod.GET, STARTSTOPCDNDOMAIN_URL, params, buildHeaders, String.class);
-        return requestId;
+        this.httpExecute(HttpMethod.GET, STARTSTOPCDNDOMAIN_URL, params, buildHeaders, Void.class);
     }
 
     @Override
@@ -109,11 +108,11 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     }
 
     @Override
-    public void setIgnoreQueryStringConfig(String domainId, String enable) throws Exception {
+    public void setIgnoreQueryStringConfig(String domainId, SwitchEnum enable) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(IGNORE_QUERY_STRING_VERSION, IGNORE_QUERY_STRING_ACTION);
         Map<String,String> params=new HashMap<String, String>();
         params.put("DomainId",domainId);
-        params.put("Enable",enable);
+        params.put("Enable",enable.getValue());
         this.httpExecute(HttpMethod.GET, IGNORE_QUERY_STRING_URL, params, buildHeaders, Void.class);
 
     }

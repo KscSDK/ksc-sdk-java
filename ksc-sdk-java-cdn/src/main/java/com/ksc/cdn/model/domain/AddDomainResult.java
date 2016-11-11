@@ -7,15 +7,15 @@ package com.ksc.cdn.model.domain;
  * @date 08/11/2016
  */
 public class AddDomainResult {
-    private String DomainID;
+    private String DomainId;
     private String DomainStatus;
 
-    public String getDomainID() {
-        return DomainID;
+    public String getDomainId() {
+        return DomainId;
     }
 
-    public void setDomainID(String domainID) {
-        DomainID = domainID;
+    public void setDomainId(String DomainId) {
+        this.DomainId = DomainId;
     }
 
     public String getDomainStatus() {

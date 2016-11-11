@@ -3,6 +3,7 @@ package com.ksc.cdn;
 import com.ksc.cdn.model.domain.*;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
+import com.ksc.cdn.model.enums.SwitchEnum;
 
 
 /**
@@ -134,7 +135,7 @@ public interface KscCdnDomain {
      * @return 该条任务请求ID
      * @throws Exception
      */
-    String updateDomainBase(ModifyDomainRequest modifyParam) throws Exception;
+    void updateDomainBase(ModifyDomainRequest modifyParam) throws Exception;
 
     /**
      * 启用、停用某个加速域名
@@ -146,7 +147,7 @@ public interface KscCdnDomain {
      * @return 该条任务请求ID
      * @throws Exception
      */
-    String startStopCdnDomain(String domainId, ActionTypeEnum action) throws Exception;
+    void startStopCdnDomain(String domainId, ActionTypeEnum action) throws Exception;
 
     /**
      * 删除用户下已添加的加速域名
@@ -175,7 +176,7 @@ public interface KscCdnDomain {
      * @param enable 配置是否开启或关闭 取值：on、off。默认值为on
      * @throws Exception
      */
-    void setIgnoreQueryStringConfig(String domainId, String enable) throws Exception;
+    void setIgnoreQueryStringConfig(String domainId, SwitchEnum enable) throws Exception;
 
     /**
      * 设置回源host功能

@@ -19,6 +19,7 @@ public class GetDomainConfigResult {
     private VideoSeekConfig VideoSeekConfig;
     private OriginAdvancedConfig OriginAdvancedConfig;
     private DetectOriginConfig DetectOriginConfig;
+    private TestUrlConfig TestUrlConfig;
 
     public GetDomainConfigResult.CacheRuleConfig getCacheRuleConfig() {
         return CacheRuleConfig;
@@ -106,6 +107,14 @@ public class GetDomainConfigResult {
 
     public void setDetectOriginConfig(GetDomainConfigResult.DetectOriginConfig detectOriginConfig) {
         DetectOriginConfig = detectOriginConfig;
+    }
+
+    public GetDomainConfigResult.TestUrlConfig getTestUrlConfig() {
+        return TestUrlConfig;
+    }
+
+    public void setTestUrlConfig(GetDomainConfigResult.TestUrlConfig testUrlConfig) {
+        TestUrlConfig = testUrlConfig;
     }
 
     public class CacheRuleConfig{
@@ -423,14 +432,14 @@ public class GetDomainConfigResult {
         }
     }
     public class TestUrlConfig{
-        private String TestUrlConfig;
+        private String TestUrl;
 
-        public String getTestUrlConfig() {
-            return TestUrlConfig;
+        public String getTestUrl() {
+            return TestUrl;
         }
 
-        public void setTestUrlConfig(String testUrlConfig) {
-            TestUrlConfig = testUrlConfig;
+        public void setTestUrl(String TestUrl) {
+            TestUrl = TestUrl;
         }
     }
 }

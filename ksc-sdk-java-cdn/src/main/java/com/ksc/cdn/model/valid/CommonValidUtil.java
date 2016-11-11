@@ -66,14 +66,17 @@ public class CommonValidUtil {
                 if (!annotation.nullable()) {
 
                     Object value = field.get(object);
-                    if (field.getType() == String.class && (value == null || StringUtils.isBlank(value.toString()))) {
+                    if(value == null){
+                        throw new KscClientException(String.format("field %s not null", field.getName()));
+                    }
+                    if (field.getType() == String.class && StringUtils.isBlank(value.toString())) {
                         throw new KscClientException(String.format("field %s not null", field.getName()));
                     }
                     if (field.getType() == Integer.class && ((Integer) value == 0)) {
-                        throw new KscClientException(String.format("field %s not null", field.getName()));
+                        throw new KscClientException(String.format("field %s not 0", field.getName()));
                     }
                     if (field.getType() == Long.class && ((Long) value == 0l)) {
-                        throw new KscClientException(String.format("field %s not null", field.getName()));
+                        throw new KscClientException(String.format("field %s not 0", field.getName()));
                     }
                 }
             }

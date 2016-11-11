@@ -15,14 +15,26 @@ public class AddDomainRequest {
     @FieldValidate
     private String CdnType;
     private String CdnSubType;
+    /**
+     * 取值 HTTP,HTTP+FLV,HLS,RTMP
+     */
     @FieldValidate
     private String CdnProtocol;
     private String Regions;
+    /**
+     * 源站类型 取值：ipaddr、 domain、KS3分别表示：IP源站、域名源站、KS3为源站。
+     */
     @FieldValidate
     private String OriginType;
+    /**
+     * 取值 HTTP,HTTP+FLV,HLS,RTMP
+     */
     @FieldValidate
     private String OriginProtocol;
     private Integer OriginPort;
+    /**
+     * 回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入
+     */
     @FieldValidate
     private String Origin;
 
