@@ -8,14 +8,13 @@ import java.util.List;
  */
 public class PVResult extends CommonFieldResult{
 
-    private List<PvDataByTime> Datas;
+    private PvDataByTime[] Datas;
 
-
-    public List<PvDataByTime> getDatas() {
+    public PvDataByTime[] getDatas() {
         return Datas;
     }
 
-    public void setDatas(List<PvDataByTime> datas) {
+    public void setDatas(PvDataByTime[] datas) {
         Datas = datas;
     }
 

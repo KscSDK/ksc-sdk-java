@@ -25,6 +25,11 @@ public class DomainTest {
         client=new KscCdnClient();
 
     }
+
+    /**
+     * 域名列表查询
+     * @throws Exception
+     */
     @Test
     public void testGetCdnDomains() throws Exception{
         GetCdnDomainsRequest request=new GetCdnDomainsRequest();
@@ -37,6 +42,11 @@ public class DomainTest {
         GetCdnDomainsResult cdnDomains = client.getCdnDomains(request);
         Assert.assertTrue(cdnDomains.getDomains().length>0);
     }
+
+    /**
+     * 添加缓存规则
+     * @throws Exception
+     */
     @Test
     public void testSetCacheRule() throws Exception{
         CacheConfigRequest request=new CacheConfigRequest();
@@ -50,6 +60,11 @@ public class DomainTest {
         request.setCacheRules(rules);
         client.setCacheRule(request);
     }
+
+    /**
+     * 添加加速域名
+     * @throws Exception
+     */
     @Test
     public void testAddDomainBase() throws Exception{
         AddDomainRequest request=new AddDomainRequest();
@@ -64,11 +79,21 @@ public class DomainTest {
         Assert.assertNotNull(addDomainResult.getDomainId());
         System.out.print(addDomainResult.getDomainId()+"\n");
     }
+
+    /**
+     * 查询域名基础信息
+     * @throws Exception
+     */
     @Test
     public void testGetCdnDomainBasic() throws Exception{
         GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
         Assert.assertNotNull(cdnDomainBasic.getDomainName());
     }
+
+    /**
+     * 更新域名基础信息
+     * @throws Exception
+     */
     @Test
     public void testUpdateDomainBase() throws Exception{
         ModifyDomainRequest request=new ModifyDomainRequest();
@@ -81,6 +106,11 @@ public class DomainTest {
         Assert.assertEquals("www.ks-cdn.com",cdnDomainBasic.getOrigin());
 
     }
+
+    /**
+     * 启动停止域名
+     * @throws Exception
+     */
     @Test
     public void testStartStopCdnDomain() throws Exception {
         /*client.startStopCdnDomain("2D09QXH", ActionTypeEnum.STOP);
@@ -90,11 +120,21 @@ public class DomainTest {
         GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
         Assert.assertEquals("online",cdnDomainBasic.getDomainStatus());
     }
+
+    /**
+     * 查询域名详细配置信息
+     * @throws Exception
+     */
     @Test
     public void testGetDomainConfigs() throws Exception {
         GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
         Assert.assertEquals("www.qunar.com",domainConfigs.getBackOriginHostConfig().getBackOriginHost());
     }
+
+    /**
+     * 设置过滤参数
+     * @throws Exception
+     */
     @Test
     public void testSetIgnoreQueryStringConfig() throws Exception{
         client.setIgnoreQueryStringConfig("2D09QXH",SwitchEnum.ON);
@@ -104,12 +144,22 @@ public class DomainTest {
         domainConfigs = client.getDomainConfigs("2D09QXH");
         Assert.assertEquals(SwitchEnum.OFF.getValue(),domainConfigs.getIgnoreQueryStringConfig().getEnable());
     }
+
+    /**
+     * 设置回源 host
+     * @throws Exception
+     */
     @Test
     public void testSetBackOriginConfig() throws Exception{
         client.setBackOriginConfig("2D09QXH","www.a.qunar.com");
         GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
         Assert.assertEquals("www.a.qunar.com",domainConfigs.getBackOriginHostConfig().getBackOriginHost());
     }
+
+    /**
+     * 设置Refer 防盗链
+     * @throws Exception
+     */
     @Test
     public void testSetReferProtectionConfig() throws Exception {
         ReferProtectionRequest request=new ReferProtectionRequest();
@@ -122,12 +172,22 @@ public class DomainTest {
         Assert.assertEquals(SwitchEnum.ON.getValue(),domainConfigs.getReferProtectionConfig().getEnable());
         Assert.assertEquals("www.baidu.com,www.sina.com",domainConfigs.getReferProtectionConfig().getReferList());
     }
+
+    /**
+     * 设置测试 url
+     * @throws Exception
+     */
     @Test
     public void testSetTestUrl() throws Exception{
         client.setTestUrl("2D09QXH","www.qunar.com/index.html");
         GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
         Assert.assertEquals("www.qunar.com/index.html",domainConfigs.getTestUrlConfig().getTestUrl());
     }
+
+    /**
+     * 设置高级回源
+     * @throws Exception
+     */
     @Test
     public void testSetOriginAdvanced() throws Exception{
         OriginAdvancedConfigRequest request=new OriginAdvancedConfigRequest();
@@ -144,6 +204,11 @@ public class DomainTest {
         GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
         Assert.assertEquals(SwitchEnum.ON.getValue(),domainConfigs.getOriginAdvancedConfig().getEnable());
     }
+
+    /**
+     * 设置备注信息
+     * @throws Exception
+     */
     @Test
     public void testSetRemark() throws Exception{
         client.setRemark("2D09QXH","设置备注信息");

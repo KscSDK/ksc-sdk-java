@@ -9,17 +9,33 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
 
-/** 更新域名基础信息参数bean
+/** 更新域名基础信息参数
  * Created by jiangran on 9/18/16.
  */
 public class ModifyDomainRequest {
 
+
+    /**
+     * 域名ID
+     */
     @FieldValidate
     private String DomainId;
-
+    /**
+     * 加速区域，默认CN， 可以输入多个，以逗号间隔
+     */
     private String Regions;
+    /**
+     * 源站类型
+     * @see com.ksc.cdn.model.enums.OriginTypeEnum
+     */
     private String OriginType;
+    /**
+     * 可以指定 443, 80。默认值80
+     */
     private String OriginPort;
+    /**
+     * 回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。 （此项目输入，必须保证符合OriginType）
+     */
     private String Origin;
 
     public String getDomainId() {

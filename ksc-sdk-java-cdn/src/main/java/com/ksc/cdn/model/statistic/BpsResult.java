@@ -2,7 +2,7 @@ package com.ksc.cdn.model.statistic;
 
 /**
  * BpsResult
- *
+ * 带宽查询结果
  * @author jiangran@kingsoft.com
  * @date 07/11/2016
  */
@@ -18,9 +18,21 @@ public class BpsResult extends CommonFieldResult {
         Datas = datas;
     }
 
+    /**
+     * 每个时间粒度的带宽数据
+     */
     public class BpsDataByTime{
+        /**
+         * 时间点
+         */
         private String Time;
+        /**
+         * 边缘带宽（所选域名合并值）
+         */
         private Long Bw;
+        /**
+         * 回源带宽（所选域名合并值）
+         */
         private Long SrcBw;
         private BpsDataByDomain[] Domains;
 
@@ -56,9 +68,22 @@ public class BpsResult extends CommonFieldResult {
             Domains = domains;
         }
     }
+
+    /**
+     * 每个域名的详细带宽数据
+     */
     public class BpsDataByDomain{
+        /**
+         * 域名ID
+         */
         private String DomainId;
+        /**
+         * 边缘带宽（该域名的边缘带宽，若选择多个区域，则返回该域名多个区域的数据合并值）
+         */
         private Long Bw;
+        /**
+         * 回源带宽（该域名的回源带宽，若选择多个区域，则返回该域名多个区域的数据合并值）
+         */
         private Long SrcBw;
         private BpsDataByRegion[] Regions;
 
@@ -94,9 +119,22 @@ public class BpsResult extends CommonFieldResult {
             Regions = regions;
         }
     }
+
+    /**
+     * 该域名在每个区域的带宽
+     */
     public class BpsDataByRegion{
+        /**
+         * 区域
+         */
         private String Region;
+        /**
+         * 边缘带宽（该域名在该区域的边缘带宽数据）
+         */
         private Long Bw;
+        /**
+         * 回源带宽（该域名在该区域的回源带宽数据）
+         */
         private Long SrcBw;
 
         public String getRegion() {

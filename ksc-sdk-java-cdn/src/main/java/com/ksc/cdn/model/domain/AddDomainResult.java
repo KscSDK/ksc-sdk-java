@@ -8,6 +8,10 @@ package com.ksc.cdn.model.domain;
  */
 public class AddDomainResult {
     private String DomainId;
+    /**
+     * 域名当前状态
+     * @see com.ksc.cdn.model.enums.DomainStatus
+     */
     private String DomainStatus;
 
     public String getDomainId() {

@@ -7,9 +7,21 @@ package com.ksc.cdn.model.domain;
  * @date 07/11/2016
  */
 public class GetCdnDomainsResult {
+    /**
+     * 页码
+     */
     private long PageNumber;
+    /**
+     * 单页大小
+     */
     private long PageSize;
+    /**
+     * 总条数
+     */
     private long TotalCount;
+    /**
+     * Domain列表
+     */
     private DomainSummary[] Domains;
 
     public long getPageNumber() {
@@ -45,15 +57,45 @@ public class GetCdnDomainsResult {
     }
 
     public class DomainSummary{
+        /**
+         * 加速域名名称
+         */
         private String DomainName;
+        /**
+         * 域名ID
+         */
         private String DomainId;
+        /**
+         * 加速域名对应的CNAME域名
+         */
         private String Cname;
+        /**
+         * 产品类型，download:下载类加速,live:直播加速
+         */
         private String CdnType;
+        /**
+         * 加速业务产品子类型，若创建加速域名时未设置此项参数，则此处返回参数不显示此项而不是显示为空。
+         */
         private String CdnSubType;
+        /**
+         * ICP备案号
+         */
         private String IcpRegistration;
+        /**
+         * 加速域名状态
+         */
         private String DomainStatus;
+        /**
+         * 加速域名创建时间
+         */
         private String CreatedTime;
+        /**
+         * 加速域名修改时间
+         */
         private String ModifiedTime;
+        /**
+         * 审核失败原因
+         */
         private String Description;
 
         public String getDomainName() {

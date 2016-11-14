@@ -12,25 +12,41 @@ import java.util.Map;
 public class AddDomainRequest {
     @FieldValidate
     private String DomainName;
+    /**
+     * 加速域名的产品类型,取值
+     * @see com.ksc.cdn.model.enums.CdnTypeEnum
+     */
     @FieldValidate
     private String CdnType;
+    /**
+     * 加速业务子类型（业务子类型是为了细分业务，默认不填写）
+     */
     private String CdnSubType;
     /**
-     * 取值 HTTP,HTTP+FLV,HLS,RTMP
+     * 取值参考
+     * @see com.ksc.cdn.model.enums.CdnProtocolEnum
      */
     @FieldValidate
     private String CdnProtocol;
+    /**
+     * 加速区域，默认CN， 可以输入多个，以逗号间隔。
+     */
     private String Regions;
     /**
-     * 源站类型 取值：ipaddr、 domain、KS3分别表示：IP源站、域名源站、KS3为源站。
+     * 源站类型 取值参考
+     * @see com.ksc.cdn.model.enums.OriginTypeEnum
      */
     @FieldValidate
     private String OriginType;
     /**
-     * 取值 HTTP,HTTP+FLV,HLS,RTMP
+     * 取值参考
+     * @see com.ksc.cdn.model.enums.CdnProtocolEnum
      */
     @FieldValidate
     private String OriginProtocol;
+    /**
+     * 可以指定 443, 80。默认值80。443的话走https回源。
+     */
     private Integer OriginPort;
     /**
      * 回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入

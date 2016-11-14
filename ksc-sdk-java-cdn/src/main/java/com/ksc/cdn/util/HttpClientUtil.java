@@ -35,14 +35,15 @@ import java.util.Set;
 /**
  * HttpClientUtil
  *
+ * http请求实现,支持代理请求
  * @author jiangran@kingsoft.com
  * @date 04/11/2016
  */
 public class HttpClientUtil {
 
-    private static String proxHost;
+    private static String proxHost;//代理服务器host
 
-    private static int proxPort;
+    private static int proxPort;//代理服务器port
 
     static String proxyArg = System.getProperty("http.proxyHost");
 

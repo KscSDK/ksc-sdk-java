@@ -14,12 +14,15 @@ import org.apache.commons.lang3.StringUtils;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * api接口功能实现
+ */
 public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnStatistics{
 
     private final String ENDPOINT="http://cdn.api.ksyun.com";
     private final String API_REGION="cn-shanghai-1";
-    private final String ACCESS_KEY="AKTPnBeE8s5_RUOdTNiyqt6MHQ";
-    private final String SECRET_ACCESS_KEY="ONV7B2Phe0rt4g35pIC9Ve8gLoWTuAU27bsyu92ZIXpLdZ/tESR2IVj1t2Ch5tQDxw==";
+    private final String ACCESS_KEY="AKTPH4LwoGLaSTiD4BWQEETDMw";
+    private final String SECRET_ACCESS_KEY="ODgguud+DnopEZaMx+L3eqTlhxPY8b9seirk4vqDxe3Wjxqds4EzoNS40IwrJ+gs4Q==";
     private final String API_SERVICE_NAME="cdn";
 
     public KscCdnClient(){

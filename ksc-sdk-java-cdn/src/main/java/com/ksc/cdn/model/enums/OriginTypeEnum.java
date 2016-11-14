@@ -11,15 +11,10 @@ package com.ksc.cdn.model.enums;
 
 public enum OriginTypeEnum {
 
-    /**
-     * IP 回源.
-     */
     IPADDR("ipaddr", "IP源站"),
-
-    /**
-     * 域名回源.
-     */
-    DOMAIN("domain", "域名源站");
+    DOMAIN("domain", "域名源站"),
+    KS3("KS3","KS3为源站"),
+    KSVIDEO("ksvideo","金山云视频云源站");
 
 
     OriginTypeEnum(String value, String desc) {

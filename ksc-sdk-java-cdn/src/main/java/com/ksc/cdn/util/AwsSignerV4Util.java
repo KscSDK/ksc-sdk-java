@@ -25,7 +25,7 @@ public class AwsSignerV4Util {
     /**
      * 计算GET请求的签名信息，并将签名信息放到HTTP Header中发送给服务器端，该方法即返回包含签名信息的HTTP Header
      *
-     * @param uri        请求地址, ex: http://quota.inner.ksyun.com/service/createService
+     * @param uri        请求地址, ex: http://cdn.api.ksyun.com/service/createService
      * @param parameters GET请求时，请求参数
      * @param headers    GET请求时，不包含签名的原有HTTP Header，可以为null
      * @param service 需要调用的OpenAPI的服务，如：cdn,iam 等
@@ -85,7 +85,7 @@ public class AwsSignerV4Util {
     /**
      * 计算POST请求的签名信息，并将签名信息放到HTTP Header中发送给服务器端，该方法即返回包含签名信息的HTTP Header
      *
-     * @param uri     请求地址, ex: http://quota.inner.ksyun.com/service/createService
+     * @param uri     请求地址, ex: http://cdn.api.ksyun.com/service/createService
      * @param body    POST请求时，HTTP body的内容, ex: accountId=sdfs&region=cn-beijing-1&id=1231
      * @param headers POST请求时，不包含签名的原有HTTP Header
      * @param service 需要调用的OpenAPI的服务，如：cdn,iam 等
@@ -146,7 +146,7 @@ public class AwsSignerV4Util {
      * Post请求签名。
      * 该方法支持既传输K-V参数，又传输body的请求。
      *
-     * @param uri     不带参数的uri。如：http://iam.cn-beijing-1.api.ksyun.com/xxx/xxx
+     * @param uri     不带参数的uri。如：http://cdn.api.ksyun.com/xxx/xxx
      * @param params  参数
      * @param body    post请求的body
      * @param headers head信息
@@ -210,7 +210,7 @@ public class AwsSignerV4Util {
     /**
      * 计算DELETE请求的签名信息，并将签名信息放到HTTP Header中发送给服务器端，该方法即返回包含签名信息的HTTP Header
      *
-     * @param uri        请求地址, ex: http://quota.inner.ksyun.com/service/createService
+     * @param uri        请求地址, ex: http://cdn.api.ksyun.com/service/createService
      * @param parameters DELETE请求时，请求参数
      * @param headers    DELETE请求时，不包含签名的原有HTTP Header，可以为null
      * @param service 需要调用的OpenAPI的服务，如：cdn,iam 等
@@ -269,7 +269,7 @@ public class AwsSignerV4Util {
     /**
      * 计算PUT请求的签名信息，并将签名信息放到HTTP Header中发送给服务器端，该方法即返回包含签名信息的HTTP Header
      *
-     * @param uri     请求地址, ex: http://quota.inner.ksyun.com/service/createService
+     * @param uri     请求地址, ex: http://cdn.api.ksyun.com/service/createService
      * @param body    PUT请求时，HTTP body的内容, ex: accountId=sdfs&region=cn-beijing-1&id=1231
      * @param headers PUT请求时，不包含签名的原有HTTP Header
      * @param service 需要调用的OpenAPI的服务，如：cdn,iam 等

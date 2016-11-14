@@ -7,23 +7,77 @@ package com.ksc.cdn.model.domain;
  * @date 08/11/2016
  */
 public class GetDomainBaseResult {
+    /**
+     * 接入CDN进行加速的域名
+     */
     private String DomainName;
+    /**
+     * 域名ID
+     */
     private String DomainId;
+    /**
+     * 为加速域名生成的一个CNAME域名，需要在域名解析服务商处将加速域名CNAME解析到该域名
+     */
     private String Cname;
+    /**
+     * 开启https的CNAME域名
+     */
     private String HttpsCname;
+    /**
+     * 开启httpDNS服务的CNAME域名
+     */
     private String HttpDnsCname;
+    /**
+     * 加速域名运行状态
+     */
     private String DomainStatus;
+    /**
+     * 加速域名的产品类型
+     */
     private String CdnType;
+    /**
+     * 加速产品子类型
+     */
     private String CdnSubType;
+    /**
+     * ICP备案号
+     */
     private String IcpRegistration;
+    /**
+     * 审核失败原因
+     */
     private String AuditFailReason;
+    /**
+     * 客户访问边缘节点的协议。默认HTTP
+     */
     private String CdnProtocol;
+    /**
+     * 计费区域，多个以逗号间隔
+     */
     private String Regions;
+    /**
+     * 源站类型
+     */
     private String OriginType;
+    /**
+     * 源站端口号,默认值80
+     */
     private Integer OriginPort;
+    /**
+     * 回源协议
+     */
     private String OriginProtocol;
+    /**
+     * 回源地址
+     */
     private String Origin;
+    /**
+     * 加速域名创建时间,ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800
+     */
     private String CreatedTime;
+    /**
+     * 加速域名修改时间，ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800
+     */
     private String ModifiedTime;
 
     public String getDomainName() {
