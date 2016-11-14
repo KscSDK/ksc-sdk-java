@@ -55,7 +55,7 @@ public class DomainTest {
         CacheConfigRequest.CacheRule rule=new CacheConfigRequest().new CacheRule();
         rule.setCacheRuleType(CacheRuleTypeEnum.FILE_SUFFIX.getValue());
         rule.setCacheTime(10l);
-        rule.setValue("sjfksjkfj.jpg");
+        rule.setValue("jpg");
         rules.add(rule);
         request.setCacheRules(rules);
         client.setCacheRule(request);
