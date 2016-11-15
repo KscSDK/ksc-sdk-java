@@ -2,7 +2,7 @@ package com.ksc.cdn.model.enums;
 
 /**
  * CdnProtocolEnum
- *
+ * 访问协议
  * @author jiangran@kingsoft.com
  * @date 2016/11/11
  */

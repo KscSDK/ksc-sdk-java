@@ -23,6 +23,7 @@ public class AddDomainRequest {
      */
     private String CdnSubType;
     /**
+     * 客户访问边缘节点的协议
      * 取值参考
      * @see com.ksc.cdn.model.enums.CdnProtocolEnum
      */
@@ -39,6 +40,7 @@ public class AddDomainRequest {
     @FieldValidate
     private String OriginType;
     /**
+     * 回源协议
      * 取值参考
      * @see com.ksc.cdn.model.enums.CdnProtocolEnum
      */
