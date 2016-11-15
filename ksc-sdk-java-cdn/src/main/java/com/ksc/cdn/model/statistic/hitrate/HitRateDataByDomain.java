@@ -7,10 +7,17 @@ package com.ksc.cdn.model.statistic.hitrate;
  * @date 2016/11/15
  */
 public class HitRateDataByDomain{
+    /**
+     * 域名ID
+     */
     private String DomainId;
-
+    /**
+     * 流量命中率（该域名的流量命中率）
+     */
     private Double FlowHitRate;
-
+    /**
+     * 请求数命中率（该域名的请求数命中率
+     */
     private Double ReqHitRate;
 
     public String getDomainId() {

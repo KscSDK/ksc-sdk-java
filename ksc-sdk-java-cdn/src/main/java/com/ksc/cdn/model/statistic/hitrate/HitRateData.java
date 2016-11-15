@@ -7,21 +7,37 @@ package com.ksc.cdn.model.statistic.hitrate;
  * @date 2016/11/15
  */
 public class HitRateData {
-
+    /**
+     * Hit状态的访问次数，即边缘请求数-回源请求数
+     */
     private Long HitPv;
-
+    /**
+     * Miss状态的访问次数，即回源请求数
+     */
     private Long MissPv;
-
+    /**
+     * Hit状态访问次数占比，即HitPv\/(HitPv+SrcPv)
+     */
     private Double HitPvProportion;
-
+    /**
+     * Miss状态访问次数占比，即SrcPv\/(HitPv+SrcPv)
+     */
     private Double MissPvProportion;
-
+    /**
+     * Hit状态的访问流量，即边缘请流量-回源流量
+     */
     private Long HitFlow;
-
+    /**
+     * Miss状态的访问流量，即回源流量
+     */
     private Long MissFlow;
-
+    /**
+     * Hit状态访问流量占比，即HitFlow\/(HitFlow+MissFlow)
+     */
     private Double HitFlowProportion;
-
+    /**
+     * Miss状态访问流量占比，即MissFlow\/(HitFlow+MissFlow)
+     */
     private Double MissFlowProportion;
 
     public Long getHitPv() {

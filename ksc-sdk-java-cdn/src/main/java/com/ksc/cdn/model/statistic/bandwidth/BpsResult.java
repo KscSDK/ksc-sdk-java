@@ -10,6 +10,9 @@ import com.ksc.cdn.model.statistic.CommonFieldResult;
  */
 public class BpsResult extends CommonFieldResult {
 
+    /**
+     * 每个时间粒度的带宽数据
+     */
     private BpsDataByTime[] Datas;
 
     public BpsDataByTime[] getDatas() {

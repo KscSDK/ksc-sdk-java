@@ -7,9 +7,21 @@ package com.ksc.cdn.model.statistic.pv;
  * @date 2016/11/15
  */
 public class PvDataByTime {
+    /**
+     * 时间点
+     */
     private String Time;
+    /**
+     * 边缘请求数（所选域名合并值）
+     */
     private Long Pv;
+    /**
+     * 回源请求数（所选域名合并值）
+     */
     private Long SrcPv;
+    /**
+     * 每个域名的详细请求数数据(仅当ResultType取值为1时返回此项数据))
+     */
     private PvDataByDomain[] Domains;
 
     public String getTime() {
