@@ -1,4 +1,4 @@
-package com.ksc.cdn.model.statistic;
+package com.ksc.cdn.model.statistic.hitrate;
 
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.valid.CommonValidUtil;

@@ -1,6 +1,12 @@
 package com.ksc.cdn;
 
 import com.ksc.cdn.model.statistic.*;
+import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.flow.FlowResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
+import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.pv.PVResult;
 
 /**
  * KscCdnStatistics

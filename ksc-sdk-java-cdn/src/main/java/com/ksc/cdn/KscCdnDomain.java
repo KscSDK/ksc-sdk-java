@@ -1,6 +1,15 @@
 package com.ksc.cdn;
 
-import com.ksc.cdn.model.domain.*;
+import com.ksc.cdn.model.domain.createdomain.AddDomainRequest;
+import com.ksc.cdn.model.domain.createdomain.AddDomainResult;
+import com.ksc.cdn.model.domain.domainbase.GetDomainBaseResult;
+import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
+import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
+import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
+import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
+import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
+import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
+import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;

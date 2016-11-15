@@ -1,4 +1,4 @@
-package com.ksc.cdn.model.domain;
+package com.ksc.cdn.model.domain.createdomain;
 
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;

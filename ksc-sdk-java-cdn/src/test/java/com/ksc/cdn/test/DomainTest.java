@@ -2,7 +2,18 @@ package com.ksc.cdn.test;
 
 import com.ksc.cdn.KscCdnClient;
 import com.ksc.cdn.KscCdnDomain;
-import com.ksc.cdn.model.domain.*;
+import com.ksc.cdn.model.domain.createdomain.AddDomainRequest;
+import com.ksc.cdn.model.domain.createdomain.AddDomainResult;
+import com.ksc.cdn.model.domain.domainbase.GetDomainBaseResult;
+import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
+import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
+import com.ksc.cdn.model.domain.domaincache.CacheRule;
+import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
+import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
+import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
+import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
+import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedItem;
+import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.*;
 import org.junit.Assert;
 import org.junit.Before;
@@ -35,7 +46,7 @@ public class DomainTest {
         GetCdnDomainsRequest request=new GetCdnDomainsRequest();
         request.setPageNumber(1l);
         request.setPageSize(20l);
-        request.setCdnType("download");
+        request.setCdnType(CdnTypeEnum.download.getValue());
         request.setDomainStatus(DomainStatus.ONLINE.getCode());
         request.setDomainName("");
         request.setFuzzyMatch("");
@@ -51,8 +62,8 @@ public class DomainTest {
     public void testSetCacheRule() throws Exception{
         CacheConfigRequest request=new CacheConfigRequest();
         request.setDomainId("2D09QXK");
-        List<CacheConfigRequest.CacheRule> rules=new ArrayList<CacheConfigRequest.CacheRule>();
-        CacheConfigRequest.CacheRule rule=new CacheConfigRequest().new CacheRule();
+        List<CacheRule> rules=new ArrayList<CacheRule>();
+        CacheRule rule=new CacheRule();
         rule.setCacheRuleType(CacheRuleTypeEnum.FILE_SUFFIX.getValue());
         rule.setCacheTime(10l);
         rule.setValue("jpg");
@@ -71,7 +82,7 @@ public class DomainTest {
         request.setDomainName("www.qunar.com");
         request.setCdnType(CdnTypeEnum.download.getValue());
         request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());
-        request.setOriginType("domain");
+        request.setOriginType(OriginTypeEnum.DOMAIN.getValue());
         request.setOrigin("www.ksyun.com");
         request.setOriginProtocol(CdnProtocolEnum.HTTP.getValue());
         request.setOriginPort(80);
@@ -99,7 +110,7 @@ public class DomainTest {
         ModifyDomainRequest request=new ModifyDomainRequest();
         request.setDomainId("2D09QXH");
         request.setOrigin("www.ks-cdn.com");
-        request.setOriginType("domain");
+        request.setOriginType(OriginTypeEnum.DOMAIN.getValue());
         request.setOriginPort("80");
         client.updateDomainBase(request);
         GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
@@ -118,7 +129,7 @@ public class DomainTest {
         Assert.assertEquals("offline",cdnDomainBasic.getDomainStatus());*/
         client.startStopCdnDomain("2D09QXH", ActionTypeEnum.START);
         GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
-        Assert.assertEquals("online",cdnDomainBasic.getDomainStatus());
+        Assert.assertEquals(DomainStatus.ONLINE.getCode(),cdnDomainBasic.getDomainStatus());
     }
 
     /**
@@ -165,7 +176,7 @@ public class DomainTest {
         ReferProtectionRequest request=new ReferProtectionRequest();
         request.setDomainId("2D09QXH");
         request.setEnable(SwitchEnum.ON.getValue());
-        request.setReferType("block");
+        request.setReferType(ReferTypeEnum.BLOCK.getValue());
         request.setReferList("www.baidu.com,www.sina.com");
         client.setReferProtectionConfig(request);
         GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
@@ -193,12 +204,12 @@ public class DomainTest {
         OriginAdvancedConfigRequest request=new OriginAdvancedConfigRequest();
         request.setDomainId("2D09QXH");
         request.setEnable(SwitchEnum.ON.getValue());
-        request.setOriginType("domain");
-        OriginAdvancedConfigRequest.OriginAdvancedItem advancedItems= new OriginAdvancedConfigRequest().new OriginAdvancedItem();
+        request.setOriginType(OriginTypeEnum.DOMAIN.getValue());
+        OriginAdvancedItem advancedItems= new OriginAdvancedItem();
         advancedItems.setOrigin("www.b.qunar.com");
-        advancedItems.setOriginLine("default");
-        request.setOriginAdvancedItems(Arrays.asList(new OriginAdvancedConfigRequest.OriginAdvancedItem[]{advancedItems}));
-        request.setOriginPolicy("rr");
+        advancedItems.setOriginLine(OriginLineEnum.UN.getValue());
+        request.setOriginAdvancedItems(Arrays.asList(new OriginAdvancedItem[]{advancedItems}));
+        request.setOriginPolicy(OriginPolicyEnum.QUALITY.getValue());
         request.setOriginPolicyBestCount(1l);
         client.setOriginAdvanced(request);
         GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");

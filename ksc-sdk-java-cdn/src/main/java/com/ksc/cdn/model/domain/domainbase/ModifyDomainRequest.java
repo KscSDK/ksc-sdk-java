@@ -1,4 +1,4 @@
-package com.ksc.cdn.model.domain;
+package com.ksc.cdn.model.domain.domainbase;
 
 
 import com.ksc.cdn.KscClientException;

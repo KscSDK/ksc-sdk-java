@@ -2,11 +2,26 @@ package com.ksc.cdn;
 
 
 import com.ksc.HttpMethod;
-import com.ksc.cdn.model.domain.*;
+import com.ksc.cdn.model.domain.createdomain.AddDomainRequest;
+import com.ksc.cdn.model.domain.createdomain.AddDomainResult;
+import com.ksc.cdn.model.domain.domainbase.GetDomainBaseResult;
+import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
+import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
+import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
+import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
+import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
+import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
+import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.statistic.*;
+import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.flow.FlowResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
+import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.pv.PVResult;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import org.apache.commons.lang3.StringUtils;
 
@@ -32,7 +47,13 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         this.setApiRegion(API_REGION);
         this.setApiServiceName(API_SERVICE_NAME);
     }
-
+    public KscCdnClient(String accessKey,String secretKey,String endPoint,String region,String serviceName){
+        this.setSecretAccessKey(secretKey);
+        this.setAccessKey(accessKey);
+        this.setEndPoint(endPoint);
+        this.setApiRegion(region);
+        this.setApiServiceName(serviceName);
+    }
 
     @Override
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
