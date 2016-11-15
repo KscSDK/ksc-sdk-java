@@ -11,6 +11,7 @@ import com.ksc.cdn.model.valid.FieldValidate;
 public class CacheRule {
     /**
      * 缓存规则类型
+     * @see com.ksc.cdn.model.enums.CacheRuleTypeEnum
      */
     @FieldValidate
     private String CacheRuleType;

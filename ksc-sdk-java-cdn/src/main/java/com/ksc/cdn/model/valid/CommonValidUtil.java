@@ -27,37 +27,20 @@ public class CommonValidUtil {
      */
     public static void check(Object object) throws KscClientException {
         Class<? extends Object> clazz = object.getClass();
+        checkField(clazz,object);
+
+    }
+    private static void checkField(Class<? extends Object> clazz,Object object) throws KscClientException {
         Field[] fields = clazz.getDeclaredFields();
-
         for (Field field : fields) {
-
             checkFieldValid(field, object);
-
-            if (field.getType() == List.class) {
-                try {
-                    field.setAccessible(true);
-                    List<Object> list = (List<Object>) field.get(object);
-                    for (Object li : list
-                            ) {
-                        Field[] declaredFields = li.getClass().getDeclaredFields();
-                        for (Field f:declaredFields
-                                ) {
-                            checkFieldValid(f,li);
-                        }
-
-                    }
-                } catch (IllegalAccessException e) {
-                    log.warn("validate bean field {} cause illegal access exception", field.getName());
-                }finally {
-                    field.setAccessible(false);
-                }
-
-            }
-
+        }
+        if(clazz.getSuperclass()!=null){
+            Class<?> superclass = clazz.getSuperclass();
+            checkField(superclass,object);
         }
 
     }
-
     private static void checkFieldValid(Field field, Object object) throws KscClientException {
         try {
             field.setAccessible(true);
@@ -79,6 +62,20 @@ public class CommonValidUtil {
                         throw new KscClientException(String.format("field %s not 0", field.getName()));
                     }
                 }
+            }
+            if (field.getType() == List.class && field.get(object)!=null) {
+
+                List<Object> list = (List<Object>) field.get(object);
+                for (Object li : list
+                        ) {
+                    Field[] declaredFields = li.getClass().getDeclaredFields();
+                    for (Field f:declaredFields
+                            ) {
+                        checkFieldValid(f,li);
+                    }
+
+                }
+
             }
 
         } catch (IllegalAccessException e) {

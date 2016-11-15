@@ -25,7 +25,11 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient();
+        cdnClient=new KscCdnClient("AKTP1CUekvYlQf63mtYvtWMTtg",
+                "OBniGGcoLPteCCIjFEKHlFTwaaMgXqqzt9/T+9YrXlfOfPHHQOl3gIR/tolQZv6bTw==",
+                "http://cdn.api.ksyun.com",
+                "cn-shanghai-1",
+                "cdn");
     }
 
     /**

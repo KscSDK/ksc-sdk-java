@@ -31,9 +31,15 @@ import java.util.List;
  */
 public class DomainTest {
     KscCdnDomain client;
+    private String domainId;
     @Before
     public void setup(){
-        client=new KscCdnClient();
+        client=new KscCdnClient("AKTP_U34Q9nWSQy7cWrypvpMdg",
+                "OPw0+TS105503MXi1S360eax8jhVQ3ZnHejo3VCB3JC2fxSEjHefmlV7eyRK7cbSbQ==",
+                "http://cdn.api.ksyun.com",
+                "cn-shanghai-1",
+                "cdn");
+        domainId="2D09QXK";
 
     }
 
@@ -61,7 +67,7 @@ public class DomainTest {
     @Test
     public void testSetCacheRule() throws Exception{
         CacheConfigRequest request=new CacheConfigRequest();
-        request.setDomainId("2D09QXK");
+        request.setDomainId(domainId);
         List<CacheRule> rules=new ArrayList<CacheRule>();
         CacheRule rule=new CacheRule();
         rule.setCacheRuleType(CacheRuleTypeEnum.FILE_SUFFIX.getValue());
@@ -97,7 +103,7 @@ public class DomainTest {
      */
     @Test
     public void testGetCdnDomainBasic() throws Exception{
-        GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
+        GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic(domainId);
         Assert.assertNotNull(cdnDomainBasic.getDomainName());
     }
 
@@ -108,12 +114,12 @@ public class DomainTest {
     @Test
     public void testUpdateDomainBase() throws Exception{
         ModifyDomainRequest request=new ModifyDomainRequest();
-        request.setDomainId("2D09QXH");
+        request.setDomainId(domainId);
         request.setOrigin("www.ks-cdn.com");
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());
         request.setOriginPort("80");
         client.updateDomainBase(request);
-        GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
+        GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic(domainId);
         Assert.assertEquals("www.ks-cdn.com",cdnDomainBasic.getOrigin());
 
     }
@@ -127,8 +133,8 @@ public class DomainTest {
         /*client.startStopCdnDomain("2D09QXH", ActionTypeEnum.STOP);
         GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
         Assert.assertEquals("offline",cdnDomainBasic.getDomainStatus());*/
-        client.startStopCdnDomain("2D09QXH", ActionTypeEnum.START);
-        GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic("2D09QXH");
+        client.startStopCdnDomain(domainId, ActionTypeEnum.START);
+        GetDomainBaseResult cdnDomainBasic = client.getCdnDomainBasic(domainId);
         Assert.assertEquals(DomainStatus.ONLINE.getCode(),cdnDomainBasic.getDomainStatus());
     }
 
@@ -138,7 +144,7 @@ public class DomainTest {
      */
     @Test
     public void testGetDomainConfigs() throws Exception {
-        GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals("www.qunar.com",domainConfigs.getBackOriginHostConfig().getBackOriginHost());
     }
 
@@ -148,11 +154,11 @@ public class DomainTest {
      */
     @Test
     public void testSetIgnoreQueryStringConfig() throws Exception{
-        client.setIgnoreQueryStringConfig("2D09QXH",SwitchEnum.ON);
-        GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
+        client.setIgnoreQueryStringConfig(domainId,SwitchEnum.ON);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals(SwitchEnum.ON.getValue(),domainConfigs.getIgnoreQueryStringConfig().getEnable());
-        client.setIgnoreQueryStringConfig("2D09QXH",SwitchEnum.OFF);
-        domainConfigs = client.getDomainConfigs("2D09QXH");
+        client.setIgnoreQueryStringConfig(domainId,SwitchEnum.OFF);
+        domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals(SwitchEnum.OFF.getValue(),domainConfigs.getIgnoreQueryStringConfig().getEnable());
     }
 
@@ -162,8 +168,8 @@ public class DomainTest {
      */
     @Test
     public void testSetBackOriginConfig() throws Exception{
-        client.setBackOriginConfig("2D09QXH","www.a.qunar.com");
-        GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
+        client.setBackOriginConfig(domainId,"www.a.qunar.com");
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals("www.a.qunar.com",domainConfigs.getBackOriginHostConfig().getBackOriginHost());
     }
 
@@ -174,12 +180,12 @@ public class DomainTest {
     @Test
     public void testSetReferProtectionConfig() throws Exception {
         ReferProtectionRequest request=new ReferProtectionRequest();
-        request.setDomainId("2D09QXH");
+        request.setDomainId(domainId);
         request.setEnable(SwitchEnum.ON.getValue());
         request.setReferType(ReferTypeEnum.BLOCK.getValue());
         request.setReferList("www.baidu.com,www.sina.com");
         client.setReferProtectionConfig(request);
-        GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals(SwitchEnum.ON.getValue(),domainConfigs.getReferProtectionConfig().getEnable());
         Assert.assertEquals("www.baidu.com,www.sina.com",domainConfigs.getReferProtectionConfig().getReferList());
     }
@@ -190,8 +196,8 @@ public class DomainTest {
      */
     @Test
     public void testSetTestUrl() throws Exception{
-        client.setTestUrl("2D09QXH","www.qunar.com/index.html");
-        GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
+        client.setTestUrl(domainId,"www.qunar.com/index.html");
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals("www.qunar.com/index.html",domainConfigs.getTestUrlConfig().getTestUrl());
     }
 
@@ -202,17 +208,25 @@ public class DomainTest {
     @Test
     public void testSetOriginAdvanced() throws Exception{
         OriginAdvancedConfigRequest request=new OriginAdvancedConfigRequest();
-        request.setDomainId("2D09QXH");
+        request.setDomainId(domainId);
         request.setEnable(SwitchEnum.ON.getValue());
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());
+
+        List<OriginAdvancedItem> items=new ArrayList<OriginAdvancedItem>();
         OriginAdvancedItem advancedItems= new OriginAdvancedItem();
         advancedItems.setOrigin("www.b.qunar.com");
-        advancedItems.setOriginLine(OriginLineEnum.UN.getValue());
-        request.setOriginAdvancedItems(Arrays.asList(new OriginAdvancedItem[]{advancedItems}));
+        advancedItems.setOriginLine(OriginLineEnum.DEFAULT.getValue());
+        items.add(advancedItems);
+        advancedItems=new OriginAdvancedItem();
+        advancedItems.setOrigin("www.c.qunar.com");
+        advancedItems.setOriginLine(OriginLineEnum.CM.getValue());
+        items.add(advancedItems);
+        request.setOriginAdvancedItems(items);
+
         request.setOriginPolicy(OriginPolicyEnum.QUALITY.getValue());
         request.setOriginPolicyBestCount(1l);
         client.setOriginAdvanced(request);
-        GetDomainConfigResult domainConfigs = client.getDomainConfigs("2D09QXH");
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
         Assert.assertEquals(SwitchEnum.ON.getValue(),domainConfigs.getOriginAdvancedConfig().getEnable());
     }
 
@@ -222,6 +236,6 @@ public class DomainTest {
      */
     @Test
     public void testSetRemark() throws Exception{
-        client.setRemark("2D09QXH","设置备注信息");
+        client.setRemark(domainId,"设置备注信息");
     }
 }

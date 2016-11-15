@@ -4,7 +4,7 @@ import com.ksc.cdn.model.valid.FieldValidate;
 
 /**
  * OriginAdvancedItem
- *
+ * 高级回源,源站信息
  * @author jiangran@kingsoft.com
  * @date 2016/11/15
  */
