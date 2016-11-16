@@ -2,6 +2,8 @@ package com.ksc.cdn;
 
 import com.ksc.cdn.model.statistic.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
+import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
 import com.ksc.cdn.model.statistic.flow.FlowResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
@@ -47,6 +49,12 @@ public interface KscCdnStatistics {
     String HITRATE_DETAIL_VERSION = "2016-09-01";
     String HITRATE_DETAIL_ACTION = "GetHitRateDetailedData";
     /**
+     * 域名排行查询
+     */
+    String FLOW_RANK_URL = "/2016-09-01/statistics/GetDomainRankingListData";
+    String FLOW_RANK_VERSION = "2016-09-01";
+    String FLOW_RANK_ACTION = "GetDomainRankingListData";
+    /**
      * 查询带宽
      * @param statisticsQuery
      * @return
@@ -85,4 +93,13 @@ public interface KscCdnStatistics {
      * @throws Exception
      */
     PVResult getPV(StatisticsQuery statisticsQuery) throws Exception;
+
+    /**
+     * 域名排行查询
+     * 获取用户维度下所有域名的流量、流量占比、带宽峰值、峰值时间、访问次数，并按流量排行
+     * 单天维度，仅指定的单天时间查询
+     * @param domainRankingRequest
+     * @return
+     */
+    DomainRankingResult getDomainRankingList(DomainRankingRequest domainRankingRequest) throws Exception;
 }

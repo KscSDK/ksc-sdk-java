@@ -5,6 +5,8 @@ import com.ksc.cdn.KscCdnStatistics;
 import com.ksc.cdn.model.enums.*;
 import com.ksc.cdn.model.statistic.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
+import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
 import com.ksc.cdn.model.statistic.flow.FlowResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
@@ -25,8 +27,8 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient("AKTPhQTez3knSli_7pM7sCqavg",
-                "OB+w9v3uUERPoLmzNocPz7hLgNqqlYWCKQ97LpTYvyTDkwVvhwe0slOVmLYbwdNAsQ==",
+        cdnClient=new KscCdnClient("AKTPSjesgZJDRKuwAawxNZu5KA",
+                "OB+Qmj3W+UtO5X8NbwvsWAqnPaoOhoSF5z0pkQCwRexhAm7hut/Hc7mrVnpWr7V3Yg==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -123,5 +125,21 @@ public class StatisticTest {
         PVResult pv = cdnClient.getPV(statisticsQuery);
         Assert.assertNotNull(pv);
         Assert.assertTrue(pv.getDatas().length>0);
+    }
+
+    /**
+     * 域名排行查询
+     * @throws Exception
+     */
+    @Test
+    public void testGetDomainRankingList() throws Exception{
+        DomainRankingRequest request=new DomainRankingRequest();
+        request.setStartTime("2016-09-19T00:00+0800");
+        request.setEndTime("2016-09-19T23:00+0800");
+        request.setCdnType(CdnTypeEnum.download.getValue());
+
+        DomainRankingResult domainRankingList = cdnClient.getDomainRankingList(request);
+        Assert.assertNotNull(domainRankingList);
+        Assert.assertTrue(domainRankingList.getDatas().length>0);
     }
 }

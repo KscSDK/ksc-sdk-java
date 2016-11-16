@@ -17,6 +17,8 @@ import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.statistic.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
+import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
 import com.ksc.cdn.model.statistic.flow.FlowResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
@@ -195,5 +197,12 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         Map<String, String> buildHeaders = this.buildHeaders(PV_VERSION, PV_ACTION);
         PVResult pvResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, PVResult.class);
         return pvResult;
+    }
+
+    @Override
+    public DomainRankingResult getDomainRankingList(DomainRankingRequest domainRankingRequest) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(FLOW_RANK_VERSION, FLOW_RANK_ACTION);
+        DomainRankingResult domainRankingResult = this.httpExecute(HttpMethod.GET, FLOW_RANK_URL, domainRankingRequest.buildParams(), buildHeaders, DomainRankingResult.class);
+        return domainRankingResult;
     }
 }
