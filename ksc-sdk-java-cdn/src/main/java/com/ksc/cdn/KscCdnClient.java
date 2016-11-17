@@ -15,7 +15,6 @@ import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
-import com.ksc.cdn.model.statistic.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
 import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
@@ -26,19 +25,20 @@ import com.ksc.cdn.model.statistic.hitrate.HitRateDetailRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
+import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBandwidthResult;
 import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
 import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
 import com.ksc.cdn.model.valid.CommonValidUtil;
-import com.ksc.cdn.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
-import java.text.ParseException;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,39 +56,7 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         this.setApiServiceName(serviceName);
     }
     private static Logger log = LoggerFactory.getLogger(KscCdnClient.class);
-    /**
-     * 统计分析根据起始时间返回不同的时间粒度
-     *
-     * @param startTime
-     * @param endTime
-     * @return
-     */
-    @Override
-    public String getGranularity(String startTime, String endTime) {
-        try {
-            Date startDate = DateUtils.timestamp2Datetime(Long.parseLong(startTime) * 1000l);
-            Date endDate = DateUtils.timestamp2Datetime(Long.parseLong(endTime) * 1000l);
-            int days = DateUtils.getDayDiff(startDate, endDate);
-            if (days == 0) {
-                return "5";
-            } else if (days < 2) {
-                return "10";
-            } else if (days < 5) {
-                return "20";
-            } else if (days < 15) {
-                return "60";
-            } else if (days < 62) {
-                return "240";
-            } else if (days <= 93) {
-                return "480";
-            } else {
-                return "";
-            }
-        } catch (ParseException e) {
-            log.error("DateUtils timestamp2Datetime error, throw exception:{}", e);
-        }
-        return null;
-    }
+
 
     @Override
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
@@ -256,5 +224,26 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         Map<String, String> buildHeaders = this.buildHeaders(PROVINCE_ISP_FLOW_VERSION, PROVINCE_ISP_FLOW_ACTION);
         ProvinceAndIspFlowResult provinceAndIspFlowResult = this.httpExecute(HttpMethod.GET, PROVINCE_ISP_FLOW_URL, provinceAndIspRequest.buildParams(), buildHeaders, ProvinceAndIspFlowResult.class);
         return provinceAndIspFlowResult;
+    }
+
+    @Override
+    public ProvinceAndIspBandwidthResult getProvinceAndIspBW(ProvinceAndIspRequest provinceAndIspRequest) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(PROVINCE_ISP_BW_VERSION, PROVINCE_ISP_BW_ACTION);
+        ProvinceAndIspBandwidthResult provinceAndIspBandwidthResult = this.httpExecute(HttpMethod.GET, PROVINCE_ISP_BW_URL, provinceAndIspRequest.buildParams(), buildHeaders, ProvinceAndIspBandwidthResult.class);
+        return provinceAndIspBandwidthResult;
+    }
+
+    @Override
+    public HttpCodeResult getHttpCodeData(HttpCodeRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(HTTPCODE_VERSION, HTTPCODE_ACTION);
+        HttpCodeResult httpCodeResult = this.httpExecute(HttpMethod.GET, HTTPCODE_URL, request.buildParams(), buildHeaders, HttpCodeResult.class);
+        return httpCodeResult;
+    }
+
+    @Override
+    public HttpCodeDetailResult getHttpCodeDetailedData(HttpCodeDetailRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(HTTPCODE_DETAIL_VERSION, HTTPCODE_DETAIL_ACTION);
+        HttpCodeDetailResult httpCodeDetailResult = this.httpExecute(HttpMethod.GET, HTTPCODE_DETAIL_URL, request.buildParams(), buildHeaders, HttpCodeDetailResult.class);
+        return httpCodeDetailResult;
     }
 }

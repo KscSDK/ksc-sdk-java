@@ -11,7 +11,12 @@ import com.ksc.cdn.model.statistic.hitrate.HitRateDetailRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
+import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
+import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBandwidthResult;
 import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
 import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
@@ -60,12 +65,30 @@ public interface KscCdnStatistics {
     String FLOW_RANK_URL = "/2016-09-01/statistics/GetDomainRankingListData";
     String FLOW_RANK_VERSION = "2016-09-01";
     String FLOW_RANK_ACTION = "GetDomainRankingListData";
-
+    /**
+     * 省份+运营商流量查询
+     */
     String PROVINCE_ISP_FLOW_URL="/2016-09-01/statistics/GetProvinceAndIspFlowData";
     String PROVINCE_ISP_FLOW_VERSION="2016-09-01";
     String PROVINCE_ISP_FLOW_ACTION="GetProvinceAndIspFlowData";
-
-    String getGranularity(String startTime, String endTime);
+    /**
+     * 省份+运营商带宽查询
+     */
+    String PROVINCE_ISP_BW_URL="/2016-09-01/statistics/GetProvinceAndIspBandwidthData";
+    String PROVINCE_ISP_BW_VERSION="2016-09-01";
+    String PROVINCE_ISP_BW_ACTION="GetProvinceAndIspBandwidthData";
+    /**
+     * 状态码统计
+     */
+    String HTTPCODE_URL="/2016-09-01/statistics/GetHttpCodeData";
+    String HTTPCODE_VERSION="2016-09-01";
+    String HTTPCODE_ACTION="GetHttpCodeData";
+    /**
+     * 状态码详情统计
+     */
+    String HTTPCODE_DETAIL_URL="/2016-09-01/statistics/GetHttpCodeDetailedData";
+    String HTTPCODE_DETAIL_VERSION="2016-09-01";
+    String HTTPCODE_DETAIL_ACTION="GetHttpCodeDetailedData";
     /**
      * 查询带宽
      * @param statisticsQuery
@@ -122,4 +145,28 @@ public interface KscCdnStatistics {
      * @throws Exception
      */
     ProvinceAndIspFlowResult getProvinceAndIspFlow(ProvinceAndIspRequest provinceAndIspRequest) throws Exception;
+
+    /**
+     * 获取域名在中国大陆地区各省市及各运营商的带宽数据，仅包括边缘节点数据，单位:bit/second
+     * @return
+     * @throws Exception
+     */
+    ProvinceAndIspBandwidthResult getProvinceAndIspBW(ProvinceAndIspRequest provinceAndIspRequest) throws Exception;
+
+    /**
+     * 获取域名一段时间内的Http状态码访问次数及占比数据
+     *
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    HttpCodeResult getHttpCodeData(HttpCodeRequest request) throws Exception;
+
+    /**
+     * 获取域名的Http状态码详细访问次数及占比数据
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    HttpCodeDetailResult getHttpCodeDetailedData(HttpCodeDetailRequest request) throws Exception;
 }
