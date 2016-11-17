@@ -33,8 +33,8 @@ public class DomainTest {
     private String domainId;
     @Before
     public void setup(){
-        client=new KscCdnClient("AKTPhQTez3knSli_7pM7sCqavg",
-                "OB+w9v3uUERPoLmzNocPz7hLgNqqlYWCKQ97LpTYvyTDkwVvhwe0slOVmLYbwdNAsQ==",
+        client=new KscCdnClient("AKTPf-QTNRxOTfOJsue-gZ4Saw",
+                "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");

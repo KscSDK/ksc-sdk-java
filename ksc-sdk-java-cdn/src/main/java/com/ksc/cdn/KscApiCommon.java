@@ -96,38 +96,7 @@ public class KscApiCommon {
 
     private static Logger log = LoggerFactory.getLogger(KscApiCommon.class);
 
-    /**
-     * 统计分析根据起始时间返回不同的时间粒度
-     *
-     * @param startTime
-     * @param endTime
-     * @return
-     */
-    public String getGranularity(String startTime, String endTime) {
-        try {
-            Date startDate = DateUtils.timestamp2Datetime(Long.parseLong(startTime) * 1000l);
-            Date endDate = DateUtils.timestamp2Datetime(Long.parseLong(endTime) * 1000l);
-            int days = DateUtils.getDayDiff(startDate, endDate);
-            if (days == 0) {
-                return "5";
-            } else if (days < 2) {
-                return "10";
-            } else if (days < 5) {
-                return "20";
-            } else if (days < 15) {
-                return "60";
-            } else if (days < 62) {
-                return "240";
-            } else if (days <= 93) {
-                return "480";
-            } else {
-                return "";
-            }
-        } catch (ParseException e) {
-            log.error("DateUtils timestamp2Datetime error, throw exception:{}", e);
-        }
-        return null;
-    }
+
 
     /**
      * 构建openAPI headers

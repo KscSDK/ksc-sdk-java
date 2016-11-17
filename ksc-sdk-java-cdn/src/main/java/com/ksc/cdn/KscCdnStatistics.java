@@ -1,13 +1,19 @@
 package com.ksc.cdn;
 
 import com.ksc.cdn.model.statistic.*;
+import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
 import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
 import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
+import com.ksc.cdn.model.statistic.flow.FlowRequest;
 import com.ksc.cdn.model.statistic.flow.FlowResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateDetailRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
+import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
+import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
 
 /**
@@ -54,13 +60,19 @@ public interface KscCdnStatistics {
     String FLOW_RANK_URL = "/2016-09-01/statistics/GetDomainRankingListData";
     String FLOW_RANK_VERSION = "2016-09-01";
     String FLOW_RANK_ACTION = "GetDomainRankingListData";
+
+    String PROVINCE_ISP_FLOW_URL="/2016-09-01/statistics/GetProvinceAndIspFlowData";
+    String PROVINCE_ISP_FLOW_VERSION="2016-09-01";
+    String PROVINCE_ISP_FLOW_ACTION="GetProvinceAndIspFlowData";
+
+    String getGranularity(String startTime, String endTime);
     /**
      * 查询带宽
      * @param statisticsQuery
      * @return
      * @throws Exception
      */
-    BpsResult getBandwidthData(StatisticsQuery statisticsQuery) throws Exception;
+    BpsResult getBandwidthData(BpsRequest statisticsQuery) throws Exception;
 
     /**
      * 查询流量
@@ -68,7 +80,7 @@ public interface KscCdnStatistics {
      * @return
      * @throws Exception
      */
-    FlowResult getFlowDataByApi(StatisticsQuery statisticsQuery) throws Exception;
+    FlowResult getFlowDataByApi(FlowRequest statisticsQuery) throws Exception;
 
     /**
      * 命中率查询
@@ -84,7 +96,7 @@ public interface KscCdnStatistics {
      * @return
      * @throws Exception
      */
-    HitRateDetailResult getHitRateDetail(StatisticsQuery statisticsQuery) throws Exception;
+    HitRateDetailResult getHitRateDetail(HitRateDetailRequest statisticsQuery) throws Exception;
 
     /**
      * 请求数查询
@@ -92,7 +104,7 @@ public interface KscCdnStatistics {
      * @return
      * @throws Exception
      */
-    PVResult getPV(StatisticsQuery statisticsQuery) throws Exception;
+    PVResult getPV(PVRequest statisticsQuery) throws Exception;
 
     /**
      * 域名排行查询
@@ -102,4 +114,12 @@ public interface KscCdnStatistics {
      * @return
      */
     DomainRankingResult getDomainRankingList(DomainRankingRequest domainRankingRequest) throws Exception;
+
+    /**
+     * 获取域名在中国大陆地区各省份及各运营商的流量数据，仅包括边缘节点数据，单位:byte
+     * @param provinceAndIspRequest
+     * @return
+     * @throws Exception
+     */
+    ProvinceAndIspFlowResult getProvinceAndIspFlow(ProvinceAndIspRequest provinceAndIspRequest) throws Exception;
 }

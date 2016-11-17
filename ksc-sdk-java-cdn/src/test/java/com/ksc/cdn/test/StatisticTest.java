@@ -4,14 +4,21 @@ import com.ksc.cdn.KscCdnClient;
 import com.ksc.cdn.KscCdnStatistics;
 import com.ksc.cdn.model.enums.*;
 import com.ksc.cdn.model.statistic.*;
+import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
 import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
 import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
+import com.ksc.cdn.model.statistic.flow.FlowRequest;
 import com.ksc.cdn.model.statistic.flow.FlowResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateDetailRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
+import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
+import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
+import org.apache.commons.lang3.StringUtils;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -27,8 +34,8 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient("AKTPSjesgZJDRKuwAawxNZu5KA",
-                "OB+Qmj3W+UtO5X8NbwvsWAqnPaoOhoSF5z0pkQCwRexhAm7hut/Hc7mrVnpWr7V3Yg==",
+        cdnClient=new KscCdnClient("AKTPhJhBITP7Tp2Z4pBn7P4Alg",
+                "OL3qj7nJ+epuuVG8MKhHMtRKZO0aiShL476SrfOCMVGsrhSRK3mRtaKP78Ij/YKDNQ==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -40,7 +47,7 @@ public class StatisticTest {
      */
     @Test
     public void testGetBandwidthData() throws Exception{
-        StatisticsQuery statisticsQuery=new StatisticsQuery();
+        BpsRequest statisticsQuery=new BpsRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");//查询开始时间
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");//查询结束时间
         statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());//加速类型
@@ -58,7 +65,7 @@ public class StatisticTest {
      */
     @Test
     public void testGetFlowDataByApi() throws Exception{
-        StatisticsQuery statisticsQuery=new StatisticsQuery();
+        FlowRequest statisticsQuery=new FlowRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");
         statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
@@ -94,14 +101,12 @@ public class StatisticTest {
      */
     @Test
     public void testGetHitRateDetail() throws Exception {
-        StatisticsQuery statisticsQuery=new StatisticsQuery();
+        HitRateDetailRequest statisticsQuery=new HitRateDetailRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");
         statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setHitType(HitTypeEnum.FLOW_HIT_RATE.getValue());//数据类型,按流量或者请求数统计
-        statisticsQuery.setRegions(RegionsEnum.CN.getValue());
-        statisticsQuery.setDataType(DataTypeEnum.EDGE.getValue());
 
         HitRateDetailResult hitRateDetail = cdnClient.getHitRateDetail(statisticsQuery);
         Assert.assertNotNull(hitRateDetail);
@@ -114,7 +119,7 @@ public class StatisticTest {
      */
     @Test
     public void testGetPV() throws Exception{
-        StatisticsQuery statisticsQuery=new StatisticsQuery();
+        PVRequest statisticsQuery=new PVRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");
         statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
@@ -141,5 +146,28 @@ public class StatisticTest {
         DomainRankingResult domainRankingList = cdnClient.getDomainRankingList(request);
         Assert.assertNotNull(domainRankingList);
         Assert.assertTrue(domainRankingList.getDatas().length>0);
+    }
+    @Test
+    public void testGetProvinceAndIspFlow() throws Exception{
+        ProvinceAndIspRequest request=new ProvinceAndIspRequest();
+        request.setStartTime("2016-09-19T00:00+0800");
+        request.setEndTime("2016-09-19T23:00+0800");
+        request.setCdnType(CdnTypeEnum.download.getValue());
+//        request.setResultType(ResultTypeEnum.MERGE.getCode());
+        request.setResultType(ResultTypeEnum.ALONE.getCode());
+
+        request.setProvinces(StringUtils.join(new String[]{AreaEnum.beijing.getShortName()
+                ,AreaEnum.guangdong.getShortName(),
+        AreaEnum.anhui.getShortName(),AreaEnum.hebei.getShortName()},","));
+
+        request.setIsps(StringUtils.join(new String[]{IspEnum.CE.getShortName(),IspEnum.CM.getShortName(),
+        IspEnum.CT.getShortName(),IspEnum.UN.getShortName()},","));
+
+        request.setDomainIds("2D09QXJ,2D09QXK");
+
+        ProvinceAndIspFlowResult provinceAndIspFlow = cdnClient.getProvinceAndIspFlow(request);
+        Assert.assertNotNull(provinceAndIspFlow);
+//        Assert.assertTrue(provinceAndIspFlow.getDatas().length>0);
+
     }
 }

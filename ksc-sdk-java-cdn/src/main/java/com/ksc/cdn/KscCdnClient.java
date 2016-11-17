@@ -16,18 +16,29 @@ import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.statistic.*;
+import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
 import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
 import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
+import com.ksc.cdn.model.statistic.flow.FlowRequest;
 import com.ksc.cdn.model.statistic.flow.FlowResult;
+import com.ksc.cdn.model.statistic.hitrate.HitRateDetailRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
 import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
 import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
+import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
+import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
+import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
 import com.ksc.cdn.model.valid.CommonValidUtil;
+import com.ksc.cdn.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -44,6 +55,40 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         this.setApiRegion(region);
         this.setApiServiceName(serviceName);
     }
+    private static Logger log = LoggerFactory.getLogger(KscCdnClient.class);
+    /**
+     * 统计分析根据起始时间返回不同的时间粒度
+     *
+     * @param startTime
+     * @param endTime
+     * @return
+     */
+    @Override
+    public String getGranularity(String startTime, String endTime) {
+        try {
+            Date startDate = DateUtils.timestamp2Datetime(Long.parseLong(startTime) * 1000l);
+            Date endDate = DateUtils.timestamp2Datetime(Long.parseLong(endTime) * 1000l);
+            int days = DateUtils.getDayDiff(startDate, endDate);
+            if (days == 0) {
+                return "5";
+            } else if (days < 2) {
+                return "10";
+            } else if (days < 5) {
+                return "20";
+            } else if (days < 15) {
+                return "60";
+            } else if (days < 62) {
+                return "240";
+            } else if (days <= 93) {
+                return "480";
+            } else {
+                return "";
+            }
+        } catch (ParseException e) {
+            log.error("DateUtils timestamp2Datetime error, throw exception:{}", e);
+        }
+        return null;
+    }
 
     @Override
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
@@ -53,14 +98,14 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     }
 
     @Override
-    public BpsResult getBandwidthData(StatisticsQuery statisticsQuery) throws Exception {
+    public BpsResult getBandwidthData(BpsRequest statisticsQuery) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(BANDWIDTH_VERSION, BANDWIDTH_ACTION);
         BpsResult result=this.httpExecute(HttpMethod.GET,BANDWIDTH_URL,statisticsQuery.buildParams(),buildHeaders,BpsResult.class);
         return result;
     }
 
     @Override
-    public FlowResult getFlowDataByApi(StatisticsQuery statisticsQuery) throws Exception {
+    public FlowResult getFlowDataByApi(FlowRequest statisticsQuery) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(FLOW_VERSION, FLOW_ACTION);
         FlowResult result=this.httpExecute(HttpMethod.GET,FLOW_URL,statisticsQuery.buildParams(),buildHeaders,FlowResult.class);
         return result;
@@ -186,14 +231,14 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     }
 
     @Override
-    public HitRateDetailResult getHitRateDetail(StatisticsQuery statisticsQuery) throws Exception {
+    public HitRateDetailResult getHitRateDetail(HitRateDetailRequest statisticsQuery) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(HITRATE_DETAIL_VERSION, HITRATE_DETAIL_ACTION);
         HitRateDetailResult hitRateDetailResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, HitRateDetailResult.class);
         return hitRateDetailResult;
     }
 
     @Override
-    public PVResult getPV(StatisticsQuery statisticsQuery) throws Exception {
+    public PVResult getPV(PVRequest statisticsQuery) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(PV_VERSION, PV_ACTION);
         PVResult pvResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, PVResult.class);
         return pvResult;
@@ -204,5 +249,12 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         Map<String, String> buildHeaders = this.buildHeaders(FLOW_RANK_VERSION, FLOW_RANK_ACTION);
         DomainRankingResult domainRankingResult = this.httpExecute(HttpMethod.GET, FLOW_RANK_URL, domainRankingRequest.buildParams(), buildHeaders, DomainRankingResult.class);
         return domainRankingResult;
+    }
+
+    @Override
+    public ProvinceAndIspFlowResult getProvinceAndIspFlow(ProvinceAndIspRequest provinceAndIspRequest) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(PROVINCE_ISP_FLOW_VERSION, PROVINCE_ISP_FLOW_ACTION);
+        ProvinceAndIspFlowResult provinceAndIspFlowResult = this.httpExecute(HttpMethod.GET, PROVINCE_ISP_FLOW_URL, provinceAndIspRequest.buildParams(), buildHeaders, ProvinceAndIspFlowResult.class);
+        return provinceAndIspFlowResult;
     }
 }
