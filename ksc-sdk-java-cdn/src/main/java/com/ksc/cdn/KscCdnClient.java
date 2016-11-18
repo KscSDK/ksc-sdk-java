@@ -29,11 +29,15 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
+import com.ksc.cdn.model.statistic.province.AreaRequest;
+import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
 import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBandwidthResult;
 import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
 import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
+import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
+import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -245,5 +249,19 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         Map<String, String> buildHeaders = this.buildHeaders(HTTPCODE_DETAIL_VERSION, HTTPCODE_DETAIL_ACTION);
         HttpCodeDetailResult httpCodeDetailResult = this.httpExecute(HttpMethod.GET, HTTPCODE_DETAIL_URL, request.buildParams(), buildHeaders, HttpCodeDetailResult.class);
         return httpCodeDetailResult;
+    }
+
+    @Override
+    public TopUrlResult getTopUrl(TopUrlRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(TOPURL_VERSION, TOPURL_ACTION);
+        TopUrlResult topUrlResult = this.httpExecute(HttpMethod.GET, TOPURL_URL, request.buildParams(), buildHeaders, TopUrlResult.class);
+        return topUrlResult;
+    }
+
+    @Override
+    public AreaResult getAreaData(AreaRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(AREA_VERSION, AREA_ACTION);
+        AreaResult areaResult = this.httpExecute(HttpMethod.GET, AREA_URL, request.buildParams(), buildHeaders, AreaResult.class);
+        return areaResult;
     }
 }

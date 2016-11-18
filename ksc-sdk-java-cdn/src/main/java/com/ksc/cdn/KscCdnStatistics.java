@@ -1,6 +1,5 @@
 package com.ksc.cdn;
 
-import com.ksc.cdn.model.statistic.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
 import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
@@ -15,11 +14,15 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
+import com.ksc.cdn.model.statistic.province.AreaRequest;
+import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
 import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBandwidthResult;
 import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
 import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
+import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
+import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 
 /**
  * KscCdnStatistics
@@ -89,6 +92,18 @@ public interface KscCdnStatistics {
     String HTTPCODE_DETAIL_URL="/2016-09-01/statistics/GetHttpCodeDetailedData";
     String HTTPCODE_DETAIL_VERSION="2016-09-01";
     String HTTPCODE_DETAIL_ACTION="GetHttpCodeDetailedData";
+    /**
+     * top url 查询
+     */
+    String TOPURL_URL="/2016-09-01/statistics/GetTopUrlData";
+    String TOPURL_VERSION="2016-09-01";
+    String TOPURL_ACTION="GetTopUrlData";
+    /**
+     * 用户区域统计
+     */
+    String AREA_URL="/2016-09-01/statistics/GetAreaData";
+    String AREA_VERSION="2016-09-01";
+    String AREA_ACTION="GetAreaData";
     /**
      * 查询带宽
      * @param statisticsQuery
@@ -169,4 +184,26 @@ public interface KscCdnStatistics {
      * @throws Exception
      */
     HttpCodeDetailResult getHttpCodeDetailedData(HttpCodeDetailRequest request) throws Exception;
+
+    /**
+     * 获取单个域名或多个域名某天内某一时段的TOP Url访问数据，
+     * 仅包含Top200且访问次数大于15次的 Url的访问次数、访问流量，并按次数排序
+     * 注意:
+     * 最多可获取最近一年内一天跨度的数据
+     * 时效性：30分钟延迟
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    TopUrlResult getTopUrl(TopUrlRequest request) throws Exception;
+
+    /**
+     * 获取国内各省份及运营商流量、访问次数、流量占比，请求数占比，海外地区的流量、访问次数、流量占比、请求数占比。
+     * 运营商包含：电信、联通、移动、铁通、鹏博士、教育网、其他、海外ISP
+     * 地区包含：国内32个省、香港、台湾、澳门、其他海外地区统一合并为海外
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    AreaResult getAreaData(AreaRequest request) throws Exception;
 }

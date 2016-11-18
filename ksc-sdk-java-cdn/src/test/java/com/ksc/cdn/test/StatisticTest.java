@@ -17,11 +17,15 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
+import com.ksc.cdn.model.statistic.province.AreaRequest;
+import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
 import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBandwidthResult;
 import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
 import com.ksc.cdn.model.statistic.pv.PVRequest;
 import com.ksc.cdn.model.statistic.pv.PVResult;
+import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
+import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -37,8 +41,8 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient("AKTPOiIMSjjkTTCzXQOFvGJb2g",
-                "OJ/FGoTFsNHHXvJS81fRzFYCQhguunXUokVGcOTm72MoHUkU9Ii/9Bz7HDNZZLmf+A==",
+        cdnClient=new KscCdnClient("AKTPKpXfYao1TlmhP7T0vSyOKQ",
+                "OHLogFRz8EqqnHsWKVY4h2u8n1dSdFdPxbakndEqtnp0TKzt3DsZEnHliBSN4cXq2w==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -233,5 +237,38 @@ public class StatisticTest {
         HttpCodeDetailResult httpCodeDetailedData = cdnClient.getHttpCodeDetailedData(request);
         Assert.assertNotNull(httpCodeDetailedData);
 //        Assert.assertTrue(httpCodeDetailedData.getDatas().length>0&&httpCodeDetailedData.getDatas()[0].getDomains()[0].getCodes().length>0);
+    }
+
+    /**
+     * top url 查询
+     * @throws Exception
+     */
+    @Test
+    public void testGetTopUrl() throws Exception{
+        TopUrlRequest request=new TopUrlRequest();
+        request.setStartTime("2016-09-19T00:00+0800");
+        request.setEndTime("2016-09-19T23:00+0800");
+        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setLimitN("5");
+
+        TopUrlResult topUrl = cdnClient.getTopUrl(request);
+        Assert.assertNotNull(topUrl);
+        Assert.assertTrue(topUrl.getDatas().length==5);
+    }
+
+    /**
+     * 用户区域统计
+     * @throws Exception
+     */
+    @Test
+    public void testGetAreaData() throws  Exception{
+        AreaRequest request=new AreaRequest();
+        request.setStartTime("2016-09-19T00:00+0800");
+        request.setEndTime("2016-09-19T23:00+0800");
+        request.setCdnType(CdnTypeEnum.download.getValue());
+
+        AreaResult areaData = cdnClient.getAreaData(request);
+        Assert.assertNotNull(areaData);
+        Assert.assertTrue(areaData.getDatas().length>0);
     }
 }
