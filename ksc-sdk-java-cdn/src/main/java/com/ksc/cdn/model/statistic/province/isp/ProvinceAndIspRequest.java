@@ -6,6 +6,7 @@ import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -80,7 +81,7 @@ public class ProvinceAndIspRequest extends CommonFieldRequest {
     }
 
     @Override
-    public Map<String, String> buildParams() throws KscClientException {
+    public Map<String, String> buildParams() throws KscClientException, ParseException {
         CommonValidUtil.check(this);
 
         Map<String, String> params = super.buildParams();
@@ -92,8 +93,11 @@ public class ProvinceAndIspRequest extends CommonFieldRequest {
 
         params.put("ResultType",this.getResultType());
 
-        if(Granularity!=null)
-            params.put("Granularity",this.getGranularity());
+        if (StringUtils.isNotBlank(this.getGranularity())) {
+            params.put("Granularity", this.getGranularity());
+        }else {
+            params.put("Granularity",getGranularity(this.getStartTime(),this.getEndTime()));
+        }
 
         return params;
     }

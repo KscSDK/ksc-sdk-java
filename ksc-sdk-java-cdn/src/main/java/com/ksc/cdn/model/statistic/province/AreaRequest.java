@@ -4,6 +4,7 @@ import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 
+import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -15,7 +16,7 @@ import java.util.Map;
  */
 public class AreaRequest extends CommonFieldRequest {
     @Override
-    public Map<String, String> buildParams() throws KscClientException {
+    public Map<String, String> buildParams() throws KscClientException, ParseException {
         CommonValidUtil.check(this);
         return super.buildParams();
     }

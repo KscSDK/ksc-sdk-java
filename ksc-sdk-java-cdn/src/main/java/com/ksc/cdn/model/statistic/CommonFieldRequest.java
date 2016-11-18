@@ -3,8 +3,11 @@ package com.ksc.cdn.model.statistic;
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
+import com.ksc.cdn.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -14,7 +17,6 @@ import java.util.Map;
  * 支持按指定的起止时间查询，两者需要同时指定
  * 支持批量域名查询，多个域名ID用逗号（半角）分隔
  * 最多可获取最近三年内93天跨度的数据
- * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；**以上粒度均取该粒度时间段的流量之和**
  * 时效性：5分钟延迟
  */
 public class CommonFieldRequest {
@@ -79,7 +81,7 @@ public class CommonFieldRequest {
         DomainIds = domainIds;
     }
 
-    public Map<String,String> buildParams() throws KscClientException {
+    public Map<String,String> buildParams() throws KscClientException, ParseException {
         Map<String,String> params=new HashMap<String, String>();
         params.put("CdnType", this.getCdnType());
         params.put("StartTime", this.getStartTime());
@@ -90,5 +92,37 @@ public class CommonFieldRequest {
         return params;
     }
 
+    /**
+     * 计算查询粒度,当需要传递查询粒度参数时,如果没有赋值则通过此方法算一个默认值并给予赋值
+     * 如果期望不用默认值,自定义设置Granularity值即可
+     * Granularity的取值为 5（默认）：5分钟粒度；10：10分钟粒度；20：20分钟粒度；60：1小时粒度；240：4小时粒度；480：8小时粒度；1440：1天粒度
+     * @param startTime
+     * @param endTime
+     * @return
+     * @throws ParseException
+     */
+    public String getGranularity(String startTime, String endTime) throws ParseException {
+        Date startDate = DateUtils.getTimestampByUTCDate(startTime);
+        Date endDate = DateUtils.getTimestampByUTCDate(endTime);
+        int betweenDay = DateUtils.getDayDiff(startDate, endDate);
+        return getGranularity(betweenDay);
+    }
+    private String getGranularity(int betweenDay) {
+        if (betweenDay == 0) {
+            return "5";
+        } else if (betweenDay < 2) {
+            return "10";
+        } else if (betweenDay < 5) {
+            return "20";
+        } else if (betweenDay < 15) {
+            return "60";
+        } else if (betweenDay < 62) {
+            return "240";
+        } else if (betweenDay <= 93) {
+            return "480";
+        } else {
+            return "";
+        }
+    }
 
 }

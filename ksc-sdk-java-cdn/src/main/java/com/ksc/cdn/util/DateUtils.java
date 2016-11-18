@@ -78,9 +78,9 @@ public class DateUtils {
      * @return
      * @throws ParseException
      */
-    public static long getTimestampByUTCDate(String UTCDate) throws ParseException {
+    public static Date getTimestampByUTCDate(String UTCDate) throws ParseException {
         Date date = org.apache.commons.lang3.time.DateUtils.parseDate(UTCDate, DATA_TIME_PATTERN_UTC);
-        return date.getTime() / 1000l;
+        return date;
     }
 
     /**

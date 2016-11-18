@@ -22,7 +22,7 @@ public class KscClientException extends Exception{
 
     public KscClientException(String code,String message,String requestId){
         this.code=code;
-        this.message=message;
+        this.message=String.format("Code:%s,Message:%s,RequestId:%s",code,message,requestId);
         this.requestId=requestId;
     }
     public void setRequestId(String requestId) {

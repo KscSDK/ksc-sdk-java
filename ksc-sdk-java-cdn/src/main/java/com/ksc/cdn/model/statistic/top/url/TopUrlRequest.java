@@ -5,6 +5,7 @@ import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -28,7 +29,7 @@ public class TopUrlRequest extends CommonFieldRequest{
     }
 
     @Override
-    public Map<String, String> buildParams() throws KscClientException {
+    public Map<String, String> buildParams() throws KscClientException, ParseException {
         CommonValidUtil.check(this);
         Map<String,String> params= super.buildParams();
         if(StringUtils.isNotBlank(this.getLimitN()))

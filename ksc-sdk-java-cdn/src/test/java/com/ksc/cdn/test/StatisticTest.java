@@ -17,6 +17,8 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
+import com.ksc.cdn.model.statistic.isp.IspRequest;
+import com.ksc.cdn.model.statistic.isp.IspResult;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
@@ -41,8 +43,8 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient("AKTPKpXfYao1TlmhP7T0vSyOKQ",
-                "OHLogFRz8EqqnHsWKVY4h2u8n1dSdFdPxbakndEqtnp0TKzt3DsZEnHliBSN4cXq2w==",
+        cdnClient=new KscCdnClient("AKTPgzuhDB8fSQKQ9ATHfs84vQ",
+                "OJB8Sef1AxE0msU65sqhoJVy7ilez6KAcFdAsHRZJ/7hm8qys7EN+2wX/AxCVEDmIw==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -133,10 +135,12 @@ public class StatisticTest {
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setDataType(DataTypeEnum.EDGE.getValue());
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());
+//        statisticsQuery.setGranularity("5");
 
         PVResult pv = cdnClient.getPV(statisticsQuery);
         Assert.assertNotNull(pv);
         Assert.assertTrue(pv.getDatas().length>0);
+        Assert.assertEquals("10",pv.getGranularity());
     }
 
     /**
@@ -196,7 +200,7 @@ public class StatisticTest {
 //        request.setResultType(ResultTypeEnum.MERGE.getCode());
         request.setResultType(ResultTypeEnum.ALONE.getCode());
         request.setGranularity("480");
-        request.setDomainIds("2D09QXK,2D067PE,2D067PD,2D09QXJ,2D067PF,2D09X6A,2D09WUH,2D09QXM,2D09WXK,2D09WXM");
+//        request.setDomainIds("2D09QXK,2D067PE,2D067PD,2D09QXJ,2D067PF,2D09X6A,2D09WUH,2D09QXM,2D09WXK,2D09WXM");
 
         ProvinceAndIspBandwidthResult provinceAndIspBW = cdnClient.getProvinceAndIspBW(request);
         Assert.assertNotNull(provinceAndIspBW);
@@ -231,8 +235,8 @@ public class StatisticTest {
         request.setEndTime("2016-09-19T23:00+0800");
         request.setCdnType(CdnTypeEnum.download.getValue());
 
-        /*request.setResultType(ResultTypeEnum.ALONE.getCode());//返回类型为分别返回
-        request.setGranularity("480");//时间粒度为8个小时*/
+        request.setResultType(ResultTypeEnum.MERGE.getCode());//返回类型为分别返回
+//        request.setGranularity("480");//时间粒度为8个小时
 
         HttpCodeDetailResult httpCodeDetailedData = cdnClient.getHttpCodeDetailedData(request);
         Assert.assertNotNull(httpCodeDetailedData);
@@ -270,5 +274,21 @@ public class StatisticTest {
         AreaResult areaData = cdnClient.getAreaData(request);
         Assert.assertNotNull(areaData);
         Assert.assertTrue(areaData.getDatas().length>0);
+    }
+
+    /**
+     * 运营商占比统计
+     * @throws Exception
+     */
+    @Test
+    public void testGetIspData()throws Exception{
+        IspRequest request=new IspRequest();
+        request.setStartTime("2016-09-19T00:00+0800");
+        request.setEndTime("2016-09-19T23:00+0800");
+        request.setCdnType(CdnTypeEnum.download.getValue());
+
+        IspResult ispData = cdnClient.getIspData(request);
+        Assert.assertNotNull(ispData);
+        Assert.assertTrue(ispData.getDatas()[0].getFlow()>0);
     }
 }

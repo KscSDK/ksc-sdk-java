@@ -29,6 +29,8 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
+import com.ksc.cdn.model.statistic.isp.IspRequest;
+import com.ksc.cdn.model.statistic.isp.IspResult;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
@@ -212,7 +214,7 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     @Override
     public PVResult getPV(PVRequest statisticsQuery) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(PV_VERSION, PV_ACTION);
-        PVResult pvResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, PVResult.class);
+        PVResult pvResult = this.httpExecute(HttpMethod.GET, PV_URL, statisticsQuery.buildParams(), buildHeaders, PVResult.class);
         return pvResult;
     }
 
@@ -263,5 +265,12 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         Map<String, String> buildHeaders = this.buildHeaders(AREA_VERSION, AREA_ACTION);
         AreaResult areaResult = this.httpExecute(HttpMethod.GET, AREA_URL, request.buildParams(), buildHeaders, AreaResult.class);
         return areaResult;
+    }
+
+    @Override
+    public IspResult getIspData(IspRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(ISP_VERSION, ISP_ACTION);
+        IspResult ispResult = this.httpExecute(HttpMethod.GET, ISP_URL, request.buildParams(), buildHeaders, IspResult.class);
+        return ispResult;
     }
 }

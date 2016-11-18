@@ -6,6 +6,7 @@ import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
 
+import java.text.ParseException;
 import java.util.Map;
 
 /**
@@ -77,7 +78,7 @@ public class FlowRequest extends CommonFieldRequest {
     }
 
     @Override
-    public Map<String, String> buildParams() throws KscClientException {
+    public Map<String, String> buildParams() throws KscClientException,ParseException {
         CommonValidUtil.check(this);
 
         Map params = super.buildParams();
@@ -88,8 +89,11 @@ public class FlowRequest extends CommonFieldRequest {
         if (StringUtils.isNotBlank(this.getResultType()))
             params.put("ResultType", this.getResultType());
 
-        if (StringUtils.isNotBlank(this.getGranularity()))
+        if (StringUtils.isNotBlank(this.getGranularity())) {
             params.put("Granularity", this.getGranularity());
+        }else {
+            params.put("Granularity",getGranularity(this.getStartTime(),this.getEndTime()));
+        }
 
         if (StringUtils.isNotBlank(this.getDataType()))
             params.put("DataType", this.getDataType());

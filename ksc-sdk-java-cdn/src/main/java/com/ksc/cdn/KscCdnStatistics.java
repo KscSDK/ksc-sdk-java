@@ -14,6 +14,8 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
+import com.ksc.cdn.model.statistic.isp.IspRequest;
+import com.ksc.cdn.model.statistic.isp.IspResult;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
@@ -104,6 +106,12 @@ public interface KscCdnStatistics {
     String AREA_URL="/2016-09-01/statistics/GetAreaData";
     String AREA_VERSION="2016-09-01";
     String AREA_ACTION="GetAreaData";
+    /**
+     * 运营商占比统计
+     */
+    String ISP_URL="/2016-09-01/statistics/GetIspData";
+    String ISP_VERSION="2016-09-01";
+    String ISP_ACTION="GetIspData";
     /**
      * 查询带宽
      * @param statisticsQuery
@@ -206,4 +214,13 @@ public interface KscCdnStatistics {
      * @throws Exception
      */
     AreaResult getAreaData(AreaRequest request) throws Exception;
+
+    /**
+     * 获取各运营商流量、访问次数、流量占比、访问次数占比
+     * 运营商包含：电信、联通、移动、铁通、鹏博士、教育网、其他、海外ISP
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    IspResult getIspData(IspRequest request) throws Exception;
 }
