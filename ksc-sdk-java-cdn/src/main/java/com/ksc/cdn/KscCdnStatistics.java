@@ -16,6 +16,16 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
 import com.ksc.cdn.model.statistic.isp.IspRequest;
 import com.ksc.cdn.model.statistic.isp.IspResult;
+import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainRequest;
+import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainResult;
+import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserRequest;
+import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserResult;
+import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamResult;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
@@ -112,6 +122,34 @@ public interface KscCdnStatistics {
     String ISP_URL="/2016-09-01/statistics/GetIspData";
     String ISP_VERSION="2016-09-01";
     String ISP_ACTION="GetIspData";
+    /**
+     * 直播业务，获取按流为维度的流量数据，流量单位byte
+     */
+    String LIVE_STREAM_FLOW_URL="/2016-09-01/statistics/GetLiveFlowDataByStream";
+    String LIVE_STREAM_FLOW_VERSION="2016-09-01";
+    String LIVE_STREAM_FLOW_ACTION="GetLiveFlowDataByStream";
+
+    String LIVE_STREAM_BANDWIDTH_URL="/2016-09-01/statistics/GetLiveBandwidthDataByStream";
+    String LIVE_STREAM_BANDWIDTH_VERSION="2016-09-01";
+    String LIVE_STREAM_BANDWIDTH_ACTION="GetLiveBandwidthDataByStream";
+    /**
+     * 获取按域名维度的直播在线人数数据， 单位：每分钟的在线人数
+     */
+    String LIVE_DOMAIN_ONLINEUSER_URL="/2016-09-01/statistics/GetLiveOnlineUserDataByDomain";
+    String LIVE_DOMAIN_ONLINEUSER_VERSION="2016-09-01";
+    String LIVE_DOMAIN_ONLINEUSER_ACTION="GetLiveOnlineUserDataByDomain";
+    /**
+     * 获取按流维度的直播在线人数数据， 单位：每分钟的在线人数
+     */
+    String LIVE_STREAM_ONLINEUSER_URL="/2016-09-01/statistics/GetLiveOnlineUserDataByStream";
+    String LIVE_STREAM_ONLINEUSER_VERSION="2016-09-01";
+    String LIVE_STREAM_ONLINEUSER_ACTION="GetLiveOnlineUserDataByStream";
+    /**
+     * 获取按流维度的直播在线人数排行， 单位：每分钟的在线人数
+     */
+    String LIVE_STREAM_ONLINEUSER_TOP_URL="/2016-09-01/statistics/GetLiveTopOnlineUserData";
+    String LIVE_STREAM_ONLINEUSER_TOP_VERSION="2016-09-01";
+    String LIVE_STREAM_ONLINEUSER_TOP_ACTION="GetLiveTopOnlineUserData";
     /**
      * 查询带宽
      * @param statisticsQuery
@@ -223,4 +261,69 @@ public interface KscCdnStatistics {
      * @throws Exception
      */
     IspResult getIspData(IspRequest request) throws Exception;
+
+    /**
+     * 直播业务，获取按流为维度的流量数据，流量单位byte
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量流名过滤查询，多个流名用逗号（半角）分隔
+     * 最多可获取最近62天内，7天跨度的数据
+     * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度均取该粒度时间段的求和
+     * 只支持直播业务
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    LiveFlowByStreamResult getLiveFlowDataByStream(LiveFlowByStreamRequest request) throws Exception;
+
+    /**
+     * 直播业务，获取按流为维度的带宽数据，带宽单位bit\/second
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量流名过滤查询，多个流名用逗号（半角）分隔
+     * 最多可获取最近62天内，7天跨度的数据
+     * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 只支持直播业务
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    LiveBandwidthByStreamResult getLiveBandwidthDataByStream(LiveBandwidthByStreamRequest request) throws Exception;
+
+    /**
+     * 获取按域名维度的直播在线人数数据， 单位：每分钟的在线人数
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔
+     * 支持多计费区域查询，多个计费区域用逗号（半角）分隔
+     * 最多可获取最近1年93天跨度的数据
+     * 只支持直播业务
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    LiveOnlineUserByDomainResult getLiveOnlineUserDataByDomain(LiveOnlineUserByDomainRequest request) throws Exception;
+
+    /**
+     * 获取按流维度的直播在线人数数据， 单位：每分钟的在线人数
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量流名过滤查询，多个流名用逗号（半角）分隔
+     * 支持多计费区域查询，多个计费区域用逗号（半角）分隔
+     * 最多可获取最近62天内，7天跨度的数据。（注意： 按流名维度的数据，只保留2个月）
+     * 只支持直播业务
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    LiveOnlineUserByStreamResult getLiveOnlineUserDataByStream(LiveOnlineUserByStreamRequest request)throws Exception;
+
+    /**
+     * 获取按流维度的直播在线人数排行， 单位：每分钟的在线人数
+     * 只设置起始时间，代表起始时间这1分钟的数据。
+     * 支持批量域名过滤查询，多个域名ID用逗号（半角）分隔
+     * 支持多计费区域查询，多个计费区域用逗号（半角）分隔
+     * 最多可获取最近62天内的数据。（注意： 按流维度的数据，只保留2个月）
+     * 只支持直播业务
+     * @param request
+     * @return
+     * @throws Exception
+     */
+    LiveTopOnlineUserResult getLiveTopOnlineUserData(LiveTopOnlineUserRequest request) throws Exception;
 }

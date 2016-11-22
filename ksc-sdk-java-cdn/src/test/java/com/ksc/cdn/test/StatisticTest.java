@@ -19,6 +19,18 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
 import com.ksc.cdn.model.statistic.isp.IspRequest;
 import com.ksc.cdn.model.statistic.isp.IspResult;
+import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainRequest;
+import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainResult;
+import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.flow.DataByTime;
+import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserRequest;
+import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserResult;
+import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.uv.OnlineUserDataByTime;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
@@ -43,8 +55,8 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient("AKTPgzuhDB8fSQKQ9ATHfs84vQ",
-                "OJB8Sef1AxE0msU65sqhoJVy7ilez6KAcFdAsHRZJ/7hm8qys7EN+2wX/AxCVEDmIw==",
+        cdnClient=new KscCdnClient("AKTPOlCQP0Y1Sn-mlA8NkigoeQ",
+                "ODad4AKpPBgwAOv2HdozzcWkfocltxc21eogBjmBKfqCna0dSeWzByxZGJksXLQCUQ==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -291,4 +303,106 @@ public class StatisticTest {
         Assert.assertNotNull(ispData);
         Assert.assertTrue(ispData.getDatas()[0].getFlow()>0);
     }
+
+    /**
+     * 直播按流维度查询流量
+     * @throws Exception
+     */
+    @Test
+    public void testGetLiveFlowDataByStream() throws Exception{
+        LiveFlowByStreamRequest request=new LiveFlowByStreamRequest();
+        request.setStartTime("2016-09-22T09:14+0800");
+        request.setEndTime("2016-09-24T10:20+0800");
+        request.setStreamUrl("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
+        request.setResultType(ResultTypeEnum.MERGE.getCode());
+//        request.setGranularity("1440");
+
+        LiveFlowByStreamResult liveFlowDataByStream = cdnClient.getLiveFlowDataByStream(request);
+        Assert.assertNotNull(liveFlowDataByStream);
+        Assert.assertTrue(liveFlowDataByStream.getDatas().length>0);
+        Long flow=0L;
+        for (DataByTime dt:liveFlowDataByStream.getDatas()
+             ) {
+            flow+=dt.getFlow();
+        }
+        System.out.print(flow);
+        Assert.assertTrue(flow>0L);
+    }
+
+    /**
+     * 直播按流维度查询带宽
+     * @throws Exception
+     */
+    @Test
+    public void testGetLiveBandwidthDataByStream() throws Exception{
+        LiveBandwidthByStreamRequest request=new LiveBandwidthByStreamRequest();
+        request.setStartTime("2016-09-22T09:14+0800");
+        request.setEndTime("2016-09-24T10:20+0800");
+        request.setStreamUrl("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
+        request.setResultType(ResultTypeEnum.ALONE.getCode());
+        request.setGranularity("1440");
+
+        LiveBandwidthByStreamResult liveBandwidthDataByStream = cdnClient.getLiveBandwidthDataByStream(request);
+        Assert.assertNotNull(liveBandwidthDataByStream);
+        Assert.assertTrue(liveBandwidthDataByStream.getDatas().length>0);
+    }
+
+    /**
+     * 直播按域名维度统计在线人数
+     * @throws Exception
+     */
+    @Test
+    public void testGetLiveOnlineUserDataByDomain()throws Exception{
+        LiveOnlineUserByDomainRequest request=new LiveOnlineUserByDomainRequest();
+        request.setStartTime("2016-09-22T09:14+0800");
+        request.setEndTime("2016-09-24T10:20+0800");
+//        request.setGranularity("1440");
+        request.setResultType(ResultTypeEnum.MERGE.getCode());
+
+        LiveOnlineUserByDomainResult liveOnlineUserDataByDomain = cdnClient.getLiveOnlineUserDataByDomain(request);
+        Assert.assertNotNull(liveOnlineUserDataByDomain);
+        Assert.assertTrue(liveOnlineUserDataByDomain.getDatas().length>0);
+
+    }
+
+    /**
+     * 获取按流维度的直播在线人数数据
+     * @throws Exception
+     */
+    @Test
+    public void testGetLiveOnlineUserDataByStream() throws Exception{
+        LiveOnlineUserByStreamRequest request=new LiveOnlineUserByStreamRequest();
+        request.setStartTime("2016-09-22T09:14+0800");
+        request.setEndTime("2016-09-24T10:20+0800");
+        request.setGranularity("1440");
+        request.setResultType(ResultTypeEnum.ALONE.getCode());
+        request.setStreamUrl("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
+
+        LiveOnlineUserByStreamResult liveOnlineUserDataByStream = cdnClient.getLiveOnlineUserDataByStream(request);
+        Assert.assertNotNull(liveOnlineUserDataByStream);
+        Assert.assertTrue(liveOnlineUserDataByStream.getDatas().length>0);
+        Long onlineUser=0l;
+        for (OnlineUserDataByTime dt:liveOnlineUserDataByStream.getDatas()
+             ) {
+            onlineUser+=dt.getOnlineUser();
+        }
+        Assert.assertTrue(onlineUser>0l);
+    }
+
+    /**
+     * 获取按流维度的直播在线人数排行
+     * @throws Exception
+     */
+    @Test
+    public void testGetLiveTopOnlineUserData()throws Exception{
+        LiveTopOnlineUserRequest request=new LiveTopOnlineUserRequest();
+        request.setStartTime("2016-10-20T00:00+0800");
+        request.setResultType(ResultTypeEnum.ALONE.getCode());
+        request.setLimitN("5");
+
+        LiveTopOnlineUserResult liveTopOnlineUserData = cdnClient.getLiveTopOnlineUserData(request);
+        Assert.assertNotNull(liveTopOnlineUserData);
+        Assert.assertTrue(liveTopOnlineUserData.getDatas().length==5);
+    }
+
 }

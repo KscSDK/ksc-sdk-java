@@ -31,6 +31,16 @@ import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
 import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
 import com.ksc.cdn.model.statistic.isp.IspRequest;
 import com.ksc.cdn.model.statistic.isp.IspResult;
+import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainRequest;
+import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainResult;
+import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamResult;
+import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserRequest;
+import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserResult;
+import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamRequest;
+import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamResult;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
@@ -272,5 +282,41 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
         Map<String, String> buildHeaders = this.buildHeaders(ISP_VERSION, ISP_ACTION);
         IspResult ispResult = this.httpExecute(HttpMethod.GET, ISP_URL, request.buildParams(), buildHeaders, IspResult.class);
         return ispResult;
+    }
+
+    @Override
+    public LiveFlowByStreamResult getLiveFlowDataByStream(LiveFlowByStreamRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_FLOW_VERSION, LIVE_STREAM_FLOW_ACTION);
+        LiveFlowByStreamResult liveFlowByStreamResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_FLOW_URL, request.buildParams(), buildHeaders, LiveFlowByStreamResult.class);
+        return liveFlowByStreamResult;
+    }
+
+    @Override
+    public LiveBandwidthByStreamResult getLiveBandwidthDataByStream(LiveBandwidthByStreamRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_BANDWIDTH_VERSION, LIVE_STREAM_BANDWIDTH_ACTION);
+        LiveBandwidthByStreamResult liveBandwidthByStreamResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_BANDWIDTH_URL, request.buildParams(), buildHeaders, LiveBandwidthByStreamResult.class);
+        return liveBandwidthByStreamResult;
+    }
+
+    @Override
+    public LiveOnlineUserByDomainResult getLiveOnlineUserDataByDomain(LiveOnlineUserByDomainRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(LIVE_DOMAIN_ONLINEUSER_VERSION, LIVE_DOMAIN_ONLINEUSER_ACTION);
+        LiveOnlineUserByDomainResult liveOnlineUserResult = this.httpExecute(HttpMethod.GET, LIVE_DOMAIN_ONLINEUSER_URL, request.buildParams(), buildHeaders, LiveOnlineUserByDomainResult.class);
+        return liveOnlineUserResult;
+    }
+
+    @Override
+    public LiveOnlineUserByStreamResult getLiveOnlineUserDataByStream(LiveOnlineUserByStreamRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_ONLINEUSER_VERSION, LIVE_STREAM_ONLINEUSER_ACTION);
+        LiveOnlineUserByStreamResult liveOnlineUserByStreamResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_ONLINEUSER_URL, request.buildParams(), buildHeaders, LiveOnlineUserByStreamResult.class);
+        return liveOnlineUserByStreamResult;
+
+    }
+
+    @Override
+    public LiveTopOnlineUserResult getLiveTopOnlineUserData(LiveTopOnlineUserRequest request) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_ONLINEUSER_TOP_VERSION, LIVE_STREAM_ONLINEUSER_TOP_ACTION);
+        LiveTopOnlineUserResult liveTopOnlineUserResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_ONLINEUSER_TOP_URL, request.buildParams(), buildHeaders, LiveTopOnlineUserResult.class);
+        return liveTopOnlineUserResult;
     }
 }
