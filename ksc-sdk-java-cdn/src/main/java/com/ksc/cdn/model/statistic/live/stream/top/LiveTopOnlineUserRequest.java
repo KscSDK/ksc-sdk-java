@@ -1,6 +1,8 @@
 package com.ksc.cdn.model.statistic.live.stream.top;
 
 import com.ksc.cdn.KscClientException;
+import com.ksc.cdn.model.statistic.GeneralRequest;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
@@ -10,11 +12,18 @@ import java.util.Map;
 
 /**
  * LiveTopOnlineUserRequest
- * 获取按流维度的直播在线人数排行
+ * <p>
+ * 获取按流维度的直播在线人数排行， 单位：每分钟的在线人数<p>
+ * 只设置起始时间，代表起始时间这1分钟的数据。<p>
+ * 支持批量域名过滤查询，多个域名ID用逗号（半角）分隔<p>
+ * 支持多计费区域查询，多个计费区域用逗号（半角）分隔<p>
+ * 最多可获取最近62天内的数据。（注意： 按流维度的数据，只保留2个月）<p>
+ * 说明：<p>
+ * 按流名维度的数据，返回时并不按照“域名”维度汇聚。如果需要按域名维度的数据，请按单个域名过滤<p>
  * @author jiangran@kingsoft.com
  * @date 2016/11/22
  */
-public class LiveTopOnlineUserRequest {
+public class LiveTopOnlineUserRequest implements GeneralRequest {
     /**
      * 获取数据起始时间点,日期格式按ISO8601表示法，
      * 北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
@@ -80,6 +89,7 @@ public class LiveTopOnlineUserRequest {
         LimitN = limitN;
     }
 
+    @Override
     public Map<String,String> buildParams() throws KscClientException {
         CommonValidUtil.check(this);
         Map<String,String> params=new HashMap<String, String>();
@@ -93,5 +103,10 @@ public class LiveTopOnlineUserRequest {
         if(StringUtils.isNotBlank(this.getLimitN()))
             params.put("LimitN",this.getLimitN());
         return params;
+    }
+
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return new GeneralRequestParam("GetLiveTopOnlineUserData","2016-09-01","/2016-09-01/statistics/GetLiveTopOnlineUserData");
     }
 }

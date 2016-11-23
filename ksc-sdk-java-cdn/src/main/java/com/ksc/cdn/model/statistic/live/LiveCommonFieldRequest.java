@@ -1,6 +1,8 @@
 package com.ksc.cdn.model.statistic.live;
 
 import com.ksc.cdn.KscClientException;
+import com.ksc.cdn.model.statistic.GeneralRequest;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.valid.FieldValidate;
 import com.ksc.cdn.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +18,7 @@ import java.util.Map;
  * @author jiangran@kingsoft.com
  * @date 2016/11/18
  */
-public class LiveCommonFieldRequest {
+public class LiveCommonFieldRequest implements GeneralRequest {
     /**
      * 获取数据起始时间点，日期格式按ISO8601表示法，北京时间，格式为：YYYY-MM-DDThh:mm+0800，例如： 2016-08-01T21:14+0800
      */
@@ -57,6 +59,7 @@ public class LiveCommonFieldRequest {
         Regions = regions;
     }
 
+    @Override
     public Map<String,String> buildParams() throws KscClientException, ParseException {
         Map<String,String> params=new HashMap<String, String>();
 
@@ -99,5 +102,10 @@ public class LiveCommonFieldRequest {
         } else {
             return "";
         }
+    }
+
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return null;
     }
 }

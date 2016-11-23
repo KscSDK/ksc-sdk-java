@@ -1,6 +1,7 @@
 package com.ksc.cdn.model.statistic.live.domain;
 
 import com.ksc.cdn.KscClientException;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.live.LiveCommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
@@ -11,8 +12,15 @@ import java.util.Map;
 
 /**
  * LiveOnlineUserByDomainRequest
+ * <p>
+ * 获取按域名维度的直播在线人数数据， 单位：每分钟的在线人数<p>
+ * 支持按指定的起止时间查询，两者需要同时指定<p>
+ * 支持批量域名查询，多个域名ID用逗号（半角）分隔<p>
+ * 支持多计费区域查询，多个计费区域用逗号（半角）分隔<p>
+ * 最多可获取最近1年93天跨度的数据<p>
+ * 统计粒度：1分钟粒度（默认）；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度均取该粒度时间段的在线人数的**峰值。<p>
+ * 只支持直播业务<p>
  *
- * 获取按域名维度的直播在线人数数据
  * @author jiangran@kingsoft.com
  * @date 2016/11/21
  */
@@ -70,5 +78,10 @@ public class LiveOnlineUserByDomainRequest extends LiveCommonFieldRequest {
             params.put("Granularity",super.getGranularity(this.getStartTime(),this.getEndTime()));
         }
         return params;
+    }
+
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return new GeneralRequestParam("GetLiveOnlineUserDataByDomain","2016-09-01","/2016-09-01/statistics/GetLiveOnlineUserDataByDomain");
     }
 }

@@ -2,6 +2,7 @@ package com.ksc.cdn.model.statistic.flow;
 
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
@@ -11,6 +12,12 @@ import java.util.Map;
 
 /**
  * FlowRequest
+ * <p>
+ * 获取域名流量数据，包括边缘流量、回源流量数据， 单位：byte<p>
+ * 支持按指定的起止时间查询，两者需要同时指定<p>
+ * 支持批量域名查询，多个域名ID用逗号（半角）分隔<p>
+ * 最多可获取最近一年内93天跨度的数据<p>
+ * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度均取该粒度时间段的流量之和<p>
  *
  * @author jiangran@kingsoft.com
  * @date 2016/11/16
@@ -99,5 +106,10 @@ public class FlowRequest extends CommonFieldRequest {
             params.put("DataType", this.getDataType());
 
         return params;
+    }
+
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return new GeneralRequestParam("GetFlowData","2016-09-01","/2016-09-01/statistics/GetFlowData");
     }
 }

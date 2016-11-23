@@ -2,6 +2,7 @@ package com.ksc.cdn.model.statistic.live.stream.flow;
 
 
 import com.ksc.cdn.KscClientException;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.live.LiveCommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
@@ -12,7 +13,13 @@ import java.util.Map;
 
 /**
  * LiveFlowByStreamRequest
- * 直播业务，获取按流为维度的流量数据
+ * <P>
+ * 直播业务，获取按流为维度的流量数据<P>
+ * 支持按指定的起止时间查询，两者需要同时指定<P>
+ * 支持批量流名过滤查询，多个流名用逗号（半角）分隔<P>
+ * 最多可获取最近62天内，7天跨度的数据<P>
+ * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度均取该粒度时间段的求和<P>
+ * 只支持直播业务<P>
  * @author jiangran@kingsoft.com
  * @date 2016/11/18
  */
@@ -72,5 +79,10 @@ public class LiveFlowByStreamRequest extends LiveCommonFieldRequest {
             params.put("Granularity",super.getGranularity(this.getStartTime(),this.getEndTime()));
         }
         return params;
+    }
+
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return new GeneralRequestParam("GetLiveFlowDataByStream","2016-09-01","/2016-09-01/statistics/GetLiveFlowDataByStream");
     }
 }

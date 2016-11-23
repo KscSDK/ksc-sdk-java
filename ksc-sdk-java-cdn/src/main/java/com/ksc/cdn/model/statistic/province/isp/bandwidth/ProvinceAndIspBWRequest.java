@@ -1,7 +1,8 @@
-package com.ksc.cdn.model.statistic.province.isp;
+package com.ksc.cdn.model.statistic.province.isp.bandwidth;
 
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
@@ -10,18 +11,22 @@ import java.text.ParseException;
 import java.util.Map;
 
 /**
- * ProvinceAndIspRequest
- *
- * 获取域名在中国大陆地区各省市及各运营商的带宽、流量数据，仅包括边缘节点数据
- * 使用场景
- * 客户查询单个域名或多个域名在各个省份及运营商的合并后的实时流量数据
- * 客户查询单个域名的详细流量数据，进行数据保存及数据分析
- * 客户查询某一天或某1小时的详细流量区域分布，用于制作流量数据区域用量表
+ * ProvinceAndIspBWRequest
+ * <p>
+ * 获取域名在中国大陆地区各省市及各运营商的带宽数据，仅包括边缘节点数据<p>
+ * 支持按指定的起止时间查询，两者需要同时指定<p>
+ * 支持批量域名查询，多个域名ID用逗号（半角）分隔<p>
+ * 最多可获取最近三年内93天跨度的数据<p>
+ * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；**以上粒度均取该粒度时间段的流量之和**<p>
+ * 使用场景<p>
+ * 客户查询单个域名或多个域名在各个省份及运营商的合并后的实时流量数据<p>
+ * 客户查询单个域名的详细流量数据，进行数据保存及数据分析<p>
+ * 客户查询某一天或某1小时的详细流量区域分布，用于制作流量数据区域用量表<p>
  *
  * @author jiangran@kingsoft.com
  * @date 2016/11/16
  */
-public class ProvinceAndIspRequest extends CommonFieldRequest {
+public class ProvinceAndIspBWRequest extends CommonFieldRequest {
     /**
      * 省份区域名称， 取值详见枚举列表，支持多省份区域查询，多个省份区域用逗号（半角）分隔，缺省为全部省份区域
      * 参考
@@ -100,5 +105,10 @@ public class ProvinceAndIspRequest extends CommonFieldRequest {
         }
 
         return params;
+    }
+
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return new GeneralRequestParam("GetProvinceAndIspBandwidthData","2016-09-01","/2016-09-01/statistics/GetProvinceAndIspBandwidthData");
     }
 }

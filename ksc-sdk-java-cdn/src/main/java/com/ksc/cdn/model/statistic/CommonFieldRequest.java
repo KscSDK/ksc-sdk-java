@@ -13,13 +13,10 @@ import java.util.Map;
 
 /**
  * Created by CrazyHorse on 8/23/16.
- * 标准统计分析查询类
- * 支持按指定的起止时间查询，两者需要同时指定
- * 支持批量域名查询，多个域名ID用逗号（半角）分隔
- * 最多可获取最近三年内93天跨度的数据
- * 时效性：5分钟延迟
+ *
+ * 统计分析查询,基础查询条件
  */
-public class CommonFieldRequest {
+public class CommonFieldRequest implements GeneralRequest{
 
     /**
      * 获取数据起始时间点
@@ -81,6 +78,7 @@ public class CommonFieldRequest {
         DomainIds = domainIds;
     }
 
+    @Override
     public Map<String,String> buildParams() throws KscClientException, ParseException {
         Map<String,String> params=new HashMap<String, String>();
         params.put("CdnType", this.getCdnType());
@@ -125,4 +123,12 @@ public class CommonFieldRequest {
         }
     }
 
+    /**
+     * 未实现,留在子类中实现
+     * @return
+     */
+    @Override
+    public GeneralRequestParam getGeneralRequestParam() {
+        return null;
+    }
 }

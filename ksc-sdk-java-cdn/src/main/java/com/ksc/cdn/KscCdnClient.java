@@ -15,41 +15,8 @@ import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
-import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
-import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
-import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
-import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
-import com.ksc.cdn.model.statistic.flow.FlowRequest;
-import com.ksc.cdn.model.statistic.flow.FlowResult;
-import com.ksc.cdn.model.statistic.hitrate.HitRateDetailRequest;
-import com.ksc.cdn.model.statistic.hitrate.HitRateDetailResult;
-import com.ksc.cdn.model.statistic.hitrate.HitRateRequest;
-import com.ksc.cdn.model.statistic.hitrate.HitRateResult;
-import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailRequest;
-import com.ksc.cdn.model.statistic.httpcode.HttpCodeDetailResult;
-import com.ksc.cdn.model.statistic.httpcode.HttpCodeRequest;
-import com.ksc.cdn.model.statistic.httpcode.HttpCodeResult;
-import com.ksc.cdn.model.statistic.isp.IspRequest;
-import com.ksc.cdn.model.statistic.isp.IspResult;
-import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainRequest;
-import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainResult;
-import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamRequest;
-import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamResult;
-import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamRequest;
-import com.ksc.cdn.model.statistic.live.stream.flow.LiveFlowByStreamResult;
-import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserRequest;
-import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserResult;
-import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamRequest;
-import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamResult;
-import com.ksc.cdn.model.statistic.province.AreaRequest;
-import com.ksc.cdn.model.statistic.province.AreaResult;
-import com.ksc.cdn.model.statistic.province.isp.ProvinceAndIspRequest;
-import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBandwidthResult;
-import com.ksc.cdn.model.statistic.province.isp.flow.ProvinceAndIspFlowResult;
-import com.ksc.cdn.model.statistic.pv.PVRequest;
-import com.ksc.cdn.model.statistic.pv.PVResult;
-import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
-import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
+import com.ksc.cdn.model.statistic.GeneralRequest;
+import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -61,7 +28,7 @@ import java.util.Map;
 /**
  * api接口功能实现
  */
-public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnStatistics{
+public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics {
 
     public KscCdnClient(){}
     public KscCdnClient(String accessKey,String secretKey,String endPoint,String region,String serviceName){
@@ -78,20 +45,6 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETCDNDOMAINS_VERSION, GETCDNDOMAINS_ACTION);
         GetCdnDomainsResult result = this.httpExecute(HttpMethod.GET, GETCDNDOMAINS_URL, getCdnDomainsRequest.buildParams(), buildHeaders, GetCdnDomainsResult.class);
-        return result;
-    }
-
-    @Override
-    public BpsResult getBandwidthData(BpsRequest statisticsQuery) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(BANDWIDTH_VERSION, BANDWIDTH_ACTION);
-        BpsResult result=this.httpExecute(HttpMethod.GET,BANDWIDTH_URL,statisticsQuery.buildParams(),buildHeaders,BpsResult.class);
-        return result;
-    }
-
-    @Override
-    public FlowResult getFlowDataByApi(FlowRequest statisticsQuery) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(FLOW_VERSION, FLOW_ACTION);
-        FlowResult result=this.httpExecute(HttpMethod.GET,FLOW_URL,statisticsQuery.buildParams(),buildHeaders,FlowResult.class);
         return result;
     }
 
@@ -208,115 +161,10 @@ public class KscCdnClient extends KscApiCommon implements KscCdnDomain,KscCdnSta
     }
 
     @Override
-    public HitRateResult getHitRate(HitRateRequest hitRateRequest) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(HITRATE_VERSION, HITRATE_ACTION);
-        HitRateResult hitRateResult = this.httpExecute(HttpMethod.GET, HITRATE_URL, hitRateRequest.buildParams(), buildHeaders, HitRateResult.class);
-        return hitRateResult;
-    }
-
-    @Override
-    public HitRateDetailResult getHitRateDetail(HitRateDetailRequest statisticsQuery) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(HITRATE_DETAIL_VERSION, HITRATE_DETAIL_ACTION);
-        HitRateDetailResult hitRateDetailResult = this.httpExecute(HttpMethod.GET, HITRATE_DETAIL_URL, statisticsQuery.buildParams(), buildHeaders, HitRateDetailResult.class);
-        return hitRateDetailResult;
-    }
-
-    @Override
-    public PVResult getPV(PVRequest statisticsQuery) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(PV_VERSION, PV_ACTION);
-        PVResult pvResult = this.httpExecute(HttpMethod.GET, PV_URL, statisticsQuery.buildParams(), buildHeaders, PVResult.class);
-        return pvResult;
-    }
-
-    @Override
-    public DomainRankingResult getDomainRankingList(DomainRankingRequest domainRankingRequest) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(FLOW_RANK_VERSION, FLOW_RANK_ACTION);
-        DomainRankingResult domainRankingResult = this.httpExecute(HttpMethod.GET, FLOW_RANK_URL, domainRankingRequest.buildParams(), buildHeaders, DomainRankingResult.class);
-        return domainRankingResult;
-    }
-
-    @Override
-    public ProvinceAndIspFlowResult getProvinceAndIspFlow(ProvinceAndIspRequest provinceAndIspRequest) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(PROVINCE_ISP_FLOW_VERSION, PROVINCE_ISP_FLOW_ACTION);
-        ProvinceAndIspFlowResult provinceAndIspFlowResult = this.httpExecute(HttpMethod.GET, PROVINCE_ISP_FLOW_URL, provinceAndIspRequest.buildParams(), buildHeaders, ProvinceAndIspFlowResult.class);
-        return provinceAndIspFlowResult;
-    }
-
-    @Override
-    public ProvinceAndIspBandwidthResult getProvinceAndIspBW(ProvinceAndIspRequest provinceAndIspRequest) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(PROVINCE_ISP_BW_VERSION, PROVINCE_ISP_BW_ACTION);
-        ProvinceAndIspBandwidthResult provinceAndIspBandwidthResult = this.httpExecute(HttpMethod.GET, PROVINCE_ISP_BW_URL, provinceAndIspRequest.buildParams(), buildHeaders, ProvinceAndIspBandwidthResult.class);
-        return provinceAndIspBandwidthResult;
-    }
-
-    @Override
-    public HttpCodeResult getHttpCodeData(HttpCodeRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(HTTPCODE_VERSION, HTTPCODE_ACTION);
-        HttpCodeResult httpCodeResult = this.httpExecute(HttpMethod.GET, HTTPCODE_URL, request.buildParams(), buildHeaders, HttpCodeResult.class);
-        return httpCodeResult;
-    }
-
-    @Override
-    public HttpCodeDetailResult getHttpCodeDetailedData(HttpCodeDetailRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(HTTPCODE_DETAIL_VERSION, HTTPCODE_DETAIL_ACTION);
-        HttpCodeDetailResult httpCodeDetailResult = this.httpExecute(HttpMethod.GET, HTTPCODE_DETAIL_URL, request.buildParams(), buildHeaders, HttpCodeDetailResult.class);
-        return httpCodeDetailResult;
-    }
-
-    @Override
-    public TopUrlResult getTopUrl(TopUrlRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(TOPURL_VERSION, TOPURL_ACTION);
-        TopUrlResult topUrlResult = this.httpExecute(HttpMethod.GET, TOPURL_URL, request.buildParams(), buildHeaders, TopUrlResult.class);
-        return topUrlResult;
-    }
-
-    @Override
-    public AreaResult getAreaData(AreaRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(AREA_VERSION, AREA_ACTION);
-        AreaResult areaResult = this.httpExecute(HttpMethod.GET, AREA_URL, request.buildParams(), buildHeaders, AreaResult.class);
-        return areaResult;
-    }
-
-    @Override
-    public IspResult getIspData(IspRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(ISP_VERSION, ISP_ACTION);
-        IspResult ispResult = this.httpExecute(HttpMethod.GET, ISP_URL, request.buildParams(), buildHeaders, IspResult.class);
-        return ispResult;
-    }
-
-    @Override
-    public LiveFlowByStreamResult getLiveFlowDataByStream(LiveFlowByStreamRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_FLOW_VERSION, LIVE_STREAM_FLOW_ACTION);
-        LiveFlowByStreamResult liveFlowByStreamResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_FLOW_URL, request.buildParams(), buildHeaders, LiveFlowByStreamResult.class);
-        return liveFlowByStreamResult;
-    }
-
-    @Override
-    public LiveBandwidthByStreamResult getLiveBandwidthDataByStream(LiveBandwidthByStreamRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_BANDWIDTH_VERSION, LIVE_STREAM_BANDWIDTH_ACTION);
-        LiveBandwidthByStreamResult liveBandwidthByStreamResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_BANDWIDTH_URL, request.buildParams(), buildHeaders, LiveBandwidthByStreamResult.class);
-        return liveBandwidthByStreamResult;
-    }
-
-    @Override
-    public LiveOnlineUserByDomainResult getLiveOnlineUserDataByDomain(LiveOnlineUserByDomainRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(LIVE_DOMAIN_ONLINEUSER_VERSION, LIVE_DOMAIN_ONLINEUSER_ACTION);
-        LiveOnlineUserByDomainResult liveOnlineUserResult = this.httpExecute(HttpMethod.GET, LIVE_DOMAIN_ONLINEUSER_URL, request.buildParams(), buildHeaders, LiveOnlineUserByDomainResult.class);
-        return liveOnlineUserResult;
-    }
-
-    @Override
-    public LiveOnlineUserByStreamResult getLiveOnlineUserDataByStream(LiveOnlineUserByStreamRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_ONLINEUSER_VERSION, LIVE_STREAM_ONLINEUSER_ACTION);
-        LiveOnlineUserByStreamResult liveOnlineUserByStreamResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_ONLINEUSER_URL, request.buildParams(), buildHeaders, LiveOnlineUserByStreamResult.class);
-        return liveOnlineUserByStreamResult;
-
-    }
-
-    @Override
-    public LiveTopOnlineUserResult getLiveTopOnlineUserData(LiveTopOnlineUserRequest request) throws Exception {
-        Map<String, String> buildHeaders = this.buildHeaders(LIVE_STREAM_ONLINEUSER_TOP_VERSION, LIVE_STREAM_ONLINEUSER_TOP_ACTION);
-        LiveTopOnlineUserResult liveTopOnlineUserResult = this.httpExecute(HttpMethod.GET, LIVE_STREAM_ONLINEUSER_TOP_URL, request.buildParams(), buildHeaders, LiveTopOnlineUserResult.class);
-        return liveTopOnlineUserResult;
+    public R generalGetStatisticsData(GeneralRequest request, Class rType) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        R result= (R) this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, rType);
+        return result;
     }
 }
