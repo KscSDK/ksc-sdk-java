@@ -31,6 +31,14 @@ import java.util.Map;
 public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics {
 
     public KscCdnClient(){}
+
+    public KscCdnClient(String accessKey,String secretKey){
+        this.setSecretAccessKey(secretKey);
+        this.setAccessKey(accessKey);
+        this.setEndPoint("http://cdn.api.ksyun.com");
+        this.setApiRegion("cn-shanghai-1");
+        this.setApiServiceName("cdn");
+    }
     public KscCdnClient(String accessKey,String secretKey,String endPoint,String region,String serviceName){
         this.setSecretAccessKey(secretKey);
         this.setAccessKey(accessKey);

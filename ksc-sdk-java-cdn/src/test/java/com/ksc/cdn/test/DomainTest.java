@@ -38,6 +38,8 @@ public class DomainTest {
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
+        /*client=new KscCdnClient("AKTPf-QTNRxOTfOJsue-gZ4Saw",
+                "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==");*/
         domainId="2D09QXK";
 
     }
