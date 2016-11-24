@@ -8,7 +8,6 @@ import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

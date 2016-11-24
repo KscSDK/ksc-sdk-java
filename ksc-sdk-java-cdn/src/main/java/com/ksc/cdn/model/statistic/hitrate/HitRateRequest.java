@@ -4,11 +4,8 @@ import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.statistic.GeneralRequestParam;
 import com.ksc.cdn.model.valid.CommonValidUtil;
-import com.ksc.cdn.model.valid.FieldValidate;
-import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
-import java.util.HashMap;
 import java.util.Map;
 
 /**
