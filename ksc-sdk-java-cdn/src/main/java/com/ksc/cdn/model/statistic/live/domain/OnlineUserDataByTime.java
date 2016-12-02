@@ -20,4 +20,27 @@ public class OnlineUserDataByTime {
      */
     private OnlineUserDataByDomain[] Domains;
 
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public Long getOnlineUser() {
+        return OnlineUser;
+    }
+
+    public void setOnlineUser(Long onlineUser) {
+        OnlineUser = onlineUser;
+    }
+
+    public OnlineUserDataByDomain[] getDomains() {
+        return Domains;
+    }
+
+    public void setDomains(OnlineUserDataByDomain[] domains) {
+        Domains = domains;
+    }
 }

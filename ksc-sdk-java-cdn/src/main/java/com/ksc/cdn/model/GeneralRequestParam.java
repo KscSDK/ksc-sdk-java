@@ -1,4 +1,4 @@
-package com.ksc.cdn.model.statistic;
+package com.ksc.cdn.model;
 
 /**
  * GeneralRequestParam

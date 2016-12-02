@@ -1,8 +1,8 @@
 package com.ksc.cdn.model.statistic.live;
 
 import com.ksc.cdn.KscClientException;
-import com.ksc.cdn.model.statistic.GeneralRequest;
-import com.ksc.cdn.model.statistic.GeneralRequestParam;
+import com.ksc.cdn.model.GeneralRequest;
+import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.valid.FieldValidate;
 import com.ksc.cdn.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;

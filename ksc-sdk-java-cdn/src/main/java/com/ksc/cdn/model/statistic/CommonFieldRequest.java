@@ -1,7 +1,8 @@
 package com.ksc.cdn.model.statistic;
 
 import com.ksc.cdn.KscClientException;
-import com.ksc.cdn.model.valid.CommonValidUtil;
+import com.ksc.cdn.model.GeneralRequest;
+import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.valid.FieldValidate;
 import com.ksc.cdn.util.DateUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -16,7 +17,7 @@ import java.util.Map;
  *
  * 统计分析查询,基础查询条件
  */
-public class CommonFieldRequest implements GeneralRequest{
+public class CommonFieldRequest implements GeneralRequest {
 
     /**
      * 获取数据起始时间点

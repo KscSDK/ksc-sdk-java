@@ -163,7 +163,11 @@ public class KscApiCommon {
                 if (StringUtils.isNotBlank(contentType) && StringUtils.equals(contentType, ContentType.APPLICATION_JSON.getMimeType())) {
                     requestBody = new Gson().toJson(requestContent);
                     awsHeaders.put("content-type", ContentType.APPLICATION_JSON.getMimeType());
-                } else {
+                } else if((StringUtils.isNotBlank(contentType) && StringUtils.equals(contentType, ContentType.TEXT_XML.getMimeType()))){
+                    requestBody=(String) ((Map<String, Object>) requestContent).get("body");
+                    awsHeaders.put("content-type", ContentType.TEXT_XML.getMimeType());
+                }
+                else  {
                     requestBody = HttpClientUtil.getUrlEncodedString((Map<String, String>) requestContent);
                 }
                 awsHeaders = AwsSignerV4Util.getAuthHeaderForPost(uri, requestBody, requestHeaders, apiServiceName, apiRegion, accessKey, secretAccessKey);
@@ -251,14 +255,19 @@ public class KscApiCommon {
             log.info("openAPI url:{}, response code:{}, response content:{}", url, statusCode, responseString);
         }
 
-        if (statusCode == HttpStatus.SC_OK) {
-            T t = new Gson().fromJson(responseString, clazz);
+        if (statusCode == HttpStatus.SC_OK||statusCode==HttpStatus.SC_CREATED) {
+            T t;
+            if(clazz.equals(String.class)) {
+                t = (T) responseString;
+            }else {
+                t = new Gson().fromJson(responseString, clazz);
+            }
             return t;
         } else {
-            Map error = new Gson().fromJson(responseString, Map.class);
-            errorCode=((Map)error.get("Error")).get("Code").toString();
-            responseString=((Map)error.get("Error")).get("Message").toString();
-            requestId=error.get("RequestId").toString();
+            Map error = new Gson().fromJson(responseString.toLowerCase(), Map.class);
+            errorCode=((Map)error.get("error")).get("code").toString();
+            responseString=((Map)error.get("error")).get("message").toString();
+            requestId=error.get("requestid").toString();
             throw new KscClientException(errorCode,responseString,requestId);
         }
     }

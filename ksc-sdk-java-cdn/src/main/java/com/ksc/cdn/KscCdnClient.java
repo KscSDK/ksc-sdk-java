@@ -2,6 +2,7 @@ package com.ksc.cdn;
 
 
 import com.ksc.HttpMethod;
+import com.ksc.cdn.model.content.*;
 import com.ksc.cdn.model.domain.createdomain.AddDomainRequest;
 import com.ksc.cdn.model.domain.createdomain.AddDomainResult;
 import com.ksc.cdn.model.domain.domainbase.GetDomainBaseResult;
@@ -15,20 +16,26 @@ import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
-import com.ksc.cdn.model.statistic.GeneralRequest;
-import com.ksc.cdn.model.statistic.GeneralRequestParam;
+import com.ksc.cdn.model.GeneralRequest;
+import com.ksc.cdn.model.GeneralRequestParam;
+import com.ksc.cdn.model.logsetting.*;
 import com.ksc.cdn.model.valid.CommonValidUtil;
+import org.apache.commons.codec.binary.Base64;
 import org.apache.commons.lang3.StringUtils;
+import org.apache.http.entity.ContentType;
+import org.jdom2.Element;
+import org.jdom2.output.XMLOutputter;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.ByteArrayOutputStream;
+import java.util.*;
+import java.util.regex.Pattern;
 
 /**
  * api接口功能实现
  */
-public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics {
+public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics,KscCdnLogSetting,KscCdnContent {
 
     public KscCdnClient(){}
 
@@ -174,5 +181,135 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
         R result= (R) this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, rType);
         return result;
+    }
+
+    @Override
+    public ListLogSettingsResult getLogsetting(ListLogSettingsRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        ListLogSettingsResult listLogSettingsResult = this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, ListLogSettingsResult.class);
+        return listLogSettingsResult;
+    }
+
+    @Override
+    public UpdateLogSettingResult updateLogsetting(UpdateLogSettingRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(),true);
+        UpdateLogSettingResult updateLogSettingResult = this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, UpdateLogSettingResult.class);
+        return updateLogSettingResult;
+    }
+
+    @Override
+    public void deleteLogsetting(DeleteLogSettingRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        String apiUrl = generalRequestParam.getUrl() + "/" + Base64.encodeBase64String(request.getDomain().getBytes("UTF-8")) + "/logs";
+//        apiUrl="/2016-05-20/log/Y2RuLnJ0bXBsaXZlLmtzLWNkbi5jb20%253D/logs";
+        this.httpExecute(HttpMethod.DELETE,apiUrl,request.buildParams(),buildHeaders,Void.class);
+    }
+
+    @Override
+    public DownloadLogSettingResult downloadLogsetting(DownloadLogSettingRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        String apiUrl = generalRequestParam.getUrl() + "/" + Base64.encodeBase64String(request.getDomain().getBytes("UTF-8")) + "/logs";
+        DownloadLogSettingResult downloadLogSettingResult = this.httpExecute(HttpMethod.GET, apiUrl, request.buildParams(), buildHeaders, DownloadLogSettingResult.class);
+        return downloadLogSettingResult;
+    }
+
+    @Override
+    public void addRefreshFiles(RefreshFilesRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(),true);
+        this.httpExecute(HttpMethod.POST,generalRequestParam.getUrl(),request,buildHeaders,Void.class);
+    }
+
+    @Override
+    public void preloadFiles(PreloadFilesRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, List<String>> domains = new HashMap<String, List<String>>();
+        for (String url : request.getFiles()) {
+            String strDomain = getDomainByUrl(url);
+            List<String> urls = new ArrayList<String>();
+            if (domains.containsKey(strDomain)) {
+                urls = domains.get(strDomain);
+            } else {
+                domains.put(strDomain, urls);
+            }
+            urls.add(url.replaceAll("http://" + strDomain, ""));
+        }
+        Set<Map.Entry<String, List<String>>> entries = domains.entrySet();
+        for (Map.Entry<String, List<String>> entry : entries) {
+            String domain = entry.getKey();
+            List<String> urls = entry.getValue();
+            //1.生成一个根节点
+            Element rss = new Element("PreloadBatch");
+            Element paths = new Element("Paths");
+            Element items = new Element("Items");
+            String distributionId = Base64.encodeBase64String(domain.getBytes("UTF-8"));
+
+            for (String url : urls) {
+                Element u = new Element("Path");
+                u.setText(url);
+                items.addContent(u);
+            }
+            Element quantity = new Element("Quantity");
+            quantity.setText(String.valueOf(urls.size()));
+            paths.addContent(quantity);
+            paths.addContent(items);
+            Element callerReference = new Element("CallerReference");
+            callerReference.setText(UUID.randomUUID().toString());
+            paths.addContent(callerReference);
+            rss.addContent(paths);
+            XMLOutputter XMLOut = new XMLOutputter();
+            ByteArrayOutputStream bos = new ByteArrayOutputStream();
+            XMLOut.output(rss, bos);
+            String content = bos.toString("UTF-8");
+            log.info(content);
+
+            String preloadUrl = "%s%s/preload";
+
+            preloadUrl = String.format(preloadUrl, generalRequestParam.getUrl(),distributionId);
+
+            Map<String, String> header = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+            header.put("content-type", ContentType.TEXT_XML.getMimeType());
+
+            preloadUrl = String.format(preloadUrl, distributionId);
+            Map<String, Object> params = new HashMap<String, Object>();
+            params.put("body", content);
+
+            this.httpExecute(HttpMethod.POST,preloadUrl,params,header,String.class);
+        }
+    }
+
+    @Override
+    public String getQuotaConfig(GetQuotaConfigRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        String xmlResult = this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), new HashMap(), buildHeaders, String.class);
+        return xmlResult;
+    }
+
+    @Override
+    public String getQuotaUsageAmount(GetQuotaUsageAmountRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        String xmlResult = this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), new HashMap(), buildHeaders, String.class);
+        return xmlResult;
+    }
+
+    @Override
+    public String listInvalidationsByContentPath(ListInvalidationsByContentPathRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
+        String xmlResult = this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, String.class);
+        return xmlResult;
+    }
+
+    private String getDomainByUrl(String url) {
+        Pattern p = Pattern.compile("(?<=://|)([^\\s/]+\\.)+[^\\s/:]+", Pattern.CASE_INSENSITIVE);
+        java.util.regex.Matcher matcher = p.matcher(url);
+        matcher.find();
+        return matcher.group();
     }
 }

@@ -1,6 +1,6 @@
 package com.ksc.cdn;
 
-import com.ksc.cdn.model.statistic.GeneralRequest;
+import com.ksc.cdn.model.GeneralRequest;
 
 /**
  * KscCdnStatistics
