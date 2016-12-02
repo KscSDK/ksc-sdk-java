@@ -17,8 +17,8 @@ public class LogSettingTest {
     KscCdnLogSetting client;
     @Before
     public void setup(){
-        client=new KscCdnClient("AKTPXI1AeCOGT8GOq1gh5O8Xlw",
-                "ONSoVHDBb0IepB879k3Z48J/dkZcdGHqZM/6W/nJBEK+WS4wCkNJFhf2UCbTmgf2Dw==",
+        client=new KscCdnClient("AKTPsQVsb82QRs2dmRfZR0mYuA",
+                "OLnZ7H7JZpTiJTgBC847I5lETIB7j64uTSGCgooLxDSY+Bn5RzyTu7fRLe4Mtps8Gw==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -26,6 +26,11 @@ public class LogSettingTest {
                 "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==");*/
 
     }
+
+    /**
+     * 查询日志列表
+     * @throws Exception
+     */
     @Test
     public void testGetLogsetting() throws Exception{
         ListLogSettingsRequest request=new ListLogSettingsRequest();
@@ -38,6 +43,11 @@ public class LogSettingTest {
         Assert.assertNotNull(logsetting);
         Assert.assertTrue(logsetting.getData().length>0);
     }
+
+    /**
+     * 日志更新（创建、开启、关闭）
+     * @throws Exception
+     */
     @Test
     public void testUpdateLogsetting() throws Exception{
         UpdateLogSettingRequest request=new UpdateLogSettingRequest();
@@ -48,6 +58,11 @@ public class LogSettingTest {
         Assert.assertNotNull(updateLogSettingResult);
 
     }
+
+    /**
+     * 删除日志
+     * @throws Exception
+     */
     @Test
     public void testDeleteLogsetting() throws Exception{
         DeleteLogSettingRequest request=new DeleteLogSettingRequest();
@@ -56,6 +71,11 @@ public class LogSettingTest {
         request.setIds("476406");
         client.deleteLogsetting(request);
     }
+
+    /**
+     * 日志下载
+     * @throws Exception
+     */
     @Test
     public void testDownloadLogsetting() throws Exception{
         DownloadLogSettingRequest request=new DownloadLogSettingRequest();

@@ -324,18 +324,18 @@ public class HttpClientUtil {
      * @return
      */
     private static BasicHeader[] headerConverter(Map<String, String> headers) {
+        List<Header> headerList = new ArrayList<Header>(headers.size());
+        headerList.add(new BasicHeader("User-Agent","ksc-cdn-java-sdk"));
         if (headers != null && headers.size() > 0) {
-            List<Header> headerList = new ArrayList<Header>(headers.size());
             for (Entry<String, String> entry : headers.entrySet()) {
                 String key = entry.getKey();
                 String val = entry.getValue();
+
                 headerList.add(new BasicHeader(key, val));
                 log.info("request header: \"{}\": \"{}\"", key, val);
             }
-            return headerList.toArray(new BasicHeader[0]);
-        } else {
-            return null;
         }
+        return headerList.toArray(new BasicHeader[0]);
     }
 
     /**
