@@ -184,31 +184,6 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     }
 
     @Override
-    public ListLogSettingsResult getLogsetting(ListLogSettingsRequest request) throws Exception {
-        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
-        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
-        ListLogSettingsResult listLogSettingsResult = this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, ListLogSettingsResult.class);
-        return listLogSettingsResult;
-    }
-
-    @Override
-    public UpdateLogSettingResult updateLogsetting(UpdateLogSettingRequest request) throws Exception {
-        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
-        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(),true);
-        UpdateLogSettingResult updateLogSettingResult = this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, UpdateLogSettingResult.class);
-        return updateLogSettingResult;
-    }
-
-    @Override
-    public void deleteLogsetting(DeleteLogSettingRequest request) throws Exception {
-        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
-        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
-        String apiUrl = generalRequestParam.getUrl() + "/" + Base64.encodeBase64String(request.getDomain().getBytes("UTF-8")) + "/logs";
-//        apiUrl="/2016-05-20/log/Y2RuLnJ0bXBsaXZlLmtzLWNkbi5jb20%253D/logs";
-        this.httpExecute(HttpMethod.DELETE,apiUrl,request.buildParams(),buildHeaders,Void.class);
-    }
-
-    @Override
     public DownloadLogSettingResult downloadLogsetting(DownloadLogSettingRequest request) throws Exception {
         GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());

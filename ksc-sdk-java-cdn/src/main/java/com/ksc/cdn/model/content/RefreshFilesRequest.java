@@ -15,7 +15,6 @@ import java.util.UUID;
  * @author jiangran@kingsoft.com
  * @date 2016/12/1
  */
-@Deprecated
 public class RefreshFilesRequest implements GeneralRequest {
     /**
      * uuid唯一标示

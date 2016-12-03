@@ -28,51 +28,6 @@ public class LogSettingTest {
     }
 
     /**
-     * 查询日志列表
-     * @throws Exception
-     */
-    @Test
-    public void testGetLogsetting() throws Exception{
-        ListLogSettingsRequest request=new ListLogSettingsRequest();
-        request.setPageSize("10");
-        request.setPageIndex("0");
-        request.setGranularity("1");
-        request.setStatus("1");
-        request.setType("1");
-        ListLogSettingsResult logsetting = client.getLogsetting(request);
-        Assert.assertNotNull(logsetting);
-        Assert.assertTrue(logsetting.getData().length>0);
-    }
-
-    /**
-     * 日志更新（创建、开启、关闭）
-     * @throws Exception
-     */
-    @Test
-    public void testUpdateLogsetting() throws Exception{
-        UpdateLogSettingRequest request=new UpdateLogSettingRequest();
-        request.setDomain("cdn.rtmplive.ks-cdn.com");
-        request.setGranularity("1");
-        request.setStatus("1");
-        UpdateLogSettingResult updateLogSettingResult = client.updateLogsetting(request);
-        Assert.assertNotNull(updateLogSettingResult);
-
-    }
-
-    /**
-     * 删除日志
-     * @throws Exception
-     */
-    @Test
-    public void testDeleteLogsetting() throws Exception{
-        DeleteLogSettingRequest request=new DeleteLogSettingRequest();
-//        request.setDomain("appinstall2.ks3-cn-beijing.ksyun.com");
-        request.setDomain("test23.cdn.ksyun.com");
-        request.setIds("476406");
-        client.deleteLogsetting(request);
-    }
-
-    /**
      * 日志下载
      * @throws Exception
      */

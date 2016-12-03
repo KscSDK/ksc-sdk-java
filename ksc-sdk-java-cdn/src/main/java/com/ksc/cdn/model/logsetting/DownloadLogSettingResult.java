@@ -6,7 +6,6 @@ package com.ksc.cdn.model.logsetting;
  * @author jiangran@kingsoft.com
  * @date 2016/11/30
  */
-@Deprecated
 public class DownloadLogSettingResult {
     private Integer id;
     private Integer domainId;

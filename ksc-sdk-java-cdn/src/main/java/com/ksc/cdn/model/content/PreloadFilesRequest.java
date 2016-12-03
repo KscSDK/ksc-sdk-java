@@ -14,7 +14,6 @@ import java.util.Map;
  * @author jiangran@kingsoft.com
  * @date 2016/12/1
  */
-@Deprecated
 public class PreloadFilesRequest implements GeneralRequest {
     private List<String> files;
 

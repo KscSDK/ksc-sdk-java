@@ -17,7 +17,6 @@ import java.util.Map;
  * @author jiangran@kingsoft.com
  * @date 2016/12/1
  */
-@Deprecated
 public class ListInvalidationsByContentPathRequest implements GeneralRequest {
     /**
      * 支持模糊查询,查询条件
