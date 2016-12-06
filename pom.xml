@@ -40,6 +40,7 @@
 		<module>ksc-sdk-java-monitor</module>
 		<module>ksc-sdk-java-network</module>
 		<module>ksc-sdk-java-epc</module>
+		<module>ksc-sdk-java-cdn</module>
 	</modules>
 	<scm>
 		<url>https://github.com/ksc/ksc-sdk-java.git</url>

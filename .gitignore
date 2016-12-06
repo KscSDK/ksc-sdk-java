@@ -13,3 +13,4 @@ test-output/
 *\.pydevproject
 *\.vscode/
 \.vscode/
+ksc-sdk-java-cdn/logs
