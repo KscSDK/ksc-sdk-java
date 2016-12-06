@@ -1,5 +1,7 @@
 package com.ksc.network.vpc;
 
+import com.ksc.network.vpc.model.DescribeInternetGatewaysRequest;
+import com.ksc.network.vpc.model.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.DescribeSecurityGroupsRequest;
@@ -54,6 +56,7 @@ public interface KSCVPC {
 	 * @sample KSC.DescribeSubnets
 	 */
 	public DescribeSubnetsResult describeSubnets(DescribeSubnetsRequest describeSubnetsRequest);
+
 	/**
 	 * <p>
 	 * Describes one or more of your SecurityGroups.
@@ -61,8 +64,24 @@ public interface KSCVPC {
 	 * 
 	 * @param describeSecurityGroupsRequest
 	 *            Contains the parameters for DescribeSecurityGroups.
-	 * @return Result of the DescribeSecurityGroups operation returned by the service.
+	 * @return Result of the DescribeSecurityGroups operation returned by the
+	 *         service.
 	 * @sample KSC.DescribeSecurityGroups
 	 */
-	public DescribeSecurityGroupsResult describeSecurityGroups(DescribeSecurityGroupsRequest describeSecurityGroupsRequest);
+	public DescribeSecurityGroupsResult describeSecurityGroups(
+			DescribeSecurityGroupsRequest describeSecurityGroupsRequest);
+
+	/**
+	 * <p>
+	 * Describes one or more of your InternetGateways.
+	 * </p>
+	 * 
+	 * @param describeInternetGatewaysRequest
+	 *            Contains the parameters for DescribeInternetGateways.
+	 * @return Result of the DescribeInternetGateways operation returned by the
+	 *         service.
+	 * @sample KSC.DescribeInternetGateways
+	 */
+	public DescribeInternetGatewaysResult describeInternetGateways(
+			DescribeInternetGatewaysRequest describeInternetGatewaysRequest);
 }

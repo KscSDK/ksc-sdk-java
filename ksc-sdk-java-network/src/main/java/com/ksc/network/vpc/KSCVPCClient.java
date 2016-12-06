@@ -22,6 +22,8 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
+import com.ksc.network.vpc.model.DescribeInternetGatewaysRequest;
+import com.ksc.network.vpc.model.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.DescribeSecurityGroupsRequest;
@@ -30,6 +32,8 @@ import com.ksc.network.vpc.model.DescribeSubnetsRequest;
 import com.ksc.network.vpc.model.DescribeSubnetsResult;
 import com.ksc.network.vpc.model.DescribeVpcsRequest;
 import com.ksc.network.vpc.model.DescribeVpcsResult;
+import com.ksc.network.vpc.model.transform.DescribeInternetGatewaysRequestMarshaller;
+import com.ksc.network.vpc.model.transform.DescribeInternetGatewaysResultStaxUnmarshaller;
 import com.ksc.network.vpc.model.transform.DescribeNetworkInterfacesRequestMarshaller;
 import com.ksc.network.vpc.model.transform.DescribeNetworkInterfacesResultStaxUnmarshaller;
 import com.ksc.network.vpc.model.transform.DescribeSecurityGroupsRequestMarshaller;
@@ -378,6 +382,38 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC{
 
 			StaxResponseHandler<DescribeSecurityGroupsResult> responseHandler = new StaxResponseHandler<DescribeSecurityGroupsResult>(
 					new DescribeSecurityGroupsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeInternetGatewaysResult describeInternetGateways(
+			DescribeInternetGatewaysRequest describeInternetGatewaysRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeInternetGatewaysRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext
+				.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeInternetGatewaysRequest> request = null;
+		Response<DescribeInternetGatewaysResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeInternetGatewaysRequestMarshaller().marshall(super
+						.beforeMarshalling(describeInternetGatewaysRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeInternetGatewaysResult> responseHandler = new StaxResponseHandler<DescribeInternetGatewaysResult>(
+					new DescribeInternetGatewaysResultStaxUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();

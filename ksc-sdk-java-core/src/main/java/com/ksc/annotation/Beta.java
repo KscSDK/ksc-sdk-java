@@ -21,10 +21,10 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The class or method to which this annotation is applied is in beta mode. This
+ * The class or method to which this valid is applied is in beta mode. This
  * means the annotated class or method is a relatively new API that may have
  * bugs, complexity and usability issues that we have not fully anticipated. We
- * will remove this annotation from the class or method once things get more
+ * will remove this valid from the class or method once things get more
  * settled.
  */
 @Documented

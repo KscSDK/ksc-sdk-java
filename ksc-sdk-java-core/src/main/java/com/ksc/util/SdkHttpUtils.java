@@ -202,6 +202,9 @@ public class SdkHttpUtils {
             } else if (!resultUri.endsWith("/")) {
                 resultUri += "/";
             }
+            
+            path = urlEncode(path, true);
+            
             if (escapeDoubleSlash) {
                 resultUri += path.replace("//", "/%2F");
             } else {

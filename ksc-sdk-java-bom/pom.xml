@@ -5,7 +5,7 @@
   <parent>
 	<groupId>com.ksc</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
-	<version>0.1.5</version>
+	<version>0.1.9</version>
   </parent>
   <artifactId>ksc-sdk-java-bom</artifactId>
   <packaging>pom</packaging>
@@ -18,31 +18,31 @@
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-core</artifactId>
 		<optional>false</optional>
-		<version>0.1.5</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-kec</artifactId>
 		<optional>false</optional>
-		<version>0.1.5</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-network</artifactId>
 		<optional>false</optional>
-		<version>0.1.5</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-monitor</artifactId>
 		<optional>false</optional>
-		<version>0.1.5</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-epc</artifactId>
 		<optional>false</optional>
-		<version>0.1.5</version>
+		<version>0.1.9</version>
 	</dependency>
 </dependencies>
   </dependencyManagement>

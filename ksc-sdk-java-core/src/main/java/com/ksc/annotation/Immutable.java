@@ -33,7 +33,7 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * The class to which this annotation is applied is immutable.  This means that
+ * The class to which this valid is applied is immutable.  This means that
  * its state cannot be seen to change by callers, which implies that
  * <ul>
  * <li> all public fields are final, </li>
