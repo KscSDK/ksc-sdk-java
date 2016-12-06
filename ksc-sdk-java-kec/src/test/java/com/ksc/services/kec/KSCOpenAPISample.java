@@ -16,6 +16,8 @@ import com.ksc.kec.model.StartInstancesRequest;
 import com.ksc.kec.model.StartInstancesResult;
 import com.ksc.kec.model.StopInstancesRequest;
 import com.ksc.kec.model.StopInstancesResult;
+import com.ksc.regions.InMemoryRegionImpl;
+import com.ksc.regions.Region;
 
 public class KSCOpenAPISample {
 
@@ -75,7 +77,7 @@ public class KSCOpenAPISample {
 		 * profile by reading from the credentials file located at
 		 * (~/.aws/credentials).
 		 */
-		// Create the AmazonEC2Client object so we can call various APIs.
+		// Create the KSCKECClient object so we can call various APIs.
 		// DescribeInstances sample
 		KSCKECClient kec_client = new KSCKECClient();
 
@@ -83,7 +85,8 @@ public class KSCOpenAPISample {
 		kec_client.setServiceNameIntern("kec");
 
 		DescribeInstancesRequest describe_instances_request = new DescribeInstancesRequest();
-		describe_instances_request.withInstanceIds("9e53b71e-f49f-4ec8-9718-3aad3465a303");
+		//describe_instances_request.withInstanceIds("9e53b71e-f49f-4ec8-9718-3aad3465a303");
+		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult describe_instances_result = kec_client
 				.describeInstances(describe_instances_request);
 		log.info(describe_instances_result);
@@ -95,6 +98,8 @@ public class KSCOpenAPISample {
 		KSCKECClient kec_client = new KSCKECClient();
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
 		kec_client.setServiceNameIntern("kec");
+		//Region region=new Region(new InMemoryRegionImpl("cn-shanghai-3",null,true));
+		//kec_client.setRegion(region);
 		DescribeImagesResult result=kec_client.describeImages(request);
 		log.info(result);
 	}

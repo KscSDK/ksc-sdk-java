@@ -74,6 +74,8 @@ public class DescribeInstancesRequest extends KscWebServiceRequest implements
 	
 	private Integer marker;
 	
+	private String Search;
+	
 	/**
 	 * <p>
 	 * One or more instance IDs.
@@ -360,4 +362,13 @@ public class DescribeInstancesRequest extends KscWebServiceRequest implements
 	public void setMarker(Integer marker) {
 		this.marker = marker;
 	}
+
+	public String getSearch() {
+		return Search;
+	}
+
+	public void setSearch(String search) {
+		Search = search;
+	}
+	
 }
