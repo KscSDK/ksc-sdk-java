@@ -1,6 +1,6 @@
 # KSC SDK for Java 
-
-## Table of Contents
+  
+ ## Table of Contents
 * Requirements
 * Usage
 * API Dosc
