@@ -1,6 +1,6 @@
 # KSC SDK for Java 
-
-## Table of Contents
+  
+ ## Table of Contents
 * Requirements
 * Usage
 * API Dosc
@@ -83,6 +83,7 @@ AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secr
 * [VPC OpenAPI][VPCOpenAPI]
 * [EIP OpenAPI][EIPOpenAPI]
 * [SLB OpenAPI][SLBOpenAPI]
+* [VCS OpenAPI][VCSOpenAPI]
 
 
 ## Features
@@ -95,5 +96,6 @@ AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secr
 [VPCOpenAPI]: http://www.ksyun.com/doc/art/id/1661
 [EIPOpenAPI]: http://www.ksyun.com/doc/cat/id/561
 [SLBOpenAPI]: http://www.ksyun.com/doc/art/id/1662
+[VCSOpenAPI]: https://www.ksyun.com/doc/cat/id/443
 [ksc-sdk-java-github]: https://github.com/KscSDK/ksc-sdk-java
 [example]: https://github.com/KscSDK/ksc-sdk-java/blob/master/README_SAMPLE.md

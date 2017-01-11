@@ -44,6 +44,12 @@
 		<optional>false</optional>
 		<version>0.1.9</version>
 	</dependency>
+    <dependency>
+		<groupId>com.ksc</groupId>
+		<artifactId>ksc-sdk-java-vcs</artifactId>
+		<optional>false</optional>
+		<version>0.1.9</version>
+	</dependency>
 </dependencies>
   </dependencyManagement>
 </project>
