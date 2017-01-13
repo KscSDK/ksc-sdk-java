@@ -1,12 +1,14 @@
 package com.ksc.vcs.model.transform;
 
 import com.ksc.KscServiceException;
+import com.ksc.http.HttpResponse;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.vcs.model.BaseResult;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
@@ -30,22 +32,31 @@ public abstract class BaseJsonUnmarshaller<T, R> implements Unmarshaller<T, R> {
     }
 
     public void handleSuccess(T t, R r) {
-        if (t instanceof BaseResult && r instanceof JsonUnmarshallerContext) {
-            ((BaseResult) t).setStatusCode(((JsonUnmarshallerContext) r).getHttpResponse().getStatusCode());
-            String requestId = ((JsonUnmarshallerContext) r).getHttpResponse().getHeaders().get("x-live-request-id");
-            ((BaseResult) t).setRequestId(requestId);
-            ((BaseResult) t).setCode(((JsonUnmarshallerContext) r).getHttpResponse().getStatusText());
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(((JsonUnmarshallerContext) r).getHttpResponse().getContent()));
-            StringBuilder sb = new StringBuilder();
-            String line = "";
-            try {
-                while ((line = bufferedReader.readLine()) != null) {
-                    sb.append(line);
+        if (t != null && r != null && t instanceof BaseResult && r instanceof JsonUnmarshallerContext) {
+            HttpResponse httpResponse = ((JsonUnmarshallerContext) r).getHttpResponse();
+            if (httpResponse != null) {
+                ((BaseResult) t).setStatusCode(httpResponse.getStatusCode());
+                String requestId = httpResponse.getHeaders().get("x-live-request-id");
+                ((BaseResult) t).setRequestId(requestId);
+                ((BaseResult) t).setCode(httpResponse.getStatusText());
+
+                InputStream content = httpResponse.getContent();
+                if (content != null) {
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(content));
+                    StringBuilder sb = new StringBuilder();
+                    String line = "";
+                    try {
+                        while ((line = bufferedReader.readLine()) != null) {
+                            sb.append(line);
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    ((BaseResult) t).setMessage(sb.toString());
+                } else {
+                    ((BaseResult) t).setMessage("");
                 }
-            } catch (IOException e) {
-                e.printStackTrace();
             }
-            ((BaseResult) t).setMessage(sb.toString());
         }
     }
 }
