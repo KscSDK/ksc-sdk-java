@@ -445,4 +445,4 @@ public class DescribeSubnetsResultStaxUnmarshaller
 说明
 ===
 **上面介绍的是每个模块需要添加一个新的action的sdk时所需要实现的代码部分**  
-**目前已经实现了KEC|EIP|VPC|SLB|EPC|monitor的一些action,具体细节可参考各模块的实现**
+**目前已经实现了KEC|EIP|VPC|SLB|EPC|monitor|VCS的一些action,具体细节可参考各模块的实现**

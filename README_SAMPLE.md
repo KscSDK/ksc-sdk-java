@@ -11,6 +11,7 @@
 * http://vpc.{region}.api.ksyun.com
 * http://eip.{region}.api.ksyun.com
 * http://slb.{region}.api.ksyun.com
+* http://vcs.{region}.api.ksyun.com
 
 #### REGION
 * cn-beijing-6
@@ -21,6 +22,7 @@
 * vpc
 * eip
 * slb
+* vcs
 
 ### 运行示例代码
 
