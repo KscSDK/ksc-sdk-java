@@ -1,9 +1,10 @@
 # KSC SDK for Java 
-  
- ## Table of Contents
+
+## Table of Contents
 * Requirements
 * Usage
 * API Dosc
+* Note
 
 ### Requirements ###
 运行 SDK需要jdk **Java 1.6+**. 你可以下载最新的版本： http://developers.sun.com/downloads/.
@@ -99,3 +100,9 @@ AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secr
 [VCSOpenAPI]: https://www.ksyun.com/doc/cat/id/443
 [ksc-sdk-java-github]: https://github.com/KscSDK/ksc-sdk-java
 [example]: https://github.com/KscSDK/ksc-sdk-java/blob/master/README_SAMPLE.md
+
+## Note
+
+* httpclient 建议不要手动指定httpclient版本,依赖ksc-sdk-java工程管理的httpclient版本即可, 确实需要指定的话, 版本至少是4.4
+
+
