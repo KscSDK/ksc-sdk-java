@@ -56,8 +56,8 @@ public class StatisticTest {
 
     @Before
     public void setup(){
-        cdnClient=new KscCdnClient("AKTPspL9fjGORbae3XtvgFvT6Q",
-                "OJxXnk/vuV4V8780v5KCRPWh68WwX8dveTcKwQERsOTUjJAD/KSIQk/mOLYZ9BdlcA==",
+        cdnClient=new KscCdnClient("AKTPUIgwCS-YSOmihHMeWJt11w",
+                "OLTV3tURH4pV3/ZDympj5it20J0MQVrE2dw1zgY4306f5l3YgS2gaBzD6+FiN2rGUQ==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -272,12 +272,12 @@ public class StatisticTest {
     @Test
     public void testGetProvinceAndIspBW() throws Exception {
         ProvinceAndIspBWRequest request=new ProvinceAndIspBWRequest();
-        request.setStartTime("2016-09-19T00:00+0800");
-        request.setEndTime("2016-09-19T23:00+0800");
+        request.setStartTime("2017-02-09T00:00+0800");
+        request.setEndTime("2017-02-09T23:00+0800");
         request.setCdnType(CdnTypeEnum.download.getValue());
 //        request.setResultType(ResultTypeEnum.MERGE.getCode());
         request.setResultType(ResultTypeEnum.ALONE.getCode());
-        request.setGranularity("480");
+        request.setGranularity("1440");
 //        request.setDomainIds("2D09QXK,2D067PE,2D067PD,2D09QXJ,2D067PF,2D09X6A,2D09WUH,2D09QXM,2D09WXK,2D09WXM");
 
         ProvinceAndIspBandwidthResult provinceAndIspBW = (ProvinceAndIspBandwidthResult) cdnClient.generalGetStatisticsData(request,ProvinceAndIspBandwidthResult.class);
@@ -410,9 +410,9 @@ public class StatisticTest {
     @Test
     public void testGetLiveFlowDataByStream() throws Exception{
         LiveFlowByStreamRequest request=new LiveFlowByStreamRequest();
-        request.setStartTime("2016-09-22T09:14+0800");
-        request.setEndTime("2016-09-24T10:20+0800");
-        request.setStreamUrl("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
+        request.setStartTime("2017-02-09T09:14+0800");
+        request.setEndTime("2017-02-09T10:20+0800");
+        request.setStreamUrls("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
         request.setResultType(ResultTypeEnum.MERGE.getCode());
 //        request.setGranularity("1440");
 
@@ -441,9 +441,9 @@ public class StatisticTest {
     @Test
     public void testGetLiveBandwidthDataByStream() throws Exception{
         LiveBandwidthByStreamRequest request=new LiveBandwidthByStreamRequest();
-        request.setStartTime("2016-09-22T09:14+0800");
-        request.setEndTime("2016-09-24T10:20+0800");
-        request.setStreamUrl("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
+        request.setStartTime("2017-02-09T09:14+0800");
+        request.setEndTime("2017-02-09T10:20+0800");
+        request.setStreamUrls("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
         request.setResultType(ResultTypeEnum.ALONE.getCode());
         request.setGranularity("1440");
 
@@ -466,8 +466,8 @@ public class StatisticTest {
     @Test
     public void testGetLiveOnlineUserDataByDomain()throws Exception{
         LiveOnlineUserByDomainRequest request=new LiveOnlineUserByDomainRequest();
-        request.setStartTime("2016-09-22T09:14+0800");
-        request.setEndTime("2016-09-24T10:20+0800");
+        request.setStartTime("2017-02-09T09:14+0800");
+        request.setEndTime("2017-02-09T10:20+0800");
 //        request.setGranularity("1440");
         request.setResultType(ResultTypeEnum.MERGE.getCode());
 
@@ -491,11 +491,11 @@ public class StatisticTest {
     @Test
     public void testGetLiveOnlineUserDataByStream() throws Exception{
         LiveOnlineUserByStreamRequest request=new LiveOnlineUserByStreamRequest();
-        request.setStartTime("2016-09-22T09:14+0800");
-        request.setEndTime("2016-09-24T10:20+0800");
+        request.setStartTime("2017-02-09T09:14+0800");
+        request.setEndTime("2017-02-09T10:20+0800");
         request.setGranularity("1440");
         request.setResultType(ResultTypeEnum.ALONE.getCode());
-        request.setStreamUrl("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
+        request.setStreamUrls("rtmp://realflv3.plu.cn/live/ffea40ea2f8e4a5e95096e0f89227092");
 
         LiveOnlineUserByStreamResult liveOnlineUserDataByStream = (LiveOnlineUserByStreamResult) cdnClient.generalGetStatisticsData(request,LiveOnlineUserByStreamResult.class);
         Assert.assertNotNull(liveOnlineUserDataByStream);
@@ -521,7 +521,7 @@ public class StatisticTest {
     @Test
     public void testGetLiveTopOnlineUserData()throws Exception{
         LiveTopOnlineUserRequest request=new LiveTopOnlineUserRequest();
-        request.setStartTime("2016-10-20T00:00+0800");
+        request.setStartTime("2017-02-10T00:00+0800");
         request.setResultType(ResultTypeEnum.ALONE.getCode());
         request.setLimitN("5");
 
