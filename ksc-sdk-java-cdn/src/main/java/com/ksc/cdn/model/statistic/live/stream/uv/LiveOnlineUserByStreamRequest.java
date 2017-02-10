@@ -31,7 +31,7 @@ public class LiveOnlineUserByStreamRequest extends LiveCommonFieldRequest {
      * 流名，支持批量查询，多个流名用逗号（半角）分隔
      */
     @FieldValidate
-    private String StreamUrl;
+    private String StreamUrls;
     /**
      * @see com.ksc.cdn.model.enums.ResultTypeEnum
      */
@@ -43,12 +43,12 @@ public class LiveOnlineUserByStreamRequest extends LiveCommonFieldRequest {
      */
     private String Granularity;
 
-    public String getStreamUrl() {
-        return StreamUrl;
+    public String getStreamUrls() {
+        return StreamUrls;
     }
 
-    public void setStreamUrl(String streamUrl) {
-        StreamUrl = streamUrl;
+    public void setStreamUrls(String streamUrls) {
+        StreamUrls = streamUrls;
     }
 
     public String getResultType() {
@@ -72,7 +72,7 @@ public class LiveOnlineUserByStreamRequest extends LiveCommonFieldRequest {
         CommonValidUtil.check(this);
         Map<String,String> params= super.buildParams();
 
-        params.put("StreamUrl",this.getStreamUrl());
+        params.put("StreamUrls",this.getStreamUrls());
         params.put("ResultType",this.getResultType());
         if(StringUtils.isNotBlank(this.getGranularity())){
             params.put("Granularity",this.getGranularity());
