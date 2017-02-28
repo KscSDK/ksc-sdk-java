@@ -1,0 +1,59 @@
+package com.ksc.cdn.test;
+
+import com.ksc.cdn.KscCdnClient;
+import com.ksc.cdn.KscCdnLog;
+import com.ksc.cdn.model.log.*;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * LogSettingTest
+ * 日志管理单元测试
+ *
+ * @author jiangran@kingsoft.com
+ * @date 2016/12/1
+ */
+public class LogTest {
+
+    KscCdnLog client;
+
+    @Before
+    public void setup() {
+        client = new KscCdnClient("AKTP-5dFse4fSzWAWrbWlwYuOQ",
+                "OBSE9f04JDwyTJEXcArTjoxjoCPaZ/e3DTrV6KUEpGu1RM/qhZFPIzjImi9ICG/u1w==",
+                "http://cdn.api.ksyun.com",
+                "cn-shanghai-1",
+                "cdn");
+        /*client=new KscCdnClient("AKTPf-QTNRxOTfOJsue-gZ4Saw",
+                "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==");*/
+
+    }
+
+    /**
+     * 获取指定域名的原始访问日志的下载地址。
+     */
+    @Test
+    public void testGetDomainLogs() throws Exception {
+        DomainLogsRequest request = new DomainLogsRequest();
+        request.setDomainId("2D09NK5");
+        DomainLogsResult result = client.getDomainLogs(request);
+        System.out.println(result);
+    }
+
+    @Test
+    public void testSetDomainLogService() throws Exception {
+        DomainLogServiceRequest request = new DomainLogServiceRequest();
+        request.setDomainIds("2D09NK5");
+        request.setActionType("start");
+        request.setGranularity(60L);
+        client.setDomainLogService(request);
+    }
+
+    @Test
+    public void testGetDomainLogServiceStatus() throws Exception {
+        DomainLogServiceStatusRequest request = new DomainLogServiceStatusRequest();
+        request.setDomainIds("2D09NK5");
+        DomainLogServiceStatusResult result = client.getDomainLogServiceStatus(request);
+        System.out.println(result);
+    }
+}

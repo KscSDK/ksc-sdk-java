@@ -3,91 +3,65 @@ package com.ksc.cdn.test;
 import com.ksc.cdn.KscCdnClient;
 import com.ksc.cdn.KscCdnContent;
 import com.ksc.cdn.model.content.*;
-import com.ksc.cdn.model.enums.RefreAndLoadType;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.util.Arrays;
-
 /**
  * ContentTest
  * 内容管理单元测试
+ *
  * @author jiangran@kingsoft.com
  * @date 2016/12/1
  */
 public class ContentTest {
+
     KscCdnContent client;
+
     @Before
-    public void setup(){
-        client=new KscCdnClient("AKTPsQVsb82QRs2dmRfZR0mYuA",
-                "OLnZ7H7JZpTiJTgBC847I5lETIB7j64uTSGCgooLxDSY+Bn5RzyTu7fRLe4Mtps8Gw==",
+    public void setup() {
+        client = new KscCdnClient("AKTP3JFhAZ1pSv6oZXTmwMwwig",
+                "OMYiBs3IPxzhIH7SSJazuMLUtAq5qrloJ5On48dZb1xtVdhL0AyaJd2UYI3ZPoVDZA==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
-        /*client=new KscCdnClient("AKTPf-QTNRxOTfOJsue-gZ4Saw",
-                "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==");*/
-
     }
 
-    /**
-     * 刷新文件或目录
-     * @throws Exception
-     */
     @Test
-    public void testAddRefreshFiles() throws Exception {
-        RefreshFilesRequest request=new RefreshFilesRequest();
-        request.setFiles(Arrays.asList("http://www.cnic.cn/l.html"));//要刷新的文件
-        request.setDirs(Arrays.asList("http://www.cnic.cn/l/"));//要刷新的目录
-        client.addRefreshFiles(request);
+    public void testRefreshCaches() throws Exception {
+        Url[] files = new Url[2];
+        files[0] = new Url("http://www.zhaofang360.com/abc.txt");
+        files[1] = new Url("http://www.zhaofang360.com/abc1.txt");
+        RefreshCachesRequest refreshCachesRequest = new RefreshCachesRequest();
+        refreshCachesRequest.setFiles(files);
+        RefreshCachesResult result = client.refreshCaches(refreshCachesRequest);
+        Assert.assertNotNull(result.getRefreshTaskId());
     }
 
-    /**
-     * 预加载文件
-     * @throws Exception
-     */
     @Test
-    public void testPreloadFiles() throws Exception{
-        PreloadFilesRequest request=new PreloadFilesRequest();
-        request.setFiles(Arrays.asList("http://appinstall2.ks3-cn-beijing.ksyun.com/l.html"));//需要预加载的文件
-        client.preloadFiles(request);
+    public void testPreloadCaches() throws Exception {
+        Url[] files = new Url[2];
+        files[0] = new Url("http://www.zhaofang360.com/abc.txt");
+        files[1] = new Url("http://www.zhaofang360.com/abc1.txt");
+        PreloadCachesRequest preloadCachesRequest = new PreloadCachesRequest();
+        preloadCachesRequest.setUrls(files);
+        PreloadCachesResult result = client.preloadCaches(preloadCachesRequest);
+        Assert.assertNotNull(result.getPreloadTaskId());
     }
 
-    /**
-     * 查询当前配额
-     * @throws Exception
-     */
     @Test
-    public void testGetQuotaConfig() throws Exception{
-        GetQuotaConfigRequest request=new GetQuotaConfigRequest();
-        String quotaConfig = client.getQuotaConfig(request);
-        Assert.assertNotNull(quotaConfig);
+    public void testGetRefreshOrPreloadTask() throws Exception {
+        RefreshOrPreloadTaskRequest refreshOrPreloadTaskRequest = new RefreshOrPreloadTaskRequest();
+        refreshOrPreloadTaskRequest.setStartTime("2017-02-28T08:00+0800");
+        refreshOrPreloadTaskRequest.setEndTime("2017-02-28T18:00+0800");
+        RefreshOrPreloadTaskResult result = client.getRefreshOrPreloadTask(refreshOrPreloadTaskRequest);
+        Assert.assertNotNull(result);
     }
 
-    /**
-     * 查询当前配额的使用量
-     * @throws Exception
-     */
     @Test
-    public void testGetQuotaUsageAmount()throws Exception{
-        GetQuotaUsageAmountRequest request=new GetQuotaUsageAmountRequest();
-        String quotaUsageAmount = client.getQuotaUsageAmount(request);
-        Assert.assertNotNull(quotaUsageAmount);
-    }
-
-    /**
-     * 查询刷新及预加载结果
-     * @throws Exception
-     */
-    @Test
-    public void testListInvalidationsByContentPath() throws Exception{
-        ListInvalidationsByContentPathRequest request=new ListInvalidationsByContentPathRequest();
-        request.setStartTime("1480476366935");//查询开始时间
-        request.setEndTime("1480694340000");//查询结束时间
-        request.setPageIndex("0");//页码,从0开始
-        request.setPageSize("10");//每页大小
-        request.setType(RefreAndLoadType.REFREFILE.getType());//查询类型,文件、目录、预加载
-        String s = client.listInvalidationsByContentPath(request);
-        Assert.assertNotNull(s);
+    public void testGetRefreshOrPreloadQuota() throws Exception {
+        RefreshOrPreloadQuotaRequest request = new RefreshOrPreloadQuotaRequest();
+        RefreshOrPreloadQuotaResult result = client.getRefreshOrPreloadQuota(request);
+        Assert.assertNotNull(result);
     }
 }
