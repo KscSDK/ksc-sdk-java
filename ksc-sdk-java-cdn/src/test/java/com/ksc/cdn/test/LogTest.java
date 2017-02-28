@@ -3,6 +3,7 @@ package com.ksc.cdn.test;
 import com.ksc.cdn.KscCdnClient;
 import com.ksc.cdn.KscCdnLog;
 import com.ksc.cdn.model.log.*;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -37,9 +38,12 @@ public class LogTest {
         DomainLogsRequest request = new DomainLogsRequest();
         request.setDomainId("2D09NK5");
         DomainLogsResult result = client.getDomainLogs(request);
-        System.out.println(result);
+        Assert.assertNotNull(result);
     }
 
+    /**
+     * 用于启用、停用某个加速域名的日志服务。
+     */
     @Test
     public void testSetDomainLogService() throws Exception {
         DomainLogServiceRequest request = new DomainLogServiceRequest();
@@ -49,11 +53,14 @@ public class LogTest {
         client.setDomainLogService(request);
     }
 
+    /**
+     * 获取域名日志服务状态
+     */
     @Test
     public void testGetDomainLogServiceStatus() throws Exception {
         DomainLogServiceStatusRequest request = new DomainLogServiceStatusRequest();
         request.setDomainIds("2D09NK5");
         DomainLogServiceStatusResult result = client.getDomainLogServiceStatus(request);
-        System.out.println(result);
+        Assert.assertNotNull(result);
     }
 }
