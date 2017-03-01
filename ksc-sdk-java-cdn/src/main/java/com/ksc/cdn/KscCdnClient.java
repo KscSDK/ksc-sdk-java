@@ -222,7 +222,7 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     public void setDomainLogService(DomainLogServiceRequest request) throws Exception {
         GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
-        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, Void.class);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.ksc.cdn.test;
 
 import com.ksc.cdn.KscCdnClient;
 import com.ksc.cdn.KscCdnLog;
+import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.log.*;
 import org.junit.Assert;
 import org.junit.Before;
@@ -20,8 +21,8 @@ public class LogTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKTP-5dFse4fSzWAWrbWlwYuOQ",
-                "OBSE9f04JDwyTJEXcArTjoxjoCPaZ/e3DTrV6KUEpGu1RM/qhZFPIzjImi9ICG/u1w==",
+        client = new KscCdnClient("AKTPyj-S6IGoTby4oUtCbGWJAg",
+                "OAbBV3Inl1e+nD5GCK+RvIy1CWwZlCbgxanWh3PN/oUvL2EVYd2DOZDmiPYHM7ohSw==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -48,7 +49,7 @@ public class LogTest {
     public void testSetDomainLogService() throws Exception {
         DomainLogServiceRequest request = new DomainLogServiceRequest();
         request.setDomainIds("2D09NK5");
-        request.setActionType("start");
+        request.setActionType(ActionTypeEnum.START);
         request.setGranularity(60L);
         client.setDomainLogService(request);
     }
