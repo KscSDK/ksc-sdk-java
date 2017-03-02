@@ -8,15 +8,16 @@ import java.text.ParseException;
 import java.util.Map;
 
 /**
- * GetQuotaUsageAmountRequest
- * 获取当前已用配额用量
- * @author jiangran@kingsoft.com
- * @date 2016/12/1
+ * 获取刷新、预热URL及目录的最大限制数量，及当日剩余刷新、预热URL及目录的条数
+ *
+ * @author qichao@kingsoft.com
+ * @date 2017/02/27
  */
-public class GetQuotaUsageAmountRequest implements GeneralRequest{
+public class RefreshOrPreloadQuotaRequest implements GeneralRequest {
+
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
-        return new GeneralRequestParam("GetQuotaUsageAmount","2015-09-17","/2015-09-17/quota/usage-amount");
+        return new GeneralRequestParam("GetRefreshOrPreloadQuota", "2016-09-01", "/2016-09-01/content/GetRefreshOrPreloadQuota");
     }
 
     @Override
