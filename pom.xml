@@ -39,7 +39,9 @@
 		<module>ksc-sdk-java-kec</module>
 		<module>ksc-sdk-java-monitor</module>
 		<module>ksc-sdk-java-network</module>
-		<module>ksc-sdk-java-epc</module>
+		<module>ksc-sdk-java-epc</module>		
+		<module>ksc-sdk-java-kvs</module>
+		<module>ksc-sdk-java-offline</module>
 		<module>ksc-sdk-java-cdn</module>
 		<module>ksc-sdk-java-vcs</module>
 	</modules>
