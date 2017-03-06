@@ -13,6 +13,7 @@ import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
 import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
+import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
 import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
 import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
@@ -141,6 +142,12 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     public void setReferProtectionConfig(ReferProtectionRequest referProtection) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(REFER_PROTECTION_VERSION, REFER_PROTECTION_ACTION);
         this.httpExecute(HttpMethod.GET, REFER_PROTECTION_URL, referProtection.buildParams(), buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setIpProtectionConfig(IpProtectionRequest ipProtection) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(IP_PROTECTION_VERSION, IP_PROTECTION_ACTION);
+        this.httpExecute(HttpMethod.GET, IP_PROTECTION_URL, ipProtection.buildParams(), buildHeaders, Void.class);
     }
 
     @Override
