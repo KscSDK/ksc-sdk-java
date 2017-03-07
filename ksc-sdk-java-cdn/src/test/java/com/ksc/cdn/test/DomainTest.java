@@ -166,7 +166,7 @@ public class DomainTest {
     public void testGetDomainConfigs() throws Exception {
         GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);//查所有配置
         GetDomainConfigResult domainConfigsFilter = client.getDomainConfigs(domainId, new DomainConfigEnum[]{
-                DomainConfigEnum.cache_expired, DomainConfigEnum.cc, DomainConfigEnum.ignore_query_string});//查某几项配置
+                DomainConfigEnum.cache_expired, DomainConfigEnum.ip, DomainConfigEnum.ignore_query_string});//查某几项配置
 
         Assert.assertEquals("www.qunar.com", domainConfigs.getBackOriginHostConfig().getBackOriginHost());
     }
