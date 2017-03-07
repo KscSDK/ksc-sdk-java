@@ -5,6 +5,10 @@ import com.ksc.cdn.KscCdnStatistics;
 import com.ksc.cdn.model.enums.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.dir.bandwidth.BwDataByDirResult;
+import com.ksc.cdn.model.statistic.dir.bandwidth.DirBwStatisticRequest;
+import com.ksc.cdn.model.statistic.dir.flow.DirFlowStatisticRequest;
+import com.ksc.cdn.model.statistic.dir.flow.FlowDataByDirResult;
 import com.ksc.cdn.model.statistic.flow.DomainRankingRequest;
 import com.ksc.cdn.model.statistic.flow.DomainRankingResult;
 import com.ksc.cdn.model.statistic.flow.FlowRequest;
@@ -52,6 +56,7 @@ import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
 import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 import com.ksc.cdn.model.statistic.uv.UvRequest;
 import com.ksc.cdn.model.statistic.uv.UvResult;
+
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -67,8 +72,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPcU_lgjHQSUiPQZE35G7Urw",
-                "OEF/UEZWoyMQhux8B5HFA90PFZirR/8BjoQpBheYzGi2K9Ac7TV3Wkv0je6OYezR8Q==",
+        cdnClient = new KscCdnClient("AKTPJIH5DJzgTpGnCmboQifL1g",
+                "OLB9uLiHI0M+yg8CDi3qGGZPZCjgzptZiQAd6CbupXbokHyk3MFsDQdiSkli9Hz1Fw==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -762,5 +767,46 @@ public class StatisticTest {
         UvResult uv = (UvResult) cdnClient.generalGetStatisticsData(uvRequest, UvResult.class);
         Assert.assertNotNull(uv);
         Assert.assertTrue(uv.getDatas().length > 0);
+    }
+    
+    
+    /**
+     * 获取某段时间内按一级目录为维度下消耗的流量，单位byte
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testGetFlowDataByDir() throws Exception{
+    	DirFlowStatisticRequest request= new DirFlowStatisticRequest();
+    	request.setStartTime("2017-02-23T10:00+0800");
+    	request.setEndTime("2017-02-23T10:21+0800");
+    	request.setDomainId("2D09NMS");
+    	request.setDirs("/");
+    	request.setGranularity("10");
+    	request.setResultType("1");
+    	request.setRegions("");
+    	FlowDataByDirResult result = (FlowDataByDirResult) cdnClient.generalGetStatisticsData(request, FlowDataByDirResult.class);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.getDatas().length > 0);
+    }
+    
+    /**
+     * 获取某段时间内按一级目录为维度下消耗的流量，单位byte
+     * 
+     * @throws Exception
+     */
+    @Test
+    public void testGetBwDataByDir() throws Exception{
+    	DirBwStatisticRequest request= new DirBwStatisticRequest();
+    	request.setStartTime("2017-02-23T10:00+0800");
+    	request.setEndTime("2017-02-23T10:21+0800");
+    	request.setDomainId("2D09NMS");
+    	request.setDirs("/");
+    	request.setGranularity("10");
+    	request.setResultType("1");
+    	request.setRegions("");
+    	BwDataByDirResult result = (BwDataByDirResult) cdnClient.generalGetStatisticsData(request, BwDataByDirResult.class);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.getDatas().length > 0);
     }
 }
