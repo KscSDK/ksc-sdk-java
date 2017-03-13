@@ -8,8 +8,10 @@ import com.ksc.network.vpc.model.DescribeSecurityGroupsRequest;
 import com.ksc.network.vpc.model.DescribeSecurityGroupsResult;
 import com.ksc.network.vpc.model.DescribeSubnetsRequest;
 import com.ksc.network.vpc.model.DescribeSubnetsResult;
-import com.ksc.network.vpc.model.DescribeVpcsRequest;
-import com.ksc.network.vpc.model.DescribeVpcsResult;
+import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
+import com.ksc.network.vpc.model.vpc.CreateVpcResult;
+import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
+import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
 
 public interface KSCVPC {
 	/**
@@ -84,4 +86,9 @@ public interface KSCVPC {
 	 */
 	public DescribeInternetGatewaysResult describeInternetGateways(
 			DescribeInternetGatewaysRequest describeInternetGatewaysRequest);
+
+    /**
+     * 创建VPC
+     */
+    public CreateVpcResult createVpc(CreateVpcRequest createVpcRequest);
 }

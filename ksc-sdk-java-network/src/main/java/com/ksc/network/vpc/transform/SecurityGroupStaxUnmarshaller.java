@@ -1,4 +1,4 @@
-package com.ksc.network.vpc.model.transform;
+package com.ksc.network.vpc.transform;
 
 import javax.xml.stream.events.XMLEvent;
 

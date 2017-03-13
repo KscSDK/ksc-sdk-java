@@ -4,7 +4,7 @@ import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
-import com.ksc.network.vpc.model.transform.DescribeSubnetsRequestMarshaller;
+import com.ksc.network.vpc.transform.DescribeSubnetsRequestMarshaller;
 
 import lombok.ToString;
 

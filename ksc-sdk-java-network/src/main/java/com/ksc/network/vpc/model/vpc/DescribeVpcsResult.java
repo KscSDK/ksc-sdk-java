@@ -1,8 +1,9 @@
 
-package com.ksc.network.vpc.model;
+package com.ksc.network.vpc.model.vpc;
 
 import java.io.Serializable;
 
+import com.ksc.network.vpc.model.Vpc;
 import lombok.ToString;
 
 /**

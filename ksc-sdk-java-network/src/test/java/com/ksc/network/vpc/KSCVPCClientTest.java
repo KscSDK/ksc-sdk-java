@@ -1,5 +1,7 @@
 package com.ksc.network.vpc;
 
+import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
+import com.ksc.network.vpc.model.vpc.CreateVpcResult;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -15,8 +17,8 @@ import com.ksc.network.vpc.model.DescribeSecurityGroupsRequest;
 import com.ksc.network.vpc.model.DescribeSecurityGroupsResult;
 import com.ksc.network.vpc.model.DescribeSubnetsRequest;
 import com.ksc.network.vpc.model.DescribeSubnetsResult;
-import com.ksc.network.vpc.model.DescribeVpcsRequest;
-import com.ksc.network.vpc.model.DescribeVpcsResult;
+import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
+import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
 
 
 public class KSCVPCClientTest {
@@ -91,4 +93,21 @@ public class KSCVPCClientTest {
 		DescribeInternetGatewaysResult result=client.describeInternetGateways(request);
 		log.info(result);
 	}
+
+    @Test
+    public void createVpc(){
+        KSCVPCClient client=new KSCVPCClient();
+        client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        CreateVpcRequest request= new CreateVpcRequest();
+        request.setVpcName("sdk-test");
+        request.setCidrBlock("10.0.0.0/16");
+        request.setDefault(false);
+		/*Filter filter=new Filter();
+		filter.setName("vpc-id");
+		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		request.withFilters(filter);*/
+        CreateVpcResult result=client.createVpc(request);
+        log.info(result);
+    }
 }

@@ -1,4 +1,4 @@
-package com.ksc.network.vpc.model.transform;
+package com.ksc.network.vpc.transform;
 
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;

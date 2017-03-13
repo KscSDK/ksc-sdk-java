@@ -1,4 +1,4 @@
-package com.ksc.network.vpc.model;
+package com.ksc.network.vpc.model.vpc;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
-import com.ksc.network.vpc.model.transform.DescribeVpcsRequestMarshaller;
+import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
 
 /**
  * <p>

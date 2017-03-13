@@ -1,8 +1,9 @@
-package com.ksc.network.vpc.model.transform;
+package com.ksc.network.vpc.transform.vpc;
 
 import javax.xml.stream.events.XMLEvent;
 
-import com.ksc.network.vpc.model.DescribeVpcsResult;
+import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
+import com.ksc.network.vpc.transform.VpcStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
