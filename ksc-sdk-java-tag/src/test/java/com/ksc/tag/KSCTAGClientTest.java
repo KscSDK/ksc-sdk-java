@@ -30,17 +30,17 @@ public class KSCTAGClientTest {
 		describeTagsRequest.setMaxResults(6);
 		KSCTAGClient client = new KSCTAGClient();
 		client.setEndpoint("http://tag.cn-shanghai-3.api.ksyun.com");
-		List<Filter> filters = new ArrayList<>();
+		List<Filter> filters = new ArrayList<Filter>();
 		Filter filter = new Filter();
 		filter.setName("resource-type");
-		List<String> values = new ArrayList<>();
+		List<String> values = new ArrayList<String>();
 		values.add("kec-image");
 		values.add("vpc");
 		filter.setValues(values);
 		
 //		Filter filter1 = new Filter();
 //		filter1.setName("resource-id");
-//		List<String> values1 = new ArrayList<>();
+//		List<String> values1 = new ArrayList<String>();
 //		values1.add("cf4b5bde-c567-4035-a2e8-ed98014be8d6");
 //		values1.add("b258a6c4-9632-42c4-82e5-cefec73efa2e");
 //		filter1.setValues(values1);
@@ -94,13 +94,13 @@ public class KSCTAGClientTest {
 		Tag tag1 = new Tag();
 		tag1.setKey("tag-sdk-test1");
 		tag1.setValue("tag-sdk-test-b");
-		List<Tag> tags = new ArrayList<>();
+		List<Tag> tags = new ArrayList<Tag>();
 		tags.add(tag);
 		tags.add(tag1);
 		Resource resource = new Resource();
 		resource.setId("b2c4eaf1-943d-438d-a7dc-1345f1fbb6c9");		
 		resource.setType("vpc");
-		List<Resource> resources = new ArrayList<>();
+		List<Resource> resources = new ArrayList<Resource>();
 		resources.add(resource);
 		
 		createTagsRequest.setTags(tags);
@@ -108,7 +108,6 @@ public class KSCTAGClientTest {
 		
 		CreateTagsResult result = client.createTages(createTagsRequest);
 		log.info(result);
-		
 	}
 	
 	@Test
@@ -120,13 +119,13 @@ public class KSCTAGClientTest {
 		Tag tag = new Tag();
 		tag.setKey("vpc_key");
 		tag.setValue("vpc_value_change");
-		List<Tag> tags = new ArrayList<>();
+		List<Tag> tags = new ArrayList<Tag>();
 		tags.add(tag);
 		
 		Resource resource = new Resource();
 		resource.setId("8825d888-4a8d-436e-9418-ce0dc2681075");		
 		resource.setType("vpc");
-		List<Resource> resources = new ArrayList<>();
+		List<Resource> resources = new ArrayList<Resource>();
 		resources.add(resource);
 		
 		deleteTagsRequest.setTags(tags);
@@ -134,8 +133,6 @@ public class KSCTAGClientTest {
 		
 		DeleteTagsResult result = client.deleteTages(deleteTagsRequest);
 		log.info(result);
-		
 	}
-	
 	
 }
