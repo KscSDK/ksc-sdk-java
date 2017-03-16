@@ -13,8 +13,8 @@ public class KSCEPCClientTest {
 	@Test
 	public void listEpcs(){
 		AWSCredentials credentials = null;
-			credentials = new BasicAWSCredentials("AKLTcI-Ek8zhT-mWMBhNYN_xkg111234",
-					"OD0g8h/czdeVy+z/oCOk031yKpVWbAFJVddvFHd87D/L9Tb/tmia8tRJiaAmdyqy4w==");
+			credentials = new BasicAWSCredentials("AKLT1gAVrMjkQ8iApUC1DewRiQ ",
+					"OCYGzihJ5ZKuOBYnOmeogzfO3CyRxWs3Wm6S0fQMUKJMnFgKjBiyX63hPQM3EmqLvA==");
 		ListEpcsRequest request=new ListEpcsRequest();
 		KSCEPCClient client=new KSCEPCClient(credentials);
 		client.setEndpoint("http://epc.cn-shanghai-3.api.ksyun.com");
