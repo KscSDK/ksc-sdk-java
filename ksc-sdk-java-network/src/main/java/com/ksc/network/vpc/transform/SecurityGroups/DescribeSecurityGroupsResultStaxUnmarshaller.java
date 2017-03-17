@@ -1,8 +1,8 @@
-package com.ksc.network.vpc.transform;
+package com.ksc.network.vpc.transform.SecurityGroups;
 
 import javax.xml.stream.events.XMLEvent;
 
-import com.ksc.network.vpc.model.DescribeSecurityGroupsResult;
+import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;

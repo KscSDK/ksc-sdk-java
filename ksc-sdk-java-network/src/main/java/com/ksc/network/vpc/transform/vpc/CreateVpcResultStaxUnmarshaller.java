@@ -1,7 +1,6 @@
 package com.ksc.network.vpc.transform.vpc;
 
 import com.ksc.network.vpc.model.vpc.CreateVpcResult;
-import com.ksc.network.vpc.transform.VpcStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;

@@ -3,10 +3,45 @@ package com.ksc.network.vpc;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
+import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupRequest;
+import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
+import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
+import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupRequest;
+import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.SecurityGroup;
+import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
+import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
+import com.ksc.network.vpc.model.subnet.DeleteSubnetRequest;
+import com.ksc.network.vpc.model.subnet.DeleteSubnetResult;
+import com.ksc.network.vpc.model.subnet.DescribeSubnetsRequest;
+import com.ksc.network.vpc.model.subnet.DescribeSubnetsResult;
 import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
 import com.ksc.network.vpc.model.vpc.CreateVpcResult;
+import com.ksc.network.vpc.model.vpc.DeleteVpcRequest;
+import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
+import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.DeleteSecurityGroupRequestMarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.DeleteSecurityGroupResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.DescribeSecurityGroupsRequestMarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.DescribeSecurityGroupsResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.ModifySecurityGroupRequestMarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.ModifySecurityGroupResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.SecurityGroups.SecurityGroupStaxUnmarshaller;
+import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
+import com.ksc.network.vpc.transform.subnet.CreateSubnetResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.subnet.DeleteSubnetRequestMarshaller;
+import com.ksc.network.vpc.transform.subnet.DeleteSubnetResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.subnet.DescribeSubnetsRequestMarshaller;
+import com.ksc.network.vpc.transform.subnet.DescribeSubnetsResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.vpc.CreateVpcRequestMarshaller;
 import com.ksc.network.vpc.transform.vpc.CreateVpcResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.vpc.DeleteVpcRequestMarshaller;
+import com.ksc.network.vpc.transform.vpc.DeleteVpcResultStaxUnmarshaller;
+
 import org.w3c.dom.Node;
 
 import com.ksc.ClientConfiguration;
@@ -30,20 +65,12 @@ import com.ksc.network.vpc.model.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesResult;
-import com.ksc.network.vpc.model.DescribeSecurityGroupsRequest;
-import com.ksc.network.vpc.model.DescribeSecurityGroupsResult;
-import com.ksc.network.vpc.model.DescribeSubnetsRequest;
-import com.ksc.network.vpc.model.DescribeSubnetsResult;
 import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
 import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
 import com.ksc.network.vpc.transform.DescribeInternetGatewaysRequestMarshaller;
 import com.ksc.network.vpc.transform.DescribeInternetGatewaysResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.DescribeNetworkInterfacesRequestMarshaller;
 import com.ksc.network.vpc.transform.DescribeNetworkInterfacesResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.DescribeSecurityGroupsRequestMarshaller;
-import com.ksc.network.vpc.transform.DescribeSecurityGroupsResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.DescribeSubnetsRequestMarshaller;
-import com.ksc.network.vpc.transform.DescribeSubnetsResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
 import com.ksc.network.vpc.transform.vpc.DescribeVpcsResultStaxUnmarshaller;
 import com.ksc.transform.LegacyErrorUnmarshaller;
@@ -455,4 +482,185 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+    
+    @Override
+    public DeleteVpcResult deleteVpc(DeleteVpcRequest deleteVpcRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteVpcRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteVpcRequest> request = null;
+        Response<DeleteVpcResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteVpcRequestMarshaller().marshall(super
+                        .beforeMarshalling(deleteVpcRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteVpcResult> responseHandler = new StaxResponseHandler<DeleteVpcResult>(
+                    new DeleteVpcResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+    
+    @Override
+    public CreateSubnetResult createSubnet(CreateSubnetRequest createSubnetRequest) {
+        ExecutionContext executionContext = createExecutionContext(createSubnetRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateSubnetRequest> request = null;
+        Response<CreateSubnetResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateSubnetRequestMarshaller().marshall(super
+                        .beforeMarshalling(createSubnetRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateSubnetResult> responseHandler = new StaxResponseHandler<CreateSubnetResult>(
+                    new CreateSubnetResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+    @Override
+    public DeleteSubnetResult deleteSubnet(DeleteSubnetRequest deleteSubnetRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteSubnetRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteSubnetRequest> request = null;
+        Response<DeleteSubnetResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteSubnetRequestMarshaller().marshall(super
+                        .beforeMarshalling(deleteSubnetRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteSubnetResult> responseHandler = new StaxResponseHandler<DeleteSubnetResult>(
+                    new DeleteSubnetResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+    
+    @Override
+    public CreateSecurityGroupResult createSecurityGroup(CreateSecurityGroupRequest createSecurityGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(createSecurityGroupRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateSecurityGroupRequest> request = null;
+        Response<CreateSecurityGroupResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateSecurityGroupRequestMarshaller().marshall(super
+                        .beforeMarshalling(createSecurityGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<CreateSecurityGroupResult> responseHandler = new StaxResponseHandler<CreateSecurityGroupResult>(
+                    new CreateSecurityGroupResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+    
+    @Override
+    public DeleteSecurityGroupResult deleteSecurityGroup(DeleteSecurityGroupRequest deleteSecurityGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteSecurityGroupRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteSecurityGroupRequest> request = null;
+        Response<DeleteSecurityGroupResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteSecurityGroupRequestMarshaller().marshall(super
+                        .beforeMarshalling(deleteSecurityGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteSecurityGroupResult> responseHandler = new StaxResponseHandler<DeleteSecurityGroupResult>(
+                    new DeleteSecurityGroupResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+    
+    @Override
+    public ModifySecurityGroupResult modifySecurityGroup(ModifySecurityGroupRequest modifySecurityGroupRequest) {
+        ExecutionContext executionContext = createExecutionContext(modifySecurityGroupRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifySecurityGroupRequest> request = null;
+        Response<ModifySecurityGroupResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifySecurityGroupRequestMarshaller().marshall(super
+                        .beforeMarshalling(modifySecurityGroupRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ModifySecurityGroupResult> responseHandler = new StaxResponseHandler<ModifySecurityGroupResult>(
+                    new ModifySecurityGroupResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+    
+
 }

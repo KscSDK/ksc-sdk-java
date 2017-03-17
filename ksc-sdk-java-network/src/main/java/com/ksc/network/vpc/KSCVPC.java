@@ -4,12 +4,24 @@ import com.ksc.network.vpc.model.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesResult;
-import com.ksc.network.vpc.model.DescribeSecurityGroupsRequest;
-import com.ksc.network.vpc.model.DescribeSecurityGroupsResult;
-import com.ksc.network.vpc.model.DescribeSubnetsRequest;
-import com.ksc.network.vpc.model.DescribeSubnetsResult;
+import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
+import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupRequest;
+import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
+import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
+import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupRequest;
+import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
+import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
+import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
+import com.ksc.network.vpc.model.subnet.DeleteSubnetRequest;
+import com.ksc.network.vpc.model.subnet.DeleteSubnetResult;
+import com.ksc.network.vpc.model.subnet.DescribeSubnetsRequest;
+import com.ksc.network.vpc.model.subnet.DescribeSubnetsResult;
 import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
 import com.ksc.network.vpc.model.vpc.CreateVpcResult;
+import com.ksc.network.vpc.model.vpc.DeleteVpcRequest;
+import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
 import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
 import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
 
@@ -91,4 +103,36 @@ public interface KSCVPC {
      * 创建VPC
      */
     public CreateVpcResult createVpc(CreateVpcRequest createVpcRequest);
+    
+    /**
+     * 删除VPC
+     */
+    public DeleteVpcResult deleteVpc(DeleteVpcRequest deleteVpcRequest);
+    
+    /**
+     * 创建Subnet
+     */
+    public CreateSubnetResult createSubnet(CreateSubnetRequest createSubnetRequest);
+    
+    /**
+     * 删除Subnet
+     */
+    public DeleteSubnetResult deleteSubnet(DeleteSubnetRequest deleteSubnetRequest);
+    
+    /**
+     * 创建安全组
+     */
+    public CreateSecurityGroupResult createSecurityGroup(CreateSecurityGroupRequest createSecurityGroup);
+    
+    /**
+     * 删除安全组
+     */
+    public DeleteSecurityGroupResult deleteSecurityGroup(DeleteSecurityGroupRequest deleteSecurityGroupRequest);
+    
+    /**
+     * 更改安全组信息
+     */
+    public ModifySecurityGroupResult modifySecurityGroup(ModifySecurityGroupRequest modifySecurityGroupRequest);
 }
+
+

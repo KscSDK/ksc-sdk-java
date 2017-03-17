@@ -1,8 +1,8 @@
-package com.ksc.network.vpc.transform;
+package com.ksc.network.vpc.transform.SecurityGroups;
 
 import javax.xml.stream.events.XMLEvent;
 
-import com.ksc.network.vpc.model.SecurityGroup;
+import com.ksc.network.vpc.model.SecurityGroups.SecurityGroup;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -30,6 +30,8 @@ public class SecurityGroupStaxUnmarshaller implements Unmarshaller<SecurityGroup
 					rule.setCreateTime(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+				
+
 
 				if (context.testExpression("VpcId", targetDepth)) {
 					rule.setVpcId(StringStaxUnmarshaller.getInstance().unmarshall(context));
