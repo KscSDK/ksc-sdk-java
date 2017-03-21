@@ -1,10 +1,10 @@
-package com.ksc.network.vpc.model;
+package com.ksc.network.vpc.model.NetworkInterface;
 
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
-import com.ksc.network.vpc.transform.DescribeNetworkInterfacesRequestMarshaller;
+import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesRequestMarshaller;
 
 import lombok.ToString;
 

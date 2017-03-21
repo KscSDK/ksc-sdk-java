@@ -1,54 +1,54 @@
-package com.ksc.network.vpc.transform;
+package com.ksc.network.vpc.transform.InternetGateways;
 
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.model.Filter;
-import com.ksc.network.vpc.model.DescribeNetworkInterfacesRequest;
+import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DescribeVpcsRequest Marshaller
+ * DescribeInternetGatewaysRequest Marshaller
  */
 
-public class DescribeNetworkInterfacesRequestMarshaller implements
-		Marshaller<Request<DescribeNetworkInterfacesRequest>, DescribeNetworkInterfacesRequest> {
+public class DescribeInternetGatewaysRequestMarshaller implements
+		Marshaller<Request<DescribeInternetGatewaysRequest>, DescribeInternetGatewaysRequest> {
 
-	public Request<DescribeNetworkInterfacesRequest> marshall(
-			DescribeNetworkInterfacesRequest describeNetworkInterfacesRequest) {
+	public Request<DescribeInternetGatewaysRequest> marshall(
+			DescribeInternetGatewaysRequest describeInternetGatewaysRequest) {
 
-		if (describeNetworkInterfacesRequest == null) {
+		if (describeInternetGatewaysRequest == null) {
 			throw new KscClientException(
 					"Invalid argument passed to marshall(...)");
 		}
 
-		Request<DescribeNetworkInterfacesRequest> request = new DefaultRequest<DescribeNetworkInterfacesRequest>(
-				describeNetworkInterfacesRequest, "vpc");
-		request.addParameter("Action", "DescribeNetworkInterfaces");
-		String version=describeNetworkInterfacesRequest.getVersion();
+		Request<DescribeInternetGatewaysRequest> request = new DefaultRequest<DescribeInternetGatewaysRequest>(
+				describeInternetGatewaysRequest, "vpc");
+		request.addParameter("Action", "DescribeInternetGateways");
+		String version=describeInternetGatewaysRequest.getVersion();
         if(org.apache.commons.lang.StringUtils.isBlank(version)){
         	version="2016-03-04";
         }
         request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
 
-		com.ksc.internal.SdkInternalList<String> list = (com.ksc.internal.SdkInternalList<String>) describeNetworkInterfacesRequest
-				.getNetworkInterfaceIds();
+		com.ksc.internal.SdkInternalList<String> list = (com.ksc.internal.SdkInternalList<String>) describeInternetGatewaysRequest
+				.getInternetGatewayIds();
 		if (!list.isEmpty() || !list.isAutoConstruct()) {
 			int index = 1;
 
 			for (String value : list) {
 				if (value != null) {
-					request.addParameter("NetworkInterfaceId." + index,
+					request.addParameter("InternetGatewayId." + index,
 							StringUtils.fromString(value));
 				}
 				index++;
 			}
 		}
 
-		com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeNetworkInterfacesRequest
+		com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeInternetGatewaysRequest
 				.getFilters();
 		if (!filtersList.isEmpty() || !filtersList.isAutoConstruct()) {
 			int filtersListIndex = 1;

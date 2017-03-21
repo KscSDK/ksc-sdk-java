@@ -3,6 +3,8 @@ package com.ksc.network.vpc.model.vpc;
 
 import java.io.Serializable;
 
+import com.ksc.network.vpc.model.AvailabilityZone.AvailabilityZone;
+
 import lombok.ToString;
 
 /**

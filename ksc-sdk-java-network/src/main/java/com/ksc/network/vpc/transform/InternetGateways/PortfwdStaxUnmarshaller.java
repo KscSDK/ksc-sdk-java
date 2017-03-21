@@ -1,8 +1,8 @@
-package com.ksc.network.vpc.transform;
+package com.ksc.network.vpc.transform.InternetGateways;
 
 import javax.xml.stream.events.XMLEvent;
 
-import com.ksc.network.vpc.model.Portfwd;
+import com.ksc.network.vpc.model.InternetGateways.Portfwd;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;

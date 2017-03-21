@@ -1,4 +1,4 @@
-package com.ksc.network.vpc.model;
+package com.ksc.network.vpc.model.NetworkInterface;
 
 import lombok.ToString;
 
