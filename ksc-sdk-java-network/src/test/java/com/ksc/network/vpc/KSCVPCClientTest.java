@@ -1,5 +1,7 @@
 package com.ksc.network.vpc;
 
+import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
+import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
 import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupRequest;
@@ -8,6 +10,8 @@ import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
 import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
 import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupRequest;
 import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
+import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
 import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
 import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
 import com.ksc.network.vpc.model.subnet.DeleteSubnetRequest;
@@ -220,6 +224,42 @@ public class KSCVPCClientTest {
 		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
 		request.withFilters(filter);*/
         ModifySecurityGroupResult result=client.modifySecurityGroup(request);
+        log.info(result);
+    }
+    
+    @Test
+    public void authorizeSecurityGroupEntry(){
+        KSCVPCClient client=new KSCVPCClient();
+        client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        AuthorizeSecurityGroupEntryRequest request= new AuthorizeSecurityGroupEntryRequest();
+        request.setSecurityGroupId("2e369115-171a-45f4-92f4-c860190ba539");
+        request.setCidrBlock("20.20.20.0/26");
+        request.setDirection("out");
+        request.setProtocol("icmp");
+        request.setIcmpType(9);
+        request.setIcmpCode(22);
+		/*Filter filter=new Filter();
+		filter.setName("vpc-id");
+		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		request.withFilters(filter);*/
+        AuthorizeSecurityGroupEntryResult result=client.authorizeSecurityGroupEntry(request);
+        log.info(result);
+    }
+    
+    @Test
+    public void revokeSecurityGroupEntry(){
+        KSCVPCClient client=new KSCVPCClient();
+        client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        RevokeSecurityGroupEntryRequest request= new RevokeSecurityGroupEntryRequest();
+        request.setSecurityGroupId("2e369115-171a-45f4-92f4-c860190ba539");
+        request.setSecurityGroupEntryId("a652d9e8-174f-4f9a-8f67-42826290506c");
+		/*Filter filter=new Filter();
+		filter.setName("vpc-id");
+		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		request.withFilters(filter);*/
+        RevokeSecurityGroupEntryResult result=client.revokeSecurityGroupEntry(request);
         log.info(result);
     }
 }

@@ -4,6 +4,8 @@ import com.ksc.network.vpc.model.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.DescribeNetworkInterfacesResult;
+import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
+import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
 import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupRequest;
@@ -12,6 +14,8 @@ import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
 import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
 import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupRequest;
 import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
+import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
+import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
 import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
 import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
 import com.ksc.network.vpc.model.subnet.DeleteSubnetRequest;
@@ -133,6 +137,16 @@ public interface KSCVPC {
      * 更改安全组信息
      */
     public ModifySecurityGroupResult modifySecurityGroup(ModifySecurityGroupRequest modifySecurityGroupRequest);
+    
+    /**
+     * 创建安全组规则
+     */
+    public AuthorizeSecurityGroupEntryResult authorizeSecurityGroupEntry(AuthorizeSecurityGroupEntryRequest authorizeSecurityGroupEntryRequest);
+    
+    /**
+     * 删除安全组规则
+     */
+    public RevokeSecurityGroupEntryResult revokeSecurityGroupEntry(RevokeSecurityGroupEntryRequest revokeSecurityGroupEntryRequest);
 }
 
 
