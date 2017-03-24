@@ -32,6 +32,10 @@ import com.ksc.cdn.model.statistic.live.stream.top.LiveTopOnlineUserResult;
 import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamRequest;
 import com.ksc.cdn.model.statistic.live.stream.uv.LiveOnlineUserByStreamResult;
 import com.ksc.cdn.model.statistic.live.stream.uv.OnlineUserDataByTime;
+import com.ksc.cdn.model.statistic.playtime.LiveWatchTimeByDomainWebRequest;
+import com.ksc.cdn.model.statistic.playtime.LiveWatchTimeByDomainWebResponse;
+import com.ksc.cdn.model.statistic.playtime.LiveWatchTimeByStreamWebRequest;
+import com.ksc.cdn.model.statistic.playtime.LiveWatchTimeByStreamWebResponse;
 import com.ksc.cdn.model.statistic.province.AreaRequest;
 import com.ksc.cdn.model.statistic.province.AreaResult;
 import com.ksc.cdn.model.statistic.province.isp.bandwidth.ProvinceAndIspBWRequest;
@@ -72,8 +76,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPJIH5DJzgTpGnCmboQifL1g",
-                "OLB9uLiHI0M+yg8CDi3qGGZPZCjgzptZiQAd6CbupXbokHyk3MFsDQdiSkli9Hz1Fw==",
+        cdnClient = new KscCdnClient("AKTPoD7JYFcRSSC8dkAPKqmhNg",
+                "OJQInOFRMyEolbZ4PSHRD8Lsuk+u327eEQhJcXI4hJx0JIslcsypH7OwleAa8dwTmQ==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -808,5 +812,44 @@ public class StatisticTest {
     	BwDataByDirResult result = (BwDataByDirResult) cdnClient.generalGetStatisticsData(request, BwDataByDirResult.class);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.getDatas().length > 0);
+    }
+
+
+
+    /**
+     * 获取直播流维度的平均观看时长数据，单位：毫秒（ms）
+     * @throws Exception
+     */
+    @Test
+    public void testGetPlayTimeDataByStream() throws Exception{
+        LiveWatchTimeByStreamWebRequest request= new LiveWatchTimeByStreamWebRequest();
+        request.setStartTime("2017-02-21T00:00+0800");
+        request.setEndTime("2017-02-21T02:00+0800");
+        request.setStreamUrls("http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv");
+        request.setGranularity("20");
+        request.setResultType("1");
+        request.setRegions("CN");
+        LiveWatchTimeByStreamWebResponse result = (LiveWatchTimeByStreamWebResponse) cdnClient.generalGetStatisticsData(request, LiveWatchTimeByStreamWebResponse.class);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.getDatas().size() > 0);
+    }
+
+
+    /**
+     * 获取直播域名维度的观看时长数据，单位毫秒（ms）
+     * @throws Exception
+     */
+    @Test
+    public void testGetPlayTimeDataByDomain() throws Exception{
+        LiveWatchTimeByDomainWebRequest request= new LiveWatchTimeByDomainWebRequest();
+        request.setStartTime("2017-02-21T00:00+0800");
+        request.setEndTime("2017-02-21T02:00+0800");
+        request.setDomainIds("2D09QKA,2D09VS9");
+        request.setGranularity("20");
+        request.setResultType("1");
+        request.setRegions("CN");
+        LiveWatchTimeByDomainWebResponse result = (LiveWatchTimeByDomainWebResponse) cdnClient.generalGetStatisticsData(request, LiveWatchTimeByDomainWebResponse.class);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.getDatas().size() > 0);
     }
 }
