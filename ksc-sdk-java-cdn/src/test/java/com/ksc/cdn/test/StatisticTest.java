@@ -5,6 +5,8 @@ import com.ksc.cdn.KscCdnStatistics;
 import com.ksc.cdn.model.enums.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.billing.BillingRequest;
+import com.ksc.cdn.model.statistic.billing.BillingWebResponse;
 import com.ksc.cdn.model.statistic.dir.bandwidth.BwDataByDirResult;
 import com.ksc.cdn.model.statistic.dir.bandwidth.DirBwStatisticRequest;
 import com.ksc.cdn.model.statistic.dir.flow.DirFlowStatisticRequest;
@@ -76,8 +78,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPoD7JYFcRSSC8dkAPKqmhNg",
-                "OJQInOFRMyEolbZ4PSHRD8Lsuk+u327eEQhJcXI4hJx0JIslcsypH7OwleAa8dwTmQ==",
+        cdnClient = new KscCdnClient("AKTPNTWLJcubTqedQfBp4HSuGg",
+                "OBGJl5TOdm3DToBTWKk96vJK2sC8ehmxDw88cB/iT9pYIKf/ANRYxFliKZOeV4LaFQ==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -849,6 +851,29 @@ public class StatisticTest {
         request.setResultType("1");
         request.setRegions("CN");
         LiveWatchTimeByDomainWebResponse result = (LiveWatchTimeByDomainWebResponse) cdnClient.generalGetStatisticsData(request, LiveWatchTimeByDomainWebResponse.class);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.getDatas().size() > 0);
+    }
+
+
+    /**
+        获取域名的计费数据
+        支持按指定的起止时间查询，两者需要同时指定
+        支持批量域名查询，多个域名ID用逗号（半角）分隔
+        最多可获取最近一年内93天跨度的数据
+        使用场景：
+            客户查询域名计费数据，用于计费核算
+            客户根据不同计费方式，对比不同计费数据值，用于计费方式调整依据。
+    */
+    @Test
+    public void testGetBillingData() throws Exception{
+        BillingRequest request= new BillingRequest();
+        request.setStartTime("2017-02-01T00:00+0800");
+        request.setEndTime("2017-02-28T23:56+0800");
+        request.setCdnType("download");
+        request.setBillingMode("monthflow");
+        request.setRegions("CN,AS,NA,AU");
+        BillingWebResponse result = (BillingWebResponse) cdnClient.generalGetStatisticsData(request, BillingWebResponse.class);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.getDatas().size() > 0);
     }
