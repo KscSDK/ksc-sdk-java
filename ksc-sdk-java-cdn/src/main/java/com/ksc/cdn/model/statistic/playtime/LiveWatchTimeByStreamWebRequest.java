@@ -16,7 +16,6 @@ import java.util.Map;
  * Created by JIANGYANG1 on 2017/3/13.
  */
 @Data
-@XmlRootElement(name = "PlayTime")
 public class LiveWatchTimeByStreamWebRequest extends CommonFieldRequest {
 
 
