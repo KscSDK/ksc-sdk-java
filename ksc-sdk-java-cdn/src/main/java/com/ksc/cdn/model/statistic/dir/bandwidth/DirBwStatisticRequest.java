@@ -1,24 +1,16 @@
 package com.ksc.cdn.model.statistic.dir.bandwidth;
 
-import java.text.ParseException;
-import java.util.Map;
-
-import javax.xml.bind.annotation.XmlElement;
-
-import org.apache.commons.lang3.StringUtils;
-
-import lombok.Data;
-import lombok.ToString;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
+import org.apache.commons.lang3.StringUtils;
+
+import java.text.ParseException;
+import java.util.Map;
 
 
-@Data
 public class DirBwStatisticRequest extends CommonFieldRequest{
 	/**
      * 0:多域名多计费区域数据做合并
@@ -72,5 +64,44 @@ public class DirBwStatisticRequest extends CommonFieldRequest{
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("GetBandwidthDataByDir", "2016-09-01", "/2016-09-01/statistics/GetBandwidthDataByDir");
     }
-	
+
+    public String getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
+
+    public String getGranularity() {
+        return granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        this.granularity = granularity;
+    }
+
+    public String getDomainId() {
+        return domainId;
+    }
+
+    public void setDomainId(String domainId) {
+        this.domainId = domainId;
+    }
+
+    public String getDirs() {
+        return dirs;
+    }
+
+    public void setDirs(String dirs) {
+        this.dirs = dirs;
+    }
+
+    public String getRegions() {
+        return regions;
+    }
+
+    public void setRegions(String regions) {
+        this.regions = regions;
+    }
 }
