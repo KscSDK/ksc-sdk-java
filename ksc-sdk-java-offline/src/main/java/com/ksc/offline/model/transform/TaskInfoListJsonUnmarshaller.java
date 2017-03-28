@@ -76,6 +76,9 @@ public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, Json
 				}else if (context.testExpression("taskStatus", targetDepth)) {
 					context.nextToken();
 					taskInfo.setTaskStatus(context.getUnmarshaller(String.class).unmarshall(context));
+				}else if (context.testExpression("errorCode", targetDepth)) {
+					context.nextToken();
+					taskInfo.setErrorCode(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
