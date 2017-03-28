@@ -1,4 +1,4 @@
-package com.ksc.cdn.model.statistic.uv;
+package com.ksc.cdn.model.statistic.dir.flow;
 
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.GeneralRequestParam;
@@ -10,20 +10,10 @@ import org.apache.commons.lang3.StringUtils;
 import java.text.ParseException;
 import java.util.Map;
 
-/**
- * 获取域名独立请求的IP个数，单位：个
- * 支持按指定的起止时间查询，两者需要同时指定
- * 支持批量域名查询，多个域名ID用逗号（半角）分隔
- * 最多可获取最近一年内31天跨度的数据
- * 统计粒度：5分钟粒度
- * 时效性：30分钟延迟
- *
- * @author qichao@kingsoft.com
- * @date 2017/02/27
- */
-public class UvRequest extends CommonFieldRequest {
 
-    /**
+public class DirFlowStatisticRequest extends CommonFieldRequest{
+	
+	/**
      * 0:多域名多计费区域数据做合并
      * 1：每个域名每个计费区域的数据分别返回
      */
@@ -34,7 +24,22 @@ public class UvRequest extends CommonFieldRequest {
      * 统计粒度，取值为 5（默认）：5分钟粒度；
      */
     private String granularity;
-
+    
+    /**
+     * 域名id
+     */
+    @FieldValidate
+    private String domainId;
+	
+    /**
+     * 目录
+     */
+    private String dirs;
+    
+    /**
+     * 区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多区域查询，多个区域用逗号（半角）分隔，缺省为 CN
+     */
+    private String regions;
     @Override
     public Map<String, String> buildParams() throws KscClientException, ParseException {
 
@@ -48,13 +53,17 @@ public class UvRequest extends CommonFieldRequest {
         if (StringUtils.isNotBlank(this.getGranularity())) {
             params.put("Granularity", this.getGranularity());
         }
-
+        
+        if (StringUtils.isNotBlank(this.getDirs())) {
+            params.put("Dirs", this.getDirs());
+        }
+        params.put("DomainId", this.domainId);
         return params;
     }
-
+    
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
-        return new GeneralRequestParam("GetUvData", "2016-09-01", "/2016-09-01/statistics/GetUvData");
+        return new GeneralRequestParam("GetFlowDataByDir", "2016-09-01", "/2016-09-01/statistics/GetFlowDataByDir");
     }
 
     public String getResultType() {
@@ -71,5 +80,29 @@ public class UvRequest extends CommonFieldRequest {
 
     public void setGranularity(String granularity) {
         this.granularity = granularity;
+    }
+
+    public String getDomainId() {
+        return domainId;
+    }
+
+    public void setDomainId(String domainId) {
+        this.domainId = domainId;
+    }
+
+    public String getDirs() {
+        return dirs;
+    }
+
+    public void setDirs(String dirs) {
+        this.dirs = dirs;
+    }
+
+    public String getRegions() {
+        return regions;
+    }
+
+    public void setRegions(String regions) {
+        this.regions = regions;
     }
 }

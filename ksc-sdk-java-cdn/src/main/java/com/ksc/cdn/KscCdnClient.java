@@ -13,13 +13,16 @@ import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
 import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
+import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
 import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
 import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.log.*;
 import com.ksc.cdn.model.valid.CommonValidUtil;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,7 +58,16 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
 
     private static Logger log = LoggerFactory.getLogger(KscCdnClient.class);
 
-
+    
+    @Override
+    public GetServiceIpResult getServiceIp(String domainId) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(GETSERVICEIP_VERSION, GETSERVICEIP_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("DomainId", domainId);
+        GetServiceIpResult result = this.httpExecute(HttpMethod.GET, GETSERVICEIP_URL, params, buildHeaders, GetServiceIpResult.class);
+        return result;
+    }
+    
     @Override
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETCDNDOMAINS_VERSION, GETCDNDOMAINS_ACTION);
@@ -141,6 +153,12 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     public void setReferProtectionConfig(ReferProtectionRequest referProtection) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(REFER_PROTECTION_VERSION, REFER_PROTECTION_ACTION);
         this.httpExecute(HttpMethod.GET, REFER_PROTECTION_URL, referProtection.buildParams(), buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setIpProtectionConfig(IpProtectionRequest ipProtection) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(IP_PROTECTION_VERSION, IP_PROTECTION_ACTION);
+        this.httpExecute(HttpMethod.GET, IP_PROTECTION_URL, ipProtection.buildParams(), buildHeaders, Void.class);
     }
 
     @Override
