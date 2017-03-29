@@ -4,16 +4,18 @@ import com.ksc.cdn.model.valid.FieldValidate;
 
 /**
  * ReferProtectionConfig
- *
+ * <p>
  * 加速域名的Refer防盗链功能设置，加速域名创建后，默认不开启refer防盗链功能
+ *
  * @author jiangran@kingsoft.com
  * @date 2016/11/15
  */
-public class ReferProtectionConfig{
+public class ReferProtectionConfig {
 
     /**
      * 配置是否开启或关闭 开启时，下述必须项为必填项；关闭时，只更改此标识，忽略后面的项目。
      * 取值：
+     *
      * @see com.ksc.cdn.model.enums.SwitchEnum
      */
     @FieldValidate
