@@ -5,6 +5,8 @@ import com.ksc.cdn.KscCdnStatistics;
 import com.ksc.cdn.model.enums.*;
 import com.ksc.cdn.model.statistic.bandwidth.BpsRequest;
 import com.ksc.cdn.model.statistic.bandwidth.BpsResult;
+import com.ksc.cdn.model.statistic.bandwidth.peak.PeakBandwidthDataRequest;
+import com.ksc.cdn.model.statistic.bandwidth.peak.PeakBandwidthDataResult;
 import com.ksc.cdn.model.statistic.billing.BillingRequest;
 import com.ksc.cdn.model.statistic.billing.BillingWebResponse;
 import com.ksc.cdn.model.statistic.dir.bandwidth.BwDataByDirResult;
@@ -62,7 +64,6 @@ import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
 import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 import com.ksc.cdn.model.statistic.uv.UvRequest;
 import com.ksc.cdn.model.statistic.uv.UvResult;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -78,8 +79,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPNTWLJcubTqedQfBp4HSuGg",
-                "OBGJl5TOdm3DToBTWKk96vJK2sC8ehmxDw88cB/iT9pYIKf/ANRYxFliKZOeV4LaFQ==",
+        cdnClient = new KscCdnClient("AKTPD40VlPFwSVyFp7t7fC1qBA",
+                "OJE/9Y/+y1SnfseHD78k3jW5lavt3nurFzrR8MVv/ONx0hbFIStNAMajBIry7AKPmw==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -752,7 +753,7 @@ public class StatisticTest {
 
     /**
      * 获取域名独立请求的IP个数，单位：个
-     *
+     * <p>
      * <p>
      * 支持按指定的起止时间查询，两者需要同时指定
      * 支持批量域名查询，多个域名ID用逗号（半角）分隔
@@ -774,57 +775,57 @@ public class StatisticTest {
         Assert.assertNotNull(uv);
         Assert.assertTrue(uv.getDatas().length > 0);
     }
-    
-    
+
+
     /**
      * 获取某段时间内按一级目录为维度下消耗的流量，单位byte
-     * 
+     *
      * @throws Exception
      */
     @Test
-    public void testGetFlowDataByDir() throws Exception{
-    	DirFlowStatisticRequest request= new DirFlowStatisticRequest();
-    	request.setStartTime("2017-02-23T10:00+0800");
-    	request.setEndTime("2017-02-23T10:21+0800");
-    	request.setDomainId("2D09NMS");
-    	request.setDirs("/");
-    	request.setGranularity("10");
-    	request.setResultType("1");
-    	request.setRegions("");
-    	FlowDataByDirResult result = (FlowDataByDirResult) cdnClient.generalGetStatisticsData(request, FlowDataByDirResult.class);
-        Assert.assertNotNull(result);
-        Assert.assertTrue(result.getDatas().length > 0);
-    }
-    
-    /**
-     * 获取某段时间内按一级目录为维度下消耗的流量，单位byte
-     * 
-     * @throws Exception
-     */
-    @Test
-    public void testGetBwDataByDir() throws Exception{
-    	DirBwStatisticRequest request= new DirBwStatisticRequest();
-    	request.setStartTime("2017-02-23T10:00+0800");
-    	request.setEndTime("2017-02-23T10:21+0800");
-    	request.setDomainId("2D09NMS");
-    	request.setDirs("/");
-    	request.setGranularity("10");
-    	request.setResultType("1");
-    	request.setRegions("");
-    	BwDataByDirResult result = (BwDataByDirResult) cdnClient.generalGetStatisticsData(request, BwDataByDirResult.class);
+    public void testGetFlowDataByDir() throws Exception {
+        DirFlowStatisticRequest request = new DirFlowStatisticRequest();
+        request.setStartTime("2017-02-23T10:00+0800");
+        request.setEndTime("2017-02-23T10:21+0800");
+        request.setDomainId("2D09NMS");
+        request.setDirs("/");
+        request.setGranularity("10");
+        request.setResultType("1");
+        request.setRegions("");
+        FlowDataByDirResult result = (FlowDataByDirResult) cdnClient.generalGetStatisticsData(request, FlowDataByDirResult.class);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.getDatas().length > 0);
     }
 
+    /**
+     * 获取某段时间内按一级目录为维度下消耗的流量，单位byte
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testGetBwDataByDir() throws Exception {
+        DirBwStatisticRequest request = new DirBwStatisticRequest();
+        request.setStartTime("2017-02-23T10:00+0800");
+        request.setEndTime("2017-02-23T10:21+0800");
+        request.setDomainId("2D09NMS");
+        request.setDirs("/");
+        request.setGranularity("10");
+        request.setResultType("1");
+        request.setRegions("");
+        BwDataByDirResult result = (BwDataByDirResult) cdnClient.generalGetStatisticsData(request, BwDataByDirResult.class);
+        Assert.assertNotNull(result);
+        Assert.assertTrue(result.getDatas().length > 0);
+    }
 
 
     /**
      * 获取直播流维度的平均观看时长数据，单位：毫秒（ms）
+     *
      * @throws Exception
      */
     @Test
-    public void testGetPlayTimeDataByStream() throws Exception{
-        LiveWatchTimeByStreamWebRequest request= new LiveWatchTimeByStreamWebRequest();
+    public void testGetPlayTimeDataByStream() throws Exception {
+        LiveWatchTimeByStreamWebRequest request = new LiveWatchTimeByStreamWebRequest();
         request.setStartTime("2017-02-21T00:00+0800");
         request.setEndTime("2017-02-21T02:00+0800");
         request.setStreamUrls("http://momo.hdllive.ks-cdn.com/live/m_defa5e0dd0d324101472363734966100.flv");
@@ -839,11 +840,12 @@ public class StatisticTest {
 
     /**
      * 获取直播域名维度的观看时长数据，单位毫秒（ms）
+     *
      * @throws Exception
      */
     @Test
-    public void testGetPlayTimeDataByDomain() throws Exception{
-        LiveWatchTimeByDomainWebRequest request= new LiveWatchTimeByDomainWebRequest();
+    public void testGetPlayTimeDataByDomain() throws Exception {
+        LiveWatchTimeByDomainWebRequest request = new LiveWatchTimeByDomainWebRequest();
         request.setStartTime("2017-02-21T00:00+0800");
         request.setEndTime("2017-02-21T02:00+0800");
         request.setDomainIds("2D09QKA,2D09VS9");
@@ -857,17 +859,17 @@ public class StatisticTest {
 
 
     /**
-        获取域名的计费数据
-        支持按指定的起止时间查询，两者需要同时指定
-        支持批量域名查询，多个域名ID用逗号（半角）分隔
-        最多可获取最近一年内93天跨度的数据
-        使用场景：
-            客户查询域名计费数据，用于计费核算
-            客户根据不同计费方式，对比不同计费数据值，用于计费方式调整依据。
-    */
+     * 获取域名的计费数据
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔
+     * 最多可获取最近一年内93天跨度的数据
+     * 使用场景：
+     * 客户查询域名计费数据，用于计费核算
+     * 客户根据不同计费方式，对比不同计费数据值，用于计费方式调整依据。
+     */
     @Test
-    public void testGetBillingData() throws Exception{
-        BillingRequest request= new BillingRequest();
+    public void testGetBillingData() throws Exception {
+        BillingRequest request = new BillingRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-28T23:56+0800");
         request.setCdnType("download");
@@ -876,5 +878,23 @@ public class StatisticTest {
         BillingWebResponse result = (BillingWebResponse) cdnClient.generalGetStatisticsData(request, BillingWebResponse.class);
         Assert.assertNotNull(result);
         Assert.assertTrue(result.getDatas().size() > 0);
+    }
+
+    /**
+     * 获取域名带宽峰值，峰值时间点
+     * <p>
+     * 1、峰值带宽计算方法：在选定时间段内，取每5分钟有效带宽值进行降序排列，最高带宽就是峰值带宽
+     * 2、realtime，峰值时间点，取每5分钟一个时间点，最高峰出现的时间点即为峰值时间
+     * 最多可获取最近一年内93天跨度的数据
+     */
+    @Test
+    public void testGetPeakBandwidthData() throws Exception {
+        PeakBandwidthDataRequest request = new PeakBandwidthDataRequest();
+        request.setStartTime("2017-02-01T00:00+0800");
+        request.setEndTime("2017-02-28T23:56+0800");
+        request.setCdnType("download");
+        request.setRegions("CN,AS,NA,AU");
+        PeakBandwidthDataResult result = (PeakBandwidthDataResult) cdnClient.generalGetStatisticsData(request, PeakBandwidthDataResult.class);
+        Assert.assertNotNull(result);
     }
 }
