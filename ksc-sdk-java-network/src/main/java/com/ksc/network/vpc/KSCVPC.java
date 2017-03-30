@@ -6,10 +6,7 @@ import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysReques
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
-import com.ksc.network.vpc.model.Route.CreateRouteRequest;
-import com.ksc.network.vpc.model.Route.CreateRouteResult;
-import com.ksc.network.vpc.model.Route.DeleteRouteRequest;
-import com.ksc.network.vpc.model.Route.DeleteRouteResult;
+import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
 import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
@@ -172,6 +169,12 @@ public interface KSCVPC {
      * 删除路由
      */
     public DeleteRouteResult deleteRoute(DeleteRouteRequest deleteRoute);
+
+	/**
+	 * 描述路由
+	 */
+	public DescribeRoutesResult describeRoutes(
+			DescribeRoutesRequest describeRoutesRequest);
 }
 
 

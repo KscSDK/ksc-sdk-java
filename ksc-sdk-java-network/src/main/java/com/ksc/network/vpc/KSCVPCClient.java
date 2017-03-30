@@ -1,89 +1,6 @@
 package com.ksc.network.vpc;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesRequest;
-import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
-import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
-import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
-import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
-import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
-import com.ksc.network.vpc.model.Route.CreateRouteRequest;
-import com.ksc.network.vpc.model.Route.CreateRouteResult;
-import com.ksc.network.vpc.model.Route.DeleteRouteRequest;
-import com.ksc.network.vpc.model.Route.DeleteRouteResult;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupRequest;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
-import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
-import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
-import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupRequest;
-import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.SecurityGroup;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
-import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
-import com.ksc.network.vpc.model.subnet.DeleteSubnetRequest;
-import com.ksc.network.vpc.model.subnet.DeleteSubnetResult;
-import com.ksc.network.vpc.model.subnet.DescribeSubnetsRequest;
-import com.ksc.network.vpc.model.subnet.DescribeSubnetsResult;
-import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
-import com.ksc.network.vpc.model.vpc.CreateVpcResult;
-import com.ksc.network.vpc.model.vpc.DeleteVpcRequest;
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
-import com.ksc.network.vpc.model.vpc.ModifyVpcRequest;
-import com.ksc.network.vpc.model.vpc.ModifyVpcResult;
-import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesRequestMarshaller;
-import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysRequestMarshaller;
-import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesRequestMarshaller;
-import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.Routes.CreateRouteRequestMarshaller;
-import com.ksc.network.vpc.transform.Routes.CreateRouteResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.Routes.DeleteRouteRequestMarshaller;
-import com.ksc.network.vpc.transform.Routes.DeleteRouteResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.DeleteSecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.DeleteSecurityGroupResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.DescribeSecurityGroupsRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.DescribeSecurityGroupsResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.ModifySecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.ModifySecurityGroupResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.SecurityGroupStaxUnmarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.subnet.DeleteSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.DeleteSubnetResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.subnet.DescribeSubnetsRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.DescribeSubnetsResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.vpc.CreateVpcRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.CreateVpcResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.vpc.DeleteVpcRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DeleteVpcResultStaxUnmarshaller;
-import com.ksc.network.vpc.transform.vpc.ModifyVpcRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.ModifyVpcResultStaxUnmarshaller;
-
-import org.w3c.dom.Node;
-
-import com.ksc.ClientConfiguration;
-import com.ksc.ClientConfigurationFactory;
-import com.ksc.KscServiceException;
-import com.ksc.KscWebServiceClient;
-import com.ksc.KscWebServiceRequest;
-import com.ksc.KscWebServiceResponse;
-import com.ksc.Request;
-import com.ksc.Response;
+import com.ksc.*;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.AWSCredentialsProvider;
 import com.ksc.auth.DefaultAWSCredentialsProviderChain;
@@ -93,16 +10,36 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
-import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
-import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsResultStaxUnmarshaller;
+import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesRequest;
+import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
+import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
+import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
+import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
+import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
+import com.ksc.network.vpc.model.Route.*;
+import com.ksc.network.vpc.model.SecurityGroups.*;
+import com.ksc.network.vpc.model.subnet.*;
+import com.ksc.network.vpc.model.vpc.*;
+import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesRequestMarshaller;
+import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysRequestMarshaller;
+import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesRequestMarshaller;
+import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.Routes.*;
+import com.ksc.network.vpc.transform.SecurityGroups.*;
+import com.ksc.network.vpc.transform.subnet.*;
+import com.ksc.network.vpc.transform.vpc.*;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
 import com.ksc.util.KscRequestMetrics.Field;
+import org.w3c.dom.Node;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
     /**
@@ -860,6 +797,39 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
 
             StaxResponseHandler<DeleteRouteResult> responseHandler = new StaxResponseHandler<DeleteRouteResult>(
                     new DeleteRouteResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribeRoutesResult describeRoutes(
+            DescribeRoutesRequest describeRoutesRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeRoutesRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeRoutesRequest> request = null;
+        Response<DescribeRoutesResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeRoutesRequestMarshaller().marshall(super
+                        .beforeMarshalling(describeRoutesRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeRoutesResult> responseHandler = new
+                    StaxResponseHandler<DescribeRoutesResult>(
+                    new DescribeRoutesResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getKscResponse();
