@@ -7,32 +7,9 @@ import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupRequest;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
-import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
-import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsResult;
-import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupRequest;
-import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
-import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
-import com.ksc.network.vpc.model.subnet.DeleteSubnetRequest;
-import com.ksc.network.vpc.model.subnet.DeleteSubnetResult;
-import com.ksc.network.vpc.model.subnet.DescribeSubnetsRequest;
-import com.ksc.network.vpc.model.subnet.DescribeSubnetsResult;
-import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
-import com.ksc.network.vpc.model.vpc.CreateVpcResult;
-import com.ksc.network.vpc.model.vpc.DeleteVpcRequest;
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
-import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
-import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
-import com.ksc.network.vpc.model.vpc.ModifyVpcRequest;
-import com.ksc.network.vpc.model.vpc.ModifyVpcResult;
+import com.ksc.network.vpc.model.SecurityGroups.*;
+import com.ksc.network.vpc.model.subnet.*;
+import com.ksc.network.vpc.model.vpc.*;
 
 public interface KSCVPC {
 	/**
@@ -175,6 +152,11 @@ public interface KSCVPC {
 	 */
 	public DescribeRoutesResult describeRoutes(
 			DescribeRoutesRequest describeRoutesRequest);
+
+	/**
+	 * 更改子网信息
+	 */
+	public ModifySubnetResult modifySubnet(ModifySubnetRequest modifySubnetRequest);
 }
 
 
