@@ -14,6 +14,8 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
+import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclRequest;
+import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclResult;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
@@ -24,6 +26,8 @@ import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesR
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysRequestMarshaller;
 import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.NetworkAcl.CreateNetworkAclRequestMarshaller;
+import com.ksc.network.vpc.transform.NetworkAcl.CreateNetworkAclResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesRequestMarshaller;
 import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.Routes.*;
@@ -918,6 +922,39 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
 
 			StaxResponseHandler<ModifySubnetResult> responseHandler = new StaxResponseHandler<ModifySubnetResult>(
 					new ModifySubnetResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public CreateNetworkAclResult createNetworkAcl(
+			CreateNetworkAclRequest createNetworkAclRequest) {
+		ExecutionContext executionContext = createExecutionContext(
+				createNetworkAclRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext
+				.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateNetworkAclRequest> request = null;
+		Response<CreateNetworkAclResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateNetworkAclRequestMarshaller()
+						.marshall(super.beforeMarshalling(createNetworkAclRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<CreateNetworkAclResult> responseHandler = new StaxResponseHandler<CreateNetworkAclResult>(
+					new CreateNetworkAclResultStaxUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();

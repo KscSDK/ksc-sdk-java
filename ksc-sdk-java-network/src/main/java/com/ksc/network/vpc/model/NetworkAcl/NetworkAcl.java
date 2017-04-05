@@ -1,4 +1,4 @@
- package com.ksc.network.vpc.model.NetworkAcl;
+package com.ksc.network.vpc.model.NetworkAcl;
 
 import lombok.ToString;
 
@@ -11,7 +11,9 @@ public class NetworkAcl {
 	private String NetworkAclName;
 	
 	private String NetworkAclId;
-	
+
+	private String Description;
+
 	private com.ksc.internal.SdkInternalList<NetworkAclEntry> NetworkAclEntrySet;
 
 	public String getCreateTime() {
@@ -46,7 +48,15 @@ public class NetworkAcl {
 		NetworkAclId = networkAclId;
 	}
 
-	public com.ksc.internal.SdkInternalList<NetworkAclEntry> getNetworkAclEntrySet() {
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public com.ksc.internal.SdkInternalList<NetworkAclEntry> getNetworkAclEntrySet() {
 		return NetworkAclEntrySet;
 	}
 
@@ -55,7 +65,7 @@ public class NetworkAcl {
 		NetworkAclEntrySet = networkAclEntrySet;
 	}
 	
-	public void NetworkAclEntrySet(NetworkAclEntry... acls) {
+	public void addNetworkAclEntrySet(NetworkAclEntry... acls) {
 		if (NetworkAclEntrySet == null) {
 			NetworkAclEntrySet = new com.ksc.internal.SdkInternalList<NetworkAclEntry>();
 		}
@@ -63,5 +73,5 @@ public class NetworkAcl {
 			NetworkAclEntrySet.add(acl);
 		}
 	}
-	
+
 }

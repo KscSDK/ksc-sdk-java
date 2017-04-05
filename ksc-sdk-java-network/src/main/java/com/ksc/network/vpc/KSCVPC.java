@@ -4,6 +4,8 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
+import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclRequest;
+import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclResult;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
@@ -157,6 +159,11 @@ public interface KSCVPC {
 	 * 更改子网信息
 	 */
 	public ModifySubnetResult modifySubnet(ModifySubnetRequest modifySubnetRequest);
+
+	/**
+	 * 创建NetworkAcl
+	 */
+	public CreateNetworkAclResult createNetworkAcl(CreateNetworkAclRequest createNetworkAcl);
 }
 
 

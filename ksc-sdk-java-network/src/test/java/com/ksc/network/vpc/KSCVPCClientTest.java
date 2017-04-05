@@ -1,9 +1,5 @@
 package com.ksc.network.vpc;
 
-import org.apache.log4j.Logger;
-import org.junit.Assert;
-import org.junit.Test;
-
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.model.Filter;
@@ -11,12 +7,17 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
+import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclRequest;
+import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclResult;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
+import org.apache.log4j.Logger;
+import org.junit.Assert;
+import org.junit.Test;
 
 public class KSCVPCClientTest {
 	private static final Logger log = Logger.getLogger(KSCVPCClientTest.class);
@@ -359,6 +360,23 @@ public class KSCVPCClientTest {
 		 * request.withFilters(filter);
 		 */
 		ModifySubnetResult result = client.modifySubnet(request);
+		log.info(result);
+	}
+
+	@Test
+	public void createNetworkAcl() {
+		KSCVPCClient client = new KSCVPCClient();
+		client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+		client.setServiceNameIntern("vpc");
+		CreateNetworkAclRequest request = new CreateNetworkAclRequest();
+		request.setVpcId("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
+		request.setNetworkAclName("yyy");
+		/*
+		 * Filter filter=new Filter(); filter.setName("vpc-id");
+		 * filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		 * request.withFilters(filter);
+		 */
+		CreateNetworkAclResult result = client.createNetworkAcl(request);
 		log.info(result);
 	}
 }
