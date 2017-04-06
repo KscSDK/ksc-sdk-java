@@ -7,8 +7,7 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
-import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclRequest;
-import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclResult;
+import com.ksc.network.vpc.model.NetworkAcl.*;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
@@ -379,4 +378,79 @@ public class KSCVPCClientTest {
 		CreateNetworkAclResult result = client.createNetworkAcl(request);
 		log.info(result);
 	}
+
+	@Test
+	public void deleteNetworkAcl() {
+		KSCVPCClient client = new KSCVPCClient();
+		client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+		client.setServiceNameIntern("vpc");
+		DeleteNetworkAclRequest request = new DeleteNetworkAclRequest();
+		request.setNetworkAclId("4e8527ad-3add-438e-8455-b511a0044d32");
+		/*
+		 * Filter filter=new Filter(); filter.setName("vpc-id");
+		 * filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		 * request.withFilters(filter);
+		 */
+		DeleteNetworkAclResult result = client.deleteNetworkAcl(request);
+		log.info(result);
+	}
+
+	@Test
+	public void modifyNetworkAcl() {
+		KSCVPCClient client = new KSCVPCClient();
+		client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+		client.setServiceNameIntern("vpc");
+		ModifyNetworkAclRequest request = new ModifyNetworkAclRequest();
+		request.setNetworkAclId("ac777893-6b9d-46ad-be3c-4eed2edadf56");
+		// request.setSecurityGroupName("abc_SecurityGroup");
+		/*
+		 * Filter filter=new Filter(); filter.setName("vpc-id");
+		 * filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		 * request.withFilters(filter);
+		 */
+		ModifyNetworkAclResult result = client.modifyNetworkAcl(request);
+		log.info(result);
+	}
+
+    @Test
+    public void createNetworkAclEntry() {
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        CreateNetworkAclEntryRequest request = new CreateNetworkAclEntryRequest();
+        request.setNetworkAclId("ac777893-6b9d-46ad-be3c-4eed2edadf56");
+        request.setCidrBlock("172.31.0.0/16");
+        request.setRuleNumber(2);
+        request.setDirection("in");
+        request.setProtocol("icmp");
+        request.setIcmpType(9);
+        request.setIcmpCode(22);
+        request.setRuleAction("allow");
+		/*
+		 * Filter filter=new Filter(); filter.setName("vpc-id");
+		 * filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		 * request.withFilters(filter);
+		 */
+        CreateNetworkAclEntryResult result = client
+                .createNetworkAclEntry(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteNetworkAclEntry() {
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        DeleteNetworkAclEntryRequest request = new DeleteNetworkAclEntryRequest();
+        request.setNetworkAclId("ac777893-6b9d-46ad-be3c-4eed2edadf56");
+        request.setNetworkAclEntryId("8f0165ca-da50-4602-86b5-141dc7ec16cb");
+		/*
+		 * Filter filter=new Filter(); filter.setName("vpc-id");
+		 * filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		 * request.withFilters(filter);
+		 */
+        DeleteNetworkAclEntryResult result = client.deleteNetworkAclEntry(request);
+        log.info(result);
+    }
+
 }

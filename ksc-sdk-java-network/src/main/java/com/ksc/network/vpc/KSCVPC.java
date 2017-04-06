@@ -4,8 +4,7 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
-import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclRequest;
-import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclResult;
+import com.ksc.network.vpc.model.NetworkAcl.*;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
@@ -164,6 +163,31 @@ public interface KSCVPC {
 	 * 创建NetworkAcl
 	 */
 	public CreateNetworkAclResult createNetworkAcl(CreateNetworkAclRequest createNetworkAcl);
+
+	/**
+	 * 删除NetworkAcl
+	 */
+	public DeleteNetworkAclResult deleteNetworkAcl(DeleteNetworkAclRequest deleteNetworkAcl);
+
+	/**
+	 * 更改NetworkAcl信息
+	 */
+	public ModifyNetworkAclResult modifyNetworkAcl(ModifyNetworkAclRequest modifyNetworkAclRequest);
+
+    /**
+     * 创建安全组规则
+     */
+    public CreateNetworkAclEntryResult createNetworkAclEntry(CreateNetworkAclEntryRequest createNetworkAclEntryRequest);
+
+    /**
+     * 删除NetworkAcl
+     */
+    public DeleteNetworkAclEntryResult deleteNetworkAclEntry(DeleteNetworkAclEntryRequest deleteNetworkAclEntry);
+
+    /**
+     * 更新ACL规则信息
+     */
+    public ModifyNetworkAclEntryResult modifyNetworkAclEntry(ModifyNetworkAclEntryRequest modifyNetworkAclEntryRequest);
 }
 
 
