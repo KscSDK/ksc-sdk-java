@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
+import com.ksc.network.vpc.transform.NetworkAcl.ModifyNetworkAclEntryRequestMarshaller;
 import com.ksc.network.vpc.transform.NetworkAcl.ModifyNetworkAclRequestMarshaller;
 
 /**

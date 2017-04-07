@@ -1,21 +1,18 @@
-package com.ksc.network.vpc.model.NetworkAcl;
-
-import java.io.Serializable;
+package com.ksc.network.vpc.model.subnet;
 
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of DescribeSubnets.
  * </p>
  */
 @ToString
-public class ModifyNetworkAclEntryResult implements Serializable, Cloneable {
+public class DescribeSubnetAvailableAddressesResult {
+	
+	private String RequestId;
 
-
-    private String RequestId;
-
-    private NetworkAclEntry NetworkAclEntry;
+    private String AvailableIpAddress;
 
     public String getRequestId() {
         return RequestId;
@@ -25,12 +22,12 @@ public class ModifyNetworkAclEntryResult implements Serializable, Cloneable {
         RequestId = requestId;
     }
 
-    public com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry getNetworkAclEntry() {
-        return NetworkAclEntry;
+    public String getAvailableIpAddress() {
+        return AvailableIpAddress;
     }
 
-    public void setNetworkAclEntry(com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry networkAclEntry) {
-        NetworkAclEntry = networkAclEntry;
+    public void setAvailableIpAddress(String availableIpAddress) {
+        AvailableIpAddress = availableIpAddress;
     }
 
     @Override
@@ -38,28 +35,27 @@ public class ModifyNetworkAclEntryResult implements Serializable, Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyNetworkAclEntryResult that = (ModifyNetworkAclEntryResult) o;
+        DescribeSubnetAvailableAddressesResult that = (DescribeSubnetAvailableAddressesResult) o;
 
         if (!RequestId.equals(that.RequestId)) return false;
-        return NetworkAclEntry.equals(that.NetworkAclEntry);
+        return AvailableIpAddress.equals(that.AvailableIpAddress);
     }
 
     @Override
     public int hashCode() {
         int result = RequestId.hashCode();
-        result = 31 * result + NetworkAclEntry.hashCode();
+        result = 31 * result + AvailableIpAddress.hashCode();
         return result;
     }
 
     @Override
-    public ModifyNetworkAclEntryResult clone() {
+    public DescribeSubnetAvailableAddressesResult clone() {
         try {
-            return (ModifyNetworkAclEntryResult) super.clone();
+            return (DescribeSubnetAvailableAddressesResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
                     "Got a CloneNotSupportedException from Object.clone() "
                             + "even though we're Cloneable!", e);
         }
     }
-
 }

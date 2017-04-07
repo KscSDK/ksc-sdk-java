@@ -1,6 +1,8 @@
-package com.ksc.network.vpc.model.NetworkAcl;
+package com.ksc.network.vpc.model.SecurityGroups;
 
 import java.io.Serializable;
+
+import com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry;
 
 import lombok.ToString;
 
@@ -10,12 +12,12 @@ import lombok.ToString;
  * </p>
  */
 @ToString
-public class ModifyNetworkAclEntryResult implements Serializable, Cloneable {
+public class ModifySecurityGroupEntryResult implements Serializable, Cloneable {
 
 
     private String RequestId;
 
-    private NetworkAclEntry NetworkAclEntry;
+    private SecurityGroupRule SecurityGroupEntry;
 
     public String getRequestId() {
         return RequestId;
@@ -25,12 +27,12 @@ public class ModifyNetworkAclEntryResult implements Serializable, Cloneable {
         RequestId = requestId;
     }
 
-    public com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry getNetworkAclEntry() {
-        return NetworkAclEntry;
+    public SecurityGroupRule getSecurityGroupEntry() {
+        return SecurityGroupEntry;
     }
 
-    public void setNetworkAclEntry(com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry networkAclEntry) {
-        NetworkAclEntry = networkAclEntry;
+    public void setSecurityGroupEntry(SecurityGroupRule securityGroupEntry) {
+        SecurityGroupEntry = securityGroupEntry;
     }
 
     @Override
@@ -38,23 +40,23 @@ public class ModifyNetworkAclEntryResult implements Serializable, Cloneable {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ModifyNetworkAclEntryResult that = (ModifyNetworkAclEntryResult) o;
+        ModifySecurityGroupEntryResult that = (ModifySecurityGroupEntryResult) o;
 
         if (!RequestId.equals(that.RequestId)) return false;
-        return NetworkAclEntry.equals(that.NetworkAclEntry);
+        return SecurityGroupEntry.equals(that.SecurityGroupEntry);
     }
 
     @Override
     public int hashCode() {
         int result = RequestId.hashCode();
-        result = 31 * result + NetworkAclEntry.hashCode();
+        result = 31 * result + SecurityGroupEntry.hashCode();
         return result;
     }
 
     @Override
-    public ModifyNetworkAclEntryResult clone() {
+    public ModifySecurityGroupEntryResult clone() {
         try {
-            return (ModifyNetworkAclEntryResult) super.clone();
+            return (ModifySecurityGroupEntryResult) super.clone();
         } catch (CloneNotSupportedException e) {
             throw new IllegalStateException(
                     "Got a CloneNotSupportedException from Object.clone() "

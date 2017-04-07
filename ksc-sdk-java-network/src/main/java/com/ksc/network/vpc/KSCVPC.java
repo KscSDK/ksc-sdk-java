@@ -112,6 +112,16 @@ public interface KSCVPC {
      * 删除Subnet
      */
     public DeleteSubnetResult deleteSubnet(DeleteSubnetRequest deleteSubnetRequest);
+
+	/**
+	 * 子网关联ACL
+	 */
+	public AssociateNetworkAclResult associateNetworkAcl(AssociateNetworkAclRequest associateNetworkAclRequest);
+
+    /**
+     * 子网解绑ACL
+     */
+    public DisassociateNetworkAclResult disassociateNetworkAcl(DisassociateNetworkAclRequest disassociateNetworkAclRequest);
     
     /**
      * 创建安全组
@@ -188,6 +198,23 @@ public interface KSCVPC {
      * 更新ACL规则信息
      */
     public ModifyNetworkAclEntryResult modifyNetworkAclEntry(ModifyNetworkAclEntryRequest modifyNetworkAclEntryRequest);
+
+	/**
+	 * 描述NetworkAcl
+	 */
+	public DescribeNetworkAclsResult describeNetworkAcls(
+			DescribeNetworkAclsRequest describeNetworkAclsRequest);
+
+    /**
+     * 子网可用IP信息
+     */
+    public DescribeSubnetAvailableAddressesResult describeSubnetAvailableAddresses(
+            DescribeSubnetAvailableAddressesRequest describeSubnetAvailableAddressesRequest);
+
+    /**
+     * 更新安全组规则信息
+     */
+    public ModifySecurityGroupEntryResult modifySecurityGroupEntry(ModifySecurityGroupEntryRequest modifySecurityGroupEntryRequest);
 }
 
 

@@ -1127,4 +1127,170 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+
+    @Override
+	public DescribeNetworkAclsResult describeNetworkAcls(
+			DescribeNetworkAclsRequest describeNetworkAclsRequest) {
+		ExecutionContext executionContext = createExecutionContext(
+				describeNetworkAclsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext
+				.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeNetworkAclsRequest> request = null;
+		Response<DescribeNetworkAclsResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeNetworkAclsRequestMarshaller()
+						.marshall(super.beforeMarshalling(
+								describeNetworkAclsRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeNetworkAclsResult> responseHandler = new StaxResponseHandler<DescribeNetworkAclsResult>(
+					new DescribeNetworkAclsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+    @Override
+    public AssociateNetworkAclResult associateNetworkAcl(
+            AssociateNetworkAclRequest associateNetworkAclRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                associateNetworkAclRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateNetworkAclRequest> request = null;
+        Response<AssociateNetworkAclResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateNetworkAclRequestMarshaller().marshall(
+                        super.beforeMarshalling(associateNetworkAclRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<AssociateNetworkAclResult> responseHandler = new StaxResponseHandler<AssociateNetworkAclResult>(
+                    new AssociateNetworkAclResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DisassociateNetworkAclResult disassociateNetworkAcl(
+            DisassociateNetworkAclRequest disassociateNetworkAclRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                disassociateNetworkAclRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateNetworkAclRequest> request = null;
+        Response<DisassociateNetworkAclResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateNetworkAclRequestMarshaller().marshall(
+                        super.beforeMarshalling(disassociateNetworkAclRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DisassociateNetworkAclResult> responseHandler = new StaxResponseHandler<DisassociateNetworkAclResult>(
+                    new DisassociateNetworkAclResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribeSubnetAvailableAddressesResult describeSubnetAvailableAddresses(
+            DescribeSubnetAvailableAddressesRequest describeSubnetAvailableAddressesRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                describeSubnetAvailableAddressesRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeSubnetAvailableAddressesRequest> request = null;
+        Response<DescribeSubnetAvailableAddressesResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeSubnetAvailableAddressesRequestMarshaller().marshall(
+                        super.beforeMarshalling(describeSubnetAvailableAddressesRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DescribeSubnetAvailableAddressesResult> responseHandler = new
+                    StaxResponseHandler<DescribeSubnetAvailableAddressesResult>(new DescribeSubnetAvailableAddressesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ModifySecurityGroupEntryResult modifySecurityGroupEntry(
+            ModifySecurityGroupEntryRequest modifySecurityGroupEntryRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                modifySecurityGroupEntryRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifySecurityGroupEntryRequest> request = null;
+        Response<ModifySecurityGroupEntryResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifySecurityGroupEntryRequestMarshaller().marshall(
+                        super.beforeMarshalling(modifySecurityGroupEntryRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ModifySecurityGroupEntryResult> responseHandler = new StaxResponseHandler<ModifySecurityGroupEntryResult>(
+                    new ModifySecurityGroupEntryResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 }

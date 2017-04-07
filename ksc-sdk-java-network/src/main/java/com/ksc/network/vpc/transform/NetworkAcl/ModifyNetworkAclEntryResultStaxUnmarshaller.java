@@ -2,6 +2,7 @@ package com.ksc.network.vpc.transform.NetworkAcl;
 
 import javax.xml.stream.events.XMLEvent;
 
+import com.ksc.network.vpc.model.NetworkAcl.ModifyNetworkAclEntryResult;
 import com.ksc.network.vpc.model.NetworkAcl.ModifyNetworkAclResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
@@ -11,11 +12,11 @@ import com.ksc.transform.Unmarshaller;
  * ModifySecurityGroupResult StAX Unmarshaller
  */
 public class ModifyNetworkAclEntryResultStaxUnmarshaller implements
-		Unmarshaller<ModifyNetworkAclResult, StaxUnmarshallerContext> {
+		Unmarshaller<ModifyNetworkAclEntryResult, StaxUnmarshallerContext> {
 
-	public ModifyNetworkAclResult unmarshall(StaxUnmarshallerContext context)
+	public ModifyNetworkAclEntryResult unmarshall(StaxUnmarshallerContext context)
 			throws Exception {
-		ModifyNetworkAclResult ModifyNetworkAclResult = new ModifyNetworkAclResult();
+		ModifyNetworkAclEntryResult ModifyNetworkAclEntryResult = new ModifyNetworkAclEntryResult();
 		int originalDepth = context.getCurrentDepth();
 		int targetDepth = originalDepth + 1;
 
@@ -25,35 +26,23 @@ public class ModifyNetworkAclEntryResultStaxUnmarshaller implements
 		while (true) {
 			XMLEvent xmlEvent = context.nextEvent();
 			if (xmlEvent.isEndDocument())
-				return ModifyNetworkAclResult;
+				return ModifyNetworkAclEntryResult;
 
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
-				if (context.testExpression("NetworkAclId", targetDepth)) {
-					ModifyNetworkAclResult.setNetworkAclId(StringStaxUnmarshaller
-							.getInstance().unmarshall(context));
-					continue;
-				}if (context.testExpression("CreateTime", targetDepth)) {
-                    ModifyNetworkAclResult.setCreateTime(StringStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}if (context.testExpression("VpcId", targetDepth)) {
-                    ModifyNetworkAclResult.setVpcId(StringStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}if (context.testExpression("NetworkAclName", targetDepth)) {
-                    ModifyNetworkAclResult.setNetworkAclName(StringStaxUnmarshaller.getInstance()
+				if (context.testExpression("NetworkAclEntry", targetDepth)) {
+                    ModifyNetworkAclEntryResult.setNetworkAclEntry(NetworkAclEntryStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 
 				}else if(context.testExpression("RequestId", targetDepth)){
-                    ModifyNetworkAclResult.setRequestId(StringStaxUnmarshaller.getInstance()
+                    ModifyNetworkAclEntryResult.setRequestId(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
-					return ModifyNetworkAclResult;
+					return ModifyNetworkAclEntryResult;
 				}
 			}
 		}
