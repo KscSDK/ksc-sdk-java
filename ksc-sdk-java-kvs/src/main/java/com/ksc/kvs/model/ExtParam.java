@@ -5,6 +5,7 @@ public class ExtParam {
 	private int duration;
 	private String hlsSegmentFilename;
 	private String pattern;
+	private String tsAcl;
 	
 	public String getSs() {
 		return ss;
@@ -29,6 +30,12 @@ public class ExtParam {
 	}
 	public void setPattern(String pattern) {
 		this.pattern = pattern;
+	}
+	public String getTsAcl() {
+		return tsAcl;
+	}
+	public void setTsAcl(String tsAcl) {
+		this.tsAcl = tsAcl;
 	}
 	
 	

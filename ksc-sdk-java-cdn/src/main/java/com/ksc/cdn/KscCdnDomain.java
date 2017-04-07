@@ -11,6 +11,7 @@ import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
 import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
 import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
 import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
@@ -25,6 +26,13 @@ import com.ksc.cdn.model.enums.SwitchEnum;
  * @date 04/11/2016
  */
 public interface KscCdnDomain {
+	
+	/**
+     * 设置备注信息
+     */
+    String GETSERVICEIP_URL = "/2016-09-01/domain/GetServiceIpData";
+    String GETSERVICEIP_VERSION = "2016-09-01";
+    String GETSERVICEIP_ACTION = "GetServiceIpData";
     /**
      * 域名列表
      */
@@ -263,4 +271,6 @@ public interface KscCdnDomain {
      * @throws Exception
      */
     void setRemark(String domainId, String remark) throws Exception;
+
+	GetServiceIpResult getServiceIp(String domainId) throws Exception;
 }
