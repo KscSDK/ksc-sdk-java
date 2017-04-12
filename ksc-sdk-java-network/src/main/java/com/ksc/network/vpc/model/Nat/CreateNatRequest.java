@@ -5,6 +5,7 @@ import java.io.Serializable;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
+import com.ksc.network.vpc.transform.Nat.CreateNatRequestMarshaller;
 import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
 
 /**
@@ -47,7 +48,7 @@ public class CreateNatRequest extends KscWebServiceRequest implements
     /**
      * 包年包月类型NAT的购买时长，只有NAT类型为public并且计费类型为包年包月时不可缺省。单位：月。
      */
-    private String PurchaseTime;
+    private Integer PurchaseTime;
 
     public String getVpcId() {
         return VpcId;
@@ -105,11 +106,11 @@ public class CreateNatRequest extends KscWebServiceRequest implements
         ChargeType = chargeType;
     }
 
-    public String getPurchaseTime() {
+    public Integer getPurchaseTime() {
         return PurchaseTime;
     }
 
-    public void setPurchaseTime(String purchaseTime) {
+    public void setPurchaseTime(Integer purchaseTime) {
         PurchaseTime = purchaseTime;
     }
 

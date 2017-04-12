@@ -42,6 +42,10 @@ public class CreateSecurityGroupRequestMarshaller implements
             request.addParameter("SecurityGroupName", createSecurityGroupRequest.getSecurityGroupName());
         }
 
+        if (!StringUtils.isNullOrEmpty(createSecurityGroupRequest.getDescription())) {
+            request.addParameter("Description", createSecurityGroupRequest.getDescription());
+        }
+
         return request;
     }
 

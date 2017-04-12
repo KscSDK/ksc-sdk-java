@@ -30,7 +30,7 @@ public class DescribeAvailabilityZonesResultStaxUnmarshaller implements
 
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
-				if (context.testExpression("AvailabilityZoneInfo/item", targetDepth)) {
+				if (context.testExpression("AvailabilityZoneInfo", targetDepth)) {
 					describeAvailabilityZonesResult.withAvailabilityZones(AvailabilityZoneStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;

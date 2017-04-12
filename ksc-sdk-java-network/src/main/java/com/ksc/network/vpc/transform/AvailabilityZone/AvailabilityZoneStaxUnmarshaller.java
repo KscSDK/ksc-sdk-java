@@ -30,20 +30,8 @@ public class AvailabilityZoneStaxUnmarshaller implements
 
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
-				if (context.testExpression("ZoneName", targetDepth)) {
-					availabilityZone.setZoneName(StringStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}
-
-				if (context.testExpression("ZoneState", targetDepth)) {
-					availabilityZone.setZoneState(StringStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}
-
-				if (context.testExpression("RegionName", targetDepth)) {
-					availabilityZone.setRegionName(StringStaxUnmarshaller.getInstance()
+				if (context.testExpression("AvailabilityZoneName", targetDepth)) {
+					availabilityZone.setAvailabilityZoneName(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}

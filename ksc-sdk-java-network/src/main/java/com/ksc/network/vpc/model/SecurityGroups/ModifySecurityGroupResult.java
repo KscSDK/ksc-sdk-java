@@ -1,5 +1,7 @@
 package com.ksc.network.vpc.model.SecurityGroups;
 
+import com.ksc.network.vpc.model.NetworkAcl.ModifyNetworkAclResult;
+import com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry;
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -12,22 +14,22 @@ import java.io.Serializable;
 @ToString
 public class ModifySecurityGroupResult implements Serializable, Cloneable {
 
-	
-	private String RequestId;
-	
-	private String SecurityGroupType;
+    private String CreateTime;
 
-	private String CreateTime;
-	
-	private String VpcId;
-	
-	private String SecurityGroupId;
-	
-	private String SecurityGroupName;
-	
-	private SecurityGroupRule SecurityGroupEntrySet;
-	
-    
+    private String Description;
+
+    private String VpcId;
+
+    private String SecurityGroupId;
+
+    private String SecurityGroupName;
+
+    private String RequestId;
+
+	private com.ksc.internal.SdkInternalList<SecurityGroupRule> SecurityGroupEntrySet;
+
+    private String SecurityGroupType;
+
     @Override
     public ModifySecurityGroupResult clone() {
         try {
@@ -39,8 +41,15 @@ public class ModifySecurityGroupResult implements Serializable, Cloneable {
         }
     }
 
+    public String getDescription() {
+        return Description;
+    }
 
-	public String getRequestId() {
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getRequestId() {
 		return RequestId;
 	}
 
@@ -100,107 +109,65 @@ public class ModifySecurityGroupResult implements Serializable, Cloneable {
 	}
 
 
-	public SecurityGroupRule getSecurityGroupEntrySet() {
+	public java.util.List<SecurityGroupRule> getSecurityGroupEntrySet() {
+		if (SecurityGroupEntrySet == null) {
+			SecurityGroupEntrySet = new com.ksc.internal.SdkInternalList<SecurityGroupRule>();
+		}
 		return SecurityGroupEntrySet;
 	}
 
 
-	public void setSecurityGroupEntrySet(SecurityGroupRule securityGroupEntrySet) {
-		SecurityGroupEntrySet = securityGroupEntrySet;
+	public void setSecurityGroupEntrySet(java.util.Collection<SecurityGroupRule> groupEntry) {
+		if (groupEntry == null) {
+			this.SecurityGroupEntrySet = null;
+			return;
+		}
+
+		this.SecurityGroupEntrySet = new com.ksc.internal.SdkInternalList<SecurityGroupRule>(groupEntry);
 	}
 
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((CreateTime == null) ? 0 : CreateTime.hashCode());
-		result = prime * result
-				+ ((RequestId == null) ? 0 : RequestId.hashCode());
-		result = prime
-				* result
-				+ ((SecurityGroupEntrySet == null) ? 0 : SecurityGroupEntrySet
-						.hashCode());
-		result = prime * result
-				+ ((SecurityGroupId == null) ? 0 : SecurityGroupId.hashCode());
-		result = prime
-				* result
-				+ ((SecurityGroupName == null) ? 0 : SecurityGroupName
-						.hashCode());
-		result = prime
-				* result
-				+ ((SecurityGroupType == null) ? 0 : SecurityGroupType
-						.hashCode());
-		result = prime * result + ((VpcId == null) ? 0 : VpcId.hashCode());
-		return result;
+	public ModifySecurityGroupResult withSecurityGroupEntrySet(SecurityGroupRule... groupEntry) {
+		if (this.SecurityGroupEntrySet == null) {
+			setSecurityGroupEntrySet(new com.ksc.internal.SdkInternalList<SecurityGroupRule>(groupEntry.length));
+		}
+		for (SecurityGroupRule ele : groupEntry) {
+			this.SecurityGroupEntrySet.add(ele);
+		}
+		return this;
 	}
 
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ModifySecurityGroupResult other = (ModifySecurityGroupResult) obj;
-		if (CreateTime == null) {
-			if (other.CreateTime != null)
-				return false;
-		} else if (!CreateTime.equals(other.CreateTime))
-			return false;
-		if (RequestId == null) {
-			if (other.RequestId != null)
-				return false;
-		} else if (!RequestId.equals(other.RequestId))
-			return false;
-		if (SecurityGroupEntrySet == null) {
-			if (other.SecurityGroupEntrySet != null)
-				return false;
-		} else if (!SecurityGroupEntrySet.equals(other.SecurityGroupEntrySet))
-			return false;
-		if (SecurityGroupId == null) {
-			if (other.SecurityGroupId != null)
-				return false;
-		} else if (!SecurityGroupId.equals(other.SecurityGroupId))
-			return false;
-		if (SecurityGroupName == null) {
-			if (other.SecurityGroupName != null)
-				return false;
-		} else if (!SecurityGroupName.equals(other.SecurityGroupName))
-			return false;
-		if (SecurityGroupType == null) {
-			if (other.SecurityGroupType != null)
-				return false;
-		} else if (!SecurityGroupType.equals(other.SecurityGroupType))
-			return false;
-		if (VpcId == null) {
-			if (other.VpcId != null)
-				return false;
-		} else if (!VpcId.equals(other.VpcId))
-			return false;
-		return true;
+	public ModifySecurityGroupResult withSecurityGroupEntrySet(java.util.Collection<SecurityGroupRule> groupEntry) {
+		setSecurityGroupEntrySet(groupEntry);
+		return this;
 	}
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        ModifySecurityGroupResult that = (ModifySecurityGroupResult) o;
 
+        if (!CreateTime.equals(that.CreateTime)) return false;
+        if (!Description.equals(that.Description)) return false;
+        if (!VpcId.equals(that.VpcId)) return false;
+        if (!SecurityGroupId.equals(that.SecurityGroupId)) return false;
+        if (!SecurityGroupName.equals(that.SecurityGroupName)) return false;
+        if (!RequestId.equals(that.RequestId)) return false;
+        if (!SecurityGroupEntrySet.equals(that.SecurityGroupEntrySet)) return false;
+        return SecurityGroupType.equals(that.SecurityGroupType);
+    }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    @Override
+    public int hashCode() {
+        int result = CreateTime.hashCode();
+        result = 31 * result + Description.hashCode();
+        result = 31 * result + VpcId.hashCode();
+        result = 31 * result + SecurityGroupId.hashCode();
+        result = 31 * result + SecurityGroupName.hashCode();
+        result = 31 * result + RequestId.hashCode();
+        result = 31 * result + SecurityGroupEntrySet.hashCode();
+        result = 31 * result + SecurityGroupType.hashCode();
+        return result;
+    }
 }

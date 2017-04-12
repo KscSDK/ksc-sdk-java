@@ -1,51 +1,107 @@
+
 package com.ksc.network.vpc.model.subnet;
+
+import java.io.Serializable;
+
+import com.ksc.network.vpc.model.vpc.Vpc;
 
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeSubnets.
+ * Contains the output of DescribeVpcs.
  * </p>
  */
 @ToString
-public class DescribeSubnetAvailableAddressesResult {
+public class DescribeSubnetAvailableAddressesResult implements Serializable, Cloneable {
+
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -4342231836921805816L;
 	
 	private String RequestId;
-
-    private String AvailableIpAddress;
-
+	/**
+     * <p>
+     * Information about one or more VPCs.
+     * </p>
+     */
+	
+    private com.ksc.internal.SdkInternalList<String> AvailableIpAddress;
+    
     public String getRequestId() {
-        return RequestId;
-    }
+		return RequestId;
+	}
 
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
+	public void setRequestId(String requestId) {
+		this.RequestId = requestId;
+	}
 
-    public String getAvailableIpAddress() {
+	/**
+     * <p>
+     * Information about one or more VPCs.
+     * </p>
+     * 
+     * @return Information about one or more VPCs.
+     */
+    public java.util.List<String> getAvailableIpAddress() {
+        if (AvailableIpAddress == null) {
+            AvailableIpAddress = new com.ksc.internal.SdkInternalList<String>();
+        }
         return AvailableIpAddress;
     }
 
-    public void setAvailableIpAddress(String availableIpAddress) {
-        AvailableIpAddress = availableIpAddress;
+
+    public void setVpcSet(java.util.Collection<String> availableAddresses) {
+        if (availableAddresses == null) {
+            this.AvailableIpAddress = null;
+            return;
+        }
+
+        this.AvailableIpAddress = new com.ksc.internal.SdkInternalList<String>(availableAddresses);
+    }
+
+    public DescribeSubnetAvailableAddressesResult withAvailableIpAddress(String... availableAddresses) {
+        if (this.AvailableIpAddress == null) {
+            setVpcSet(new com.ksc.internal.SdkInternalList<String>(availableAddresses.length));
+        }
+        for (String ele : availableAddresses) {
+            this.AvailableIpAddress.add(ele);
+        }
+        return this;
+    }
+
+    public DescribeSubnetAvailableAddressesResult withAvailableIpAddress(java.util.Collection<String> availableAddresses) {
+        setVpcSet(availableAddresses);
+        return this;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
 
-        DescribeSubnetAvailableAddressesResult that = (DescribeSubnetAvailableAddressesResult) o;
-
-        if (!RequestId.equals(that.RequestId)) return false;
-        return AvailableIpAddress.equals(that.AvailableIpAddress);
+        if (obj instanceof DescribeSubnetAvailableAddressesResult == false)
+            return false;
+        DescribeSubnetAvailableAddressesResult other = (DescribeSubnetAvailableAddressesResult) obj;
+        if (other.getAvailableIpAddress() == null ^ this.getAvailableIpAddress() == null)
+            return false;
+        if (other.getAvailableIpAddress() != null
+                && other.getAvailableIpAddress().equals(this.getAvailableIpAddress()) == false)
+            return false;
+        return true;
     }
 
     @Override
     public int hashCode() {
-        int result = RequestId.hashCode();
-        result = 31 * result + AvailableIpAddress.hashCode();
-        return result;
+        final int prime = 31;
+        int hashCode = 1;
+
+        hashCode = prime * hashCode
+                + ((getAvailableIpAddress() == null) ? 0 : getAvailableIpAddress().hashCode());
+        return hashCode;
     }
 
     @Override

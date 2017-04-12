@@ -30,8 +30,7 @@ public class DescribeSubnetAvailableAddressesResultStaxUnmarshaller
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
 				if (context.testExpression("AvailableIpAddress", targetDepth)) {
-					describeSubnetAvailableAddressesResult.setAvailableIpAddress(StringStaxUnmarshaller.getInstance()
-							.unmarshall(context));
+					describeSubnetAvailableAddressesResult.withAvailableIpAddress(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				} else if (context.testExpression("RequestId", targetDepth)) {
 					describeSubnetAvailableAddressesResult

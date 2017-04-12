@@ -51,8 +51,12 @@ public class ModifySecurityGroupResultStaxUnmarshaller implements
 					ModifySecurityGroupResult.setSecurityGroupName(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
+				}if (context.testExpression("Description", targetDepth)) {
+					ModifySecurityGroupResult.setDescription(StringStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
 				}if (context.testExpression("SecurityGroupEntrySet/item", targetDepth)) {
-					ModifySecurityGroupResult.setSecurityGroupEntrySet(SecurityGroupRuleStaxUnmarshaller.getInstance()
+					ModifySecurityGroupResult.withSecurityGroupEntrySet(SecurityGroupRuleStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}else if(context.testExpression("RequestId", targetDepth)){

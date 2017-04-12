@@ -3,6 +3,7 @@ package com.ksc.network.vpc.transform.NetworkInterface;
 import javax.xml.stream.events.XMLEvent;
 
 import com.ksc.network.vpc.model.NetworkInterface.NetworkInterface;
+import com.ksc.network.vpc.transform.Routes.NextHopStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -37,8 +38,13 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
 					continue;
 				}
 
-				if (context.testExpression("CidrBlock", targetDepth)) {
-					networkInterface.setCidrBlock(StringStaxUnmarshaller.getInstance().unmarshall(context));
+				if (context.testExpression("MacAddress", targetDepth)) {
+					networkInterface.setMacAddress(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("NetworkInterfaceType", targetDepth)) {
+					networkInterface.setNetworkInterfaceType(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
 
@@ -83,6 +89,12 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
 					networkInterface.setNetworkInterfaceId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+
+                if (context.testExpression("SecurityGroupSet/item", targetDepth)) {
+                    networkInterface.addSecurityGroupSet(GroupIdentifierStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return networkInterface;

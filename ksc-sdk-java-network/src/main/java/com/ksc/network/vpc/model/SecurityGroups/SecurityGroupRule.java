@@ -4,6 +4,10 @@ import lombok.ToString;
 
 @ToString
 public class SecurityGroupRule {
+	private String Description;
+
+	private String SecurityGroupId;
+
 	private String SecurityGroupEntryId;
 
 	private String CidrBlock;
@@ -91,4 +95,54 @@ public class SecurityGroupRule {
 	public void setPortRangeTo(Integer portRangeTo) {
 		PortRangeTo = portRangeTo;
 	}
+
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public String getSecurityGroupId() {
+        return SecurityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        SecurityGroupRule that = (SecurityGroupRule) o;
+
+        if (!Description.equals(that.Description)) return false;
+        if (!SecurityGroupId.equals(that.SecurityGroupId)) return false;
+        if (!SecurityGroupEntryId.equals(that.SecurityGroupEntryId)) return false;
+        if (!CidrBlock.equals(that.CidrBlock)) return false;
+        if (!Direction.equals(that.Direction)) return false;
+        if (!Protocol.equals(that.Protocol)) return false;
+        if (!IcmpType.equals(that.IcmpType)) return false;
+        if (!IcmpCode.equals(that.IcmpCode)) return false;
+        if (!PortRangeFrom.equals(that.PortRangeFrom)) return false;
+        return PortRangeTo.equals(that.PortRangeTo);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Description.hashCode();
+        result = 31 * result + SecurityGroupId.hashCode();
+        result = 31 * result + SecurityGroupEntryId.hashCode();
+        result = 31 * result + CidrBlock.hashCode();
+        result = 31 * result + Direction.hashCode();
+        result = 31 * result + Protocol.hashCode();
+        result = 31 * result + IcmpType.hashCode();
+        result = 31 * result + IcmpCode.hashCode();
+        result = 31 * result + PortRangeFrom.hashCode();
+        result = 31 * result + PortRangeTo.hashCode();
+        return result;
+    }
 }

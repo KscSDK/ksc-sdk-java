@@ -25,6 +25,10 @@ public class ModifyNetworkAclResult implements Serializable, Cloneable {
 
     private String RequestId;
 
+    private String Description;
+
+    private com.ksc.internal.SdkInternalList<NetworkAclEntry> NetworkAclEntrySet;
+
 
     public String getCreateTime() {
         return CreateTime;
@@ -66,6 +70,46 @@ public class ModifyNetworkAclResult implements Serializable, Cloneable {
         RequestId = requestId;
     }
 
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public java.util.List<NetworkAclEntry> getNetworkAclEntrySet() {
+        if (NetworkAclEntrySet == null) {
+            NetworkAclEntrySet = new com.ksc.internal.SdkInternalList<NetworkAclEntry>();
+        }
+        return NetworkAclEntrySet;
+    }
+
+
+    public void setNetworkAclEntrySet(java.util.Collection<NetworkAclEntry> aclEntry) {
+        if (aclEntry == null) {
+            this.NetworkAclEntrySet = null;
+            return;
+        }
+
+        this.NetworkAclEntrySet = new com.ksc.internal.SdkInternalList<NetworkAclEntry>(aclEntry);
+    }
+
+    public ModifyNetworkAclResult withNetworkAclEntrySet(NetworkAclEntry... aclEntry) {
+        if (this.NetworkAclEntrySet == null) {
+            setNetworkAclEntrySet(new com.ksc.internal.SdkInternalList<NetworkAclEntry>(aclEntry.length));
+        }
+        for (NetworkAclEntry ele : aclEntry) {
+            this.NetworkAclEntrySet.add(ele);
+        }
+        return this;
+    }
+
+    public ModifyNetworkAclResult withNetworkAclEntrySet(java.util.Collection<NetworkAclEntry> aclEntry) {
+        setNetworkAclEntrySet(aclEntry);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -77,7 +121,9 @@ public class ModifyNetworkAclResult implements Serializable, Cloneable {
         if (!VpcId.equals(that.VpcId)) return false;
         if (!NetworkAclId.equals(that.NetworkAclId)) return false;
         if (!NetworkAclName.equals(that.NetworkAclName)) return false;
-        return RequestId.equals(that.RequestId);
+        if (!RequestId.equals(that.RequestId)) return false;
+        if (!Description.equals(that.Description)) return false;
+        return NetworkAclEntrySet.equals(that.NetworkAclEntrySet);
     }
 
     @Override
@@ -87,6 +133,8 @@ public class ModifyNetworkAclResult implements Serializable, Cloneable {
         result = 31 * result + NetworkAclId.hashCode();
         result = 31 * result + NetworkAclName.hashCode();
         result = 31 * result + RequestId.hashCode();
+        result = 31 * result + Description.hashCode();
+        result = 31 * result + NetworkAclEntrySet.hashCode();
         return result;
     }
 

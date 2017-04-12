@@ -14,6 +14,7 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
+import com.ksc.network.vpc.model.Nat.*;
 import com.ksc.network.vpc.model.NetworkAcl.*;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
@@ -25,6 +26,7 @@ import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesR
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysRequestMarshaller;
 import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysResultStaxUnmarshaller;
+import com.ksc.network.vpc.transform.Nat.*;
 import com.ksc.network.vpc.transform.NetworkAcl.*;
 import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesRequestMarshaller;
 import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesResultStaxUnmarshaller;
@@ -1284,6 +1286,171 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
 
             StaxResponseHandler<ModifySecurityGroupEntryResult> responseHandler = new StaxResponseHandler<ModifySecurityGroupEntryResult>(
                     new ModifySecurityGroupEntryResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+	@Override
+	public CreateNatResult createNat(
+			CreateNatRequest createNatRequest) {
+		ExecutionContext executionContext = createExecutionContext(
+				createNatRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext
+				.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateNatRequest> request = null;
+		Response<CreateNatResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateNatRequestMarshaller()
+						.marshall(super.beforeMarshalling(createNatRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<CreateNatResult> responseHandler = new StaxResponseHandler<CreateNatResult>(
+					new CreateNatResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+    @Override
+    public DeleteNatResult deleteNat(
+            DeleteNatRequest deleteNatRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                deleteNatRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteNatRequest> request = null;
+        Response<DeleteNatResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteNatRequestMarshaller()
+                        .marshall(super.beforeMarshalling(deleteNatRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DeleteNatResult> responseHandler = new StaxResponseHandler<DeleteNatResult>(
+                    new DeleteNatResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ModifyNatResult modifyNat(
+            ModifyNatRequest modifyNatRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                modifyNatRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyNatRequest> request = null;
+        Response<ModifyNatResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyNatRequestMarshaller().marshall(
+                        super.beforeMarshalling(modifyNatRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<ModifyNatResult> responseHandler = new StaxResponseHandler<ModifyNatResult>(
+                    new ModifyNatResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+
+        } finally {
+
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+	@Override
+	public AssociateNatResult associateNat(
+			AssociateNatRequest associateNatRequest) {
+		ExecutionContext executionContext = createExecutionContext(
+				associateNatRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext
+				.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<AssociateNatRequest> request = null;
+		Response<AssociateNatResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new AssociateNatRequestMarshaller().marshall(
+						super.beforeMarshalling(associateNatRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<AssociateNatResult> responseHandler = new StaxResponseHandler<AssociateNatResult>(
+					new AssociateNatResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+    @Override
+    public DisassociateNatResult disassociateNat(
+            DisassociateNatRequest disassociateNatRequest) {
+        ExecutionContext executionContext = createExecutionContext(
+                disassociateNatRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext
+                .getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DisassociateNatRequest> request = null;
+        Response<DisassociateNatResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DisassociateNatRequestMarshaller().marshall(
+                        super.beforeMarshalling(disassociateNatRequest));
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+
+            StaxResponseHandler<DisassociateNatResult> responseHandler = new StaxResponseHandler<DisassociateNatResult>(
+                    new DisassociateNatResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getKscResponse();

@@ -3,6 +3,7 @@ package com.ksc.network.vpc.model.NetworkAcl;
 
 import java.io.Serializable;
 
+import com.ksc.network.vpc.model.subnet.DescribeSubnetAvailableAddressesResult;
 import lombok.ToString;
 
 import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
@@ -26,6 +27,11 @@ public class CreateNetworkAclResult implements Serializable, Cloneable {
     private String NetworkAclId;
 
     private String RequestId;
+
+    private String Description;
+
+    private com.ksc.internal.SdkInternalList<NetworkAclEntry> NetworkAclEntrySet;
+
 
     public String getCreateTime() {
         return CreateTime;
@@ -67,6 +73,46 @@ public class CreateNetworkAclResult implements Serializable, Cloneable {
         RequestId = requestId;
     }
 
+    public String getDescription() {
+        return Description;
+    }
+
+    public void setDescription(String description) {
+        Description = description;
+    }
+
+    public java.util.List<NetworkAclEntry> getNetworkAclEntrySet() {
+        if (NetworkAclEntrySet == null) {
+            NetworkAclEntrySet = new com.ksc.internal.SdkInternalList<NetworkAclEntry>();
+        }
+        return NetworkAclEntrySet;
+    }
+
+
+    public void setNetworkAclEntrySet(java.util.Collection<NetworkAclEntry> aclEntry) {
+        if (aclEntry == null) {
+            this.NetworkAclEntrySet = null;
+            return;
+        }
+
+        this.NetworkAclEntrySet = new com.ksc.internal.SdkInternalList<NetworkAclEntry>(aclEntry);
+    }
+
+    public CreateNetworkAclResult withNetworkAclEntrySet(NetworkAclEntry... aclEntry) {
+        if (this.NetworkAclEntrySet == null) {
+            setNetworkAclEntrySet(new com.ksc.internal.SdkInternalList<NetworkAclEntry>(aclEntry.length));
+        }
+        for (NetworkAclEntry ele : aclEntry) {
+            this.NetworkAclEntrySet.add(ele);
+        }
+        return this;
+    }
+
+    public CreateNetworkAclResult withNetworkAclEntrySet(java.util.Collection<NetworkAclEntry> aclEntry) {
+        setNetworkAclEntrySet(aclEntry);
+        return this;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,7 +124,8 @@ public class CreateNetworkAclResult implements Serializable, Cloneable {
         if (!VpcId.equals(that.VpcId)) return false;
         if (!NetworkAclName.equals(that.NetworkAclName)) return false;
         if (!NetworkAclId.equals(that.NetworkAclId)) return false;
-        return RequestId.equals(that.RequestId);
+        if (!RequestId.equals(that.RequestId)) return false;
+        return Description.equals(that.Description);
     }
 
     @Override
@@ -88,6 +135,7 @@ public class CreateNetworkAclResult implements Serializable, Cloneable {
         result = 31 * result + NetworkAclName.hashCode();
         result = 31 * result + NetworkAclId.hashCode();
         result = 31 * result + RequestId.hashCode();
+        result = 31 * result + Description.hashCode();
         return result;
     }
 

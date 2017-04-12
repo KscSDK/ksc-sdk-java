@@ -1,125 +1,168 @@
 package com.ksc.network.vpc.model.NetworkInterface;
 
+import com.ksc.internal.SdkInternalList;
+import com.ksc.network.vpc.model.Route.NextHop;
+import com.ksc.network.vpc.model.SecurityGroups.SecurityGroupRule;
 import lombok.ToString;
 
 @ToString
 public class NetworkInterface {
-	private String VpcId;
-	private String VpcName;
-	private String SubnetId;
+    private String DNS2;
+
+    private String DNS1;
+
+    private String VpcId;
+
+    private String VpcName;
+
+    private com.ksc.internal.SdkInternalList<GroupIdentifier> SecurityGroupSet;
+
+    private String InstanceType;
+
+    private String PrivateIpAddress;
+
+    private String NetworkInterfaceId;
+
+    private String SecurityGroupName;
+
+    private String SecurityGroupId;
+
+    private String NetworkInterfaceType;
+
+    private String InstanceId;
+
+    private String MacAddress;
+
+    private String SubnetId;
+
 	private String SubnetName;
-	private String CidrBlock;
-	private String SecurityGroupId;
-	private String SecurityGroupName;
-	private String InstanceId;
-	private String PrivateIpAddress;
-	private String InstanceType;
-	private String DNS2;
-	private String DNS1;
-	private String NetworkInterfaceId;
 
-	public String getVpcId() {
-		return VpcId;
-	}
+    public String getDNS2() {
+        return DNS2;
+    }
 
-	public void setVpcId(String vpcId) {
-		VpcId = vpcId;
-	}
+    public void setDNS2(String DNS2) {
+        this.DNS2 = DNS2;
+    }
 
-	public String getVpcName() {
-		return VpcName;
-	}
+    public String getDNS1() {
+        return DNS1;
+    }
 
-	public void setVpcName(String vpcName) {
-		VpcName = vpcName;
-	}
+    public void setDNS1(String DNS1) {
+        this.DNS1 = DNS1;
+    }
 
-	public String getSubnetId() {
-		return SubnetId;
-	}
+    public String getVpcId() {
+        return VpcId;
+    }
 
-	public void setSubnetId(String subnetId) {
-		SubnetId = subnetId;
-	}
+    public void setVpcId(String vpcId) {
+        VpcId = vpcId;
+    }
 
-	public String getSubnetName() {
-		return SubnetName;
-	}
+    public String getVpcName() {
+        return VpcName;
+    }
 
-	public void setSubnetName(String subnetName) {
-		SubnetName = subnetName;
-	}
+    public void setVpcName(String vpcName) {
+        VpcName = vpcName;
+    }
 
-	public String getCidrBlock() {
-		return CidrBlock;
-	}
+    public com.ksc.internal.SdkInternalList<GroupIdentifier> getSecurityGroupSet() {
+        return SecurityGroupSet;
+    }
 
-	public void setCidrBlock(String cidrBlock) {
-		CidrBlock = cidrBlock;
-	}
+    public void setSecurityGroupEntrySet(com.ksc.internal.SdkInternalList<GroupIdentifier> securityGroupSet) {
+        SecurityGroupSet = securityGroupSet;
+    }
 
-	public String getSecurityGroupId() {
-		return SecurityGroupId;
-	}
+    public String getInstanceType() {
+        return InstanceType;
+    }
 
-	public void setSecurityGroupId(String securityGroupId) {
-		SecurityGroupId = securityGroupId;
-	}
+    public void setInstanceType(String instanceType) {
+        InstanceType = instanceType;
+    }
 
-	public String getSecurityGroupName() {
-		return SecurityGroupName;
-	}
+    public String getPrivateIpAddress() {
+        return PrivateIpAddress;
+    }
 
-	public void setSecurityGroupName(String securityGroupName) {
-		SecurityGroupName = securityGroupName;
-	}
+    public void setPrivateIpAddress(String privateIpAddress) {
+        PrivateIpAddress = privateIpAddress;
+    }
 
-	public String getInstanceId() {
-		return InstanceId;
-	}
+    public String getNetworkInterfaceId() {
+        return NetworkInterfaceId;
+    }
 
-	public void setInstanceId(String instanceId) {
-		InstanceId = instanceId;
-	}
+    public void setNetworkInterfaceId(String networkInterfaceId) {
+        NetworkInterfaceId = networkInterfaceId;
+    }
 
-	public String getPrivateIpAddress() {
-		return PrivateIpAddress;
-	}
+    public String getSecurityGroupName() {
+        return SecurityGroupName;
+    }
 
-	public void setPrivateIpAddress(String privateIpAddress) {
-		PrivateIpAddress = privateIpAddress;
-	}
+    public void setSecurityGroupName(String securityGroupName) {
+        SecurityGroupName = securityGroupName;
+    }
 
-	public String getInstanceType() {
-		return InstanceType;
-	}
+    public String getSecurityGroupId() {
+        return SecurityGroupId;
+    }
 
-	public void setInstanceType(String instanceType) {
-		InstanceType = instanceType;
-	}
+    public void setSecurityGroupId(String securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
 
-	public String getDNS2() {
-		return DNS2;
-	}
+    public String getNetworkInterfaceType() {
+        return NetworkInterfaceType;
+    }
 
-	public void setDNS2(String dNS2) {
-		DNS2 = dNS2;
-	}
+    public void setNetworkInterfaceType(String networkInterfaceType) {
+        NetworkInterfaceType = networkInterfaceType;
+    }
 
-	public String getDNS1() {
-		return DNS1;
-	}
+    public String getInstanceId() {
+        return InstanceId;
+    }
 
-	public void setDNS1(String dNS1) {
-		DNS1 = dNS1;
-	}
+    public void setInstanceId(String instanceId) {
+        InstanceId = instanceId;
+    }
 
-	public String getNetworkInterfaceId() {
-		return NetworkInterfaceId;
-	}
+    public String getMacAddress() {
+        return MacAddress;
+    }
 
-	public void setNetworkInterfaceId(String networkInterfaceId) {
-		NetworkInterfaceId = networkInterfaceId;
-	}
+    public void setMacAddress(String macAddress) {
+        MacAddress = macAddress;
+    }
 
+    public String getSubnetId() {
+        return SubnetId;
+    }
+
+    public void setSubnetId(String subnetId) {
+        SubnetId = subnetId;
+    }
+
+    public String getSubnetName() {
+        return SubnetName;
+    }
+
+    public void setSubnetName(String subnetName) {
+        SubnetName = subnetName;
+    }
+
+    public void addSecurityGroupSet(GroupIdentifier... groups) {
+        if (SecurityGroupSet == null) {
+            SecurityGroupSet = new com.ksc.internal.SdkInternalList<GroupIdentifier>();
+        }
+        for (GroupIdentifier group : groups) {
+            SecurityGroupSet.add(group);
+        }
+    }
 }

@@ -7,33 +7,15 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class AvailabilityZone {
 
-	private String ZoneName;
+	private String AvailabilityZoneName;
 
-	private String ZoneState;
 
-	private String RegionName;
-
-    public String getZoneName() {
-        return ZoneName;
+    public String getAvailabilityZoneName() {
+        return AvailabilityZoneName;
     }
 
-    public void setZoneName(String zoneName) {
-        ZoneName = zoneName;
+    public void setAvailabilityZoneName(String availabilityZoneName) {AvailabilityZoneName = availabilityZoneName;
     }
 
-    public String getZoneState() {
-        return ZoneState;
-    }
 
-    public void setZoneState(String zoneState) {
-        ZoneState = zoneState;
-    }
-
-    public String getRegionName() {
-        return RegionName;
-    }
-
-    public void setRegionName(String regionName) {
-        RegionName = regionName;
-    }
 }

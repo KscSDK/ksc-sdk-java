@@ -31,8 +31,6 @@ public class RouteStaxUnmarshaller implements Unmarshaller<Route, StaxUnmarshall
 					hop.setCreateTime(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
-				
-
 
 				if (context.testExpression("VpcId", targetDepth)) {
 					hop.setVpcId(StringStaxUnmarshaller.getInstance().unmarshall(context));

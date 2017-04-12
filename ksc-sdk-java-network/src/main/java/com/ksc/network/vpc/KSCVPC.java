@@ -4,6 +4,7 @@ import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesReque
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesResult;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysRequest;
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
+import com.ksc.network.vpc.model.Nat.*;
 import com.ksc.network.vpc.model.NetworkAcl.*;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
@@ -13,11 +14,7 @@ import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 
 public interface KSCVPC {
-	/**
-	 * Simplified method form for invoking the DescribeInstances operation.
-	 *
-	 * @see #describeInstances(DescribeInstancesRequest)
-	 */
+
 	public DescribeVpcsResult describeVpcs();
 
 	/**
@@ -215,6 +212,32 @@ public interface KSCVPC {
      * 更新安全组规则信息
      */
     public ModifySecurityGroupEntryResult modifySecurityGroupEntry(ModifySecurityGroupEntryRequest modifySecurityGroupEntryRequest);
+
+	/**
+	 * 创建Nat
+	 */
+	public CreateNatResult createNat(CreateNatRequest createNatRequest);
+
+	/**
+	 * 删除NetworkAcl
+	 */
+	public DeleteNatResult deleteNat(DeleteNatRequest deleteNat);
+
+	/**
+	 * 更新NAT信息
+	 */
+	public ModifyNatResult modifyNat(ModifyNatRequest modifyNatRequest);
+
+	/**
+	 * Nat关联子网
+	 */
+	public AssociateNatResult associateNat(AssociateNatRequest associateNatRequest);
+
+    /**
+     * Nat解绑子网
+     */
+    public DisassociateNatResult disassociateNat(DisassociateNatRequest disassociateNatRequest);
+
 }
 
 

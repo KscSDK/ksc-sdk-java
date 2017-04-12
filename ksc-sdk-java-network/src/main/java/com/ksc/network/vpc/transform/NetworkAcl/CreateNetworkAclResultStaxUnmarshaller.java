@@ -48,6 +48,14 @@ public class CreateNetworkAclResultStaxUnmarshaller implements
 					CreateNetworkAclResult.setNetworkAclId(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
+				}if (context.testExpression("Description", targetDepth)) {
+                    CreateNetworkAclResult.setDescription(StringStaxUnmarshaller.getInstance()
+                            .unmarshall(context));
+                    continue;
+                }if (context.testExpression("NetworkAclEntrySet", targetDepth)) {
+                    CreateNetworkAclResult.withNetworkAclEntrySet(NetworkAclEntryStaxUnmarshaller.getInstance()
+                            .unmarshall(context));
+                    continue;
 				}else if(context.testExpression("RequestId", targetDepth)){
 					CreateNetworkAclResult.setRequestId(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));

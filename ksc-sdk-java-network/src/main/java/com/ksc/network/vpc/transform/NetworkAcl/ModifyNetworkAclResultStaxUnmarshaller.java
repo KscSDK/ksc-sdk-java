@@ -48,6 +48,15 @@ public class ModifyNetworkAclResultStaxUnmarshaller implements
 							.unmarshall(context));
 					continue;
 
+				}if (context.testExpression("Description", targetDepth)) {
+                    ModifyNetworkAclResult.setDescription(StringStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
+				}if (context.testExpression("NetworkAclEntrySet", targetDepth)) {
+                    ModifyNetworkAclResult.withNetworkAclEntrySet(NetworkAclEntryStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
+
 				}else if(context.testExpression("RequestId", targetDepth)){
                     ModifyNetworkAclResult.setRequestId(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
