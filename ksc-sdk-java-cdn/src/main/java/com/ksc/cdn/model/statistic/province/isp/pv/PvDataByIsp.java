@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.province.isp.pv;
 
-import lombok.Data;
-
 /**
  * PvDataByIsp
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class PvDataByIsp {
 
     /**
@@ -21,4 +18,19 @@ public class PvDataByIsp {
      */
     private Long Pv;
 
+    public String getIsp() {
+        return Isp;
+    }
+
+    public void setIsp(String isp) {
+        Isp = isp;
+    }
+
+    public Long getPv() {
+        return Pv;
+    }
+
+    public void setPv(Long pv) {
+        Pv = pv;
+    }
 }

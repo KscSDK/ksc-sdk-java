@@ -1,16 +1,9 @@
 package com.ksc.cdn.model.content;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-
 /**
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
 public class Url {
 
     /**
@@ -18,4 +11,19 @@ public class Url {
      */
     private String Url;
 
+    public Url() {
+
+    }
+
+    public Url(String url) {
+        Url = url;
+    }
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
+    }
 }

@@ -1,11 +1,8 @@
 package com.ksc.cdn.model.statistic.billing;
 
-import lombok.AllArgsConstructor;
-
 /**
  * Created by JIANGYANG1 on 2017/3/21.
  */
-@AllArgsConstructor
 public class BillingData {
     /**
      * 区域
