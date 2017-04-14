@@ -124,4 +124,17 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("runInstances Result: "+gson.toJson(result));
 	}
+
+	@Test
+	public void terminateInstances(){
+		TerminateInstancesRequest request=new TerminateInstancesRequest();
+		request.withInstanceIds("eb9bc657-1715-4a39-8b53-39553ff253b7");
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		TerminateInstancesResult result=kec_client.terminateInstances(request);
+		Gson gson = new Gson();
+		log.info("terminateInstances Result: "+gson.toJson(result));
+	}
 }
