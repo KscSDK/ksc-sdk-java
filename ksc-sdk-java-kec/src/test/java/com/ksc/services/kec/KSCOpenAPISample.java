@@ -1,27 +1,22 @@
 package com.ksc.services.kec;
 
+import com.google.gson.Gson;
+import com.ksc.auth.BasicAWSCredentials;
+import com.ksc.kec.model.*;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.kec.KSCKECClient;
-import com.ksc.kec.model.DescribeImagesRequest;
-import com.ksc.kec.model.DescribeImagesResult;
-import com.ksc.kec.model.DescribeInstancesRequest;
-import com.ksc.kec.model.DescribeInstancesResult;
-import com.ksc.kec.model.RebootInstancesRequest;
-import com.ksc.kec.model.RebootInstancesResult;
-import com.ksc.kec.model.StartInstancesRequest;
-import com.ksc.kec.model.StartInstancesResult;
-import com.ksc.kec.model.StopInstancesRequest;
-import com.ksc.kec.model.StopInstancesResult;
 import com.ksc.regions.InMemoryRegionImpl;
 import com.ksc.regions.Region;
 
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
+	public static final String AWS_AK = "";
+	public static final String AWS_SK = "";
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
@@ -102,5 +97,31 @@ public class KSCOpenAPISample {
 		//kec_client.setRegion(region);
 		DescribeImagesResult result=kec_client.describeImages(request);
 		log.info(result);
+	}
+
+	@Test
+	public void runInstances(){
+		RunInstancesRequest request=new RunInstancesRequest();
+		request.setImageId("cce6789c-83a1-4d51-94b4-74b59c60e39d");
+		request.setInstanceType("I1.1A");
+		request.setDataDiskGb(50);
+		request.setMaxCount(1);
+		request.setMinCount(1);
+		request.setSubnetId("0773c3e5-f2ec-4d3e-82b3-91102915e19a");
+		request.setInstancePassword("Qwer@1234");
+		request.setChargeType("Monthly");
+		request.setPurchaseTime(1);
+		request.setSecurityGroupId("f467f1b9-26e4-4b9f-8901-ee260bde9869");
+		request.setInstanceName("sdk-test");
+		request.setInstanceNameSuffix("1");
+		request.setSriovNetSupport(false);
+
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		RunInstancesResult result=kec_client.runInstances(request);
+		Gson gson = new Gson();
+		log.info("runInstances Result: "+gson.toJson(result));
 	}
 }

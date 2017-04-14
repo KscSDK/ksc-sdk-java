@@ -3,6 +3,8 @@ package com.ksc.kec;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ksc.kec.model.*;
+import com.ksc.kec.model.transform.*;
 import org.w3c.dom.Node;
 
 import com.ksc.ClientConfiguration;
@@ -21,26 +23,6 @@ import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
-import com.ksc.kec.model.DescribeImagesRequest;
-import com.ksc.kec.model.DescribeImagesResult;
-import com.ksc.kec.model.DescribeInstancesRequest;
-import com.ksc.kec.model.DescribeInstancesResult;
-import com.ksc.kec.model.RebootInstancesRequest;
-import com.ksc.kec.model.RebootInstancesResult;
-import com.ksc.kec.model.StartInstancesRequest;
-import com.ksc.kec.model.StartInstancesResult;
-import com.ksc.kec.model.StopInstancesRequest;
-import com.ksc.kec.model.StopInstancesResult;
-import com.ksc.kec.model.transform.DescribeImagesRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeImagesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.RebootInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.RebootInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.StartInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.StartInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.StopInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.StopInstancesResultStaxUnmarshaller;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
@@ -408,6 +390,68 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 
 			StaxResponseHandler<DescribeImagesResult> responseHandler = new StaxResponseHandler<DescribeImagesResult>(
 					new DescribeImagesResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public RunInstancesResult runInstances(RunInstancesRequest runInstancesRequest) {
+		ExecutionContext executionContext = createExecutionContext(runInstancesRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<RunInstancesRequest> request = null;
+		Response<RunInstancesResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new RunInstancesRequestMarshaller()
+						.marshall(super.beforeMarshalling(runInstancesRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<RunInstancesResult> responseHandler = new StaxResponseHandler<RunInstancesResult>(
+					new RunInstancesResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public TerminateInstancesResult terminateInstances(TerminateInstancesRequest terminateInstancesRequest) {
+		ExecutionContext executionContext = createExecutionContext(terminateInstancesRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<TerminateInstancesRequest> request = null;
+		Response<TerminateInstancesResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new TerminateInstancesRequestMarshaller()
+						.marshall(super.beforeMarshalling(terminateInstancesRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<TerminateInstancesResult> responseHandler = new StaxResponseHandler<TerminateInstancesResult>(
+					new TerminateInstancesResultStaxUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();

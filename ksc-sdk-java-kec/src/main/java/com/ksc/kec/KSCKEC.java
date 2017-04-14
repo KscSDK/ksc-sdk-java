@@ -1,15 +1,6 @@
 package com.ksc.kec;
 
-import com.ksc.kec.model.DescribeImagesRequest;
-import com.ksc.kec.model.DescribeImagesResult;
-import com.ksc.kec.model.DescribeInstancesRequest;
-import com.ksc.kec.model.DescribeInstancesResult;
-import com.ksc.kec.model.RebootInstancesRequest;
-import com.ksc.kec.model.RebootInstancesResult;
-import com.ksc.kec.model.StartInstancesRequest;
-import com.ksc.kec.model.StartInstancesResult;
-import com.ksc.kec.model.StopInstancesRequest;
-import com.ksc.kec.model.StopInstancesResult;
+import com.ksc.kec.model.*;
 import com.ksc.regions.Region;
 
 /**
@@ -101,4 +92,8 @@ public interface KSCKEC {
 	 */
 	DescribeImagesResult describeImages(DescribeImagesRequest describeImagesRequest);
 
+
+	RunInstancesResult runInstances(RunInstancesRequest runInstancesRequest);
+
+	TerminateInstancesResult terminateInstances(TerminateInstancesRequest terminateInstancesRequest);
 }

@@ -35,6 +35,16 @@ public class Instance {
 
 	private String CreationDate;
 
+	private String AvailabilityZone;
+
+	public String getAvailabilityZone() {
+		return AvailabilityZone;
+	}
+
+	public void setAvailabilityZone(String availabilityZone) {
+		AvailabilityZone = availabilityZone;
+	}
+
 	public Instance withNetworkSet(InstanceNetwork... network_set) {
 		for (InstanceNetwork n : network_set) {
 			this.NetworkInterfaceSet.add(n);
