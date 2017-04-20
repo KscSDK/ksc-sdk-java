@@ -5,8 +5,7 @@ import com.ksc.Request;
 import com.ksc.live.model.transform.GetListRequestMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
 
-public class GetListRequest extends KscWebServiceRequest
-implements DryRunSupportedRequest<GetListRequest>{
+public class GetListRequest extends KscWebServiceRequest {
 	
 	private String uniquename;
 	
@@ -58,12 +57,12 @@ implements DryRunSupportedRequest<GetListRequest>{
 		this.pubhost = pubhost;
 	}
 
-	public Request<GetListRequest> getDryRunRequest() {
-		Request<GetListRequest> request = new GetListRequestMarshaller()
-				.marshall(this);
-		request.addParameter("DryRun", Boolean.toString(true));
-		return null;
-	}
+//	public Request<GetListRequest> getDryRunRequest() {
+//		Request<GetListRequest> request = new GetListRequestMarshaller()
+//				.marshall(this);
+//		request.addParameter("DryRun", Boolean.toString(true));
+//		return null;
+//	}
 
 
 }

@@ -11,6 +11,19 @@ import com.ksc.util.StringUtils;
 public class GetListRequestMarshaller implements
 Marshaller<Request<GetListRequest>, GetListRequest> {
 
+    private static GetListRequestMarshaller instance;
+
+    private GetListRequestMarshaller() {
+
+    }
+
+    public synchronized static GetListRequestMarshaller getInstance() {
+        if (instance == null) {
+            instance = new GetListRequestMarshaller();
+        }
+        return instance;
+    }
+
 	public Request<GetListRequest> marshall(GetListRequest liveRequest) {
 		if (liveRequest == null) {
             throw new KscClientException(

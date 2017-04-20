@@ -1,18 +1,22 @@
 package com.ksc.live;
 
 import com.ksc.auth.AWSCredentials;
-import com.ksc.http.DefaultErrorResponseHandler;
+import com.ksc.http.*;
 import com.ksc.internal.StaticCredentialsProvider;
+import com.ksc.live.model.transform.BaseJsonUnmarshaller;
+import com.ksc.protocol.json.JsonClientMetadata;
 import com.ksc.protocol.json.JsonErrorResponseMetadata;
+import com.ksc.protocol.json.JsonOperationMetadata;
+import com.ksc.protocol.json.SdkJsonProtocolFactory;
+import com.ksc.transform.Marshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
+import org.apache.http.HttpHeaders;
+import org.apache.http.entity.ContentType;
 import org.w3c.dom.Node;
 import com.ksc.*;
 import com.ksc.auth.AWSCredentialsProvider;
 import com.ksc.auth.DefaultAWSCredentialsProviderChain;
-import com.ksc.http.ExecutionContext;
-import com.ksc.http.StaxResponseHandler;
-import com.ksc.http.HttpResponseHandler;
 import com.ksc.live.model.GetListRequest;
 import com.ksc.live.model.LiveResult;
 import com.ksc.live.model.transform.GetListRequestMarshaller;
@@ -26,7 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-public class LiveClient extends KscWebServiceClient implements Live {
+public class KSCLiveClient extends KscWebServiceClient implements Live {
 
     /** Provider for AWS credentials. */
     private AWSCredentialsProvider kscCredentialsProvider;
@@ -44,28 +48,31 @@ public class LiveClient extends KscWebServiceClient implements Live {
 
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
 
+    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(
+            new JsonClientMetadata().withSupportsCbor(false));
+
     protected final List<Unmarshaller<KscServiceException, Node>> exceptionUnmarshallers = new ArrayList<Unmarshaller<KscServiceException, Node>>();
 
-    public LiveClient() {
+    public KSCLiveClient() {
         this(new DefaultAWSCredentialsProviderChain(), configFactory.getConfig());
     }
 
-    public LiveClient(ClientConfiguration clientConfiguration) {
+    public KSCLiveClient(ClientConfiguration clientConfiguration) {
         this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
     }
 
-    public LiveClient(AWSCredentials awsCredentials) {
+    public KSCLiveClient(AWSCredentials awsCredentials) {
         this(awsCredentials, configFactory.getConfig());
     }
 
 
-    public LiveClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
+    public KSCLiveClient(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
         this.kscCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
         init();
     }
 
-    public LiveClient(DefaultAWSCredentialsProviderChain defaultAWSCredentialsProviderChain, ClientConfiguration clientConfiguration) {
+    public KSCLiveClient(DefaultAWSCredentialsProviderChain defaultAWSCredentialsProviderChain, ClientConfiguration clientConfiguration) {
         super(clientConfiguration);
     }
 
@@ -76,50 +83,63 @@ public class LiveClient extends KscWebServiceClient implements Live {
 
         setServiceNameIntern(DEFAULT_SIGNING_NAME);
         setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
-//        setEndpoint("https://live.api.ksyun.com/?\n" +
-//                "Action=llistPubStreamsInfo&Version=2016-09-25");
     }
 
     @Override
     public LiveResult listPubStreamsInfo(GetListRequest liveRequest) {
-        ExecutionContext executionContext = createExecutionContext(liveRequest);
+            return (LiveResult) this.makeApiCall(liveRequest,
+                    GetListRequestMarshaller.getInstance(),
+                    LiveResultStaxUnmarshaller.getInstance());
+    }
+
+
+    private Object makeApiCall(KscWebServiceRequest kscWebServiceRequest,
+                               Marshaller marshaller, BaseJsonUnmarshaller unmarshaller) {
+        ExecutionContext executionContext = createExecutionContext(kscWebServiceRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-        Request<GetListRequest> request = null;
-        Response<LiveResult> response = null;
-
+        Request request = null;
+        Response response = null;
         try {
             kscRequestMetrics.startEvent(Field.RequestMarshallTime);
             try {
-                request = new GetListRequestMarshaller()
-                        .marshall(super.beforeMarshalling(liveRequest));
+                request = (Request) marshaller.marshall(super
+                        .beforeMarshalling(kscWebServiceRequest));
+                request.addHeader(HttpHeaders.ACCEPT, ContentType.APPLICATION_JSON.toString());
                 request.setKscRequestMetrics(kscRequestMetrics);
+            } catch (Exception e) {
+                e.printStackTrace();
             } finally {
                 kscRequestMetrics.endEvent(Field.RequestMarshallTime);
             }
 
-            StaxResponseHandler<LiveResult> responseHandler = new StaxResponseHandler<LiveResult>(
-                    new LiveResultStaxUnmarshaller());
+            HttpResponseHandler<KscWebServiceResponse<Object>> responseHandler = protocolFactory
+                    .createResponseHandler(new JsonOperationMetadata()
+                                    .withPayloadJson(true)
+                                    .withHasStreamingSuccessResponse(false),
+                            unmarshaller);
             response = invoke(request, responseHandler, executionContext);
-
-            return response.getLiveResponse();
-
+            return response.getKscResponse();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return unmarshaller.handleException(e);
         } finally {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
 
-
-
     /**
      * Normal invoke with authentication. Credentials are required and may be
      * overriden at the request level.
      **/
-    private <X, Y extends KscWebServiceRequest> Response<X> invoke(Request<Y> request,
-                                                                   HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
+    private <X, Y extends KscWebServiceRequest> Response<X> invoke(
+            Request<Y> request,
+            HttpResponseHandler<KscWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext) {
 
-        executionContext.setCredentialsProvider(
-                CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), kscCredentialsProvider));
+        executionContext.setCredentialsProvider(CredentialUtils
+                .getCredentialsProvider(request.getOriginalRequest(),
+                        kscCredentialsProvider));
 
         return doInvoke(request, responseHandler, executionContext);
     }
@@ -128,14 +148,17 @@ public class LiveClient extends KscWebServiceClient implements Live {
      * Invoke the request using the http client. Assumes credentials (or lack
      * thereof) have been configured in the ExecutionContext beforehand.
      **/
-    private <X, Y extends KscWebServiceRequest> Response<X> doInvoke(Request<Y> request,
-                                                                     HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
+    private <X, Y extends KscWebServiceRequest> Response<X> doInvoke(
+            Request<Y> request,
+            HttpResponseHandler<KscWebServiceResponse<X>> responseHandler,
+            ExecutionContext executionContext) {
         request.setEndpoint(endpoint);
         request.setTimeOffset(timeOffset);
 
-        DefaultErrorResponseHandler errorResponseHandler = new DefaultErrorResponseHandler(exceptionUnmarshallers);
-
-        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        HttpResponseHandler<KscServiceException> errorResponseHandler = protocolFactory
+                .createErrorResponseHandler(new JsonErrorResponseMetadata());
+        return client.execute(request, responseHandler, errorResponseHandler,
+                executionContext);
     }
 
 
