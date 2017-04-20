@@ -15,10 +15,10 @@ public class LiveOpenAPISample {
     private static final Logger log = Logger.getLogger(LiveOpenAPISample.class);
 
     KSCLiveClient live_client = null;
-    private String version = "2016-09-25";
+    private String version = "2016-10-26";
     private String uniquename = "maxi";
     private int marker = 0;
-    private int limit = 100;
+    private int limit = 15;
     private String app = "live";
     private String pubhost = null;
 
@@ -48,9 +48,11 @@ public class LiveOpenAPISample {
         request.setMarker(this.marker);
         request.setLimit(this.limit);
         LiveResult result = live_client.listPubStreamsInfo(request);
-//        log.info("statusCode:" + result.getStatusCode() + ",requestId:" + result.getRequestId() + ",code:" + result.getCode() + ",message:" + result.getMessage());
-//        log.info(result);
-//        log.info(result.toJsonString());
-        log.info(result);
+        System.out.println("=============================");
+        log.info(result.getCount());
+        log.info(result.getErrno());
+        log.info(result.getTotal());
+        log.info(result.getResult());
+        System.out.println("=============================");
     }
 }
