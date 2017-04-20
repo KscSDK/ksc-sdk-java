@@ -92,8 +92,24 @@ public interface KSCKEC {
 	 */
 	DescribeImagesResult describeImages(DescribeImagesRequest describeImagesRequest);
 
-
+	/**
+	 * <p>
+	 * Reboot an kec instance that you've previously stopped.
+	 * </p>
+	 *
+	 * @param runInstancesRequest
+	 * @return Result of the RunInstances operation returned by the service.
+	 * @sample KSC.KEC.RunInstances
+	 */
 	RunInstancesResult runInstances(RunInstancesRequest runInstancesRequest);
-
+	/**
+	 * <p>
+	 * Terminate an kec instance.
+	 * </p>
+	 *
+	 * @param terminateInstancesRequest
+	 * @return Result of the TerminateInstances operation returned by the service.
+	 * @sample KSC.KEC.TerminateInstances
+	 */
 	TerminateInstancesResult terminateInstances(TerminateInstancesRequest terminateInstancesRequest);
 }
