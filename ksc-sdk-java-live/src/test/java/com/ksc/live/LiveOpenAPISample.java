@@ -16,10 +16,10 @@ public class LiveOpenAPISample {
 
     KSCLiveClient live_client = null;
     private String version = "2016-10-26";
-    private String uniquename = "maxi";
+    private String uniquename = "";
     private int marker = 0;
     private int limit = 15;
-    private String app = "live";
+    private String app = "";
     private String pubhost = null;
 
     @Before
@@ -27,12 +27,12 @@ public class LiveOpenAPISample {
         AWSCredentials aws = new AWSCredentials() {
             @Override
             public String getAWSAccessKeyId() {
-                return "AKLTNZ4r_XpvSOSdAnAmfWEUsg";
+                return "";
             }
 
             @Override
             public String getAWSSecretKey() {
-                return "OKtoHRyb5Em3oFgTFhFN7ypvjot0SRoqTzbQB8eSD2BpUrBgwy3MlHoJC637BhVF1g==";
+                return "";
             }
         };
         live_client = new KSCLiveClient(aws);
