@@ -40,4 +40,8 @@ public class ParamConstant {
 
     public static final String FRAMELOSSRATE = "framelossrate";
 
+    public static final String ERRORNO = "errno";
+
+    public static final String ERRMSG = "errmsg";
+
 }

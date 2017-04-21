@@ -54,8 +54,13 @@ public class LiveResultStaxUnmarshaller extends BaseJsonUnmarshaller<LiveResult,
                             .unmarshall(context));
                 } else if (context.testExpression(ParamConstant.TOTAL, targetDepth)) {
                     context.nextToken();
-                    result.setTotal(context.getUnmarshaller(Integer.class)
-                            .unmarshall(context));
+                    result.setTotal(context.getUnmarshaller(Integer.class).unmarshall(context));
+                } else if (context.testExpression(ParamConstant.ERRORNO, targetDepth)) {
+                    context.nextToken();
+                    result.setErrno(context.getUnmarshaller(Integer.class).unmarshall(context));
+                } else if (context.testExpression(ParamConstant.ERRMSG, targetDepth)) {
+                    context.nextToken();
+                    result.setErrmsg(context.getUnmarshaller(String.class).unmarshall(context));
                 } else if (context.testExpression(ParamConstant.RESULT, targetDepth)) {
                     context.nextToken();
                     result.setResult(new ListUnmarshaller<Detail>(DetailUnmarshaller.getInstance()).unmarshall(context));
