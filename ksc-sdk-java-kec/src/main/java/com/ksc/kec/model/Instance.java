@@ -29,7 +29,7 @@ public class Instance {
 
 	private InstanceMonitor Monitoring;
 
-	private List<InstanceNetwork> NetworkInterfaceSet = new SdkInternalList<InstanceNetwork>();
+	private List<InstanceNetwork> NetworkInterfaceSet;
 
 	private String SriovNetSupport;
 
@@ -46,6 +46,9 @@ public class Instance {
 	}
 
 	public Instance withNetworkSet(InstanceNetwork... network_set) {
+		if (this.NetworkInterfaceSet == null) {
+			this.NetworkInterfaceSet = new SdkInternalList<InstanceNetwork>();
+		}
 		for (InstanceNetwork n : network_set) {
 			this.NetworkInterfaceSet.add(n);
 		}

@@ -112,4 +112,34 @@ public interface KSCKEC {
 	 * @sample KSC.KEC.TerminateInstances
 	 */
 	TerminateInstancesResult terminateInstances(TerminateInstancesRequest terminateInstancesRequest);
+	/**
+	 * <p>
+	 * ModifyInstanceAttribute an kec instance.
+	 * </p>
+	 *
+	 * @param modifyInstanceAttributeRequest
+	 * @return Result of the ModifyInstanceAttribute operation returned by the service.
+	 * @sample KSC.KEC.ModifyInstanceAttribute
+	 */
+	ModifyInstanceAttributeResult modifyInstanceAttribute(ModifyInstanceAttributeRequest modifyInstanceAttributeRequest);
+	/**
+	 * <p>
+	 * MonitorInstances an kec instance.
+	 * </p>
+	 *
+	 * @param monitorInstancesRequest
+	 * @return Result of the MonitorInstances operation returned by the service.
+	 * @sample KSC.KEC.MonitorInstances
+	 */
+	MonitorInstancesResult monitorInstances(MonitorInstancesRequest monitorInstancesRequest);
+	/**
+	 * <p>
+	 * UnmonitorInstances an kec instance.
+	 * </p>
+	 *
+	 * @param unmonitorInstancesRequest
+	 * @return Result of the UnmonitorInstances operation returned by the service.
+	 * @sample KSC.KEC.UnmonitorInstances
+	 */
+	UnmonitorInstancesResult unmonitorInstances(UnmonitorInstancesRequest unmonitorInstancesRequest);
 }

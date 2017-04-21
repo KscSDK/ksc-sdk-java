@@ -34,8 +34,10 @@ public class RunInstancesRequestMarshaller implements
         request.setHttpMethod(HttpMethodName.GET);
 
         //AddParameter
-        request.addParameter("ImageId",
-                StringUtils.fromString(runInstancesRequest.getImageId()));
+        if(runInstancesRequest.getImageId()!=null) {
+            request.addParameter("ImageId",
+                    StringUtils.fromString(runInstancesRequest.getImageId()));
+        }
         if(runInstancesRequest.getInstanceType()!=null) {
             request.addParameter("InstanceType",
                     StringUtils.fromString(runInstancesRequest.getInstanceType()));
@@ -44,20 +46,34 @@ public class RunInstancesRequestMarshaller implements
             request.addParameter("DataDiskGb",
                     StringUtils.fromInteger(runInstancesRequest.getDataDiskGb()));
         }
-        request.addParameter("MaxCount",
-                StringUtils.fromInteger(runInstancesRequest.getMaxCount()));
-        request.addParameter("MinCount",
-                StringUtils.fromInteger(runInstancesRequest.getMinCount()));
-        request.addParameter("SubnetId",
-                StringUtils.fromString(runInstancesRequest.getSubnetId()));
-        request.addParameter("InstancePassword",
-                StringUtils.fromString(runInstancesRequest.getInstancePassword()));
-        request.addParameter("ChargeType",
-                StringUtils.fromString(runInstancesRequest.getChargeType()));
-        request.addParameter("PurchaseTime",
-                StringUtils.fromInteger(runInstancesRequest.getPurchaseTime()));
-        request.addParameter("SecurityGroupId",
-                StringUtils.fromString(runInstancesRequest.getSecurityGroupId()));
+        if(runInstancesRequest.getMaxCount()!=null) {
+            request.addParameter("MaxCount",
+                    StringUtils.fromInteger(runInstancesRequest.getMaxCount()));
+        }
+        if(runInstancesRequest.getMinCount()!=null) {
+            request.addParameter("MinCount",
+                    StringUtils.fromInteger(runInstancesRequest.getMinCount()));
+        }
+        if(runInstancesRequest.getSubnetId()!=null) {
+            request.addParameter("SubnetId",
+                    StringUtils.fromString(runInstancesRequest.getSubnetId()));
+        }
+        if(runInstancesRequest.getInstancePassword()!=null) {
+            request.addParameter("InstancePassword",
+                    StringUtils.fromString(runInstancesRequest.getInstancePassword()));
+        }
+        if(runInstancesRequest.getChargeType()!=null) {
+            request.addParameter("ChargeType",
+                    StringUtils.fromString(runInstancesRequest.getChargeType()));
+        }
+        if(runInstancesRequest.getPurchaseTime()!=null) {
+            request.addParameter("PurchaseTime",
+                    StringUtils.fromInteger(runInstancesRequest.getPurchaseTime()));
+        }
+        if(runInstancesRequest.getSecurityGroupId()!=null) {
+            request.addParameter("SecurityGroupId",
+                    StringUtils.fromString(runInstancesRequest.getSecurityGroupId()));
+        }
         if(runInstancesRequest.getPrivateIpAddress()!=null) {
             request.addParameter("PrivateIpAddress",
                     StringUtils.fromString(runInstancesRequest.getPrivateIpAddress()));
