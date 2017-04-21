@@ -20,8 +20,6 @@ public class ParamConstant {
 
     public static final String LIMIT = "limit";
 
-    public static final String PUBHOST = "pubhost";
-
     public static final String COUNT = "count";
 
     public static final String TOTAL = "total";

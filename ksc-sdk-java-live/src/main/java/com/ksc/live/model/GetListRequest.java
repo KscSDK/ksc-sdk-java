@@ -15,7 +15,7 @@ public class GetListRequest extends KscWebServiceRequest {
 
 	private String app;
 
-	private  String pubhost;
+	private  String pubdomain;
 
 	public String getUniquename() {
 		return uniquename;
@@ -33,8 +33,12 @@ public class GetListRequest extends KscWebServiceRequest {
 		return app;
 	}
 
-	public String getPubhost() {
-		return pubhost;
+	public String getPubdomain() {
+		return pubdomain;
+	}
+
+	public void setPubdomain(String pubdomain) {
+		this.pubdomain = pubdomain;
 	}
 
 	public void setUniquename(String uniquename) {
@@ -52,17 +56,6 @@ public class GetListRequest extends KscWebServiceRequest {
 	public void setApp(String app) {
 		this.app = app;
 	}
-
-	public void setPubhost(String pubhost) {
-		this.pubhost = pubhost;
-	}
-
-//	public Request<GetListRequest> getDryRunRequest() {
-//		Request<GetListRequest> request = new GetListRequestMarshaller()
-//				.marshall(this);
-//		request.addParameter("DryRun", Boolean.toString(true));
-//		return null;
-//	}
 
 
 }

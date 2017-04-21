@@ -50,11 +50,11 @@ Marshaller<Request<GetListRequest>, GetListRequest> {
             request.addParameter("limit", StringUtils.fromInteger(liveRequest.getLimit()));
         }
 
-        if (liveRequest.getApp() != null && liveRequest.getPubhost() == null) {
+        if (liveRequest.getApp() != null && liveRequest.getPubdomain() == null) {
             request.addParameter("app",liveRequest.getApp());
         }
-        if (liveRequest.getPubhost() != null && liveRequest.getApp() == null) {
-            request.addParameter("pubhost",liveRequest.getPubhost());
+        if (liveRequest.getPubdomain() != null && liveRequest.getApp() == null) {
+            request.addParameter("pubdomain",liveRequest.getPubdomain());
         }
 
         request.setHttpMethod(HttpMethodName.GET);
