@@ -16,13 +16,11 @@ public class LiveOpenAPISample {
 
     KSCLiveClient live_client = null;
     private String version = "2016-10-26";
-    private String uniquename = "maxi";
-//    private String uniquename = "qa-ks";
+    private String uniquename = "uniquename";
     private int marker = 0;
     private int limit = 20;
-    private String app = "live";
-    private String pubdomain = "live.moxiulive.com";
-//    private String pubdomain = "qa-ks.test-uplive.ks-cdn.com";
+    private String app = "application";
+    private String pubdomain = "publishdomain";
 
 
     @Before
@@ -30,27 +28,18 @@ public class LiveOpenAPISample {
         AWSCredentials aws = new AWSCredentials() {
             @Override
             public String getAWSAccessKeyId() {
-                return "AKLTNZ4r_XpvSOSdAnAmfWEUsg";
+                return "Accesskey";
             }
 
-//            @Override  测试
-//            public String getAWSAccessKeyId() {
-//                return "AKLT6UU6Vp_9SxWW5RAW6UHtdQ";
-//            }
 
             @Override
             public String getAWSSecretKey() {
-                return "OKtoHRyb5Em3oFgTFhFN7ypvjot0SRoqTzbQB8eSD2BpUrBgwy3MlHoJC637BhVF1g==";
+                return "AccessSecretKey";
             }
 
-//            @Override   测试
-//            public String getAWSSecretKey() {
-//                return "OD2JznBHfpNUHXi9c9C7N5t4G/uzyp0x0TSNaq3iCyIXWfOrK5aBTBC/CXymewOcLw==";
-//            }
         };
         live_client = new KSCLiveClient(aws);
         live_client.setEndpoint("http://live.api.ksyun.com");
-//        live_client.setEndpoint("live.cn-shanghai-3.api.ksyun.com");
 
     }
 

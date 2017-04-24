@@ -36,8 +36,6 @@ public class LiveResultStaxUnmarshaller implements Unmarshaller<LiveResult, Json
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
 
-        if (context.isStartOfDocument())
-            targetDepth += 1;
 
         JsonToken token = context.getCurrentToken();
         if (token == null)
