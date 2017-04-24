@@ -21,11 +21,6 @@ public class TerminateInstancesResult implements Serializable, Cloneable {
 	 */
 
 	private String RequestId;
-    /**
-     * <p>
-     * Information about one or more Elastic IP addresses.
-     * </p>
-     */
     private com.ksc.internal.SdkInternalList<OperateInfo> InstancesSet;
 	public String getRequestId() {
 		return RequestId;

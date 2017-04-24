@@ -8,7 +8,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of StartInstances.
+ * Contains the output of MonitorInstances.
  * </p>
  */
 
@@ -19,11 +19,7 @@ public class MonitorInstancesResult implements Serializable, Cloneable {
     private static final long serialVersionUID = -2087918803488627510L;
 
     private String RequestId;
-    /**
-     * <p>
-     * Information about one or more Elastic IP addresses.
-     * </p>
-     */
+
     private SdkInternalList<Instance> InstancesSet;
 
     public String getRequestId() {

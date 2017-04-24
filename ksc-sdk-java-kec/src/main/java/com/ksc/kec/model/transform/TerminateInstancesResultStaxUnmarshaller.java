@@ -9,7 +9,7 @@ import javax.xml.stream.events.XMLEvent;
 
 /**
  * 
- * StartInstancesResult StAX Unmarshaller
+ * TerminateInstancesResult StAX Unmarshaller
  *
  */
 public class TerminateInstancesResultStaxUnmarshaller implements Unmarshaller<TerminateInstancesResult, StaxUnmarshallerContext> {

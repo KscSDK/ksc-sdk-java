@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of StartInstances.
+ * Contains the output of ModifyInstanceAttribute.
  * </p>
  */
 

@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for StartInstances.
+ * Contains the parameters for MonitorInstances.
  * </p>
  */
 @ToString
@@ -26,7 +26,7 @@ public class MonitorInstancesRequest extends KscWebServiceRequest
 	 * One or more instance IDs.
 	 * </p>
 	 * <p>
-	 * Default: Describes all your instances.
+	 * Default: Monitor all your instances.
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<String> instanceIds;

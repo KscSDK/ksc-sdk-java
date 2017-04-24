@@ -8,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * DescribeInstancesResult StAX Unmarshaller
+ * RunInstancesResult StAX Unmarshaller
  */
 public class RunInstancesResultStaxUnmarshaller implements
 		Unmarshaller<RunInstancesResult, StaxUnmarshallerContext> {

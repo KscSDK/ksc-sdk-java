@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for StartInstances.
+ * Contains the parameters for ModifyInstanceAttribute.
  * </p>
  */
 @ToString
