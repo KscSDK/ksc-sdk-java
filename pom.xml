@@ -1,7 +1,5 @@
-<?xml version="1.0"?>
-<project
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
-	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.ksc</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
@@ -41,10 +39,12 @@
 		<module>ksc-sdk-java-network</module>
 		<module>ksc-sdk-java-epc</module>		
 		<module>ksc-sdk-java-kvs</module>
+		<module>ksc-sdk-java-ket</module>
+		<module>ksc-sdk-java-vcs</module>
 		<module>ksc-sdk-java-offline</module>
 		<module>ksc-sdk-java-cdn</module>
-		<module>ksc-sdk-java-vcs</module>
-	</modules>
+    
+  </modules>
 	<scm>
 		<url>https://github.com/ksc/ksc-sdk-java.git</url>
 	</scm>
@@ -197,4 +197,3 @@
 		</snapshotRepository>
 	</distributionManagement>
 </project>
-
