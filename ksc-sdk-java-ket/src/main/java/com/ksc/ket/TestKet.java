@@ -26,8 +26,8 @@ public class TestKet {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("AKLT8QD8WDFRSxmuqccfPXSx5A",
-					"OF9XpifwDTJ4gasNh9QfDPzxyK7AvwYvP3BiSRRg63vOAmqu91YemRg6iFYORtj/ow==");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxxx",
+					"xxxxxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -85,12 +85,14 @@ public class TestKet {
 		startStreamPullRequest.setData(data1);
 		ErrResult startStreamPullResult = ksc.StartStreamPull(startStreamPullRequest);
 		System.out.println("ErrNum: " + startStreamPullResult.getErrNum() + ",ErrMsg: " + startStreamPullResult.getErrMsg());
+		
 		//停止外网拉流
 		StopStreamPullRequest stopStreamPullRequest = new StopStreamPullRequest();
 		String data2 =  StreamPullSet("test123",1);
 		stopStreamPullRequest.setData(data2);
 		ErrResult stopStreamPullResult = ksc.StopStreamPull(stopStreamPullRequest);
 		System.out.println("ErrNum: " + stopStreamPullResult.getErrNum() + ",ErrMsg: " + stopStreamPullResult.getErrMsg());
+		
 		//获取配额使用数据
 		GetQuotaUsedRequest getQuotaUsedRequest = new GetQuotaUsedRequest();
 		getQuotaUsedRequest.setUniqName("mytest");
