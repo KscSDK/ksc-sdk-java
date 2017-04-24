@@ -13,14 +13,9 @@ Marshaller<Request<GetListRequest>, GetListRequest> {
 
     private static GetListRequestMarshaller instance;
 
-    private GetListRequestMarshaller() {
-
-    }
-
-    public synchronized static GetListRequestMarshaller getInstance() {
-        if (instance == null) {
+    public static GetListRequestMarshaller getInstance() {
+        if (instance == null)
             instance = new GetListRequestMarshaller();
-        }
         return instance;
     }
 

@@ -5,9 +5,8 @@ import com.ksc.KscServiceException;
 import com.ksc.live.model.Detail;
 import com.ksc.live.model.LiveResult;
 import com.ksc.live.model.ParamConstant;
-import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
-import com.ksc.transform.Unmarshaller;
+import com.ksc.transform.*;
+import com.sun.jmx.remote.internal.Unmarshal;
 
 import javax.xml.stream.events.XMLEvent;
 
@@ -16,7 +15,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
 /**
  * DescribeAddressesResult StAX Unmarshaller
  */
-public class LiveResultStaxUnmarshaller extends BaseJsonUnmarshaller<LiveResult, JsonUnmarshallerContext> {
+public class LiveResultStaxUnmarshaller implements Unmarshaller<LiveResult, JsonUnmarshallerContext> {
 
     private static LiveResultStaxUnmarshaller instance;
 
@@ -28,14 +27,17 @@ public class LiveResultStaxUnmarshaller extends BaseJsonUnmarshaller<LiveResult,
 
 
 
+
     @Override
     public LiveResult unmarshall(JsonUnmarshallerContext context) throws Exception {
-        LiveResult result = new LiveResult();
-        this.handleSuccess(result, context);
 
+        LiveResult result = new LiveResult();
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
+
+        if (context.isStartOfDocument())
+            targetDepth += 1;
 
         JsonToken token = context.getCurrentToken();
         if (token == null)
@@ -67,8 +69,7 @@ public class LiveResultStaxUnmarshaller extends BaseJsonUnmarshaller<LiveResult,
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null
-                        || context.getLastParsedParentElement().equals(
-                        currentParentElement)) {
+                        || context.getLastParsedParentElement().equals(currentParentElement)) {
                     if (context.getCurrentDepth() <= originalDepth)
                         break;
                 }
@@ -78,12 +79,4 @@ public class LiveResultStaxUnmarshaller extends BaseJsonUnmarshaller<LiveResult,
         return result;
     }
 
-    @Override
-    public LiveResult handleException(Exception e) {
-        LiveResult result = new LiveResult();
-        if (e instanceof KscServiceException) {
-            this.handleKscServiceException(result, (KscServiceException) e);
-        }
-        return result;
-    }
 }
