@@ -1,19 +1,10 @@
 package com.ksc.network.eip;
 
-import com.ksc.network.eip.model.AllocateAddressRequest;
-import com.ksc.network.eip.model.AllocateAddressResult;
-import com.ksc.network.eip.model.AssociateAddressRequest;
-import com.ksc.network.eip.model.AssociateAddressResult;
-import com.ksc.network.eip.model.DescribeAddressesRequest;
-import com.ksc.network.eip.model.DescribeAddressesResult;
-import com.ksc.network.eip.model.DisassociateAddressRequest;
-import com.ksc.network.eip.model.DisassociateAddressResult;
-import com.ksc.network.eip.model.GetLinesRequest;
-import com.ksc.network.eip.model.GetLinesResult;
-import com.ksc.network.eip.model.ReleaseAddressRequest;
-import com.ksc.network.eip.model.ReleaseAddressResult;
+import com.ksc.network.eip.model.*;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
+import com.ksc.network.vpc.model.Tunnels.ModifyTunnelRequest;
+import com.ksc.network.vpc.model.Tunnels.ModifyTunnelResult;
 
 public interface KSCEIP {
 	/**
@@ -64,4 +55,14 @@ public interface KSCEIP {
      * 解绑弹性IP
      */
     public DisassociateAddressResult disassociateAddress(DisassociateAddressRequest disassociateAddressRequest);
+
+	/**
+	 * 更新弹性IP配置
+	 */
+	public ModifyAddressResult modifyAddress(ModifyAddressRequest modifyAddressRequest);
+
+    /**
+     * 更新弹性IP挂起状态
+     */
+    public AlterAddressStateResult alterAddressState(AlterAddressStateRequest alterAddressStateRequest);
 }

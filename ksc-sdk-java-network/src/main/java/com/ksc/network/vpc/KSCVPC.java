@@ -10,6 +10,8 @@ import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesReque
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
+import com.ksc.network.vpc.model.Tunnels.*;
+import com.ksc.network.vpc.model.VpcPeeringConnection.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 
@@ -219,7 +221,7 @@ public interface KSCVPC {
 	public CreateNatResult createNat(CreateNatRequest createNatRequest);
 
 	/**
-	 * 删除NetworkAcl
+	 * 删除Nat
 	 */
 	public DeleteNatResult deleteNat(DeleteNatRequest deleteNat);
 
@@ -238,6 +240,78 @@ public interface KSCVPC {
      */
     public DisassociateNatResult disassociateNat(DisassociateNatRequest disassociateNatRequest);
 
+    /**
+     * 描述Nat
+     */
+    public DescribeNatsResult describeNats(
+            DescribeNatsRequest describeNatsRequest);
+
+	/**
+	 * 创建对等连接
+	 */
+	public CreateVpcPeeringConnectionResult createVpcPeeringConnection(
+	        CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest);
+
+    /**
+     * 接受对等连接
+     */
+    public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(
+            AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest);
+
+    /**
+     * 拒绝对等连接
+     */
+    public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(
+            RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest);
+
+    /**
+     * 删除对等连接
+     */
+    public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnection);
+
+    /**
+     * 描述对等连接
+     */
+    public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(
+            DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest);
+
+	/**
+	 * 修改对等连接
+	 */
+	public ModifyVpcPeeringConnectionResult modifyVpcPeeringConnection(
+			ModifyVpcPeeringConnectionRequest modifyVpcPeeringConnectionRequest);
+
+	/**
+	 * 描述隧道网关
+	 */
+	public DescribeTunnelsResult describeTunnels(
+			DescribeTunnelsRequest describeTunnelsRequest);
+
+    /**
+     * 更新隧道网关信息
+     */
+    public ModifyTunnelResult modifyTunnel(
+            ModifyTunnelRequest modifyTunnelRequest);
+
+    /**
+     * 隧道网关关联子网
+     */
+    public AssociateSubnetResult associateSubnet(AssociateSubnetRequest associateSubnetRequest);
+
+    /**
+     * 隧道网关解绑子网
+     */
+    public DisassociateSubnetResult disassociateSubnet(DisassociateSubnetRequest disassociateSubnetRequest);
+
+	/**
+	 * 隧道网关关联对端网段
+	 */
+	public AssociateRemoteCidrResult associateRemoteCidr(AssociateRemoteCidrRequest associateRemoteCidrRequest);
+
+    /**
+     * 隧道网关解绑对端网段
+     */
+    public DisassociateRemoteCidrResult disassociateRemoteCidr(DisassociateRemoteCidrRequest disassociateRemoteCidrRequest);
 }
 
 

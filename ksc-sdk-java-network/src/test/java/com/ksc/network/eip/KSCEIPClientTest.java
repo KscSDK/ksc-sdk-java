@@ -1,19 +1,9 @@
 package com.ksc.network.eip;
 
+import com.ksc.network.eip.model.*;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
-import com.ksc.network.eip.model.AllocateAddressRequest;
-import com.ksc.network.eip.model.AllocateAddressResult;
-import com.ksc.network.eip.model.AssociateAddressRequest;
-import com.ksc.network.eip.model.AssociateAddressResult;
-import com.ksc.network.eip.model.DescribeAddressesRequest;
-import com.ksc.network.eip.model.DescribeAddressesResult;
-import com.ksc.network.eip.model.DisassociateAddressRequest;
-import com.ksc.network.eip.model.DisassociateAddressResult;
-import com.ksc.network.eip.model.GetLinesResult;
-import com.ksc.network.eip.model.ReleaseAddressRequest;
-import com.ksc.network.eip.model.ReleaseAddressResult;
 import com.ksc.network.vpc.KSCVPCClient;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
@@ -65,7 +55,7 @@ public class KSCEIPClientTest {
         client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("eip");
         ReleaseAddressRequest request= new ReleaseAddressRequest();
-        request.setAllocationId("b9d03159-56dc-46d6-a716-37a09979cfed");
+        request.setAllocationId("35836afa-b3f1-49c6-a8da-eb6f87321ade");
 		/*Filter filter=new Filter();
 		filter.setName("vpc-id");
 		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
@@ -104,6 +94,38 @@ public class KSCEIPClientTest {
 		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
 		request.withFilters(filter);*/
         DisassociateAddressResult result=client.disassociateAddress(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyAddress(){
+        KSCEIPClient client=new KSCEIPClient();
+        client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("eip");
+        ModifyAddressRequest request= new ModifyAddressRequest();
+        request.setAllocationId("2726625e-6a78-48a5-aab7-2527d6eca870");
+        request.setBandWidth(2);
+		/*Filter filter=new Filter();
+		filter.setName("vpc-id");
+		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		request.withFilters(filter);*/
+        ModifyAddressResult result=client.modifyAddress(request);
+        log.info(result);
+    }
+
+    @Test
+    public void alterAddressState(){
+        KSCEIPClient client=new KSCEIPClient();
+        client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("eip");
+        AlterAddressStateRequest request= new AlterAddressStateRequest();
+        request.setAllocationId("2726625e-6a78-48a5-aab7-2527d6eca870");
+        request.setState("stop");
+		/*Filter filter=new Filter();
+		filter.setName("vpc-id");
+		filter.withValues("147d81eb-f780-434d-8355-dc125013520e");
+		request.withFilters(filter);*/
+        AlterAddressStateResult result=client.alterAddressState(request);
         log.info(result);
     }
 }

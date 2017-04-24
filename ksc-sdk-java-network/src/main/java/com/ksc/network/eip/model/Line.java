@@ -7,7 +7,9 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class Line {
 	private String LineId;
+
 	private String LineName;
+
 	private String LineType;
 
 	public String getLineId() {

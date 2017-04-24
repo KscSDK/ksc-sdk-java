@@ -13,7 +13,6 @@ import java.io.Serializable;
 @ToString
 public class CreateVpcResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Vpc vpc;
