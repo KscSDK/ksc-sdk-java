@@ -25,9 +25,8 @@ public class MonitorInstancesRequest extends KscWebServiceRequest
 	 * <p>
 	 * One or more instance IDs.
 	 * </p>
-	 * <p>
-	 * Default: Monitor all your instances.
-	 * </p>
+	 * 待启动监控的实例ID列表
+	 * 类型: String 列表
 	 */
 	private com.ksc.internal.SdkInternalList<String> instanceIds;
 	
@@ -42,9 +41,6 @@ public class MonitorInstancesRequest extends KscWebServiceRequest
 	 * One or more instance IDs.
 	 * </p>
 	 * <p>
-	 * Default: Describes all your instances.
-	 * </p>
-	 * <p>
 	 * <b>NOTE:</b> This method appends the values to the existing list (if
 	 * any). Use {@link #setInstanceIds(java.util.Collection)} if you want to override
 	 * the existing values.
@@ -52,8 +48,6 @@ public class MonitorInstancesRequest extends KscWebServiceRequest
 	 * 
 	 * @param instanceIds
 	 *            One or more instance IDs.</p>
-	 *            <p>
-	 *            Default: Describes all your instances.
 	 * @return Returns a reference to this object so that method calls can be
 	 *         chained together.
 	 */

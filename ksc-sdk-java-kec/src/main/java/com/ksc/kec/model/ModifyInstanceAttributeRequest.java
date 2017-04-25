@@ -22,8 +22,26 @@ public class ModifyInstanceAttributeRequest extends KscWebServiceRequest
 
 	private static final long serialVersionUID = 2968305292239661504L;
 
+	/**
+	 * <p>
+	 * 待修改属性的实例ID
+	 * 是否可缺省: 否
+	 * </p>
+	 */
     private String InstanceId;
+	/**
+	 * <p>
+	 * 实例名称，修改实例名称不需要关闭实例
+	 * 是否可缺省: 是
+	 * </p>
+	 */
     private String InstanceName;
+	/**
+	 * <p>
+	 * 实例开机密码，修改实例开机密码需要关闭实例
+	 * 是否可缺省: 是
+	 * </p>
+	 */
     private String InstancePassword;
 
 	public String getInstanceId() {

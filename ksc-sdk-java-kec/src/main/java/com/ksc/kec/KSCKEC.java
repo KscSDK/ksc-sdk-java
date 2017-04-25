@@ -94,7 +94,7 @@ public interface KSCKEC {
 
 	/**
 	 * <p>
-	 * Reboot an kec instance that you've previously stopped.
+	 * Run an kec instance that you've previously stopped.
 	 * </p>
 	 *
 	 * @param runInstancesRequest

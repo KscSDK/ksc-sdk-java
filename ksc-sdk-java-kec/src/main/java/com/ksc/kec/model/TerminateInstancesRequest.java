@@ -25,9 +25,8 @@ public class TerminateInstancesRequest extends KscWebServiceRequest
 	 * <p>
 	 * One or more instance IDs.
 	 * </p>
-	 * <p>
-	 * Default: Describes all your instances.
-	 * </p>
+	 * 待销毁实例ID列表
+	 * 是否可缺省: 否
 	 */
 	private com.ksc.internal.SdkInternalList<String> instanceIds;
 	
@@ -42,18 +41,12 @@ public class TerminateInstancesRequest extends KscWebServiceRequest
 	 * One or more instance IDs.
 	 * </p>
 	 * <p>
-	 * Default: Describes all your instances.
-	 * </p>
-	 * <p>
 	 * <b>NOTE:</b> This method appends the values to the existing list (if
 	 * any). Use {@link #setInstanceIds(java.util.Collection)} if you want to override
 	 * the existing values.
 	 * </p>
-	 * 
 	 * @param instanceIds
 	 *            One or more instance IDs.</p>
-	 *            <p>
-	 *            Default: Describes all your instances.
 	 * @return Returns a reference to this object so that method calls can be
 	 *         chained together.
 	 */
