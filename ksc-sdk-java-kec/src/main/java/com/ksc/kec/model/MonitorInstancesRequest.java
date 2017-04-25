@@ -26,7 +26,7 @@ public class MonitorInstancesRequest extends KscWebServiceRequest
 	 * One or more instance IDs.
 	 * </p>
 	 * 待启动监控的实例ID列表
-	 * 类型: String 列表
+	 * 是否可缺省: 否
 	 */
 	private com.ksc.internal.SdkInternalList<String> instanceIds;
 	
