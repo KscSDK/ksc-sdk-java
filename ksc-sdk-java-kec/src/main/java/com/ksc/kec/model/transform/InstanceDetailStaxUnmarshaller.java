@@ -101,6 +101,12 @@ public class InstanceDetailStaxUnmarshaller implements
 					continue;
 				}
 
+				if (context.testExpression("AvailabilityZone", targetDepth)) {
+					vm.setAvailabilityZone(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return vm;
