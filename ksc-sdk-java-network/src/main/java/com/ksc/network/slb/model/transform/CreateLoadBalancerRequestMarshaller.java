@@ -25,7 +25,7 @@ public class CreateLoadBalancerRequestMarshaller implements
 
         Request<CreateLoadBalancerRequest> request = new DefaultRequest<CreateLoadBalancerRequest>(
                 createLoadBalancerRequest, "slb");
-        request.addParameter("Action", "CreatLoadBalancer");
+        request.addParameter("Action", "CreateLoadBalancer");
         String version = createLoadBalancerRequest.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-03-04";

@@ -3,10 +3,8 @@ package com.ksc.network.slb;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.ksc.network.slb.model.CreateLoadBalancerRequest;
-import com.ksc.network.slb.model.CreateLoadBalancerResult;
-import com.ksc.network.slb.model.transform.CreateLoadBalancerRequestMarshaller;
-import com.ksc.network.slb.model.transform.CreateLoadBalancerResultStaxUnmarshaller;
+import com.ksc.network.slb.model.*;
+import com.ksc.network.slb.model.transform.*;
 import org.w3c.dom.Node;
 
 import com.ksc.ClientConfiguration;
@@ -26,10 +24,6 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
-import com.ksc.network.slb.model.DescribeLoadBalancersRequest;
-import com.ksc.network.slb.model.DescribeLoadBalancersResult;
-import com.ksc.network.slb.model.transform.DescribeLoadBalancersRequestMarshaller;
-import com.ksc.network.slb.model.transform.DescribeLoadBalancersResultStaxUnmarshaller;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
@@ -225,11 +219,116 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
+	}
 
+	@Override
+	public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest) {
+		ExecutionContext executionContext = createExecutionContext(createLoadBalancerRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateLoadBalancerRequest> request = null;
+		Response<CreateLoadBalancerResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateLoadBalancerRequestMarshaller()
+						.marshall(createLoadBalancerRequest);
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateLoadBalancerResult> responseHandler = new StaxResponseHandler<CreateLoadBalancerResult>(
+					new CreateLoadBalancerResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+    public DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest) {
+	    ExecutionContext executionContext = createExecutionContext(deleteLoadBalancerRequest);
+	    KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+	    kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+	    Request<DeleteLoadBalancerRequest> request = null;
+	    Response<DeleteLoadBalancerResult> response = null;
+	    try {
+	        kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+	        try {
+	            request = new DeleteLoadBalancerRequestMarshaller()
+                        .marshall(deleteLoadBalancerRequest);
+	            request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+	            kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteLoadBalancerResult> responseHandler = new StaxResponseHandler<DeleteLoadBalancerResult>(
+                    new DeleteLoadBalancerResultStaxUnmarshaller());
+	        response = invoke(request, responseHandler, executionContext);
+
+	        return response.getKscResponse();
+        } finally {
+	        endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ModifyLoadBalancerResult modifyLoadBalancer(ModifyLoadBalancerRequest modifyLoadBalancerRequest) {
+	    ExecutionContext executionContext = createExecutionContext(modifyLoadBalancerRequest);
+	    KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+	    kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+	    Request<ModifyLoadBalancerRequest> request = null;
+	    Response<ModifyLoadBalancerResult> response = null;
+	    try {
+	        kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+	        try {
+	            request = new ModifyLoadBalancerRequestMarshaller().marshall(modifyLoadBalancerRequest);
+	            request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+	            kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<ModifyLoadBalancerResult> responseHandler = new StaxResponseHandler<ModifyLoadBalancerResult>(
+                    new ModifyLoadBalancerResultStaxUnmarshaller());
+	        response = invoke(request, responseHandler, executionContext);
+
+	        return response.getKscResponse();
+        }finally {
+	        endClientExecution(kscRequestMetrics,request,response);
+        }
+    }
+
+	@Override
+    public CreateListenersResult createListeners(CreateListenersRequest createListenersRequest) {
+		ExecutionContext executionContext = createExecutionContext(createListenersRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateListenersRequest> request = null;
+		Response<CreateListenersResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateListenersRequestMarshaller()
+						.marshall(createListenersRequest);
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateListenersResult> responseHandler = new StaxResponseHandler<CreateListenersResult>(
+					new CreateListenersResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
 	}
 
 
-	private void init() {
+
+    private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
 		exceptionUnmarshallers.add(new LegacyErrorUnmarshaller());
 		setServiceNameIntern(DEFAULT_SIGNING_NAME);

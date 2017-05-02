@@ -1,9 +1,6 @@
 package com.ksc.network.slb;
 
-import com.ksc.network.slb.model.CreateLoadBalancerRequest;
-import com.ksc.network.slb.model.CreateLoadBalancerResult;
-import com.ksc.network.slb.model.DescribeLoadBalancersRequest;
-import com.ksc.network.slb.model.DescribeLoadBalancersResult;
+import com.ksc.network.slb.model.*;
 
 public interface KSCSLB {
 	/**
@@ -26,5 +23,21 @@ public interface KSCSLB {
 	/**
 	 * 创建负载均衡
 	 */
-//	public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest);
+	public CreateLoadBalancerResult createLoadBalancer(CreateLoadBalancerRequest createLoadBalancerRequest);
+
+	/**
+	 * 删除负载均衡
+	 */
+	public DeleteLoadBalancerResult deleteLoadBalancer(DeleteLoadBalancerRequest deleteLoadBalancerRequest);
+
+	/**
+	 * 更新负载均衡信息
+	 */
+	public ModifyLoadBalancerResult modifyLoadBalancer(ModifyLoadBalancerRequest modifyLoadBalancerRequest);
+
+	/**
+	 * 创建监听器
+	 */
+	public CreateListenersResult createListeners(CreateListenersRequest createListenersRequest);
+
 }

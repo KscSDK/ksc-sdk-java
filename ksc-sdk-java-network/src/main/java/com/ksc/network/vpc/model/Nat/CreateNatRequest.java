@@ -1,16 +1,15 @@
 package com.ksc.network.vpc.model.Nat;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.Nat.CreateNatRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for CreateSubnet.
+ * Contains the parameters for CreateNat.
  * </p>
  */
 public class CreateNatRequest extends KscWebServiceRequest implements

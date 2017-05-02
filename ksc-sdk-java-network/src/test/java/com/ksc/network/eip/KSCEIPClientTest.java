@@ -103,7 +103,7 @@ public class KSCEIPClientTest {
         client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("eip");
         ModifyAddressRequest request= new ModifyAddressRequest();
-        request.setAllocationId("2726625e-6a78-48a5-aab7-2527d6eca870");
+        request.setAllocationId("4c98a621-e536-4ac3-9e6c-182a61f425c4");
         request.setBandWidth(2);
 		/*Filter filter=new Filter();
 		filter.setName("vpc-id");

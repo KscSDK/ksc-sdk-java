@@ -10,17 +10,35 @@ import java.io.Serializable;
 @ToString
 public class CreateLoadBalancerResult implements Serializable, Cloneable {
 
-    public String CreateTime;
+    /**
+     * 负载均衡创建时间
+     */
+    private String CreateTime;
 
-    public String VpcId;
+    /**
+     * Vpc的ID
+     */
+    private String VpcId;
 
-    public String LoadBalancerName;
+    /**
+     * 负载均衡的名称
+     */
+    private String LoadBalancerName;
 
-    public String RequestId;
+    /**
+     * 请求ID
+     */
+    private String RequestId;
 
-    public String Type;
+    /**
+     * 负载均衡类型，公网（public）是支持公网的负载均衡、私网（internal）是VPC内部的负载均衡
+     */
+    private String Type;
 
-    public String LoadBalancerId;
+    /**
+     * 负载均衡的ID
+     */
+    private String LoadBalancerId;
 
     public String getCreateTime() {
         return CreateTime;
