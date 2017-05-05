@@ -45,7 +45,7 @@ public class StopStreamRecordUnmarshaller implements Unmarshaller<StopStreamReco
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression(ParamConstant.DATA, targetDepth)) {
                     context.nextToken();
-                    result.setData(new ListUnmarshaller<StopStreamRecordDetail>(StopStreamRecordDetailUnmarshaller.getInstance()).unmarshall(context));
+                    result.setData(StopStreamRecordDetailUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null

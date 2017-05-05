@@ -5,6 +5,15 @@ package com.ksc.kls.model;
  */
 public class ListStreamDurationsResult {
     private ListStreamDurations Data;
+    private String RequestId;
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
 
     public ListStreamDurations getData() {
         return Data;

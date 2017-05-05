@@ -12,6 +12,7 @@ import static com.fasterxml.jackson.core.JsonToken.*;
  * Created by yangfan on 2017/5/3.
  */
 public class StopStreamRecordDetailUnmarshaller implements Unmarshaller<StopStreamRecordDetail,JsonUnmarshallerContext> {
+
     private static StopStreamRecordDetailUnmarshaller instance;
 
     public static StopStreamRecordDetailUnmarshaller getInstance() {

@@ -2,34 +2,30 @@ package com.ksc.kls.model.transform;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.kls.model.ListStreamDurations;
-import com.ksc.kls.model.ListStreamDurationsResult;
 import com.ksc.kls.model.ParamConstant;
 import com.ksc.kls.model.StreamDurationsDetail;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
-import com.ksc.util.StringUtils;
-
-import java.util.List;
 
 import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
- * Created by yangfan on 2017/5/4.
+ * Created by yangfan on 2017/5/5.
  */
-public class ListStreamDurationsDataUnmarshaller implements Unmarshaller<ListStreamDurationsResult, JsonUnmarshallerContext> {
+public class StreamDurationsDataUnmarshaller  implements Unmarshaller<ListStreamDurations, JsonUnmarshallerContext> {
 
-    private static ListStreamDurationsDataUnmarshaller instance;
+    private static StreamDurationsDataUnmarshaller instance;
 
-    public synchronized static ListStreamDurationsDataUnmarshaller getInstance() {
+    public synchronized static StreamDurationsDataUnmarshaller getInstance() {
         if (instance == null) {
-            instance = new ListStreamDurationsDataUnmarshaller();
+            instance = new StreamDurationsDataUnmarshaller();
         }
         return instance;
     }
 
     @Override
-    public ListStreamDurationsResult unmarshall(JsonUnmarshallerContext context) throws Exception {
+    public ListStreamDurations unmarshall(JsonUnmarshallerContext context) throws Exception {
         ListStreamDurations result = new ListStreamDurations();
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
@@ -46,26 +42,27 @@ public class ListStreamDurationsDataUnmarshaller implements Unmarshaller<ListStr
             if (token == null)
                 break;
 
+
             if (token == FIELD_NAME || token == START_OBJECT) {
-                if (context.testExpression(ParamConstant.APP, targetDepth)) {
+                if (context.testExpression(ParamConstant.APP,targetDepth)) {
                     context.nextToken();
                     result.setApp(context.getUnmarshaller(String.class).unmarshall(context));
-                }else if (context.testExpression(ParamConstant.COUNT, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.COUNT,targetDepth)) {
                     context.nextToken();
                     result.setCount(context.getUnmarshaller(Integer.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.PUBDOMAIN, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.PUBDOMAIN,targetDepth)) {
                     context.nextToken();
                     result.setPubdomain(context.getUnmarshaller(String.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.RETCODE, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.RETCODE,targetDepth)) {
                     context.nextToken();
                     result.setRetCode(context.getUnmarshaller(Integer.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.RETMSG, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.RETMSG,targetDepth)) {
                     context.nextToken();
                     result.setRetMsg(context.getUnmarshaller(String.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.UNIQUE_NAME, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.UNIQUE_NAME,targetDepth)) {
                     context.nextToken();
                     result.setUniqueName(context.getUnmarshaller(String.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.RESULT, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.RESULT,targetDepth)) {
                     context.nextToken();
                     result.setResult(new ListUnmarshaller<StreamDurationsDetail>(StreamDurationsDetailUnmarshaller.getInstance()).unmarshall(context));
                 }

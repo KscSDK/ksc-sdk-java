@@ -409,7 +409,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<ListRecordingTasksResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListStreamDurationsResult> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new ListStreamDurationsUnmarshaller());

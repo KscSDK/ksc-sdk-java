@@ -46,7 +46,10 @@ public class ListStreamDurationsUnmarshaller implements Unmarshaller<ListStreamD
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression(ParamConstant.DATA,targetDepth)) {
                     context.nextToken();
-                    result.setData(ListStreamDurationsDataUnmarshaller.getInstance().unmarshall(context));
+                    result.setData(StreamDurationsDataUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression(ParamConstant.REQUST_ID,targetDepth)) {
+                    context.nextToken();
+                    result.setRequestId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null

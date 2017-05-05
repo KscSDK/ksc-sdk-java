@@ -58,5 +58,5 @@ public class ParamConstant {
 
     public static final String RESULT = "Result";
 
-
+    public static final String REQUST_ID = "RequestId";
 }

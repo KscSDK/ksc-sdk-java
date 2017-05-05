@@ -43,7 +43,7 @@ public class StartStreamRecordUnmarshaller implements Unmarshaller<StartStreamRe
             if (token == FIELD_NAME || token == START_OBJECT) {
                 if (context.testExpression(ParamConstant.DATA, targetDepth)) {
                     context.nextToken();
-                    result.setData(new ListUnmarshaller<StartStreamRecordDetail>(StartStreamRecordDetailUnmarshaller.getInstance()).unmarshall(context));
+                    result.setData(StartStreamRecordDetailUnmarshaller.getInstance().unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null
