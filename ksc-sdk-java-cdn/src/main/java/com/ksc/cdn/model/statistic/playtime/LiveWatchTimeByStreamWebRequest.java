@@ -5,17 +5,14 @@ import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
-import javax.xml.bind.annotation.XmlRootElement;
 import java.text.ParseException;
 import java.util.Map;
 
 /**
  * Created by JIANGYANG1 on 2017/3/13.
  */
-@Data
 public class LiveWatchTimeByStreamWebRequest extends CommonFieldRequest {
 
 
@@ -67,5 +64,37 @@ public class LiveWatchTimeByStreamWebRequest extends CommonFieldRequest {
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("GetPlayTimeDataByStream", "2016-09-01", "/2016-09-01/statistics/GetPlayTimeDataByStream");
+    }
+
+    public String getStreamUrls() {
+        return streamUrls;
+    }
+
+    public void setStreamUrls(String streamUrls) {
+        this.streamUrls = streamUrls;
+    }
+
+    public String getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
+
+    public String getRegions() {
+        return regions;
+    }
+
+    public void setRegions(String regions) {
+        this.regions = regions;
+    }
+
+    public String getGranularity() {
+        return granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        this.granularity = granularity;
     }
 }

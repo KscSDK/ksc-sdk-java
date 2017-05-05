@@ -1,18 +1,5 @@
 package com.ksc.cdn.model.statistic.dir.flow;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-
-@Data
 public class FlowDataByTime {
 
 	/**
@@ -29,4 +16,28 @@ public class FlowDataByTime {
 	 * 每个目录的详细流量数据(仅当ResultType取值为1时返回此项数据)
 	 */
 	private FlowDataByDir[] Dirs;
+
+	public String getTime() {
+		return Time;
+	}
+
+	public void setTime(String time) {
+		Time = time;
+	}
+
+	public Long getFlow() {
+		return Flow;
+	}
+
+	public void setFlow(Long flow) {
+		Flow = flow;
+	}
+
+	public FlowDataByDir[] getDirs() {
+		return Dirs;
+	}
+
+	public void setDirs(FlowDataByDir[] dirs) {
+		Dirs = dirs;
+	}
 }

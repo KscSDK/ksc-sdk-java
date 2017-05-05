@@ -2,14 +2,12 @@ package com.ksc.cdn.model.statistic.playtime;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
 import com.ksc.cdn.model.valid.FieldValidate;
-import lombok.Data;
 
 import java.util.List;
 
 /**
  * Created by JIANGYANG1 on 2017/3/13.
  */
-@Data
 public class LiveWatchTimeByStreamWebResponse extends CommonFieldResult {
 
     /**
@@ -32,4 +30,36 @@ public class LiveWatchTimeByStreamWebResponse extends CommonFieldResult {
      * 每个时间粒度的观看时长数据
      */
     private List<PlayTimeDataByTime> Datas;
+
+    public String getRegions() {
+        return Regions;
+    }
+
+    public void setRegions(String regions) {
+        Regions = regions;
+    }
+
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public List<PlayTimeDataByTime> getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(List<PlayTimeDataByTime> datas) {
+        Datas = datas;
+    }
 }

@@ -2,15 +2,12 @@ package com.ksc.cdn.model.statistic.dir.flow;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
 
-import lombok.Data;
-
 /**
  * 获取某段时间内按一级目录为维度下消耗的流量，单位byte
  *
  * @author zr
  * @date 2017/03/7
  */
-@Data
 public class FlowDataByDirResult extends CommonFieldResult {
 
     /**
@@ -49,4 +46,52 @@ public class FlowDataByDirResult extends CommonFieldResult {
      * 每个时间粒度的流量数据
      */
     private FlowDataByTime[] Datas;
+
+    public String getDomainId() {
+        return DomainId;
+    }
+
+    public void setDomainId(String domainId) {
+        DomainId = domainId;
+    }
+
+    public String getDir() {
+        return Dir;
+    }
+
+    public void setDir(String dir) {
+        Dir = dir;
+    }
+
+    public String getRegions() {
+        return Regions;
+    }
+
+    public void setRegions(String regions) {
+        Regions = regions;
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
+    }
+
+    public FlowDataByTime[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(FlowDataByTime[] datas) {
+        Datas = datas;
+    }
 }
