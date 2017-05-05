@@ -7,6 +7,7 @@ import com.ksc.auth.DefaultAWSCredentialsProviderChain;
 import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
+import com.ksc.kls.model.*;
 import com.ksc.kls.model.transform.*;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.protocol.json.JsonClientMetadata;
@@ -22,6 +23,7 @@ import org.apache.commons.logging.LogFactory;
  * Created by yangfan on 2017/4/24.
  */
 public class KSCKSLClient extends KscWebServiceClient implements KLS {
+
 
     /** Provider for AWS credentials. */
     private AWSCredentialsProvider kscCredentialsProvider;
@@ -215,34 +217,210 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
         } finally {
             endClientExecution(kscRequestMetrics, request, response);
         }
-        return null;
     }
 
     @Override
     public CancelRecordResult cancelRecordTask(CancelRecordRequest cancleRecordRequest) {
-        return null;
+        ExecutionContext executionContext = createExecutionContext(cancleRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<CancelRecordRequest> request = null;
+        Response<CancelRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new CancelRecordRequestMarshaller()
+                        .marshall(super.beforeMarshalling(cancleRecordRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<CancelRecordResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new CancelRecordResultUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
 
     @Override
     public GetRecordTaskResult getRecordTask(GetRecordTaskRequest getRecordTaskRequest) {
-        return null;
+        ExecutionContext executionContext = createExecutionContext(getRecordTaskRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<GetRecordTaskRequest> request = null;
+        Response<GetRecordTaskResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new GetRecordTaskMarshaller()
+                        .marshall(super.beforeMarshalling(getRecordTaskRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<GetRecordTaskResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new GetRecordTaskUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
 
     @Override
     public ListHistoryRecordTasksResult listHistoryRecordTasks(ListHistoryRecordTasksRequest listHistoryRecordTasksRequest) {
-        return null;
+        ExecutionContext executionContext = createExecutionContext(listHistoryRecordTasksRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListHistoryRecordTasksRequest> request = null;
+        Response<ListHistoryRecordTasksResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListHistoryRecordTaskMarshaller()
+                        .marshall(super.beforeMarshalling(listHistoryRecordTasksRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListHistoryRecordTasksResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListHistoryRecordTaskUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
 
     @Override
     public StartStreamRecordResult startStreamRecord(StartStreamRecordRequest startStreamRecordRequest) {
-        return null;
+        ExecutionContext executionContext = createExecutionContext(startStreamRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<StartStreamRecordRequest> request = null;
+        Response<StartStreamRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new StartStreamRecordMarshaller()
+                        .marshall(super.beforeMarshalling(startStreamRecordRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<StartStreamRecordResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new StartStreamRecordUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
 
     @Override
     public StopStreamRecordResult stopStreamRecord(StopStreamRecordRequest stopStreamRecordRequest) {
-        return null;
+        ExecutionContext executionContext = createExecutionContext(stopStreamRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<StopStreamRecordRequest> request = null;
+        Response<StopStreamRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new StopStreamRecordMarshaller()
+                        .marshall(super.beforeMarshalling(stopStreamRecordRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<StopStreamRecordResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new StopStreamRecordUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
 
+    @Override
+    public ListRecordingTasksResult listRecordingTasks(ListRecordingTasksRequest listRecordingTasksRequest) {
+        ExecutionContext executionContext = createExecutionContext(listRecordingTasksRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListRecordingTasksRequest> request = null;
+        Response<ListRecordingTasksResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListRecordingTasksMarshaller()
+                        .marshall(super.beforeMarshalling(listRecordingTasksRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListRecordingTasksResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListRecordingTasksUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ListStreamDurationsResult listStreamDurations(ListStreamDurationsRequest listStreamDurationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(listStreamDurationsRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListRecordingTasksRequest> request = null;
+        Response<ListRecordingTasksResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListStreamDurationsMarshaller()
+                        .marshall(super.beforeMarshalling(listStreamDurationsRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListRecordingTasksResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListStreamDurationsUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
 
     private void init() {

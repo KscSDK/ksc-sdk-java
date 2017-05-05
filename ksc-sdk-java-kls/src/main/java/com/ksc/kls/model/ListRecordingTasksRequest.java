@@ -1,10 +1,11 @@
-package com.ksc.kls.model.transform;
+package com.ksc.kls.model;
 
 /**
- * Created by yangfan on 2017/4/24.
+ * Created by yangfan on 2017/5/2.
  */
-public class ListHistoryRecordTasksRequest {
-
+public class ListRecordingTasksRequest {
+    private String Action;
+    private String Version;
     private String UniqueName;
     private String App;
     private String Pubdomain;
@@ -13,8 +14,15 @@ public class ListHistoryRecordTasksRequest {
     private int Limit;
     private int Marker;
     private int OrderTime;
-    private int StartUnixTime;
-    private int EndUnixTime;
+    private int RecStatusType;
+
+    public String getAction() {
+        return Action;
+    }
+
+    public String getVersion() {
+        return Version;
+    }
 
     public String getUniqueName() {
         return UniqueName;
@@ -48,12 +56,16 @@ public class ListHistoryRecordTasksRequest {
         return OrderTime;
     }
 
-    public int getStartUnixTime() {
-        return StartUnixTime;
+    public int getRecStatusType() {
+        return RecStatusType;
     }
 
-    public int getEndUnixTime() {
-        return EndUnixTime;
+    public void setAction(String action) {
+        Action = action;
+    }
+
+    public void setVersion(String version) {
+        Version = version;
     }
 
     public void setUniqueName(String uniqueName) {
@@ -88,11 +100,7 @@ public class ListHistoryRecordTasksRequest {
         OrderTime = orderTime;
     }
 
-    public void setStartUnixTime(int startUnixTime) {
-        StartUnixTime = startUnixTime;
-    }
-
-    public void setEndUnixTime(int endUnixTime) {
-        EndUnixTime = endUnixTime;
+    public void setRecStatusType(int recStatusType) {
+        RecStatusType = recStatusType;
     }
 }

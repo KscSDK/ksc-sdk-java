@@ -16,11 +16,11 @@ public class LiveOpenAPISample {
 
     KSCLiveClient live_client = null;
     private String version = "2016-10-26";
-    private String uniquename = "uniquename";
+    private String uniquename = "maxi";
     private int marker = 0;
     private int limit = 20;
-    private String app = "application";
-    private String pubdomain = "publishdomain";
+    private String app = "live";
+    private String pubdomain = "live.moxiulive.com";
 
 
     @Before
@@ -28,13 +28,13 @@ public class LiveOpenAPISample {
         AWSCredentials aws = new AWSCredentials() {
             @Override
             public String getAWSAccessKeyId() {
-                return "Accesskey";
+                return "AKLTNZ4r_XpvSOSdAnAmfWEUsg";
             }
 
 
             @Override
             public String getAWSSecretKey() {
-                return "AccessSecretKey";
+                return "OKtoHRyb5Em3oFgTFhFN7ypvjot0SRoqTzbQB8eSD2BpUrBgwy3MlHoJC637BhVF1g";
             }
 
         };
@@ -48,8 +48,8 @@ public class LiveOpenAPISample {
         GetListRequest request = new GetListRequest();
         request.setVersion(this.version);
         request.setUniquename(this.uniquename);
-//        request.setApp(this.app);
-        request.setPubdomain(this.pubdomain);
+        request.setApp(this.app);
+//        request.setPubdomain(this.pubdomain);
         request.setMarker(this.marker);
         request.setLimit(this.limit);
         LiveResult result = live_client.listPubStreamsInfo(request);

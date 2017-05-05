@@ -1,15 +1,16 @@
-package com.ksc.kls.model.transform;
+package com.ksc.kls.model;
 
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class StartStreamRecordRequest {
+public class StopStreamRecordRequest {
     private String UniqueName;
     private String App;
     private String Pubdomain;
     private String Stream;
-    private String Ks3FileNameM3u8;
-    private String Ks3FullPathMP4;
+    private int RecID;
+    private String Action;
+    private String Version;
 
     public String getUniqueName() {
         return UniqueName;
@@ -17,6 +18,14 @@ public class StartStreamRecordRequest {
 
     public String getApp() {
         return App;
+    }
+
+    public String getAction() {
+        return Action;
+    }
+
+    public String getVersion() {
+        return Version;
     }
 
     public String getPubdomain() {
@@ -27,12 +36,8 @@ public class StartStreamRecordRequest {
         return Stream;
     }
 
-    public String getKs3FileNameM3u8() {
-        return Ks3FileNameM3u8;
-    }
-
-    public String getKs3FullPathMP4() {
-        return Ks3FullPathMP4;
+    public int getRecID() {
+        return RecID;
     }
 
     public void setUniqueName(String uniqueName) {
@@ -51,11 +56,15 @@ public class StartStreamRecordRequest {
         Stream = stream;
     }
 
-    public void setKs3FileNameM3u8(String ks3FileNameM3u8) {
-        Ks3FileNameM3u8 = ks3FileNameM3u8;
+    public void setRecID(int recID) {
+        RecID = recID;
     }
 
-    public void setKs3FullPathMP4(String ks3FullPathMP4) {
-        Ks3FullPathMP4 = ks3FullPathMP4;
+    public void setAction(String action) {
+        Action = action;
+    }
+
+    public void setVersion(String version) {
+        Version = version;
     }
 }

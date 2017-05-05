@@ -1,6 +1,6 @@
 package com.ksc.kls;
 
-import com.ksc.kls.model.transform.*;
+import com.ksc.kls.model.*;
 import com.ksc.regions.Region;
 /**
  * Created by yangfan on 2017/4/24.
@@ -31,4 +31,11 @@ public interface KLS {
     //结束短视频录制
     public StopStreamRecordResult stopStreamRecord(
             StopStreamRecordRequest stopStreamRecordRequest);
+
+    public ListRecordingTasksResult listRecordingTasks(
+            ListRecordingTasksRequest listRecordingTasksRequest);
+
+    //主播流时长统计
+    public ListStreamDurationsResult listStreamDurations(
+            ListStreamDurationsRequest listStreamDurationsRequest);
 }

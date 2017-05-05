@@ -1,9 +1,9 @@
-package com.ksc.kls.model.transform;
+package com.ksc.kls.model;
 
 /**
- * Created by yangfan on 2017/4/24.
+ * Created by yangfan on 2017/5/2.
  */
-public class CancelRecordResult {
+public class CancelRecordDetail {
     private int RecID;
     private int Retcode;
     private String RetMsg;

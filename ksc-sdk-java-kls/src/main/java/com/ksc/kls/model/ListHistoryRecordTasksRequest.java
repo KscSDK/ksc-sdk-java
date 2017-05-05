@@ -1,18 +1,23 @@
-package com.ksc.kls.model.transform;
+package com.ksc.kls.model;
+
 
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class CreateRecordRequest {
+public class ListHistoryRecordTasksRequest {
+
     private String UniqueName;
     private String App;
     private String Pubdomain;
     private String Stream;
-    private int Mp4VodEnable;
-    private String Ks3FullPathM3U8;
-    private String Ks3FullPathMP4;
+    private int RecType;
+    private int Limit;
+    private int Marker;
+    private int OrderTime;
     private int StartUnixTime;
     private int EndUnixTime;
+    private String Action;
+    private String Version;
 
     public String getUniqueName() {
         return UniqueName;
@@ -30,16 +35,20 @@ public class CreateRecordRequest {
         return Stream;
     }
 
-    public int getMp4VodEnable() {
-        return Mp4VodEnable;
+    public int getRecType() {
+        return RecType;
     }
 
-    public String getKs3FullPathM3U8() {
-        return Ks3FullPathM3U8;
+    public int getLimit() {
+        return Limit;
     }
 
-    public String getKs3FullPathMP4() {
-        return Ks3FullPathMP4;
+    public int getMarker() {
+        return Marker;
+    }
+
+    public int getOrderTime() {
+        return OrderTime;
     }
 
     public int getStartUnixTime() {
@@ -48,6 +57,14 @@ public class CreateRecordRequest {
 
     public int getEndUnixTime() {
         return EndUnixTime;
+    }
+
+    public String getAction() {
+        return Action;
+    }
+
+    public String getVersion() {
+        return Version;
     }
 
     public void setUniqueName(String uniqueName) {
@@ -66,16 +83,20 @@ public class CreateRecordRequest {
         Stream = stream;
     }
 
-    public void setMp4VodEnable(int mp4VodEnable) {
-        Mp4VodEnable = mp4VodEnable;
+    public void setRecType(int recType) {
+        RecType = recType;
     }
 
-    public void setKs3FullPathM3U8(String ks3FullPathM3U8) {
-        Ks3FullPathM3U8 = ks3FullPathM3U8;
+    public void setLimit(int limit) {
+        Limit = limit;
     }
 
-    public void setKs3FullPathMP4(String ks3FullPathMP4) {
-        Ks3FullPathMP4 = ks3FullPathMP4;
+    public void setMarker(int marker) {
+        Marker = marker;
+    }
+
+    public void setOrderTime(int orderTime) {
+        OrderTime = orderTime;
     }
 
     public void setStartUnixTime(int startUnixTime) {
@@ -85,4 +106,13 @@ public class CreateRecordRequest {
     public void setEndUnixTime(int endUnixTime) {
         EndUnixTime = endUnixTime;
     }
+
+    public void setAction(String action) {
+        Action = action;
+    }
+
+    public void setVersion(String version) {
+        Version = version;
+    }
 }
+

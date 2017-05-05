@@ -1,16 +1,20 @@
-package com.ksc.kls.model.transform;
+package com.ksc.kls.model;
 
 /**
- * Created by yangfan on 2017/4/24.
+ * Created by yangfan on 2017/5/2.
  */
-public class StartStreamRecordResult {
+public class CreateRecordDetail {
+    private int RecID;
     private String UniqueName;
     private String App;
     private String Pubdomain;
     private String Stream;
+    private int Retcode;
     private String RetMsg;
-    private int RecID;
-    private int RetCode;
+
+    public int getRecID() {
+        return RecID;
+    }
 
     public String getUniqueName() {
         return UniqueName;
@@ -28,16 +32,16 @@ public class StartStreamRecordResult {
         return Stream;
     }
 
+    public int getRetcode() {
+        return Retcode;
+    }
+
     public String getRetMsg() {
         return RetMsg;
     }
 
-    public int getRecID() {
-        return RecID;
-    }
-
-    public int getRetCode() {
-        return RetCode;
+    public void setRecID(int recID) {
+        RecID = recID;
     }
 
     public void setUniqueName(String uniqueName) {
@@ -56,15 +60,11 @@ public class StartStreamRecordResult {
         Stream = stream;
     }
 
+    public void setRetcode(int retcode) {
+        Retcode = retcode;
+    }
+
     public void setRetMsg(String retMsg) {
         RetMsg = retMsg;
-    }
-
-    public void setRecID(int recID) {
-        RecID = recID;
-    }
-
-    public void setRetCode(int retCode) {
-        RetCode = retCode;
     }
 }
