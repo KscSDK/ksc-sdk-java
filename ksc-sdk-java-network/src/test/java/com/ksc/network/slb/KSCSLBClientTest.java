@@ -144,12 +144,12 @@ public class KSCSLBClientTest {
         client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("slb");
         ModifyHealthCheckRequest request = new ModifyHealthCheckRequest();
-        request.setHealthCheckId("794c1d06-4818-46a4-b288-321e7837ed00");
+        request.setHealthCheckId("f0d12cc3-dd77-4e21-be91-53c8d39ef17e");
         request.setHealthCheckState("start");
-        request.setHealthyThreshold(10);
-        request.setInterval(20);
-        request.setTimeout(9);
-        request.setUnhealthyThreshold(8);
+        request.setHealthyThreshold(1);
+        request.setInterval(1);
+        request.setTimeout(1);
+        request.setUnhealthyThreshold(1);
 //        request.setUrlPath("\");
 //        request.setIsDefaultHostName("lll");
 //        request.setHostName("lll");
@@ -178,6 +178,58 @@ public class KSCSLBClientTest {
 //		request.setState("associate");
         //request.withVpcIds("147d81eb-f780-434d-8355-dc125013520e");
         DescribeHealthChecksResult result=client.describeHealthChecks(request);
+        log.info(result);
+    }
+
+    @Test
+    public void registerInstancesWithListener(){
+        KSCSLBClient client=new KSCSLBClient();
+        client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        RegisterInstancesWithListenerRequest request=new RegisterInstancesWithListenerRequest();
+		request.setListenerId("a413d3d4-29f5-4cb3-9c26-136be2681255");
+        request.setRealServerType("Ipfwd");
+        request.setRealServerIp("120.92.128.161");
+        request.setRealServerPort(22);
+        request.setWeight(10);
+        RegisterInstancesWithListenerResult result=client.registerInstancesWithListener(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyInstancesWithListener(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        ModifyInstancesWithListenerRequest request = new ModifyInstancesWithListenerRequest();
+        request.setRegisterId("a8e462c3-c9da-4a85-8157-d7eb523ee72f");
+        request.setRealServerPort(10);
+        request.setWeight(12);
+        ModifyInstancesWithListenerResult result = client.modifyInstancesWithListener(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deregisterInstancesFromListener() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        DeregisterInstancesFromListenerRequest request = new DeregisterInstancesFromListenerRequest();
+        request.setRegisterId("a8e462c3-c9da-4a85-8157-d7eb523ee72f");
+        DeregisterInstancesFromListenerResult result = client.deregisterInstancesFromListener(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeInstancesWithListener(){
+        KSCSLBClient client=new KSCSLBClient();
+        client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        DescribeInstancesWithListenerRequest request=new DescribeInstancesWithListenerRequest();
+//		request.addLoadBalancerIds("521a2e79-89f8-4a26-9e86-6ea9878d00eb");
+//		request.setState("associate");
+        //request.withVpcIds("147d81eb-f780-434d-8355-dc125013520e");
+        DescribeInstancesWithListenerResult result=client.describeInstancesWithListener(request);
         log.info(result);
     }
 }

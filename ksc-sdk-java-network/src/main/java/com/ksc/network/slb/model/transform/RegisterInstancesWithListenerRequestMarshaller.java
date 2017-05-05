@@ -4,7 +4,6 @@ import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
-import com.ksc.network.slb.model.ConfigureHealthCheckRequest;
 import com.ksc.network.slb.model.RegisterInstancesWithListenerRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;

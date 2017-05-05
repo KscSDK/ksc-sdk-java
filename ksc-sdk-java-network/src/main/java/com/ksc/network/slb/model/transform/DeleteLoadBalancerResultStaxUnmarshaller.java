@@ -8,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * DeleteVpcResult StAX Unmarshaller
+ * DeleteLoadBalancerResult StAX Unmarshaller
  */
 public class DeleteLoadBalancerResultStaxUnmarshaller implements
 		Unmarshaller<DeleteLoadBalancerResult, StaxUnmarshallerContext> {

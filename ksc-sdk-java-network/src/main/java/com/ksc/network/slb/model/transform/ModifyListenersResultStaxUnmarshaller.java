@@ -1,15 +1,14 @@
 package com.ksc.network.slb.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.slb.model.ModifyListenersResult;
-import com.ksc.network.slb.model.ModifyLoadBalancerResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * CreateVpcResult StAX Unmarshaller
+ * ModifyListenersResult StAX Unmarshaller
  */
 public class ModifyListenersResultStaxUnmarshaller implements
 		Unmarshaller<ModifyListenersResult, StaxUnmarshallerContext> {

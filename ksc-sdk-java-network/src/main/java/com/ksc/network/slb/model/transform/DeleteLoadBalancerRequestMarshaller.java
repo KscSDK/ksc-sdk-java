@@ -9,7 +9,7 @@ import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * DeleteLoadBalancerRequest Marshaller
  */
 
 public class DeleteLoadBalancerRequestMarshaller implements

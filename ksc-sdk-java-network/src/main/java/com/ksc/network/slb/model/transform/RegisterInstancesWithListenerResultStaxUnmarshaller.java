@@ -1,16 +1,15 @@
 package com.ksc.network.slb.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.slb.model.ConfigureHealthCheckResult;
 import com.ksc.network.slb.model.RegisterInstancesWithListenerResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * ConfigureHealthCheckResult StAX Unmarshaller
+ * RegisterInstancesWithListenerResult StAX Unmarshaller
  */
 public class RegisterInstancesWithListenerResultStaxUnmarshaller implements
 		Unmarshaller<RegisterInstancesWithListenerResult, StaxUnmarshallerContext> {

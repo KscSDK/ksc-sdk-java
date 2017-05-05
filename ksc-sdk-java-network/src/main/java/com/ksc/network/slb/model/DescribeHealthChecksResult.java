@@ -8,7 +8,7 @@ import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeLoadBalancers.
+ * Contains the output of DescribeHealthChecks.
  * </p>
  */
 @ToString

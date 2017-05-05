@@ -1,12 +1,11 @@
 package com.ksc.network.slb.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.slb.model.DeleteListenersResult;
-import com.ksc.network.slb.model.DeleteLoadBalancerResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
+
+import javax.xml.stream.events.XMLEvent;
 
 /**
  * DeleteListenersResult StAX Unmarshaller

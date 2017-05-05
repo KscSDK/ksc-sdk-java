@@ -4,24 +4,54 @@ import lombok.ToString;
 
 @ToString
 public class Address {
+	/**
+	 * 弹性IP
+	 */
 	private String publicIp;
 
+	/**
+	 * 弹性IP的状态，已绑定(associate)，未绑定(disassociate)
+	 */
 	private String state;
 
+	/**
+	 * 弹性IP的ID
+	 */
 	private String allocationId;
 
+	/**
+	 * 弹性IP创建时间
+	 */
 	private String createTime;
 
+	/**
+	 * 弹性IP的线路类型的ID
+	 */
 	private String lineId;
 
+	/**
+	 * 弹性IP的带宽
+	 */
 	private String bandWidth;
 
+	/**
+	 * 绑定弹性IP的实例类型，IP映射(Ipfwd)，负载均衡（Slb）
+	 */
 	private String instanceType;
 
+	/**
+	 * 弹性IP绑定的实例信息。绑定类型为Ipfwd时，InstanceId为云服务器的ID。绑定类型为Slb时，InstanceId为弹性IP的ID。
+	 */
 	private String instanceId;
 
+	/**
+	 * 网络接口的标识，当InstanceType为Ipfwd时，不可缺省。
+	 */
 	private String networkInterfaceId;
 
+	/**
+	 * 互联网网关的ID
+	 */
 	private String internetGatewayId;
 
 	public String getPublicIp() {

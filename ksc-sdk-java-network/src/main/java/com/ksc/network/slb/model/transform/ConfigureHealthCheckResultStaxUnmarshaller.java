@@ -1,17 +1,15 @@
 package com.ksc.network.slb.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.slb.model.ConfigureHealthCheckResult;
-import com.ksc.network.vpc.model.vpc.CreateVpcResult;
-import com.ksc.network.vpc.transform.vpc.VpcStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * CreateVpcResult StAX Unmarshaller
+ * ConfigureHealthCheckResult StAX Unmarshaller
  */
 public class ConfigureHealthCheckResultStaxUnmarshaller implements
 		Unmarshaller<ConfigureHealthCheckResult, StaxUnmarshallerContext> {

@@ -80,4 +80,19 @@ public interface KSCSLB {
 	 */
 	public RegisterInstancesWithListenerResult registerInstancesWithListener(RegisterInstancesWithListenerRequest registerInstancesWithListenerRequest);
 
+	/**
+     * 修改真实服务器信息
+     */
+    public ModifyInstancesWithListenerResult modifyInstancesWithListener(ModifyInstancesWithListenerRequest modifyInstancesWithListenerRequest);
+
+    /**
+     * 解绑真实服务器
+     */
+    public DeregisterInstancesFromListenerResult deregisterInstancesFromListener(DeregisterInstancesFromListenerRequest deregisterInstancesFromListenerRequest);
+
+    /**
+     * 描述监听器中的真实服务器
+     */
+    public DescribeInstancesWithListenerResult describeInstancesWithListener(DescribeInstancesWithListenerRequest describeInstancesWithListenerRequest);
+
 }

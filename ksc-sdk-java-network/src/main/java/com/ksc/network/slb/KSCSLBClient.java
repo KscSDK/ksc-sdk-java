@@ -508,6 +508,109 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
         }
     }
 
+	@Override
+	public RegisterInstancesWithListenerResult registerInstancesWithListener(RegisterInstancesWithListenerRequest registerInstancesWithListenerRequest) {
+		ExecutionContext executionContext = createExecutionContext(registerInstancesWithListenerRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<RegisterInstancesWithListenerRequest> request = null;
+		Response<RegisterInstancesWithListenerResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new RegisterInstancesWithListenerRequestMarshaller()
+						.marshall(registerInstancesWithListenerRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<RegisterInstancesWithListenerResult> responseHandler = new StaxResponseHandler<RegisterInstancesWithListenerResult>(
+					new RegisterInstancesWithListenerResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+    @Override
+    public ModifyInstancesWithListenerResult modifyInstancesWithListener(ModifyInstancesWithListenerRequest modifyInstancesWithListenerRequest) {
+        ExecutionContext executionContext = createExecutionContext(modifyInstancesWithListenerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyInstancesWithListenerRequest> request = null;
+        Response<ModifyInstancesWithListenerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyInstancesWithListenerRequestMarshaller().marshall(modifyInstancesWithListenerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<ModifyInstancesWithListenerResult> responseHandler = new StaxResponseHandler<ModifyInstancesWithListenerResult>(
+                    new ModifyInstancesWithListenerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        }finally {
+            endClientExecution(kscRequestMetrics,request,response);
+        }
+    }
+
+    @Override
+    public DeregisterInstancesFromListenerResult deregisterInstancesFromListener(DeregisterInstancesFromListenerRequest deregisterInstancesFromListenerRequest) {
+        ExecutionContext executionContext = createExecutionContext(deregisterInstancesFromListenerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeregisterInstancesFromListenerRequest> request = null;
+        Response<DeregisterInstancesFromListenerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeregisterInstancesFromListenerRequestMarshaller().marshall(deregisterInstancesFromListenerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeregisterInstancesFromListenerResult> responseHandler = new StaxResponseHandler<DeregisterInstancesFromListenerResult>(
+                    new DeregisterInstancesFromListenerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        }finally {
+            endClientExecution(kscRequestMetrics,request,response);
+        }
+    }
+
+    @Override
+    public DescribeInstancesWithListenerResult describeInstancesWithListener(DescribeInstancesWithListenerRequest describeInstancesWithListenerRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeInstancesWithListenerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeInstancesWithListenerRequest> request = null;
+        Response<DescribeInstancesWithListenerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeInstancesWithListenerRequestMarshaller()
+                        .marshall(describeInstancesWithListenerRequest);
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribeInstancesWithListenerResult> responseHandler = new StaxResponseHandler<DescribeInstancesWithListenerResult>(
+                    new DescribeInstancesWithListenerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
     private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
 		exceptionUnmarshallers.add(new LegacyErrorUnmarshaller());

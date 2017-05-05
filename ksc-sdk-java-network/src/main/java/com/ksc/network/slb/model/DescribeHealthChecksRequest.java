@@ -1,13 +1,12 @@
 package com.ksc.network.slb.model;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.slb.model.transform.DescribeHealthChecksRequestMarshaller;
-import com.ksc.network.slb.model.transform.DescribeLoadBalancersRequestMarshaller;
+
+import java.io.Serializable;
 
 public class DescribeHealthChecksRequest extends KscWebServiceRequest
 		implements Serializable, Cloneable, DryRunSupportedRequest<DescribeHealthChecksRequest> {

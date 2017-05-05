@@ -1,15 +1,14 @@
 package com.ksc.network.slb.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.slb.model.DeleteHealthCheckResult;
-import com.ksc.network.slb.model.DeleteListenersResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * DeleteListenersResult StAX Unmarshaller
+ * DeleteHealthCheckResult StAX Unmarshaller
  */
 public class DeleteHealthCheckResultStaxUnmarshaller implements
 		Unmarshaller<DeleteHealthCheckResult, StaxUnmarshallerContext> {

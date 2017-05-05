@@ -5,7 +5,6 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.slb.model.ModifyListenersRequest;
-import com.ksc.network.slb.model.ModifyLoadBalancerRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 

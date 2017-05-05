@@ -1,12 +1,10 @@
 package com.ksc.network.slb.model.transform;
 
-import com.ksc.network.slb.model.HealthCheck;
 import com.ksc.network.slb.model.Listener;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-import javax.xml.stream.events.EndDocument;
 import javax.xml.stream.events.XMLEvent;
 
 /**

@@ -7,7 +7,7 @@ import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of ConfigureHealthCheck.
+ * Contains the output of ModifyHealthCheck.
  * </p>
  */
 @ToString
