@@ -40,4 +40,44 @@ public interface KSCSLB {
 	 */
 	public CreateListenersResult createListeners(CreateListenersRequest createListenersRequest);
 
+	/**
+	 * 更新监听器配置
+	 */
+	public ModifyListenersResult modifyListeners(ModifyListenersRequest modifyListenersRequest);
+
+    /**
+     * 删除监听器
+     */
+    public DeleteListenersResult deleteListeners(DeleteListenersRequest deleteListenersRequest);
+
+	/**
+	 * 描述监听器
+	 */
+	public DescribeListenersResult describeListeners(DescribeListenersRequest describeListenersRequest);
+
+    /**
+     * 创建健康检查
+     */
+    public ConfigureHealthCheckResult configureHealthCheck(ConfigureHealthCheckRequest configureHealthCheckRequest);
+
+	/**
+	 * 更新健康检查
+	 */
+	public ModifyHealthCheckResult modifyHealthCheck(ModifyHealthCheckRequest modifyHealthCheckRequest);
+
+    /**
+     * 删除负载均衡
+     */
+    public DeleteHealthCheckResult deleteHealthCheck(DeleteHealthCheckRequest deleteHealthCheckRequest);
+
+    /**
+     * 描述健康检查
+     */
+    public DescribeHealthChecksResult describeHealthChecks(DescribeHealthChecksRequest describeHealthChecksRequest);
+
+	/**
+	 * 监听器中绑定真实服务器
+	 */
+	public RegisterInstancesWithListenerResult registerInstancesWithListener(RegisterInstancesWithListenerRequest registerInstancesWithListenerRequest);
+
 }

@@ -326,7 +326,187 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 		}
 	}
 
+	@Override
+	public ModifyListenersResult modifyListeners(ModifyListenersRequest modifyListenersRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyListenersRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyListenersRequest> request = null;
+		Response<ModifyListenersResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyListenersRequestMarshaller().marshall(modifyListenersRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyListenersResult> responseHandler = new StaxResponseHandler<ModifyListenersResult>(
+					new ModifyListenersResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
 
+			return response.getKscResponse();
+		}finally {
+			endClientExecution(kscRequestMetrics,request,response);
+		}
+	}
+
+    @Override
+    public DeleteListenersResult deleteListeners(DeleteListenersRequest deleteListenersRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteListenersRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteListenersRequest> request = null;
+        Response<DeleteListenersResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteListenersRequestMarshaller()
+                        .marshall(deleteListenersRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteListenersResult> responseHandler = new StaxResponseHandler<DeleteListenersResult>(
+                    new DeleteListenersResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+	@Override
+	public DescribeListenersResult describeListeners(DescribeListenersRequest describeListenersRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeListenersRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeListenersRequest> request = null;
+		Response<DescribeListenersResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeListenersRequestMarshaller()
+						.marshall(describeListenersRequest);
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeListenersResult> responseHandler = new StaxResponseHandler<DescribeListenersResult>(
+					new DescribeListenersResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+    @Override
+    public ConfigureHealthCheckResult configureHealthCheck(ConfigureHealthCheckRequest configureHealthCheckRequest) {
+        ExecutionContext executionContext = createExecutionContext(configureHealthCheckRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ConfigureHealthCheckRequest> request = null;
+        Response<ConfigureHealthCheckResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ConfigureHealthCheckRequestMarshaller()
+                        .marshall(configureHealthCheckRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<ConfigureHealthCheckResult> responseHandler = new StaxResponseHandler<ConfigureHealthCheckResult>(
+                    new ConfigureHealthCheckResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+	@Override
+	public ModifyHealthCheckResult modifyHealthCheck(ModifyHealthCheckRequest modifyHealthCheckRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyHealthCheckRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyHealthCheckRequest> request = null;
+		Response<ModifyHealthCheckResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyHealthCheckRequestMarshaller().marshall(modifyHealthCheckRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyHealthCheckResult> responseHandler = new StaxResponseHandler<ModifyHealthCheckResult>(
+					new ModifyHealthCheckResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		}finally {
+			endClientExecution(kscRequestMetrics,request,response);
+		}
+	}
+
+    @Override
+    public DeleteHealthCheckResult deleteHealthCheck(DeleteHealthCheckRequest deleteHealthCheckRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteHealthCheckRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteHealthCheckRequest> request = null;
+        Response<DeleteHealthCheckResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteHealthCheckRequestMarshaller()
+                        .marshall(deleteHealthCheckRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            }finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteHealthCheckResult> responseHandler = new StaxResponseHandler<DeleteHealthCheckResult>(
+                    new DeleteHealthCheckResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribeHealthChecksResult describeHealthChecks(DescribeHealthChecksRequest describeHealthChecksRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeHealthChecksRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeHealthChecksRequest> request = null;
+        Response<DescribeHealthChecksResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeHealthChecksRequestMarshaller()
+                        .marshall(describeHealthChecksRequest);
+                // Binds the request metrics to the current request.
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribeHealthChecksResult> responseHandler = new StaxResponseHandler<DescribeHealthChecksResult>(
+                    new DescribeHealthChecksResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
     private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
