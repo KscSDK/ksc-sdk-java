@@ -1,7 +1,6 @@
 package com.ksc.cdn.model.statistic.province.isp.httpcode;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.ToString;
 
 /**
  * ProvinceAndIspHttpCodeResult
@@ -11,7 +10,6 @@ import lombok.ToString;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@ToString
 public class ProvinceAndIspHttpCodeResult extends CommonFieldResult {
 
     /**

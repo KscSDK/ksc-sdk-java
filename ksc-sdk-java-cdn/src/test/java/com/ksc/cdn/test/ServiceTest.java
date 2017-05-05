@@ -18,8 +18,8 @@ public class ServiceTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPR6KQTjguQr6IsCRUr7XX8A",
-                "OFqNaqmW7oqaK37Mpvs7qlygM280HZhNRPKfaV44uKZGMPl2ZG9jiUpLrQgJA6Gv3g==",
+        cdnClient = new KscCdnClient("AKTP7u5zSo8fS_qHwc9t0c7hsg",
+                "OEmaXB9L88DWnq2xPE7PGsQgxBVk+Z3I1KFRFU0dev9CCCV8LwytFFEZCE6rQe5rWQ==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");

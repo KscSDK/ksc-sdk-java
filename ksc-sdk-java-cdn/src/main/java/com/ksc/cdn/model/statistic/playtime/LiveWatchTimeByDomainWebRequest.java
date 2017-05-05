@@ -5,7 +5,6 @@ import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
@@ -14,16 +13,15 @@ import java.util.Map;
 /**
  * Created by JIANGYANG1 on 2017/3/13.
  */
-@Data
 public class LiveWatchTimeByDomainWebRequest extends CommonFieldRequest {
     /**
      * 计费区域名称， 取值为CN:中国大陆，HK：香港，TW：台湾，AS：亚洲其他，NA：北美洲，SA：南美洲，EU：欧洲，AU：大洋洲，AF：非洲，支持多计费区域查询，多个区域用逗号（半角）分隔，缺省为 CN
-     * */
+     */
     private String regions;
 
     /**
      * 取值为0：多流名多区域数据做合并；1：每个流名每个区域的数据分别返回
-     * */
+     */
     @FieldValidate
     private String resultType;
 
@@ -55,5 +53,29 @@ public class LiveWatchTimeByDomainWebRequest extends CommonFieldRequest {
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("GetPlayTimeDataByDomain", "2016-09-01", "/2016-09-01/statistics/GetPlayTimeDataByDomain");
+    }
+
+    public String getRegions() {
+        return regions;
+    }
+
+    public void setRegions(String regions) {
+        this.regions = regions;
+    }
+
+    public String getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
+
+    public String getGranularity() {
+        return granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        this.granularity = granularity;
     }
 }

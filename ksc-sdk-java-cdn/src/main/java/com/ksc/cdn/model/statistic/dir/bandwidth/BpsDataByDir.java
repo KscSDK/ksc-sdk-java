@@ -1,19 +1,5 @@
 package com.ksc.cdn.model.statistic.dir.bandwidth;
 
-import java.util.List;
-
-import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlType;
-
-import lombok.AllArgsConstructor;
-import lombok.Data;
-
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.ksc.cdn.model.statistic.dir.flow.FlowDataByRegion;
-
-@Data
 public class BpsDataByDir {
 	
 
@@ -31,4 +17,28 @@ public class BpsDataByDir {
 	 * 该目录在每个区域的详细带宽数据
 	 */
 	private BpsDataByRegion[] Regions;
+
+	public String getDir() {
+		return Dir;
+	}
+
+	public void setDir(String dir) {
+		Dir = dir;
+	}
+
+	public BpsDataByRegion[] getRegions() {
+		return Regions;
+	}
+
+	public void setRegions(BpsDataByRegion[] regions) {
+		Regions = regions;
+	}
+
+	public Long getBw() {
+		return Bw;
+	}
+
+	public void setBw(Long bw) {
+		Bw = bw;
+	}
 }
