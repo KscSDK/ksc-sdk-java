@@ -6,6 +6,7 @@ import org.junit.Test;
 
 public class KSCSLBClientTest {
 	private static final Logger log = Logger.getLogger(KSCSLBClientTest.class);
+
 	@Test
 	public void describeLoadBalancers(){
 		KSCSLBClient client=new KSCSLBClient();

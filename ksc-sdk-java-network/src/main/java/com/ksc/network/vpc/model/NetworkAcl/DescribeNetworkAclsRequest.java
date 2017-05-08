@@ -9,15 +9,20 @@ import lombok.ToString;
 
 /**
  * <p>
- * Contains the parameters for DescribeSecurityGroups.
+ * Contains the parameters for DescribeNetworkAcls.
  * </p>
  */
 @ToString
 public class DescribeNetworkAclsRequest extends KscWebServiceRequest implements
          DryRunSupportedRequest<DescribeNetworkAclsRequest> {
-
+    /**
+     * 一个或多个ACL的ID信息
+     */
     private com.ksc.internal.SdkInternalList<String> networkAclIds;
-    
+
+    /**
+     * vpc-id，VPC的ID
+     */
     private com.ksc.internal.SdkInternalList<Filter> filters;
 
 

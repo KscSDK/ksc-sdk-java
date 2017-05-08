@@ -1,15 +1,12 @@
 package com.ksc.network.eip.model;
 
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.Nat.AssociateNat;
-import com.ksc.network.vpc.model.Nat.NatIp;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of CreateSubnet.
+ * Contains the output of ModifyAddress.
  * </p>
  */
 @ToString

@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.VpcPeeringConnection.AcceptVpcPeeringConnectionRequest;
-import com.ksc.network.vpc.model.VpcPeeringConnection.CreateVpcPeeringConnectionRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateVpcRequest Marshaller
+ * AccepterVpcInfo Marshaller
  */
 
 public class AcceptVpcPeeringConnectionRequestMarshaller implements

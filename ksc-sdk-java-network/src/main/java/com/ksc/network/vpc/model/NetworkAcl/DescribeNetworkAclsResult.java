@@ -1,12 +1,10 @@
 package com.ksc.network.vpc.model.NetworkAcl;
 
-import com.ksc.network.vpc.model.SecurityGroups.SecurityGroup;
-
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeSecurityGroups.
+ * Contains the output of DescribeNetworkAcls.
  * </p>
  */
 @ToString
@@ -15,7 +13,7 @@ public class DescribeNetworkAclsResult {
 	private String RequestId;
 	/**
      * <p>
-     * Information about one or more SecurityGroups.
+     * Information about one or more NetworkAcl信息
      * </p>
      */
 	

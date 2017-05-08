@@ -1,11 +1,18 @@
 package com.ksc.network.vpc.model.NetworkInterface;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class GroupIdentifier {
-	private String SecurityGroupId;
-	
+    /**
+     * 安全组的ID
+     */
+    private String SecurityGroupId;
+    /**
+     * 安全组的名称
+     */
 	private String SecurityGroupName;
 
     public String getSecurityGroupId() {

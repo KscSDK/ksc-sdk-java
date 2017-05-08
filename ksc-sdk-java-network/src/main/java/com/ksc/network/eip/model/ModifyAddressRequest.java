@@ -1,16 +1,15 @@
 package com.ksc.network.eip.model;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.eip.model.transform.ModifyAddressRequestMarshaller;
-import com.ksc.network.vpc.transform.Nat.ModifyNatRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for CreateSecurityGroup.
+ * Contains the parameters for ModifyAddress.
  * </p>
  */
 public class ModifyAddressRequest extends KscWebServiceRequest implements

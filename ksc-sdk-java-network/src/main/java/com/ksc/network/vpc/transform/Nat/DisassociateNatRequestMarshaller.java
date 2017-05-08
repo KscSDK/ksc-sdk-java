@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.Nat.DisassociateNatRequest;
-import com.ksc.network.vpc.model.subnet.DisassociateNetworkAclRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * DisassociateNatRequest Marshaller
  */
 
 public class DisassociateNatRequestMarshaller implements

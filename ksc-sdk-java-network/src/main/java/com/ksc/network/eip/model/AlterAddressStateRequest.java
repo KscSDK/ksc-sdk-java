@@ -1,16 +1,15 @@
 package com.ksc.network.eip.model;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.eip.model.transform.AlterAddressStateRequestMarshaller;
-import com.ksc.network.eip.model.transform.DisassociateAddressRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for AuthorizeSecurityGroupEntry.
+ * Contains the parameters for AlterAddressState.
  * </p>
  */
 public class AlterAddressStateRequest extends KscWebServiceRequest implements

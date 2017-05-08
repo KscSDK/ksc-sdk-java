@@ -1,14 +1,12 @@
 package com.ksc.network.vpc.model.Route;
 
-import com.ksc.network.vpc.model.vpc.Vpc;
-
 import lombok.ToString;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of CreateSubnet.
+ * Contains the output of CreateRoute.
  * </p>
  */
 @ToString

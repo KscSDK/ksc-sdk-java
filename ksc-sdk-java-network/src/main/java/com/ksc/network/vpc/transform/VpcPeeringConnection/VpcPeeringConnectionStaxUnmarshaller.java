@@ -1,18 +1,15 @@
 package com.ksc.network.vpc.transform.VpcPeeringConnection;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.vpc.model.Nat.Nat;
 import com.ksc.network.vpc.model.VpcPeeringConnection.VpcPeeringConnection;
-import com.ksc.network.vpc.transform.Nat.AssociateNatStaxUnmarshaller;
-import com.ksc.network.vpc.transform.Nat.NatIpStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * SecurityGroupRule StAX Unmarshaller
+ * RequesterVpcInfo StAX Unmarshaller
  */
 public class VpcPeeringConnectionStaxUnmarshaller implements Unmarshaller<VpcPeeringConnection, StaxUnmarshallerContext> {
 

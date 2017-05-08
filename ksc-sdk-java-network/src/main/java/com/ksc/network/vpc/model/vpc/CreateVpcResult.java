@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of CreateVpc.
  * </p>
  */
 @ToString
@@ -16,7 +16,6 @@ public class CreateVpcResult implements Serializable, Cloneable {
 	private String RequestId;
 
 	private Vpc vpc;
-	
 
     public String getRequestId() {
 		return RequestId;

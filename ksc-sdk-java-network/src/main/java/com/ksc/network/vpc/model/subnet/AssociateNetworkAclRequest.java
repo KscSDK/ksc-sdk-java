@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.subnet;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.subnet.AssociateNetworkAclRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.DeleteSubnetRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DeleteSubnet.
+ * Contains the parameters for AssociateNetworkAcl.
  * </p>
  */
 public class AssociateNetworkAclRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<AssociateNetworkAclRequest> {
-
 
 	/**
 	 * NetworkAcl的ID

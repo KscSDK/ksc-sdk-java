@@ -1,16 +1,15 @@
 package com.ksc.network.vpc.model.NetworkAcl;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.NetworkAcl.DeleteNetworkAclRequestMarshaller;
-import com.ksc.network.vpc.transform.Routes.DeleteRouteRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DeleteSubnet.
+ * Contains the parameters for DeleteNetworkAcl.
  * </p>
  */
 public class DeleteNetworkAclRequest extends KscWebServiceRequest implements

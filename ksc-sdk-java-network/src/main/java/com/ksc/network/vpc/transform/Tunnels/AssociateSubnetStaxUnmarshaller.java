@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.Tunnels;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.vpc.model.Nat.NatIp;
 import com.ksc.network.vpc.model.Tunnels.AssociateSubnet;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * SecurityGroupRule StAX Unmarshaller
+ * AssociateSubnet StAX Unmarshaller
  */
 public class AssociateSubnetStaxUnmarshaller implements Unmarshaller<AssociateSubnet, StaxUnmarshallerContext> {
 

@@ -1,19 +1,16 @@
 package com.ksc.network.vpc.model.VpcPeeringConnection;
 
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of ModifyVpcPeeringConnection.
  * </p>
  */
 @ToString
 public class ModifyVpcPeeringConnectionResult implements Serializable, Cloneable {
-
 
     private String RequestId;
 

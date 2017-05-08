@@ -1,16 +1,15 @@
 package com.ksc.network.vpc.model.NetworkAcl;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.NetworkAcl.CreateNetworkAclEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for AuthorizeSecurityGroupEntry.
+ * Contains the parameters for CreateNetworkAclEntry.
  * </p>
  */
 public class CreateNetworkAclEntryRequest extends KscWebServiceRequest implements

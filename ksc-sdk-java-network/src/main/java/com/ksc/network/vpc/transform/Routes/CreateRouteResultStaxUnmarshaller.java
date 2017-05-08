@@ -1,8 +1,6 @@
 package com.ksc.network.vpc.transform.Routes;
 
 import com.ksc.network.vpc.model.Route.CreateRouteResult;
-import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
-import com.ksc.network.vpc.transform.vpc.VpcStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -10,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * CreateVpcResult StAX Unmarshaller
+ * CreateRouteResult StAX Unmarshaller
  */
 public class CreateRouteResultStaxUnmarshaller implements
 		Unmarshaller<CreateRouteResult, StaxUnmarshallerContext> {

@@ -9,7 +9,7 @@ import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateVpcRequest Marshaller
+ * ModifySubnetRequest Marshaller
  */
 
 public class ModifySubnetRequestMarshaller implements

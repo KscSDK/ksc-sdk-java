@@ -1,19 +1,17 @@
-
 package com.ksc.network.vpc.model.subnet;
-
-import java.io.Serializable;
 
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * <p>
- * Contains the output of DeleteSubnet.
+ * Contains the output of AssociateNetworkAcl.
  * </p>
  */
 @ToString
 public class AssociateNetworkAclResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Boolean Return;

@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.subnet;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.subnet.DescribeSubnetAvailableAddressesResult;
-import com.ksc.network.vpc.model.subnet.DescribeSubnetsResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * DescribeSubnetsResult StAX Unmarshaller
+ * DescribeSubnetAvailableAddressesResult StAX Unmarshaller
  */
 public class DescribeSubnetAvailableAddressesResultStaxUnmarshaller
 		implements Unmarshaller<DescribeSubnetAvailableAddressesResult, StaxUnmarshallerContext> {

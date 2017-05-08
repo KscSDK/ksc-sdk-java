@@ -15,7 +15,6 @@ import java.io.Serializable;
 public class CreateNatRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<CreateNatRequest> {
 
-
     /**
      * Vpc的ID
      */

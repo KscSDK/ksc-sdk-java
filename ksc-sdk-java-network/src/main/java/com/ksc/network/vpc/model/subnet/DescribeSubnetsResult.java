@@ -1,5 +1,6 @@
 package com.ksc.network.vpc.model.subnet;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -8,6 +9,7 @@ import lombok.ToString;
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeSubnetsResult {
 	
 	private String RequestId;
@@ -41,15 +43,6 @@ public class DescribeSubnetsResult {
         return SubnetSet;
     }
 
-    /**
-     * <p>
-     * Information about one or more Subnets.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more Subnets.
-     */
-
     public void setSubnetSet(java.util.Collection<Subnet> subnets) {
         if (subnets == null) {
             this.SubnetSet = null;
@@ -58,23 +51,6 @@ public class DescribeSubnetsResult {
 
         this.SubnetSet = new com.ksc.internal.SdkInternalList<Subnet>(subnets);
     }
-
-    /**
-     * <p>
-     * Information about one or more Subnets.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setSubnets(java.util.Collection)} or
-     * {@link #withSubnets(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param subnets
-     *        Information about one or more Subnets.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeSubnetsResult withSubnets(Subnet... subnets) {
         if (this.SubnetSet == null) {
@@ -85,17 +61,6 @@ public class DescribeSubnetsResult {
         }
         return this;
     }
-
-    /**
-     * <p>
-     * Information about one or more Subnets.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more Subnets.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeSubnetsResult withSubnets(java.util.Collection<Subnet> subnets) {
         setSubnetSet(subnets);

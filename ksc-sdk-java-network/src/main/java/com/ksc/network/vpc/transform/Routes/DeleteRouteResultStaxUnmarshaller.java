@@ -8,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * DeleteSubnetResult StAX Unmarshaller
+ * DeleteRouteResult StAX Unmarshaller
  */
 public class DeleteRouteResultStaxUnmarshaller implements
 		Unmarshaller<DeleteRouteResult, StaxUnmarshallerContext> {

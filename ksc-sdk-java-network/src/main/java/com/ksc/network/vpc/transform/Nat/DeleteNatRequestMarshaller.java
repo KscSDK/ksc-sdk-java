@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.Nat.DeleteNatRequest;
-import com.ksc.network.vpc.model.Route.DeleteRouteRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * DeleteNatRequest Marshaller
  */
 
 public class DeleteNatRequestMarshaller implements

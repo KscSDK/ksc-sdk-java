@@ -3,20 +3,17 @@ package com.ksc.network.vpc.model.Route;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.Routes.CreateRouteRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for CreateSubnet.
+ * Contains the parameters for CreateRoute.
  * </p>
  */
 public class CreateRouteRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<CreateRouteRequest> {
-
 
     /**
      * Vpc的ID

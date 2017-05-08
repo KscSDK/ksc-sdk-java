@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.Tunnels.AssociateRemoteCidrRequestMarshaller;
-import com.ksc.network.vpc.transform.Tunnels.AssociateSubnetRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DeleteSubnet.
+ * Contains the parameters for AssociateRemoteCidr.
  * </p>
  */
 public class AssociateRemoteCidrRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<AssociateRemoteCidrRequest> {
-
 
 	/**
 	 * 隧道网关ID

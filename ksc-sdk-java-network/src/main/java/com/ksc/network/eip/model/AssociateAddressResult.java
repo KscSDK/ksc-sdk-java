@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of AssociateAddress.
  * </p>
  */
 @ToString

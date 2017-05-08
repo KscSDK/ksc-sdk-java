@@ -1,12 +1,11 @@
 package com.ksc.network.vpc.transform.NetworkInterface;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.NetworkInterface.NetworkInterface;
-import com.ksc.network.vpc.transform.Routes.NextHopStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
+
+import javax.xml.stream.events.XMLEvent;
 
 /**
  * NetworkInterface StAX Unmarshaller
@@ -28,16 +27,6 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
 
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
-				if (context.testExpression("VpcId", targetDepth)) {
-					networkInterface.setVpcId(StringStaxUnmarshaller.getInstance().unmarshall(context));
-					continue;
-				}
-
-				if (context.testExpression("VpcName", targetDepth)) {
-					networkInterface.setVpcName(StringStaxUnmarshaller.getInstance().unmarshall(context));
-					continue;
-				}
-
 				if (context.testExpression("MacAddress", targetDepth)) {
 					networkInterface.setMacAddress(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
@@ -48,15 +37,6 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
 					continue;
 				}
 
-				if (context.testExpression("SubnetId", targetDepth)) {
-					networkInterface.setSubnetId(StringStaxUnmarshaller.getInstance().unmarshall(context));
-					continue;
-				}
-
-				if (context.testExpression("SubnetName", targetDepth)) {
-					networkInterface.setSubnetName(StringStaxUnmarshaller.getInstance().unmarshall(context));
-					continue;
-				}
 				if (context.testExpression("SecurityGroupId", targetDepth)) {
 					networkInterface.setSecurityGroupId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;

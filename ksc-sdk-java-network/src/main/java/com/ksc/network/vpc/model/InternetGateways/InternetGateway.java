@@ -1,18 +1,35 @@
 package com.ksc.network.vpc.model.InternetGateways;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class InternetGateway {
 
+	/**
+	 * 互联网网关的名称
+	 */
 	private String InternetGatewayName;
 
+	/**
+	 * Vpc的ID
+	 */
 	private String VpcId;
 
+	/**
+	 * VPC创建时间
+	 */
 	private String CreateTime;
 
+	/**
+	 * 互联网网关的ID
+	 */
 	private String InternetGatewayId;
 
+	/**
+	 * 可用区的名称
+	 */
 	private com.ksc.internal.SdkInternalList<Portfwd> PortfwdSet;
 
 	public String getInternetGatewayName() {

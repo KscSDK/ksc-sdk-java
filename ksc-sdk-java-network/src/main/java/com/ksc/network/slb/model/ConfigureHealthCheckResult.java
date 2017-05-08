@@ -1,12 +1,9 @@
 
 package com.ksc.network.slb.model;
 
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
-import com.ksc.network.vpc.model.vpc.Vpc;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>

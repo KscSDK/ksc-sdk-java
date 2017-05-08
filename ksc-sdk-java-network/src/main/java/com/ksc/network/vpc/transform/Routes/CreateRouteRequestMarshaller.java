@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.Route.CreateRouteRequest;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateSubnetRequest Marshaller
+ * CreateRouteRequest Marshaller
  */
 
 public class CreateRouteRequestMarshaller implements

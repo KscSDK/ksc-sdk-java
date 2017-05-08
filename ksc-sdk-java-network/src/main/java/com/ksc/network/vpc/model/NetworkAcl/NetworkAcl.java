@@ -1,20 +1,41 @@
 package com.ksc.network.vpc.model.NetworkAcl;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class NetworkAcl {
-	private String CreateTime;
-	
-	private String VpcId;
-	
-	private String NetworkAclName;
-	
-	private String NetworkAclId;
+    /**
+     * ACL创建时间
+     */
+    private String CreateTime;
 
-	private String Description;
+    /**
+     * Vpc的ID
+     */
+    private String VpcId;
 
-	private com.ksc.internal.SdkInternalList<NetworkAclEntry> NetworkAclEntrySet;
+    /**
+     * NetworkAcl的名称
+
+     */
+    private String NetworkAclName;
+
+    /**
+     * NetworkAcl的ID
+     */
+    private String NetworkAclId;
+
+    /**
+     * ACL的备注
+     */
+    private String Description;
+
+    /**
+     * ACL规则信息
+     */
+    private com.ksc.internal.SdkInternalList<NetworkAclEntry> NetworkAclEntrySet;
 
 	public String getCreateTime() {
 		return CreateTime;

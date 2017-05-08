@@ -1,18 +1,14 @@
 package com.ksc.network.vpc.transform.Tunnels;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.vpc.model.Nat.Nat;
 import com.ksc.network.vpc.model.Tunnels.Tunnel;
-import com.ksc.network.vpc.transform.Nat.AssociateNatStaxUnmarshaller;
-import com.ksc.network.vpc.transform.Nat.NatIpStaxUnmarshaller;
-import com.ksc.transform.SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * SecurityGroupRule StAX Unmarshaller
+ * Tunnel StAX Unmarshaller
  */
 public class TunnelStaxUnmarshaller implements Unmarshaller<Tunnel, StaxUnmarshallerContext> {
 

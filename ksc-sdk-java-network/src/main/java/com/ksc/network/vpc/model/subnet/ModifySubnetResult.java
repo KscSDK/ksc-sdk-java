@@ -6,13 +6,12 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of CreateSubnet.
+ * Contains the output of ModifySubnet.
  * </p>
  */
 @ToString
 public class ModifySubnetResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Subnet subnet;

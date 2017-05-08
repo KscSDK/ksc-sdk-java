@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclRequest;
-import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateVpcRequest Marshaller
+ * CreateNetworkAclRequest Marshaller
  */
 
 public class CreateNetworkAclRequestMarshaller implements

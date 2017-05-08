@@ -1,12 +1,10 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import com.ksc.network.vpc.model.Nat.Nat;
-
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeSecurityGroups.
+ * Contains the output of DescribeTunnels.
  * </p>
  */
 @ToString
@@ -15,7 +13,7 @@ public class DescribeTunnelsResult {
 	private String RequestId;
 	/**
      * <p>
-     * Information about one or more SecurityGroups.
+     * 隧道网关的信息
      * </p>
      */
 	

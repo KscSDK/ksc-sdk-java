@@ -1,12 +1,10 @@
 package com.ksc.network.vpc.model.Nat;
 
-import com.ksc.network.vpc.model.NetworkAcl.NetworkAcl;
-
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeSecurityGroups.
+ * Contains the output of DescribeNats.
  * </p>
  */
 @ToString

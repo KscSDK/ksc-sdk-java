@@ -1,16 +1,15 @@
 package com.ksc.network.vpc.transform.Nat;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.vpc.model.Nat.CreateNatResult;
 import com.ksc.network.vpc.model.Nat.ModifyNatResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * CreateVpcResult StAX Unmarshaller
+ * ModifyNatResult StAX Unmarshaller
  */
 public class ModifyNatResultStaxUnmarshaller implements
 		Unmarshaller<ModifyNatResult, StaxUnmarshallerContext> {

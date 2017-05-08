@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.network.vpc.transform.Nat.DisassociateNatRequestMarshaller;
 import com.ksc.network.vpc.transform.Tunnels.DisassociateSubnetRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DeleteSubnet.
+ * Contains the parameters for DisassociateSubnet.
  * </p>
  */
 public class DisassociateSubnetRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<DisassociateSubnetRequest> {
-
 
 	/**
 	 * 隧道网关ID

@@ -4,13 +4,12 @@ import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
-import com.ksc.network.vpc.model.Nat.AssociateNatRequest;
 import com.ksc.network.vpc.model.Tunnels.AssociateSubnetRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * AssociateSubnetRequest Marshaller
  */
 
 public class AssociateSubnetRequestMarshaller implements

@@ -1,13 +1,14 @@
 package com.ksc.network.vpc.model.subnet;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 @ToString
+@EqualsAndHashCode
 public class Subnet {
     /**
      * 子网创建时间
      */
 	private String CreateTime;
-
     /**
      * 子网的ID
      */
@@ -20,7 +21,6 @@ public class Subnet {
 	 * 子网的类型，终端子网（Reserve）、普通子网（Normal）
 	 */
 	private String SubnetType;
-
     /**
      * 子网的名称
      */

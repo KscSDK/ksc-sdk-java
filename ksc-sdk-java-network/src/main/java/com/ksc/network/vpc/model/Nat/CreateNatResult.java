@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of CreateSubnet.
+ * Contains the output of CreateNat.
  * </p>
  */
 @ToString

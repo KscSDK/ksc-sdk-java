@@ -1,12 +1,12 @@
 package com.ksc.network.vpc.model.NetworkAcl;
 
-import java.io.Serializable;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of ModifyNetworkAclEntry.
  * </p>
  */
 @ToString

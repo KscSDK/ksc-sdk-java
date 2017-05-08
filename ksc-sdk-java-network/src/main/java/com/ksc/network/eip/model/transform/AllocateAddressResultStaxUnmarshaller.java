@@ -1,9 +1,6 @@
 package com.ksc.network.eip.model.transform;
 
 import com.ksc.network.eip.model.AllocateAddressResult;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -11,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * DeleteSecurityGroupResult StAX Unmarshaller
+ * AllocateAddressResult StAX Unmarshaller
  */
 public class AllocateAddressResultStaxUnmarshaller implements
 		Unmarshaller<AllocateAddressResult, StaxUnmarshallerContext> {

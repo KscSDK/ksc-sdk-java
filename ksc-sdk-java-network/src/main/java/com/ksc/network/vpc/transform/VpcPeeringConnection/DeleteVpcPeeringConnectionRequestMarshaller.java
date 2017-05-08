@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.VpcPeeringConnection.DeleteVpcPeeringConnectionRequest;
-import com.ksc.network.vpc.model.vpc.DeleteVpcRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * DeleteVpcPeeringConnectionRequest Marshaller
  */
 
 public class DeleteVpcPeeringConnectionRequestMarshaller implements

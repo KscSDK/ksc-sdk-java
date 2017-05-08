@@ -6,12 +6,11 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.model.AvailabilityZone.DescribeAvailabilityZonesRequest;
-import com.ksc.network.vpc.model.vpc.DescribeVpcsRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DescribeVpcsRequest Marshaller
+ * DescribeAvailabilityZonesRequest Marshaller
  */
 
 public class DescribeAvailabilityZonesRequestMarshaller implements

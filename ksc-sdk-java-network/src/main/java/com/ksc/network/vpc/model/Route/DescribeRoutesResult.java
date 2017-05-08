@@ -1,19 +1,21 @@
 package com.ksc.network.vpc.model.Route;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeSecurityGroups.
+ * Contains the output of DescribeRoutes.
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeRoutesResult {
 	
 	private String RequestId;
 	/**
      * <p>
-     * Information about one or more SecurityGroups.
+     * 路由的信息.
      * </p>
      */
 	
@@ -27,28 +29,12 @@ public class DescribeRoutesResult {
 		this.RequestId = requestId;
 	}
 
-	/*
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * 
-     * @return Information about one or more SecurityGroups.
-     */
     public java.util.List<Route> getRouteSet() {
         if (RouteSet == null) {
         	RouteSet = new com.ksc.internal.SdkInternalList<Route>();
         }
         return RouteSet;
     }
-
-    /**
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more SecurityGroups.
-     */
 
     public void setRouteSet(java.util.Collection<Route> routes) {
         if (routes == null) {
@@ -59,23 +45,6 @@ public class DescribeRoutesResult {
         this.RouteSet = new com.ksc.internal.SdkInternalList<Route>(routes);
     }
 
-    /**
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setSecurityGroups(java.util.Collection)} or
-     * {@link #withSecurityGroups(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param securityGroups
-     *        Information about one or more SecurityGroups.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
-
     public DescribeRoutesResult withRoutes(Route... routes) {
         if (this.RouteSet == null) {
             setRouteSet(new com.ksc.internal.SdkInternalList<Route>(routes.length));
@@ -85,17 +54,6 @@ public class DescribeRoutesResult {
         }
         return this;
     }
-
-    /**
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * 
-     * @param securityGroups
-     *        Information about one or more SecurityGroups.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeRoutesResult withRoutes(java.util.Collection<Route> routes) {
         setRouteSet(routes);

@@ -6,14 +6,16 @@ import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesRequestMarshaller;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for DescribeNetworkInterfaces.
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeNetworkInterfacesRequest extends KscWebServiceRequest implements
          DryRunSupportedRequest<DescribeNetworkInterfacesRequest> {
 	/**

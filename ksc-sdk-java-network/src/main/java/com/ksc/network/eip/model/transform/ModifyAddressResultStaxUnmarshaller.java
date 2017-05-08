@@ -1,18 +1,15 @@
 package com.ksc.network.eip.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.eip.model.ModifyAddressResult;
-import com.ksc.network.vpc.model.Nat.ModifyNatResult;
-import com.ksc.network.vpc.transform.Nat.AssociateNatStaxUnmarshaller;
-import com.ksc.network.vpc.transform.Nat.NatIpStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * CreateVpcResult StAX Unmarshaller
+ * ModifyAddressResult StAX Unmarshaller
  */
 public class ModifyAddressResultStaxUnmarshaller implements
 		Unmarshaller<ModifyAddressResult, StaxUnmarshallerContext> {

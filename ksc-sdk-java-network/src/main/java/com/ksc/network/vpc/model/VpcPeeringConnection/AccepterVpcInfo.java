@@ -1,19 +1,34 @@
 package com.ksc.network.vpc.model.VpcPeeringConnection;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class AccepterVpcInfo {
-	private String AccountId;
-
+    /**
+     * 接受端账号ID
+     */
+    private String AccountId;
+    /**
+     * 接受端Vpc的名称
+     */
 	private String VpcName;
-
+    /**
+     * 接受端Vpc的名称
+     */
 	private String CidrBlock;
-
+    /**
+     * 接受端Vpc的ID
+     */
 	private String VpcId;
-
+    /**
+     * 接受端Vpc的region
+     */
 	private String Region;
-
+    /**
+     * 接受端Vpc的对等连接ID
+     */
 	private String VpcPeeringConnectionId;
 
     public String getAccountId() {

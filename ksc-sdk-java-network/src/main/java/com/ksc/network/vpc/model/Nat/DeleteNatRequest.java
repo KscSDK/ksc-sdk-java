@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.Nat;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.Nat.DeleteNatRequestMarshaller;
-import com.ksc.network.vpc.transform.Routes.DeleteRouteRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DeleteSubnet.
+ * Contains the parameters for DeleteNat.
  * </p>
  */
 public class DeleteNatRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<DeleteNatRequest> {
-
 
     /**
      * Nat的ID

@@ -1,16 +1,14 @@
 package com.ksc.network.vpc.transform.Tunnels;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.Tunnels.ModifyTunnelResult;
-import com.ksc.network.vpc.model.VpcPeeringConnection.ModifyVpcPeeringConnectionResult;
-import com.ksc.network.vpc.transform.VpcPeeringConnection.VpcPeeringConnectionStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * ModifySecurityGroupResult StAX Unmarshaller
+ * ModifyTunnelResult StAX Unmarshaller
  */
 public class ModifyTunnelResultStaxUnmarshaller implements
 		Unmarshaller<ModifyTunnelResult, StaxUnmarshallerContext> {

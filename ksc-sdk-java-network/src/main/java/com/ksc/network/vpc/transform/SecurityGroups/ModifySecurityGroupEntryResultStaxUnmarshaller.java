@@ -1,16 +1,14 @@
 package com.ksc.network.vpc.transform.SecurityGroups;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.vpc.model.NetworkAcl.ModifyNetworkAclEntryResult;
 import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupEntryResult;
-import com.ksc.network.vpc.transform.NetworkAcl.NetworkAclEntryStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * ModifySecurityGroupResult StAX Unmarshaller
+ * ModifySecurityGroupEntryResult StAX Unmarshaller
  */
 public class ModifySecurityGroupEntryResultStaxUnmarshaller implements
 		Unmarshaller<ModifySecurityGroupEntryResult, StaxUnmarshallerContext> {

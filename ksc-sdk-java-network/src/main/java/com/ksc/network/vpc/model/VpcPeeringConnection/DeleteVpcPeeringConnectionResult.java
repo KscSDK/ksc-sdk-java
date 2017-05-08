@@ -1,19 +1,18 @@
 
 package com.ksc.network.vpc.model.VpcPeeringConnection;
 
-import java.io.Serializable;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of DeleteVpcPeeringConnection.
  * </p>
  */
 @ToString
 public class DeleteVpcPeeringConnectionResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Boolean Return;

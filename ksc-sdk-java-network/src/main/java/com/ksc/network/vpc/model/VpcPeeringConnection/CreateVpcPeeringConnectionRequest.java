@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.VpcPeeringConnection;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.VpcPeeringConnection.CreateVpcPeeringConnectionRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.CreateVpcRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for CreateVpcPeeringConnection.
  * </p>
  */
 public class CreateVpcPeeringConnectionRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<CreateVpcPeeringConnectionRequest> {
-
 
     /**
      * 发起端Vpc的ID

@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.network.vpc.transform.Nat.AssociateNatRequestMarshaller;
 import com.ksc.network.vpc.transform.Tunnels.AssociateSubnetRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DeleteSubnet.
+ * Contains the parameters for AssociateSubnet.
  * </p>
  */
 public class AssociateSubnetRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<AssociateSubnetRequest> {
-
 
 	/**
 	 * 隧道网关ID

@@ -12,7 +12,6 @@ import java.io.Serializable;
  */
 @ToString
 public class DeleteSubnetResult implements Serializable, Cloneable {
-
 	
 	private String RequestId;
 

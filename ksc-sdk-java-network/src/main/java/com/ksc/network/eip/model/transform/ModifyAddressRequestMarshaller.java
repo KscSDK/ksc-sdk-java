@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.eip.model.ModifyAddressRequest;
-import com.ksc.network.vpc.model.Nat.ModifyNatRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * ModifySecurityGroupRequest Marshaller
+ * ModifyAddressRequest Marshaller
  */
 
 public class ModifyAddressRequestMarshaller implements

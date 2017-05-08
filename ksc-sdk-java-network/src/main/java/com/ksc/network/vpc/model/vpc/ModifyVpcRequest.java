@@ -3,19 +3,17 @@ package com.ksc.network.vpc.model.vpc;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.vpc.ModifyVpcRequestMarshaller;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for ModifyVpc.
  * </p>
  */
 public class ModifyVpcRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<ModifyVpcRequest> {
-
 
     /**
      * Vpc的ID

@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.Nat;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.Nat.NatIp;
-import com.ksc.network.vpc.model.Route.NextHop;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * SecurityGroupRule StAX Unmarshaller
+ * NatIp StAX Unmarshaller
  */
 public class NatIpStaxUnmarshaller implements Unmarshaller<NatIp, StaxUnmarshallerContext> {
 

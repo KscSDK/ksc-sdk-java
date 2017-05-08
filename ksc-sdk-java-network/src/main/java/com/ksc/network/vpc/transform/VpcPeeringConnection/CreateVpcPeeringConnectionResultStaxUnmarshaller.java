@@ -1,16 +1,14 @@
 package com.ksc.network.vpc.transform.VpcPeeringConnection;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.VpcPeeringConnection.CreateVpcPeeringConnectionResult;
-import com.ksc.network.vpc.model.vpc.CreateVpcResult;
-import com.ksc.network.vpc.transform.vpc.VpcStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * CreateVpcResult StAX Unmarshaller
+ * CreateVpcPeeringConnectionResult StAX Unmarshaller
  */
 public class CreateVpcPeeringConnectionResultStaxUnmarshaller implements
 		Unmarshaller<CreateVpcPeeringConnectionResult, StaxUnmarshallerContext> {

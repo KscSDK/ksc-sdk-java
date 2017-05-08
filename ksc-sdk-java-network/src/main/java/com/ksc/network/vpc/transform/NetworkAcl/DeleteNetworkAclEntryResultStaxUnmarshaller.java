@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.NetworkAcl;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.NetworkAcl.DeleteNetworkAclEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * DeleteSecurityGroupResult StAX Unmarshaller
+ * DeleteNetworkAclEntryResult StAX Unmarshaller
  */
 public class DeleteNetworkAclEntryResultStaxUnmarshaller implements
 		Unmarshaller<DeleteNetworkAclEntryResult, StaxUnmarshallerContext> {

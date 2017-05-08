@@ -78,21 +78,25 @@ public interface KSCSLB {
 	/**
 	 * 监听器中绑定真实服务器
 	 */
-	public RegisterInstancesWithListenerResult registerInstancesWithListener(RegisterInstancesWithListenerRequest registerInstancesWithListenerRequest);
+	public RegisterInstancesWithListenerResult registerInstancesWithListener(
+			RegisterInstancesWithListenerRequest registerInstancesWithListenerRequest);
 
 	/**
      * 修改真实服务器信息
      */
-    public ModifyInstancesWithListenerResult modifyInstancesWithListener(ModifyInstancesWithListenerRequest modifyInstancesWithListenerRequest);
+    public ModifyInstancesWithListenerResult modifyInstancesWithListener(
+    		ModifyInstancesWithListenerRequest modifyInstancesWithListenerRequest);
 
     /**
      * 解绑真实服务器
      */
-    public DeregisterInstancesFromListenerResult deregisterInstancesFromListener(DeregisterInstancesFromListenerRequest deregisterInstancesFromListenerRequest);
+    public DeregisterInstancesFromListenerResult deregisterInstancesFromListener(
+    		DeregisterInstancesFromListenerRequest deregisterInstancesFromListenerRequest);
 
     /**
      * 描述监听器中的真实服务器
      */
-    public DescribeInstancesWithListenerResult describeInstancesWithListener(DescribeInstancesWithListenerRequest describeInstancesWithListenerRequest);
+    public DescribeInstancesWithListenerResult describeInstancesWithListener(
+    		DescribeInstancesWithListenerRequest describeInstancesWithListenerRequest);
 
 }

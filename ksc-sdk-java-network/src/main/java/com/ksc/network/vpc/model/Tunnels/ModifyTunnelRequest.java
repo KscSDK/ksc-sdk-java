@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.Tunnels.ModifyTunnelRequestMarshaller;
-import com.ksc.network.vpc.transform.VpcPeeringConnection.ModifyVpcPeeringConnectionRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for CreateSecurityGroup.
+ * Contains the parameters for ModifyTunnel.
  * </p>
  */
 public class ModifyTunnelRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<ModifyTunnelRequest> {
-
 
     /**
      * 隧道网关ID

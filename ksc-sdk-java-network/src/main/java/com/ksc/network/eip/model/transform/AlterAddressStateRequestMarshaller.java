@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.eip.model.AlterAddressStateRequest;
-import com.ksc.network.eip.model.DisassociateAddressRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateSecurityGroupRequest Marshaller
+ * AlterAddressStateRequest Marshaller
  */
 
 public class AlterAddressStateRequestMarshaller implements

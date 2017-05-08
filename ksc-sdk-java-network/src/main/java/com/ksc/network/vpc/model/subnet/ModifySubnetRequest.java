@@ -9,12 +9,11 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for ModifySubnet.
  * </p>
  */
 public class ModifySubnetRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<ModifySubnetRequest> {
-
 
     /**
      * 子网的ID
@@ -26,12 +25,10 @@ public class ModifySubnetRequest extends KscWebServiceRequest implements
     private String SubnetName;
 	/**
 	 * 子网的Dns1
-
 	 */
 	private String Dns1;
 	/**
 	 * 子网的Dns2
-
 	 */
 	private String Dns2;
 

@@ -8,7 +8,7 @@ import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
 /**
- * SecurityGroupRule StAX Unmarshaller
+ * NextHop StAX Unmarshaller
  */
 public class NextHopStaxUnmarshaller implements Unmarshaller<NextHop, StaxUnmarshallerContext> {
 

@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DeleteSubnet.
+ * Contains the output of DeleteRoute.
  * </p>
  */
 @ToString

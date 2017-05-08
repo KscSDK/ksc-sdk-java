@@ -1,13 +1,13 @@
 
 package com.ksc.network.vpc.model.Nat;
 
-import java.io.Serializable;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DeleteSubnet.
+ * Contains the output of DeleteNat.
  * </p>
  */
 @ToString

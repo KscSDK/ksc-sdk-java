@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.Routes;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.Route.Route;
-import com.ksc.network.vpc.model.SecurityGroups.SecurityGroup;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * SecurityGroup StAX Unmarshaller
+ * Route StAX Unmarshaller
  */
 public class RouteStaxUnmarshaller implements Unmarshaller<Route, StaxUnmarshallerContext> {
 

@@ -5,13 +5,12 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.model.Filter;
-import com.ksc.network.vpc.model.Nat.DescribeNatsRequest;
 import com.ksc.network.vpc.model.Tunnels.DescribeTunnelsRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DescribeSubnetsRequest Marshaller
+ * DescribeTunnelsRequest Marshaller
  */
 
 public class DescribeTunnelsRequestMarshaller

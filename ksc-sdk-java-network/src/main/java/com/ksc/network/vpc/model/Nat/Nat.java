@@ -1,30 +1,58 @@
 package com.ksc.network.vpc.model.Nat;
 
 import com.ksc.internal.SdkInternalList;
-import com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry;
-
 import lombok.ToString;
 
 @ToString
 public class Nat {
-	private String CreateTime;
-	
-	private String VpcId;
-	
-	private String NatId;
-	
-	private String NatName;
+    /**
+     * VPC创建时间
+     */
+    private String CreateTime;
 
-	private String NatMode;
+    /**
+     * Vpc的ID
+     */
+    private String VpcId;
 
+    /**
+     * Nat的ID
+     */
+    private String NatId;
+
+    /**
+     * Nat的名称
+     */
+    private String NatName;
+
+    /**
+     * Nat的作用范围，VPC(Vpc)是指NAT对整个VPC有效，子网(subnet)是指NAT对关联的子网有效
+     */
+    private String NatMode;
+
+    /**
+     * Nat的类型
+     */
     private String NatType;
 
+    /**
+     * Nat的IP
+     */
     private com.ksc.internal.SdkInternalList<NatIp> NatIpSet;
 
+    /**
+     * Nat的IP数量
+     */
     private Integer NatIpNumber;
 
+    /**
+     * Nat的带宽
+     */
     private Integer BandWidth;
 
+    /**
+     * Nat关联的子网信息
+     */
     private com.ksc.internal.SdkInternalList<AssociateNat> AssociateNatSet;
 
     public String getCreateTime() {

@@ -7,7 +7,7 @@ import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of AlterAddressState.
  * </p>
  */
 @ToString

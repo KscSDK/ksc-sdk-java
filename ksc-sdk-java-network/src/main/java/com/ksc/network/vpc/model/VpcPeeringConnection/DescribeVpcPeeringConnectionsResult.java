@@ -1,12 +1,10 @@
 package com.ksc.network.vpc.model.VpcPeeringConnection;
 
-import com.ksc.network.vpc.model.Nat.Nat;
-
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the output of DescribeSecurityGroups.
+ * Contains the output of DescribeVpcPeeringConnections.
  * </p>
  */
 @ToString
@@ -15,7 +13,7 @@ public class DescribeVpcPeeringConnectionsResult {
 	private String RequestId;
 	/**
      * <p>
-     * Information about one or more SecurityGroups.
+     * Information about one or more peering.
      * </p>
      */
 	

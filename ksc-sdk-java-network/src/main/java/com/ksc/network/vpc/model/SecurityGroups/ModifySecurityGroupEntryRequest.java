@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.SecurityGroups;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.SecurityGroups.ModifySecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.ModifySecurityGroupRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for CreateSecurityGroup.
+ * Contains the parameters for ModifySecurityGroupEntry.
  * </p>
  */
 public class ModifySecurityGroupEntryRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<ModifySecurityGroupEntryRequest> {
-
 
     /**
      * 安全组规则的ID

@@ -1,17 +1,16 @@
 package com.ksc.network.vpc.model.AvailabilityZone;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for DescribeAvailabilityZones.
  * </p>
  */
 public class DescribeAvailabilityZonesRequest extends KscWebServiceRequest implements
@@ -53,20 +52,6 @@ public class DescribeAvailabilityZonesRequest extends KscWebServiceRequest imple
         return zoneNames;
     }
 
-    /**
-     * <p>
-     * One or more VPC IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your VPCs.
-     * </p>
-     * 
-     * @param vpcIds
-     *        One or more VPC IDs.</p>
-     *        <p>
-     *        Default: Describes all your VPCs.
-     */
-
     public void setZoneNames(java.util.Collection<String> zoneNames) {
         if (zoneNames == null) {
             this.zoneNames = null;
@@ -75,28 +60,6 @@ public class DescribeAvailabilityZonesRequest extends KscWebServiceRequest imple
 
         this.zoneNames = new com.ksc.internal.SdkInternalList<String>(zoneNames);
     }
-
-    /**
-     * <p>
-     * One or more VPC IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your VPCs.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcIds(java.util.Collection)} or
-     * {@link #withVpcIds(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param vpcIds
-     *        One or more VPC IDs.</p>
-     *        <p>
-     *        Default: Describes all your VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeAvailabilityZonesRequest withZoneNames(String... zoneNames) {
         if (this.zoneNames == null) {
@@ -108,22 +71,6 @@ public class DescribeAvailabilityZonesRequest extends KscWebServiceRequest imple
         }
         return this;
     }
-
-    /**
-     * <p>
-     * One or more VPC IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your VPCs.
-     * </p>
-     * 
-     * @param vpcIds
-     *        One or more VPC IDs.</p>
-     *        <p>
-     *        Default: Describes all your VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeAvailabilityZonesRequest withZoneNames(java.util.Collection<String> zoneNames) {
         setZoneNames(zoneNames);

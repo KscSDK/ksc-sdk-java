@@ -1,15 +1,12 @@
-
 package com.ksc.network.vpc.model.subnet;
-
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.vpc.Vpc;
 
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of DescribeSubnetAvailableAddresses.
  * </p>
  */
 @ToString
@@ -23,7 +20,7 @@ public class DescribeSubnetAvailableAddressesResult implements Serializable, Clo
 	private String RequestId;
 	/**
      * <p>
-     * Information about one or more VPCs.
+     * 子网内可用IP信息
      * </p>
      */
 	

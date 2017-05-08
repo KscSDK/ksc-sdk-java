@@ -1,15 +1,14 @@
 package com.ksc.network.eip.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.eip.model.AlterAddressStateResult;
-import com.ksc.network.eip.model.DisassociateAddressResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * DeleteVpcResult StAX Unmarshaller
+ * AlterAddressStateResult StAX Unmarshaller
  */
 public class AlterAddressStateResultStaxUnmarshaller implements
 		Unmarshaller<AlterAddressStateResult, StaxUnmarshallerContext> {

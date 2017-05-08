@@ -9,7 +9,7 @@ import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * ModifySecurityGroupRequest Marshaller
+ * ModifyNatRequest Marshaller
  */
 
 public class ModifyNatRequestMarshaller implements

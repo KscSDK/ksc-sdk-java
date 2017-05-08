@@ -1,35 +1,54 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import com.ksc.network.vpc.model.Nat.NatIp;
-import com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry;
-import com.ksc.network.vpc.model.VpcPeeringConnection.AccepterVpcInfo;
-import com.ksc.network.vpc.model.VpcPeeringConnection.RequesterVpcInfo;
-
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class Tunnel {
-
+    /**
+     * 隧道网关的创建时间
+     */
 	private String CreateTime;
-
+    /**
+     * Vpc的ID
+     */
 	private String VpcId;
-
+    /**
+     * 隧道网关的名称
+     */
 	private String TunnelName;
-
+    /**
+     * 隧道网关的ID
+     */
 	private String TunnelId;
-
+    /**
+     * 隧道网关的IP
+     */
 	private String TunnelIp;
-
+    /**
+     * 隧道网关的作用范围，VPC（Vpc）是指隧道网关对整个VPC有效，子网(subnet)是指隧道网关对关联的子网有效
+     */
     private String TunnelMode;
-
+    /**
+     * 设备名称
+     */
     private String DeviceName;
-
+    /**
+     * 网关IP
+     */
     private String GatewayIp;
-
+    /**
+     * 网关MAC
+     */
     private String GatewayMac;
-
+    /**
+     * 隧道网关的接受端网段信息
+     */
     private com.ksc.internal.SdkInternalList<AssociateRemoteCidr> AssociateRemoteCidrSet;
-
+    /**
+     * 隧道网关关联的子网信息
+     */
     private com.ksc.internal.SdkInternalList<AssociateSubnet> AssociateSubnetSet;
 
     public String getCreateTime() {

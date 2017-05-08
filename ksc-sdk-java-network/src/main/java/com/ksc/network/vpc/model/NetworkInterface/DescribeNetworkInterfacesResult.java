@@ -1,8 +1,10 @@
 package com.ksc.network.vpc.model.NetworkInterface;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class DescribeNetworkInterfacesResult {
 	private String RequestId;
 	/**

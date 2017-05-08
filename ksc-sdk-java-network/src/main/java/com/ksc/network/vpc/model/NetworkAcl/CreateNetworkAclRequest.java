@@ -1,16 +1,15 @@
 package com.ksc.network.vpc.model.NetworkAcl;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.NetworkAcl.CreateNetworkAclRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.CreateVpcRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for CreateNetworkAcl.
  * </p>
  */
 public class CreateNetworkAclRequest extends KscWebServiceRequest implements

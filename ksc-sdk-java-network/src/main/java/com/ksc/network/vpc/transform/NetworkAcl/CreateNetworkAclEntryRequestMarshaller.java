@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.NetworkAcl.CreateNetworkAclEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateSecurityGroupRequest Marshaller
+ * CreateNetworkAclEntryRequest Marshaller
  */
 
 public class CreateNetworkAclEntryRequestMarshaller implements

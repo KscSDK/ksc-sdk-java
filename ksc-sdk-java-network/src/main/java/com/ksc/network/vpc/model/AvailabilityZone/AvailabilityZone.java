@@ -7,7 +7,10 @@ import lombok.ToString;
 @EqualsAndHashCode
 public class AvailabilityZone {
 
-	private String AvailabilityZoneName;
+    /**
+     * 可用区的名称
+     */
+    private String AvailabilityZoneName;
 
 
     public String getAvailabilityZoneName() {

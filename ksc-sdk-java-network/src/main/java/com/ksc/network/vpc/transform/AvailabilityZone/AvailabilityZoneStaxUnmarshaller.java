@@ -1,16 +1,14 @@
 package com.ksc.network.vpc.transform.AvailabilityZone;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.AvailabilityZone.AvailabilityZone;
-import com.ksc.network.vpc.model.vpc.Vpc;
-import com.ksc.transform.SimpleTypeStaxUnmarshallers.BooleanStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * Vpc StAX Unmarshaller
+ * AvailabilityZone StAX Unmarshaller
  */
 public class AvailabilityZoneStaxUnmarshaller implements
 		Unmarshaller<AvailabilityZone, StaxUnmarshallerContext> {

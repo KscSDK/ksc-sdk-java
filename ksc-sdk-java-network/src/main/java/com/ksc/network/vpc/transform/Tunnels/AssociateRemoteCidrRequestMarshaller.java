@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.Tunnels.AssociateRemoteCidrRequest;
-import com.ksc.network.vpc.model.Tunnels.AssociateSubnetRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * AssociateRemoteCidrRequest Marshaller
  */
 
 public class AssociateRemoteCidrRequestMarshaller implements

@@ -1,11 +1,8 @@
-
 package com.ksc.network.vpc.model.vpc;
 
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.AvailabilityZone.AvailabilityZone;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -68,23 +65,6 @@ public class DescribeVpcsResult implements Serializable, Cloneable {
 
         this.VpcSet = new com.ksc.internal.SdkInternalList<Vpc>(vpcs);
     }
-
-    /**
-     * <p>
-     * Information about one or more VPCs.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcs(java.util.Collection)} or
-     * {@link #withVpcs(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeVpcsResult withVpcs(Vpc... vpcs) {
         if (this.VpcSet == null) {

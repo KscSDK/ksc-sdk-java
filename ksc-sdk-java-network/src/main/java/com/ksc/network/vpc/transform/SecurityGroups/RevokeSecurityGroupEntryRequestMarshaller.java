@@ -4,15 +4,12 @@ import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateSecurityGroupRequest Marshaller
+ * RevokeSecurityGroupEntryRequest Marshaller
  */
 
 public class RevokeSecurityGroupEntryRequestMarshaller implements

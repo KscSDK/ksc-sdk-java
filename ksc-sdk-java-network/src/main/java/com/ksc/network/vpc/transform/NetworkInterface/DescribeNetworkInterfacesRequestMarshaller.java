@@ -10,7 +10,7 @@ import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DescribeVpcsRequest Marshaller
+ * DescribeNetworkInterfacesRequest Marshaller
  */
 
 public class DescribeNetworkInterfacesRequestMarshaller implements

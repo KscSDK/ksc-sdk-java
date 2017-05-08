@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.Tunnels;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.network.vpc.model.Nat.DisassociateNatResult;
 import com.ksc.network.vpc.model.Tunnels.DisassociateSubnetResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * DeleteSubnetResult StAX Unmarshaller
+ * DisassociateSubnetResult StAX Unmarshaller
  */
 public class DisassociateSubnetResultStaxUnmarshaller implements
 		Unmarshaller<DisassociateSubnetResult, StaxUnmarshallerContext> {

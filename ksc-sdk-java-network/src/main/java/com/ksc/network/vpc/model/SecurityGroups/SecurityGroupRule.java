@@ -4,12 +4,21 @@ import lombok.ToString;
 
 @ToString
 public class SecurityGroupRule {
+	/**
+	 * 安全组规则的描述
+	 */
 	private String Description;
-
+	/**
+	 * 安全组的ID
+	 */
 	private String SecurityGroupId;
-
+	/**
+	 * 安全组规则的ID
+	 */
 	private String SecurityGroupEntryId;
-
+	/**
+	 * 安全组规则的网段
+	 */
 	private String CidrBlock;
 	/**
 	 * 安全组规则方向，in为入站规则，out为出站规则
@@ -27,9 +36,13 @@ public class SecurityGroupRule {
 	 * ICMP协议，ICMP代码，只有协议为ICMP类型，才不可缺省。标准ICMP类型和代码。
 	 */
 	private Integer IcmpCode;
-	
+    /**
+     * TCP或UDP协议的端口规则起始端口，只有协议为TCP\UDP类型，才必填。范围1-65535。
+     */
 	private Integer PortRangeFrom;
-
+    /**
+     * TCP或UDP协议的端口规则结束端口，只有协议为TCP\UDP类型，才必填。范围1-65535。
+     */
 	private Integer PortRangeTo;
 
 	public String getSecurityGroupEntryId() {

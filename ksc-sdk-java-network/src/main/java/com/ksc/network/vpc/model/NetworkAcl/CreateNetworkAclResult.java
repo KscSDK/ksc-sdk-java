@@ -1,17 +1,13 @@
 
 package com.ksc.network.vpc.model.NetworkAcl;
 
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.subnet.DescribeSubnetAvailableAddressesResult;
 import lombok.ToString;
 
-import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
-import com.ksc.network.vpc.model.vpc.Vpc;
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of CreateNetworkAcl.
  * </p>
  */
 @ToString

@@ -1,19 +1,16 @@
 package com.ksc.network.vpc.model.Tunnels;
 
-import java.io.Serializable;
-
-import com.ksc.network.vpc.model.VpcPeeringConnection.VpcPeeringConnection;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of ModifyTunnel.
  * </p>
  */
 @ToString
 public class ModifyTunnelResult implements Serializable, Cloneable {
-
 
     private String RequestId;
 

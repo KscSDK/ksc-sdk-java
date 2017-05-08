@@ -1,21 +1,17 @@
-
 package com.ksc.network.vpc.model.Tunnels;
+
+import lombok.ToString;
 
 import java.io.Serializable;
 
-import com.ksc.network.vpc.model.Nat.ModifyNatResult;
-import com.ksc.network.vpc.model.Nat.NatIp;
-import lombok.ToString;
-
 /**
  * <p>
- * Contains the output of DeleteSubnet.
+ * Contains the output of AssociateSubnet.
  * </p>
  */
 @ToString
 public class AssociateSubnetResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private String TunnelId;

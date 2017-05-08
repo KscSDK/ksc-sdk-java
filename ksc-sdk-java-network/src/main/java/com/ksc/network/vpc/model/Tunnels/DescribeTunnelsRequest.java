@@ -9,7 +9,7 @@ import lombok.ToString;
 
 /**
  * <p>
- * Contains the parameters for DescribeSecurityGroups.
+ * Contains the parameters for DescribeTunnels.
  * </p>
  */
 @ToString

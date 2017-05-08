@@ -5,19 +5,16 @@ import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.subnet.DescribeSubnetAvailableAddressesRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.DescribeSubnetsRequestMarshaller;
-
 import lombok.ToString;
 
 /**
  * <p>
- * Contains the parameters for DescribeSubnets.
+ * Contains the parameters for DescribeSubnetAvailableAddresses.
  * </p>
  */
 @ToString
 public class DescribeSubnetAvailableAddressesRequest extends KscWebServiceRequest implements
          DryRunSupportedRequest<DescribeSubnetAvailableAddressesRequest> {
-
 
     private com.ksc.internal.SdkInternalList<Filter> filters;
 

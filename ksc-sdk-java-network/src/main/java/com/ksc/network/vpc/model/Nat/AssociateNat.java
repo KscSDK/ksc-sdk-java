@@ -1,10 +1,16 @@
 package com.ksc.network.vpc.model.Nat;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class AssociateNat {
-	private String SubnetId;
+
+    /**
+     * 子网的ID信息
+     */
+    private String SubnetId;
 
     public String getSubnetId() {
         return SubnetId;

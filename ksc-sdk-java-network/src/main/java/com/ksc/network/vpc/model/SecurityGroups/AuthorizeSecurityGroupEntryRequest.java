@@ -3,12 +3,7 @@ package com.ksc.network.vpc.model.SecurityGroups;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
 import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
 
 import java.io.Serializable;
 
@@ -19,7 +14,6 @@ import java.io.Serializable;
  */
 public class AuthorizeSecurityGroupEntryRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<AuthorizeSecurityGroupEntryRequest> {
-
 
     /**
      * 安全组规则的描述

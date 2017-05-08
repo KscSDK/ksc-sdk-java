@@ -1,6 +1,5 @@
 package com.ksc.network.vpc.transform.vpc;
 
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
 import com.ksc.network.vpc.model.vpc.ModifyVpcResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
@@ -9,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * DeleteVpcResult StAX Unmarshaller
+ * ModifyVpcResult StAX Unmarshaller
  */
 public class ModifyVpcResultStaxUnmarshaller implements
 		Unmarshaller<ModifyVpcResult, StaxUnmarshallerContext> {

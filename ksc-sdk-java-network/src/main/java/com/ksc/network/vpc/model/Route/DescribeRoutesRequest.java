@@ -1,17 +1,16 @@
 package com.ksc.network.vpc.model.Route;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.Routes.DescribeRoutesRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for DescribeRoutes.
  * </p>
  */
 public class DescribeRoutesRequest extends KscWebServiceRequest implements
@@ -23,7 +22,7 @@ public class DescribeRoutesRequest extends KscWebServiceRequest implements
 	private static final long serialVersionUID = 5962326358979008715L;
 	/**
      * <p>
-     * One or more VPC IDs.
+     * 一个或多个路由的ID
      * </p>
      * <p>
      * Default: Describes all your VPCs.
@@ -35,7 +34,7 @@ public class DescribeRoutesRequest extends KscWebServiceRequest implements
 
     /**
      * <p>
-     * One or more VPC IDs.
+     * vpc-id，VPC的ID
      * </p>
      * <p>
      * Default: Describes all your VPCs.
@@ -53,19 +52,6 @@ public class DescribeRoutesRequest extends KscWebServiceRequest implements
         return routeIds;
     }
 
-    /**
-     * <p>
-     * One or more VPC IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your VPCs.
-     * </p>
-     * 
-     * @param vpcIds
-     *        One or more VPC IDs.</p>
-     *        <p>
-     *        Default: Describes all your VPCs.
-     */
 
     public void setRouteIds(java.util.Collection<String> routeIds) {
         if (routeIds == null) {
@@ -75,28 +61,6 @@ public class DescribeRoutesRequest extends KscWebServiceRequest implements
 
         this.routeIds = new com.ksc.internal.SdkInternalList<String>(routeIds);
     }
-
-    /**
-     * <p>
-     * One or more VPC IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your VPCs.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcIds(java.util.Collection)} or
-     * {@link #withVpcIds(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param vpcIds
-     *        One or more VPC IDs.</p>
-     *        <p>
-     *        Default: Describes all your VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeRoutesRequest withRouteIds(String... routeIds) {
         if (this.routeIds == null) {
@@ -108,22 +72,6 @@ public class DescribeRoutesRequest extends KscWebServiceRequest implements
         }
         return this;
     }
-
-    /**
-     * <p>
-     * One or more VPC IDs.
-     * </p>
-     * <p>
-     * Default: Describes all your VPCs.
-     * </p>
-     * 
-     * @param vpcIds
-     *        One or more VPC IDs.</p>
-     *        <p>
-     *        Default: Describes all your VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeRoutesRequest withRouteIds(java.util.Collection<String> vpcIds) {
         setRouteIds(routeIds);

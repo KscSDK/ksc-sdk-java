@@ -1,14 +1,12 @@
 package com.ksc.network.vpc.model.SecurityGroups;
 
-import com.ksc.network.vpc.model.NetworkAcl.ModifyNetworkAclResult;
-import com.ksc.network.vpc.model.NetworkAcl.NetworkAclEntry;
 import lombok.ToString;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of ModifySecurityGroup.
  * </p>
  */
 @ToString

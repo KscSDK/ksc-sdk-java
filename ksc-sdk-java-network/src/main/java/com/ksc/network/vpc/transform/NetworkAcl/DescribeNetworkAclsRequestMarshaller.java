@@ -6,12 +6,11 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.model.NetworkAcl.DescribeNetworkAclsRequest;
-import com.ksc.network.vpc.model.SecurityGroups.DescribeSecurityGroupsRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DescribeSubnetsRequest Marshaller
+ * DescribeNetworkAclsRequest Marshaller
  */
 
 public class DescribeNetworkAclsRequestMarshaller

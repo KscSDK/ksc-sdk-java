@@ -1,10 +1,6 @@
 package com.ksc.network.eip;
 
 import com.ksc.network.eip.model.*;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.Tunnels.ModifyTunnelRequest;
-import com.ksc.network.vpc.model.Tunnels.ModifyTunnelResult;
 
 public interface KSCEIP {
 	/**

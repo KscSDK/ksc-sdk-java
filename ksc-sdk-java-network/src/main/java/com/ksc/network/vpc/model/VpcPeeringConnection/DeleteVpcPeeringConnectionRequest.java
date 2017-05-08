@@ -1,21 +1,19 @@
 package com.ksc.network.vpc.model.VpcPeeringConnection;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.VpcPeeringConnection.DeleteVpcPeeringConnectionRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DeleteVpcRequestMarshaller;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for DescribeVpcs.
+ * Contains the parameters for DeleteVpcPeeringConnection.
  * </p>
  */
 public class DeleteVpcPeeringConnectionRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<DeleteVpcPeeringConnectionRequest> {
-
 
     /**
      * Peering的ID

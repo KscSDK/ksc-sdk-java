@@ -1,41 +1,56 @@
 package com.ksc.network.vpc.model.NetworkInterface;
 
 import com.ksc.internal.SdkInternalList;
-import com.ksc.network.vpc.model.Route.NextHop;
-import com.ksc.network.vpc.model.SecurityGroups.SecurityGroupRule;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class NetworkInterface {
+    /**
+     * 网卡的DNS2
+     */
     private String DNS2;
-
+    /**
+     * 网卡的DNS1
+     */
     private String DNS1;
-
-    private String VpcId;
-
-    private String VpcName;
-
+    /**
+     * 安全组的信息
+     */
     private com.ksc.internal.SdkInternalList<GroupIdentifier> SecurityGroupSet;
-
+    /**
+     * 主机的类型
+     */
     private String InstanceType;
-
+    /**
+     * 主机的网卡在VPC中的IP
+     */
     private String PrivateIpAddress;
-
+    /**
+     * 网卡的ID
+     */
     private String NetworkInterfaceId;
-
+    /**
+     * 安全组的名称，请使用GroupIdentifier中返回值，2016年11月1日后将不提供此参数
+     */
     private String SecurityGroupName;
-
+    /**
+     * 安全组的ID，请使用GroupIdentifier中返回值，2016年11月1日后将不提供此参数
+     */
     private String SecurityGroupId;
-
+    /**
+     * 网卡的类型
+     */
     private String NetworkInterfaceType;
-
+    /**
+     * 主机ID
+     */
     private String InstanceId;
-
+    /**
+     * 网卡的MAC地址
+     */
     private String MacAddress;
-
-    private String SubnetId;
-
-	private String SubnetName;
 
     public String getDNS2() {
         return DNS2;
@@ -53,27 +68,11 @@ public class NetworkInterface {
         this.DNS1 = DNS1;
     }
 
-    public String getVpcId() {
-        return VpcId;
-    }
-
-    public void setVpcId(String vpcId) {
-        VpcId = vpcId;
-    }
-
-    public String getVpcName() {
-        return VpcName;
-    }
-
-    public void setVpcName(String vpcName) {
-        VpcName = vpcName;
-    }
-
-    public com.ksc.internal.SdkInternalList<GroupIdentifier> getSecurityGroupSet() {
+    public SdkInternalList<GroupIdentifier> getSecurityGroupSet() {
         return SecurityGroupSet;
     }
 
-    public void setSecurityGroupEntrySet(com.ksc.internal.SdkInternalList<GroupIdentifier> securityGroupSet) {
+    public void setSecurityGroupSet(SdkInternalList<GroupIdentifier> securityGroupSet) {
         SecurityGroupSet = securityGroupSet;
     }
 
@@ -139,22 +138,6 @@ public class NetworkInterface {
 
     public void setMacAddress(String macAddress) {
         MacAddress = macAddress;
-    }
-
-    public String getSubnetId() {
-        return SubnetId;
-    }
-
-    public void setSubnetId(String subnetId) {
-        SubnetId = subnetId;
-    }
-
-    public String getSubnetName() {
-        return SubnetName;
-    }
-
-    public void setSubnetName(String subnetName) {
-        SubnetName = subnetName;
     }
 
     public void addSecurityGroupSet(GroupIdentifier... groups) {

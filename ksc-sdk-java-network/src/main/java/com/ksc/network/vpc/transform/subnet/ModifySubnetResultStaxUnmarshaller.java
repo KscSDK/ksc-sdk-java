@@ -8,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * CreateVpcResult StAX Unmarshaller
+ * ModifySubnetResult StAX Unmarshaller
  */
 public class ModifySubnetResultStaxUnmarshaller implements
 		Unmarshaller<ModifySubnetResult, StaxUnmarshallerContext> {

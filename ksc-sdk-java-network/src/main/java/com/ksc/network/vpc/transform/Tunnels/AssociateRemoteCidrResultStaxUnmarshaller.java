@@ -1,15 +1,14 @@
 package com.ksc.network.vpc.transform.Tunnels;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.Tunnels.AssociateRemoteCidrResult;
-import com.ksc.network.vpc.model.Tunnels.AssociateSubnetResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
+import javax.xml.stream.events.XMLEvent;
+
 /**
- * DeleteSubnetResult StAX Unmarshaller
+ * AssociateRemoteCidrResult StAX Unmarshaller
  */
 public class AssociateRemoteCidrResultStaxUnmarshaller implements
 		Unmarshaller<AssociateRemoteCidrResult, StaxUnmarshallerContext> {

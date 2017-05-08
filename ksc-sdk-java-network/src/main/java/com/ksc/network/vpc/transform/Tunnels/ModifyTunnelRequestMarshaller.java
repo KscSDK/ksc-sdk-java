@@ -5,12 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.Tunnels.ModifyTunnelRequest;
-import com.ksc.network.vpc.model.VpcPeeringConnection.ModifyVpcPeeringConnectionRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * ModifySecurityGroupRequest Marshaller
+ * ModifyTunnelRequest Marshaller
  */
 
 public class ModifyTunnelRequestMarshaller implements

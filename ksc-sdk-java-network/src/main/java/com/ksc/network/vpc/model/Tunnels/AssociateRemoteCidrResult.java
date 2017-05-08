@@ -1,13 +1,12 @@
-
 package com.ksc.network.vpc.model.Tunnels;
-
-import java.io.Serializable;
 
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * <p>
- * Contains the output of DeleteSubnet.
+ * Contains the output of AssociateRemoteCidr.
  * </p>
  */
 @ToString

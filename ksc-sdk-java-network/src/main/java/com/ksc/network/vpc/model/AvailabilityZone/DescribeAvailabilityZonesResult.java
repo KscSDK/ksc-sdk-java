@@ -1,12 +1,12 @@
 package com.ksc.network.vpc.model.AvailabilityZone;
 
-import java.io.Serializable;
-
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of DescribeAvailabilityZones.
  * </p>
  */
 @ToString
@@ -48,15 +48,6 @@ public class DescribeAvailabilityZonesResult implements Serializable, Cloneable 
         return AvailabilityZoneInfo;
     }
 
-    /**
-     * <p>
-     * Information about one or more VPCs.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more VPCs.
-     */
-
     public void setAvailabilityZoneInfo(java.util.Collection<AvailabilityZone> availabilityZones) {
         if (availabilityZones == null) {
             this.AvailabilityZoneInfo = null;
@@ -65,23 +56,6 @@ public class DescribeAvailabilityZonesResult implements Serializable, Cloneable 
 
         this.AvailabilityZoneInfo = new com.ksc.internal.SdkInternalList<AvailabilityZone>(availabilityZones);
     }
-
-    /**
-     * <p>
-     * Information about one or more VPCs.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setVpcs(java.util.Collection)} or
-     * {@link #withVpcs(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeAvailabilityZonesResult withAvailabilityZones(AvailabilityZone... availabilityZones) {
         if (this.AvailabilityZoneInfo == null) {
@@ -92,18 +66,6 @@ public class DescribeAvailabilityZonesResult implements Serializable, Cloneable 
         }
         return this;
     }
-    
-
-    /**
-     * <p>
-     * Information about one or more VPCs.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more VPCs.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeAvailabilityZonesResult withAvailabilityZones(java.util.Collection<AvailabilityZone> availabilityZones) {
         setAvailabilityZoneInfo(availabilityZones);
