@@ -51,6 +51,12 @@ public class PresetDetailJsonUnmarshaller implements Unmarshaller<PresetDetail, 
 				} else if (context.testExpression("HlsMbr", targetDepth)) {
 					context.nextToken();
 					presetDetail.setHlsMbr(HlsMbrJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("IntelligentSwtich", targetDepth)) {
+					context.nextToken();
+					presetDetail.setIntelligentSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("IntelligentCburl", targetDepth)) {
+					context.nextToken();
+					presetDetail.setIntelligentCburl(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

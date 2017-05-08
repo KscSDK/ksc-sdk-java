@@ -36,6 +36,12 @@ public class LogoListJsonUnmarshaller implements Unmarshaller<Logo, JsonUnmarsha
 				} else if (context.testExpression("usage_scenario", targetDepth)) {
 					context.nextToken();
 					logo.setUsage_scenario(context.getUnmarshaller(String.class).unmarshall(context));
+				}else if (context.testExpression("optimal_w", targetDepth)) {
+					context.nextToken();
+					logo.setOptimal_w(context.getUnmarshaller(Integer.class).unmarshall(context));
+				}else if (context.testExpression("optimal_h", targetDepth)) {
+					context.nextToken();
+					logo.setOptimal_h(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("short_side", targetDepth)) {
 					context.nextToken();
 					logo.setShort_side(context.getUnmarshaller(int.class).unmarshall(context));

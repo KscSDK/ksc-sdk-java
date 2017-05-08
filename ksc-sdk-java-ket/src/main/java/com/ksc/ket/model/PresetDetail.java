@@ -10,6 +10,8 @@ public class PresetDetail {
 	private Video video;
 	private Audio audio;
 	private HlsMbr hlsMbr;
+	private Integer intelligentSwitch;
+	private String intelligentCburl;
 
 	public void setOutputList(java.util.Collection<Output> outputList) {
 		if (outputList != null) {
@@ -98,4 +100,19 @@ public class PresetDetail {
 		this.outputList = outputList;
 	}
 
+	public Integer getIntelligentSwitch() {
+		return intelligentSwitch;
+	}
+
+	public void setIntelligentSwitch(Integer intelligentSwitch) {
+		this.intelligentSwitch = intelligentSwitch;
+	}
+
+	public String getIntelligentCburl() {
+		return intelligentCburl;
+	}
+
+	public void setIntelligentCburl(String intelligentCburl) {
+		this.intelligentCburl = intelligentCburl;
+	}
 }

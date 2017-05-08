@@ -19,6 +19,8 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.ket.model.DelPresetRequest;
 import com.ksc.ket.model.ErrResult;
+import com.ksc.ket.model.GetLoopListRequest;
+import com.ksc.ket.model.GetLoopListResult;
 import com.ksc.ket.model.GetPresetDetailRequest;
 import com.ksc.ket.model.GetPresetDetailResult;
 import com.ksc.ket.model.GetPresetListRequest;
@@ -28,11 +30,17 @@ import com.ksc.ket.model.GetQuotaUsedResult;
 import com.ksc.ket.model.GetStreamTranListRequest;
 import com.ksc.ket.model.GetStreamTranListResult;
 import com.ksc.ket.model.PresetRequest;
+import com.ksc.ket.model.StartLoopRequest;
+import com.ksc.ket.model.StartLoopResult;
 import com.ksc.ket.model.StartStreamPullRequest;
+import com.ksc.ket.model.StopLoopRequest;
 import com.ksc.ket.model.StopStreamPullRequest;
+import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
 import com.ksc.ket.model.transform.DelPresetRequestMarshaller;
 import com.ksc.ket.model.transform.ErrResultJsonUnmarshaller;
+import com.ksc.ket.model.transform.GetLoopListRequestMarshaller;
+import com.ksc.ket.model.transform.GetLoopListResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.GetPresetDetailRequestMarshaller;
 import com.ksc.ket.model.transform.GetPresetDetailResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.GetPresetListRequestMarshaller;
@@ -42,8 +50,12 @@ import com.ksc.ket.model.transform.GetQuotaUsedResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.GetStreamTranListRequestMarshaller;
 import com.ksc.ket.model.transform.GetStreamTranListResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.PresetRequestMarshaller;
+import com.ksc.ket.model.transform.StartLoopRequestMarshaller;
+import com.ksc.ket.model.transform.StartLoopResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.StartStreamPullRequestMarshaller;
+import com.ksc.ket.model.transform.StopLoopRequestMarshaller;
 import com.ksc.ket.model.transform.StopStreamPullRequestMarshaller;
+import com.ksc.ket.model.transform.UpdateLoopRequestMarshaller;
 import com.ksc.ket.model.transform.UpdatePresetRequestMarshaller;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.protocol.json.JsonClientMetadata;
@@ -464,6 +476,118 @@ public class KSCKETJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new GetQuotaUsedResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public StartLoopResult StartLoop(StartLoopRequest startLoopRequest) {
+		ExecutionContext executionContext = createExecutionContext(startLoopRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<StartLoopRequest> request = null;
+		Response<StartLoopResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new StartLoopRequestMarshaller().marshall(super.beforeMarshalling(startLoopRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<StartLoopResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new StartLoopResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public ErrResult StopLoop(StopLoopRequest stopLoopRequest) {
+		ExecutionContext executionContext = createExecutionContext(stopLoopRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<StopLoopRequest> request = null;
+		Response<ErrResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new StopLoopRequestMarshaller().marshall(super.beforeMarshalling(stopLoopRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<ErrResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new ErrResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public ErrResult UpdateLoop(UpdateLoopRequest updateLoopRequest) {
+		ExecutionContext executionContext = createExecutionContext(updateLoopRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<UpdateLoopRequest> request = null;
+		Response<ErrResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new UpdateLoopRequestMarshaller().marshall(super.beforeMarshalling(updateLoopRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<ErrResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new ErrResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public GetLoopListResult GetLoopList(GetLoopListRequest getLoopListRequest) {
+		ExecutionContext executionContext = createExecutionContext(getLoopListRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetLoopListRequest> request = null;
+		Response<GetLoopListResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetLoopListRequestMarshaller().marshall(super.beforeMarshalling(getLoopListRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<GetLoopListResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetLoopListResultJsonUnmarshaller());
 
 			response = invoke(request, responseHandler, executionContext);
 
