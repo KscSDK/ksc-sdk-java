@@ -2,7 +2,12 @@
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>9</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 	<groupId>com.ksc</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
 	<version>0.1.9</version>
@@ -178,7 +183,13 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>publishing</id>
+        	<id>publishing</id>
+        	<activation>
+            	<property>
+                	<name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
 			<build>
 				<plugins>
 					<plugin>
