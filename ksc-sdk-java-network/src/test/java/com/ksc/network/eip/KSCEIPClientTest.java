@@ -9,25 +9,6 @@ import org.junit.Test;
 public class KSCEIPClientTest {
 	private static final Logger log = Logger.getLogger(KSCEIPClientTest.class);
 
-	@Test
-	public void describeAddresses(){
-		DescribeAddressesRequest request=new DescribeAddressesRequest();
-		request.setMaxResults(10);
-		KSCEIPClient client=new KSCEIPClient();
-		client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
-		//client.setServiceNameIntern("eip");
-		DescribeAddressesResult result=client.describeAddresses(request);
-		log.info(result);
-	}
-	@Test
-	public void getLines(){
-		KSCEIPClient client=new KSCEIPClient();
-		Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
-		client.setRegion(region);
-		GetLinesResult result=client.getLines();
-		log.info(result);
-	}
-	
     @Test
     public void allocateAddress(){
         KSCEIPClient client=new KSCEIPClient();
@@ -48,7 +29,7 @@ public class KSCEIPClientTest {
         client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("eip");
         ReleaseAddressRequest request= new ReleaseAddressRequest();
-        request.setAllocationId("35836afa-b3f1-49c6-a8da-eb6f87321ade");
+        request.setAllocationId("03b6ff1a-bd7d-4fca-8575-5091c16a7902");
         ReleaseAddressResult result=client.releaseAddress(request);
         log.info(result);
     }
@@ -79,26 +60,23 @@ public class KSCEIPClientTest {
     }
 
     @Test
-    public void modifyAddress(){
+    public void describeAddresses(){
+        DescribeAddressesRequest request=new DescribeAddressesRequest();
+        request.setMaxResults(10);
         KSCEIPClient client=new KSCEIPClient();
         client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
-        client.setServiceNameIntern("eip");
-        ModifyAddressRequest request= new ModifyAddressRequest();
-        request.setAllocationId("4c98a621-e536-4ac3-9e6c-182a61f425c4");
-        request.setBandWidth(2);
-        ModifyAddressResult result=client.modifyAddress(request);
+        //client.setServiceNameIntern("eip");
+        DescribeAddressesResult result=client.describeAddresses(request);
         log.info(result);
     }
 
     @Test
-    public void alterAddressState(){
+    public void getLines(){
         KSCEIPClient client=new KSCEIPClient();
-        client.setEndpoint("http://eip.cn-shanghai-3.api.ksyun.com");
-        client.setServiceNameIntern("eip");
-        AlterAddressStateRequest request= new AlterAddressStateRequest();
-        request.setAllocationId("2726625e-6a78-48a5-aab7-2527d6eca870");
-        request.setState("stop");
-        AlterAddressStateResult result=client.alterAddressState(request);
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        GetLinesResult result=client.getLines();
         log.info(result);
     }
+
 }

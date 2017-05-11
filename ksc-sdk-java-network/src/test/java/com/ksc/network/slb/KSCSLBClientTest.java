@@ -40,7 +40,7 @@ public class KSCSLBClientTest {
         client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("slb");
         DeleteLoadBalancerRequest request = new DeleteLoadBalancerRequest();
-        request.setLoadBalancerId("acc3fdeb-f3d6-4dfb-9e33-27a632fb9463");
+        request.setLoadBalancerId("60c3df39-bfd2-473b-a1cd-e0a11ecace5e");
         DeleteLoadBalancerResult result = client.deleteLoadBalancer(request);
         log.info(result);
     }
@@ -69,7 +69,7 @@ public class KSCSLBClientTest {
         request.setListenerName("qnmd");
         request.setListenerProtocol("TCP");
 //        request.setCertificateId("TCP ");
-        request.setListenerPort("610");
+        request.setListenerPort("500");
         request.setMethod("RoundRobin");
         request.setSessionState("start");
 //        request.setSessionPersistencePeriod((long) 3600);
@@ -103,7 +103,7 @@ public class KSCSLBClientTest {
         client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("slb");
         DeleteListenersRequest request = new DeleteListenersRequest();
-        request.setListenerId("1a143cd8-44f9-4481-881d-a9c096856bdc");
+        request.setListenerId("cfba25d1-71e4-4d52-8f79-70d115367abd");
         DeleteListenersResult result = client.deleteListeners(request);
         log.info(result);
     }
@@ -145,7 +145,7 @@ public class KSCSLBClientTest {
         client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("slb");
         ModifyHealthCheckRequest request = new ModifyHealthCheckRequest();
-        request.setHealthCheckId("f0d12cc3-dd77-4e21-be91-53c8d39ef17e");
+        request.setHealthCheckId("533ace44-6082-4f05-b1a3-bd640f8989f8");
         request.setHealthCheckState("start");
         request.setHealthyThreshold(1);
         request.setInterval(1);
@@ -164,7 +164,7 @@ public class KSCSLBClientTest {
         client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("slb");
         DeleteHealthCheckRequest request = new DeleteHealthCheckRequest();
-        request.setHealthCheckId("794c1d06-4818-46a4-b288-321e7837ed00");
+        request.setHealthCheckId("f0d12cc3-dd77-4e21-be91-53c8d39ef17e");
         DeleteHealthCheckResult result = client.deleteHealthCheck(request);
         log.info(result);
     }

@@ -27,11 +27,10 @@ public class DescribeListenersResultStaxUnmarshaller
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 
 				if (context.testExpression("ListenerSet/Item", targetDepth)) {
-					describeListenersResult.addListenerSet(ListenerStaxUnmarshaller.getInstance().unmarshall(context));
+					describeListenersResult
+							.addListenerSet(ListenerStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
-				}
-
-				else if (context.testExpression("RequestId", targetDepth)) {
+				} else if (context.testExpression("RequestId", targetDepth)) {
 					describeListenersResult.setRequestId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
@@ -44,12 +43,12 @@ public class DescribeListenersResultStaxUnmarshaller
 		}
 	}
 
-    private static DescribeListenersResultStaxUnmarshaller instance;
+	private static DescribeListenersResultStaxUnmarshaller instance;
 
-    public static DescribeListenersResultStaxUnmarshaller getInstance() {
-        if (instance == null)
-            instance = new DescribeListenersResultStaxUnmarshaller();
-        return instance;
-    }
+	public static DescribeListenersResultStaxUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new DescribeListenersResultStaxUnmarshaller();
+		return instance;
+	}
 
 }

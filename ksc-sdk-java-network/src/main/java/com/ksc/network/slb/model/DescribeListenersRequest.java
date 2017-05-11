@@ -1,13 +1,13 @@
 package com.ksc.network.slb.model;
 
+import java.io.Serializable;
+
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
-import com.ksc.internal.SdkInternalList;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
+import com.ksc.network.slb.model.transform.DescribeInstancesWithListenerRequestMarshaller;
 import com.ksc.network.slb.model.transform.DescribeListenersRequestMarshaller;
-
-import java.io.Serializable;
 
 public class DescribeListenersRequest extends KscWebServiceRequest
 		implements Serializable, Cloneable, DryRunSupportedRequest<DescribeListenersRequest> {
@@ -24,6 +24,7 @@ public class DescribeListenersRequest extends KscWebServiceRequest
 	 * <li>
 	 * <p>
 	 * <code>load-balancer-id</code> - 负载均衡的ID
+	 * </p>
 	 * </li>
 	 * </ul>
 	 */
@@ -38,19 +39,25 @@ public class DescribeListenersRequest extends KscWebServiceRequest
 	 */
 	private com.ksc.internal.SdkInternalList<String> listenerIds;
 
-	public SdkInternalList<Filter> getFilters() {
+	public com.ksc.internal.SdkInternalList<Filter> getFilters() {
+		if (filters == null) {
+			filters = new com.ksc.internal.SdkInternalList<Filter>();
+		}
 		return filters;
 	}
 
-	public void setFilters(SdkInternalList<Filter> filters) {
+	public void setFilters(com.ksc.internal.SdkInternalList<Filter> filters) {
 		this.filters = filters;
 	}
 
-	public SdkInternalList<String> getListenerIds() {
+	public com.ksc.internal.SdkInternalList<String> getListenerIds() {
+		if (listenerIds == null) {
+			listenerIds = new com.ksc.internal.SdkInternalList<String>();
+		}
 		return listenerIds;
 	}
 
-	public void setListenerIds(SdkInternalList<String> listenerIds) {
+	public void setListenerIds(com.ksc.internal.SdkInternalList<String> listenerIds) {
 		this.listenerIds = listenerIds;
 	}
 
@@ -70,24 +77,6 @@ public class DescribeListenersRequest extends KscWebServiceRequest
 		for (String listenerId : listenerIds) {
 			this.listenerIds.add(listenerId);
 		}
-	}
-
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		DescribeListenersRequest that = (DescribeListenersRequest) o;
-
-		if (filters != null ? !filters.equals(that.filters) : that.filters != null) return false;
-		return listenerIds != null ? listenerIds.equals(that.listenerIds) : that.listenerIds == null;
-	}
-
-	@Override
-	public int hashCode() {
-		int result = filters != null ? filters.hashCode() : 0;
-		result = 31 * result + (listenerIds != null ? listenerIds.hashCode() : 0);
-		return result;
 	}
 
 	@Override

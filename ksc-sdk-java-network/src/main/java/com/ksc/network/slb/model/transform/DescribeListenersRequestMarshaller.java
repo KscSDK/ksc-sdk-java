@@ -59,15 +59,14 @@ public class DescribeListenersRequestMarshaller
 				filtersListIndex++;
 			}
 		}
-
 		com.ksc.internal.SdkInternalList<String> listenerIdsList = (com.ksc.internal.SdkInternalList<String>) describeListenersRequest
 				.getListenerIds();
 		if (!listenerIdsList.isEmpty() || !listenerIdsList.isAutoConstruct()) {
 			int listenerIdsListIndex = 1;
 
-			for (String listenerIdsListValue : listenerIdsList) {
-				if (listenerIdsListValue != null) {
-					request.addParameter("LoadBalancerId." + listenerIdsListIndex, StringUtils.fromString(listenerIdsListValue));
+			for (String lbIdsListValue : listenerIdsList) {
+				if (lbIdsListValue != null) {
+					request.addParameter("ListenerId." + listenerIdsListIndex, StringUtils.fromString(lbIdsListValue));
 				}
 				listenerIdsListIndex++;
 			}

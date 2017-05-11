@@ -2,7 +2,7 @@ package com.ksc.network.slb.model;
 
 import java.io.Serializable;
 
-import com.ksc.internal.SdkInternalList;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -11,14 +11,16 @@ import lombok.ToString;
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeListenersResult implements Serializable, Cloneable {
 	/**
 	* 
 	*/
+	private static final long serialVersionUID = -1152397641363296840L;
 	private String RequestId;
 	/**
 	 * <p>
-	 * 负载均衡信息的列表
+	 * 真实服务器信息
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<Listener> ListenerSet;
@@ -31,11 +33,11 @@ public class DescribeListenersResult implements Serializable, Cloneable {
 		RequestId = requestId;
 	}
 
-	public SdkInternalList<Listener> getListenerSet() {
+	public com.ksc.internal.SdkInternalList<Listener> getListenerSet() {
 		return ListenerSet;
 	}
 
-	public void setListenerSet(SdkInternalList<Listener> listenerSet) {
+	public void setListenerSet(com.ksc.internal.SdkInternalList<Listener> listenerSet) {
 		ListenerSet = listenerSet;
 	}
 
@@ -48,32 +50,4 @@ public class DescribeListenersResult implements Serializable, Cloneable {
 		}
 	}
 
-	@Override
-	public boolean equals(Object o) {
-		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
-
-		DescribeListenersResult that = (DescribeListenersResult) o;
-
-		if (RequestId != null ? !RequestId.equals(that.RequestId) : that.RequestId != null) return false;
-		return ListenerSet != null ? ListenerSet.equals(that.ListenerSet) : that.ListenerSet == null;
-	}
-
-	@Override
-	public int hashCode() {
-		int result = RequestId != null ? RequestId.hashCode() : 0;
-		result = 31 * result + (ListenerSet != null ? ListenerSet.hashCode() : 0);
-		return result;
-	}
-
-	@Override
-	public DescribeListenersResult clone() {
-		try {
-			return (DescribeListenersResult) super.clone();
-		} catch (CloneNotSupportedException e) {
-			throw new IllegalStateException(
-					"Got a CloneNotSupportedException from Object.clone() "
-							+ "even though we're Cloneable!", e);
-		}
-	}
 }

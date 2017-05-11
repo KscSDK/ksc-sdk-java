@@ -52,13 +52,4 @@ public interface KSCEIP {
      */
     public DisassociateAddressResult disassociateAddress(DisassociateAddressRequest disassociateAddressRequest);
 
-	/**
-	 * 更新弹性IP配置
-	 */
-	public ModifyAddressResult modifyAddress(ModifyAddressRequest modifyAddressRequest);
-
-    /**
-     * 更新弹性IP挂起状态
-     */
-    public AlterAddressStateResult alterAddressState(AlterAddressStateRequest alterAddressStateRequest);
 }
