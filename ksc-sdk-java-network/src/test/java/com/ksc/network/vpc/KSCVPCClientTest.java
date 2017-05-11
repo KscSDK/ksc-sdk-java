@@ -123,7 +123,7 @@ public class KSCVPCClientTest {
 		client.setServiceNameIntern("vpc");
 		CreateVpcRequest request = new CreateVpcRequest();
 		request.setVpcName("hhh-test");
-		request.setCidrBlock("10.0.0.0/16");
+		request.setCidrBlock("10.1.0.0/20");
 		request.setDefault(false);
 		CreateVpcResult result = client.createVpc(request);
 		log.info(result);
