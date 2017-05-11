@@ -90,16 +90,14 @@ public class TestKet {
 		String data1 = StreamPullSet("test123", 0);
 		startStreamPullRequest.setData(data1);
 		ErrResult startStreamPullResult = ksc.StartStreamPull(startStreamPullRequest);
-		System.out.println(
-				"ErrNum: " + startStreamPullResult.getErrNum() + ",ErrMsg: " + startStreamPullResult.getErrMsg());
+		System.out.println("ErrNum: " + startStreamPullResult.getErrNum() + ",ErrMsg: " + startStreamPullResult.getErrMsg());
 
 		// 停止外网拉流
 		StopStreamPullRequest stopStreamPullRequest = new StopStreamPullRequest();
 		String data2 = StreamPullSet("test123", 1);
 		stopStreamPullRequest.setData(data2);
 		ErrResult stopStreamPullResult = ksc.StopStreamPull(stopStreamPullRequest);
-		System.out.println(
-				"ErrNum: " + stopStreamPullResult.getErrNum() + ",ErrMsg: " + stopStreamPullResult.getErrMsg());
+		System.out.println("ErrNum: " + stopStreamPullResult.getErrNum() + ",ErrMsg: " + stopStreamPullResult.getErrMsg());
 
 		// 获取配额使用数据
 		GetQuotaUsedRequest getQuotaUsedRequest = new GetQuotaUsedRequest();
@@ -139,7 +137,7 @@ public class TestKet {
 		JSONObject data = new JSONObject();
 		data.put("App", "live");
 		data.put("UniqName", "mytest");
-		data.put("StreamID", "gy1234");
+		data.put("StreamID", "1234");
 		data.put("DurationHour", 10);
 		return data.toString();
 	}
@@ -148,7 +146,7 @@ public class TestKet {
 		JSONObject data = new JSONObject();
 		data.put("App", "live");
 		data.put("UniqName", "mytest");
-		data.put("StreamID", "gy1234");
+		data.put("StreamID", "1234");
 		return data.toString();
 	}
 
@@ -158,11 +156,11 @@ public class TestKet {
 		data.put("PubDomain", "mytest.uplive.ksyun.com");
 		data.put("UniqName", "mytest");
 		data.put("Preset", "looppreset");
-		data.put("StreamID", "gy11111");
+		data.put("StreamID", "11111");
 		data.put("App", "live");
 		data.put("DurationHour", 168);
 		JSONObject tmp = new JSONObject();
-		tmp.put("Path", "http://wangshuai9.ks3-cn-beijing.ksyun.com/testVideo/test_cross.mp4");
+		tmp.put("Path", "http://bucket.ks3-cn-beijing.ksyun.com/testVideo/test_cross.mp4");
 		tmp.put("Index", 0);
 		srcInfo.put(tmp);
 		data.put("SrcInfo", srcInfo);
@@ -207,7 +205,7 @@ public class TestKet {
 		video.put("orientationAdapt", 1);
 		for (int i = 0; i < num; i++) {
 			JSONObject logo_tmp = new JSONObject();
-			logo_tmp.put("pic", "/wangshuai9/logo/logo1.jpg");
+			logo_tmp.put("pic", "/bucket/logo/logo1.jpg");
 			logo_tmp.put("short_side", 640);
 			logo.put(logo_tmp);
 		}

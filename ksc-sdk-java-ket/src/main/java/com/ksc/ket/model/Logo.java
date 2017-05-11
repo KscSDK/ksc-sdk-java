@@ -9,6 +9,7 @@ public class Logo {
 	private Integer disable_scale;
 	private Integer offsetX;
 	private Integer offsetY;
+	private String pic_url;
 
 	public String getPic() {
 		return pic;
@@ -72,6 +73,14 @@ public class Logo {
 
 	public void setDisable_scale(Integer disable_scale) {
 		this.disable_scale = disable_scale;
+	}
+
+	public String getPic_url() {
+		return pic_url;
+	}
+
+	public void setPic_url(String pic_url) {
+		this.pic_url = pic_url;
 	}
 
 }

@@ -57,6 +57,9 @@ public class LogoListJsonUnmarshaller implements Unmarshaller<Logo, JsonUnmarsha
 				} else if (context.testExpression("offsetY", targetDepth)) {
 					context.nextToken();
 					logo.setOffsetY(context.getUnmarshaller(int.class).unmarshall(context));
+				} else if (context.testExpression("pic_url", targetDepth)) {
+					context.nextToken();
+					logo.setPic_url(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

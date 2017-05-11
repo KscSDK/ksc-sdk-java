@@ -60,10 +60,10 @@ public class FormatJsonUnmarshaller implements Unmarshaller<Format, JsonUnmarsha
 				} else if (context.testExpression("suffix", targetDepth)) {
 					context.nextToken();
 					format.setSuffix(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("HlsBandwidth", targetDepth)) {
+				} else if (context.testExpression("hlsBandwidth", targetDepth)) {
 					context.nextToken();
 					format.setHlsBandwidth(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("DisableScenecutSwitch", targetDepth)) {
+				} else if (context.testExpression("disableScenecutSwitch", targetDepth)) {
 					context.nextToken();
 					format.setDisableScenecutSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
