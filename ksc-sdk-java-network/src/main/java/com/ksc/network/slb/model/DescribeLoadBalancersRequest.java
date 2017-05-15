@@ -30,14 +30,17 @@ public class DescribeLoadBalancersRequest extends KscWebServiceRequest
 	private com.ksc.internal.SdkInternalList<Filter> filters;
 	/**
 	 * <p>
-	 * One or more LoadBalancerIds.
+	 * 负载均衡的ID
 	 * </p>
 	 * <p>
-	 * Default: Describes all your LoadBalancer.
+	 * Default: 描述region下所有的负载均衡信息
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<String> loadBalancerIds;
 
+	/**
+	 * 负载均衡的状态，已绑定，未绑定
+	 */
 	private String state;
 
 	public com.ksc.internal.SdkInternalList<Filter> getFilters() {

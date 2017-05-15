@@ -82,6 +82,14 @@ public class SubnetStaxUnmarshaller implements Unmarshaller<Subnet, StaxUnmarsha
 					subnet.setNatId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+				if (context.testExpression("AvailbleIPNumber", targetDepth)) {
+					subnet.setAvailbleIPNumber(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
+				if (context.testExpression("AvailabilityZoneName", targetDepth)) {
+					subnet.setAvailabilityZoneName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return subnet;

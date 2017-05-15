@@ -18,7 +18,7 @@ public class DescribeLoadBalancersResult implements Serializable, Cloneable {
 	private String RequestId;
 	/**
 	 * <p>
-	 * Information about one or more LoadBalancers.
+	 * 负载均衡信息的列表
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<LoadBalance> LoadBalancerDescriptions;

@@ -7,13 +7,12 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of DeleteSecurityGroup.
  * </p>
  */
 @ToString
 public class DeleteSecurityGroupResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Boolean Return;

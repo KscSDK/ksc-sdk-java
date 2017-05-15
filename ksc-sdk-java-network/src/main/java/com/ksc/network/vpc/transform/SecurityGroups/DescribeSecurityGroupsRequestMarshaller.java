@@ -10,7 +10,7 @@ import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DescribeSubnetsRequest Marshaller
+ * DescribeSecurityGroupsRequest Marshaller
  */
 
 public class DescribeSecurityGroupsRequestMarshaller

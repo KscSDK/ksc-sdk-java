@@ -3,6 +3,7 @@ package com.ksc.network.vpc.model.SecurityGroups;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
+<<<<<<< HEAD
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
 import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
@@ -10,18 +11,28 @@ import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMa
 import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryRequestMarshaller;
 import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
 import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
+=======
+import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryRequestMarshaller;
+>>>>>>> v4.0.0
 
 import java.io.Serializable;
 
 /**
  * <p>
+<<<<<<< HEAD
  * Contains the parameters for AuthorizeSecurityGroupEntry.
+=======
+ * Contains the parameters for RevokeSecurityGroupEntry.
+>>>>>>> v4.0.0
  * </p>
  */
 public class RevokeSecurityGroupEntryRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<RevokeSecurityGroupEntryRequest> {
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> v4.0.0
     /**
      * 安全组的ID
      */
@@ -31,8 +42,11 @@ public class RevokeSecurityGroupEntryRequest extends KscWebServiceRequest implem
      * 安全组规则的ID
      */
     private String SecurityGroupEntryId;
+<<<<<<< HEAD
     
 
+=======
+>>>>>>> v4.0.0
 
 	public String getSecurityGroupId() {
 		return SecurityGroupId;
@@ -100,5 +114,8 @@ public class RevokeSecurityGroupEntryRequest extends KscWebServiceRequest implem
     }
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> v4.0.0
 }

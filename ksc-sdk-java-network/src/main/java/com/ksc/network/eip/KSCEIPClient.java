@@ -1,18 +1,6 @@
 package com.ksc.network.eip;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.w3c.dom.Node;
-
-import com.ksc.ClientConfiguration;
-import com.ksc.ClientConfigurationFactory;
-import com.ksc.KscServiceException;
-import com.ksc.KscWebServiceClient;
-import com.ksc.KscWebServiceRequest;
-import com.ksc.KscWebServiceResponse;
-import com.ksc.Request;
-import com.ksc.Response;
+import com.ksc.*;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.AWSCredentialsProvider;
 import com.ksc.auth.DefaultAWSCredentialsProviderChain;
@@ -22,6 +10,7 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
+<<<<<<< HEAD
 import com.ksc.network.eip.model.AllocateAddressRequest;
 import com.ksc.network.eip.model.AllocateAddressResult;
 import com.ksc.network.eip.model.AssociateAddressRequest;
@@ -50,12 +39,20 @@ import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
 import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryRequestMarshaller;
 import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryResultStaxUnmarshaller;
+=======
+import com.ksc.network.eip.model.*;
+import com.ksc.network.eip.model.transform.*;
+>>>>>>> v4.0.0
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
 import com.ksc.util.KscRequestMetrics.Field;
+import org.w3c.dom.Node;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class KSCEIPClient extends KscWebServiceClient implements KSCEIP{
 	/** Provider for AWS credentials. */
@@ -438,6 +435,9 @@ public class KSCEIPClient extends KscWebServiceClient implements KSCEIP{
         }
     }
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> v4.0.0
 }

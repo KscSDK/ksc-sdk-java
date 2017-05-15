@@ -3,6 +3,7 @@ package com.ksc.network.eip.model;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
+<<<<<<< HEAD
 import com.ksc.model.Filter;
 import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
 import com.ksc.network.eip.model.transform.ReleaseAddressRequestMarshaller;
@@ -11,12 +12,19 @@ import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryR
 import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
 import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
 import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
+=======
+import com.ksc.network.eip.model.transform.ReleaseAddressRequestMarshaller;
+>>>>>>> v4.0.0
 
 import java.io.Serializable;
 
 /**
  * <p>
+<<<<<<< HEAD
  * Contains the parameters for AuthorizeSecurityGroupEntry.
+=======
+ * Contains the parameters for ReleaseAddress.
+>>>>>>> v4.0.0
  * </p>
  */
 public class ReleaseAddressRequest extends KscWebServiceRequest implements

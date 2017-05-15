@@ -10,7 +10,11 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
+<<<<<<< HEAD
  * DeleteVpcResult StAX Unmarshaller
+=======
+ * AssociateAddressResul StAX Unmarshaller
+>>>>>>> v4.0.0
  */
 public class AssociateAddressResultStaxUnmarshaller implements
 		Unmarshaller<AssociateAddressResult, StaxUnmarshallerContext> {

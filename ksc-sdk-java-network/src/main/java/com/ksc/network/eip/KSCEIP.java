@@ -1,5 +1,6 @@
 package com.ksc.network.eip;
 
+<<<<<<< HEAD
 import com.ksc.network.eip.model.AllocateAddressRequest;
 import com.ksc.network.eip.model.AllocateAddressResult;
 import com.ksc.network.eip.model.AssociateAddressRequest;
@@ -14,6 +15,9 @@ import com.ksc.network.eip.model.ReleaseAddressRequest;
 import com.ksc.network.eip.model.ReleaseAddressResult;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
+=======
+import com.ksc.network.eip.model.*;
+>>>>>>> v4.0.0
 
 public interface KSCEIP {
 	/**
@@ -64,4 +68,8 @@ public interface KSCEIP {
      * 解绑弹性IP
      */
     public DisassociateAddressResult disassociateAddress(DisassociateAddressRequest disassociateAddressRequest);
+<<<<<<< HEAD
+=======
+
+>>>>>>> v4.0.0
 }

@@ -7,7 +7,11 @@ import java.io.Serializable;
 
 /**
  * <p>
+<<<<<<< HEAD
  * Contains the output of DescribeVpcs.
+=======
+ * Contains the output of DisassociateAddress.
+>>>>>>> v4.0.0
  * </p>
  */
 @ToString

@@ -3,6 +3,7 @@ package com.ksc.network.eip.model;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
+<<<<<<< HEAD
 import com.ksc.model.Filter;
 import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
 import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
@@ -10,12 +11,19 @@ import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryR
 import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
 import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
 import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
+=======
+import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
+>>>>>>> v4.0.0
 
 import java.io.Serializable;
 
 /**
  * <p>
+<<<<<<< HEAD
  * Contains the parameters for AuthorizeSecurityGroupEntry.
+=======
+ * Contains the parameters for AllocateAddress.
+>>>>>>> v4.0.0
  * </p>
  */
 public class AllocateAddressRequest extends KscWebServiceRequest implements
@@ -41,7 +49,10 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
      * 购买时长，只有包年包月时不可缺省。
      */
     private Integer PurchaseTime;
+<<<<<<< HEAD
     
+=======
+>>>>>>> v4.0.0
 
 	public String getLineId() {
 		return LineId;
@@ -75,6 +86,7 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
 		PurchaseTime = purchaseTime;
 	}
 
+<<<<<<< HEAD
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -122,6 +134,31 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
 	}
 
 	@Override
+=======
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AllocateAddressRequest that = (AllocateAddressRequest) o;
+
+        if (LineId != null ? !LineId.equals(that.LineId) : that.LineId != null) return false;
+        if (BandWidth != null ? !BandWidth.equals(that.BandWidth) : that.BandWidth != null) return false;
+        if (ChargeType != null ? !ChargeType.equals(that.ChargeType) : that.ChargeType != null) return false;
+        return PurchaseTime != null ? PurchaseTime.equals(that.PurchaseTime) : that.PurchaseTime == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = LineId != null ? LineId.hashCode() : 0;
+        result = 31 * result + (BandWidth != null ? BandWidth.hashCode() : 0);
+        result = 31 * result + (ChargeType != null ? ChargeType.hashCode() : 0);
+        result = 31 * result + (PurchaseTime != null ? PurchaseTime.hashCode() : 0);
+        return result;
+    }
+
+    @Override
+>>>>>>> v4.0.0
     public AllocateAddressRequest clone() {
         return (AllocateAddressRequest) super.clone();
     }
