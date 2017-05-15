@@ -4,7 +4,7 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
         <artifactId>ksc-sdk-java</artifactId>
-        <groupId>com.ksc</groupId>
+        <groupId>com.ksyun</groupId>
         <version>0.2.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
@@ -21,7 +21,7 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.ksc</groupId>
+            <groupId>com.ksyun</groupId>
             <artifactId>ksc-sdk-java-core</artifactId>
             <version>0.2.0</version>
         </dependency>
