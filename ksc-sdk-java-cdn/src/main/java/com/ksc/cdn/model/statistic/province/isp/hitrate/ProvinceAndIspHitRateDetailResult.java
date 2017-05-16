@@ -1,7 +1,6 @@
 package com.ksc.cdn.model.statistic.province.isp.hitrate;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.Data;
 
 /**
  * ProvinceAndIspHitRateResult
@@ -11,7 +10,6 @@ import lombok.Data;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class ProvinceAndIspHitRateDetailResult extends CommonFieldResult {
 
     /**
@@ -43,4 +41,43 @@ public class ProvinceAndIspHitRateDetailResult extends CommonFieldResult {
      */
     private HitRateDetailDataByTime[] Datas;
 
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public String getProvinces() {
+        return Provinces;
+    }
+
+    public void setProvinces(String provinces) {
+        Provinces = provinces;
+    }
+
+    public String getIsps() {
+        return Isps;
+    }
+
+    public void setIsps(String isps) {
+        Isps = isps;
+    }
+
+    public HitRateDetailDataByTime[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(HitRateDetailDataByTime[] datas) {
+        Datas = datas;
+    }
 }

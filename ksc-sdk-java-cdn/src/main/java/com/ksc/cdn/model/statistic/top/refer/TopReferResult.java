@@ -5,7 +5,6 @@ package com.ksc.cdn.model.statistic.top.refer;
  */
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.ToString;
 
 /**
  * TopReferResult
@@ -14,7 +13,6 @@ import lombok.ToString;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@ToString
 public class TopReferResult extends CommonFieldResult {
 
     /**

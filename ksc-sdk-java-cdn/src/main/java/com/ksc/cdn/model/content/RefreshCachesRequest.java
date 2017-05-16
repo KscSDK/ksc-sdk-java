@@ -2,7 +2,6 @@ package com.ksc.cdn.model.content;
 
 import com.ksc.cdn.model.GeneralRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
-import lombok.Data;
 
 import java.util.Map;
 
@@ -26,7 +25,6 @@ import java.util.Map;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class RefreshCachesRequest implements GeneralRequest {
 
     private Url[] Files;
@@ -41,5 +39,21 @@ public class RefreshCachesRequest implements GeneralRequest {
     @Override
     public Map<String, String> buildParams() {
         return null;
+    }
+
+    public Url[] getFiles() {
+        return Files;
+    }
+
+    public void setFiles(Url[] files) {
+        Files = files;
+    }
+
+    public Url[] getDirs() {
+        return Dirs;
+    }
+
+    public void setDirs(Url[] dirs) {
+        Dirs = dirs;
     }
 }

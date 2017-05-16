@@ -37,7 +37,6 @@ public class CommonFieldRequest implements GeneralRequest {
      * 产品类型只允许输入一种,下载download,直播live
      * @see com.ksc.cdn.model.enums.CdnTypeEnum
      */
-    @FieldValidate
     private String CdnType;
 
     /**
