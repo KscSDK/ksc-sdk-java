@@ -58,12 +58,18 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 				} else if (context.testExpression("interval", targetDepth)){
 					context.nextToken();
 					param.setInterval(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("hlsTime", targetDepth)){
+				} else if (context.testExpression("hls_time", targetDepth)){
 					context.nextToken();
 					param.setHlsTime(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("clearmeta", targetDepth)){
 					context.nextToken();
 					param.setClearmeta(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("intelligentSwitch", targetDepth)){
+					context.nextToken();
+					param.setIntelligentSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("shortSide", targetDepth)){
+					context.nextToken();
+					param.setShortSide(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

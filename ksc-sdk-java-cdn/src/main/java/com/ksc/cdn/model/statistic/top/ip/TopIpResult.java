@@ -5,7 +5,6 @@ package com.ksc.cdn.model.statistic.top.ip;
  */
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.Data;
 
 /**
  * 获取域名某天内某一时段的TOP IP访问数据，仅包含Top 200且访问次数大于15次的独立请求的IP的访问次数、访问流量，并按次数排序
@@ -13,7 +12,6 @@ import lombok.Data;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class TopIpResult extends CommonFieldResult {
 
     /**
@@ -26,4 +24,19 @@ public class TopIpResult extends CommonFieldResult {
      */
     private IpList[] Datas;
 
+    public String getLimitN() {
+        return LimitN;
+    }
+
+    public void setLimitN(String limitN) {
+        LimitN = limitN;
+    }
+
+    public IpList[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(IpList[] datas) {
+        Datas = datas;
+    }
 }

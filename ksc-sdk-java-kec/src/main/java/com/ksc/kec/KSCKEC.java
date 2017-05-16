@@ -1,15 +1,6 @@
 package com.ksc.kec;
 
-import com.ksc.kec.model.DescribeImagesRequest;
-import com.ksc.kec.model.DescribeImagesResult;
-import com.ksc.kec.model.DescribeInstancesRequest;
-import com.ksc.kec.model.DescribeInstancesResult;
-import com.ksc.kec.model.RebootInstancesRequest;
-import com.ksc.kec.model.RebootInstancesResult;
-import com.ksc.kec.model.StartInstancesRequest;
-import com.ksc.kec.model.StartInstancesResult;
-import com.ksc.kec.model.StopInstancesRequest;
-import com.ksc.kec.model.StopInstancesResult;
+import com.ksc.kec.model.*;
 import com.ksc.regions.Region;
 
 /**
@@ -101,4 +92,54 @@ public interface KSCKEC {
 	 */
 	DescribeImagesResult describeImages(DescribeImagesRequest describeImagesRequest);
 
+	/**
+	 * <p>
+	 * Run an kec instance that you've previously stopped.
+	 * </p>
+	 *
+	 * @param runInstancesRequest
+	 * @return Result of the RunInstances operation returned by the service.
+	 * @sample KSC.KEC.RunInstances
+	 */
+	RunInstancesResult runInstances(RunInstancesRequest runInstancesRequest);
+	/**
+	 * <p>
+	 * Terminate an kec instance.
+	 * </p>
+	 *
+	 * @param terminateInstancesRequest
+	 * @return Result of the TerminateInstances operation returned by the service.
+	 * @sample KSC.KEC.TerminateInstances
+	 */
+	TerminateInstancesResult terminateInstances(TerminateInstancesRequest terminateInstancesRequest);
+	/**
+	 * <p>
+	 * ModifyInstanceAttribute an kec instance.
+	 * </p>
+	 *
+	 * @param modifyInstanceAttributeRequest
+	 * @return Result of the ModifyInstanceAttribute operation returned by the service.
+	 * @sample KSC.KEC.ModifyInstanceAttribute
+	 */
+	ModifyInstanceAttributeResult modifyInstanceAttribute(ModifyInstanceAttributeRequest modifyInstanceAttributeRequest);
+	/**
+	 * <p>
+	 * MonitorInstances an kec instance.
+	 * </p>
+	 *
+	 * @param monitorInstancesRequest
+	 * @return Result of the MonitorInstances operation returned by the service.
+	 * @sample KSC.KEC.MonitorInstances
+	 */
+	MonitorInstancesResult monitorInstances(MonitorInstancesRequest monitorInstancesRequest);
+	/**
+	 * <p>
+	 * UnmonitorInstances an kec instance.
+	 * </p>
+	 *
+	 * @param unmonitorInstancesRequest
+	 * @return Result of the UnmonitorInstances operation returned by the service.
+	 * @sample KSC.KEC.UnmonitorInstances
+	 */
+	UnmonitorInstancesResult unmonitorInstances(UnmonitorInstancesRequest unmonitorInstancesRequest);
 }

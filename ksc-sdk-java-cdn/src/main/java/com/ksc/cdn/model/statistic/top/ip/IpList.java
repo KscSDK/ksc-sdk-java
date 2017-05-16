@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.top.ip;
 
-import lombok.Data;
-
 /**
  * IpList
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class IpList {
     /**
      * 独立请求的IP地址
@@ -25,4 +22,27 @@ public class IpList {
      */
     private Long Flow;
 
+    public String getIp() {
+        return Ip;
+    }
+
+    public void setIp(String ip) {
+        Ip = ip;
+    }
+
+    public Long getPv() {
+        return Pv;
+    }
+
+    public void setPv(Long pv) {
+        Pv = pv;
+    }
+
+    public Long getFlow() {
+        return Flow;
+    }
+
+    public void setFlow(Long flow) {
+        Flow = flow;
+    }
 }

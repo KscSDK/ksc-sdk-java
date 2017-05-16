@@ -1,11 +1,8 @@
 package com.ksc.cdn.model.statistic.top.refer;
 
-import lombok.ToString;
-
 /**
  * Created by qichao on 2017/2/27.
  */
-@ToString
 public class ReferList {
     /**
      * Refer来源地址（只统计来源地址的domain部分）

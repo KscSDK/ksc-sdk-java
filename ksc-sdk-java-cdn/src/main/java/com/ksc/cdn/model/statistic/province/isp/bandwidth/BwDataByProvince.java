@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.province.isp.bandwidth;
 
-import lombok.ToString;
-
 /**
  * BwDataByProvince
  *
  * @author jiangran@kingsoft.com
  * @date 2016/11/17
  */
-@ToString
 public class BwDataByProvince {
     /**
      * 省份区域

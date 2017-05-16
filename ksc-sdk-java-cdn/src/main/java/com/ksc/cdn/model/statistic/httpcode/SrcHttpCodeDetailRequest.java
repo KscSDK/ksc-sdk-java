@@ -5,7 +5,6 @@ import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
@@ -22,7 +21,6 @@ import java.util.Map;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class SrcHttpCodeDetailRequest extends CommonFieldRequest {
 
     /**
@@ -53,5 +51,21 @@ public class SrcHttpCodeDetailRequest extends CommonFieldRequest {
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("GetSrcHttpCodeDetailedData", "2016-09-01", "/2016-09-01/statistics/GetSrcHttpCodeDetailedData");
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
     }
 }
