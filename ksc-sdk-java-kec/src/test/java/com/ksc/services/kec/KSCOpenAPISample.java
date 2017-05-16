@@ -1,16 +1,32 @@
 package com.ksc.services.kec;
 
-import com.google.gson.Gson;
-import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.kec.model.*;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
+import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.kec.KSCKECClient;
-import com.ksc.regions.InMemoryRegionImpl;
-import com.ksc.regions.Region;
+import com.ksc.kec.model.DescribeImagesRequest;
+import com.ksc.kec.model.DescribeImagesResult;
+import com.ksc.kec.model.DescribeInstancesRequest;
+import com.ksc.kec.model.DescribeInstancesResult;
+import com.ksc.kec.model.ModifyInstanceAttributeRequest;
+import com.ksc.kec.model.ModifyInstanceAttributeResult;
+import com.ksc.kec.model.MonitorInstancesRequest;
+import com.ksc.kec.model.MonitorInstancesResult;
+import com.ksc.kec.model.RebootInstancesRequest;
+import com.ksc.kec.model.RebootInstancesResult;
+import com.ksc.kec.model.RunInstancesRequest;
+import com.ksc.kec.model.RunInstancesResult;
+import com.ksc.kec.model.StartInstancesRequest;
+import com.ksc.kec.model.StartInstancesResult;
+import com.ksc.kec.model.StopInstancesRequest;
+import com.ksc.kec.model.StopInstancesResult;
+import com.ksc.kec.model.TerminateInstancesRequest;
+import com.ksc.kec.model.TerminateInstancesResult;
+import com.ksc.kec.model.UnmonitorInstancesRequest;
+import com.ksc.kec.model.UnmonitorInstancesResult;
 
 public class KSCOpenAPISample {
 
