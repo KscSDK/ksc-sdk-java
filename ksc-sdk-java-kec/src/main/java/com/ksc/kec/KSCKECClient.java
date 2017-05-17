@@ -21,6 +21,8 @@ import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
+import com.ksc.kec.model.AttachNetworkInterfaceRequest;
+import com.ksc.kec.model.AttachNetworkInterfaceResult;
 import com.ksc.kec.model.CreateImageRequest;
 import com.ksc.kec.model.CreateImageResult;
 import com.ksc.kec.model.CreateLocalVolumeSnapshotRequest;
@@ -29,12 +31,26 @@ import com.ksc.kec.model.DeleteLocalVolumeSnapshotRequest;
 import com.ksc.kec.model.DeleteLocalVolumeSnapshotResult;
 import com.ksc.kec.model.DescribeImagesRequest;
 import com.ksc.kec.model.DescribeImagesResult;
+import com.ksc.kec.model.DescribeInstanceVncRequest;
+import com.ksc.kec.model.DescribeInstanceVncResult;
 import com.ksc.kec.model.DescribeInstancesRequest;
 import com.ksc.kec.model.DescribeInstancesResult;
+import com.ksc.kec.model.DescribeLocalVolumeSnapshotsRequest;
+import com.ksc.kec.model.DescribeLocalVolumeSnapshotsResult;
+import com.ksc.kec.model.DescribeLocalVolumesRequest;
+import com.ksc.kec.model.DescribeLocalVolumesResult;
+import com.ksc.kec.model.DetachNetworkInterfaceRequest;
+import com.ksc.kec.model.DetachNetworkInterfaceResult;
 import com.ksc.kec.model.ModifyImageAttributeRequest;
 import com.ksc.kec.model.ModifyImageAttributeResult;
 import com.ksc.kec.model.ModifyInstanceAttributeRequest;
 import com.ksc.kec.model.ModifyInstanceAttributeResult;
+import com.ksc.kec.model.ModifyInstanceImageRequest;
+import com.ksc.kec.model.ModifyInstanceImageResult;
+import com.ksc.kec.model.ModifyInstanceTypeRequest;
+import com.ksc.kec.model.ModifyInstanceTypeResult;
+import com.ksc.kec.model.ModifyNetworkInterfaceAttributeRequest;
+import com.ksc.kec.model.ModifyNetworkInterfaceAttributeResult;
 import com.ksc.kec.model.MonitorInstancesRequest;
 import com.ksc.kec.model.MonitorInstancesResult;
 import com.ksc.kec.model.RebootInstancesRequest;
@@ -53,6 +69,8 @@ import com.ksc.kec.model.TerminateInstancesRequest;
 import com.ksc.kec.model.TerminateInstancesResult;
 import com.ksc.kec.model.UnmonitorInstancesRequest;
 import com.ksc.kec.model.UnmonitorInstancesResult;
+import com.ksc.kec.model.transform.AttachNetworkInterfaceRequestMarshaller;
+import com.ksc.kec.model.transform.AttachNetworkInterfaceResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.CreateImageRequestMarshaller;
 import com.ksc.kec.model.transform.CreateImageResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.CreateLocalVolumeSnapshotRequestMarshaller;
@@ -61,12 +79,26 @@ import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotRequestMarshaller;
 import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.DescribeImagesRequestMarshaller;
 import com.ksc.kec.model.transform.DescribeImagesResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DescribeInstanceVncRequestMarshaller;
+import com.ksc.kec.model.transform.DescribeInstanceVncResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.DescribeInstancesRequestMarshaller;
 import com.ksc.kec.model.transform.DescribeInstancesResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DescribeLocalVolumeSnapshotsRequestMarshaller;
+import com.ksc.kec.model.transform.DescribeLocalVolumeSnapshotsResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DescribeLocalVolumesRequestMarshaller;
+import com.ksc.kec.model.transform.DescribeLocalVolumesResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DetachNetworkInterfaceRequestMarshaller;
+import com.ksc.kec.model.transform.DetachNetworkInterfaceResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.ModifyImageAttributeRequestMarshaller;
 import com.ksc.kec.model.transform.ModifyImageAttributeResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.ModifyInstanceAttributeRequestMarshaller;
 import com.ksc.kec.model.transform.ModifyInstanceAttributeResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.ModifyInstanceImageRequestMarshaller;
+import com.ksc.kec.model.transform.ModifyInstanceImageResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.ModifyInstanceTypeRequestMarshaller;
+import com.ksc.kec.model.transform.ModifyInstanceTypeResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.ModifyNetworkInterfaceAttributeRequestMarshaller;
+import com.ksc.kec.model.transform.ModifyNetworkInterfaceAttributeResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.MonitorInstancesRequestMarshaller;
 import com.ksc.kec.model.transform.MonitorInstancesResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.RebootInstancesRequestMarshaller;
@@ -815,6 +847,276 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 
 			StaxResponseHandler<DeleteLocalVolumeSnapshotResult> responseHandler = new StaxResponseHandler<DeleteLocalVolumeSnapshotResult>(
 					new DeleteLocalVolumeSnapshotResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 描述本地盘信息
+	 */
+	@Override
+	public DescribeLocalVolumesResult describeLocalVolumes(DescribeLocalVolumesRequest describeLocalVolumesRequest){
+		ExecutionContext executionContext = createExecutionContext(describeLocalVolumesRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeLocalVolumesRequest> request = null;
+		Response<DescribeLocalVolumesResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeLocalVolumesRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeLocalVolumesRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeLocalVolumesResult> responseHandler = new StaxResponseHandler<DescribeLocalVolumesResult>(
+					new DescribeLocalVolumesResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 描述本地盘快照信息
+	 * @param describeLocalVolumeSnapshotsRequest
+	 * @return
+	 */
+	public DescribeLocalVolumeSnapshotsResult describeLocalVolumeSnapshots(DescribeLocalVolumeSnapshotsRequest describeLocalVolumeSnapshotsRequest){
+		ExecutionContext executionContext = createExecutionContext(describeLocalVolumeSnapshotsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeLocalVolumeSnapshotsRequest> request = null;
+		Response<DescribeLocalVolumeSnapshotsResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeLocalVolumeSnapshotsRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeLocalVolumeSnapshotsRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeLocalVolumeSnapshotsResult> responseHandler = new StaxResponseHandler<DescribeLocalVolumeSnapshotsResult>(
+					new DescribeLocalVolumeSnapshotsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 升级实例套餐类型
+	 */
+	public ModifyInstanceTypeResult modifyInstanceType(ModifyInstanceTypeRequest modifyInstanceTypeRequest){
+		ExecutionContext executionContext = createExecutionContext(modifyInstanceTypeRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyInstanceTypeRequest> request = null;
+		Response<ModifyInstanceTypeResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyInstanceTypeRequestMarshaller()
+						.marshall(super.beforeMarshalling(modifyInstanceTypeRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ModifyInstanceTypeResult> responseHandler = new StaxResponseHandler<ModifyInstanceTypeResult>(
+					new ModifyInstanceTypeResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 更换或者重新安装实例操作系统
+	 */
+	public ModifyInstanceImageResult modifyInstanceImage(ModifyInstanceImageRequest modifyInstanceImageRequest){
+		ExecutionContext executionContext = createExecutionContext(modifyInstanceImageRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyInstanceImageRequest> request = null;
+		Response<ModifyInstanceImageResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyInstanceImageRequestMarshaller()
+						.marshall(super.beforeMarshalling(modifyInstanceImageRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ModifyInstanceImageResult> responseHandler = new StaxResponseHandler<ModifyInstanceImageResult>(
+					new ModifyInstanceImageResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 获取VNC信息
+	 */
+	public DescribeInstanceVncResult describeInstanceVnc(DescribeInstanceVncRequest describeInstanceVncRequest){
+		ExecutionContext executionContext = createExecutionContext(describeInstanceVncRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeInstanceVncRequest> request = null;
+		Response<DescribeInstanceVncResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeInstanceVncRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeInstanceVncRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeInstanceVncResult> responseHandler = new StaxResponseHandler<DescribeInstanceVncResult>(
+					new DescribeInstanceVncResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 为主机添加网卡
+	 */
+	@Override
+	public AttachNetworkInterfaceResult attachNetworkInterface(AttachNetworkInterfaceRequest attachNetworkInterfaceRequest){
+		ExecutionContext executionContext = createExecutionContext(attachNetworkInterfaceRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<AttachNetworkInterfaceRequest> request = null;
+		Response<AttachNetworkInterfaceResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new AttachNetworkInterfaceRequestMarshaller()
+						.marshall(super.beforeMarshalling(attachNetworkInterfaceRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<AttachNetworkInterfaceResult> responseHandler = new StaxResponseHandler<AttachNetworkInterfaceResult>(
+					new AttachNetworkInterfaceResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 修改网络接口属性信息
+	 */
+	@Override
+	public ModifyNetworkInterfaceAttributeResult modifyNetworkInterfaceAttribute(ModifyNetworkInterfaceAttributeRequest modifyNetworkInterfaceAttributeRequest){
+		ExecutionContext executionContext = createExecutionContext(modifyNetworkInterfaceAttributeRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyNetworkInterfaceAttributeRequest> request = null;
+		Response<ModifyNetworkInterfaceAttributeResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyNetworkInterfaceAttributeRequestMarshaller()
+						.marshall(super.beforeMarshalling(modifyNetworkInterfaceAttributeRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ModifyNetworkInterfaceAttributeResult> responseHandler = new StaxResponseHandler<ModifyNetworkInterfaceAttributeResult>(
+					new ModifyNetworkInterfaceAttributeResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	/**
+	 * 删除主机网络接口
+	 */
+	@Override
+	public DetachNetworkInterfaceResult detachNetworkInterface(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest){
+		ExecutionContext executionContext = createExecutionContext(detachNetworkInterfaceRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DetachNetworkInterfaceRequest> request = null;
+		Response<DetachNetworkInterfaceResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DetachNetworkInterfaceRequestMarshaller()
+						.marshall(super.beforeMarshalling(detachNetworkInterfaceRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DetachNetworkInterfaceResult> responseHandler = new StaxResponseHandler<DetachNetworkInterfaceResult>(
+					new DetachNetworkInterfaceResultStaxUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();

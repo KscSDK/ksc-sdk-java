@@ -7,6 +7,11 @@ import com.ksc.Request;
 import com.ksc.kec.model.transform.RollbackLocalVolumeRequestMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class RollbackLocalVolumeRequest extends KscWebServiceRequest
        implements Serializable, Cloneable, DryRunSupportedRequest<RollbackLocalVolumeRequest>{
 	

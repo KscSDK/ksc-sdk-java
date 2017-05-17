@@ -2,6 +2,11 @@ package com.ksc.kec.model;
 
 import java.io.Serializable;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class DeleteLocalVolumeSnapshotResult implements Serializable, Cloneable{
 
 	private static final long serialVersionUID = 1L;

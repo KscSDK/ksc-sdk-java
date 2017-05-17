@@ -3,6 +3,7 @@ package com.ksc.services.kec;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
+import com.google.gson.Gson;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;

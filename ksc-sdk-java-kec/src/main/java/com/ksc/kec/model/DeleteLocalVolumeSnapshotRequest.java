@@ -7,9 +7,15 @@ import com.ksc.Request;
 import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotRequestMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
 
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+
+@ToString
+@EqualsAndHashCode(callSuper = false)
 public class DeleteLocalVolumeSnapshotRequest extends KscWebServiceRequest
        implements Serializable, Cloneable, DryRunSupportedRequest<DeleteLocalVolumeSnapshotRequest>{
-	
+
+	private static final long serialVersionUID = 1L;
 	private com.ksc.internal.SdkInternalList<String> localVolumeSnapshotIds;
 	
 	public java.util.List<String> getLocalVolumeSnapshotIds() {
