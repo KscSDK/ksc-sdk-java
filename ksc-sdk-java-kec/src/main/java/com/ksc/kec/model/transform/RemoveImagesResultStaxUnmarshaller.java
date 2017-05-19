@@ -27,7 +27,7 @@ public class RemoveImagesResultStaxUnmarshaller implements
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 				// no use reservation
 				if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-					if (context.testExpression("ReturnSet/Item", targetDepth)) {
+					if (context.testExpression("ReturnSet/Item", targetDepth) || context.testExpression("ReturnSet/item", targetDepth)) {
 						removeImagesResult.addReturnSet(ImageOperateInfoStaxUnmarshaller.getInstance().unmarshall(context));
 					} else if (context.testExpression("RequestId", targetDepth)) {
 						removeImagesResult.setRequestId(StringStaxUnmarshaller.getInstance().unmarshall(context));

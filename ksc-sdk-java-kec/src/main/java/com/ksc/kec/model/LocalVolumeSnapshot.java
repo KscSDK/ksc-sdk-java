@@ -13,6 +13,7 @@ public class LocalVolumeSnapshot {
 	private String LocalVolumeSnapshotDesc;
 	private String SourceLocalVolumeId;
 	private String SourceLocalVolumeName;
+	private String SourceLocalVolumeCategory;
 	
 	public String getCreationDate() {
 		return CreationDate;
@@ -62,5 +63,12 @@ public class LocalVolumeSnapshot {
 	public void setSourceLocalVolumeName(String sourceLocalVolumeName) {
 		SourceLocalVolumeName = sourceLocalVolumeName;
 	}
-	
+
+	public String getSourceLocalVolumeCategory() {
+		return SourceLocalVolumeCategory;
+	}
+
+	public void setSourceLocalVolumeCategory(String sourceLocalVolumeCategory) {
+		SourceLocalVolumeCategory = sourceLocalVolumeCategory;
+	}
 }

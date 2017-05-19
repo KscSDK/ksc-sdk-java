@@ -75,6 +75,12 @@ public class LocalVolumeSnapshotDetailStaxUnmarshaller implements
 					continue;
 				}
 
+				if (context.testExpression("SourceLocalVolumeCategory", targetDepth)) {
+					localVolumeSnapshot.setSourceLocalVolumeCategory(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return localVolumeSnapshot;

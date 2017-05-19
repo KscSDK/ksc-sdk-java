@@ -32,7 +32,7 @@ public class DescribeInstanceVncResultStaxUnmarshaller implements
 					continue;
 				}
 
-				if (context.testExpression("RequestId", targetDepth)) {
+				if (context.testExpression("RequestId", targetDepth) || context.testExpression("requestId", targetDepth)) {
 					describeInstanceVncResult.setRequestId(StringStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;

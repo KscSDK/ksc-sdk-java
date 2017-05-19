@@ -26,7 +26,7 @@ public class CreateLocalVolumeSnapshotResultStaxUnmarshaller implements
 
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 				// no use reservation
-				if (context.testExpression("LocalVolumeId", targetDepth)) {
+				if (context.testExpression("LocalVolumeSnapshotId", targetDepth)) {
 					createLocalVolumeSnapshotResult.setLocalVolumeSnapshotId(StringStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;

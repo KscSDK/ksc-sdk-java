@@ -1,6 +1,7 @@
 package com.ksc.kec.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import lombok.EqualsAndHashCode;
@@ -16,7 +17,10 @@ public class DescribeLocalVolumeSnapshotsResult implements Serializable, Cloneab
 	private Integer Marker;
 	private String RequestId;
 	
-	public DescribeLocalVolumeSnapshotsResult withLLocalVolumeSnapshot(LocalVolumeSnapshot... instances) {
+	public DescribeLocalVolumeSnapshotsResult withLocalVolumeSnapshot(LocalVolumeSnapshot... instances) {
+		if(this.LocalVolumeSnapshotSet == null){
+			this.LocalVolumeSnapshotSet = new ArrayList<LocalVolumeSnapshot>();
+		}
 		for (LocalVolumeSnapshot instance : instances) {
 			this.LocalVolumeSnapshotSet.add(instance);
 		}

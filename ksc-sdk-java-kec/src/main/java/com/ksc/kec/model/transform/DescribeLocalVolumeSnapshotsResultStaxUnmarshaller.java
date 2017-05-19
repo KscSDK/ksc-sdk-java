@@ -29,7 +29,7 @@ public class DescribeLocalVolumeSnapshotsResultStaxUnmarshaller implements
 				// no use reservation
 				if (context.testExpression("LocalVolumeSnapshotSet/Item", targetDepth)) {
 					describeLocalVolumeSnapshotsResult
-							.withLLocalVolumeSnapshot(LocalVolumeSnapshotDetailStaxUnmarshaller
+							.withLocalVolumeSnapshot(LocalVolumeSnapshotDetailStaxUnmarshaller
 									.getInstance().unmarshall(context));
 					continue;
 				}

@@ -64,8 +64,8 @@ public class LocalVolumeDetailStaxUnmarshaller implements
 					continue;
 				}
 
-				if (context.testExpression("LocalVolumeId", targetDepth)) {
-					localVolume.setLocalVolumeId(StringStaxUnmarshaller.getInstance()
+				if (context.testExpression("LocalVolumeName", targetDepth)) {
+					localVolume.setLocalVolumeName(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}

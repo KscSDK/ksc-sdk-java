@@ -20,7 +20,7 @@ public class CreateLocalVolumeSnapshotRequestMarshaller
 
 	        Request<CreateLocalVolumeSnapshotRequest> request = new DefaultRequest<CreateLocalVolumeSnapshotRequest>(
 	        		createLocalVolumeSnapshotRequest, "kec");
-	        request.addParameter("Action", "createLocalVolumeSnapshot");
+	        request.addParameter("Action", "CreateLocalVolumeSnapshot");
 	        String version=createLocalVolumeSnapshotRequest.getVersion();
 	        if(org.apache.commons.lang.StringUtils.isBlank(version)){
 	        	version="2016-03-04";
