@@ -422,6 +422,35 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
         }
     }
 
+    @Override
+    public KillStreamCacheResult killStreamCache(KillStreamCacheRequest killStreamCacheRequest) {
+        ExecutionContext executionContext = createExecutionContext(killStreamCacheRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<KillStreamCacheRequest> request = null;
+        Response<KillStreamCacheResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new KillStreamCacheMarshaller()
+                        .marshall(super.beforeMarshalling(killStreamCacheRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new KillStreamCacheUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
 
     private void init() {
         setServiceNameIntern(DEFAULT_SIGNING_NAME);

@@ -38,4 +38,8 @@ public interface KLS {
     //主播流时长统计
     public ListStreamDurationsResult listStreamDurations(
             ListStreamDurationsRequest listStreamDurationsRequest);
+
+    //CDN 提拉流
+    public KillStreamCacheResult killStreamCache(
+            KillStreamCacheRequest killStreamCacheRequest);
 }
