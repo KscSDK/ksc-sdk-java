@@ -2,7 +2,12 @@
 <project
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-	<modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>org.sonatype.oss</groupId>
+    <artifactId>oss-parent</artifactId>
+    <version>9</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
 	<version>0.2.0</version>
@@ -45,8 +50,8 @@
 		<module>ksc-sdk-java-cdn</module>
 		<module>ksc-sdk-java-kvs</module>
 		<module>ksc-sdk-java-vcs</module>
-        <module>ksc-sdk-java-live</module>
-        <module>ksc-sdk-java-sts</module>
+    <module>ksc-sdk-java-live</module>
+    <module>ksc-sdk-java-sts</module>
     </modules>
 	<scm>
 		<url>https://github.com/ksc/ksc-sdk-java.git</url>
@@ -55,7 +60,8 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jre.version>1.6</jre.version>
 		<jackson.version>2.6.6</jackson.version>
-		<skipTests>true</skipTests>
+    <skipTests>true</skipTests>
+    <maven.javadoc.skip>true</maven.javadoc.skip>
 		
 		<dep.maven-surefire-plugin.version>2.9</dep.maven-surefire-plugin.version>
 		<httpcomponents.httpclient.version>4.5.2</httpcomponents.httpclient.version>
@@ -179,7 +185,13 @@
 	</build>
 	<profiles>
 		<profile>
-			<id>publishing</id>
+        	<id>publishing</id>
+        	<activation>
+            	<property>
+                	<name>performRelease</name>
+                    <value>true</value>
+                </property>
+            </activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -222,4 +234,3 @@
 		</snapshotRepository>
 	</distributionManagement>
 </project>
-
