@@ -19,14 +19,11 @@ import com.ksc.auth.DefaultAWSCredentialsProviderChain;
 import com.ksc.http.DefaultErrorResponseHandler;
 import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
-import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
-import com.ksc.util.KscRequestMetrics;
-import com.ksc.util.KscRequestMetrics.Field;
 
 public class KSCKETClient extends KscWebServiceClient {
 	/** Provider for AWS credentials. */

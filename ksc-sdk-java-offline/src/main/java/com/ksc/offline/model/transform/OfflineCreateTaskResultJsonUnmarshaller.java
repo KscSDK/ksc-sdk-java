@@ -8,7 +8,6 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.offline.model.CreateTasklResult;
-import com.ksc.offline.model.OfflineErrResult;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
@@ -18,7 +17,7 @@ public class OfflineCreateTaskResultJsonUnmarshaller
 	public CreateTasklResult unmarshall(JsonUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
 		CreateTasklResult createTasklResult = new CreateTasklResult();
-        int originalDepth = context.getCurrentDepth();
+		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
 
@@ -33,18 +32,18 @@ public class OfflineCreateTaskResultJsonUnmarshaller
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				if(context.testExpression("taskid", targetDepth)){
-	                context.nextToken();
-	                createTasklResult.setTaskid((context.getUnmarshaller(String.class).unmarshall(context)));
-	            }else if(context.testExpression("errNum", targetDepth)){
-                    context.nextToken();
-                    createTasklResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("errMsg", targetDepth)){
-                    context.nextToken();
-                    createTasklResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
-                }
+				if (context.testExpression("taskid", targetDepth)) {
+					context.nextToken();
+					createTasklResult.setTaskid((context.getUnmarshaller(String.class).unmarshall(context)));
+				} else if (context.testExpression("errNum", targetDepth)) {
+					context.nextToken();
+					createTasklResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("errMsg", targetDepth)) {
+					context.nextToken();
+					createTasklResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				}
 
-            } else if (token == END_ARRAY || token == END_OBJECT) {
+			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {
 					if (context.getCurrentDepth() <= originalDepth)
@@ -52,16 +51,16 @@ public class OfflineCreateTaskResultJsonUnmarshaller
 				}
 			}
 			token = context.nextToken();
-        }
+		}
 		return createTasklResult;
 	}
-	
+
 	private static OfflineCreateTaskResultJsonUnmarshaller instance;
 
-    public static OfflineCreateTaskResultJsonUnmarshaller getInstance() {
-        if (instance == null)
-            instance = new OfflineCreateTaskResultJsonUnmarshaller();
-        return instance;
-    }
+	public static OfflineCreateTaskResultJsonUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new OfflineCreateTaskResultJsonUnmarshaller();
+		return instance;
+	}
 
 }

@@ -9,7 +9,6 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.ket.model.StopStreamPullRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
 
 public class StopStreamPullRequestMarshaller
 		implements Marshaller<Request<StopStreamPullRequest>, StopStreamPullRequest> {

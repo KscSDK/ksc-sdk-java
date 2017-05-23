@@ -6,7 +6,6 @@ import com.ksc.transform.Unmarshaller;
 
 public class AudioJsonUnmarshaller implements Unmarshaller<Audio, JsonUnmarshallerContext> {
 	public Audio unmarshall(JsonUnmarshallerContext context) throws Exception {
-		Audio audio = new Audio();
 		return null;
 	}
 

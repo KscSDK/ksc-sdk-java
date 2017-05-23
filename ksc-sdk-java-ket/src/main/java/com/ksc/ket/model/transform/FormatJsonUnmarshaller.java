@@ -60,12 +60,33 @@ public class FormatJsonUnmarshaller implements Unmarshaller<Format, JsonUnmarsha
 				} else if (context.testExpression("suffix", targetDepth)) {
 					context.nextToken();
 					format.setSuffix(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("hlsBandwidth", targetDepth)) {
+				} else if (context.testExpression("HlsBandwidth", targetDepth)) {
 					context.nextToken();
 					format.setHlsBandwidth(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("disableScenecutSwitch", targetDepth)) {
 					context.nextToken();
 					format.setDisableScenecutSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("vbr_threshold", targetDepth)) {
+					context.nextToken();
+					format.setVbr_threshold(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("abr_threshold", targetDepth)) {
+					context.nextToken();
+					format.setAbr_threshold(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("format_index", targetDepth)) {
+					context.nextToken();
+					format.setFormat_index(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("shortside", targetDepth)) {
+					context.nextToken();
+					format.setShortside(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("intelligentSwitch", targetDepth)) {
+					context.nextToken();
+					format.setIntelligentSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("width", targetDepth)) {
+					context.nextToken();
+					format.setWidth(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("height", targetDepth)) {
+					context.nextToken();
+					format.setHeight(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

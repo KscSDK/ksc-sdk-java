@@ -1,11 +1,11 @@
 package com.ksc.offline.model;
 
 public class CreateTasklResult {
-	
+
 	private String taskid;
 	private int errNum;
 	private String errMsg;
-	
+
 	public String getTaskid() {
 		return taskid;
 	}

@@ -9,7 +9,6 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.ket.model.GetLoopList;
 import com.ksc.ket.model.GetLoopListResult;
-import com.ksc.ket.model.PresetList;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
@@ -36,7 +35,7 @@ public class GetLoopListResultJsonUnmarshaller implements Unmarshaller<GetLoopLi
 				if (context.testExpression("List", targetDepth)) {
 					context.nextToken();
 					result.setList(new ListUnmarshaller<GetLoopList>(GetLoopListJsonUnmarshaller.getInstance())
-									.unmarshall(context));
+							.unmarshall(context));
 				} else if (context.testExpression("ErrNum", targetDepth)) {
 					context.nextToken();
 					result.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));

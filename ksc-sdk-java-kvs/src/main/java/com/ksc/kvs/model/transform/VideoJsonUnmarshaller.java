@@ -7,11 +7,8 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.Audio;
-import com.ksc.kvs.model.Param;
 import com.ksc.kvs.model.Video;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
 public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshallerContext>{
@@ -66,6 +63,15 @@ public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshall
 				} else if (context.testExpression("gop", targetDepth)) {
 					context.nextToken();
 					video.setGop(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("qpmax", targetDepth)) {
+					context.nextToken();
+					video.setQpmax(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("crf", targetDepth)) {
+					context.nextToken();
+					video.setCrf(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("preset", targetDepth)) {
+					context.nextToken();
+					video.setPreset(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

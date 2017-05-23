@@ -6,11 +6,11 @@ import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
-import com.ksc.kvs.model.UpdatePersetRequest;
+import com.ksc.kvs.model.UpdatePresetRequest;
 import com.ksc.transform.Marshaller;
 
-public class UpdatePresetRequestMarshaller implements Marshaller<Request<UpdatePersetRequest>, UpdatePersetRequest>{
-	public Request<UpdatePersetRequest> marshall(UpdatePersetRequest updatePersetRequest) {
+public class UpdatePresetRequestMarshaller implements Marshaller<Request<UpdatePresetRequest>, UpdatePresetRequest>{
+	public Request<UpdatePresetRequest> marshall(UpdatePresetRequest updatePersetRequest) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
 				if (updatePersetRequest == null) {
@@ -18,7 +18,7 @@ public class UpdatePresetRequestMarshaller implements Marshaller<Request<UpdateP
 		                    "Invalid argument passed to marshall(...)");
 		        }
 				
-				Request<UpdatePersetRequest> request = new DefaultRequest<UpdatePersetRequest>(
+				Request<UpdatePresetRequest> request = new DefaultRequest<UpdatePresetRequest>(
 						updatePersetRequest, "kvs");
 				
 		        request.addParameter("Action","UpdatePreset");

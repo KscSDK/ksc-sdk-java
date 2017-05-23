@@ -31,7 +31,7 @@ public class GetLoopList {
 	}
 
 	public void setOutputFormat(String outputFormat) {
-		outputFormat = outputFormat;
+		this.outputFormat = outputFormat;
 	}
 
 	public com.ksc.internal.SdkInternalList<String> getSrcInfo() {
@@ -39,7 +39,7 @@ public class GetLoopList {
 	}
 
 	public void setSrcInfo(com.ksc.internal.SdkInternalList<String> srcInfo) {
-		srcInfo = srcInfo;
+		this.srcInfo = srcInfo;
 	}
 
 	public String getApp() {

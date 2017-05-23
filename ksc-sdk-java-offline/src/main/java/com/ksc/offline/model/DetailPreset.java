@@ -5,7 +5,7 @@ public class DetailPreset {
 	private String description;
 	private String createTime;
 	private String updateTime;
-	
+
 	private Param param;
 
 	public Param getParam() {
@@ -48,7 +48,4 @@ public class DetailPreset {
 		this.updateTime = updateTime;
 	}
 
-	
-	
-	
 }
