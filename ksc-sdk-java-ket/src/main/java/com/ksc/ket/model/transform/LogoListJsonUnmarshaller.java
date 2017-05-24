@@ -44,19 +44,19 @@ public class LogoListJsonUnmarshaller implements Unmarshaller<Logo, JsonUnmarsha
 					logo.setOptimal_h(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("short_side", targetDepth)) {
 					context.nextToken();
-					logo.setShort_side(context.getUnmarshaller(int.class).unmarshall(context));
+					logo.setShort_side(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("disable_scale", targetDepth)) {
 					context.nextToken();
-					logo.setDisable_scale(context.getUnmarshaller(int.class).unmarshall(context));
+					logo.setDisable_scale(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("short_side", targetDepth)) {
 					context.nextToken();
-					logo.setShort_side(context.getUnmarshaller(int.class).unmarshall(context));
+					logo.setShort_side(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("offsetX", targetDepth)) {
 					context.nextToken();
-					logo.setOffsetX(context.getUnmarshaller(int.class).unmarshall(context));
+					logo.setOffsetX(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("offsetY", targetDepth)) {
 					context.nextToken();
-					logo.setOffsetY(context.getUnmarshaller(int.class).unmarshall(context));
+					logo.setOffsetY(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("pic_url", targetDepth)) {
 					context.nextToken();
 					logo.setPic_url(context.getUnmarshaller(String.class).unmarshall(context));

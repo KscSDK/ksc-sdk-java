@@ -30,8 +30,8 @@ public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("AKLT6UU6Vp_9SxWW5RAW6UHtdQ",
-					"OD2JznBHfpNUHXi9c9C7N5t4G/uzyp0x0TSNaq3iCyIXWfOrK5aBTBC/CXymewOcLw==");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx",
+					"xxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -40,87 +40,69 @@ public class TestKvs {
 		KSCKVSJsonClient ksc = new KSCKVSJsonClient(credentials);
 		ksc.setEndpoint("http://kvs.cn-beijing-6.api.ksyun.com/");
 
-//		 UpdatePresetRequest presetRequest = new UpdatePresetRequest();
-//		 String data = PresetSet("preset_test1");
-//		 presetRequest.setData(data);
-//		 System.out.println("Create Preset Json:"+data);
-//		 KvsErrResult presetResult = ksc.UpdatePreset(presetRequest);
-//		 System.out.println(presetResult.getErrNum());
-		
+		GetListRequest gitlistrequest = new GetListRequest();
+		gitlistrequest.setWithDetail(1);
+		gitlistrequest.setPresettype("avop");
+		KvsResult getpresetlistResult = ksc.GetPresetList(gitlistrequest);
+		System.out.println(getpresetlistResult.getPresetList().size());
+
+		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
+		deletePresetRequest.setPreset("preset");
+		KvsErrResult deletePresetResult = ksc.DelPreset(deletePresetRequest);
+		System.out.println(deletePresetResult.getErrNum());
+
+		PresetRequest presetRequest = new PresetRequest();
+		String data = PresetSet("preset");
+		presetRequest.setData(data);
+		System.out.println("Create Preset Json:" + data);
+		KvsErrResult presetResult = ksc.Preset(presetRequest);
+		System.out.println(presetResult.getErrNum());
+
+		UpdatePresetRequest presetRequest1 = new UpdatePresetRequest();
+		String data1 = PresetSet("liubohua9");
+		presetRequest1.setData(data1);
+		System.out.println("Update Preset JSON " + data1);
+		KvsErrResult presetResult1 = ksc.UpdatePreset(presetRequest1);
+		System.out.println(presetResult1.getErrNum());
+
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
-		getPresetDetailRequest.setPreset("preset_test1");
+		getPresetDetailRequest.setPreset("preset");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
 		System.out.println(getPresetDetailResult.getPresetDetail().getParam().getVideo().getVcodec());
-		System.out.println(getPresetDetailResult.getPresetDetail().getParam().getLogos().get(2).size());
-		/*
-		 * GetListRequest gitlistrequest = new GetListRequest();
-		 * gitlistrequest.setWithDetail(1);
-		 * gitlistrequest.setPresettype("avop"); KvsResult getpresetlistResult =
-		 * ksc.GetPresetList(gitlistrequest);
-		 * System.out.println(getpresetlistResult.getPresetList().size());
-		 * 
-		 * DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
-		 * deletePresetRequest.setPreset("preset"); KvsErrResult
-		 * deletePresetResult = ksc.DelPreset(deletePresetRequest);
-		 * System.out.println(deletePresetResult.getErrNum());
-		 * 
-		 * PresetRequest presetRequest = new PresetRequest(); String data =
-		 * PresetSet("preset"); presetRequest.setData(data);
-		 * System.out.println("Create Preset Json:"+data); KvsErrResult
-		 * presetResult = ksc.Preset(presetRequest);
-		 * System.out.println(presetResult.getErrNum());
-		 * 
-		 * UpdatePersetRequest presetRequest1 = new UpdatePersetRequest();
-		 * String data1 = PresetSet("liubohua9"); presetRequest1.setData(data1);
-		 * System.out.println("Update Preset JSON "+data1); KvsErrResult
-		 * presetResult1 = ksc.UpdatePreset(presetRequest1);
-		 * System.out.println(presetResult1.getErrNum());
-		 * 
-		 * GetPresetDetailRequest getPresetDetailRequest = new
-		 * GetPresetDetailRequest(); getPresetDetailRequest.setPreset("preset");
-		 * GetPresetDetailResult getPresetDetailResult =
-		 * ksc.GetPresetDetail(getPresetDetailRequest);
-		 * System.out.println(getPresetDetailResult.getPresetDetail().getParam()
-		 * .getVideo().getVcodec());
-		 * 
-		 * CreateTaskRequest createTaskRequest = new CreateTaskRequest(); String
-		 * data2 = setTask("preset_avop1", "wangshuai9", "ksyun_a.flv",
-		 * "ksyun.flv"); createTaskRequest.setData(data2);
-		 * System.out.println("Create Task JSON "+data2); CreateTasklResult
-		 * createTasklResult = ksc.CreateTask(createTaskRequest);
-		 * System.out.println(createTasklResult.getErrNum());
-		 * System.out.println("taskid:"+createTasklResult.getTaskID());
-		 * 
-		 * DelTaskByTaskIDRequest delTaskByTaskIDRequest = new
-		 * DelTaskByTaskIDRequest(); delTaskByTaskIDRequest.setTaskID(
-		 * "359832c8b368ab27c1f4a5b5396e1af120160923"); KvsErrResult
-		 * DelTaskByTaskIDResult = ksc.DelTaskByTaskID(delTaskByTaskIDRequest);
-		 * System.out.println(deletePresetResult.getErrNum());
-		 * 
-		 * TopTaskByTaskIDRequest topTaskByTaskIDRequest = new
-		 * TopTaskByTaskIDRequest(); topTaskByTaskIDRequest.setTaskID(
-		 * "39c4926af7e04bd0d0ef9808c74286292016110"); KvsErrResult
-		 * TopTaskByTaskIDResult = ksc.TopTaskByTaskID(topTaskByTaskIDRequest);
-		 * System.out.println(TopTaskByTaskIDResult.getErrNum());
-		 * 
-		 * GetTaskListRequest getTaskListRequest = new GetTaskListRequest();
-		 * getTaskListRequest.setStartDate(20161101); GetTaskListResult
-		 * getTaskListResult = ksc.GetTaskList(getTaskListRequest);
-		 * System.out.println(getTaskListResult.getErrNum());
-		 * 
-		 * GetTaskByTaskIDRequest getTaskByTaskIDRequest = new
-		 * GetTaskByTaskIDRequest(); getTaskByTaskIDRequest.setTaskID(
-		 * "359832c8b368ab27c1f4a5b5396e1af120160923"); GetTaskByTaskIDResult
-		 * getTaskByTaskIDResult = ksc.GetTaskByTaskID(getTaskByTaskIDRequest);
-		 * System.out.println(getTaskByTaskIDResult.getErrNum());
-		 * 
-		 * GetTaskMetaRequest getTaskMetaInfoRequest = new GetTaskMetaRequest();
-		 * getTaskMetaInfoRequest.setTaskID(
-		 * "b444d1e644af2585c07fa62fc509623620161109");
-		 * getTaskMetaInfoRequest.setStartDate(20161101); GetTaskMetaResult
-		 * GetTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
-		 * System.out.println(GetTaskMetaResult.getErrNum());
-		 */
+
+		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
+		String data2 = setTask("preset_avop1", "wangshuai9", "ksyun_a.flv", "ksyun.flv");
+		createTaskRequest.setData(data2);
+		System.out.println("Create Task JSON " + data2);
+		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
+		System.out.println(createTasklResult.getErrNum());
+		System.out.println("taskid:" + createTasklResult.getTaskID());
+
+		DelTaskByTaskIDRequest delTaskByTaskIDRequest = new DelTaskByTaskIDRequest();
+		delTaskByTaskIDRequest.setTaskID("359832c8b368ab27c1f4a5b5396e1af120160923");
+		KvsErrResult DelTaskByTaskIDResult = ksc.DelTaskByTaskID(delTaskByTaskIDRequest);
+		System.out.println(deletePresetResult.getErrNum());
+
+		TopTaskByTaskIDRequest topTaskByTaskIDRequest = new TopTaskByTaskIDRequest();
+		topTaskByTaskIDRequest.setTaskID("39c4926af7e04bd0d0ef9808c74286292016110");
+		KvsErrResult TopTaskByTaskIDResult = ksc.TopTaskByTaskID(topTaskByTaskIDRequest);
+		System.out.println(TopTaskByTaskIDResult.getErrNum());
+
+		GetTaskListRequest getTaskListRequest = new GetTaskListRequest();
+		getTaskListRequest.setStartDate(20161101);
+		GetTaskListResult getTaskListResult = ksc.GetTaskList(getTaskListRequest);
+		System.out.println(getTaskListResult.getErrNum());
+
+		GetTaskByTaskIDRequest getTaskByTaskIDRequest = new GetTaskByTaskIDRequest();
+		getTaskByTaskIDRequest.setTaskID("359832c8b368ab27c1f4a5b5396e1af120160923");
+		GetTaskByTaskIDResult getTaskByTaskIDResult = ksc.GetTaskByTaskID(getTaskByTaskIDRequest);
+		System.out.println(getTaskByTaskIDResult.getErrNum());
+
+		GetTaskMetaRequest getTaskMetaInfoRequest = new GetTaskMetaRequest();
+		getTaskMetaInfoRequest.setTaskID("b444d1e644af2585c07fa62fc509623620161109");
+		getTaskMetaInfoRequest.setStartDate(20161101);
+		GetTaskMetaResult GetTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
+		System.out.println(GetTaskMetaResult.getErrNum());
 	}
 
 	private static String PresetSet(String preset) throws JSONException {

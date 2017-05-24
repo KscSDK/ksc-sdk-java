@@ -29,11 +29,13 @@ import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
 
 public class TestKet {
+	private static String UniqName = "videoqa";
+
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx",
-					"xxxxxxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxx",
+					"xxxxxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -46,63 +48,71 @@ public class TestKet {
 		PresetRequest presetRequest = new PresetRequest();
 		String data = PresetSet("looppreset", 1);
 		presetRequest.setData(data);
-		System.out.println("Create Preset Json:" + data);
 		ErrResult presetResult = ksc.Preset(presetRequest);
 		System.out.println("ErrNum: " + presetResult.getErrNum() + ",ErrMsg: " + presetResult.getErrMsg());
 
 		// 更新模板
 		UpdatePresetRequest updatepresetRequest = new UpdatePresetRequest();
-		String udata = PresetSet("preset", 3);
+		String udata = PresetSet("looppreset", 3);
 		updatepresetRequest.setData(udata);
-		System.out.println("Update Preset Json:" + udata);
 		ErrResult updatepresetResult = ksc.UpdatePreset(updatepresetRequest);
 		System.out.println("ErrNum: " + updatepresetResult.getErrNum() + ",ErrMsg: " + updatepresetResult.getErrMsg());
 
 		// 删除模板
 		DelPresetRequest delpresetRequest = new DelPresetRequest();
 		delpresetRequest.setApp("live");
-		delpresetRequest.setUniqName("mytest");
-		delpresetRequest.setPreset("preset");
+		delpresetRequest.setUniqName(UniqName);
+		delpresetRequest.setPreset("looppreset");
 		ErrResult delpresetResult = ksc.DelPreset(delpresetRequest);
 		System.out.println("ErrNum: " + delpresetResult.getErrNum() + ",ErrMsg: " + delpresetResult.getErrMsg());
 
 		// 获取模板列表
 		GetPresetListRequest getPresetListRequest = new GetPresetListRequest();
 		getPresetListRequest.setApp("live");
-		getPresetListRequest.setUniqName("mytest");
+		getPresetListRequest.setUniqName(UniqName);
 		GetPresetListResult getpresetlistResult = ksc.GetPresetList(getPresetListRequest);
-
+		System.out
+				.println("ErrNum: " + getpresetlistResult.getErrNum() + ",ErrMsg: " + getpresetlistResult.getErrMsg());
+		System.out.println("size:" + getpresetlistResult.getPresetList().size());
 		// 获取模板详情
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
 		getPresetDetailRequest.setApp("live");
-		getPresetDetailRequest.setUniqName("mytest");
-		getPresetDetailRequest.setPreset("preset");
+		getPresetDetailRequest.setUniqName(UniqName);
+		getPresetDetailRequest.setPreset("hlsMultiRate");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
-
-		// 获取任务列表
-		GetStreamTranListRequest getStreamTranListRequest = new GetStreamTranListRequest();
-		getStreamTranListRequest.setApp("live");
-		getStreamTranListRequest.setUniqName("mytest");
-		GetStreamTranListResult getStreamTranListResult = ksc.GetStreamTranList(getStreamTranListRequest);
+		System.out.println(
+				"ErrNum: " + getPresetDetailResult.getErrNum() + ",ErrMsg: " + getPresetDetailResult.getErrMsg());
 
 		// 发起外网拉流
 		StartStreamPullRequest startStreamPullRequest = new StartStreamPullRequest();
 		String data1 = StreamPullSet("test123", 0);
 		startStreamPullRequest.setData(data1);
 		ErrResult startStreamPullResult = ksc.StartStreamPull(startStreamPullRequest);
-		System.out.println("ErrNum: " + startStreamPullResult.getErrNum() + ",ErrMsg: " + startStreamPullResult.getErrMsg());
+		System.out.println(
+				"ErrNum: " + startStreamPullResult.getErrNum() + ",ErrMsg: " + startStreamPullResult.getErrMsg());
+
+		// 获取任务列表
+		GetStreamTranListRequest getStreamTranListRequest = new GetStreamTranListRequest();
+		getStreamTranListRequest.setApp("live");
+		getStreamTranListRequest.setUniqName(UniqName);
+		GetStreamTranListResult getStreamTranListResult = ksc.GetStreamTranList(getStreamTranListRequest);
+		System.out.println(
+				"ErrNum: " + getStreamTranListResult.getErrNum() + ",ErrMsg: " + getStreamTranListResult.getErrMsg());
 
 		// 停止外网拉流
 		StopStreamPullRequest stopStreamPullRequest = new StopStreamPullRequest();
 		String data2 = StreamPullSet("test123", 1);
 		stopStreamPullRequest.setData(data2);
 		ErrResult stopStreamPullResult = ksc.StopStreamPull(stopStreamPullRequest);
-		System.out.println("ErrNum: " + stopStreamPullResult.getErrNum() + ",ErrMsg: " + stopStreamPullResult.getErrMsg());
+		System.out.println(
+				"ErrNum: " + stopStreamPullResult.getErrNum() + ",ErrMsg: " + stopStreamPullResult.getErrMsg());
 
 		// 获取配额使用数据
 		GetQuotaUsedRequest getQuotaUsedRequest = new GetQuotaUsedRequest();
-		getQuotaUsedRequest.setUniqName("mytest");
+		getQuotaUsedRequest.setUniqName(UniqName);
 		GetQuotaUsedResult getQuotaUsedResult = ksc.GetQuotaUsed(getQuotaUsedRequest);
+		System.out.println("ErrNum: " + getQuotaUsedResult.getErrNum() + ",ErrMsg: " + getQuotaUsedResult.getErrMsg());
+		System.out.println(getQuotaUsedResult.getQuotaDetail().getQuotaTran());
 
 		// 发起轮播转码接口
 		StartLoopRequest startLoopRequest = new StartLoopRequest();
@@ -127,7 +137,7 @@ public class TestKet {
 		// 查询轮播列表接口
 		GetLoopListRequest getLoopListRequest = new GetLoopListRequest();
 		getLoopListRequest.setApp("live");
-		getLoopListRequest.setUniqName("mytest");
+		getLoopListRequest.setUniqName(UniqName);
 		GetLoopListResult getLoopListResult = ksc.GetLoopList(getLoopListRequest);
 		System.out.println(getLoopListResult.getList().get(0).getTaskID());
 
@@ -136,8 +146,8 @@ public class TestKet {
 	private static String UpdateLoopSet() {
 		JSONObject data = new JSONObject();
 		data.put("App", "live");
-		data.put("UniqName", "mytest");
-		data.put("StreamID", "1234");
+		data.put("UniqName", UniqName);
+		data.put("StreamID", "java_sdk_1234");
 		data.put("DurationHour", 10);
 		return data.toString();
 	}
@@ -145,22 +155,22 @@ public class TestKet {
 	private static String StopLoopSet() {
 		JSONObject data = new JSONObject();
 		data.put("App", "live");
-		data.put("UniqName", "mytest");
-		data.put("StreamID", "1234");
+		data.put("UniqName", UniqName);
+		data.put("StreamID", "java_sdk_1234");
 		return data.toString();
 	}
 
 	private static String StartLoopSet() {
 		JSONObject data = new JSONObject();
 		JSONArray srcInfo = new JSONArray();
-		data.put("PubDomain", "mytest.uplive.ksyun.com");
-		data.put("UniqName", "mytest");
+		data.put("PubDomain", "videoqa.uplive.ks-cdn.com");
+		data.put("UniqName", UniqName);
 		data.put("Preset", "looppreset");
-		data.put("StreamID", "11111");
+		data.put("StreamID", "java_sdk_1234");
 		data.put("App", "live");
 		data.put("DurationHour", 168);
 		JSONObject tmp = new JSONObject();
-		tmp.put("Path", "http://bucket.ks3-cn-beijing.ksyun.com/testVideo/test_cross.mp4");
+		tmp.put("Path", "http://ks3-cn-beijing-internal.ksyun.com/qa-screenshot/offline_source_file/offline_mkv.mkv");
 		tmp.put("Index", 0);
 		srcInfo.put(tmp);
 		data.put("SrcInfo", srcInfo);
@@ -169,10 +179,10 @@ public class TestKet {
 
 	private static String StreamPullSet(String StreamID, int type) {
 		JSONObject data = new JSONObject();
-		data.put("UniqName", "mytest");
+		data.put("UniqName", UniqName);
 		data.put("StreamID", StreamID);
 		if (type == 0) {
-			data.put("SrcUrl", "test.uplive.ks-cdn.com");
+			data.put("SrcUrl", "rtmp://foreagles.live.ks-cdn.com/live/gy1234");
 		}
 		data.put("App", "live");
 		return data.toString();
@@ -184,7 +194,7 @@ public class TestKet {
 		JSONArray output = new JSONArray();
 		JSONArray logo = new JSONArray();
 		JSONObject video = new JSONObject();
-		data.put("UniqName", "mytest");
+		data.put("UniqName", UniqName);
 		data.put("Preset", preset);
 		data.put("Description", "desc:" + preset);
 		data.put("App", "live");
@@ -205,7 +215,7 @@ public class TestKet {
 		video.put("orientationAdapt", 1);
 		for (int i = 0; i < num; i++) {
 			JSONObject logo_tmp = new JSONObject();
-			logo_tmp.put("pic", "/bucket/logo/logo1.jpg");
+			logo_tmp.put("pic", "/qa-screenshot/100x100.jpg");
 			logo_tmp.put("short_side", 640);
 			logo.put(logo_tmp);
 		}

@@ -1,15 +1,15 @@
 package com.ksc.ket.model;
 
 public class GetQuotaUsedResult {
-	private Integer ErrNum;
+	private int ErrNum;
 	private String ErrMsg;
 	private QuotaDetail quotaDetail;
 
-	public Integer getErrNum() {
+	public int getErrNum() {
 		return ErrNum;
 	}
 
-	public void setErrNum(Integer errNum) {
+	public void setErrNum(int errNum) {
 		ErrNum = errNum;
 	}
 

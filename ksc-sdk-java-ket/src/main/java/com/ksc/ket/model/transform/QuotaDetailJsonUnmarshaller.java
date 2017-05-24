@@ -44,7 +44,7 @@ public class QuotaDetailJsonUnmarshaller implements Unmarshaller<QuotaDetail, Js
 					quotaDetail.setQuotaTranUsed(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("QuotaTran", targetDepth)) {
 					context.nextToken();
-					quotaDetail.setQuotaTran(context.getUnmarshaller(Integer.class).unmarshall(context));
+					quotaDetail.setQuotaTran(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("QuotaCopyDeadline", targetDepth)) {
 					context.nextToken();
 					quotaDetail.setQuotaCopyDeadline(context.getUnmarshaller(String.class).unmarshall(context));

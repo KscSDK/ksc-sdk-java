@@ -30,7 +30,7 @@ public class GetQuotaUsedResultJsonUnmarshaller implements Unmarshaller<GetQuota
 				break;
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("TranList", targetDepth)) {
+				if (context.testExpression("QuotaDetail", targetDepth)) {
 					context.nextToken();
 					getQuotaUsedResult.setQuotaDetail(QuotaDetailJsonUnmarshaller.getInstance().unmarshall(context));
 				} else if (context.testExpression("ErrNum", targetDepth)) {

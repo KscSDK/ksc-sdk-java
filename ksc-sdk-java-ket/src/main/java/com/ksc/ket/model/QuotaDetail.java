@@ -1,21 +1,21 @@
 package com.ksc.ket.model;
 
 public class QuotaDetail {
-	private Integer QuotaPull;
+	private int QuotaPull;
 	private String QuotaTranDeadline;
-	private Integer QuotaCopy;
-	private Integer QuotaTranUsed;
-	private Integer QuotaTran;
+	private int QuotaCopy;
+	private int QuotaTranUsed;
+	private String QuotaTran;
 	private String QuotaCopyDeadline;
 	private String QuotaPullUsed;
 	private String QuotaPullDeadline;
-	private Integer QuotaCopyUsed;
+	private int QuotaCopyUsed;
 
-	public Integer getQuotaPull() {
+	public int getQuotaPull() {
 		return QuotaPull;
 	}
 
-	public void setQuotaPull(Integer quotaPull) {
+	public void setQuotaPull(int quotaPull) {
 		QuotaPull = quotaPull;
 	}
 
@@ -27,27 +27,27 @@ public class QuotaDetail {
 		QuotaTranDeadline = quotaTranDeadline;
 	}
 
-	public Integer getQuotaCopy() {
+	public int getQuotaCopy() {
 		return QuotaCopy;
 	}
 
-	public void setQuotaCopy(Integer quotaCopy) {
+	public void setQuotaCopy(int quotaCopy) {
 		QuotaCopy = quotaCopy;
 	}
 
-	public Integer getQuotaTranUsed() {
+	public int getQuotaTranUsed() {
 		return QuotaTranUsed;
 	}
 
-	public void setQuotaTranUsed(Integer quotaTranUsed) {
+	public void setQuotaTranUsed(int quotaTranUsed) {
 		QuotaTranUsed = quotaTranUsed;
 	}
 
-	public Integer getQuotaTran() {
+	public String getQuotaTran() {
 		return QuotaTran;
 	}
 
-	public void setQuotaTran(Integer quotaTran) {
+	public void setQuotaTran(String quotaTran) {
 		QuotaTran = quotaTran;
 	}
 
@@ -75,11 +75,11 @@ public class QuotaDetail {
 		QuotaPullDeadline = quotaPullDeadline;
 	}
 
-	public Integer getQuotaCopyUsed() {
+	public int getQuotaCopyUsed() {
 		return QuotaCopyUsed;
 	}
 
-	public void setQuotaCopyUsed(Integer quotaCopyUsed) {
+	public void setQuotaCopyUsed(int quotaCopyUsed) {
 		QuotaCopyUsed = quotaCopyUsed;
 	}
 

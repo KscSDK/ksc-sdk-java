@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java-ket</artifactId>
-	<version>1.0.0</version>
+	<version>1.0.4</version>
 	<packaging>jar</packaging>
 	<name>KSC SDK for Java - Ket</name>
 	<url>http://maven.apache.org</url>
