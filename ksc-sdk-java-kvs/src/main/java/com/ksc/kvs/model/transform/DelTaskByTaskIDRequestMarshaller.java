@@ -1,13 +1,10 @@
 package com.ksc.kvs.model.transform;
 
-import java.io.ByteArrayInputStream;
-
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kvs.model.DelTaskByTaskIDRequest;
-import com.ksc.kvs.model.PresetRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 

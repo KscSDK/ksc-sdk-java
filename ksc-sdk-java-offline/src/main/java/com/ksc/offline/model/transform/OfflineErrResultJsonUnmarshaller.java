@@ -9,15 +9,12 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.offline.model.OfflineErrResult;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class OfflineErrResultJsonUnmarshaller implements
-Unmarshaller<OfflineErrResult, JsonUnmarshallerContext>{
-	public OfflineErrResult unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+public class OfflineErrResultJsonUnmarshaller implements Unmarshaller<OfflineErrResult, JsonUnmarshallerContext> {
+	public OfflineErrResult unmarshall(JsonUnmarshallerContext context) throws Exception {
 		OfflineErrResult offlineErrRequest = new OfflineErrResult();
-        int originalDepth = context.getCurrentDepth();
+		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
 
@@ -32,15 +29,15 @@ Unmarshaller<OfflineErrResult, JsonUnmarshallerContext>{
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				if(context.testExpression("errNum", targetDepth)){
-                    context.nextToken();
-                    offlineErrRequest.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("errMsg", targetDepth)){
-                    context.nextToken();
-                    offlineErrRequest.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
-                }
+				if (context.testExpression("errNum", targetDepth)) {
+					context.nextToken();
+					offlineErrRequest.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("errMsg", targetDepth)) {
+					context.nextToken();
+					offlineErrRequest.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				}
 
-            } else if (token == END_ARRAY || token == END_OBJECT) {
+			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {
 					if (context.getCurrentDepth() <= originalDepth)
@@ -48,15 +45,15 @@ Unmarshaller<OfflineErrResult, JsonUnmarshallerContext>{
 				}
 			}
 			token = context.nextToken();
-        }
+		}
 		return offlineErrRequest;
-    }
+	}
 
-    private static OfflineErrResultJsonUnmarshaller instance;
+	private static OfflineErrResultJsonUnmarshaller instance;
 
-    public static OfflineErrResultJsonUnmarshaller getInstance() {
-        if (instance == null)
-            instance = new OfflineErrResultJsonUnmarshaller();
-        return instance;
-    }
+	public static OfflineErrResultJsonUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new OfflineErrResultJsonUnmarshaller();
+		return instance;
+	}
 }

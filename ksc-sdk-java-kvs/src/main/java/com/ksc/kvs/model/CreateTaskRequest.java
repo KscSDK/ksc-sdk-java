@@ -4,7 +4,6 @@ import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.kvs.model.transform.CreateTaskRequestMarshaller;
-import com.ksc.kvs.model.transform.DeletePresetRequestMarshaller;
 
 public class CreateTaskRequest extends KscWebServiceRequest
 implements DryRunSupportedRequest<CreateTaskRequest>{

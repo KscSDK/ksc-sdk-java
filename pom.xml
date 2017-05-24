@@ -52,6 +52,7 @@
 		<module>ksc-sdk-java-vcs</module>
     <module>ksc-sdk-java-live</module>
     <module>ksc-sdk-java-sts</module>
+    <module>ksc-sdk-java-ket</module>
     </modules>
 	<scm>
 		<url>https://github.com/ksc/ksc-sdk-java.git</url>

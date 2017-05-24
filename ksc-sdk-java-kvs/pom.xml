@@ -10,11 +10,11 @@
 
   <groupId>com.ksyun</groupId>
   <artifactId>ksc-sdk-java-kvs</artifactId>
-  <version>1.0.3</version>
+  <version>1.0.4</version>
   <packaging>jar</packaging>
   
   
-  <name>ksc-sdk-java-kvs</name>
+  <name>KSC SDK for Java - Kvs</name>
   <url>http://maven.apache.org</url>
 
   <properties>
