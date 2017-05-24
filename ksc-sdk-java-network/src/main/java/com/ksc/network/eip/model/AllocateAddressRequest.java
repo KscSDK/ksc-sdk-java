@@ -3,27 +3,13 @@ package com.ksc.network.eip.model;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-<<<<<<< HEAD
-import com.ksc.model.Filter;
 import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
-=======
-import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
->>>>>>> v4.0.0
 
 import java.io.Serializable;
 
 /**
  * <p>
-<<<<<<< HEAD
- * Contains the parameters for AuthorizeSecurityGroupEntry.
-=======
  * Contains the parameters for AllocateAddress.
->>>>>>> v4.0.0
  * </p>
  */
 public class AllocateAddressRequest extends KscWebServiceRequest implements
@@ -49,10 +35,6 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
      * 购买时长，只有包年包月时不可缺省。
      */
     private Integer PurchaseTime;
-<<<<<<< HEAD
-    
-=======
->>>>>>> v4.0.0
 
 	public String getLineId() {
 		return LineId;
@@ -86,55 +68,6 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
 		PurchaseTime = purchaseTime;
 	}
 
-<<<<<<< HEAD
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((BandWidth == null) ? 0 : BandWidth.hashCode());
-		result = prime * result
-				+ ((ChargeType == null) ? 0 : ChargeType.hashCode());
-		result = prime * result + ((LineId == null) ? 0 : LineId.hashCode());
-		result = prime * result
-				+ ((PurchaseTime == null) ? 0 : PurchaseTime.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		AllocateAddressRequest other = (AllocateAddressRequest) obj;
-		if (BandWidth == null) {
-			if (other.BandWidth != null)
-				return false;
-		} else if (!BandWidth.equals(other.BandWidth))
-			return false;
-		if (ChargeType == null) {
-			if (other.ChargeType != null)
-				return false;
-		} else if (!ChargeType.equals(other.ChargeType))
-			return false;
-		if (LineId == null) {
-			if (other.LineId != null)
-				return false;
-		} else if (!LineId.equals(other.LineId))
-			return false;
-		if (PurchaseTime == null) {
-			if (other.PurchaseTime != null)
-				return false;
-		} else if (!PurchaseTime.equals(other.PurchaseTime))
-			return false;
-		return true;
-	}
-
-	@Override
-=======
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -158,7 +91,6 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
     }
 
     @Override
->>>>>>> v4.0.0
     public AllocateAddressRequest clone() {
         return (AllocateAddressRequest) super.clone();
     }

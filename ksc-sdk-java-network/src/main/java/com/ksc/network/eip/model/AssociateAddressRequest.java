@@ -3,28 +3,13 @@ package com.ksc.network.eip.model;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-<<<<<<< HEAD
-import com.ksc.model.Filter;
-import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
 import com.ksc.network.eip.model.transform.AssociateAddressRequestMarshaller;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
-=======
-import com.ksc.network.eip.model.transform.AssociateAddressRequestMarshaller;
->>>>>>> v4.0.0
 
 import java.io.Serializable;
 
 /**
  * <p>
-<<<<<<< HEAD
- * Contains the parameters for AuthorizeSecurityGroupEntry.
-=======
  * Contains the parameters for AssociateAddress.
->>>>>>> v4.0.0
  * </p>
  */
 public class AssociateAddressRequest extends KscWebServiceRequest implements

@@ -7,11 +7,7 @@ import java.io.Serializable;
 
 /**
  * <p>
-<<<<<<< HEAD
- * Contains the output of DescribeVpcs.
-=======
  * Contains the output of AuthorizeSecurityGroupEntry.
->>>>>>> v4.0.0
  * </p>
  */
 @ToString
