@@ -1,5 +1,7 @@
 package com.ksc.cdn.model.enums;
 
+import lombok.Getter;
+
 /**
  * Created by CrazyHorse on 8/23/16.
  * openAPI 带宽数据返回类型

@@ -1,11 +1,14 @@
 package com.ksc.cdn.model.statistic.province.isp.httpcode;
 
+import lombok.Data;
+
 /**
  * HttpCodeData
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class HttpCodeData {
 
     /**
@@ -27,36 +30,4 @@ public class HttpCodeData {
      * 本类状态码下，各种详细状态码数据
      */
     private HttpCode[] Codes;
-
-    public String getCodeType() {
-        return CodeType;
-    }
-
-    public void setCodeType(String codeType) {
-        CodeType = codeType;
-    }
-
-    public Double getProportion() {
-        return Proportion;
-    }
-
-    public void setProportion(Double proportion) {
-        Proportion = proportion;
-    }
-
-    public Long getPv() {
-        return Pv;
-    }
-
-    public void setPv(Long pv) {
-        Pv = pv;
-    }
-
-    public HttpCode[] getCodes() {
-        return Codes;
-    }
-
-    public void setCodes(HttpCode[] codes) {
-        Codes = codes;
-    }
 }

@@ -84,7 +84,7 @@ AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secr
 * [VPC OpenAPI][VPCOpenAPI]
 * [EIP OpenAPI][EIPOpenAPI]
 * [SLB OpenAPI][SLBOpenAPI]
-* [TAG OpenAPI][TAGOpenAPI]
+* [VCS OpenAPI][VCSOpenAPI]
 
 
 ## Features
@@ -93,11 +93,11 @@ AWSCredentials credentials = new BasicAWSCredentials(aws_access_key_id, aws_secr
     protocols.
 
 * And more!
-[KECOpenAPI]: https://docs.ksyun.com/read/latest/52/_book/index.html
-[VPCOpenAPI]: https://docs.ksyun.com/read/latest/56/_book/index.html
-[EIPOpenAPI]: https://docs.ksyun.com/read/latest/21/_book/index.html
-[SLBOpenAPI]: https://docs.ksyun.com/read/latest/19/_book/index.html
-[TAGOpenAPI]: https://docs.ksyun.com/read/latest/90/_book/index.html 
+[KECOpenAPI]: http://www.ksyun.com/doc/art/id/1660
+[VPCOpenAPI]: http://www.ksyun.com/doc/art/id/1661
+[EIPOpenAPI]: http://www.ksyun.com/doc/cat/id/561
+[SLBOpenAPI]: http://www.ksyun.com/doc/art/id/1662
+[VCSOpenAPI]: https://www.ksyun.com/doc/cat/id/443
 [ksc-sdk-java-github]: https://github.com/KscSDK/ksc-sdk-java
 [example]: https://github.com/KscSDK/ksc-sdk-java/blob/master/README_SAMPLE.md
 

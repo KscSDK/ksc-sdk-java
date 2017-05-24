@@ -1,6 +1,7 @@
 package com.ksc.cdn.model.statistic.uv;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
+import lombok.Data;
 
 /**
  * 获取域名独立请求的IP个数，单位：个
@@ -8,6 +9,7 @@ import com.ksc.cdn.model.statistic.CommonFieldResult;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class UvResult extends CommonFieldResult {
 
     /**
@@ -27,28 +29,4 @@ public class UvResult extends CommonFieldResult {
      * 每个时间粒度的独立请求的IP数据
      */
     private UvDataByTime[] Datas;
-
-    public String getResultType() {
-        return ResultType;
-    }
-
-    public void setResultType(String resultType) {
-        ResultType = resultType;
-    }
-
-    public String getGranularity() {
-        return Granularity;
-    }
-
-    public void setGranularity(String granularity) {
-        Granularity = granularity;
-    }
-
-    public UvDataByTime[] getDatas() {
-        return Datas;
-    }
-
-    public void setDatas(UvDataByTime[] datas) {
-        Datas = datas;
-    }
 }

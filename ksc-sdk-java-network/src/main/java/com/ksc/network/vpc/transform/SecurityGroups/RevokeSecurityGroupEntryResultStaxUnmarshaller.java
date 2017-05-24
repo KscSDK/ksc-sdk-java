@@ -1,13 +1,6 @@
 package com.ksc.network.vpc.transform.SecurityGroups;
 
-<<<<<<< HEAD
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
 import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
-=======
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
->>>>>>> v4.0.0
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -15,11 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
-<<<<<<< HEAD
- * DeleteSecurityGroupResult StAX Unmarshaller
-=======
  * RevokeSecurityGroupEntryResult StAX Unmarshaller
->>>>>>> v4.0.0
  */
 public class RevokeSecurityGroupEntryResultStaxUnmarshaller implements
 		Unmarshaller<RevokeSecurityGroupEntryResult, StaxUnmarshallerContext> {

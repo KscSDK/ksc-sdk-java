@@ -1,11 +1,14 @@
 package com.ksc.cdn.model.statistic.province.isp.httpcode;
 
+import lombok.Data;
+
 /**
  * HttpCodeDataByTime
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class HttpCodeDataByTime {
 
     /**
@@ -23,27 +26,4 @@ public class HttpCodeDataByTime {
      */
     private HttpCodeDataByDomain[] Domains;
 
-    public String getTime() {
-        return Time;
-    }
-
-    public void setTime(String time) {
-        Time = time;
-    }
-
-    public HttpCode[] getCodeSum() {
-        return CodeSum;
-    }
-
-    public void setCodeSum(HttpCode[] codeSum) {
-        CodeSum = codeSum;
-    }
-
-    public HttpCodeDataByDomain[] getDomains() {
-        return Domains;
-    }
-
-    public void setDomains(HttpCodeDataByDomain[] domains) {
-        Domains = domains;
-    }
 }

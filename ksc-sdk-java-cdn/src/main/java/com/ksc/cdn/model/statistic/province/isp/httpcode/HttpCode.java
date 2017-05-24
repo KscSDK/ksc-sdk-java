@@ -1,11 +1,14 @@
 package com.ksc.cdn.model.statistic.province.isp.httpcode;
 
+import lombok.Data;
+
 /**
  * HttpCode
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class HttpCode {
     /**
      * 各种Http状态码，如：200，206，302，403,504
@@ -19,29 +22,5 @@ public class HttpCode {
      * 本状态码的的访问次数
      */
     private Long Pv;
-
-    public String getCode() {
-        return Code;
-    }
-
-    public void setCode(String code) {
-        Code = code;
-    }
-
-    public Double getProportion() {
-        return Proportion;
-    }
-
-    public void setProportion(Double proportion) {
-        Proportion = proportion;
-    }
-
-    public Long getPv() {
-        return Pv;
-    }
-
-    public void setPv(Long pv) {
-        Pv = pv;
-    }
 }
 

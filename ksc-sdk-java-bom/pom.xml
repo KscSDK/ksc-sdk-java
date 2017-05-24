@@ -3,9 +3,9 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-	<groupId>com.ksyun</groupId>
+	<groupId>com.ksc</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
-	<version>0.2.0</version>
+	<version>0.1.9</version>
   </parent>
   <artifactId>ksc-sdk-java-bom</artifactId>
   <packaging>pom</packaging>
@@ -15,40 +15,40 @@
     <!-- The dependencies section in pom.xml is auto generated. No manual changes are allowed -->
     <dependencies>
 	<dependency>
-		<groupId>com.ksyun</groupId>
+		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-core</artifactId>
 		<optional>false</optional>
-		<version>0.2.0</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
-		<groupId>com.ksyun</groupId>
+		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-kec</artifactId>
 		<optional>false</optional>
-		<version>0.2.0</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
-		<groupId>com.ksyun</groupId>
+		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-network</artifactId>
 		<optional>false</optional>
-		<version>0.2.0</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
-		<groupId>com.ksyun</groupId>
+		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-monitor</artifactId>
 		<optional>false</optional>
-		<version>0.2.0</version>
+		<version>0.1.9</version>
 	</dependency>
 	<dependency>
-		<groupId>com.ksyun</groupId>
+		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-epc</artifactId>
 		<optional>false</optional>
-		<version>0.2.0</version>
+		<version>0.1.9</version>
 	</dependency>
     <dependency>
-		<groupId>com.ksyun</groupId>
+		<groupId>com.ksc</groupId>
 		<artifactId>ksc-sdk-java-vcs</artifactId>
 		<optional>false</optional>
-		<version>0.2.0</version>
+		<version>0.1.9</version>
 	</dependency>
 </dependencies>
   </dependencyManagement>

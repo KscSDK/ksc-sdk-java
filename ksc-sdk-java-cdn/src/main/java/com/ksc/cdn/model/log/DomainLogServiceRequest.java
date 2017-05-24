@@ -4,6 +4,7 @@ import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.GeneralRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
+import lombok.Data;
 
 import java.text.ParseException;
 import java.util.HashMap;
@@ -15,6 +16,7 @@ import java.util.Map;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class DomainLogServiceRequest implements GeneralRequest {
 
     /**
@@ -50,29 +52,5 @@ public class DomainLogServiceRequest implements GeneralRequest {
             map.put("Granularity", String.valueOf(granularity));
         }
         return map;
-    }
-
-    public ActionTypeEnum getActionType() {
-        return actionType;
-    }
-
-    public void setActionType(ActionTypeEnum actionType) {
-        this.actionType = actionType;
-    }
-
-    public String getDomainIds() {
-        return domainIds;
-    }
-
-    public void setDomainIds(String domainIds) {
-        this.domainIds = domainIds;
-    }
-
-    public Long getGranularity() {
-        return granularity;
-    }
-
-    public void setGranularity(Long granularity) {
-        this.granularity = granularity;
     }
 }

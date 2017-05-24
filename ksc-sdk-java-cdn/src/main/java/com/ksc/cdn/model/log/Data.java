@@ -3,6 +3,7 @@ package com.ksc.cdn.model.log;
 /**
  * Created by qichao on 2017/2/28.
  */
+@lombok.Data
 public class Data {
 
     /**
@@ -20,27 +21,4 @@ public class Data {
      */
     private Long Granularity;
 
-    public String getDomainId() {
-        return DomainId;
-    }
-
-    public void setDomainId(String domainId) {
-        DomainId = domainId;
-    }
-
-    public Long getGranularity() {
-        return Granularity;
-    }
-
-    public void setGranularity(Long granularity) {
-        Granularity = granularity;
-    }
-
-    public String getStatus() {
-        return Status;
-    }
-
-    public void setStatus(String status) {
-        Status = status;
-    }
 }

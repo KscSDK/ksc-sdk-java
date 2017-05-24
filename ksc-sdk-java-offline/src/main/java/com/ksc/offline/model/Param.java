@@ -8,7 +8,6 @@ public class Param {
 	//avsample & avsnapshot
 	private int width;
 	private int height;
-	private int shortSide;
 	//avsample
 	private int interval;
 	
@@ -17,8 +16,6 @@ public class Param {
 	
 	private int hlsTime;
 	private int clearmeta;
-	
-	private int intelligentSwitch;
 	
 	//avlogo
 	private List<Image> image;
@@ -94,21 +91,9 @@ public class Param {
 	public void setClearmeta(int clearmeta) {
 		this.clearmeta = clearmeta;
 	}
+	
+	
 
-	public int getShortSide() {
-		return shortSide;
-	}
-
-	public void setShortSide(int shortSide) {
-		this.shortSide = shortSide;
-	}
-
-	public int getIntelligentSwitch() {
-		return intelligentSwitch;
-	}
-
-	public void setIntelligentSwitch(int intelligentSwitch) {
-		this.intelligentSwitch = intelligentSwitch;
-	}
+	
 	
 }

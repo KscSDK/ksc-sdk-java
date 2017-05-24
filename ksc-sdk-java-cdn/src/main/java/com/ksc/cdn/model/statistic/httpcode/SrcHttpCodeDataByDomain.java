@@ -1,11 +1,14 @@
 package com.ksc.cdn.model.statistic.httpcode;
 
+import lombok.Data;
+
 /**
  * SrcHttpCodeDataByDomain
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class SrcHttpCodeDataByDomain {
 
     /**
@@ -18,19 +21,4 @@ public class SrcHttpCodeDataByDomain {
      */
     private SrcHttpCode[] SrcCodes;
 
-    public String getDomainId() {
-        return DomainId;
-    }
-
-    public void setDomainId(String domainId) {
-        DomainId = domainId;
-    }
-
-    public SrcHttpCode[] getSrcCodes() {
-        return SrcCodes;
-    }
-
-    public void setSrcCodes(SrcHttpCode[] srcCodes) {
-        SrcCodes = srcCodes;
-    }
 }

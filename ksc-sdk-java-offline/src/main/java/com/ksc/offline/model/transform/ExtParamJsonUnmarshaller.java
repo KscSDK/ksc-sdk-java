@@ -42,9 +42,6 @@ public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnma
 				} else if (context.testExpression("pattern", targetDepth)) {
 					context.nextToken();
 					extParam.setPattern(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("ts_acl", targetDepth)) {
-					context.nextToken();
-					extParam.setTsAcl(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

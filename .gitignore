@@ -2,8 +2,8 @@ bin/
 target/
 *\.project
 *\.classpath
-*\.settings/
-\.settings/
+*/.settings/*
+/.settings/*
 node_modules/
 test-output/
 .idea/

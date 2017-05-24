@@ -3,18 +3,18 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <groupId>com.ksyun</groupId>
+        <groupId>com.ksc</groupId>
         <artifactId>ksc-sdk-java</artifactId>
-        <version>0.2.0</version>
+        <version>0.1.9</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>ksc-sdk-java-cdn</artifactId>
     <dependencies>
         <dependency>
-            <groupId>com.ksyun</groupId>
+            <groupId>com.ksc</groupId>
             <artifactId>ksc-sdk-java-core</artifactId>
-            <version>0.2.0</version>
+            <version>0.1.9</version>
         </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
@@ -52,9 +52,6 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <artifactId>maven-source-plugin</artifactId>
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>

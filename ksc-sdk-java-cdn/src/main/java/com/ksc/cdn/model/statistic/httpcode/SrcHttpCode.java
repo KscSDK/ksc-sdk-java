@@ -1,11 +1,14 @@
 package com.ksc.cdn.model.statistic.httpcode;
 
+import lombok.Data;
+
 /**
  * SrcHttpCode
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class SrcHttpCode {
 
     /**
@@ -23,27 +26,4 @@ public class SrcHttpCode {
      */
     private Long Pv;
 
-    public String getSrcCode() {
-        return SrcCode;
-    }
-
-    public void setSrcCode(String srcCode) {
-        SrcCode = srcCode;
-    }
-
-    public Double getProportion() {
-        return Proportion;
-    }
-
-    public void setProportion(Double proportion) {
-        Proportion = proportion;
-    }
-
-    public Long getPv() {
-        return Pv;
-    }
-
-    public void setPv(Long pv) {
-        Pv = pv;
-    }
 }

@@ -29,26 +29,13 @@ public class Instance {
 
 	private InstanceMonitor Monitoring;
 
-	private List<InstanceNetwork> NetworkInterfaceSet;
+	private List<InstanceNetwork> NetworkInterfaceSet = new SdkInternalList<InstanceNetwork>();
 
 	private String SriovNetSupport;
 
 	private String CreationDate;
 
-	private String AvailabilityZone;
-
-	public String getAvailabilityZone() {
-		return AvailabilityZone;
-	}
-
-	public void setAvailabilityZone(String availabilityZone) {
-		AvailabilityZone = availabilityZone;
-	}
-
 	public Instance withNetworkSet(InstanceNetwork... network_set) {
-		if (this.NetworkInterfaceSet == null) {
-			this.NetworkInterfaceSet = new SdkInternalList<InstanceNetwork>();
-		}
 		for (InstanceNetwork n : network_set) {
 			this.NetworkInterfaceSet.add(n);
 		}

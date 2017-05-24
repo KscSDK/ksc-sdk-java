@@ -6,6 +6,7 @@ package com.ksc.cdn.model.log;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@lombok.Data
 public class DomainLogServiceStatusResult {
 
     /**
@@ -13,11 +14,4 @@ public class DomainLogServiceStatusResult {
      */
     private com.ksc.cdn.model.log.Data[] Datas;
 
-    public Data[] getDatas() {
-        return Datas;
-    }
-
-    public void setDatas(Data[] datas) {
-        Datas = datas;
-    }
 }

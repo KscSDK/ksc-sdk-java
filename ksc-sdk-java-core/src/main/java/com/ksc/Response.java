@@ -30,6 +30,5 @@ public final class Response<T> {
         this.httpResponse = httpResponse;
     }
     public T getKscResponse() { return response; }
-    public T getLiveResponse() { return response;}
     public HttpResponse getHttpResponse() { return httpResponse; }
 }

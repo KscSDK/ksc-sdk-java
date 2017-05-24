@@ -1,11 +1,14 @@
 package com.ksc.cdn.model.statistic.uv;
 
+import lombok.Data;
+
 /**
  * UvDataByTime
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class UvDataByTime {
 
     /**
@@ -23,27 +26,4 @@ public class UvDataByTime {
      */
     private UvDataByDomain[] Domains;
 
-    public String getTime() {
-        return Time;
-    }
-
-    public void setTime(String time) {
-        Time = time;
-    }
-
-    public Long getUv() {
-        return Uv;
-    }
-
-    public void setUv(Long uv) {
-        Uv = uv;
-    }
-
-    public UvDataByDomain[] getDomains() {
-        return Domains;
-    }
-
-    public void setDomains(UvDataByDomain[] domains) {
-        Domains = domains;
-    }
 }

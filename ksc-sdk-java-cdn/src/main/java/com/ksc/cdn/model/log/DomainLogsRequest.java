@@ -3,6 +3,7 @@ package com.ksc.cdn.model.log;
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.GeneralRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
+import lombok.Data;
 
 import java.text.ParseException;
 import java.util.Map;
@@ -13,6 +14,7 @@ import java.util.Map;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
+@Data
 public class DomainLogsRequest implements GeneralRequest {
 
     /**
@@ -48,45 +50,5 @@ public class DomainLogsRequest implements GeneralRequest {
     @Override
     public Map<String, String> buildParams() throws KscClientException, ParseException {
         return null;
-    }
-
-    public String getDomainId() {
-        return DomainId;
-    }
-
-    public void setDomainId(String domainId) {
-        DomainId = domainId;
-    }
-
-    public String getStartTime() {
-        return StartTime;
-    }
-
-    public void setStartTime(String startTime) {
-        StartTime = startTime;
-    }
-
-    public String getEndTime() {
-        return EndTime;
-    }
-
-    public void setEndTime(String endTime) {
-        EndTime = endTime;
-    }
-
-    public Long getPageSize() {
-        return PageSize;
-    }
-
-    public void setPageSize(Long pageSize) {
-        PageSize = pageSize;
-    }
-
-    public Long getPageNumber() {
-        return PageNumber;
-    }
-
-    public void setPageNumber(Long pageNumber) {
-        PageNumber = pageNumber;
     }
 }
