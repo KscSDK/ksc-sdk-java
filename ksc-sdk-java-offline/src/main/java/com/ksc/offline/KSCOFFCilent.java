@@ -19,18 +19,11 @@ import com.ksc.auth.DefaultAWSCredentialsProviderChain;
 import com.ksc.http.DefaultErrorResponseHandler;
 import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
-import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
-import com.ksc.offline.model.GetListRequest;
-import com.ksc.offline.model.OfflineResult;
-import com.ksc.offline.model.transform.GetListRequestMarshaller;
-import com.ksc.offline.model.transform.OfflineResultStaxUnmarshaller;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
-import com.ksc.util.KscRequestMetrics;
-import com.ksc.util.KscRequestMetrics.Field;
 
 public class KSCOFFCilent extends KscWebServiceClient {
 	/** Provider for AWS credentials. */
@@ -46,39 +39,37 @@ public class KSCOFFCilent extends KscWebServiceClient {
 	 * Client configuration factory providing ClientConfigurations tailored to
 	 * this client
 	 */
-	
+
 	protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
-	
+
 	protected final List<Unmarshaller<KscServiceException, Node>> exceptionUnmarshallers = new ArrayList<Unmarshaller<KscServiceException, Node>>();
 
-	
-	
 	public KSCOFFCilent() {
 		this(new DefaultAWSCredentialsProviderChain(), configFactory.getConfig());
 	}
-	
+
 	public KSCOFFCilent(ClientConfiguration clientConfiguration) {
 		this(new DefaultAWSCredentialsProviderChain(), clientConfiguration);
 	}
-	
+
 	public KSCOFFCilent(AWSCredentials awsCredentials) {
 		this(awsCredentials, configFactory.getConfig());
 	}
-	
-	
+
 	public KSCOFFCilent(AWSCredentials awsCredentials, ClientConfiguration clientConfiguration) {
 		super(clientConfiguration);
 		this.kscCredentialsProvider = new StaticCredentialsProvider(awsCredentials);
 		init();
 	}
-	
-	public KSCOFFCilent(DefaultAWSCredentialsProviderChain defaultAWSCredentialsProviderChain, ClientConfiguration clientConfiguration) {
+
+	public KSCOFFCilent(DefaultAWSCredentialsProviderChain defaultAWSCredentialsProviderChain,
+			ClientConfiguration clientConfiguration) {
 		super(clientConfiguration);
 		// TODO Auto-generated constructor stub
 	}
 
 	private void init() {
-		
+
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
 		exceptionUnmarshallers.add(new LegacyErrorUnmarshaller());
 
@@ -86,7 +77,7 @@ public class KSCOFFCilent extends KscWebServiceClient {
 		setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
 		// calling this.setEndPoint(...) will also modify the signer accordingly
 		setEndpoint("http://offline.cn-beijing-6.api.ksyun.com/");
-		//HandlerChainFactory chainFactory = new HandlerChainFactory();
+		// HandlerChainFactory chainFactory = new HandlerChainFactory();
 		/*
 		 * requestHandler2s .addAll(chainFactory
 		 * .newRequestHandlerChain("/com/ksc/services/kec/request.handlers"));
@@ -94,39 +85,7 @@ public class KSCOFFCilent extends KscWebServiceClient {
 		 * .newRequestHandler2Chain("/com/ksc/services/kec/request.handler2s"));
 		 */
 	}
-	
-	public OfflineResult Preset(GetListRequest offlineRequest){
-		ExecutionContext executionContext = createExecutionContext(offlineRequest);
-		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
-		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<GetListRequest> request = null;
-		Response<OfflineResult> response = null;
-		
-		try {
-			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
-			try {
-				request = new GetListRequestMarshaller()
-						.marshall(super.beforeMarshalling(offlineRequest));
-				// Binds the request metrics to the current request.
-				request.setKscRequestMetrics(kscRequestMetrics);
-			} finally {
-				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
-			}
-			
-			StaxResponseHandler<OfflineResult> responseHandler = new StaxResponseHandler<OfflineResult>(
-					new OfflineResultStaxUnmarshaller());
-			response = invoke(request, responseHandler, executionContext);
 
-			return response.getKscResponse();
-
-		} finally {
-
-			endClientExecution(kscRequestMetrics, request, response);
-		}
-
-
-	}
-	
 	/**
 	 * Normal invoke with authentication. Credentials are required and may be
 	 * overriden at the request level.
@@ -139,7 +98,7 @@ public class KSCOFFCilent extends KscWebServiceClient {
 
 		return doInvoke(request, responseHandler, executionContext);
 	}
-	
+
 	/**
 	 * Invoke the request using the http client. Assumes credentials (or lack
 	 * thereof) have been configured in the ExecutionContext beforehand.

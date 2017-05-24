@@ -8,18 +8,16 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.kvs.model.GetTaskByTaskIDResult;
-import com.ksc.kvs.model.GetTaskListResult;
-import com.ksc.kvs.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class GetTaskByTaskIDResultJsonUnmarshaller implements Unmarshaller<GetTaskByTaskIDResult, JsonUnmarshallerContext> {
+public class GetTaskByTaskIDResultJsonUnmarshaller
+		implements Unmarshaller<GetTaskByTaskIDResult, JsonUnmarshallerContext> {
 
 	public GetTaskByTaskIDResult unmarshall(JsonUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
 		GetTaskByTaskIDResult getTaskByTaskIDResult = new GetTaskByTaskIDResult();
-        int originalDepth = context.getCurrentDepth();
+		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
 
@@ -35,18 +33,18 @@ public class GetTaskByTaskIDResultJsonUnmarshaller implements Unmarshaller<GetTa
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-                if (context.testExpression("taskInfo", targetDepth)) {
-                	context.nextToken();
-                	getTaskByTaskIDResult.setTaskInfo(TaskInfoListJsonUnmarshaller.getInstance().unmarshall(context));
-                }else if(context.testExpression("errNum", targetDepth)){
-                    context.nextToken();
-                    getTaskByTaskIDResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("errMsg", targetDepth)){
-                    context.nextToken();
-                    getTaskByTaskIDResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
-                }
+				if (context.testExpression("taskInfo", targetDepth)) {
+					context.nextToken();
+					getTaskByTaskIDResult.setTaskInfo(TaskInfoListJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("errNum", targetDepth)) {
+					context.nextToken();
+					getTaskByTaskIDResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("errMsg", targetDepth)) {
+					context.nextToken();
+					getTaskByTaskIDResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				}
 
-            } else if (token == END_ARRAY || token == END_OBJECT) {
+			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {
 					if (context.getCurrentDepth() <= originalDepth)
@@ -54,16 +52,16 @@ public class GetTaskByTaskIDResultJsonUnmarshaller implements Unmarshaller<GetTa
 				}
 			}
 			token = context.nextToken();
-        }
+		}
 		return getTaskByTaskIDResult;
 	}
-	
+
 	private static GetTaskByTaskIDResultJsonUnmarshaller instance;
 
-    public static GetTaskByTaskIDResultJsonUnmarshaller getInstance() {
-        if (instance == null)
-            instance = new GetTaskByTaskIDResultJsonUnmarshaller();
-        return instance;
-    }
+	public static GetTaskByTaskIDResultJsonUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new GetTaskByTaskIDResultJsonUnmarshaller();
+		return instance;
+	}
 
 }

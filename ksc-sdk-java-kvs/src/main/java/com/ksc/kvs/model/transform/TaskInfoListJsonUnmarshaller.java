@@ -7,7 +7,6 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.Preset;
 import com.ksc.kvs.model.SrcInfo;
 import com.ksc.kvs.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;

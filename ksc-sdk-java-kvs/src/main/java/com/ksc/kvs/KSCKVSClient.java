@@ -19,18 +19,11 @@ import com.ksc.auth.DefaultAWSCredentialsProviderChain;
 import com.ksc.http.DefaultErrorResponseHandler;
 import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
-import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
-import com.ksc.kvs.model.GetListRequest;
-import com.ksc.kvs.model.KvsResult;
-import com.ksc.kvs.model.transform.GetListRequestMarshaller;
-import com.ksc.kvs.model.transform.KvsResultStaxUnmarshaller;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
-import com.ksc.util.KscRequestMetrics;
-import com.ksc.util.KscRequestMetrics.Field;
 
 public class KSCKVSClient extends KscWebServiceClient {
 	/** Provider for AWS credentials. */
@@ -93,38 +86,6 @@ public class KSCKVSClient extends KscWebServiceClient {
 		 * requestHandler2s .addAll(chainFactory
 		 * .newRequestHandler2Chain("/com/ksc/services/kec/request.handler2s"));
 		 */
-	}
-	
-	public KvsResult Preset(GetListRequest kvsRequest){
-		ExecutionContext executionContext = createExecutionContext(kvsRequest);
-		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
-		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<GetListRequest> request = null;
-		Response<KvsResult> response = null;
-		
-		try {
-			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
-			try {
-				request = new GetListRequestMarshaller()
-						.marshall(super.beforeMarshalling(kvsRequest));
-				// Binds the request metrics to the current request.
-				request.setKscRequestMetrics(kscRequestMetrics);
-			} finally {
-				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
-			}
-			
-			StaxResponseHandler<KvsResult> responseHandler = new StaxResponseHandler<KvsResult>(
-					new KvsResultStaxUnmarshaller());
-			response = invoke(request, responseHandler, executionContext);
-
-			return response.getKscResponse();
-
-		} finally {
-
-			endClientExecution(kscRequestMetrics, request, response);
-		}
-
-
 	}
 	
 	/**

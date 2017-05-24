@@ -8,9 +8,7 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.kvs.model.SrcInfo;
-import com.ksc.kvs.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
 public class SrcInfoListJsonUnmarshaller implements Unmarshaller<SrcInfo, JsonUnmarshallerContext>{

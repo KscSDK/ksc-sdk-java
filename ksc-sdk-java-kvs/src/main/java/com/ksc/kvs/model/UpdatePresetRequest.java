@@ -5,8 +5,8 @@ import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.kvs.model.transform.UpdatePresetRequestMarshaller;
 
-public class UpdatePersetRequest  extends KscWebServiceRequest
-implements DryRunSupportedRequest<UpdatePersetRequest>{
+public class UpdatePresetRequest  extends KscWebServiceRequest
+implements DryRunSupportedRequest<UpdatePresetRequest>{
 	
 	private String data;
 
@@ -18,9 +18,9 @@ implements DryRunSupportedRequest<UpdatePersetRequest>{
 		this.data = data;
 	}
 
-	public Request<UpdatePersetRequest> getDryRunRequest() {
+	public Request<UpdatePresetRequest> getDryRunRequest() {
 		// TODO Auto-generated method stub
-		Request<UpdatePersetRequest> request = new UpdatePresetRequestMarshaller()
+		Request<UpdatePresetRequest> request = new UpdatePresetRequestMarshaller()
 				.marshall(this);
 		request.addParameter("DryRun", Boolean.toString(true));
 		return null;

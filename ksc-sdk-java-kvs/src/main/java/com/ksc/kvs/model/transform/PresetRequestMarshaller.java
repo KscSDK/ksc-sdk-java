@@ -8,7 +8,6 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kvs.model.PresetRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
 
 public class PresetRequestMarshaller implements Marshaller<Request<PresetRequest>, PresetRequest>{
 
