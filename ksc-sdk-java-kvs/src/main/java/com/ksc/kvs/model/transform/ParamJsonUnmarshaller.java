@@ -6,16 +6,17 @@ import static com.fasterxml.jackson.core.JsonToken.FIELD_NAME;
 import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
+import java.util.List;
+
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.internal.SdkInternalList;
 import com.ksc.kvs.model.Image;
 import com.ksc.kvs.model.Logo;
 import com.ksc.kvs.model.Param;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
+import com.ksc.transform.NestListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-import java.util.List;
 
 public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshallerContext> {
 
@@ -88,9 +89,8 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 					param.setAutorotate(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("logos", targetDepth)) {
 					context.nextToken();
-					List<List<Logo>> list = new CustomListUnmarshaller<List<Logo>>(new ListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance())).unmarshall(context);
+					List<List<Logo>> list = new NestListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance()).unmarshall(context);
 					param.setLogos(list);
-					//param.setLogos(new CustomListUnmarshaller<List<Logo>>(LogosJsonUnmarshaller.getInstance()).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
