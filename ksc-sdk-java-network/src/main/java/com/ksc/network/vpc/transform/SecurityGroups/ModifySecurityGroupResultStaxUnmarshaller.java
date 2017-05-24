@@ -1,8 +1,6 @@
 package com.ksc.network.vpc.transform.SecurityGroups;
 
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupResult;
 import com.ksc.network.vpc.model.SecurityGroups.ModifySecurityGroupResult;
-import com.ksc.network.vpc.model.vpc.CreateVpcResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -51,8 +49,12 @@ public class ModifySecurityGroupResultStaxUnmarshaller implements
 					ModifySecurityGroupResult.setSecurityGroupName(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
+				}if (context.testExpression("Description", targetDepth)) {
+					ModifySecurityGroupResult.setDescription(StringStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
 				}if (context.testExpression("SecurityGroupEntrySet/item", targetDepth)) {
-					ModifySecurityGroupResult.setSecurityGroupEntrySet(SecurityGroupRuleStaxUnmarshaller.getInstance()
+					ModifySecurityGroupResult.withSecurityGroupEntrySet(SecurityGroupRuleStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}else if(context.testExpression("RequestId", targetDepth)){

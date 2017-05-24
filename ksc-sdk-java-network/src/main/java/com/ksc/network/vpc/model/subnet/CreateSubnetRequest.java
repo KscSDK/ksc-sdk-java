@@ -3,7 +3,6 @@ package com.ksc.network.vpc.model.subnet;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
 
 import java.io.Serializable;
@@ -15,7 +14,6 @@ import java.io.Serializable;
  */
 public class CreateSubnetRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<CreateSubnetRequest> {
-
 
     /**
      * 可用区的名称

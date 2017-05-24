@@ -1,7 +1,6 @@
 package com.ksc.network.vpc.transform.subnet;
 
 import com.ksc.network.vpc.model.subnet.CreateSubnetResult;
-import com.ksc.network.vpc.transform.vpc.VpcStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -9,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * CreateVpcResult StAX Unmarshaller
+ * CreateSubnetResult StAX Unmarshaller
  */
 public class CreateSubnetResultStaxUnmarshaller implements
 		Unmarshaller<CreateSubnetResult, StaxUnmarshallerContext> {

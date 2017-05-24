@@ -1,11 +1,11 @@
 package com.ksc.network.slb.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.slb.model.DescribeLoadBalancersResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
+
+import javax.xml.stream.events.XMLEvent;
 
 public class DescribeLoadBalancersResultStaxUnmarshaller
 		implements Unmarshaller<DescribeLoadBalancersResult, StaxUnmarshallerContext> {
@@ -41,6 +41,14 @@ public class DescribeLoadBalancersResultStaxUnmarshaller
 				}
 			}
 		}
+	}
+
+	private static DescribeLoadBalancersResultStaxUnmarshaller instance;
+
+	public static DescribeLoadBalancersResultStaxUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new DescribeLoadBalancersResultStaxUnmarshaller();
+		return instance;
 	}
 
 }

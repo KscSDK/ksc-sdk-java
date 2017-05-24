@@ -9,7 +9,7 @@ import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * DeleteVpcRequest Marshaller
+ * DeleteSubnetRequest Marshaller
  */
 
 public class DeleteSubnetRequestMarshaller implements
