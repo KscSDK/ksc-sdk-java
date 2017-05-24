@@ -8,9 +8,6 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.offline.model.GetTaskListResult;
-import com.ksc.offline.model.OfflineErrResult;
-import com.ksc.offline.model.OfflineResult;
-import com.ksc.offline.model.Preset;
 import com.ksc.offline.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
@@ -21,7 +18,7 @@ public class GetTaskListResultJsonUnmarshaller implements Unmarshaller<GetTaskLi
 	public GetTaskListResult unmarshall(JsonUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
 		GetTaskListResult getTaskListResult = new GetTaskListResult();
-        int originalDepth = context.getCurrentDepth();
+		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
 
@@ -37,34 +34,35 @@ public class GetTaskListResultJsonUnmarshaller implements Unmarshaller<GetTaskLi
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-                if (context.testExpression("taskInfo", targetDepth)) {
-                	context.nextToken();
-                	getTaskListResult
-                			.setTaskInfoList(new ListUnmarshaller<TaskInfo>(TaskInfoListJsonUnmarshaller.getInstance()).unmarshall(context));
-                }else if(context.testExpression("errNum", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("errMsg", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
-                }else if(context.testExpression("startdate", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setStartdate((context.getUnmarshaller(String.class).unmarshall(context)));
-                }else if(context.testExpression("enddate", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setEnddate((context.getUnmarshaller(String.class).unmarshall(context)));
-                }else if(context.testExpression("marker", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setMarker((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("count", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setCount((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("total", targetDepth)){
-                    context.nextToken();
-                    getTaskListResult.setTotal((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }
+				if (context.testExpression("taskInfo", targetDepth)) {
+					context.nextToken();
+					getTaskListResult
+							.setTaskInfoList(new ListUnmarshaller<TaskInfo>(TaskInfoListJsonUnmarshaller.getInstance())
+									.unmarshall(context));
+				} else if (context.testExpression("errNum", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("errMsg", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				} else if (context.testExpression("startdate", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setStartdate((context.getUnmarshaller(String.class).unmarshall(context)));
+				} else if (context.testExpression("enddate", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setEnddate((context.getUnmarshaller(String.class).unmarshall(context)));
+				} else if (context.testExpression("marker", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setMarker((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("count", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setCount((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("total", targetDepth)) {
+					context.nextToken();
+					getTaskListResult.setTotal((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				}
 
-            } else if (token == END_ARRAY || token == END_OBJECT) {
+			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {
 					if (context.getCurrentDepth() <= originalDepth)
@@ -72,16 +70,16 @@ public class GetTaskListResultJsonUnmarshaller implements Unmarshaller<GetTaskLi
 				}
 			}
 			token = context.nextToken();
-        }
+		}
 		return getTaskListResult;
 	}
-	
+
 	private static GetTaskListResultJsonUnmarshaller instance;
 
-    public static GetTaskListResultJsonUnmarshaller getInstance() {
-        if (instance == null)
-            instance = new GetTaskListResultJsonUnmarshaller();
-        return instance;
-    }
+	public static GetTaskListResultJsonUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new GetTaskListResultJsonUnmarshaller();
+		return instance;
+	}
 
 }

@@ -4,20 +4,23 @@ import java.util.List;
 
 public class Param {
 	private String f;
-	
-	//avsample & avsnapshot
+
+	// avsample & avsnapshot
 	private int width;
 	private int height;
-	//avsample
+	private int shortSide;
+	// avsample
 	private int interval;
-	
+
 	private Video video;
 	private Audio audio;
-	
+
 	private int hlsTime;
 	private int clearmeta;
-	
-	//avlogo
+
+	private int intelligentSwitch;
+
+	// avlogo
 	private List<Image> image;
 
 	public String getF() {
@@ -91,9 +94,21 @@ public class Param {
 	public void setClearmeta(int clearmeta) {
 		this.clearmeta = clearmeta;
 	}
-	
-	
 
-	
-	
+	public int getShortSide() {
+		return shortSide;
+	}
+
+	public void setShortSide(int shortSide) {
+		this.shortSide = shortSide;
+	}
+
+	public int getIntelligentSwitch() {
+		return intelligentSwitch;
+	}
+
+	public void setIntelligentSwitch(int intelligentSwitch) {
+		this.intelligentSwitch = intelligentSwitch;
+	}
+
 }

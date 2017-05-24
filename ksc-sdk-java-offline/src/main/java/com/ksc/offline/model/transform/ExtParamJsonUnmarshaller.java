@@ -11,7 +11,7 @@ import com.ksc.offline.model.ExtParam;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnmarshallerContext>{
+public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnmarshallerContext> {
 	public ExtParam unmarshall(JsonUnmarshallerContext context) throws Exception {
 		ExtParam extParam = new ExtParam();
 		int originalDepth = context.getCurrentDepth();
@@ -29,7 +29,7 @@ public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnma
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("ss", targetDepth)) {
 					context.nextToken();
 					extParam.setSs(context.getUnmarshaller(String.class).unmarshall(context));
@@ -42,6 +42,9 @@ public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnma
 				} else if (context.testExpression("pattern", targetDepth)) {
 					context.nextToken();
 					extParam.setPattern(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("ts_acl", targetDepth)) {
+					context.nextToken();
+					extParam.setTsAcl(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

@@ -3,7 +3,6 @@ package com.ksc.kvs.model;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.kvs.model.transform.DelTaskByTaskIDRequestMarshaller;
 import com.ksc.kvs.model.transform.TopTaskByTaskIDRequestMarshaller;
 
 public class TopTaskByTaskIDRequest extends KscWebServiceRequest

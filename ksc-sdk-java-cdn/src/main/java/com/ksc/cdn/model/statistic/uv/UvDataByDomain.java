@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.uv;
 
-import lombok.Data;
-
 /**
  * UvDataByDomain
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class UvDataByDomain {
 
     /**
@@ -21,4 +18,19 @@ public class UvDataByDomain {
      */
     private Long Uv;
 
+    public String getDomainId() {
+        return DomainId;
+    }
+
+    public void setDomainId(String domainId) {
+        DomainId = domainId;
+    }
+
+    public Long getUv() {
+        return Uv;
+    }
+
+    public void setUv(Long uv) {
+        Uv = uv;
+    }
 }

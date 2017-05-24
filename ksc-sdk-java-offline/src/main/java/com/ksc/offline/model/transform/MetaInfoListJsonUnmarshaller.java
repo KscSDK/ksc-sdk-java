@@ -8,12 +8,11 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.offline.model.MetaInfo;
-import com.ksc.offline.model.Preset;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class MetaInfoListJsonUnmarshaller implements Unmarshaller<MetaInfo, JsonUnmarshallerContext>{
-	
+public class MetaInfoListJsonUnmarshaller implements Unmarshaller<MetaInfo, JsonUnmarshallerContext> {
+
 	public MetaInfo unmarshall(JsonUnmarshallerContext context) throws Exception {
 		MetaInfo metaInfo = new MetaInfo();
 		int originalDepth = context.getCurrentDepth();
@@ -31,7 +30,7 @@ public class MetaInfoListJsonUnmarshaller implements Unmarshaller<MetaInfo, Json
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("taskid", targetDepth)) {
 					context.nextToken();
 					metaInfo.setTaskid(context.getUnmarshaller(String.class).unmarshall(context));
@@ -41,7 +40,7 @@ public class MetaInfoListJsonUnmarshaller implements Unmarshaller<MetaInfo, Json
 				} else if (context.testExpression("createTime", targetDepth)) {
 					context.nextToken();
 					metaInfo.setCreateTime(context.getUnmarshaller(String.class).unmarshall(context));
-				} 
+				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {
@@ -61,5 +60,5 @@ public class MetaInfoListJsonUnmarshaller implements Unmarshaller<MetaInfo, Json
 			instance = new MetaInfoListJsonUnmarshaller();
 		return instance;
 	}
-	
+
 }

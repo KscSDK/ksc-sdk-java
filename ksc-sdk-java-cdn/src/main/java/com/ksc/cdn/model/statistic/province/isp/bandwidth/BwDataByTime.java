@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.province.isp.bandwidth;
 
-import lombok.ToString;
-
 /**
  * BwDataByTime
  *
  * @author jiangran@kingsoft.com
  * @date 2016/11/17
  */
-@ToString
 public class BwDataByTime {
     /**
      * 时间点
