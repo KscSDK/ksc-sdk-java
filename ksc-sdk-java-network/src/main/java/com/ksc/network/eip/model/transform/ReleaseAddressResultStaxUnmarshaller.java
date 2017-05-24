@@ -1,7 +1,10 @@
 package com.ksc.network.eip.model.transform;
 
 import com.ksc.network.eip.model.ReleaseAddressResult;
+<<<<<<< HEAD
 import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
+=======
+>>>>>>> v4.0.0
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -9,7 +12,11 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
+<<<<<<< HEAD
  * DeleteVpcResult StAX Unmarshaller
+=======
+ * ReleaseAddressResult StAX Unmarshaller
+>>>>>>> v4.0.0
  */
 public class ReleaseAddressResultStaxUnmarshaller implements
 		Unmarshaller<ReleaseAddressResult, StaxUnmarshallerContext> {

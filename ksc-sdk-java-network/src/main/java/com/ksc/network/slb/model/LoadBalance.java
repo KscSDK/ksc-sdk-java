@@ -1,8 +1,10 @@
 package com.ksc.network.slb.model;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class LoadBalance {
 	/**
 	 * 负载均衡创建时间
@@ -21,7 +23,7 @@ public class LoadBalance {
 	 */
 	private String LoadBalancerId;
 	/**
-	 * 提供特殊的负载均衡，在VPC内部的负载均衡
+	 * 负载均衡类型，公网（public）是支持公网的负载均衡、私网（internal）是VPC内部的负载均衡
 	 */
 	private String Type;
 	/**

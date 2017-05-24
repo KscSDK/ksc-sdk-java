@@ -1,5 +1,6 @@
 package com.ksc.network.vpc.model.SecurityGroups;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -8,6 +9,7 @@ import lombok.ToString;
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeSecurityGroupsResult {
 	
 	private String RequestId;
@@ -41,15 +43,6 @@ public class DescribeSecurityGroupsResult {
         return SecurityGroupSet;
     }
 
-    /**
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * 
-     * @param vpcs
-     *        Information about one or more SecurityGroups.
-     */
-
     public void setSecurityGroupSet(java.util.Collection<SecurityGroup> securityGroups) {
         if (securityGroups == null) {
             this.SecurityGroupSet = null;
@@ -58,23 +51,6 @@ public class DescribeSecurityGroupsResult {
 
         this.SecurityGroupSet = new com.ksc.internal.SdkInternalList<SecurityGroup>(securityGroups);
     }
-
-    /**
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * <p>
-     * <b>NOTE:</b> This method appends the values to the existing list (if
-     * any). Use {@link #setSecurityGroups(java.util.Collection)} or
-     * {@link #withSecurityGroups(java.util.Collection)} if you want to override the
-     * existing values.
-     * </p>
-     * 
-     * @param securityGroups
-     *        Information about one or more SecurityGroups.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeSecurityGroupsResult withSecurityGroups(SecurityGroup... securityGroups) {
         if (this.SecurityGroupSet == null) {
@@ -85,17 +61,6 @@ public class DescribeSecurityGroupsResult {
         }
         return this;
     }
-
-    /**
-     * <p>
-     * Information about one or more SecurityGroups.
-     * </p>
-     * 
-     * @param securityGroups
-     *        Information about one or more SecurityGroups.
-     * @return Returns a reference to this object so that method calls can be
-     *         chained together.
-     */
 
     public DescribeSecurityGroupsResult withSecurityGroups(java.util.Collection<SecurityGroup> securityGroups) {
         setSecurityGroupSet(securityGroups);

@@ -1,20 +1,34 @@
 package com.ksc.network.vpc.model.SecurityGroups;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 @ToString
+@EqualsAndHashCode
 public class SecurityGroup {
-
+	/**
+	 * 安全组的ID
+	 */
 	private String SecurityGroupId;
-
+	/**
+	 * 安全组的名称
+	 */
 	private String SecurityGroupName;
-
+	/**
+	 * 安全组的类型
+	 */
 	private String SecurityGroupType;
-
+	/**
+	 * Vpc的ID
+	 */
 	private String VpcId;
-
+	/**
+	 * 安全组创建时间
+	 */
 	private String CreateTime;
-
+	/**
+	 * 安全组规则的信息
+	 */
 	private com.ksc.internal.SdkInternalList<SecurityGroupRule> SecurityGroupEntrySet;
 
 	public String getSecurityGroupId() {

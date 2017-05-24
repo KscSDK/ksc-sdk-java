@@ -6,7 +6,11 @@ import java.io.Serializable;
 
 /**
  * <p>
+<<<<<<< HEAD
  * Contains the output of DescribeVpcs.
+=======
+ * Contains the output of AllocateAddress.
+>>>>>>> v4.0.0
  * </p>
  */
 @ToString

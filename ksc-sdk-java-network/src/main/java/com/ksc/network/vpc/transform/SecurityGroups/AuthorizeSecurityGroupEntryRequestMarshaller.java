@@ -5,13 +5,20 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
+<<<<<<< HEAD
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
 import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
+=======
+>>>>>>> v4.0.0
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
+<<<<<<< HEAD
  * CreateSecurityGroupRequest Marshaller
+=======
+ * AuthorizeSecurityGroupEntryRequest Marshaller
+>>>>>>> v4.0.0
  */
 
 public class AuthorizeSecurityGroupEntryRequestMarshaller implements
