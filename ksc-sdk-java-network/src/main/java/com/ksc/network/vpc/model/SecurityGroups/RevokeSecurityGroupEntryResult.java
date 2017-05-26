@@ -7,20 +7,12 @@ import java.io.Serializable;
 
 /**
  * <p>
-<<<<<<< HEAD
- * Contains the output of DescribeVpcs.
-=======
  * Contains the output of RevokeSecurityGroupEntry.
->>>>>>> v4.0.0
  * </p>
  */
 @ToString
 public class RevokeSecurityGroupEntryResult implements Serializable, Cloneable {
 
-<<<<<<< HEAD
-	
-=======
->>>>>>> v4.0.0
 	private String RequestId;
 
 	private Boolean Return;

@@ -10,39 +10,8 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
-<<<<<<< HEAD
-import com.ksc.network.eip.model.AllocateAddressRequest;
-import com.ksc.network.eip.model.AllocateAddressResult;
-import com.ksc.network.eip.model.AssociateAddressRequest;
-import com.ksc.network.eip.model.AssociateAddressResult;
-import com.ksc.network.eip.model.DescribeAddressesRequest;
-import com.ksc.network.eip.model.DescribeAddressesResult;
-import com.ksc.network.eip.model.DisassociateAddressRequest;
-import com.ksc.network.eip.model.DisassociateAddressResult;
-import com.ksc.network.eip.model.GetLinesRequest;
-import com.ksc.network.eip.model.GetLinesResult;
-import com.ksc.network.eip.model.ReleaseAddressRequest;
-import com.ksc.network.eip.model.ReleaseAddressResult;
-import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
-import com.ksc.network.eip.model.transform.AllocateAddressResultStaxUnmarshaller;
-import com.ksc.network.eip.model.transform.AssociateAddressRequestMarshaller;
-import com.ksc.network.eip.model.transform.AssociateAddressResultStaxUnmarshaller;
-import com.ksc.network.eip.model.transform.DescribeAddressesRequestMarshaller;
-import com.ksc.network.eip.model.transform.DescribeAddressesResultStaxUnmarshaller;
-import com.ksc.network.eip.model.transform.DisassociateAddressRequestMarshaller;
-import com.ksc.network.eip.model.transform.DisassociateAddressResultStaxUnmarshaller;
-import com.ksc.network.eip.model.transform.GetLinesRequestMarshaller;
-import com.ksc.network.eip.model.transform.GetLinesResultStaxUnmarshaller;
-import com.ksc.network.eip.model.transform.ReleaseAddressRequestMarshaller;
-import com.ksc.network.eip.model.transform.ReleaseAddressResultStaxUnmarshaller;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.RevokeSecurityGroupEntryResult;
-import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryResultStaxUnmarshaller;
-=======
 import com.ksc.network.eip.model.*;
 import com.ksc.network.eip.model.transform.*;
->>>>>>> v4.0.0
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
@@ -435,9 +404,4 @@ public class KSCEIPClient extends KscWebServiceClient implements KSCEIP{
         }
     }
 
-<<<<<<< HEAD
-
-
-=======
->>>>>>> v4.0.0
 }

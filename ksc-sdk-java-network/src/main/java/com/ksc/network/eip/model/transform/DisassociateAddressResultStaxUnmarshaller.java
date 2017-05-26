@@ -1,13 +1,6 @@
 package com.ksc.network.eip.model.transform;
 
-<<<<<<< HEAD
-import com.ksc.network.eip.model.AssociateAddressResult;
 import com.ksc.network.eip.model.DisassociateAddressResult;
-import com.ksc.network.eip.model.ReleaseAddressResult;
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
-=======
-import com.ksc.network.eip.model.DisassociateAddressResult;
->>>>>>> v4.0.0
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -15,11 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
-<<<<<<< HEAD
- * DeleteVpcResult StAX Unmarshaller
-=======
  * DisassociateAddressResult StAX Unmarshaller
->>>>>>> v4.0.0
  */
 public class DisassociateAddressResultStaxUnmarshaller implements
 		Unmarshaller<DisassociateAddressResult, StaxUnmarshallerContext> {
