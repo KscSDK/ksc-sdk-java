@@ -14,6 +14,8 @@ import com.ksc.kvs.model.DeletePresetRequest;
 import com.ksc.kvs.model.GetListRequest;
 import com.ksc.kvs.model.GetPresetDetailRequest;
 import com.ksc.kvs.model.GetPresetDetailResult;
+import com.ksc.kvs.model.GetPresetListRequest;
+import com.ksc.kvs.model.GetPresetListResult;
 import com.ksc.kvs.model.GetTaskByTaskIDRequest;
 import com.ksc.kvs.model.GetTaskByTaskIDResult;
 import com.ksc.kvs.model.GetTaskListRequest;
@@ -30,8 +32,8 @@ public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx",
-					"xxxxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxxxx",
+					"xxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -40,10 +42,9 @@ public class TestKvs {
 		KSCKVSJsonClient ksc = new KSCKVSJsonClient(credentials);
 		ksc.setEndpoint("http://kvs.cn-beijing-6.api.ksyun.com/");
 
-		GetListRequest gitlistrequest = new GetListRequest();
-		gitlistrequest.setWithDetail(1);
-		gitlistrequest.setPresettype("avop");
-		KvsResult getpresetlistResult = ksc.GetPresetList(gitlistrequest);
+		GetPresetListRequest getlistrequest = new GetPresetListRequest();
+		getlistrequest.setWithDetail(1);
+		GetPresetListResult getpresetlistResult = ksc.GetPresetList(getlistrequest);
 		System.out.println(getpresetlistResult.getPresetList().size());
 
 		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();

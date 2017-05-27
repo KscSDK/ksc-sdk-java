@@ -26,6 +26,8 @@ import com.ksc.kvs.model.DeletePresetRequest;
 import com.ksc.kvs.model.GetListRequest;
 import com.ksc.kvs.model.GetPresetDetailRequest;
 import com.ksc.kvs.model.GetPresetDetailResult;
+import com.ksc.kvs.model.GetPresetListRequest;
+import com.ksc.kvs.model.GetPresetListResult;
 import com.ksc.kvs.model.GetTaskByTaskIDRequest;
 import com.ksc.kvs.model.GetTaskByTaskIDResult;
 import com.ksc.kvs.model.GetTaskListRequest;
@@ -41,6 +43,8 @@ import com.ksc.kvs.model.transform.CreateTaskRequestMarshaller;
 import com.ksc.kvs.model.transform.DeletePresetRequestMarshaller;
 import com.ksc.kvs.model.transform.GetListRequestMarshaller;
 import com.ksc.kvs.model.transform.GetPresetDetailRequestMarshaller;
+import com.ksc.kvs.model.transform.GetPresetListRequestMarshaller;
+import com.ksc.kvs.model.transform.GetPresetListResultJsonUnmarshaller;
 import com.ksc.kvs.model.transform.GetTaskByTaskIDRequestMarshaller;
 import com.ksc.kvs.model.transform.GetTaskByTaskIDResultJsonUnmarshaller;
 import com.ksc.kvs.model.transform.GetTaskListRequestMarshaller;
@@ -258,26 +262,26 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		}
 	}
 	
-	public KvsResult GetPresetList(GetListRequest kvsRequest) {
+	public GetPresetListResult GetPresetList(GetPresetListRequest kvsRequest) {
 		ExecutionContext executionContext = createExecutionContext(kvsRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<GetListRequest> request = null;
-		Response<KvsResult> response = null;
+		Request<GetPresetListRequest> request = null;
+		Response<GetPresetListResult> response = null;
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new GetListRequestMarshaller()
+				request = new GetPresetListRequestMarshaller()
 						.marshall(super.beforeMarshalling(kvsRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
 				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 			}
-			HttpResponseHandler<KscWebServiceResponse<KvsResult>> responseHandler = protocolFactory
+			HttpResponseHandler<KscWebServiceResponse<GetPresetListResult>> responseHandler = protocolFactory
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
-							new KvsResultJsonUnmarshaller());
+							new GetPresetListResultJsonUnmarshaller());
 			
 			response = invoke(request, responseHandler, executionContext);
 

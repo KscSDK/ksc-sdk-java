@@ -1,6 +1,6 @@
 package com.ksc.kvs.model;
 
-public class KvsResult {
+public class GetPresetListResult {
 	private int errNum;
 	private String errMsg;
 	private com.ksc.internal.SdkInternalList<Preset> PresetList;
