@@ -36,7 +36,7 @@ import com.ksc.kvs.model.KvsErrResult;
 import com.ksc.kvs.model.KvsResult;
 import com.ksc.kvs.model.PresetRequest;
 import com.ksc.kvs.model.TopTaskByTaskIDRequest;
-import com.ksc.kvs.model.UpdatePersetRequest;
+import com.ksc.kvs.model.UpdatePresetRequest;
 import com.ksc.kvs.model.transform.CreateTaskRequestMarshaller;
 import com.ksc.kvs.model.transform.DeletePresetRequestMarshaller;
 import com.ksc.kvs.model.transform.GetListRequestMarshaller;
@@ -319,11 +319,11 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 	}
 	
 
-	public KvsErrResult UpdatePreset(UpdatePersetRequest updatePersetRequest){
+	public KvsErrResult UpdatePreset(UpdatePresetRequest updatePersetRequest){
 		ExecutionContext executionContext = createExecutionContext(updatePersetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<UpdatePersetRequest> request = null;
+		Request<UpdatePresetRequest> request = null;
 		Response<KvsErrResult> response = null;
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);

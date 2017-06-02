@@ -7,14 +7,11 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.offline.model.Audio;
-import com.ksc.offline.model.Param;
 import com.ksc.offline.model.Video;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshallerContext>{
+public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshallerContext> {
 	public Video unmarshall(JsonUnmarshallerContext context) throws Exception {
 		Video video = new Video();
 		int originalDepth = context.getCurrentDepth();
@@ -32,14 +29,14 @@ public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshall
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("vr", targetDepth)) {
 					context.nextToken();
 					video.setVr(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("vb", targetDepth)) {
 					context.nextToken();
 					video.setVb(context.getUnmarshaller(String.class).unmarshall(context));
-				}  else if (context.testExpression("vcodec", targetDepth)) {
+				} else if (context.testExpression("vcodec", targetDepth)) {
 					context.nextToken();
 					video.setVcodec(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("width", targetDepth)) {
@@ -57,7 +54,7 @@ public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshall
 				} else if (context.testExpression("vn", targetDepth)) {
 					context.nextToken();
 					video.setVn(context.getUnmarshaller(Integer.class).unmarshall(context));
-				}else if (context.testExpression("shortSide", targetDepth)) {
+				} else if (context.testExpression("shortSide", targetDepth)) {
 					context.nextToken();
 					video.setShortSide(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("orientationAdapt", targetDepth)) {

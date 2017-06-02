@@ -1,7 +1,5 @@
 package com.ksc.cdn.model.statistic.httpcode;
 
-import lombok.Data;
-
 /**
  * SrcHttpCodeData
  * 获取域名一段时间内的回源Http状态码访问次数及占比数据
@@ -9,7 +7,6 @@ import lombok.Data;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class SrcHttpCodeData {
 
     /**
@@ -31,4 +28,36 @@ public class SrcHttpCodeData {
      * 本类状态码下，各种详细状态码数据
      */
     private SrcHttpCode[] SrcCodes;
+
+    public String getSrcCodeType() {
+        return SrcCodeType;
+    }
+
+    public void setSrcCodeType(String srcCodeType) {
+        SrcCodeType = srcCodeType;
+    }
+
+    public Double getProportion() {
+        return Proportion;
+    }
+
+    public void setProportion(Double proportion) {
+        Proportion = proportion;
+    }
+
+    public Long getPv() {
+        return Pv;
+    }
+
+    public void setPv(Long pv) {
+        Pv = pv;
+    }
+
+    public SrcHttpCode[] getSrcCodes() {
+        return SrcCodes;
+    }
+
+    public void setSrcCodes(SrcHttpCode[] srcCodes) {
+        SrcCodes = srcCodes;
+    }
 }

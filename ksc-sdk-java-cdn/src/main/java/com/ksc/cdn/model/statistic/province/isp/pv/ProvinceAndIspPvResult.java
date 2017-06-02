@@ -1,7 +1,6 @@
 package com.ksc.cdn.model.statistic.province.isp.pv;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.Data;
 
 /**
  * ProvinceAndIspHttpCodeResult
@@ -11,7 +10,6 @@ import lombok.Data;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class ProvinceAndIspPvResult extends CommonFieldResult {
 
     /**
@@ -42,4 +40,44 @@ public class ProvinceAndIspPvResult extends CommonFieldResult {
      * 每个时间粒度的请求数数据
      */
     private PvDataByTime[] Datas;
+
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public String getProvinces() {
+        return Provinces;
+    }
+
+    public void setProvinces(String provinces) {
+        Provinces = provinces;
+    }
+
+    public String getIsps() {
+        return Isps;
+    }
+
+    public void setIsps(String isps) {
+        Isps = isps;
+    }
+
+    public PvDataByTime[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(PvDataByTime[] datas) {
+        Datas = datas;
+    }
 }

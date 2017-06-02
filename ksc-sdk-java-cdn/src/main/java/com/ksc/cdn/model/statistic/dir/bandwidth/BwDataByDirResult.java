@@ -1,9 +1,6 @@
 package com.ksc.cdn.model.statistic.dir.bandwidth;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import com.ksc.cdn.model.statistic.dir.flow.FlowDataByTime;
-
-import lombok.Data;
 
 /**
  * 获取某段时间内按一级目录为维度下消耗的带宽，单位bit\/second
@@ -11,8 +8,8 @@ import lombok.Data;
  * @author zr
  * @date 2017/03/07
  */
-@Data
 public class BwDataByDirResult extends CommonFieldResult {
+
 
 
     /**
@@ -51,4 +48,52 @@ public class BwDataByDirResult extends CommonFieldResult {
      * 每个时间粒度的带宽数据
      */
     private BpsDataByTime[] Datas;
+
+    public String getDomainId() {
+        return DomainId;
+    }
+
+    public void setDomainId(String domainId) {
+        DomainId = domainId;
+    }
+
+    public String getDirs() {
+        return Dirs;
+    }
+
+    public void setDirs(String dirs) {
+        Dirs = dirs;
+    }
+
+    public String getRegions() {
+        return Regions;
+    }
+
+    public void setRegions(String regions) {
+        Regions = regions;
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
+    }
+
+    public BpsDataByTime[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(BpsDataByTime[] datas) {
+        Datas = datas;
+    }
 }

@@ -6,17 +6,9 @@ import static com.fasterxml.jackson.core.JsonToken.FIELD_NAME;
 import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.Audio;
 import com.ksc.kvs.model.DetailPreset;
-import com.ksc.kvs.model.Param;
-import com.ksc.kvs.model.Preset;
-import com.ksc.kvs.model.Video;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
 public class DetailPresetJsonUnmarshaller implements Unmarshaller<DetailPreset, JsonUnmarshallerContext>{
