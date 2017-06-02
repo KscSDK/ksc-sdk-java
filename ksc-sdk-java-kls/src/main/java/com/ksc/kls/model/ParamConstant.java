@@ -59,4 +59,40 @@ public class ParamConstant {
     public static final String RESULT = "Result";
 
     public static final String REQUST_ID = "RequestId";
+
+    public static final String MARKER = "Marker";
+
+    public static final String DETAIL = "Detail";
+
+    public static final String CLIENT_IP = "Clientip";
+
+    public static final String FIN_TIME = "Fintime";
+
+    public static final String PUB_TIME = "Pubtime";
+
+    public static final String STATUS_CODE = "StatusCode";
+
+    public static final String STATUS_MESSAGE = "StatusMessage";
+
+    public static final String BWIN = "BwIn";
+
+    public static final String BWINAUDIO = "BwInAudio";
+
+    public static final String BWREAL = "BwReal";
+
+    public static final String CURBITRATE = "Curbitrate";
+
+    public static final String CURFPS = "Curfps";
+
+    public static final String FRSME_RATE = "FrameRate";
+
+    public static final String HEIGHT = "Height";
+
+    public static final String SAMPLE_RATE = "SampleRate";
+
+    public static final String UPDATE_TIME = "UpdateTime";
+
+    public static final String WIDTH = "Width";
+
+
 }

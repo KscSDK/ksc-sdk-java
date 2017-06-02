@@ -5,7 +5,7 @@ import com.ksc.regions.Region;
 /**
  * Created by yangfan on 2017/4/24.
  */
-public interface KLS {
+public interface KSCKLS {
     void setEndpoint(String endpoint);
 
     void setRegion(Region region);
@@ -39,7 +39,19 @@ public interface KLS {
     public ListStreamDurationsResult listStreamDurations(
             ListStreamDurationsRequest listStreamDurationsRequest);
 
-    //CDN 提拉流
+    //CDN 踢拉流
     public KillStreamCacheResult killStreamCache(
             KillStreamCacheRequest killStreamCacheRequest);
+
+    //查询流历史错误信息
+    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsErrInfo(
+            ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest);
+
+    //查询流历史信息
+    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsInfo(
+            ListHistoryPubStreamsInfoRequest listHistoryPubStreamsInfoRequest);
+
+    //查询流实时信息接口
+    public ListRealtimePubStreamsInfoResult listRealtimePubStreamsInfo(
+            ListRealtimePubStreamsInfoRequest listRealtimePubStreamsInfoRequest);
 }

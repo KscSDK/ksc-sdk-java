@@ -1,5 +1,6 @@
 package com.ksc.kls;
 
+
 import com.ksc.*;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.AWSCredentialsProvider;
@@ -22,11 +23,12 @@ import org.apache.commons.logging.LogFactory;
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class KSCKSLClient extends KscWebServiceClient implements KLS {
+public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
 
 
     /** Provider for AWS credentials. */
     private AWSCredentialsProvider kscCredentialsProvider;
+
 
     /** Default signing name for the service. */
     private static final String DEFAULT_SIGNING_NAME = "kls";
@@ -183,12 +185,54 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
      *            optional request metric collector
      */
     public KSCKSLClient(AWSCredentialsProvider awsCredentialsProvider, ClientConfiguration clientConfiguration,
-                            RequestMetricCollector requestMetricCollector) {
+                        RequestMetricCollector requestMetricCollector) {
         super(clientConfiguration, requestMetricCollector);
         this.kscCredentialsProvider = awsCredentialsProvider;
         init();
     }
 
+
+    private void init() {
+        setServiceNameIntern(DEFAULT_SIGNING_NAME);
+        setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
+        setEndpoint("http://kls.cn-beijing-6.api.ksyun.com/");
+    }
+
+
+
+
+
+    /**
+     * Normal invoke with authentication. Credentials are required and may be
+     * overriden at the request level.
+     **/
+    private <X, Y extends KscWebServiceRequest> Response<X> invoke(Request<Y> request,
+                                                                   HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
+
+        executionContext.setCredentialsProvider(
+                CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), kscCredentialsProvider));
+
+        return doInvoke(request, responseHandler, executionContext);
+    }
+    /**
+     * Invoke the request using the http client. Assumes credentials (or lack
+     * thereof) have been configured in the ExecutionContext beforehand.
+     **/
+    private <X, Y extends KscWebServiceRequest> Response<X> doInvoke(Request<Y> request,
+                                                                     HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
+        request.setEndpoint(endpoint);
+        request.setTimeOffset(timeOffset);
+
+
+        HttpResponseHandler<KscServiceException> errorResponseHandler = protocolFactory
+                .createErrorResponseHandler(new JsonErrorResponseMetadata());
+        try{
+            return client.execute(request, responseHandler, errorResponseHandler, executionContext);
+        }catch(Exception e){
+            log.error(e);
+            return null;
+        }
+    }
 
     @Override
     public CreateRecordResult createRecordTask(CreateRecordRequest createRecordRequest) {
@@ -212,7 +256,6 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
                             new CreateRecordResultUnmarshaller());
 
             response = invoke(request, responseHandler, executionContext);
-
             return response.getKscResponse();
         } finally {
             endClientExecution(kscRequestMetrics, request, response);
@@ -308,6 +351,35 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
 
     @Override
     public StartStreamRecordResult startStreamRecord(StartStreamRecordRequest startStreamRecordRequest) {
+        ExecutionContext executionContext = createExecutionContext(startStreamRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<StartStreamRecordRequest> request = null;
+        Response<StartStreamRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new StartStreamRecordMarshaller()
+                        .marshall(super.beforeMarshalling(startStreamRecordRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<StartStreamRecordResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new StartStreamRecordUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public StopStreamRecordResult stopStreamRecord(StopStreamRecordRequest stopStreamRecordRequest) {
         ExecutionContext executionContext = createExecutionContext(startStreamRecordRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
@@ -451,42 +523,90 @@ public class KSCKSLClient extends KscWebServiceClient implements KLS {
         }
     }
 
+    @Override
+    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsErrInfo(ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listHistoryPubStreamsErrInfoRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListHistoryPubStreamsErrInfoRequest> request = null;
+        Response<ListHistoryPubStreamsErrInfoResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListHistoryPubStreamsErrInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listHistoryPubStreamsErrInfoRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListHistoryPubStreamsErrInfoResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListHistoryPubStreamsErrInfoUnmarshaller());
 
-    private void init() {
-        setServiceNameIntern(DEFAULT_SIGNING_NAME);
-        setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
-        setEndpoint("http://kls.cn-beijing-6.api.ksyun.com/");
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
 
-    /**
-     * Normal invoke with authentication. Credentials are required and may be
-     * overriden at the request level.
-     **/
-    private <X, Y extends KscWebServiceRequest> Response<X> invoke(Request<Y> request,
-                                                                   HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
+    @Override
+    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsInfo(ListHistoryPubStreamsInfoRequest listHistoryPubStreamsInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listHistoryPubStreamsInfoRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListHistoryPubStreamsInfoRequest> request = null;
+        Response<ListHistoryPubStreamsErrInfoResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListHistoryPubStreamsErrInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listHistoryPubStreamsInfoRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListHistoryPubStreamsErrInfoUnmarshaller());
 
-        executionContext.setCredentialsProvider(
-                CredentialUtils.getCredentialsProvider(request.getOriginalRequest(), kscCredentialsProvider));
+            response = invoke(request, responseHandler, executionContext);
 
-        return doInvoke(request, responseHandler, executionContext);
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
     }
-    /**
-     * Invoke the request using the http client. Assumes credentials (or lack
-     * thereof) have been configured in the ExecutionContext beforehand.
-     **/
-    private <X, Y extends KscWebServiceRequest> Response<X> doInvoke(Request<Y> request,
-                                                                     HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
-        request.setEndpoint(endpoint);
-        request.setTimeOffset(timeOffset);
 
+    @Override
+    public ListRealtimePubStreamsInfoResult listRealtimePubStreamsInfo(ListRealtimePubStreamsInfoRequest listRealtimePubStreamsInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listRealtimePubStreamsInfoRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<listRealtimePubStreamsInfoRequest> request = null;
+        Response<ListRealtimePubStreamsInfoResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListRealtimePubStreamsInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listRealtimePubStreamsInfoRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListRealtimePubStreamsInfoUnmarshaller());
 
-        HttpResponseHandler<KscServiceException> errorResponseHandler = protocolFactory
-                .createErrorResponseHandler(new JsonErrorResponseMetadata());
-        try{
-            return client.execute(request, responseHandler, errorResponseHandler, executionContext);
-        }catch(Exception e){
-            log.error(e);
-            return null;
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
         }
     }
 }
