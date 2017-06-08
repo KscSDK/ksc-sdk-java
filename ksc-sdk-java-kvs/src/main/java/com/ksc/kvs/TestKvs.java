@@ -33,8 +33,8 @@ public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("AKLTrtdIx-zkTpe7WCFe3MK6rA",
-					"OGoUiWEnr1KzXODDdaFo01+1Pp1tZtb4FGe301YkEvbG0mlBx5G0m31R/HEAqajoJA==");
+			credentials = new BasicAWSCredentials("xxxxxxxxxx",
+					"xxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
