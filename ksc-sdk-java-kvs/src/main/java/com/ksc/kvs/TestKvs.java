@@ -11,7 +11,6 @@ import com.ksc.kvs.model.CreateTaskRequest;
 import com.ksc.kvs.model.CreateTasklResult;
 import com.ksc.kvs.model.DelTaskByTaskIDRequest;
 import com.ksc.kvs.model.DeletePresetRequest;
-import com.ksc.kvs.model.GetListRequest;
 import com.ksc.kvs.model.GetPresetDetailRequest;
 import com.ksc.kvs.model.GetPresetDetailResult;
 import com.ksc.kvs.model.GetPresetListRequest;
@@ -23,17 +22,19 @@ import com.ksc.kvs.model.GetTaskListResult;
 import com.ksc.kvs.model.GetTaskMetaRequest;
 import com.ksc.kvs.model.GetTaskMetaResult;
 import com.ksc.kvs.model.KvsErrResult;
-import com.ksc.kvs.model.KvsResult;
 import com.ksc.kvs.model.PresetRequest;
+import com.ksc.kvs.model.QueryPipelineRequest;
+import com.ksc.kvs.model.QueryPipelineResult;
 import com.ksc.kvs.model.TopTaskByTaskIDRequest;
+import com.ksc.kvs.model.UpdatePipelineRequest;
 import com.ksc.kvs.model.UpdatePresetRequest;
 
 public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxxxx",
-					"xxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("AKLTrtdIx-zkTpe7WCFe3MK6rA",
+					"OGoUiWEnr1KzXODDdaFo01+1Pp1tZtb4FGe301YkEvbG0mlBx5G0m31R/HEAqajoJA==");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -42,9 +43,9 @@ public class TestKvs {
 		KSCKVSJsonClient ksc = new KSCKVSJsonClient(credentials);
 		ksc.setEndpoint("http://kvs.cn-beijing-6.api.ksyun.com/");
 
-		GetPresetListRequest getlistrequest = new GetPresetListRequest();
-		getlistrequest.setWithDetail(1);
-		GetPresetListResult getpresetlistResult = ksc.GetPresetList(getlistrequest);
+		GetPresetListRequest getPresetListRequest = new GetPresetListRequest();
+		getPresetListRequest.setWithDetail(1);
+		GetPresetListResult getpresetlistResult = ksc.GetPresetList(getPresetListRequest);
 		System.out.println(getpresetlistResult.getPresetList().size());
 
 		DeletePresetRequest deletePresetRequest = new DeletePresetRequest();
@@ -55,21 +56,19 @@ public class TestKvs {
 		PresetRequest presetRequest = new PresetRequest();
 		String data = PresetSet("preset");
 		presetRequest.setData(data);
-		System.out.println("Create Preset Json:" + data);
 		KvsErrResult presetResult = ksc.Preset(presetRequest);
 		System.out.println(presetResult.getErrNum());
 
 		UpdatePresetRequest presetRequest1 = new UpdatePresetRequest();
 		String data1 = PresetSet("liubohua9");
 		presetRequest1.setData(data1);
-		System.out.println("Update Preset JSON " + data1);
 		KvsErrResult presetResult1 = ksc.UpdatePreset(presetRequest1);
 		System.out.println(presetResult1.getErrNum());
 
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
 		getPresetDetailRequest.setPreset("preset");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
-		System.out.println(getPresetDetailResult.getPresetDetail().getParam().getVideo().getVcodec());
+		System.out.println(getPresetDetailResult.getPresetDetail().getPresetType());
 
 		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
 		String data2 = setTask("preset_avop1", "wangshuai9", "ksyun_a.flv", "ksyun.flv");
@@ -82,7 +81,7 @@ public class TestKvs {
 		DelTaskByTaskIDRequest delTaskByTaskIDRequest = new DelTaskByTaskIDRequest();
 		delTaskByTaskIDRequest.setTaskID("359832c8b368ab27c1f4a5b5396e1af120160923");
 		KvsErrResult DelTaskByTaskIDResult = ksc.DelTaskByTaskID(delTaskByTaskIDRequest);
-		System.out.println(deletePresetResult.getErrNum());
+		System.out.println(DelTaskByTaskIDResult.getErrMsg());
 
 		TopTaskByTaskIDRequest topTaskByTaskIDRequest = new TopTaskByTaskIDRequest();
 		topTaskByTaskIDRequest.setTaskID("39c4926af7e04bd0d0ef9808c74286292016110");
@@ -102,8 +101,18 @@ public class TestKvs {
 		GetTaskMetaRequest getTaskMetaInfoRequest = new GetTaskMetaRequest();
 		getTaskMetaInfoRequest.setTaskID("b444d1e644af2585c07fa62fc509623620161109");
 		getTaskMetaInfoRequest.setStartDate(20161101);
-		GetTaskMetaResult GetTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
-		System.out.println(GetTaskMetaResult.getErrNum());
+		GetTaskMetaResult getTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
+		System.out.println(getTaskMetaResult.getErrNum());
+		
+		UpdatePipelineRequest updatePipelineRequest = new UpdatePipelineRequest();
+		updatePipelineRequest.setData(setPipeline("usual"));
+		KvsErrResult updatePipelineResult = ksc.UpdatePipeline(updatePipelineRequest);
+		System.out.println(updatePipelineResult.getErrNum());
+		
+		QueryPipelineRequest queryPipelineRequest = new QueryPipelineRequest();
+		queryPipelineRequest.setPipelineName("usual");
+		QueryPipelineResult queryPipelineResult = ksc.QueryPipeline(queryPipelineRequest);
+		System.out.println(queryPipelineResult.getErrNum());
 	}
 
 	private static String PresetSet(String preset) throws JSONException {
@@ -179,5 +188,13 @@ public class TestKvs {
 		srcInfo.put(insrcInfo);
 
 		return srcInfo;
+	}
+	
+	private static String setPipeline(String PipelineName){
+		JSONObject data = new JSONObject();
+		data.put("PipelineName", PipelineName);
+		data.put("State", "Active");
+		return data.toString();
+		
 	}
 }
