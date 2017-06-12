@@ -1,9 +1,11 @@
 package com.ksc.kls.model;
 
+import com.ksc.KscWebServiceRequest;
+
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class StartStreamRecordRequest {
+public class StartStreamRecordRequest  extends KscWebServiceRequest {
     private String Action;
     private String Version;
     private String UniqueName;

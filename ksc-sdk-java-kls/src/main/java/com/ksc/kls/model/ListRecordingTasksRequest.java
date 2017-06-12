@@ -1,9 +1,11 @@
 package com.ksc.kls.model;
 
+import com.ksc.KscWebServiceRequest;
+
 /**
  * Created by yangfan on 2017/5/2.
  */
-public class ListRecordingTasksRequest {
+public class ListRecordingTasksRequest  extends KscWebServiceRequest {
     private String Action;
     private String Version;
     private String UniqueName;

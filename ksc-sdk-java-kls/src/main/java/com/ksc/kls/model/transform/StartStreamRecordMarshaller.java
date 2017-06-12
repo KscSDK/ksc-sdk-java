@@ -21,7 +21,7 @@ public class StartStreamRecordMarshaller implements Marshaller<Request<StartStre
     }
 
     @Override
-    public Request<StartStreamRecordRequest> marshall(StartStreamRecordRequest startStreamRecordRequest) throws Exception {
+    public Request<StartStreamRecordRequest> marshall(StartStreamRecordRequest startStreamRecordRequest) {
         if (startStreamRecordRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

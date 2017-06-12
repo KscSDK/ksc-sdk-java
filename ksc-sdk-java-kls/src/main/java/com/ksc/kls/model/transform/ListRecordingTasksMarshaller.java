@@ -21,7 +21,7 @@ public class ListRecordingTasksMarshaller implements Marshaller<Request<ListReco
     }
 
     @Override
-    public Request<ListRecordingTasksRequest> marshall(ListRecordingTasksRequest listRecordingTasksRequest) throws Exception {
+    public Request<ListRecordingTasksRequest> marshall(ListRecordingTasksRequest listRecordingTasksRequest) {
         if (listRecordingTasksRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

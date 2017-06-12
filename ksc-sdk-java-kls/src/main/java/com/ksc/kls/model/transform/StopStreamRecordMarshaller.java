@@ -21,7 +21,7 @@ public class StopStreamRecordMarshaller implements Marshaller<Request<StopStream
     }
 
     @Override
-    public Request<StopStreamRecordRequest> marshall(StopStreamRecordRequest stopStreamRecordRequest) throws Exception {
+    public Request<StopStreamRecordRequest> marshall(StopStreamRecordRequest stopStreamRecordRequest) {
         if (stopStreamRecordRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

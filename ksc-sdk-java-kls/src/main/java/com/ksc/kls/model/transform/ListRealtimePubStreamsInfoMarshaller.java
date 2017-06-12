@@ -23,7 +23,7 @@ public class ListRealtimePubStreamsInfoMarshaller implements Marshaller<Request<
 
 
     @Override
-    public Request<ListRealtimePubStreamsInfoRequest> marshall(ListRealtimePubStreamsInfoRequest listRealtimePubStreamsInfoRequest) throws Exception {
+    public Request<ListRealtimePubStreamsInfoRequest> marshall(ListRealtimePubStreamsInfoRequest listRealtimePubStreamsInfoRequest) {
         if (listRealtimePubStreamsInfoRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

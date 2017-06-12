@@ -21,7 +21,7 @@ public class ListStreamDurationsMarshaller implements Marshaller<Request<ListStr
     }
 
     @Override
-    public Request<ListStreamDurationsRequest> marshall(ListStreamDurationsRequest listStreamDurationsRequest) throws Exception {
+    public Request<ListStreamDurationsRequest> marshall(ListStreamDurationsRequest listStreamDurationsRequest) {
         if (listStreamDurationsRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

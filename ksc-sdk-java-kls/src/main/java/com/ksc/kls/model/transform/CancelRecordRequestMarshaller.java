@@ -20,7 +20,7 @@ public class CancelRecordRequestMarshaller implements Marshaller<Request<CancelR
         return instance;
     }
     @Override
-    public Request<CancelRecordRequest> marshall(CancelRecordRequest cancelRecordRequest) throws Exception {
+    public Request<CancelRecordRequest> marshall(CancelRecordRequest cancelRecordRequest) {
         if (cancelRecordRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

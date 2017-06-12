@@ -22,7 +22,7 @@ public class ListHistoryRecordTaskMarshaller implements Marshaller<Request<ListH
     }
 
     @Override
-    public Request<ListHistoryRecordTasksRequest> marshall(ListHistoryRecordTasksRequest listHistoryRecordTasksRequest) throws Exception {
+    public Request<ListHistoryRecordTasksRequest> marshall(ListHistoryRecordTasksRequest listHistoryRecordTasksRequest) {
         if (listHistoryRecordTasksRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

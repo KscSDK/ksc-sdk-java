@@ -1,9 +1,11 @@
 package com.ksc.kls.model;
 
+import com.ksc.KscWebServiceRequest;
+
 /**
  * Created by yangfan on 2017/5/22.
  */
-public class ListHistoryPubStreamsErrInfoRequest {
+public class ListHistoryPubStreamsErrInfoRequest extends KscWebServiceRequest {
     private String Action;
     private String Version;
     private String UniqueName;

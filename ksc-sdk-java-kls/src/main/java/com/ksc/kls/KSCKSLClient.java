@@ -46,8 +46,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             new JsonClientMetadata().withSupportsCbor(false));
 
 
-    private static final Log log =
-            LogFactory.getLog(KSCKSLClient.class);
+    private static final Log log = LogFactory.getLog(KSCKSLClient.class);
 
     /**
      * Constructs a new client to invoke service methods on EIP. A credentials
@@ -262,9 +261,10 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
         }
     }
 
+
     @Override
-    public CancelRecordResult cancelRecordTask(CancelRecordRequest cancleRecordRequest) {
-        ExecutionContext executionContext = createExecutionContext(cancleRecordRequest);
+    public CancelRecordResult cancelRecordTask(CancelRecordRequest cancelRecordRequest) {
+        ExecutionContext executionContext = createExecutionContext(cancelRecordRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
         Request<CancelRecordRequest> request = null;
@@ -273,7 +273,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
             try {
                 request = new CancelRecordRequestMarshaller()
-                        .marshall(super.beforeMarshalling(cancleRecordRequest));
+                        .marshall(super.beforeMarshalling(cancelRecordRequest));
                 request.setKscRequestMetrics(kscRequestMetrics);
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
@@ -284,12 +284,12 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
                             new CancelRecordResultUnmarshaller());
 
             response = invoke(request, responseHandler, executionContext);
-
             return response.getKscResponse();
         } finally {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+
 
     @Override
     public GetRecordTaskResult getRecordTask(GetRecordTaskRequest getRecordTaskRequest) {
@@ -380,35 +380,6 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
 
     @Override
     public StopStreamRecordResult stopStreamRecord(StopStreamRecordRequest stopStreamRecordRequest) {
-        ExecutionContext executionContext = createExecutionContext(startStreamRecordRequest);
-        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
-        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<StartStreamRecordRequest> request = null;
-        Response<StartStreamRecordResult> response = null;
-        try {
-            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
-            try {
-                request = new StartStreamRecordMarshaller()
-                        .marshall(super.beforeMarshalling(startStreamRecordRequest));
-                request.setKscRequestMetrics(kscRequestMetrics);
-            } finally {
-                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
-            }
-            HttpResponseHandler<KscWebServiceResponse<StartStreamRecordResult>> responseHandler = protocolFactory
-                    .createResponseHandler(
-                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
-                            new StartStreamRecordUnmarshaller());
-
-            response = invoke(request, responseHandler, executionContext);
-
-            return response.getKscResponse();
-        } finally {
-            endClientExecution(kscRequestMetrics, request, response);
-        }
-    }
-
-    @Override
-    public StopStreamRecordResult stopStreamRecord(StopStreamRecordRequest stopStreamRecordRequest) {
         ExecutionContext executionContext = createExecutionContext(stopStreamRecordRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
@@ -423,7 +394,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<StopStreamRecordResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<StopStreamRecordResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new StopStreamRecordUnmarshaller());
@@ -452,10 +423,11 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<ListRecordingTasksResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListRecordingTasksResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new ListRecordingTasksUnmarshaller());
+
 
             response = invoke(request, responseHandler, executionContext);
 
@@ -470,8 +442,8 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
         ExecutionContext executionContext = createExecutionContext(listStreamDurationsRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<ListRecordingTasksRequest> request = null;
-        Response<ListRecordingTasksResult> response = null;
+        Request<ListStreamDurationsRequest> request = null;
+        Response<ListStreamDurationsResult> response = null;
         try {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
             try {
@@ -481,7 +453,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<ListStreamDurationsResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListStreamDurationsResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new ListStreamDurationsUnmarshaller());
@@ -510,7 +482,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new KillStreamCacheUnmarshaller());
@@ -539,7 +511,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<ListHistoryPubStreamsErrInfoResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListHistoryPubStreamsErrInfoResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new ListHistoryPubStreamsErrInfoUnmarshaller());
@@ -553,22 +525,22 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
     }
 
     @Override
-    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsInfo(ListHistoryPubStreamsInfoRequest listHistoryPubStreamsInfoRequest) {
-        ExecutionContext executionContext = createExecutionContext(listHistoryPubStreamsInfoRequest);
+    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsInfo(ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listHistoryPubStreamsErrInfoRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<ListHistoryPubStreamsInfoRequest> request = null;
+        Request<ListHistoryPubStreamsErrInfoRequest> request = null;
         Response<ListHistoryPubStreamsErrInfoResult> response = null;
         try {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
             try {
                 request = new ListHistoryPubStreamsErrInfoMarshaller()
-                        .marshall(super.beforeMarshalling(listHistoryPubStreamsInfoRequest));
+                        .marshall(super.beforeMarshalling(listHistoryPubStreamsErrInfoRequest));
                 request.setKscRequestMetrics(kscRequestMetrics);
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListHistoryPubStreamsErrInfoResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new ListHistoryPubStreamsErrInfoUnmarshaller());
@@ -586,7 +558,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
         ExecutionContext executionContext = createExecutionContext(listRealtimePubStreamsInfoRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<listRealtimePubStreamsInfoRequest> request = null;
+        Request<ListRealtimePubStreamsInfoRequest> request = null;
         Response<ListRealtimePubStreamsInfoResult> response = null;
         try {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
@@ -597,7 +569,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<KillStreamCacheResult> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListRealtimePubStreamsInfoResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             new ListRealtimePubStreamsInfoUnmarshaller());

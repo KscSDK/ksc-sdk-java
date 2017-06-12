@@ -50,7 +50,7 @@
 		<module>ksc-sdk-java-cdn</module>
 		<module>ksc-sdk-java-kvs</module>
 		<module>ksc-sdk-java-vcs</module>
-		<!--<module>ksc-sdk-java-kls</module>-->
+		<module>ksc-sdk-java-kls</module>
 		<module>ksc-sdk-java-live</module>
 		<module>ksc-sdk-java-sts</module>
 		<module>ksc-sdk-java-ket</module>

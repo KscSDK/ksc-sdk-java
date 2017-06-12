@@ -1,10 +1,12 @@
 package com.ksc.kls.model;
 
 
+import com.ksc.KscWebServiceRequest;
+
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class ListHistoryRecordTasksRequest {
+public class ListHistoryRecordTasksRequest  extends KscWebServiceRequest {
 
     private String UniqueName;
     private String App;

@@ -49,7 +49,7 @@ public interface KSCKLS {
 
     //查询流历史信息
     public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsInfo(
-            ListHistoryPubStreamsInfoRequest listHistoryPubStreamsInfoRequest);
+            ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest);
 
     //查询流实时信息接口
     public ListRealtimePubStreamsInfoResult listRealtimePubStreamsInfo(

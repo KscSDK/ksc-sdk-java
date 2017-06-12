@@ -23,7 +23,7 @@ public class GetRecordTaskMarshaller implements Marshaller<Request<GetRecordTask
     }
 
     @Override
-    public Request<GetRecordTaskRequest> marshall(GetRecordTaskRequest getRecordTaskRequest) throws Exception {
+    public Request<GetRecordTaskRequest> marshall(GetRecordTaskRequest getRecordTaskRequest) {
         if (getRecordTaskRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

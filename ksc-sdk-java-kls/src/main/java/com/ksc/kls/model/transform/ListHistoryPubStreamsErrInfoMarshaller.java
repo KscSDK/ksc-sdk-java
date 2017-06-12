@@ -23,7 +23,7 @@ public class ListHistoryPubStreamsErrInfoMarshaller implements Marshaller<Reques
     }
 
     @Override
-    public Request<ListHistoryPubStreamsErrInfoRequest> marshall(ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest) throws Exception {
+    public Request<ListHistoryPubStreamsErrInfoRequest> marshall(ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest) {
         if (listHistoryPubStreamsErrInfoRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

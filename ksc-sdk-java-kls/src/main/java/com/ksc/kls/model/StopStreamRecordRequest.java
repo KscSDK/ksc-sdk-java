@@ -1,9 +1,11 @@
 package com.ksc.kls.model;
 
+import com.ksc.KscWebServiceRequest;
+
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class StopStreamRecordRequest {
+public class StopStreamRecordRequest  extends KscWebServiceRequest {
     private String UniqueName;
     private String App;
     private String Pubdomain;

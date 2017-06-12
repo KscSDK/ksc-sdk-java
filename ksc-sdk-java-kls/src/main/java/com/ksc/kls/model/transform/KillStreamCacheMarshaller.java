@@ -24,7 +24,7 @@ public class KillStreamCacheMarshaller implements Marshaller<Request<KillStreamC
     }
 
     @Override
-    public Request<KillStreamCacheRequest> marshall(KillStreamCacheRequest killStreamCacheRequest) throws Exception {
+    public Request<KillStreamCacheRequest> marshall(KillStreamCacheRequest killStreamCacheRequest) {
         if (killStreamCacheRequest == null) {
             throw new KscClientException(
                     "Invalid argument passed to marshall(...)");

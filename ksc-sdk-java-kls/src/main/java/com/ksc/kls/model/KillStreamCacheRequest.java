@@ -1,11 +1,12 @@
 package com.ksc.kls.model;
 
+import com.ksc.KscWebServiceRequest;
 import com.ksc.auth.policy.Action;
 
 /**
  * Created by yangfan on 2017/5/19.
  */
-public class KillStreamCacheRequest {
+public class KillStreamCacheRequest extends KscWebServiceRequest {
     private String Action;
     private String Version;
     private String[] NodeIPs;
