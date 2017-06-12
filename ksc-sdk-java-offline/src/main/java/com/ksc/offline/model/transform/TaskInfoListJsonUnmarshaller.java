@@ -7,14 +7,13 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.offline.model.Preset;
 import com.ksc.offline.model.SrcInfo;
 import com.ksc.offline.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, JsonUnmarshallerContext>{
+public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, JsonUnmarshallerContext> {
 
 	public TaskInfo unmarshall(JsonUnmarshallerContext context) throws Exception {
 		TaskInfo taskInfo = new TaskInfo();
@@ -33,7 +32,7 @@ public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, Json
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("taskid", targetDepth)) {
 					context.nextToken();
 					taskInfo.setTaskid(context.getUnmarshaller(String.class).unmarshall(context));
@@ -49,33 +48,37 @@ public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, Json
 				} else if (context.testExpression("dstObjectKey", targetDepth)) {
 					context.nextToken();
 					taskInfo.setDstObjectKey(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("isTop", targetDepth)) {
+				} else if (context.testExpression("isTop", targetDepth)) {
 					context.nextToken();
 					taskInfo.setIsTop(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("srcInfo", targetDepth)) {
+				} else if (context.testExpression("srcInfo", targetDepth)) {
 					context.nextToken();
-					taskInfo.setSrcInfoList(new ListUnmarshaller<SrcInfo>(SrcInfoListJsonUnmarshaller.getInstance()).unmarshall(context));
-				}else if (context.testExpression("dstAcl", targetDepth)) {
+					taskInfo.setSrcInfoList(new ListUnmarshaller<SrcInfo>(SrcInfoListJsonUnmarshaller.getInstance())
+							.unmarshall(context));
+				} else if (context.testExpression("dstAcl", targetDepth)) {
 					context.nextToken();
 					taskInfo.setDstAcl(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("cbUrl", targetDepth)) {
+				} else if (context.testExpression("cbUrl", targetDepth)) {
 					context.nextToken();
 					taskInfo.setCbUrl(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("cbMethod", targetDepth)) {
+				} else if (context.testExpression("cbMethod", targetDepth)) {
 					context.nextToken();
 					taskInfo.setCbMethod(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("extParam", targetDepth)) {
+				} else if (context.testExpression("extParam", targetDepth)) {
 					context.nextToken();
 					taskInfo.setExtParam(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("errorMsg", targetDepth)) {
+				} else if (context.testExpression("errorMsg", targetDepth)) {
 					context.nextToken();
 					taskInfo.setErrorMsg(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("createTime", targetDepth)) {
+				} else if (context.testExpression("createTime", targetDepth)) {
 					context.nextToken();
 					taskInfo.setCreateTime(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("taskStatus", targetDepth)) {
+				} else if (context.testExpression("taskStatus", targetDepth)) {
 					context.nextToken();
 					taskInfo.setTaskStatus(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("errorCode", targetDepth)) {
+					context.nextToken();
+					taskInfo.setErrorCode(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

@@ -1,16 +1,12 @@
 package com.ksc.offline;
 
-import java.io.FileInputStream;
-import java.io.InputStream;
-
+import com.ksc.KscClientException;
+import com.ksc.auth.AWSCredentials;
+import com.ksc.auth.BasicAWSCredentials;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import com.ksc.KscClientException;
-import com.ksc.auth.AWSCredentials;
-import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.http.KSCHttpClient;
 import com.ksc.offline.model.CreateTaskRequest;
 import com.ksc.offline.model.CreateTasklResult;
 import com.ksc.offline.model.DeletePresetRequest;
@@ -30,13 +26,11 @@ import com.ksc.offline.model.TaskRequest;
 import com.ksc.offline.model.TopTaskByTaskIDRequest;
 import com.ksc.offline.model.UpdatePersetRequest;
 
-
 public class TestOffline {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxx",
-					"xxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxx", "xxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -57,24 +51,25 @@ public class TestOffline {
 		PresetRequest presetRequest = new PresetRequest();
 		String data = PresetSet("preset");
 		presetRequest.setData(data);
-		System.out.println("Create Preset Json:"+data);
+		System.out.println("Create Preset Json:" + data);
 		OfflineErrResult presetResult = ksc.Preset(presetRequest);
 
 		UpdatePersetRequest presetRequest1 = new UpdatePersetRequest();
 		String data1 = PresetSet("liubohua9");
 		presetRequest1.setData(data1);
-		System.out.println("Update Preset JSON "+data1);
+		System.out.println("Update Preset JSON " + data1);
 		OfflineErrResult presetResult1 = ksc.UpdatePreset(presetRequest1);
 
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
 		getPresetDetailRequest.setPreset("preset");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
-		System.out.println("gop:"+getPresetDetailResult.getPresetdetail().getParam().getVideo().getOrientationAdapt());
+		System.out
+				.println("gop:" + getPresetDetailResult.getPresetdetail().getParam().getVideo().getOrientationAdapt());
 
 		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
 		String data2 = setTask("preset_avop1", "wangshuai9", "ksyun_a.flv", "ksyun.flv");
 		createTaskRequest.setData(data2);
-		System.out.println("Create Task JSON "+data2);
+		System.out.println("Create Task JSON " + data2);
 		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
 
 		TaskRequest tashRequest = new TaskRequest();
@@ -92,11 +87,10 @@ public class TestOffline {
 		GetTaskByTaskIDRequest getTaskByTaskIDRequest = new GetTaskByTaskIDRequest();
 		getTaskByTaskIDRequest.setTaskid("359832c8b368ab27c1f4a5b5396e1af120160923");
 		GetTaskByTaskIDResult getTaskByTaskIDResult = ksc.GetTaskByTaskID(getTaskByTaskIDRequest);
-		
+
 		GetTaskMetaRequest getTaskMetaInfoRequest = new GetTaskMetaRequest();
 		getTaskMetaInfoRequest.setTaskid("b444d1e644af2585c07fa62fc509623620161109");
 		GetTaskMetaResult GetTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
-		
 
 	}
 
@@ -147,7 +141,6 @@ public class TestOffline {
 		data.put("cbUrl", "");
 		data.put("cbMethod", "POST");
 		data.put("extParam", "");
-		
 
 		return data.toString();
 	}

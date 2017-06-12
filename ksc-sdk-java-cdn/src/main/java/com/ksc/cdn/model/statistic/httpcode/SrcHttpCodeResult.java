@@ -1,7 +1,6 @@
 package com.ksc.cdn.model.statistic.httpcode;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.Data;
 
 /**
  * SrcHttpCodeResult
@@ -10,7 +9,6 @@ import lombok.Data;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class SrcHttpCodeResult extends CommonFieldResult {
 
     /**
@@ -18,4 +16,11 @@ public class SrcHttpCodeResult extends CommonFieldResult {
      */
     private SrcHttpCodeData[] Datas;
 
+    public SrcHttpCodeData[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(SrcHttpCodeData[] datas) {
+        Datas = datas;
+    }
 }

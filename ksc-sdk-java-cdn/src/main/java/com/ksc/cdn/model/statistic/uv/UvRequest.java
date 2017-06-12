@@ -5,7 +5,6 @@ import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
-import lombok.Data;
 import org.apache.commons.lang3.StringUtils;
 
 import java.text.ParseException;
@@ -22,7 +21,6 @@ import java.util.Map;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class UvRequest extends CommonFieldRequest {
 
     /**
@@ -57,5 +55,21 @@ public class UvRequest extends CommonFieldRequest {
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("GetUvData", "2016-09-01", "/2016-09-01/statistics/GetUvData");
+    }
+
+    public String getResultType() {
+        return resultType;
+    }
+
+    public void setResultType(String resultType) {
+        this.resultType = resultType;
+    }
+
+    public String getGranularity() {
+        return granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        this.granularity = granularity;
     }
 }

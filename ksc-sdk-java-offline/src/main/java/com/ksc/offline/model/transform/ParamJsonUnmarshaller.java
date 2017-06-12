@@ -7,20 +7,16 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.offline.model.Audio;
-import com.ksc.offline.model.DetailPreset;
 import com.ksc.offline.model.Image;
 import com.ksc.offline.model.Param;
-import com.ksc.offline.model.Preset;
-import com.ksc.offline.model.Video;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshallerContext>{
-	
+public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshallerContext> {
+
 	public Param unmarshall(JsonUnmarshallerContext context) throws Exception {
-		Param param= new Param();
+		Param param = new Param();
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
@@ -36,7 +32,7 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("f", targetDepth)) {
 					context.nextToken();
 					param.setF(context.getUnmarshaller(String.class).unmarshall(context));
@@ -46,24 +42,31 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 				} else if (context.testExpression("AUDIO", targetDepth)) {
 					context.nextToken();
 					param.setAudio(AudioJsonUnmarshaller.getInstance().unmarshall(context));
-				} else if (context.testExpression("IMAGE", targetDepth)){
+				} else if (context.testExpression("IMAGE", targetDepth)) {
 					context.nextToken();
-					param.setImage(new ListUnmarshaller<Image>(ImageJsonUnmarshaller.getInstance()).unmarshall(context));
-				} else if (context.testExpression("width", targetDepth)){
+					param.setImage(
+							new ListUnmarshaller<Image>(ImageJsonUnmarshaller.getInstance()).unmarshall(context));
+				} else if (context.testExpression("width", targetDepth)) {
 					context.nextToken();
 					param.setWidth(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("height", targetDepth)){
+				} else if (context.testExpression("height", targetDepth)) {
 					context.nextToken();
 					param.setHeight(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("interval", targetDepth)){
+				} else if (context.testExpression("interval", targetDepth)) {
 					context.nextToken();
 					param.setInterval(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("hlsTime", targetDepth)){
+				} else if (context.testExpression("hls_time", targetDepth)) {
 					context.nextToken();
 					param.setHlsTime(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("clearmeta", targetDepth)){
+				} else if (context.testExpression("clearmeta", targetDepth)) {
 					context.nextToken();
 					param.setClearmeta(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("intelligentSwitch", targetDepth)) {
+					context.nextToken();
+					param.setIntelligentSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("shortSide", targetDepth)) {
+					context.nextToken();
+					param.setShortSide(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

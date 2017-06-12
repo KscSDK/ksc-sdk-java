@@ -315,4 +315,8 @@ public class JsonUnmarshallerContextImpl extends JsonUnmarshallerContext {
             return field + ": " + jsonToken.asString();
         }
     }
+    
+    public void setCurrentField(String currentField){
+    	this.currentField = currentField;
+    }
 }

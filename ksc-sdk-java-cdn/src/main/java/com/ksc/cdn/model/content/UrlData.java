@@ -1,12 +1,9 @@
 package com.ksc.cdn.model.content;
 
-import lombok.Data;
-
 /**
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class UrlData {
 
     /**
@@ -38,4 +35,52 @@ public class UrlData {
      * 任务创建时间
      */
     private String CreateTime;
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
+    public String getUrl() {
+        return Url;
+    }
+
+    public void setUrl(String url) {
+        Url = url;
+    }
+
+    public String getProgress() {
+        return Progress;
+    }
+
+    public void setProgress(String progress) {
+        Progress = progress;
+    }
+
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
+    public String getTaskId() {
+        return TaskId;
+    }
+
+    public void setTaskId(String taskId) {
+        TaskId = taskId;
+    }
+
+    public String getCreateTime() {
+        return CreateTime;
+    }
+
+    public void setCreateTime(String createTime) {
+        CreateTime = createTime;
+    }
 }

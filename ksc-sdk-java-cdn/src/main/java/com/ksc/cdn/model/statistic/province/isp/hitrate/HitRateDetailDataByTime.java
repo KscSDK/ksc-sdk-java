@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.province.isp.hitrate;
 
-import lombok.Data;
-
 /**
  * HitRateDetailDataByTime
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/28
  */
-@Data
 public class HitRateDetailDataByTime {
     /**
      * 时间点
@@ -26,4 +23,36 @@ public class HitRateDetailDataByTime {
      * 每个域名的详细命中率数据(仅当ResultType取值为1时返回此项数据))
      */
     private HitRateDataByDomain[] Domains;
+
+    public String getTime() {
+        return Time;
+    }
+
+    public void setTime(String time) {
+        Time = time;
+    }
+
+    public Double getFlowHitRate() {
+        return FlowHitRate;
+    }
+
+    public void setFlowHitRate(Double flowHitRate) {
+        FlowHitRate = flowHitRate;
+    }
+
+    public Double getReqHitRate() {
+        return ReqHitRate;
+    }
+
+    public void setReqHitRate(Double reqHitRate) {
+        ReqHitRate = reqHitRate;
+    }
+
+    public HitRateDataByDomain[] getDomains() {
+        return Domains;
+    }
+
+    public void setDomains(HitRateDataByDomain[] domains) {
+        Domains = domains;
+    }
 }

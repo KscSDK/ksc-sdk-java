@@ -91,6 +91,7 @@ public class KscRequestMetricsFullSupport extends KscRequestMetrics {
     public void startEvent(MetricType f) {
         startEvent(f.name());
     }
+
     /**
      * End an event which was previously started. Once ended, log how much time
      * the event took. It is illegal to end an Event that was not started. It is

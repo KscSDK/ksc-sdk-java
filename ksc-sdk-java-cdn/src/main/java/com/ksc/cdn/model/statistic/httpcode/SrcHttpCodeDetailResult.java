@@ -1,7 +1,6 @@
 package com.ksc.cdn.model.statistic.httpcode;
 
 import com.ksc.cdn.model.statistic.CommonFieldResult;
-import lombok.Data;
 
 /**
  * SrcHttpCodeDetailResult
@@ -9,7 +8,6 @@ import lombok.Data;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class SrcHttpCodeDetailResult extends CommonFieldResult {
 
     /**
@@ -32,4 +30,28 @@ public class SrcHttpCodeDetailResult extends CommonFieldResult {
      * 每个时间粒度的各种回源Http状态码数据及占比
      */
     private SrcHttpCodeDataByTime[] Datas;
+
+    public String getResultType() {
+        return ResultType;
+    }
+
+    public void setResultType(String resultType) {
+        ResultType = resultType;
+    }
+
+    public String getGranularity() {
+        return Granularity;
+    }
+
+    public void setGranularity(String granularity) {
+        Granularity = granularity;
+    }
+
+    public SrcHttpCodeDataByTime[] getDatas() {
+        return Datas;
+    }
+
+    public void setDatas(SrcHttpCodeDataByTime[] datas) {
+        Datas = datas;
+    }
 }
