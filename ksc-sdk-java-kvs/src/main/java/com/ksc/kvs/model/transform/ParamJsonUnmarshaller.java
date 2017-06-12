@@ -68,7 +68,7 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 					param.setClearmeta(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("intelligentSwitch", targetDepth)) {
 					context.nextToken();
-					param.setIntelligentSwitch(context.getUnmarshaller(int.class).unmarshall(context));
+					param.setIntelligentSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("shortSide", targetDepth)) {
 					context.nextToken();
 					param.setShortSide(context.getUnmarshaller(Integer.class).unmarshall(context));

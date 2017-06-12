@@ -7,13 +7,14 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.ExtParam;
+import com.ksc.kvs.model.TaskStatus;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnmarshallerContext>{
-	public ExtParam unmarshall(JsonUnmarshallerContext context) throws Exception {
-		ExtParam extParam = new ExtParam();
+public class TaskStatusJsonUnmarshaller implements Unmarshaller<TaskStatus, JsonUnmarshallerContext> {
+
+	public TaskStatus unmarshall(JsonUnmarshallerContext context) throws Exception {
+		TaskStatus taskStatus = new TaskStatus();
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
@@ -29,22 +30,22 @@ public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnma
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
-				if (context.testExpression("ss", targetDepth)) {
+
+				if (context.testExpression("Total", targetDepth)) {
 					context.nextToken();
-					extParam.setSs(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("duration", targetDepth)) {
+					taskStatus.setTotal(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("Running", targetDepth)) {
 					context.nextToken();
-					extParam.setDuration(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("hls_segment_filename", targetDepth)) {
+					taskStatus.setRunning(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("Pending", targetDepth)) {
 					context.nextToken();
-					extParam.setHlsSegmentFilename(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("pattern", targetDepth)) {
+					taskStatus.setPending(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("Success", targetDepth)) {
 					context.nextToken();
-					extParam.setPattern(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("ts_acl", targetDepth)) {
+					taskStatus.setSuccess(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("Failed", targetDepth)) {
 					context.nextToken();
-					extParam.setTsAcl(context.getUnmarshaller(String.class).unmarshall(context));
+					taskStatus.setFailed(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
@@ -55,14 +56,14 @@ public class ExtParamJsonUnmarshaller implements Unmarshaller<ExtParam, JsonUnma
 			}
 			token = context.nextToken();
 		}
-		return extParam;
+		return taskStatus;
 	}
 
-	private static ExtParamJsonUnmarshaller instance;
+	private static TaskStatusJsonUnmarshaller instance;
 
-	public static ExtParamJsonUnmarshaller getInstance() {
+	public static TaskStatusJsonUnmarshaller getInstance() {
 		if (instance == null)
-			instance = new ExtParamJsonUnmarshaller();
+			instance = new TaskStatusJsonUnmarshaller();
 		return instance;
 	}
 }

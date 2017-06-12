@@ -7,16 +7,16 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.GetTaskByTaskIDResult;
+import com.ksc.kvs.model.GetPresetListResult;
+import com.ksc.kvs.model.Preset;
 import com.ksc.transform.JsonUnmarshallerContext;
+import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class GetTaskByTaskIDResultJsonUnmarshaller
-		implements Unmarshaller<GetTaskByTaskIDResult, JsonUnmarshallerContext> {
+public class GetPresetListResultJsonUnmarshaller implements Unmarshaller<GetPresetListResult, JsonUnmarshallerContext> {
 
-	public GetTaskByTaskIDResult unmarshall(JsonUnmarshallerContext context) throws Exception {
-		// TODO Auto-generated method stub
-		GetTaskByTaskIDResult getTaskByTaskIDResult = new GetTaskByTaskIDResult();
+	public GetPresetListResult unmarshall(JsonUnmarshallerContext context) throws Exception {
+		GetPresetListResult kvsRequest = new GetPresetListResult();
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
@@ -33,15 +33,16 @@ public class GetTaskByTaskIDResultJsonUnmarshaller
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("TaskInfo", targetDepth)) {
+				if (context.testExpression("PresetList", targetDepth)) {
 					context.nextToken();
-					getTaskByTaskIDResult.setTaskInfo(TaskInfoListJsonUnmarshaller.getInstance().unmarshall(context));
+					kvsRequest.setPresetList(
+							new ListUnmarshaller<Preset>(PresetListJsonUnmarshaller.getInstance()).unmarshall(context));
 				} else if (context.testExpression("ErrNum", targetDepth)) {
 					context.nextToken();
-					getTaskByTaskIDResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
+					kvsRequest.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
 				} else if (context.testExpression("ErrMsg", targetDepth)) {
 					context.nextToken();
-					getTaskByTaskIDResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+					kvsRequest.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
 				}
 
 			} else if (token == END_ARRAY || token == END_OBJECT) {
@@ -53,15 +54,14 @@ public class GetTaskByTaskIDResultJsonUnmarshaller
 			}
 			token = context.nextToken();
 		}
-		return getTaskByTaskIDResult;
+		return kvsRequest;
 	}
 
-	private static GetTaskByTaskIDResultJsonUnmarshaller instance;
+	private static GetPresetListResultJsonUnmarshaller instance;
 
-	public static GetTaskByTaskIDResultJsonUnmarshaller getInstance() {
+	public static GetPresetListResultJsonUnmarshaller getInstance() {
 		if (instance == null)
-			instance = new GetTaskByTaskIDResultJsonUnmarshaller();
+			instance = new GetPresetListResultJsonUnmarshaller();
 		return instance;
 	}
-
 }

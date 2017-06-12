@@ -34,7 +34,7 @@ public class GetTaskListResultJsonUnmarshaller implements Unmarshaller<GetTaskLi
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("taskInfo", targetDepth)) {
+				if (context.testExpression("TaskInfo", targetDepth)) {
 					context.nextToken();
 					getTaskListResult
 							.setTaskInfoList(new ListUnmarshaller<TaskInfo>(TaskInfoListJsonUnmarshaller.getInstance())
