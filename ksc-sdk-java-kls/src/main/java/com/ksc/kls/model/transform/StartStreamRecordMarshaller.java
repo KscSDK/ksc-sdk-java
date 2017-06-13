@@ -6,6 +6,7 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.StartStreamRecordRequest;
 import com.ksc.transform.Marshaller;
+import com.ksc.util.StringUtils;
 
 /**
  * Created by yangfan on 2017/4/27.
@@ -39,7 +40,7 @@ public class StartStreamRecordMarshaller implements Marshaller<Request<StartStre
         request.addParameter("App", startStreamRecordRequest.getApp());
         request.addParameter("Pubdomain", startStreamRecordRequest.getPubdomain());
         request.addParameter("Stream", startStreamRecordRequest.getStream());
-        request.addParameter("Mp4VodEnable", startStreamRecordRequest.getMp4VodEnable());
+        request.addParameter("Mp4VodEnable", StringUtils.fromInteger(startStreamRecordRequest.getMp4VodEnable()));
 
 
         if (startStreamRecordRequest.getKs3FileNameM3u8() != null ) {
