@@ -2,6 +2,8 @@ import com.ksc.auth.AWSCredentials;
 import com.ksc.kls.KSCKSLClient;
 import com.ksc.kls.model.CancelRecordRequest;
 import com.ksc.kls.model.CancelRecordResult;
+import com.ksc.kls.model.KillStreamCacheRequest;
+import com.ksc.kls.model.KillStreamCacheResult;
 import org.apache.log4j.Logger;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,12 +17,14 @@ public class KLSAPISample {
 
     KSCKSLClient kls_client = null;
     private String version = "2017-01-01";
-    private String uniquename = "maxi";
-    private String action = "CancelRecordTask";
+    private String uniquename = "you unique name";
+//    private String action = "CancelRecordTask";
+    private String action = "KillStreamCache";
     private String app = "live";
     private String pubdomain = "live.moxiulive.com";
     private int recID = 2;
     private String stream = "test.api.com";
+    private String[] nodeIPS = new String[1];
 
 
     @Before
@@ -59,4 +63,21 @@ public class KLSAPISample {
         log.info(result.getData());
         System.out.println("=============================");
     }
+
+    @Test
+    public void testKillStreamCache() {
+        KillStreamCacheRequest request = new KillStreamCacheRequest();
+        request.setVersion(this.version);
+        request.setAction(this.action);
+        request.setApp(this.app);
+        this.nodeIPS[0] = "127.0.0.1";
+        request.setNodeIPs(this.nodeIPS);
+        request.setPullDomain(this.pubdomain);
+        request.setStream(this.stream);
+        KillStreamCacheResult result = new KillStreamCacheResult();
+        System.out.println("=============================");
+        log.info(result.getData());
+        System.out.println("=============================");
+    }
+
 }
