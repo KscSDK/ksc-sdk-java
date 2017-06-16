@@ -10,7 +10,7 @@ public class TaskInfo {
 	private String IsTop;
 	private String CreateTime;
 	private com.ksc.internal.SdkInternalList<SrcInfo> SrcInfoList;
-	
+
 	private String DstAcl;
 	private String CbUrl;
 	private String CbMethod;
@@ -153,5 +153,4 @@ public class TaskInfo {
 		SrcInfoList = srcInfoList;
 	}
 
-	
 }

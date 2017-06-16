@@ -51,7 +51,7 @@ public class PresetDetailJsonUnmarshaller implements Unmarshaller<PresetDetail, 
 				} else if (context.testExpression("HlsMbr", targetDepth)) {
 					context.nextToken();
 					presetDetail.setHlsMbr(HlsMbrJsonUnmarshaller.getInstance().unmarshall(context));
-				} else if (context.testExpression("IntelligentSwtich", targetDepth)) {
+				} else if (context.testExpression("IntelligentSwitch", targetDepth)) {
 					context.nextToken();
 					presetDetail.setIntelligentSwitch(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("IntelligentCburl", targetDepth)) {

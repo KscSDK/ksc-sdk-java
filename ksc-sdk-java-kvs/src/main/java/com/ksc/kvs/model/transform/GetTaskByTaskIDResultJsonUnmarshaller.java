@@ -33,13 +33,13 @@ public class GetTaskByTaskIDResultJsonUnmarshaller
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("taskInfo", targetDepth)) {
+				if (context.testExpression("TaskInfo", targetDepth)) {
 					context.nextToken();
 					getTaskByTaskIDResult.setTaskInfo(TaskInfoListJsonUnmarshaller.getInstance().unmarshall(context));
-				} else if (context.testExpression("errNum", targetDepth)) {
+				} else if (context.testExpression("ErrNum", targetDepth)) {
 					context.nextToken();
 					getTaskByTaskIDResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
-				} else if (context.testExpression("errMsg", targetDepth)) {
+				} else if (context.testExpression("ErrMsg", targetDepth)) {
 					context.nextToken();
 					getTaskByTaskIDResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
 				}
