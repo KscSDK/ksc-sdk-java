@@ -3,24 +3,17 @@ package com.ksc.network.vpc.model.SecurityGroups;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
 import com.ksc.network.vpc.transform.SecurityGroups.RevokeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for AuthorizeSecurityGroupEntry.
+ * Contains the parameters for RevokeSecurityGroupEntry.
  * </p>
  */
 public class RevokeSecurityGroupEntryRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<RevokeSecurityGroupEntryRequest> {
-
 
     /**
      * 安全组的ID
@@ -31,8 +24,6 @@ public class RevokeSecurityGroupEntryRequest extends KscWebServiceRequest implem
      * 安全组规则的ID
      */
     private String SecurityGroupEntryId;
-    
-
 
 	public String getSecurityGroupId() {
 		return SecurityGroupId;
@@ -98,7 +89,6 @@ public class RevokeSecurityGroupEntryRequest extends KscWebServiceRequest implem
         request.addParameter("DryRun", Boolean.toString(true));
         return request;
     }
-
 
 
 }

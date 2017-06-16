@@ -5,14 +5,11 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.eip.model.AllocateAddressRequest;
-import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryRequest;
-import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
-import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
 /**
- * CreateSecurityGroupRequest Marshaller
+ * AllocateAddressRequest Marshaller
  */
 
 public class AllocateAddressRequestMarshaller implements

@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 /**
  * <p>
- * Contains the output of DescribeVpcs.
+ * Contains the output of CreateSecurityGroup.
  * </p>
  */
 @ToString
@@ -21,25 +21,13 @@ public class CreateSecurityGroupResult implements Serializable, Cloneable {
 		return RequestId;
 	}
 
-
-
-
-
 	public void setRequestId(String requestId) {
 		RequestId = requestId;
 	}
 
-
-
-
-
 	public SecurityGroup getSecurityGroup() {
 		return SecurityGroup;
 	}
-
-
-
-
 
 	public void setSecurityGroup(SecurityGroup securityGroup) {
 		SecurityGroup = securityGroup;
@@ -91,16 +79,5 @@ public class CreateSecurityGroupResult implements Serializable, Cloneable {
                             + "even though we're Cloneable!", e);
         }
     }
-
-
-
-
-
-
-
-
-
-
-
 
 }

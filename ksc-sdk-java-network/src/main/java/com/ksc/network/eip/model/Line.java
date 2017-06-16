@@ -6,8 +6,19 @@ import lombok.ToString;
 @ToString
 @EqualsAndHashCode
 public class Line {
+	/**
+	 * 弹性IP的线路类型的ID
+	 */
 	private String LineId;
+
+	/**
+	 * 线路类型名称
+	 */
 	private String LineName;
+
+	/**
+	 * 弹性IP的类型，公网(Public)、金山云内网(Private)
+	 */
 	private String LineType;
 
 	public String getLineId() {

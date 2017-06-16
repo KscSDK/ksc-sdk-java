@@ -5,6 +5,7 @@ import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -13,6 +14,7 @@ import lombok.ToString;
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeSecurityGroupsRequest extends KscWebServiceRequest implements
          DryRunSupportedRequest<DescribeSecurityGroupsRequest> {
 	/**

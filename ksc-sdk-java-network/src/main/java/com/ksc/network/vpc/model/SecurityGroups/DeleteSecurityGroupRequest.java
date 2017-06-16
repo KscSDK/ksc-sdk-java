@@ -3,7 +3,6 @@ package com.ksc.network.vpc.model.SecurityGroups;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.SecurityGroups.DeleteSecurityGroupRequestMarshaller;
 
 import java.io.Serializable;
@@ -15,7 +14,6 @@ import java.io.Serializable;
  */
 public class DeleteSecurityGroupRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<DeleteSecurityGroupRequest> {
-
 
     /**
      * 安全组的ID

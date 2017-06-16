@@ -31,7 +31,7 @@ public class DetailPresetJsonUnmarshaller implements Unmarshaller<DetailPreset, 
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 				
-				if (context.testExpression("PresetType", targetDepth)) {
+				if (context.testExpression("PresetType", targetDepth) || context.testExpression("Presettype", targetDepth)) {
 					context.nextToken();
 					detailPreset.setPresetType(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("Param", targetDepth)) {
