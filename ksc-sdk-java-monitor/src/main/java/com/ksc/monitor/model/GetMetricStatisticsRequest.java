@@ -38,6 +38,10 @@ public class GetMetricStatisticsRequest extends KscWebServiceRequest
 	 * 获取监控指标的聚合方法：Average,Sum,Count,Max,Min 
 	 */
 	private String aggregate;
+	/**
+	 * POST获取监控指标的body
+	 */
+	private String data;
 	
 	/**
 	 * This method is intended for internal use only. Returns the marshaled
@@ -106,6 +110,14 @@ public class GetMetricStatisticsRequest extends KscWebServiceRequest
 
 	public void setAggregate(String aggregate) {
 		this.aggregate = aggregate;
+	}
+
+	public String getData() {
+		return data;
+	}
+
+	public void setData(String data) {
+		this.data = data;
 	}
 
 }

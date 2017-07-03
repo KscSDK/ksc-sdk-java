@@ -24,12 +24,23 @@ import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.monitor.model.GetMetricStatisticsRequest;
 import com.ksc.monitor.model.GetMetricStatisticsResponse;
+import com.ksc.monitor.model.GetMetricStatisticsResponseV1;
 import com.ksc.monitor.model.ListMetricsRequest;
 import com.ksc.monitor.model.ListMetricsResponse;
+import com.ksc.monitor.model.ListMetricsResponseV1;
+import com.ksc.monitor.model.PutMetricDataRequest;
+import com.ksc.monitor.model.PutMetricDataResponse;
 import com.ksc.monitor.model.transform.GetMetricStatisticsRequestMarshaller;
 import com.ksc.monitor.model.transform.GetMetricStatisticsResponseStaxUnmarshaller;
+import com.ksc.monitor.model.transform.GetMetricStatisticsResponseV1StaxUnmarshaller;
 import com.ksc.monitor.model.transform.ListMetricsRequestMarshaller;
 import com.ksc.monitor.model.transform.ListMetricsResponseStaxUnmarshaller;
+import com.ksc.monitor.model.transform.ListMetricsResponseV1StaxUnmarshaller;
+import com.ksc.monitor.model.transform.PutMetricDataRequestMarshaller;
+import com.ksc.monitor.model.transform.PutMetricDataResponseStaxUnmarshaller;
+import com.ksc.protocol.json.JsonClientMetadata;
+import com.ksc.protocol.json.JsonOperationMetadata;
+import com.ksc.protocol.json.SdkJsonProtocolFactory;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
@@ -46,7 +57,9 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 
 	/** The region metadata service name for computing region endpoints. */
 	private static final String DEFAULT_ENDPOINT_PREFIX = "monitor";
-
+	// private final SdkJsonProtocolFactory protocolFactory = new
+	// SdkJsonProtocolFactory(
+	// new JsonClientMetadata().withSupportsCbor(false));
 	/**
 	 * Client configuration factory providing ClientConfigurations tailored to
 	 * this client
@@ -203,32 +216,56 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 	}
 
 	@Override
-	public GetMetricStatisticsResponse getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest) {
+	public Object getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest) {
 		ExecutionContext executionContext = createExecutionContext(getMetricStatisticsRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
 		Request<GetMetricStatisticsRequest> request = null;
-		Response<GetMetricStatisticsResponse> response = null;
-		try {
-			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+		if (getMetricStatisticsRequest.getVersion().equalsIgnoreCase("2017-07-01")) {
+			Response<GetMetricStatisticsResponseV1> response = null;
 			try {
-				request = new GetMetricStatisticsRequestMarshaller()
-						.marshall(super.beforeMarshalling(getMetricStatisticsRequest));
-				// Binds the request metrics to the current request.
-				request.setKscRequestMetrics(kscRequestMetrics);
-			} finally {
-				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
-			}
-			StaxResponseHandler<GetMetricStatisticsResponse> responseHandler = new StaxResponseHandler<GetMetricStatisticsResponse>(
-					new GetMetricStatisticsResponseStaxUnmarshaller());
-			response = invoke(request, responseHandler, executionContext);
+				kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+				try {
+					request = new GetMetricStatisticsRequestMarshaller()
+							.marshall(super.beforeMarshalling(getMetricStatisticsRequest));
+					// Binds the request metrics to the current request.
+					request.setKscRequestMetrics(kscRequestMetrics);
+				} finally {
+					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+				}
+				StaxResponseHandler<GetMetricStatisticsResponseV1> responseHandler = new StaxResponseHandler<GetMetricStatisticsResponseV1>(
+						new GetMetricStatisticsResponseV1StaxUnmarshaller());
+				response = invoke(request, responseHandler, executionContext);
 
-			return response.getKscResponse();
-		} finally {
-			endClientExecution(kscRequestMetrics, request, response);
+				return response.getKscResponse();
+			} finally {
+				endClientExecution(kscRequestMetrics, request, response);
+			}
+
+		} else {
+			Response<GetMetricStatisticsResponse> response = null;
+			try {
+				kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+				try {
+					request = new GetMetricStatisticsRequestMarshaller()
+							.marshall(super.beforeMarshalling(getMetricStatisticsRequest));
+					// Binds the request metrics to the current request.
+					request.setKscRequestMetrics(kscRequestMetrics);
+				} finally {
+					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+				}
+				StaxResponseHandler<GetMetricStatisticsResponse> responseHandler = new StaxResponseHandler<GetMetricStatisticsResponse>(
+						new GetMetricStatisticsResponseStaxUnmarshaller());
+				response = invoke(request, responseHandler, executionContext);
+
+				return response.getKscResponse();
+			} finally {
+				endClientExecution(kscRequestMetrics, request, response);
+			}
 		}
 
 	}
+
 
 	private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
@@ -267,23 +304,72 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 	}
 
 	@Override
-	public ListMetricsResponse listMetrics(ListMetricsRequest listMetricsRequest) {
+	public Object listMetrics(ListMetricsRequest listMetricsRequest) {
 		ExecutionContext executionContext = createExecutionContext(listMetricsRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
 		Request<ListMetricsRequest> request = null;
-		Response<ListMetricsResponse> response = null;
+		if (listMetricsRequest.getVersion().equalsIgnoreCase("2017-07-01")) {
+			Response<ListMetricsResponseV1> response = null;
+			try {
+				kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+				try {
+					request = new ListMetricsRequestMarshaller().marshall(super.beforeMarshalling(listMetricsRequest));
+					// Binds the request metrics to the current request.
+					request.setKscRequestMetrics(kscRequestMetrics);
+				} finally {
+					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+				}
+				StaxResponseHandler<ListMetricsResponseV1> responseHandler = new StaxResponseHandler<ListMetricsResponseV1>(
+						new ListMetricsResponseV1StaxUnmarshaller());
+				response = invoke(request, responseHandler, executionContext);
+
+				return response.getKscResponse();
+			} finally {
+				endClientExecution(kscRequestMetrics, request, response);
+			}
+		} else {
+			Response<ListMetricsResponse> response = null;
+			try {
+				kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+				try {
+					request = new ListMetricsRequestMarshaller().marshall(super.beforeMarshalling(listMetricsRequest));
+					// Binds the request metrics to the current request.
+					request.setKscRequestMetrics(kscRequestMetrics);
+				} finally {
+					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+				}
+				StaxResponseHandler<ListMetricsResponse> responseHandler = new StaxResponseHandler<ListMetricsResponse>(
+						new ListMetricsResponseStaxUnmarshaller());
+				response = invoke(request, responseHandler, executionContext);
+
+				return response.getKscResponse();
+			} finally {
+				endClientExecution(kscRequestMetrics, request, response);
+			}
+		}
+
+	}
+
+
+	@Override
+	public PutMetricDataResponse putMetricData(PutMetricDataRequest putMetricDataRequest) {
+		ExecutionContext executionContext = createExecutionContext(putMetricDataRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<PutMetricDataRequest> request = null;
+		Response<PutMetricDataResponse> response = null;
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new ListMetricsRequestMarshaller().marshall(super.beforeMarshalling(listMetricsRequest));
+				request = new PutMetricDataRequestMarshaller().marshall(super.beforeMarshalling(putMetricDataRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
 				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 			}
-			StaxResponseHandler<ListMetricsResponse> responseHandler = new StaxResponseHandler<ListMetricsResponse>(
-					new ListMetricsResponseStaxUnmarshaller());
+			StaxResponseHandler<PutMetricDataResponse> responseHandler = new StaxResponseHandler<PutMetricDataResponse>(
+					new PutMetricDataResponseStaxUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();
@@ -291,4 +377,5 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+
 }

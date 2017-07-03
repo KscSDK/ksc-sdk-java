@@ -1,11 +1,10 @@
 package com.ksc.monitor.model;
 
 import lombok.ToString;
-
 @ToString
-public class GetMetricStatisticsResponse {
+public class GetMetricStatisticsResponseV1 {
 	
-	private GetMetricStatisticsResult GetMetricStatisticsResult;
+	private GetMetricStatisticsResultV1 GetMetricStatisticsResult;
 	private Metadata ResponseMetadata;
 
 	public Metadata getResponseMetadata() {
@@ -16,13 +15,15 @@ public class GetMetricStatisticsResponse {
 		ResponseMetadata = responseMetadata;
 	}
 
-	public GetMetricStatisticsResult getGetMetricStatisticsResult() {
+	public GetMetricStatisticsResultV1 getGetMetricStatisticsResult() {
 		return GetMetricStatisticsResult;
 	}
 
-	public void setGetMetricStatisticsResult(GetMetricStatisticsResult getMetricStatisticsResult) {
+	public void setGetMetricStatisticsResult(GetMetricStatisticsResultV1 getMetricStatisticsResult) {
 		GetMetricStatisticsResult = getMetricStatisticsResult;
 	}
+
+	
 
 
 	

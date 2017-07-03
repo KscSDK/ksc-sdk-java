@@ -2,8 +2,12 @@ package com.ksc.monitor;
 
 import com.ksc.monitor.model.GetMetricStatisticsRequest;
 import com.ksc.monitor.model.GetMetricStatisticsResponse;
+import com.ksc.monitor.model.GetMetricStatisticsResponseV1;
 import com.ksc.monitor.model.ListMetricsRequest;
 import com.ksc.monitor.model.ListMetricsResponse;
+import com.ksc.monitor.model.ListMetricsResponseV1;
+import com.ksc.monitor.model.PutMetricDataRequest;
+import com.ksc.monitor.model.PutMetricDataResponse;
 
 public interface KSCMonitor {
 	/**
@@ -17,7 +21,7 @@ public interface KSCMonitor {
 	 *         the service.
 	 * @sample KSC.GetMetricStatistics
 	 */
-	public GetMetricStatisticsResponse getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest);
+	public Object getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest);
 
 	/**
 	 * <p>
@@ -30,5 +34,19 @@ public interface KSCMonitor {
 	 *         service.
 	 * @sample KSC.ListMetrics
 	 */
-	public ListMetricsResponse listMetrics(ListMetricsRequest listMetricsRequest);
+	public Object listMetrics(ListMetricsRequest listMetricsRequest);
+	/**
+	 * <p>
+	 * putMetricData.
+	 * </p>
+	 * 
+	 * @param putMetricDataRequest
+	 *            Contains the parameters for putMetricData.
+	 * @return Result of the putMetricDataRequest operation returned by the
+	 *         service.
+	 * @sample KSC.PutMetricData
+	 */
+	public	PutMetricDataResponse putMetricData(PutMetricDataRequest putMetricDataRequest);
+
+	
 }

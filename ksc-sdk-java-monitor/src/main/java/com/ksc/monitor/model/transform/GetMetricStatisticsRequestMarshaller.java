@@ -1,5 +1,7 @@
 package com.ksc.monitor.model.transform;
 
+import java.io.ByteArrayInputStream;
+
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
@@ -22,11 +24,22 @@ public class GetMetricStatisticsRequestMarshaller
 				getMetricStatisticsRequest, "monitor");
 		request.addParameter("Action", "GetMetricStatistics");
 		String version = getMetricStatisticsRequest.getVersion();
+		System.out.println("version"+version);
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2010-05-23";
 		}
+		System.out.println("version"+version);
+		if (version.equalsIgnoreCase("2017-07-01")){
+			byte[] content = getMetricStatisticsRequest.getData().getBytes();
+			request.addHeader("Content-Type", "application/json");
+			request.setContent(new ByteArrayInputStream(content));
+			request.addHeader("Content-Length", Integer.toString(content.length));
+			request.addHeader("Accept", "application/xml");
+			request.setHttpMethod(HttpMethodName.POST);
+		}else{
+			request.setHttpMethod(HttpMethodName.GET);			
+		}		
 		request.addParameter("Version", version);
-		request.setHttpMethod(HttpMethodName.GET);
 		if (getMetricStatisticsRequest.getInstanceId() != null) {
 			request.addParameter("InstanceID", StringUtils.fromString(getMetricStatisticsRequest.getInstanceId()));
 		}
