@@ -3,7 +3,7 @@ package com.ksc.monitor.model;
 import lombok.ToString;
 
 @ToString
-public class Tsv {
+public class DataPointV1 {
 	private Double Value;
 	private String Timestamp;
 	public Double getValue() {

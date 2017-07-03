@@ -22,7 +22,7 @@ public class ListMetricsResultV1StaxUnmarshaller implements Unmarshaller<ListMet
 			if (xmlEvent.isEndDocument())
 				return result;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				if (context.testExpression("Metrics", targetDepth)) {
+				if (context.testExpression("member", targetDepth)) {
 					result.withMetricInfos(MetricInfoStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}

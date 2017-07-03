@@ -24,7 +24,7 @@ public class ListMetricsResponseV1StaxUnmarshaller implements Unmarshaller<ListM
 			if (xmlEvent.isEndDocument())
 				return response;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				if (context.testExpression("ListMetricsResult/Metrics/member", targetDepth)) {
+				if (context.testExpression("ListMetricsResult/Metrics", targetDepth)) {
 					response.setListMetricsResult(ListMetricsResultV1StaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}else if (context.testExpression("ResponseMetadata/RequestId", targetDepth)) {

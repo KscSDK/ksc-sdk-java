@@ -24,8 +24,8 @@ public class GetMetricStatisticsResultV1StaxUnmarshaller
 			if (xmlEvent.isEndDocument())
 				return result;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				if (context.testExpression("Datapoints", targetDepth)) {
-					result.setDatapoints(DatapointV1StaxUnmarshaller.getInstance().unmarshall(context));
+				if (context.testExpression("DataPoints/member", targetDepth)) {
+					result.withDatapoints(DatapointV1StaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				} else if (context.testExpression("Label", targetDepth)) {
 					result.setLabel(StringStaxUnmarshaller.getInstance().unmarshall(context));

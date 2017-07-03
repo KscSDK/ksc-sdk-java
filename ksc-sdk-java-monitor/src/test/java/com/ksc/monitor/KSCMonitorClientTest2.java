@@ -30,18 +30,18 @@ public class KSCMonitorClientTest2 {
 	}
 	private String body() throws JSONException{
 		JSONObject data = new JSONObject();
-//		JSONArray dimensions = new JSONArray();
-//		data.put("nameSpace", "keip");
-//		data.put("metricName", "openapi.lantcy.0");
-//		data.put("period", new Integer(60));
-//		data.put("method", "avg");
-//		data.put("startTime", "2017-06-19T07:00:00Z");
-//		data.put("endTime", "2017-06-19T07:47:00Z");
-//		dimensions.put("k1=v1");
-//		dimensions.put("k2=v2");
-//		dimensions.put("k3=v3");
-//		data.put("dimensions", dimensions);
-		//data.put("nameSpace", "keip");
+		JSONArray dimensions = new JSONArray();
+		data.put("nameSpace", "keip");
+		data.put("metricName", "openapi.lantcy.0");
+		data.put("period", new Integer(60));
+		data.put("method", "avg");
+		data.put("startTime", "2017-06-19T07:00:00Z");
+		data.put("endTime", "2017-06-19T07:47:00Z");
+		dimensions.put("k1=v1");
+		dimensions.put("k2=v2");
+		dimensions.put("k3=v3");
+		data.put("dimensions", dimensions);
+		data.put("nameSpace", "keip");
 		
 		return data.toString();
 	}
