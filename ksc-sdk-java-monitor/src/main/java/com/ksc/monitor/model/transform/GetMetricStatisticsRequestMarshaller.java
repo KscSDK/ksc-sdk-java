@@ -24,7 +24,6 @@ public class GetMetricStatisticsRequestMarshaller
 				getMetricStatisticsRequest, "monitor");
 		request.addParameter("Action", "GetMetricStatistics");
 		String version = getMetricStatisticsRequest.getVersion();
-		System.out.println("version"+version);
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2010-05-23";
 		}

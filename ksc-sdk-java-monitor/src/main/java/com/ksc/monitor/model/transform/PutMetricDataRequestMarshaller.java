@@ -21,11 +21,9 @@ public class PutMetricDataRequestMarshaller implements Marshaller<Request<PutMet
 				"monitor");
 		request.addParameter("Action", "PutMetricData");
 		String version = putMetricDataRequest.getVersion();
-		System.out.println("version" + version);
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-07-01";
 		}
-		System.out.println("version" + version);
 		byte[] content = putMetricDataRequest.getData().getBytes();
 		request.addHeader("Content-Type", "application/json");
 		request.setContent(new ByteArrayInputStream(content));

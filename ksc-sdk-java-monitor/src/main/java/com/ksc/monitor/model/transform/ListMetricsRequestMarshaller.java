@@ -26,7 +26,6 @@ public class ListMetricsRequestMarshaller
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2010-05-23";
 		}
-		System.out.println(version);
 		if (version.equalsIgnoreCase("2017-07-01")){
 			byte[] content = listMetricsRequest.getData().getBytes();
 			request.addHeader("Content-Type", "application/json");
