@@ -23,7 +23,7 @@ public class GetMetricStatisticsRequestMarshaller
 		request.addParameter("Action", "GetMetricStatistics");
 		String version = getMetricStatisticsRequest.getVersion();
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
-			version = "2010-05-23";
+			version = "2010-05-25";
 		}
 		request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
