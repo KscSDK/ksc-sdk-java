@@ -10,7 +10,7 @@ import com.ksc.monitor.model.ListMetricsRequest;
 public class KSCMonitorClientTest0 {
 	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
 	private AWSCredentials credentials = new BasicAWSCredentials("AKLTQ8398SEUQMOloYUPJlFnHg",
-			"OHB+jGhuovMHTad5Mud4fmU6CTJbOUJc3pdZfr23tNJIhbMskdMkVQVlckjHo9UQGQ==");
+			"OHB+jGhuovMHTad5Mud4fmU6CTJbOUJc3pdsdr23tNJIhbMskdMkVQVlckjHo9UQGQ==");
 	@Test
 	public void ListMetrics(){
 		ListMetricsRequest request=new ListMetricsRequest();

@@ -12,7 +12,7 @@ import com.ksc.monitor.model.PutMetricDataRequest;
 public class KSCMonitorClientTest3 {
 	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
 	private AWSCredentials credentials = new BasicAWSCredentials("AKLTykLPqrtyT6WTvhf4RFI5Kw",
-			"OBN5Vczebl2X43dndCAej3tVrFie6MBveS+LmW+4lFpZ6mfQIwOIQdWn03HMleRAdg==");
+			"OBN5Vczebl2X4ssndCAej3tVrFie6MBveS+LmW+4lFpZ6mfQIwOIQdWn03HMleRAdg==");
 	@Test
 	public void putMetricData(){
 		PutMetricDataRequest request=new PutMetricDataRequest();
@@ -29,7 +29,7 @@ public class KSCMonitorClientTest3 {
 		JSONArray result = new JSONArray();
 		JSONObject data = new JSONObject();
 		JSONArray dimensions = new JSONArray();
-		data.put("nameSpace", "tst");
+		data.put("nameSpace", "tseet");
 		data.put("metricName", "openapi.lantcy.0");
 		data.put("value", new Double(100));
 		data.put("unit", "Seconds");
@@ -38,10 +38,13 @@ public class KSCMonitorClientTest3 {
 		dimensions.put("k2=v2");
 		dimensions.put("k3=v3");
 		data.put("dimensions", dimensions);
-		for (int i=0;i<10;i++){
-			String message="2017-07-02T09:0"+i+":00Z";
-			data.put("timestamp", message);
-			result.put(data);
+		for (int i=0;i<6;i++){
+			for (int j=0;j<10;j++){
+				String message="2017-07-02T09:"+i+j+":00Z";
+				data.put("timestamp", message);
+				result.put(data);
+				System.out.println(result);
+			}
 		}
 		return result.toString();
 	}
