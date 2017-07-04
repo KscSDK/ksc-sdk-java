@@ -17,7 +17,7 @@ import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 public class KSCMonitorClientTest1 {
 	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
 	private AWSCredentials credentials = new BasicAWSCredentials("AKLT84MHF72mQ5SXCumQxSiY7A ",
-			"OABUj0HSiGVmJt1ICDbtqmEWzVbbeIctbVZBTxCpiwKpdHgsmj4NnulbjgcdS0SLDw==");
+			"OABUj0HSiGVmJt1ICDbtqmEWdgsdfgfhgfdiwKpdHgsmj4NnulbjgcdS0SLDw==");
 	@Test
 	public void getCustomMetricStatistics(){
 		GetCustomMetricStatisticsRequest request=new GetCustomMetricStatisticsRequest();

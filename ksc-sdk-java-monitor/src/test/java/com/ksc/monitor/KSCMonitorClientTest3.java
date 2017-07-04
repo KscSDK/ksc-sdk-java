@@ -12,8 +12,8 @@ import com.ksc.monitor.model.PutMetricDataResponse;
 
 public class KSCMonitorClientTest3 {
 	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLT84MHF72mQ5SXCumQxSiY7A",
-			"OABUj0HSiGVmJt1ICDbtqmEWzVbbeIctbVZBTxCpiwKpdHgsmj4NnulbjgcdS0SLDw==");
+	private AWSCredentials credentials = new BasicAWSCredentials("ewrew4MHF72mQ5SXCumQxSiY7A",
+			"werewreSiGVmJt1ICDbtqmEWzVbetertHgsmj4NnulbjgcdS0SLDw==");
 	@Test
 	public void putMetricData(){
 		PutMetricDataRequest request=new PutMetricDataRequest();
