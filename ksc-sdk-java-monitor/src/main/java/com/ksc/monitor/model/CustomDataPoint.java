@@ -3,7 +3,7 @@ package com.ksc.monitor.model;
 import lombok.ToString;
 
 @ToString
-public class DataPointV1 {
+public class CustomDataPoint {
 	private Double Value;
 	private String Timestamp;
 	public Double getValue() {
@@ -18,6 +18,12 @@ public class DataPointV1 {
 	public void setTimestamp(String timestamp) {
 		Timestamp = timestamp;
 	}
-	
 
+	@Override
+	public String toString() {
+		return "DataPoint{" +
+				"Value=" + Value +
+				", Timestamp='" + Timestamp + '\'' +
+				'}';
+	}
 }

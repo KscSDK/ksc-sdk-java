@@ -1,18 +1,19 @@
 package com.ksc.monitor.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-import com.ksc.monitor.model.GetMetricStatisticsResultV1;
+import com.ksc.monitor.model.GetCustomMetricStatisticsResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class GetMetricStatisticsResultV1StaxUnmarshaller
-		implements Unmarshaller<GetMetricStatisticsResultV1, StaxUnmarshallerContext> {
+import javax.xml.stream.events.XMLEvent;
+
+public class GetCustomMetricStatisticsResultStaxUnmarshaller
+		implements Unmarshaller<GetCustomMetricStatisticsResult, StaxUnmarshallerContext> {
 
 	@Override
-	public GetMetricStatisticsResultV1 unmarshall(StaxUnmarshallerContext context) throws Exception {
+	public GetCustomMetricStatisticsResult unmarshall(StaxUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
-		GetMetricStatisticsResultV1 result = new GetMetricStatisticsResultV1();
+		GetCustomMetricStatisticsResult result = new GetCustomMetricStatisticsResult();
 		// TODO Auto-generated method stub
 		int originalDepth = context.getCurrentDepth();
 		int targetDepth = originalDepth + 1;
@@ -25,7 +26,7 @@ public class GetMetricStatisticsResultV1StaxUnmarshaller
 				return result;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 				if (context.testExpression("DataPoints/member", targetDepth)) {
-					result.withDatapoints(DatapointV1StaxUnmarshaller.getInstance().unmarshall(context));
+					result.withDatapoints(CustomDatapointStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				} else if (context.testExpression("Label", targetDepth)) {
 					result.setLabel(StringStaxUnmarshaller.getInstance().unmarshall(context));
@@ -39,11 +40,11 @@ public class GetMetricStatisticsResultV1StaxUnmarshaller
 		}
 	}
 
-	private static GetMetricStatisticsResultV1StaxUnmarshaller instance;
+	private static GetCustomMetricStatisticsResultStaxUnmarshaller instance;
 
-	public static GetMetricStatisticsResultV1StaxUnmarshaller getInstance() {
+	public static GetCustomMetricStatisticsResultStaxUnmarshaller getInstance() {
 		if (instance == null)
-			instance = new GetMetricStatisticsResultV1StaxUnmarshaller();
+			instance = new GetCustomMetricStatisticsResultStaxUnmarshaller();
 		return instance;
 	}
 }

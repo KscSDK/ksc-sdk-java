@@ -4,7 +4,7 @@ import lombok.ToString;
 @ToString
 public class GetCustomMetricStatisticsResponse {
 	
-	private GetMetricStatisticsResultV1 GetMetricStatisticsResult;
+	private GetCustomMetricStatisticsResult GetMetricStatisticsResult;
 	private Metadata ResponseMetadata;
 
 	public Metadata getResponseMetadata() {
@@ -15,18 +15,11 @@ public class GetCustomMetricStatisticsResponse {
 		ResponseMetadata = responseMetadata;
 	}
 
-	public GetMetricStatisticsResultV1 getGetMetricStatisticsResult() {
+	public GetCustomMetricStatisticsResult getGetMetricStatisticsResult() {
 		return GetMetricStatisticsResult;
 	}
 
-	public void setGetMetricStatisticsResult(GetMetricStatisticsResultV1 getMetricStatisticsResult) {
+	public void setGetMetricStatisticsResult(GetCustomMetricStatisticsResult getMetricStatisticsResult) {
 		GetMetricStatisticsResult = getMetricStatisticsResult;
 	}
-
-	
-
-
-	
-	
-
 }

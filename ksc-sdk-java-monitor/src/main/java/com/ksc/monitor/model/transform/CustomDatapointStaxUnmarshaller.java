@@ -1,18 +1,18 @@
 package com.ksc.monitor.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.monitor.model.DataPointV1;
+import com.ksc.monitor.model.CustomDataPoint;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.DoubleStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class DatapointV1StaxUnmarshaller implements Unmarshaller<DataPointV1, StaxUnmarshallerContext> {
+import javax.xml.stream.events.XMLEvent;
+
+public class CustomDatapointStaxUnmarshaller implements Unmarshaller<CustomDataPoint, StaxUnmarshallerContext> {
 
 	@Override
-	public DataPointV1 unmarshall(StaxUnmarshallerContext context) throws Exception {
-		DataPointV1 point = new DataPointV1();
+	public CustomDataPoint unmarshall(StaxUnmarshallerContext context) throws Exception {
+		CustomDataPoint point = new CustomDataPoint();
 		// TODO Auto-generated method stub
 		int originalDepth = context.getCurrentDepth();
 		int targetDepth = originalDepth + 1;
@@ -39,11 +39,11 @@ public class DatapointV1StaxUnmarshaller implements Unmarshaller<DataPointV1, St
 		}
 	}
 
-	private static DatapointV1StaxUnmarshaller instance;
+	private static CustomDatapointStaxUnmarshaller instance;
 
-	public static DatapointV1StaxUnmarshaller getInstance() {
+	public static CustomDatapointStaxUnmarshaller getInstance() {
 		if (instance == null)
-			instance = new DatapointV1StaxUnmarshaller();
+			instance = new CustomDatapointStaxUnmarshaller();
 		return instance;
 	}
 }

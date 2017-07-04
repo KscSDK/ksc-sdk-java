@@ -1,19 +1,19 @@
 package com.ksc.monitor.model.transform;
 
-import javax.xml.stream.events.XMLEvent;
-
-import com.ksc.monitor.model.ListCustomMetricsResponse;
+import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 import com.ksc.monitor.model.Metadata;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class ListMetricsResponseV1StaxUnmarshaller implements Unmarshaller<ListCustomMetricsResponse, StaxUnmarshallerContext> {
+import javax.xml.stream.events.XMLEvent;
+
+public class GetCustomMetricStatisticsResponseStaxUnmarshaller implements Unmarshaller<GetCustomMetricStatisticsResponse, StaxUnmarshallerContext> {
 
 	@Override
-	public ListCustomMetricsResponse unmarshall(StaxUnmarshallerContext context) throws Exception {
+	public GetCustomMetricStatisticsResponse unmarshall(StaxUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
-		ListCustomMetricsResponse response=new ListCustomMetricsResponse();
+		GetCustomMetricStatisticsResponse response=new GetCustomMetricStatisticsResponse();
 		// TODO Auto-generated method stub
 		int originalDepth = context.getCurrentDepth();
 		int targetDepth = originalDepth + 1;
@@ -25,8 +25,8 @@ public class ListMetricsResponseV1StaxUnmarshaller implements Unmarshaller<ListC
 			if (xmlEvent.isEndDocument())
 				return response;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				if (context.testExpression("ListMetricsResult/Metrics", targetDepth)) {
-					response.setListMetricsResult(ListMetricsResultV1StaxUnmarshaller.getInstance().unmarshall(context));
+				if (context.testExpression("GetMetricStatisticsResult", targetDepth)) {
+					response.setGetMetricStatisticsResult(GetCustomMetricStatisticsResultStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}else if (context.testExpression("ResponseMetadata/RequestId", targetDepth)) {
 					Metadata metadata=new Metadata();
@@ -41,11 +41,11 @@ public class ListMetricsResponseV1StaxUnmarshaller implements Unmarshaller<ListC
             }
 		}
 	}
-	private static ListMetricsResponseStaxUnmarshaller instance;
+	private static GetCustomMetricStatisticsResponseStaxUnmarshaller instance;
 
-	public static ListMetricsResponseStaxUnmarshaller getInstance() {
+	public static GetCustomMetricStatisticsResponseStaxUnmarshaller getInstance() {
 		if (instance == null)
-			instance = new ListMetricsResponseStaxUnmarshaller();
+			instance = new GetCustomMetricStatisticsResponseStaxUnmarshaller();
 		return instance;
 	}
 }

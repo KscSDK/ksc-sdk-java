@@ -2,7 +2,7 @@ package com.ksc.monitor.model;
 import lombok.ToString;
 
 @ToString
-public class ListMetricsResultV1 {
+public class ListCustomMetricsResult {
 
 	private com.ksc.internal.SdkInternalList<MetricInfo> Metrics;
 

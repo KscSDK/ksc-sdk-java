@@ -1,10 +1,5 @@
 package com.ksc.monitor;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.w3c.dom.Node;
-
 import com.ksc.ClientConfiguration;
 import com.ksc.ClientConfigurationFactory;
 import com.ksc.KscServiceException;
@@ -33,13 +28,13 @@ import com.ksc.monitor.model.ListMetricsResponse;
 import com.ksc.monitor.model.PutMetricDataRequest;
 import com.ksc.monitor.model.PutMetricDataResponse;
 import com.ksc.monitor.model.transform.GetCustomMetricStatisticsRequestMarshaller;
+import com.ksc.monitor.model.transform.GetCustomMetricStatisticsResponseStaxUnmarshaller;
 import com.ksc.monitor.model.transform.GetMetricStatisticsRequestMarshaller;
 import com.ksc.monitor.model.transform.GetMetricStatisticsResponseStaxUnmarshaller;
-import com.ksc.monitor.model.transform.GetMetricStatisticsResponseV1StaxUnmarshaller;
 import com.ksc.monitor.model.transform.ListCustomMetricsRequestMarshaller;
 import com.ksc.monitor.model.transform.ListMetricsRequestMarshaller;
 import com.ksc.monitor.model.transform.ListMetricsResponseStaxUnmarshaller;
-import com.ksc.monitor.model.transform.ListMetricsResponseV1StaxUnmarshaller;
+import com.ksc.monitor.model.transform.ListCustomMetricsResponseStaxUnmarshaller;
 import com.ksc.monitor.model.transform.PutMetricDataRequestMarshaller;
 import com.ksc.monitor.model.transform.PutMetricDataResponseStaxUnmarshaller;
 import com.ksc.transform.LegacyErrorUnmarshaller;
@@ -48,6 +43,10 @@ import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
 import com.ksc.util.KscRequestMetrics.Field;
+import org.w3c.dom.Node;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor {
 	/** Provider for AWS credentials. */
@@ -263,7 +262,7 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 				}
 				StaxResponseHandler<GetCustomMetricStatisticsResponse> responseHandler = new StaxResponseHandler<GetCustomMetricStatisticsResponse>(
-						new GetMetricStatisticsResponseV1StaxUnmarshaller());
+						new GetCustomMetricStatisticsResponseStaxUnmarshaller());
 				response = invoke(request, responseHandler, executionContext);
 
 				return response.getKscResponse();
@@ -357,7 +356,7 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 				}
 				StaxResponseHandler<ListCustomMetricsResponse> responseHandler = new StaxResponseHandler<ListCustomMetricsResponse>(
-						new ListMetricsResponseV1StaxUnmarshaller());
+						new ListCustomMetricsResponseStaxUnmarshaller());
 				response = invoke(request, responseHandler, executionContext);
 
 				return response.getKscResponse();
