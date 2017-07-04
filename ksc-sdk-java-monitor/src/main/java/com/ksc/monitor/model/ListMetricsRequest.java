@@ -15,7 +15,7 @@ implements DryRunSupportedRequest<ListMetricsRequest>{
 	private String MetricName;
 	private Integer PageIndex;
 	private Integer PageSize;
-	private  String data;
+	
 	@Override
 	public Request<ListMetricsRequest> getDryRunRequest() {
 		Request<ListMetricsRequest> request = new ListMetricsRequestMarshaller()
@@ -63,14 +63,4 @@ implements DryRunSupportedRequest<ListMetricsRequest>{
 	public void setPageSize(Integer pageSize) {
 		PageSize = pageSize;
 	}
-
-	public String getData() {
-		return data;
-	}
-
-	public void setData(String data) {
-		this.data = data;
-	}
-
-	
 }

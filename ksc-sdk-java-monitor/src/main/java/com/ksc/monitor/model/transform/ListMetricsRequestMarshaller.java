@@ -1,7 +1,5 @@
 package com.ksc.monitor.model.transform;
 
-import java.io.ByteArrayInputStream;
-
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
@@ -19,6 +17,7 @@ public class ListMetricsRequestMarshaller
 		if (listMetricsRequest == null) {
 			throw new KscClientException("Invalid argument passed to marshall(...)");
 		}
+
 		Request<ListMetricsRequest> request = new DefaultRequest<ListMetricsRequest>(
 				listMetricsRequest, "monitor");
 		request.addParameter("Action", "ListMetrics");
@@ -26,16 +25,8 @@ public class ListMetricsRequestMarshaller
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2010-05-23";
 		}
-		if (version.equalsIgnoreCase("2017-07-01")){
-			byte[] content = listMetricsRequest.getData().getBytes();
-			request.addHeader("Content-Type", "application/json");
-			request.setContent(new ByteArrayInputStream(content));
-			request.addHeader("Content-Length", Integer.toString(content.length));
-			request.setHttpMethod(HttpMethodName.POST);
-		}else{
-			request.setHttpMethod(HttpMethodName.GET);			
-		}	
 		request.addParameter("Version", version);
+		request.setHttpMethod(HttpMethodName.GET);
 		if (listMetricsRequest.getInstanceId() != null) {
 			request.addParameter("InstanceID", StringUtils.fromString(listMetricsRequest.getInstanceId()));
 		}

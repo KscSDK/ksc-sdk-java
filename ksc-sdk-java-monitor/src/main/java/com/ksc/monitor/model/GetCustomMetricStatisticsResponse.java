@@ -2,7 +2,7 @@ package com.ksc.monitor.model;
 
 import lombok.ToString;
 @ToString
-public class GetMetricStatisticsResponseV1 {
+public class GetCustomMetricStatisticsResponse {
 	
 	private GetMetricStatisticsResultV1 GetMetricStatisticsResult;
 	private Metadata ResponseMetadata;

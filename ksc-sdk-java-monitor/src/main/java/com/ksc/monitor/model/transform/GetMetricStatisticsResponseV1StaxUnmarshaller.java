@@ -1,18 +1,19 @@
 package com.ksc.monitor.model.transform;
 
 import javax.xml.stream.events.XMLEvent;
-import com.ksc.monitor.model.GetMetricStatisticsResponseV1;
+
+import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 import com.ksc.monitor.model.Metadata;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class GetMetricStatisticsResponseV1StaxUnmarshaller implements Unmarshaller<GetMetricStatisticsResponseV1, StaxUnmarshallerContext> {
+public class GetMetricStatisticsResponseV1StaxUnmarshaller implements Unmarshaller<GetCustomMetricStatisticsResponse, StaxUnmarshallerContext> {
 
 	@Override
-	public GetMetricStatisticsResponseV1 unmarshall(StaxUnmarshallerContext context) throws Exception {
+	public GetCustomMetricStatisticsResponse unmarshall(StaxUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
-		GetMetricStatisticsResponseV1 response=new GetMetricStatisticsResponseV1();
+		GetCustomMetricStatisticsResponse response=new GetCustomMetricStatisticsResponse();
 		// TODO Auto-generated method stub
 		int originalDepth = context.getCurrentDepth();
 		int targetDepth = originalDepth + 1;

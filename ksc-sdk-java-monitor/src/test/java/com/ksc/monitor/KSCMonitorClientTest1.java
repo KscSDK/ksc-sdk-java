@@ -10,22 +10,23 @@ import org.junit.Test;
 
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.monitor.model.GetMetricStatisticsRequest;
+import com.ksc.monitor.model.GetCustomMetricStatisticsRequest;
+import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 
 
 public class KSCMonitorClientTest1 {
 	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLTaUFyVAk1RkWENHzzVUDHZw",
-			"OOgOslptTgnQqr93QjyVwhuJL6ec2zsIuSzRb1jyc7McLs/1wr93gFGjcHTjYXhfcw==");
+	private AWSCredentials credentials = new BasicAWSCredentials("AKLT84MHF72mQ5SXCumQxSiY7A ",
+			"OABUj0HSiGVmJt1ICDbtqmEWzVbbeIctbVZBTxCpiwKpdHgsmj4NnulbjgcdS0SLDw==");
 	@Test
-	public void getMetricStatistics(){
-		GetMetricStatisticsRequest request=new GetMetricStatisticsRequest();
+	public void getCustomMetricStatistics(){
+		GetCustomMetricStatisticsRequest request=new GetCustomMetricStatisticsRequest();
 		request.setVersion("2017-07-01");
 		String data=body();
 		request.setData(data);
 		KSCMonitorClient client=new KSCMonitorClient(credentials);
-		client.setEndpoint("http://monitor.cn-shanghai-3.api.ksyun.com");
-		Object result=client.getMetricStatistics(request);
+		client.setEndpoint("http://monitor.cn-beijing-3.api.ksyun.com");
+		GetCustomMetricStatisticsResponse  result=client.getCustomMetricStatistics(request);
 		System.out.println(result);
 		log.debug(result);
 	}

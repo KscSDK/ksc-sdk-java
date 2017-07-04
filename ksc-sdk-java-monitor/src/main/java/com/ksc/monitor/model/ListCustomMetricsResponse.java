@@ -3,7 +3,7 @@ package com.ksc.monitor.model;
 import lombok.ToString;
 
 @ToString
-public class ListMetricsResponseV1 {
+public class ListCustomMetricsResponse {
 
 	private ListMetricsResultV1 ListMetricsResult;
 	private Metadata ResponseMetadata;

@@ -8,11 +8,12 @@ import org.junit.Test;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.monitor.model.PutMetricDataRequest;
+import com.ksc.monitor.model.PutMetricDataResponse;
 
 public class KSCMonitorClientTest3 {
 	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLTykLPqrtyT6WTvhf4RFI5Kw",
-			"OBN5Vczebl2X4ssndCAej3tVrFie6MBveS+LmW+4lFpZ6mfQIwOIQdWn03HMleRAdg==");
+	private AWSCredentials credentials = new BasicAWSCredentials("AKLT84MHF72mQ5SXCumQxSiY7A",
+			"OABUj0HSiGVmJt1ICDbtqmEWzVbbeIctbVZBTxCpiwKpdHgsmj4NnulbjgcdS0SLDw==");
 	@Test
 	public void putMetricData(){
 		PutMetricDataRequest request=new PutMetricDataRequest();
@@ -21,29 +22,29 @@ public class KSCMonitorClientTest3 {
 		request.setData(data);
 		KSCMonitorClient client=new KSCMonitorClient(credentials);
 		client.setEndpoint("http://monitor.cn-beijing-3.api.ksyun.com");
-		Object result=(Object)client.putMetricData(request);
+		PutMetricDataResponse result=client.putMetricData(request);
 		System.out.println(result);
 		log.debug(result);
 	}
 	private String body() throws JSONException{
 		JSONArray result = new JSONArray();
-		JSONObject data = new JSONObject();
-		JSONArray dimensions = new JSONArray();
-		data.put("nameSpace", "tseet");
-		data.put("metricName", "openapi.lantcy.0");
-		data.put("value", new Double(100));
-		data.put("unit", "Seconds");
-		
-		dimensions.put("k1=v1");
-		dimensions.put("k2=v2");
-		dimensions.put("k3=v3");
-		data.put("dimensions", dimensions);
 		for (int i=0;i<6;i++){
 			for (int j=0;j<10;j++){
-				String message="2017-07-02T09:"+i+j+":00Z";
+				
+				JSONObject data = new JSONObject();
+				JSONArray dimensions = new JSONArray();
+				data.put("nameSpace", "tseetttttt");
+				data.put("metricName", "openapi.lantcy.0");
+				data.put("value", new Double(100));
+				data.put("unit", "Seconds");
+				
+				dimensions.put("k1=v1");
+				dimensions.put("k2=v2");
+				dimensions.put("k3=v3");
+				data.put("dimensions", dimensions);
+				String message="2017-07-04T05:"+i+j+":00Z";
 				data.put("timestamp", message);
 				result.put(data);
-				System.out.println(result);
 			}
 		}
 		return result.toString();

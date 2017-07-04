@@ -1,14 +1,15 @@
 package com.ksc.monitor;
-
 import com.ksc.monitor.model.GetMetricStatisticsRequest;
+import com.ksc.monitor.model.GetCustomMetricStatisticsRequest;
 import com.ksc.monitor.model.GetMetricStatisticsResponse;
-import com.ksc.monitor.model.GetMetricStatisticsResponseV1;
+import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 import com.ksc.monitor.model.ListMetricsRequest;
+import com.ksc.monitor.model.ListCustomMetricsRequest;
 import com.ksc.monitor.model.ListMetricsResponse;
-import com.ksc.monitor.model.ListMetricsResponseV1;
+import com.ksc.monitor.model.ListCustomMetricsResponse;
 import com.ksc.monitor.model.PutMetricDataRequest;
 import com.ksc.monitor.model.PutMetricDataResponse;
-
+//Custom
 public interface KSCMonitor {
 	/**
 	 * <p>
@@ -21,8 +22,8 @@ public interface KSCMonitor {
 	 *         the service.
 	 * @sample KSC.GetMetricStatistics
 	 */
-	public Object getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest);
-
+	public GetMetricStatisticsResponse getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest);
+	public GetCustomMetricStatisticsResponse getCustomMetricStatistics(GetCustomMetricStatisticsRequest getCustomMetricStatisticsRequest);
 	/**
 	 * <p>
 	 * listMetrics.
@@ -34,7 +35,8 @@ public interface KSCMonitor {
 	 *         service.
 	 * @sample KSC.ListMetrics
 	 */
-	public Object listMetrics(ListMetricsRequest listMetricsRequest);
+	public ListMetricsResponse listMetrics(ListMetricsRequest listMetricsRequest);
+	public ListCustomMetricsResponse listCustomMetrics(ListCustomMetricsRequest listCustomMetricsRequest);
 	/**
 	 * <p>
 	 * putMetricData.
