@@ -23,7 +23,7 @@ public class ListMetricsRequestMarshaller
 		request.addParameter("Action", "ListMetrics");
 		String version = listMetricsRequest.getVersion();
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
-			version = "2010-05-23";
+			version = "2010-05-25";
 		}
 		request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
