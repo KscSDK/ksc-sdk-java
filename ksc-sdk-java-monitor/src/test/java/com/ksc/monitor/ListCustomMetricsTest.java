@@ -11,8 +11,8 @@ import org.junit.Test;
 
 public class ListCustomMetricsTest {
 	private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLTOfcEFLK2TzGCg64l6qWkRA",
-			"OAQl7BJfhPE5typQD91MAdVqsY2L/iqZXHZIWWrTBLoCFGxsupta4wPQdSJAAgzi6g==\n");
+	private AWSCredentials credentials = new BasicAWSCredentials("AKLTsdsfsdfsdvtD-0Og",
+			"OMZv6WSFttiMWVX/pexzfsasdfsafdssdsdsdsdsdsUv3PwqpQeXg4qZSk8uNIBA==");
 
 	@Test
 	public void listCustomMetrics(){
