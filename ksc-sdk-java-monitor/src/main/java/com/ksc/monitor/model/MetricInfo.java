@@ -4,14 +4,15 @@ import lombok.ToString;
 
 //@ToString
 public class MetricInfo {
-private String NameSpace;
+private String Namespace;
 private String MetricName;
 private com.ksc.internal.SdkInternalList<String> Dimensions;
-public String getNameSpace() {
-	return NameSpace;
+
+public String getNamespace() {
+	return Namespace;
 }
-public void setNameSpace(String nameSpace) {
-	NameSpace = nameSpace;
+public void setNamespace(String namespace) {
+	Namespace = namespace;
 }
 public String getMetricName() {
 	return MetricName;
@@ -36,7 +37,7 @@ public void withDimensions(String... Dimensions) {
 }
 @Override
 public String toString() {
-	return "Metric[NameSpace=" + NameSpace + ", MetricName=" + MetricName + ", Dimensions=" + Dimensions + "]";
+	return "Metric[Namespace=" + Namespace + ", MetricName=" + MetricName + ", Dimensions=" + Dimensions + "]";
 }
 
 }
