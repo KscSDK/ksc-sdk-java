@@ -8,8 +8,8 @@ import com.ksc.monitor.model.ListMetricsRequest;
 
 public class KSCMonitorClientTest {
 	private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLT84MHF72mQ5SXCumQxSiY7A ",
-			"OABUj0HSiGVmJt1ICDfsgfdhhgfpdHgsmj4NnulbjgcdS0SLDw==");
+	private AWSCredentials credentials = new BasicAWSCredentials("AKsfdsfsfddiAJFqvtD-0Og ",
+			"OMZv6WSFttiMWVX/pexzVadfsfdsfdfdfdfdfdfVcUv3PwqpQeXg4qZSk8uNIBA==");
 	@Test
 	public void ListMetrics(){
 		ListMetricsRequest request=new ListMetricsRequest();

@@ -2,7 +2,7 @@ package com.ksc.monitor.model;
 
 import lombok.ToString;
 
-@ToString
+//@ToString
 public class MetricInfo {
 private String NameSpace;
 private String MetricName;
@@ -34,4 +34,9 @@ public void withDimensions(String... Dimensions) {
 		this.Dimensions.add(ele);
 	}
 }
+@Override
+public String toString() {
+	return "Metric[NameSpace=" + NameSpace + ", MetricName=" + MetricName + ", Dimensions=" + Dimensions + "]";
+}
+
 }

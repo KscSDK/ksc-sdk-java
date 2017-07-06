@@ -15,8 +15,8 @@ import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 
 public class GetCustomMetricStatisticsTest {
     private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AKLTOfcEFLK2TzGCg64l6qWkRA",
-            "OAQl7BJfhPE5typQD91MAdVqsY2L/iqZXHZIWWrTBLoCFGxsupta4wPQdSJAAgzi6g==\n");
+    private AWSCredentials credentials = new BasicAWSCredentials("AKLTEVnertrtetD-0Og",
+            "OMZv6WSsdsdsdsdsdssdsdsdsdstrertesdsdsdseXg4qZSk8uNIBA==");
 
     @Test
     public void getCustomMetricStatistics() {
@@ -27,7 +27,7 @@ public class GetCustomMetricStatisticsTest {
         KSCMonitorClient client = new KSCMonitorClient(credentials);
         client.setEndpoint("http://monitor.cn-beijing-6.api.ksyun.com");
         GetCustomMetricStatisticsResponse result = client.getCustomMetricStatistics(request);
-        System.out.println(result.getGetMetricStatisticsResult().getDatapoints());
+        System.out.println(result);
     }
 
     private String body() throws JSONException {

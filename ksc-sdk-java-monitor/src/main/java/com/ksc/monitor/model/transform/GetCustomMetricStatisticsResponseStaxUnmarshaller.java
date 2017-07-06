@@ -26,7 +26,7 @@ public class GetCustomMetricStatisticsResponseStaxUnmarshaller implements Unmars
 				return response;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 				if (context.testExpression("GetMetricStatisticsResult", targetDepth)) {
-					response.setGetMetricStatisticsResult(GetCustomMetricStatisticsResultStaxUnmarshaller.getInstance().unmarshall(context));
+					response.setGetCustomMetricStatisticsResult(GetCustomMetricStatisticsResultStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}else if (context.testExpression("ResponseMetadata/RequestId", targetDepth)) {
 					Metadata metadata=new Metadata();

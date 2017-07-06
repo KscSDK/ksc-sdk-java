@@ -26,7 +26,7 @@ public class ListCustomMetricsResponseStaxUnmarshaller implements Unmarshaller<L
 				return response;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
 				if (context.testExpression("ListMetricsResult/Metrics", targetDepth)) {
-					response.setListMetricsResult(ListCustomMetricsResultStaxUnmarshaller.getInstance().unmarshall(context));
+					response.setListCustomMetricsResult(ListCustomMetricsResultStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}else if (context.testExpression("ResponseMetadata/RequestId", targetDepth)) {
 					Metadata metadata=new Metadata();
