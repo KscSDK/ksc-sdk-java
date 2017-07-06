@@ -25,7 +25,7 @@ public class GetCustomMetricStatisticsResultStaxUnmarshaller
 			if (xmlEvent.isEndDocument())
 				return result;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				if (context.testExpression("DataPoints/member", targetDepth)) {
+				if (context.testExpression("Datapoints/member", targetDepth)) {
 					result.withDatapoints(CustomDatapointStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				} else if (context.testExpression("Label", targetDepth)) {

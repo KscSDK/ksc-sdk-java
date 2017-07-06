@@ -15,8 +15,8 @@ import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
 
 public class GetCustomMetricStatisticsTest {
     private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AKLTEVnertrtetD-0Og",
-            "OMZv6WSsdsdsdsdsdssdsdsdsdstrertesdsdsdseXg4qZSk8uNIBA==");
+    private AWSCredentials credentials = new BasicAWSCredentials("AKLT3xyBQOb6S7CwdWeXRujrOQ",
+            "ODLW7kNlzfELyMk58GN0l3GUmk97nU3ZTAW1uLwh0Jw/HkGV8LtCTG/Ii0cLIghYQg==");
 
     @Test
     public void getCustomMetricStatistics() {
@@ -33,7 +33,7 @@ public class GetCustomMetricStatisticsTest {
     private String body() throws JSONException {
         JSONObject data = new JSONObject();
         JSONArray dimensions = new JSONArray();
-        data.put("nameSpace", "tao");
+        data.put("namespace", "tao");
         data.put("metricName", "api.error");
         data.put("period", new Integer(60));
         data.put("method", "avg");
