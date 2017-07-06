@@ -11,8 +11,8 @@ import org.junit.Test;
 
 public class ListCustomMetricsTest {
 	private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLTsdsfsdfsdvtD-0Og",
-			"OMZv6WSFttiMWVX/pexzfsasdfsafdssdsdsdsdsdsUv3PwqpQeXg4qZSk8uNIBA==");
+	private AWSCredentials credentials = new BasicAWSCredentials("AKLT3xyBQOb6S7CwdWeXRujrOQ",
+			"ODLW7kNlzfELyMk58GN0l3GUmk97nU3ZTAW1uLwh0Jw/HkGV8LtCTG/Ii0cLIghYQg==");
 
 	@Test
 	public void listCustomMetrics(){
@@ -27,7 +27,7 @@ public class ListCustomMetricsTest {
 	}
 	private String body() throws JSONException{
 		JSONObject data = new JSONObject();
-		data.put("nameSpace", "tao");
+		data.put("namespace", "tao");
 
 		return data.toString();
 	}

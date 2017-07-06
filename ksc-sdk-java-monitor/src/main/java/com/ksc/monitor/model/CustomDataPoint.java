@@ -21,7 +21,7 @@ public class CustomDataPoint {
 
 	@Override
 	public String toString() {
-		return "DataPoint{" +
+		return "Datapoint{" +
 				"Value=" + Value +
 				", Timestamp='" + Timestamp + '\'' +
 				'}';
