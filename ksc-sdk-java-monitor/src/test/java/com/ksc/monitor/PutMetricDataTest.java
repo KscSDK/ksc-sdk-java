@@ -13,8 +13,8 @@ import com.ksc.monitor.model.PutMetricDataResponse;
 
 public class PutMetricDataTest {
     private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AsdsdsfsdfdfdfdD-0Og",
-            "OsfsdfdsfdfdfsdffffffffffffffffffffffffffffA==");
+    private AWSCredentials credentials = new BasicAWSCredentials("AKLT3xyBQOb6S7CwdWeXRujrOQ",
+            "ODLW7kNlzfELyMk58GN0l3GUmk97nU3ZTAW1uLwh0Jw/HkGV8LtCTG/Ii0cLIghYQg==");
 
     @Test
     public void putMetricData() {
@@ -32,7 +32,7 @@ public class PutMetricDataTest {
         JSONArray result = new JSONArray();
         JSONObject data = new JSONObject();
         JSONArray dimensions = new JSONArray();
-        data.put("nameSpace", "tao");
+        data.put("namespace", "tao");
         data.put("metricName", "api.error");
         data.put("value", new Double(100));
         data.put("unit", "Seconds");
@@ -43,7 +43,7 @@ public class PutMetricDataTest {
 
         JSONObject data1 = new JSONObject();
         JSONArray dimensions1 = new JSONArray();
-        data1.put("nameSpace", "tao");
+        data1.put("namespace", "tao");
         data1.put("metricName", "api.error");
         data1.put("value", new Double(99));
         data1.put("unit", "Seconds");

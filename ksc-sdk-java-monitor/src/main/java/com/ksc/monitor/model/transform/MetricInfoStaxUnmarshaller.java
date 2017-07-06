@@ -23,8 +23,8 @@ public class MetricInfoStaxUnmarshaller implements Unmarshaller<MetricInfo, Stax
 			if (xmlEvent.isEndDocument())
 				return result;
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				 if (context.testExpression("NameSpace", targetDepth)) {
-					result.setNameSpace(StringStaxUnmarshaller.getInstance().unmarshall(context));
+				 if (context.testExpression("Namespace", targetDepth)) {
+					result.setNamespace(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}else if (context.testExpression("MetricName", targetDepth)) {
 					result.setMetricName(StringStaxUnmarshaller.getInstance().unmarshall(context));
