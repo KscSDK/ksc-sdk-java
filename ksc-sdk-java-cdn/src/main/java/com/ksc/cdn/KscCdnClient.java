@@ -16,13 +16,13 @@ import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
 import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
 import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
 import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.domainhttps.*;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.log.*;
 import com.ksc.cdn.model.valid.CommonValidUtil;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ import java.util.regex.Pattern;
 /**
  * api接口功能实现
  */
-public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent {
+public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps {
 
     public KscCdnClient() {
 
@@ -58,7 +58,7 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
 
     private static Logger log = LoggerFactory.getLogger(KscCdnClient.class);
 
-    
+
     @Override
     public GetServiceIpResult getServiceIp(String domainId) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETSERVICEIP_VERSION, GETSERVICEIP_ACTION);
@@ -67,7 +67,7 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         GetServiceIpResult result = this.httpExecute(HttpMethod.GET, GETSERVICEIP_URL, params, buildHeaders, GetServiceIpResult.class);
         return result;
     }
-    
+
     @Override
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETCDNDOMAINS_VERSION, GETCDNDOMAINS_ACTION);
@@ -248,6 +248,34 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
         return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, DomainLogServiceStatusResult.class);
+    }
+
+    @Override
+    public void configCertificate(HttpsConfCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setCertificate(HttpsSetCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void removeCertificates(HttpsRemoveCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public HttpsGetCertResponse getCertificates(HttpsGetCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, HttpsGetCertResponse.class);
     }
 
     private String getDomainByUrl(String url) {

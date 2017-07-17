@@ -102,6 +102,7 @@ public class ContentTest {
         RefreshOrPreloadTaskRequest refreshOrPreloadTaskRequest = new RefreshOrPreloadTaskRequest();
         refreshOrPreloadTaskRequest.setStartTime("2017-02-28T08:00+0800");
         refreshOrPreloadTaskRequest.setEndTime("2017-02-28T18:00+0800");
+        refreshOrPreloadTaskRequest.setType("refresh");
         RefreshOrPreloadTaskResult result = client.getRefreshOrPreloadTask(refreshOrPreloadTaskRequest);
         Assert.assertNotNull(result);
     }

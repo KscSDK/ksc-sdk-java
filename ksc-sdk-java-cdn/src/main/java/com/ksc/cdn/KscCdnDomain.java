@@ -26,19 +26,21 @@ import com.ksc.cdn.model.enums.SwitchEnum;
  * @date 04/11/2016
  */
 public interface KscCdnDomain {
-	
-	/**
+
+    /**
      * 设置备注信息
      */
     String GETSERVICEIP_URL = "/2016-09-01/domain/GetServiceIpData";
     String GETSERVICEIP_VERSION = "2016-09-01";
     String GETSERVICEIP_ACTION = "GetServiceIpData";
+
     /**
      * 域名列表
      */
     String GETCDNDOMAINS_URL = "/2016-09-01/domain/GetCdnDomains";
     String GETCDNDOMAINS_VERSION = "2016-09-01";
     String GETCDNDOMAINS_ACTION = "GetCdnDomains";
+
     /**
      * 新增域名
      */
@@ -87,18 +89,21 @@ public interface KscCdnDomain {
     String IGNORE_QUERY_STRING_URL = "/2016-09-01/domain/SetIgnoreQueryStringConfig";
     String IGNORE_QUERY_STRING_VERSION = "2016-09-01";
     String IGNORE_QUERY_STRING_ACTION = "SetIgnoreQueryStringConfig";
+
     /**
      * 设置回源host
      */
     String BACK_ORIGIN_URL = "/2016-09-01/domain/SetBackOriginHostConfig";
     String BACK_ORIGIN_VERSION = "2016-09-01";
     String BACK_ORIGIN_ACTION = "SetBackOriginHostConfig";
+
     /**
      * 设置refer防盗链
      */
     String REFER_PROTECTION_URL = "/2016-09-01/domain/SetReferProtectionConfig";
     String REFER_PROTECTION_VERSION = "2016-09-01";
     String REFER_PROTECTION_ACTION = "SetReferProtectionConfig";
+
     /**
      * 设置Ip防盗链
      */
@@ -112,6 +117,7 @@ public interface KscCdnDomain {
     String SETCACHERULECONFIG_URL = "/2016-09-01/domain/SetCacheRuleConfig";
     String SETCACHERULECONFIG_VERSION = "2016-09-01";
     String SETCACHERULECONFIG_ACTION = "SetCacheRuleConfig";
+
     /**
      * 设置测试URL
      */
@@ -125,12 +131,14 @@ public interface KscCdnDomain {
     String SETORIGINADVANCEDCONFIG_URL = "/2016-09-01/domain/SetOriginAdvancedConfig";
     String SETORIGINADVANCEDCONFIG_VERSION = "2016-09-01";
     String SETORIGINADVANCEDCONFIG_ACTION = "SetOriginAdvancedConfig";
+
     /**
      * 设置备注信息
      */
     String SETREMARKCONFIG_URL = "/2016-09-01/domain/SetRemarkConfig";
     String SETREMARKCONFIG_VERSION = "2016-09-01";
     String SETREMARKCONFIG_ACTION = "SetRemarkConfig";
+
 
     /**
      * 获取域名列表
@@ -272,5 +280,5 @@ public interface KscCdnDomain {
      */
     void setRemark(String domainId, String remark) throws Exception;
 
-	GetServiceIpResult getServiceIp(String domainId) throws Exception;
+    GetServiceIpResult getServiceIp(String domainId) throws Exception;
 }
