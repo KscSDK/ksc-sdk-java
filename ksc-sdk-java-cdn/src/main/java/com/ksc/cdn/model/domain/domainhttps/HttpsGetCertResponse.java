@@ -8,46 +8,22 @@ import java.util.List;
  * Created by YANGXUEYI on 2017/7/13.
  */
 public class HttpsGetCertResponse {
-    /**
-     * 一页展示条数
-     */
-    private Long pageSize;
-    /**
-     * 页码
-     */
-    private Long pageNum;
 
     /**
      * 总数
      */
-    private Integer TotalCount;
+    private Long TotalCount;
 
     /**
      * 返回list
      */
     private List<HttpsCertificate> Certificates = new ArrayList<HttpsCertificate>();
 
-    public Long getPageSize() {
-        return pageSize;
-    }
-
-    public void setPageSize(Long pageSize) {
-        this.pageSize = pageSize;
-    }
-
-    public Long getPageNum() {
-        return pageNum;
-    }
-
-    public void setPageNum(Long pageNum) {
-        this.pageNum = pageNum;
-    }
-
-    public Integer getTotalCount() {
+    public Long getTotalCount() {
         return TotalCount;
     }
 
-    public void setTotalCount(Integer totalCount) {
+    public void setTotalCount(Long totalCount) {
         TotalCount = totalCount;
     }
 
