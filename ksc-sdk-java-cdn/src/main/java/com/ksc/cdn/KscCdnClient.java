@@ -5,6 +5,10 @@ import com.ksc.HttpMethod;
 import com.ksc.cdn.model.GeneralRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.content.*;
+import com.ksc.cdn.model.domain.blockurl.BlockDomainUrlRequest;
+import com.ksc.cdn.model.domain.blockurl.GetBlockUrlQuotaResponse;
+import com.ksc.cdn.model.domain.blockurl.GetBlockUrlTaskRequest;
+import com.ksc.cdn.model.domain.blockurl.GetBlockUrlTaskResponse;
 import com.ksc.cdn.model.domain.createdomain.AddDomainRequest;
 import com.ksc.cdn.model.domain.createdomain.AddDomainResult;
 import com.ksc.cdn.model.domain.domainbase.GetDomainBaseResult;
@@ -34,7 +38,7 @@ import java.util.regex.Pattern;
 /**
  * api接口功能实现
  */
-public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps {
+public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps, KscCdnBlockUrl {
 
     public KscCdnClient() {
 
@@ -251,6 +255,27 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     }
 
     @Override
+    public void blockDomainUrl(BlockDomainUrlRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public GetBlockUrlTaskResponse getBlockUrlTask(GetBlockUrlTaskRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, GetBlockUrlTaskResponse.class);
+    }
+
+    @Override
+    public GetBlockUrlQuotaResponse getBlockUrlQuota() throws Exception {
+        GeneralRequestParam generalRequestParam = new GeneralRequestParam("GetBlockUrlQuota", "2016-09-01", "/2016-09-01/content/GetBlockUrlQuota");
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), new HashMap<String,String>(), buildHeaders, GetBlockUrlQuotaResponse.class);
+    }
+
+    @Override
     public void configCertificate(HttpsConfCertRequest request) throws Exception {
         GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
@@ -284,4 +309,5 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         matcher.find();
         return matcher.group();
     }
+
 }
