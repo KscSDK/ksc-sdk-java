@@ -7,7 +7,6 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.Preset;
 import com.ksc.kvs.model.SrcInfo;
 import com.ksc.kvs.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
@@ -73,7 +72,7 @@ public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, Json
 				}else if (context.testExpression("ErrorCode", targetDepth)) {
 					context.nextToken();
 					taskInfo.setErrorCode(context.getUnmarshaller(String.class).unmarshall(context));
-				}else if (context.testExpression("createTime", targetDepth)) {
+				}else if (context.testExpression("CreateTime", targetDepth)) {
 					context.nextToken();
 					taskInfo.setCreateTime(context.getUnmarshaller(String.class).unmarshall(context));
 				}else if (context.testExpression("TaskStatus", targetDepth)) {

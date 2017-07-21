@@ -3,21 +3,13 @@ package com.ksc.network.eip.model;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
-import com.ksc.network.eip.model.transform.AllocateAddressRequestMarshaller;
 import com.ksc.network.eip.model.transform.DisassociateAddressRequestMarshaller;
-import com.ksc.network.eip.model.transform.ReleaseAddressRequestMarshaller;
-import com.ksc.network.vpc.model.subnet.CreateSubnetRequest;
-import com.ksc.network.vpc.transform.SecurityGroups.AuthorizeSecurityGroupEntryRequestMarshaller;
-import com.ksc.network.vpc.transform.SecurityGroups.CreateSecurityGroupRequestMarshaller;
-import com.ksc.network.vpc.transform.subnet.CreateSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DescribeVpcsRequestMarshaller;
 
 import java.io.Serializable;
 
 /**
  * <p>
- * Contains the parameters for AuthorizeSecurityGroupEntry.
+ * Contains the parameters for DisassociateAddress.
  * </p>
  */
 public class DisassociateAddressRequest extends KscWebServiceRequest implements

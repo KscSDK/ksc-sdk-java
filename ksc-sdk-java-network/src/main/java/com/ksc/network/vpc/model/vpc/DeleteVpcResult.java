@@ -1,4 +1,3 @@
-
 package com.ksc.network.vpc.model.vpc;
 
 import lombok.ToString;
@@ -6,14 +5,13 @@ import lombok.ToString;
 import java.io.Serializable;
 
 /**
- * <p>
+ * <p>z
  * Contains the output of DescribeVpcs.
  * </p>
  */
 @ToString
 public class DeleteVpcResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Boolean Return;

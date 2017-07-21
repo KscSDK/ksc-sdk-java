@@ -5,7 +5,6 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.network.vpc.model.SecurityGroups.CreateSecurityGroupRequest;
-import com.ksc.network.vpc.model.vpc.CreateVpcRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
@@ -40,6 +39,10 @@ public class CreateSecurityGroupRequestMarshaller implements
 
         if (!StringUtils.isNullOrEmpty(createSecurityGroupRequest.getSecurityGroupName())) {
             request.addParameter("SecurityGroupName", createSecurityGroupRequest.getSecurityGroupName());
+        }
+
+        if (!StringUtils.isNullOrEmpty(createSecurityGroupRequest.getDescription())) {
+            request.addParameter("Description", createSecurityGroupRequest.getDescription());
         }
 
         return request;

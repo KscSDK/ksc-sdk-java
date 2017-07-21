@@ -8,13 +8,11 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.offline.model.SrcInfo;
-import com.ksc.offline.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class SrcInfoListJsonUnmarshaller implements Unmarshaller<SrcInfo, JsonUnmarshallerContext>{
-	
+public class SrcInfoListJsonUnmarshaller implements Unmarshaller<SrcInfo, JsonUnmarshallerContext> {
+
 	public SrcInfo unmarshall(JsonUnmarshallerContext context) throws Exception {
 		SrcInfo srcinfo = new SrcInfo();
 		int originalDepth = context.getCurrentDepth();
@@ -32,7 +30,7 @@ public class SrcInfoListJsonUnmarshaller implements Unmarshaller<SrcInfo, JsonUn
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("path", targetDepth)) {
 					context.nextToken();
 					srcinfo.setPath(context.getUnmarshaller(String.class).unmarshall(context));
@@ -42,7 +40,7 @@ public class SrcInfoListJsonUnmarshaller implements Unmarshaller<SrcInfo, JsonUn
 				} else if (context.testExpression("type", targetDepth)) {
 					context.nextToken();
 					srcinfo.setType(context.getUnmarshaller(String.class).unmarshall(context));
-				} 
+				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {

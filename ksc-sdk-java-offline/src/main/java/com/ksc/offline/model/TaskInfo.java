@@ -10,14 +10,13 @@ public class TaskInfo {
 	private String isTop;
 	private String createTime;
 	private com.ksc.internal.SdkInternalList<SrcInfo> SrcInfoList;
-	
 	private String dstAcl;
 	private String cbUrl;
 	private String cbMethod;
 	private String extParam;
 	private String errorMsg;
 	private String errorCode;
-	
+
 	public String getTaskid() {
 		return taskid;
 	}

@@ -1,34 +1,26 @@
 package com.ksc.monitor;
-
-import java.util.Date;
-
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.monitor.model.GetMetricStatisticsRequest;
-import com.ksc.monitor.model.GetMetricStatisticsResponse;
-import com.ksc.util.StringUtils;
+import com.ksc.monitor.model.ListMetricsRequest;
 
 public class KSCMonitorClientTest {
-	private static final Logger log = Logger.getLogger(KSCMonitorClientTest.class);
-	private AWSCredentials credentials = new BasicAWSCredentials("AKLTWo5i_elrTUa5mPthJpEUEg",
-			"OPTBA7o1ozT0RMw9FUf3zcFQnHfKPO8exNtNlHNG44d5zoBK4OfdbkfasZSDbNCbnw==");
+	private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
+	private AWSCredentials credentials = new BasicAWSCredentials("AKLT3xyBQOb6S7CwdWeXRujrOQ",
+			"ODLW7kNlzfELyMk58GN0l3GUmk97nU3ZTAW1uLwh0Jw/HkGV8LtCTG/Ii0cLIghYQg==");
 	@Test
-	public void getMetricStatistics(){
-		GetMetricStatisticsRequest request=new GetMetricStatisticsRequest();
+	public void ListMetrics(){
+		ListMetricsRequest request=new ListMetricsRequest();
 		request.setVersion("2010-05-25");
-		request.setInstanceId("7af7a14d-67da-4462-9ad1-c59439345d65");
+		request.setInstanceId("048c8283-af24-4b72-af07-502caf128bdf");
 		request.setNamespace("Kec");
-		request.setMetricName("vm.memory.size[used]");
-		request.setStartTime("2016-08-24T04:00:00Z");
-		request.setEndTime("2016-08-25T04:00:00Z");
-		request.setAggregate("Sum,Count,Max,Min,Average");
-		request.setPeriod(3600);
+		request.setPageIndex(new Integer(1));
+		request.setPageSize(new Integer(100));
 		KSCMonitorClient client=new KSCMonitorClient(credentials);
-		client.setEndpoint("http://monitor.cn-beijing-5.api.ksyun.com");
-		GetMetricStatisticsResponse result=client.getMetricStatistics(request);
+		client.setEndpoint("http://monitor.cn-beijing-6.api.ksyun.com");
+		Object result=client.listMetrics(request);
 		System.out.println(result);
 		log.debug(result);
 	}

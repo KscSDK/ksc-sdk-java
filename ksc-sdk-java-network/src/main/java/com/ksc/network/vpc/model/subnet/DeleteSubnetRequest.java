@@ -3,12 +3,7 @@ package com.ksc.network.vpc.model.subnet;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
-import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.subnet.DeleteSubnetRequestMarshaller;
-import com.ksc.network.vpc.transform.vpc.DeleteVpcRequestMarshaller;
-
-
-
 
 import java.io.Serializable;
 
@@ -20,14 +15,11 @@ import java.io.Serializable;
 public class DeleteSubnetRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<DeleteSubnetRequest> {
 
-
     /**
      * 子网的ID
      */
     private String SubnetId;
-    
-    
-    
+
 	public String getSubnetId() {
 		return SubnetId;
 	}

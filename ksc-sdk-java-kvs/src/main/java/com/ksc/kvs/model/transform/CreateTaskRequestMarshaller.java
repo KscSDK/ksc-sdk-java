@@ -7,7 +7,6 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kvs.model.CreateTaskRequest;
-import com.ksc.kvs.model.PresetRequest;
 import com.ksc.transform.Marshaller;
 
 public class CreateTaskRequestMarshaller implements Marshaller<Request<CreateTaskRequest>, CreateTaskRequest>{

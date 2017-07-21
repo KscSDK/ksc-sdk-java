@@ -6,6 +6,7 @@ import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.vpc.transform.subnet.DescribeSubnetsRequestMarshaller;
 
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 /**
@@ -14,6 +15,7 @@ import lombok.ToString;
  * </p>
  */
 @ToString
+@EqualsAndHashCode
 public class DescribeSubnetsRequest extends KscWebServiceRequest implements
          DryRunSupportedRequest<DescribeSubnetsRequest> {
 	/**
