@@ -40,6 +40,12 @@ public class ImageJsonUnmarshaller implements Unmarshaller<Image, JsonUnmarshall
 				} else if (context.testExpression("offsetY", targetDepth)) {
 					context.nextToken();
 					image.setOffsetY(context.getUnmarshaller(Double.class).unmarshall(context));
+				} else if (context.testExpression("shortSide", targetDepth)) {
+					context.nextToken();
+					image.setShortSide(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("pic", targetDepth)) {
+					context.nextToken();
+					image.setPic(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
