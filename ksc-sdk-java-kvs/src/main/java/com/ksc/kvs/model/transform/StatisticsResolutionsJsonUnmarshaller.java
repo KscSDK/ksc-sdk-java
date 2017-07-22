@@ -11,7 +11,8 @@ import com.ksc.kvs.model.StatisticsResolutions;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class StatisticsResolutionsJsonUnmarshaller implements Unmarshaller<StatisticsResolutions, JsonUnmarshallerContext> {
+public class StatisticsResolutionsJsonUnmarshaller
+		implements Unmarshaller<StatisticsResolutions, JsonUnmarshallerContext> {
 
 	public StatisticsResolutions unmarshall(JsonUnmarshallerContext context) throws Exception {
 		StatisticsResolutions statisticsResolutions = new StatisticsResolutions();

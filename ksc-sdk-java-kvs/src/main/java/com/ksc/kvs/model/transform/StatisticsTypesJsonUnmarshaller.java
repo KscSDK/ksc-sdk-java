@@ -7,10 +7,8 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.StatisticsDatas;
 import com.ksc.kvs.model.StatisticsTypes;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
 public class StatisticsTypesJsonUnmarshaller implements Unmarshaller<StatisticsTypes, JsonUnmarshallerContext> {

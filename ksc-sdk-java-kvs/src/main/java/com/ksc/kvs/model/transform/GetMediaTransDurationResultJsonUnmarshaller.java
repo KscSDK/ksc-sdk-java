@@ -36,8 +36,9 @@ public class GetMediaTransDurationResultJsonUnmarshaller
 
 				if (context.testExpression("Datas", targetDepth)) {
 					context.nextToken();
-					statisticsRequest.setDatas(new ListUnmarshaller<StatisticsDatas>(StatisticsDatasJsonUnmarshaller.getInstance())
-							.unmarshall(context));
+					statisticsRequest.setDatas(
+							new ListUnmarshaller<StatisticsDatas>(StatisticsDatasJsonUnmarshaller.getInstance())
+									.unmarshall(context));
 				} else if (context.testExpression("ErrNum", targetDepth)) {
 					context.nextToken();
 					statisticsRequest.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));

@@ -13,7 +13,8 @@ import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class GetInterfaceNumberResultJsonUnmarshaller implements Unmarshaller<GetInterfaceNumberResult, JsonUnmarshallerContext> {
+public class GetInterfaceNumberResultJsonUnmarshaller
+		implements Unmarshaller<GetInterfaceNumberResult, JsonUnmarshallerContext> {
 
 	public GetInterfaceNumberResult unmarshall(JsonUnmarshallerContext context) throws Exception {
 		GetInterfaceNumberResult statisticsRequest = new GetInterfaceNumberResult();
@@ -75,4 +76,3 @@ public class GetInterfaceNumberResultJsonUnmarshaller implements Unmarshaller<Ge
 		return instance;
 	}
 }
-
