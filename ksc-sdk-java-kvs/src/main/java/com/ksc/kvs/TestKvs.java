@@ -7,34 +7,14 @@ import org.json.JSONObject;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.kvs.model.CreateTaskRequest;
-import com.ksc.kvs.model.CreateTasklResult;
-import com.ksc.kvs.model.DelTaskByTaskIDRequest;
-import com.ksc.kvs.model.DeletePresetRequest;
-import com.ksc.kvs.model.GetPresetDetailRequest;
-import com.ksc.kvs.model.GetPresetDetailResult;
-import com.ksc.kvs.model.GetPresetListRequest;
-import com.ksc.kvs.model.GetPresetListResult;
-import com.ksc.kvs.model.GetTaskByTaskIDRequest;
-import com.ksc.kvs.model.GetTaskByTaskIDResult;
-import com.ksc.kvs.model.GetTaskListRequest;
-import com.ksc.kvs.model.GetTaskListResult;
-import com.ksc.kvs.model.GetTaskMetaRequest;
-import com.ksc.kvs.model.GetTaskMetaResult;
-import com.ksc.kvs.model.KvsErrResult;
-import com.ksc.kvs.model.PresetRequest;
-import com.ksc.kvs.model.QueryPipelineRequest;
-import com.ksc.kvs.model.QueryPipelineResult;
-import com.ksc.kvs.model.TopTaskByTaskIDRequest;
-import com.ksc.kvs.model.UpdatePipelineRequest;
-import com.ksc.kvs.model.UpdatePresetRequest;
+import com.ksc.kvs.model.*;
 
 public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxx",
-					"xxxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx",
+					"xxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -113,6 +93,19 @@ public class TestKvs {
 		queryPipelineRequest.setPipelineName("usual");
 		QueryPipelineResult queryPipelineResult = ksc.QueryPipeline(queryPipelineRequest);
 		System.out.println(queryPipelineResult.getErrNum());
+		
+		GetMediaTransDurationRequest getMediaTransDurationRequest = new GetMediaTransDurationRequest();
+		getMediaTransDurationRequest.setResultType(1);
+		GetMediaTransDurationResult getMediaTransDurationResult = ksc.GetMediaTransDuration(getMediaTransDurationRequest);
+		
+		GetScreenshotNumberRequest getScreenshotNumberRequest = new GetScreenshotNumberRequest();
+		getMediaTransDurationRequest.setResultType(1);
+		GetScreenshotNumberResult getScreenshotNumberResult = ksc.GetScreenshotNumber(getScreenshotNumberRequest);
+		
+		GetInterfaceNumberRequest getInterfaceNumberRequest = new GetInterfaceNumberRequest();
+		getMediaTransDurationRequest.setResultType(1);
+		GetInterfaceNumberResult getInterfaceNumberResult = ksc.GetInterfaceNumber(getInterfaceNumberRequest);
+		
 	}
 
 	private static String PresetSet(String preset) throws JSONException {
