@@ -5,6 +5,10 @@ import com.ksc.HttpMethod;
 import com.ksc.cdn.model.GeneralRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.content.*;
+import com.ksc.cdn.model.domain.blockurl.BlockDomainUrlRequest;
+import com.ksc.cdn.model.domain.blockurl.GetBlockUrlQuotaResponse;
+import com.ksc.cdn.model.domain.blockurl.GetBlockUrlTaskRequest;
+import com.ksc.cdn.model.domain.blockurl.GetBlockUrlTaskResponse;
 import com.ksc.cdn.model.domain.createdomain.AddDomainRequest;
 import com.ksc.cdn.model.domain.createdomain.AddDomainResult;
 import com.ksc.cdn.model.domain.domainbase.GetDomainBaseResult;
@@ -16,13 +20,13 @@ import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
 import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
 import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
 import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.domainhttps.*;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.log.*;
 import com.ksc.cdn.model.valid.CommonValidUtil;
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +38,7 @@ import java.util.regex.Pattern;
 /**
  * api接口功能实现
  */
-public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent {
+public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps, KscCdnBlockUrl {
 
     public KscCdnClient() {
 
@@ -58,7 +62,7 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
 
     private static Logger log = LoggerFactory.getLogger(KscCdnClient.class);
 
-    
+
     @Override
     public GetServiceIpResult getServiceIp(String domainId) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETSERVICEIP_VERSION, GETSERVICEIP_ACTION);
@@ -67,7 +71,7 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         GetServiceIpResult result = this.httpExecute(HttpMethod.GET, GETSERVICEIP_URL, params, buildHeaders, GetServiceIpResult.class);
         return result;
     }
-    
+
     @Override
     public GetCdnDomainsResult getCdnDomains(GetCdnDomainsRequest getCdnDomainsRequest) throws Exception {
         Map<String, String> buildHeaders = this.buildHeaders(GETCDNDOMAINS_VERSION, GETCDNDOMAINS_ACTION);
@@ -250,10 +254,60 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, DomainLogServiceStatusResult.class);
     }
 
+    @Override
+    public void blockDomainUrl(BlockDomainUrlRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public GetBlockUrlTaskResponse getBlockUrlTask(GetBlockUrlTaskRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, GetBlockUrlTaskResponse.class);
+    }
+
+    @Override
+    public GetBlockUrlQuotaResponse getBlockUrlQuota() throws Exception {
+        GeneralRequestParam generalRequestParam = new GeneralRequestParam("GetBlockUrlQuota", "2016-09-01", "/2016-09-01/content/GetBlockUrlQuota");
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), new HashMap<String,String>(), buildHeaders, GetBlockUrlQuotaResponse.class);
+    }
+
+    @Override
+    public void configCertificate(HttpsConfCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setCertificate(HttpsSetCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void removeCertificates(HttpsRemoveCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, Void.class);
+    }
+
+    @Override
+    public HttpsGetCertResponse getCertificates(HttpsGetCertRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, HttpsGetCertResponse.class);
+    }
+
     private String getDomainByUrl(String url) {
         Pattern p = Pattern.compile("(?<=://|)([^\\s/]+\\.)+[^\\s/:]+", Pattern.CASE_INSENSITIVE);
         java.util.regex.Matcher matcher = p.matcher(url);
         matcher.find();
         return matcher.group();
     }
+
 }
