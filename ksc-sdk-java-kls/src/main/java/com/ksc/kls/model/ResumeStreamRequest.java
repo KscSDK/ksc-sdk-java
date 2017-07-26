@@ -3,20 +3,15 @@ package com.ksc.kls.model;
 import com.ksc.KscWebServiceRequest;
 
 /**
- * Created by yangfan on 2017/5/22.
+ * Created by yangfan on 2017/7/25.
  */
-public class ListHistoryPubStreamsErrInfoRequest extends KscWebServiceRequest {
+public class ResumeStreamRequest extends KscWebServiceRequest {
     private String Action;
     private String Version;
     private String UniqueName;
     private String App;
     private String Pubdomain;
     private String Stream;
-    private int OrderTime;
-    private int Marker;
-    private int Limit;
-    private int StartUnixTime;
-    private int EndUnixTime;
 
     public String getAction() {
         return Action;
@@ -26,10 +21,12 @@ public class ListHistoryPubStreamsErrInfoRequest extends KscWebServiceRequest {
         Action = action;
     }
 
+    @Override
     public String getVersion() {
         return Version;
     }
 
+    @Override
     public void setVersion(String version) {
         Version = version;
     }
@@ -64,45 +61,5 @@ public class ListHistoryPubStreamsErrInfoRequest extends KscWebServiceRequest {
 
     public void setStream(String stream) {
         Stream = stream;
-    }
-
-    public int getStartUnixTime() {
-        return StartUnixTime;
-    }
-
-    public void setStartUnixTime(int startUnixTime) {
-        StartUnixTime = startUnixTime;
-    }
-
-    public int getEndUnixTime() {
-        return EndUnixTime;
-    }
-
-    public void setEndUnixTime(int endUnixTime) {
-        EndUnixTime = endUnixTime;
-    }
-
-    public int getOrderTime() {
-        return OrderTime;
-    }
-
-    public void setOrderTime(int orderTime) {
-        OrderTime = orderTime;
-    }
-
-    public int getMarker() {
-        return Marker;
-    }
-
-    public void setMarker(int marker) {
-        Marker = marker;
-    }
-
-    public int getLimit() {
-        return Limit;
-    }
-
-    public void setLimit(int limit) {
-        Limit = limit;
     }
 }

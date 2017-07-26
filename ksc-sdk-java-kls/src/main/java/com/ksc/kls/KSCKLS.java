@@ -54,4 +54,23 @@ public interface KSCKLS {
     //查询流实时信息接口
     public ListRealtimePubStreamsInfoResult listRealtimePubStreamsInfo(
             ListRealtimePubStreamsInfoRequest listRealtimePubStreamsInfoRequest);
+
+    //禁止单路直播流推送
+    public ForbidStreamResult forbidStream(ForbidStreamRequest forbidStreamRequest);
+
+    //恢复单路直播流推送
+    public ResumeStreamResult resumeStream(ResumeStreamRequest resumeStreamRequest);
+
+    //查询黑名单列表
+    public GetBlacklistResult getBlacklist(GetBlacklistRequest getBlacklistRequest);
+
+    //检查流是否在黑名单内
+    public CheckBlacklistsResult checkBlacklist(CheckBlacklistRequest checkBlacklistRequest);
+
+    //转推实时信息查询接口
+    public ListRelayStreamsInfoResult listRelayStreamsInfo(ListRelayStreamsInfoRequest listRelayStreamsInfoRequest);
+
+    //转推历史错误统计接口
+    public ListRelayErrInfoResult listRelayErrInfo(ListRelayErrInfoRequest listRelayErrInfoRequest);
+
 }

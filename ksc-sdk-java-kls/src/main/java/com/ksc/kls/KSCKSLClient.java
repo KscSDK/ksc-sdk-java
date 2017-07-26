@@ -581,4 +581,180 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+
+    @Override
+    public ForbidStreamResult forbidStream(ForbidStreamRequest forbidStreamRequest) {
+        ExecutionContext executionContext = createExecutionContext(forbidStreamRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ForbidStreamRequest> request = null;
+        Response<ForbidStreamResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ForbidStreamMarshaller()
+                        .marshall(super.beforeMarshalling(forbidStreamRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ForbidStreamResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ForbidStreamUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ResumeStreamResult resumeStream(ResumeStreamRequest resumeStreamRequest) {
+        ExecutionContext executionContext = createExecutionContext(resumeStreamRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ResumeStreamRequest> request = null;
+        Response<ResumeStreamResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ResumeStreamMarshaller()
+                        .marshall(super.beforeMarshalling(resumeStreamRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ResumeStreamResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ResumeStreamUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public GetBlacklistResult getBlacklist(GetBlacklistRequest getBlacklistRequest) {
+        ExecutionContext executionContext = createExecutionContext(getBlacklistRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<GetBlacklistRequest> request = null;
+        Response<GetBlacklistResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new GetBlacklistMarshaller()
+                        .marshall(super.beforeMarshalling(getBlacklistRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<GetBlacklistResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new GetBlacklistUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public CheckBlacklistsResult checkBlacklist(CheckBlacklistRequest checkBlacklistRequest) {
+        ExecutionContext executionContext = createExecutionContext(checkBlacklistRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<CheckBlacklistRequest> request = null;
+        Response<CheckBlacklistsResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new CheckBlacklistMarshaller()
+                        .marshall(super.beforeMarshalling(checkBlacklistRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<CheckBlacklistsResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new CheckBlacklistUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ListRelayStreamsInfoResult listRelayStreamsInfo(ListRelayStreamsInfoRequest listRelayStreamsInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listRelayStreamsInfoRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListRelayStreamsInfoRequest> request = null;
+        Response<ListRelayStreamsInfoResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListRelayStreamsInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listRelayStreamsInfoRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListRelayStreamsInfoResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListRelayStreamsInfoUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ListRelayErrInfoResult listRelayErrInfo(ListRelayErrInfoRequest listRelayErrInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listRelayErrInfoRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListRelayErrInfoRequest> request = null;
+        Response<ListRelayErrInfoResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListRelayErrInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listRelayErrInfoRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListRelayErrInfoResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListRelayErrInfoUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+
 }

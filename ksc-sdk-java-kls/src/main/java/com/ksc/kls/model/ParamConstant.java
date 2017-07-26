@@ -94,5 +94,24 @@ public class ParamConstant {
 
     public static final String WIDTH = "Width";
 
+    public static final String FORBID_UNIX_TIME = "ForbidUnixTime";
+
+    public static final String FORBID_TILL_UNIX_TIME = "ForbidTillUnixTime";
+
+    public static final String CHECK_RESULT = "CheckResult";
+
+    public static final String ERRORNO = "errno";
+
+    public static final String ERROR_CODE = "errcode";
+
+    public static final String ERRMSG = "errmsg";
+
+    public static final String STREAM_NAME = "streamname";
+
+    public static final String FRAME_LOSSRATE = "framelossrate";
+
+    public static final String STOP_TIME = "stoptime";
+
+    public static final String TIME = "time";
 
 }
