@@ -7,15 +7,13 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.ket.model.Logo;
-import com.ksc.ket.model.Video;
+import com.ksc.ket.model.Overlay;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshallerContext> {
-	public Video unmarshall(JsonUnmarshallerContext context) throws Exception {
-		Video video = new Video();
+public class OverlayJsonUnmarshaller implements Unmarshaller<Overlay, JsonUnmarshallerContext> {
+	public Overlay unmarshall(JsonUnmarshallerContext context) throws Exception {
+		Overlay overlay = new Overlay();
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
@@ -32,16 +30,12 @@ public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshall
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("orientationAdapt", targetDepth)) {
+				if (context.testExpression("inputIdx", targetDepth)) {
 					context.nextToken();
-					video.setOrientationAdapt(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("codec", targetDepth)) {
+					overlay.setInputIdx(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("trackIdx", targetDepth)) {
 					context.nextToken();
-					video.setCodec(context.getUnmarshaller(String.class).unmarshall(context));
-				} else if (context.testExpression("logo", targetDepth)) {
-					context.nextToken();
-					video.setLogoList(
-							new ListUnmarshaller<Logo>(LogoListJsonUnmarshaller.getInstance()).unmarshall(context));
+					overlay.setTrackIdx(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
@@ -52,14 +46,14 @@ public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshall
 			}
 			token = context.nextToken();
 		}
-		return video;
+		return overlay;
 	}
 
-	private static VideoJsonUnmarshaller instance;
+	private static OverlayJsonUnmarshaller instance;
 
-	public static VideoJsonUnmarshaller getInstance() {
+	public static OverlayJsonUnmarshaller getInstance() {
 		if (instance == null)
-			instance = new VideoJsonUnmarshaller();
+			instance = new OverlayJsonUnmarshaller();
 		return instance;
 	}
 }
