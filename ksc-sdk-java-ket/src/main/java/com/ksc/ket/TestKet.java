@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
+import com.ksc.ket.model.CreateDirectorTaskRequest;
+import com.ksc.ket.model.DelDirectorTaskRequest;
 import com.ksc.ket.model.DelPresetRequest;
 import com.ksc.ket.model.ErrResult;
 import com.ksc.ket.model.GetLoopListRequest;
@@ -20,11 +22,14 @@ import com.ksc.ket.model.GetQuotaUsedResult;
 import com.ksc.ket.model.GetStreamTranListRequest;
 import com.ksc.ket.model.GetStreamTranListResult;
 import com.ksc.ket.model.PresetRequest;
+import com.ksc.ket.model.QueryDirectorTaskRequest;
+import com.ksc.ket.model.QueryDirectorTaskResult;
 import com.ksc.ket.model.StartLoopRequest;
 import com.ksc.ket.model.StartLoopResult;
 import com.ksc.ket.model.StartStreamPullRequest;
 import com.ksc.ket.model.StopLoopRequest;
 import com.ksc.ket.model.StopStreamPullRequest;
+import com.ksc.ket.model.UpdateDirectorTaskRequest;
 import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
 
@@ -140,7 +145,32 @@ public class TestKet {
 		getLoopListRequest.setUniqName(UniqName);
 		GetLoopListResult getLoopListResult = ksc.GetLoopList(getLoopListRequest);
 		System.out.println(getLoopListResult.getList().get(0).getTaskID());
-
+		
+		//创建选流任务接口
+		CreateDirectorTaskRequest createDirectorTaskRequest = new CreateDirectorTaskRequest();
+		createDirectorTaskRequest.setData(DirectorTaskSet());
+		ErrResult createDirectorTaskResult = ksc.CreateDirectorTask(createDirectorTaskRequest);
+		System.out.println(createDirectorTaskResult.getTaskID());
+		
+		//	更新选流任务接口
+		UpdateDirectorTaskRequest updateDirectorTaskRequest = new UpdateDirectorTaskRequest();
+		createDirectorTaskRequest.setData(DirectorTaskSet());
+		ErrResult updateDirectorTaskResult = ksc.UpdateDirectorTask(updateDirectorTaskRequest);
+		System.out.println(updateDirectorTaskResult.getErrNum());
+		
+		//	查询选流任务接口
+		QueryDirectorTaskRequest queryDirectorTaskRequest = new QueryDirectorTaskRequest();
+		queryDirectorTaskRequest.setApp("live");
+		queryDirectorTaskRequest.setUniqName(UniqName);
+		QueryDirectorTaskResult queryDirectorTaskResult = ksc.QueryDirectorTask(queryDirectorTaskRequest);
+		System.out.println(queryDirectorTaskResult.getErrNum());
+		
+		//	删除选流任务接口
+		DelDirectorTaskRequest delDirectorTaskRequest = new DelDirectorTaskRequest();
+		delDirectorTaskRequest.setApp("live");
+		delDirectorTaskRequest.setUniqName(UniqName);
+		ErrResult delDirectorTaskResult = ksc.DelDirectorTask(delDirectorTaskRequest);
+		System.out.println(delDirectorTaskResult.getErrNum());
 	}
 
 	private static String UpdateLoopSet() {
@@ -221,6 +251,20 @@ public class TestKet {
 		}
 		video.put("logo", logo);
 		data.put("Video", video);
+		return data.toString();
+	}
+	private static String DirectorTaskSet(){
+		JSONObject data = new JSONObject();
+		data.put("App", "live");
+		data.put("UniqName", UniqName);
+		JSONArray SrcInfo = new JSONArray();
+		for (int i = 0; i < 2; i++) {
+			JSONObject info = new JSONObject();
+			info.put("SrcUrl","rtmp://host/app/outernetStreamForSwitch");
+			info.put("Index",i);
+			SrcInfo.put(info);
+		}		
+		data.put("SrcInfo", SrcInfo);
 		return data.toString();
 	}
 }
