@@ -154,7 +154,7 @@ public class TestKet {
 		
 		//	更新选流任务接口
 		UpdateDirectorTaskRequest updateDirectorTaskRequest = new UpdateDirectorTaskRequest();
-		createDirectorTaskRequest.setData(DirectorTaskSet());
+		updateDirectorTaskRequest.setData(DirectorTaskSet());
 		ErrResult updateDirectorTaskResult = ksc.UpdateDirectorTask(updateDirectorTaskRequest);
 		System.out.println(updateDirectorTaskResult.getErrNum());
 		
