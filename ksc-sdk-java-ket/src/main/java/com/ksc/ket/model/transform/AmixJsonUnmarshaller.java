@@ -30,10 +30,10 @@ public class AmixJsonUnmarshaller implements Unmarshaller<Amix, JsonUnmarshaller
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("inputIdx", targetDepth)) {
+				if (context.testExpression("InputIdx", targetDepth)) {
 					context.nextToken();
 					amix.setInputIdx(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("trackIdx", targetDepth)) {
+				} else if (context.testExpression("TrackIdx", targetDepth)) {
 					context.nextToken();
 					amix.setTrackIdx(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}

@@ -40,7 +40,7 @@ public class TestKvs {
 		System.out.println(presetResult.getErrNum());
 
 		UpdatePresetRequest presetRequest1 = new UpdatePresetRequest();
-		String data1 = PresetSet("liubohua9");
+		String data1 = PresetSet("xxxxxx");
 		presetRequest1.setData(data1);
 		KvsErrResult presetResult1 = ksc.UpdatePreset(presetRequest1);
 		System.out.println(presetResult1.getErrNum());
@@ -51,7 +51,7 @@ public class TestKvs {
 		System.out.println(getPresetDetailResult.getPresetDetail().getPresetType());
 
 		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
-		String data2 = setTask("preset_avop1", "wangshuai9", "ksyun_a.flv", "ksyun.flv");
+		String data2 = setTask("preset_avop1", "xxxxx", "ksyun_a.flv", "ksyun.flv");
 		createTaskRequest.setData(data2);
 		System.out.println("Create Task JSON " + data2);
 		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
@@ -59,12 +59,12 @@ public class TestKvs {
 		System.out.println("taskid:" + createTasklResult.getTaskID());
 
 		DelTaskByTaskIDRequest delTaskByTaskIDRequest = new DelTaskByTaskIDRequest();
-		delTaskByTaskIDRequest.setTaskID("359832c8b368ab27c1f4a5b5396e1af120160923");
+		delTaskByTaskIDRequest.setTaskID("xxxxx");
 		KvsErrResult DelTaskByTaskIDResult = ksc.DelTaskByTaskID(delTaskByTaskIDRequest);
 		System.out.println(DelTaskByTaskIDResult.getErrMsg());
 
 		TopTaskByTaskIDRequest topTaskByTaskIDRequest = new TopTaskByTaskIDRequest();
-		topTaskByTaskIDRequest.setTaskID("39c4926af7e04bd0d0ef9808c74286292016110");
+		topTaskByTaskIDRequest.setTaskID("xxxxx");
 		KvsErrResult TopTaskByTaskIDResult = ksc.TopTaskByTaskID(topTaskByTaskIDRequest);
 		System.out.println(TopTaskByTaskIDResult.getErrNum());
 
@@ -74,12 +74,12 @@ public class TestKvs {
 		System.out.println(getTaskListResult.getErrNum());
 
 		GetTaskByTaskIDRequest getTaskByTaskIDRequest = new GetTaskByTaskIDRequest();
-		getTaskByTaskIDRequest.setTaskID("359832c8b368ab27c1f4a5b5396e1af120160923");
+		getTaskByTaskIDRequest.setTaskID("xxxx");
 		GetTaskByTaskIDResult getTaskByTaskIDResult = ksc.GetTaskByTaskID(getTaskByTaskIDRequest);
 		System.out.println(getTaskByTaskIDResult.getErrNum());
 
 		GetTaskMetaRequest getTaskMetaInfoRequest = new GetTaskMetaRequest();
-		getTaskMetaInfoRequest.setTaskID("b444d1e644af2585c07fa62fc509623620161109");
+		getTaskMetaInfoRequest.setTaskID("xxxxx");
 		getTaskMetaInfoRequest.setStartDate(20161101);
 		GetTaskMetaResult getTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
 		System.out.println(getTaskMetaResult.getErrNum());

@@ -34,7 +34,7 @@ import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
 
 public class TestKet {
-	private static String UniqName = "videoqa";
+	private static String UniqName = "xxxxx";
 
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
@@ -58,7 +58,7 @@ public class TestKet {
 
 		// 更新模板
 		UpdatePresetRequest updatepresetRequest = new UpdatePresetRequest();
-		String udata = PresetSet("looppreset", 3);
+		String udata = PresetSet("xxxx", 3);
 		updatepresetRequest.setData(udata);
 		ErrResult updatepresetResult = ksc.UpdatePreset(updatepresetRequest);
 		System.out.println("ErrNum: " + updatepresetResult.getErrNum() + ",ErrMsg: " + updatepresetResult.getErrMsg());
@@ -67,7 +67,7 @@ public class TestKet {
 		DelPresetRequest delpresetRequest = new DelPresetRequest();
 		delpresetRequest.setApp("live");
 		delpresetRequest.setUniqName(UniqName);
-		delpresetRequest.setPreset("looppreset");
+		delpresetRequest.setPreset("xxxxx");
 		ErrResult delpresetResult = ksc.DelPreset(delpresetRequest);
 		System.out.println("ErrNum: " + delpresetResult.getErrNum() + ",ErrMsg: " + delpresetResult.getErrMsg());
 
@@ -83,7 +83,7 @@ public class TestKet {
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
 		getPresetDetailRequest.setApp("live");
 		getPresetDetailRequest.setUniqName(UniqName);
-		getPresetDetailRequest.setPreset("hlsMultiRate");
+		getPresetDetailRequest.setPreset("xxxxxx");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
 		System.out.println(
 				"ErrNum: " + getPresetDetailResult.getErrNum() + ",ErrMsg: " + getPresetDetailResult.getErrMsg());
@@ -193,14 +193,14 @@ public class TestKet {
 	private static String StartLoopSet() {
 		JSONObject data = new JSONObject();
 		JSONArray srcInfo = new JSONArray();
-		data.put("PubDomain", "videoqa.uplive.ks-cdn.com");
+		data.put("PubDomain", "xxxxx.uplive.ks-cdn.com");
 		data.put("UniqName", UniqName);
 		data.put("Preset", "looppreset");
 		data.put("StreamID", "java_sdk_1234");
 		data.put("App", "live");
 		data.put("DurationHour", 168);
 		JSONObject tmp = new JSONObject();
-		tmp.put("Path", "http://ks3-cn-beijing-internal.ksyun.com/qa-screenshot/offline_source_file/offline_mkv.mkv");
+		tmp.put("Path", "xxxxxxxx");
 		tmp.put("Index", 0);
 		srcInfo.put(tmp);
 		data.put("SrcInfo", srcInfo);
@@ -212,7 +212,7 @@ public class TestKet {
 		data.put("UniqName", UniqName);
 		data.put("StreamID", StreamID);
 		if (type == 0) {
-			data.put("SrcUrl", "rtmp://foreagles.live.ks-cdn.com/live/gy1234");
+			data.put("SrcUrl", "xxxxxxxxx");
 		}
 		data.put("App", "live");
 		return data.toString();

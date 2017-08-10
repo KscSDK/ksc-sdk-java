@@ -33,7 +33,13 @@ public class OutputJsonUnmarshaller implements Unmarshaller<Output, JsonUnmarsha
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("Video", targetDepth)) {
+				if (context.testExpression("format", targetDepth)) {
+					context.nextToken();
+					output.setFormat(FormatJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("switch", targetDepth)) {
+					context.nextToken();
+					output.setSwitch(SwitchJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("Video", targetDepth)) {
 					context.nextToken();
 					output.setVideo(VideoJsonUnmarshaller.getInstance().unmarshall(context));
 				} else if (context.testExpression("Audio", targetDepth)) {

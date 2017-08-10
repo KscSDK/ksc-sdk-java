@@ -30,10 +30,10 @@ public class OverlayJsonUnmarshaller implements Unmarshaller<Overlay, JsonUnmars
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-				if (context.testExpression("inputIdx", targetDepth)) {
+				if (context.testExpression("InputIdx", targetDepth)) {
 					context.nextToken();
 					overlay.setInputIdx(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("trackIdx", targetDepth)) {
+				} else if (context.testExpression("TrackIdx", targetDepth)) {
 					context.nextToken();
 					overlay.setTrackIdx(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
