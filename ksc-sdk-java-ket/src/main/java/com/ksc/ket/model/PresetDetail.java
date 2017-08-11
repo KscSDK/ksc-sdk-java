@@ -13,13 +13,13 @@ public class PresetDetail {
 	private Integer intelligentSwitch;
 	private String intelligentCburl;
 
-	public void setOutputList(java.util.Collection<Output> outputList) {
+	public void setOutput(java.util.Collection<Output> outputList) {
 		if (outputList != null) {
 			this.outputList = new com.ksc.internal.SdkInternalList<Output>(outputList);
 		}
 	}
 
-	public void addOutputList(Output... ouputs) {
+	public void addOutput(Output... ouputs) {
 		if (this.outputList == null) {
 			this.outputList = new com.ksc.internal.SdkInternalList<Output>();
 		}
@@ -92,11 +92,11 @@ public class PresetDetail {
 		this.hlsMbr = hlsMbr;
 	}
 
-	public com.ksc.internal.SdkInternalList<Output> getOutputList() {
+	public com.ksc.internal.SdkInternalList<Output> getOutput() {
 		return outputList;
 	}
 
-	public void setOutputList(com.ksc.internal.SdkInternalList<Output> outputList) {
+	public void setOutput(com.ksc.internal.SdkInternalList<Output> outputList) {
 		this.outputList = outputList;
 	}
 

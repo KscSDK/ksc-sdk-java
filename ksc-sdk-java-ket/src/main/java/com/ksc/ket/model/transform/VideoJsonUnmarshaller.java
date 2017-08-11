@@ -35,6 +35,9 @@ public class VideoJsonUnmarshaller implements Unmarshaller<Video, JsonUnmarshall
 				if (context.testExpression("orientationAdapt", targetDepth)) {
 					context.nextToken();
 					video.setOrientationAdapt(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("codec", targetDepth)) {
+					context.nextToken();
+					video.setCodec(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("logo", targetDepth)) {
 					context.nextToken();
 					video.setLogoList(

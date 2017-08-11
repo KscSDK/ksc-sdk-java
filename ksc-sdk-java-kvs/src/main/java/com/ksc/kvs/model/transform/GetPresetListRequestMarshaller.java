@@ -24,17 +24,15 @@ public class GetPresetListRequestMarshaller implements Marshaller<Request<GetPre
 		}
 		request.addParameter("Version", version);
 
-		request.addParameter("PresetType", StringUtils.fromString(kvsRequest.getPresettype()));
-
 		if (kvsRequest.getPresettype() != null) {
 			request.addParameter("PresetType", StringUtils.fromString(kvsRequest.getPresettype()));
+		} else if (kvsRequest.getPresetType() != null) {
+			request.addParameter("PresetType", StringUtils.fromString(kvsRequest.getPresetType()));
 		}
 		if (kvsRequest.getPreset() != null) {
 			request.addParameter("Presets", StringUtils.fromString(kvsRequest.getPreset()));
 		}
-
 		request.addParameter("WithDetail", StringUtils.fromInteger(kvsRequest.getWithDetail()));
-
 		request.setHttpMethod(HttpMethodName.GET);
 
 		return request;

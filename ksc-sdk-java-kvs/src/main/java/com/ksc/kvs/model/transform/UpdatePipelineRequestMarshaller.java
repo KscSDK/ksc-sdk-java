@@ -9,7 +9,8 @@ import com.ksc.http.HttpMethodName;
 import com.ksc.kvs.model.UpdatePipelineRequest;
 import com.ksc.transform.Marshaller;
 
-public class UpdatePipelineRequestMarshaller implements Marshaller<Request<UpdatePipelineRequest>, UpdatePipelineRequest> {
+public class UpdatePipelineRequestMarshaller
+		implements Marshaller<Request<UpdatePipelineRequest>, UpdatePipelineRequest> {
 	public Request<UpdatePipelineRequest> marshall(UpdatePipelineRequest updatePipelineRequest) {
 		// TODO Auto-generated method stub
 		// TODO Auto-generated method stub
@@ -17,7 +18,8 @@ public class UpdatePipelineRequestMarshaller implements Marshaller<Request<Updat
 			throw new KscClientException("Invalid argument passed to marshall(...)");
 		}
 
-		Request<UpdatePipelineRequest> request = new DefaultRequest<UpdatePipelineRequest>(updatePipelineRequest, "kvs");
+		Request<UpdatePipelineRequest> request = new DefaultRequest<UpdatePipelineRequest>(updatePipelineRequest,
+				"kvs");
 
 		request.addParameter("Action", "UpdatePipeline");
 		String version = updatePipelineRequest.getVersion();

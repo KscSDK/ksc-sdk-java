@@ -11,6 +11,8 @@ public class GetPresetListRequest extends KscWebServiceRequest implements DryRun
 
 	private String presettype;
 
+	private String presetType;
+
 	private String preset;
 
 	public String getPreset() {
@@ -42,6 +44,14 @@ public class GetPresetListRequest extends KscWebServiceRequest implements DryRun
 		Request<GetPresetListRequest> request = new GetPresetListRequestMarshaller().marshall(this);
 		request.addParameter("DryRun", Boolean.toString(true));
 		return null;
+	}
+
+	public String getPresetType() {
+		return presetType;
+	}
+
+	public void setPresetType(String presetType) {
+		this.presetType = presetType;
 	}
 
 }

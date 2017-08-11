@@ -2,6 +2,8 @@ package com.ksc.ket.model;
 
 public class Video {
 	private int orientationAdapt;
+	private String codec = "";
+	
 	private com.ksc.internal.SdkInternalList<Logo> logoList;
 
 	public int getOrientationAdapt() {
@@ -33,6 +35,14 @@ public class Video {
 
 	public void setLogoList(com.ksc.internal.SdkInternalList<Logo> logoList) {
 		this.logoList = logoList;
+	}
+
+	public String getCodec() {
+		return codec;
+	}
+
+	public void setCodec(String codec) {
+		this.codec = codec;
 	}
 
 }
