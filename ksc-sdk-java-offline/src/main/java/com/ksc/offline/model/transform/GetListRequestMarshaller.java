@@ -24,8 +24,6 @@ public class GetListRequestMarshaller implements Marshaller<Request<GetListReque
 		}
 		request.addParameter("Version", version);
 
-		request.addParameter("presetType", StringUtils.fromString(offlineRequest.getPresettype()));
-
 		if (offlineRequest.getPresettype() != null) {
 			request.addParameter("presetType", StringUtils.fromString(offlineRequest.getPresettype()));
 		}

@@ -17,7 +17,6 @@ import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.NestListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-
 public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshallerContext> {
 
 	public Param unmarshall(JsonUnmarshallerContext context) throws Exception {
@@ -89,7 +88,8 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 					param.setAutorotate(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("logos", targetDepth)) {
 					context.nextToken();
-					List<List<Logo>> list = new NestListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance()).unmarshall(context);
+					List<List<Logo>> list = new NestListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance())
+							.unmarshall(context);
 					param.setLogos(list);
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {

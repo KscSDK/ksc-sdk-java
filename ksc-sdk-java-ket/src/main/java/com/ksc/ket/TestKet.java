@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
+import com.ksc.ket.model.CreateDirectorTaskRequest;
+import com.ksc.ket.model.DelDirectorTaskRequest;
 import com.ksc.ket.model.DelPresetRequest;
 import com.ksc.ket.model.ErrResult;
 import com.ksc.ket.model.GetLoopListRequest;
@@ -20,16 +22,19 @@ import com.ksc.ket.model.GetQuotaUsedResult;
 import com.ksc.ket.model.GetStreamTranListRequest;
 import com.ksc.ket.model.GetStreamTranListResult;
 import com.ksc.ket.model.PresetRequest;
+import com.ksc.ket.model.QueryDirectorTaskRequest;
+import com.ksc.ket.model.QueryDirectorTaskResult;
 import com.ksc.ket.model.StartLoopRequest;
 import com.ksc.ket.model.StartLoopResult;
 import com.ksc.ket.model.StartStreamPullRequest;
 import com.ksc.ket.model.StopLoopRequest;
 import com.ksc.ket.model.StopStreamPullRequest;
+import com.ksc.ket.model.UpdateDirectorTaskRequest;
 import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
 
 public class TestKet {
-	private static String UniqName = "videoqa";
+	private static String UniqName = "xxxxx";
 
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
@@ -53,7 +58,7 @@ public class TestKet {
 
 		// 更新模板
 		UpdatePresetRequest updatepresetRequest = new UpdatePresetRequest();
-		String udata = PresetSet("looppreset", 3);
+		String udata = PresetSet("xxxx", 3);
 		updatepresetRequest.setData(udata);
 		ErrResult updatepresetResult = ksc.UpdatePreset(updatepresetRequest);
 		System.out.println("ErrNum: " + updatepresetResult.getErrNum() + ",ErrMsg: " + updatepresetResult.getErrMsg());
@@ -62,7 +67,7 @@ public class TestKet {
 		DelPresetRequest delpresetRequest = new DelPresetRequest();
 		delpresetRequest.setApp("live");
 		delpresetRequest.setUniqName(UniqName);
-		delpresetRequest.setPreset("looppreset");
+		delpresetRequest.setPreset("xxxxx");
 		ErrResult delpresetResult = ksc.DelPreset(delpresetRequest);
 		System.out.println("ErrNum: " + delpresetResult.getErrNum() + ",ErrMsg: " + delpresetResult.getErrMsg());
 
@@ -78,7 +83,7 @@ public class TestKet {
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
 		getPresetDetailRequest.setApp("live");
 		getPresetDetailRequest.setUniqName(UniqName);
-		getPresetDetailRequest.setPreset("hlsMultiRate");
+		getPresetDetailRequest.setPreset("xxxxxx");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
 		System.out.println(
 				"ErrNum: " + getPresetDetailResult.getErrNum() + ",ErrMsg: " + getPresetDetailResult.getErrMsg());
@@ -140,7 +145,32 @@ public class TestKet {
 		getLoopListRequest.setUniqName(UniqName);
 		GetLoopListResult getLoopListResult = ksc.GetLoopList(getLoopListRequest);
 		System.out.println(getLoopListResult.getList().get(0).getTaskID());
-
+		
+		//创建选流任务接口
+		CreateDirectorTaskRequest createDirectorTaskRequest = new CreateDirectorTaskRequest();
+		createDirectorTaskRequest.setData(DirectorTaskSet());
+		ErrResult createDirectorTaskResult = ksc.CreateDirectorTask(createDirectorTaskRequest);
+		System.out.println(createDirectorTaskResult.getTaskID());
+		
+		//	更新选流任务接口
+		UpdateDirectorTaskRequest updateDirectorTaskRequest = new UpdateDirectorTaskRequest();
+		updateDirectorTaskRequest.setData(DirectorTaskSet());
+		ErrResult updateDirectorTaskResult = ksc.UpdateDirectorTask(updateDirectorTaskRequest);
+		System.out.println(updateDirectorTaskResult.getErrNum());
+		
+		//	查询选流任务接口
+		QueryDirectorTaskRequest queryDirectorTaskRequest = new QueryDirectorTaskRequest();
+		queryDirectorTaskRequest.setApp("live");
+		queryDirectorTaskRequest.setUniqName(UniqName);
+		QueryDirectorTaskResult queryDirectorTaskResult = ksc.QueryDirectorTask(queryDirectorTaskRequest);
+		System.out.println(queryDirectorTaskResult.getErrNum());
+		
+		//	删除选流任务接口
+		DelDirectorTaskRequest delDirectorTaskRequest = new DelDirectorTaskRequest();
+		delDirectorTaskRequest.setApp("live");
+		delDirectorTaskRequest.setUniqName(UniqName);
+		ErrResult delDirectorTaskResult = ksc.DelDirectorTask(delDirectorTaskRequest);
+		System.out.println(delDirectorTaskResult.getErrNum());
 	}
 
 	private static String UpdateLoopSet() {
@@ -163,14 +193,14 @@ public class TestKet {
 	private static String StartLoopSet() {
 		JSONObject data = new JSONObject();
 		JSONArray srcInfo = new JSONArray();
-		data.put("PubDomain", "videoqa.uplive.ks-cdn.com");
+		data.put("PubDomain", "xxxxx.uplive.ks-cdn.com");
 		data.put("UniqName", UniqName);
 		data.put("Preset", "looppreset");
 		data.put("StreamID", "java_sdk_1234");
 		data.put("App", "live");
 		data.put("DurationHour", 168);
 		JSONObject tmp = new JSONObject();
-		tmp.put("Path", "http://ks3-cn-beijing-internal.ksyun.com/qa-screenshot/offline_source_file/offline_mkv.mkv");
+		tmp.put("Path", "xxxxxxxx");
 		tmp.put("Index", 0);
 		srcInfo.put(tmp);
 		data.put("SrcInfo", srcInfo);
@@ -182,7 +212,7 @@ public class TestKet {
 		data.put("UniqName", UniqName);
 		data.put("StreamID", StreamID);
 		if (type == 0) {
-			data.put("SrcUrl", "rtmp://foreagles.live.ks-cdn.com/live/gy1234");
+			data.put("SrcUrl", "xxxxxxxxx");
 		}
 		data.put("App", "live");
 		return data.toString();
@@ -221,6 +251,20 @@ public class TestKet {
 		}
 		video.put("logo", logo);
 		data.put("Video", video);
+		return data.toString();
+	}
+	private static String DirectorTaskSet(){
+		JSONObject data = new JSONObject();
+		data.put("App", "live");
+		data.put("UniqName", UniqName);
+		JSONArray SrcInfo = new JSONArray();
+		for (int i = 0; i < 2; i++) {
+			JSONObject info = new JSONObject();
+			info.put("SrcUrl","rtmp://host/app/outernetStreamForSwitch");
+			info.put("Index",i);
+			SrcInfo.put(info);
+		}		
+		data.put("SrcInfo", SrcInfo);
 		return data.toString();
 	}
 }

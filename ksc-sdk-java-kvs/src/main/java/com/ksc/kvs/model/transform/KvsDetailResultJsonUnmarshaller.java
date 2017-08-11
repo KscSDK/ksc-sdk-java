@@ -11,13 +11,11 @@ import com.ksc.kvs.model.GetPresetDetailResult;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class KvsDetailResultJsonUnmarshaller implements
-Unmarshaller<GetPresetDetailResult, JsonUnmarshallerContext>{
+public class KvsDetailResultJsonUnmarshaller implements Unmarshaller<GetPresetDetailResult, JsonUnmarshallerContext> {
 
-	public GetPresetDetailResult unmarshall(JsonUnmarshallerContext context)
-            throws Exception {
+	public GetPresetDetailResult unmarshall(JsonUnmarshallerContext context) throws Exception {
 		GetPresetDetailResult getPresetDetailResult = new GetPresetDetailResult();
-        int originalDepth = context.getCurrentDepth();
+		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
 
@@ -33,20 +31,19 @@ Unmarshaller<GetPresetDetailResult, JsonUnmarshallerContext>{
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
 
-                if (context.testExpression("PresetDetail", targetDepth)) {
-                	context.nextToken();
-                	getPresetDetailResult
-                            .setPresetDetail(DetailPresetJsonUnmarshaller.getInstance().unmarshall(context));
-                }else 
-                if(context.testExpression("ErrNum", targetDepth)){
-                    context.nextToken();
-                    getPresetDetailResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
-                }else if(context.testExpression("ErrMsg", targetDepth)){
-                    context.nextToken();
-                    getPresetDetailResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
-                }
+				if (context.testExpression("PresetDetail", targetDepth)) {
+					context.nextToken();
+					getPresetDetailResult
+							.setPresetDetail(DetailPresetJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("ErrNum", targetDepth)) {
+					context.nextToken();
+					getPresetDetailResult.setErrNum((context.getUnmarshaller(Integer.class).unmarshall(context)));
+				} else if (context.testExpression("ErrMsg", targetDepth)) {
+					context.nextToken();
+					getPresetDetailResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				}
 
-            } else if (token == END_ARRAY || token == END_OBJECT) {
+			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {
 					if (context.getCurrentDepth() <= originalDepth)
@@ -54,15 +51,15 @@ Unmarshaller<GetPresetDetailResult, JsonUnmarshallerContext>{
 				}
 			}
 			token = context.nextToken();
-        }
+		}
 		return getPresetDetailResult;
-    }
+	}
 
-    private static KvsDetailResultJsonUnmarshaller instance;
+	private static KvsDetailResultJsonUnmarshaller instance;
 
-    public static KvsDetailResultJsonUnmarshaller getInstance() {
-        if (instance == null)
-            instance = new KvsDetailResultJsonUnmarshaller();
-        return instance;
-    }
+	public static KvsDetailResultJsonUnmarshaller getInstance() {
+		if (instance == null)
+			instance = new KvsDetailResultJsonUnmarshaller();
+		return instance;
+	}
 }
