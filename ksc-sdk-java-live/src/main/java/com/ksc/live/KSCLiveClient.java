@@ -44,8 +44,7 @@ public class KSCLiveClient extends KscWebServiceClient implements Live {
             new JsonClientMetadata().withSupportsCbor(false));
 
 
-    private static final Log log =
-            LogFactory.getLog(KSCLiveClient.class);
+    private static final Log log = LogFactory.getLog(KSCLiveClient.class);
 
 
 
