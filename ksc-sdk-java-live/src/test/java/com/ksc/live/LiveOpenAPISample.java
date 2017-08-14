@@ -16,11 +16,11 @@ public class LiveOpenAPISample {
 
     KSCLiveClient live_client = null;
     private String version = "2016-10-26";
-    private String uniquename = "maxi";
+    private String uniquename = "test";
     private int marker = 0;
     private int limit = 20;
     private String app = "live";
-    private String pubdomain = "live.moxiulive.com";
+    private String pubdomain = "test.ksyun.com";
 
 
     @Before

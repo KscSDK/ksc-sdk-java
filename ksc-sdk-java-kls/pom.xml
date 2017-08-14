@@ -9,48 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>com.ksc</groupId>
     <artifactId>ksc-sdk-java-kls</artifactId>
-    <version>1.0.3</version>
-    <packaging>jar</packaging>
-
-    <name>ksc-sdk-java-kls</name>
-    <url>http://maven.apache.org</url>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
+    <name>KSC SDK for Java - kls</name>
+    <description>
+        The KSC SDK for Java - kls module holds the classes that is used
+        by the individual service clients to interact with KSC Web Services.
+        Users need to depend on live-java-sdk artifact for accessing individual client classes.
+    </description>
+    <url>https://www.ksyun.com/sdkforjava</url>
 
     <dependencies>
-
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>com.ksc</groupId>
+            <groupId>com.ksyun</groupId>
             <artifactId>ksc-sdk-java-core</artifactId>
-            <version>0.1.5</version>
-        </dependency>
-
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20160212</version>
-        </dependency>
-        <dependency>
-            <groupId>com.ksc</groupId>
-            <artifactId>ksc-sdk-java-core</artifactId>
-            <version>0.1.9</version>
+            <version>0.2.0</version>
         </dependency>
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -58,5 +34,23 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
