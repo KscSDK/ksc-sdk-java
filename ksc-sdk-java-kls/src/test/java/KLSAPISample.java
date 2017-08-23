@@ -92,7 +92,7 @@ public class KLSAPISample {
         request.setNodeIPs(this.nodeIPS);
         request.setPullDomain(this.pubdomain);
         request.setStream(this.stream);
-        KillStreamCacheResult result = new KillStreamCacheResult();
+        KillStreamCacheResult result = kls_client.killStreamCache(request);
         System.out.println("=============================");
         log.info(result.getData());
         System.out.println("=============================");
@@ -116,7 +116,7 @@ public class KLSAPISample {
         request.setPubdomain(this.pubdomain);
         request.setMp4VodEnable(this.mp4VodEnable);
         request.setStream(this.stream);
-        CreateRecordResult result =  new CreateRecordResult();
+        CreateRecordResult result =  kls_client.createRecordTask(request);
         System.out.println("===============================");
         log.info(result.getData());
         System.out.println("================================");
@@ -132,7 +132,7 @@ public class KLSAPISample {
         request.setAction(this.action);
         request.setVersion(this.version);
         request.setRecID(this.recID);
-        GetRecordTaskResult result = new GetRecordTaskResult();
+        GetRecordTaskResult result = kls_client.getRecordTask(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -155,7 +155,7 @@ public class KLSAPISample {
         request.setRecType(this.recType);
         request.setMarker(this.marker);
         request.setOrderTime(this.ordertime);
-        ListHistoryRecordTasksResult result = new ListHistoryRecordTasksResult();
+        ListHistoryRecordTasksResult result = kls_client.listHistoryRecordTasks(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -176,7 +176,7 @@ public class KLSAPISample {
         request.setKs3FileNameM3u8(this.ks3FileNameM3U8);
         request.setKs3FullPathMP4(this.ks3FullPathMP4);
         request.setMp4VodEnable(this.mp4VodEnable);
-        StartStreamRecordResult result = new StartStreamRecordResult();
+        StartStreamRecordResult result = kls_client.startStreamRecord(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -195,7 +195,7 @@ public class KLSAPISample {
         request.setPubdomain(this.pubdomain);
         request.setStream(this.stream);
         request.setRecID(this.recID);
-        StopStreamRecordResult result = new StopStreamRecordResult();
+        StopStreamRecordResult result = kls_client.stopStreamRecord(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -218,7 +218,7 @@ public class KLSAPISample {
         request.setMarker(this.marker);
         request.setOrderTime(this.ordertime);
         request.setRecStatusType(this.recStatusType);
-        ListRecordingTasksResult result = new ListRecordingTasksResult();
+        ListRecordingTasksResult result = kls_client.listRecordingTasks(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -238,7 +238,7 @@ public class KLSAPISample {
         request.setStream(this.stream);
         request.setStartUnixTime(this.startUnixTime);
         request.setEndUnixTime(this.endUnixTime);
-        ListStreamDurationsResult result = new ListStreamDurationsResult();
+        ListStreamDurationsResult result = kls_client.listStreamDurations(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -261,7 +261,7 @@ public class KLSAPISample {
         request.setOrderTime(this.ordertime);
         request.setStartUnixTime(this.startUnixTime);
         request.setEndUnixTime(this.endUnixTime);
-        ListHistoryPubStreamsErrInfoResult result = new ListHistoryPubStreamsErrInfoResult();
+        ListHistoryPubStreamsErrInfoResult result = kls_client.listHistoryPubStreamsErrInfo(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -284,7 +284,7 @@ public class KLSAPISample {
         request.setOrderTime(this.ordertime);
         request.setStartUnixTime(this.startUnixTime);
         request.setEndUnixTime(this.endUnixTime);
-        ListHistoryPubStreamsErrInfoResult result = new ListHistoryPubStreamsErrInfoResult();
+        ListHistoryPubStreamsErrInfoResult result = kls_client.listHistoryPubStreamsInfo(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -305,7 +305,7 @@ public class KLSAPISample {
         request.setLimit(this.limit);
         request.setMarker(this.marker);
         request.setOrderTime(this.ordertime);
-        ListRealtimePubStreamsInfoResult result = new ListRealtimePubStreamsInfoResult();
+        ListRealtimePubStreamsInfoResult result = kls_client.listRealtimePubStreamsInfo(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -325,7 +325,7 @@ public class KLSAPISample {
         request.setPubdomain(this.pubdomain);
         request.setStream(this.stream);
         request.setForbidTillUnixTime(this.forbidTillUnixTime);
-        ForbidStreamResult result = new ForbidStreamResult();
+        ForbidStreamResult result = kls_client.forbidStream(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -343,7 +343,7 @@ public class KLSAPISample {
         request.setApp(this.app);
         request.setPubdomain(this.pubdomain);
         request.setStream(this.stream);
-        ResumeStreamResult result = new ResumeStreamResult();
+        ResumeStreamResult result = kls_client.resumeStream(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -360,7 +360,7 @@ public class KLSAPISample {
         request.setUniqueName(this.uniquename);
         request.setApp(this.app);
         request.setPubdomain(this.pubdomain);
-        GetBlacklistResult result = new GetBlacklistResult();
+        GetBlacklistResult result = kls_client.getBlacklist(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -378,7 +378,7 @@ public class KLSAPISample {
         request.setApp(this.app);
         request.setPubdomain(this.pubdomain);
         request.setStream(this.stream);
-        CheckBlacklistsResult result = new CheckBlacklistsResult();
+        CheckBlacklistsResult result = kls_client.checkBlacklist(request);
         System.out.println("==============================");
         log.info(result.getData());
         System.out.println("==============================");
@@ -394,7 +394,7 @@ public class KLSAPISample {
         request.setVersion(this.version);
         request.setLimit(this.limit);
         request.setMarker(this.marker);
-        ListRelayStreamsInfoResult result = new ListRelayStreamsInfoResult();
+        ListRelayStreamsInfoResult result = kls_client.listRelayStreamsInfo(request);
         System.out.println("==============================");
         log.info(result);
         System.out.println("==============================");
@@ -411,7 +411,7 @@ public class KLSAPISample {
         request.setLimit(this.limit);
         request.setMarker(this.marker);
         request.setStarttime(this.startUnixTime);
-        ListRelayErrInfoResult result = new ListRelayErrInfoResult();
+        ListRelayErrInfoResult result = kls_client.listRelayErrInfo(request);
         System.out.println("==============================");
         log.info(result);
         System.out.println("==============================");
