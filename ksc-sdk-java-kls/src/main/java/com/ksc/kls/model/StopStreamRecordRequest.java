@@ -1,72 +1,28 @@
 package com.ksc.kls.model;
 
 import com.ksc.KscWebServiceRequest;
+import com.ksc.Request;
+import com.ksc.kls.model.transform.StopStreamRecordMarshaller;
+import com.ksc.model.DryRunSupportedRequest;
 
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class StopStreamRecordRequest  extends KscWebServiceRequest {
-    private String UniqueName;
-    private String App;
-    private String Pubdomain;
-    private String Stream;
-    private int RecID;
-    private String Action;
-    private String Version;
+public class StopStreamRecordRequest extends KscWebServiceRequest implements DryRunSupportedRequest<StopStreamRecordRequest> {
+    private String data;
 
-    public String getUniqueName() {
-        return UniqueName;
+    public String getData() {
+        return data;
     }
 
-    public String getApp() {
-        return App;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getAction() {
-        return Action;
-    }
-
-    public String getVersion() {
-        return Version;
-    }
-
-    public String getPubdomain() {
-        return Pubdomain;
-    }
-
-    public String getStream() {
-        return Stream;
-    }
-
-    public int getRecID() {
-        return RecID;
-    }
-
-    public void setUniqueName(String uniqueName) {
-        UniqueName = uniqueName;
-    }
-
-    public void setApp(String app) {
-        App = app;
-    }
-
-    public void setPubdomain(String pubdomain) {
-        Pubdomain = pubdomain;
-    }
-
-    public void setStream(String stream) {
-        Stream = stream;
-    }
-
-    public void setRecID(int recID) {
-        RecID = recID;
-    }
-
-    public void setAction(String action) {
-        Action = action;
-    }
-
-    public void setVersion(String version) {
-        Version = version;
+    @Override
+    public Request<StopStreamRecordRequest> getDryRunRequest() {
+        Request<StopStreamRecordRequest> request = new StopStreamRecordMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return null;
     }
 }

@@ -6,7 +6,8 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.CancelRecordRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * Created by yangfan on 2017/4/26.
@@ -35,20 +36,10 @@ public class CancelRecordRequestMarshaller implements Marshaller<Request<CancelR
         request.addParameter("Version", version);
 
 
-        request.addParameter("RecID", StringUtils.fromInteger(cancelRecordRequest.getRecID()));
-
-        if (cancelRecordRequest.getUniqueName() != null) {
-            request.addParameter("UniqueName",cancelRecordRequest.getUniqueName());
-        }
-        if (cancelRecordRequest.getApp() != null) {
-            request.addParameter("App",cancelRecordRequest.getApp());
-        }
-        if (cancelRecordRequest.getPubdomain() != null) {
-            request.addParameter("Pubdomain",cancelRecordRequest.getPubdomain());
-        }
-        if (cancelRecordRequest.getStream() != null) {
-            request.addParameter("Stream",cancelRecordRequest.getStream());
-        }
+        byte[] content = cancelRecordRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
         request.setHttpMethod(HttpMethodName.POST);
         return request;

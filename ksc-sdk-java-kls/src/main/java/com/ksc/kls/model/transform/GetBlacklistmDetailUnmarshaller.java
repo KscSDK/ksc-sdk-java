@@ -60,7 +60,8 @@ public class GetBlacklistmDetailUnmarshaller implements Unmarshaller<GetBlacklis
                     result.setTotal(context.getUnmarshaller(Integer.class).unmarshall(context));
                 } else if (context.testExpression(ParamConstant.RECS, targetDepth)) {
                     context.nextToken();
-                    result.setRecs(new ListUnmarshaller<ListBlacklist>(ListBlacklistUnmarshaller.getInstance()).unmarshall(context));
+                    result.setRecs(new ListUnmarshaller<ListBlacklist>(ListBlacklistUnmarshaller.getInstance())
+                            .unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null

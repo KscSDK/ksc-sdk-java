@@ -1,74 +1,29 @@
 package com.ksc.kls.model;
 
 import com.ksc.KscWebServiceRequest;
+import com.ksc.Request;
+import com.ksc.kls.model.transform.CancelRecordRequestMarshaller;
+import com.ksc.model.DryRunSupportedRequest;
 
 /**
  * Created by yangfan on 2017/4/24.
  */
-public class CancelRecordRequest  extends KscWebServiceRequest {
-    private String Action;
-    private String Version;
-    private int RecID;
-    private String UniqueName;
-    private String App;
-    private String Pubdomain;
-    private String Stream;
+public class CancelRecordRequest  extends KscWebServiceRequest implements DryRunSupportedRequest<CancelRecordRequest> {
 
-    public String getAction() {
-        return Action;
+    private String data;
+
+    public String getData() {
+        return data;
     }
 
-    public void setAction(String action) {
-        Action = action;
+    public void setData(String data) {
+        this.data = data;
     }
 
     @Override
-    public String getVersion() {
-        return Version;
-    }
-
-    @Override
-    public void setVersion(String version) {
-        Version = version;
-    }
-
-    public int getRecID() {
-        return RecID;
-    }
-
-    public void setRecID(int recID) {
-        RecID = recID;
-    }
-
-    public String getUniqueName() {
-        return UniqueName;
-    }
-
-    public void setUniqueName(String uniqueName) {
-        UniqueName = uniqueName;
-    }
-
-    public String getApp() {
-        return App;
-    }
-
-    public void setApp(String app) {
-        App = app;
-    }
-
-    public String getPubdomain() {
-        return Pubdomain;
-    }
-
-    public void setPubdomain(String pubdomain) {
-        Pubdomain = pubdomain;
-    }
-
-    public String getStream() {
-        return Stream;
-    }
-
-    public void setStream(String stream) {
-        Stream = stream;
+    public Request<CancelRecordRequest> getDryRunRequest() {
+        Request<CancelRecordRequest> request = new CancelRecordRequestMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return null;
     }
 }

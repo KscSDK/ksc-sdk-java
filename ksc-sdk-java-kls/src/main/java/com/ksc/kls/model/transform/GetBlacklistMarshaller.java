@@ -1,4 +1,4 @@
-package com.ksc.kls;
+package com.ksc.kls.model.transform;
 
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
@@ -36,7 +36,7 @@ public class GetBlacklistMarshaller implements Marshaller<Request<GetBlacklistRe
         request.addParameter("App",getBlacklistRequest.getApp());
         request.addParameter("Pubdomain",getBlacklistRequest.getPubdomain());
 
-        request.setHttpMethod(HttpMethodName.POST);
+        request.setHttpMethod(HttpMethodName.GET);
         return request;
     }
 }
