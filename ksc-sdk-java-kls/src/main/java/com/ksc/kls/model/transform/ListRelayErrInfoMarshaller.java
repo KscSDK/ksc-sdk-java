@@ -30,7 +30,7 @@ public class ListRelayErrInfoMarshaller implements Marshaller<Request<ListRelayE
         request.addParameter("Action", "listRelayErrInfo");
         String version=listRelayErrInfoRequest.getVersion();
         if(org.apache.commons.lang.StringUtils.isBlank(version)){
-            version="2017-01-01";
+            version="2016-09-25";
         }
         request.addParameter("Version", version);
 
@@ -48,7 +48,7 @@ public class ListRelayErrInfoMarshaller implements Marshaller<Request<ListRelayE
         if (listRelayErrInfoRequest.getDuration() != 0) {
             request.addParameter("duration", StringUtils.fromInteger(listRelayErrInfoRequest.getDuration()));
         }
-        request.setHttpMethod(HttpMethodName.POST);
+        request.setHttpMethod(HttpMethodName.GET);
         return request;
     }
 }

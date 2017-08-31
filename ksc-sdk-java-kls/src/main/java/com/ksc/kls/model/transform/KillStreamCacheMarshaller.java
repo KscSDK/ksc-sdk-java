@@ -8,6 +8,7 @@ import com.ksc.kls.model.KillStreamCacheRequest;
 import com.ksc.kls.model.KillStreamCacheResult;
 import com.ksc.transform.Marshaller;
 
+import java.io.ByteArrayInputStream;
 import java.util.Arrays;
 
 /**
@@ -38,11 +39,10 @@ public class KillStreamCacheMarshaller implements Marshaller<Request<KillStreamC
         }
         request.addParameter("Version", version);
 
-        request.addParameter("PullDomain", killStreamCacheRequest.getPullDomain());
-        request.addParameter("App",killStreamCacheRequest.getApp());
-        request.addParameter("Stream",killStreamCacheRequest.getStream());
-        request.addParameter("NodeIPs", Arrays.toString(killStreamCacheRequest.getNodeIPs()));
-
+        byte[] content = killStreamCacheRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
         request.setHttpMethod(HttpMethodName.POST);
         return request;

@@ -30,7 +30,7 @@ public class ListHistoryRecordTaskMarshaller implements Marshaller<Request<ListH
 
         Request<ListHistoryRecordTasksRequest> request = new DefaultRequest<ListHistoryRecordTasksRequest>(listHistoryRecordTasksRequest, "kls");
 
-        request.addParameter("Action", "ListHistoryRecord");
+        request.addParameter("Action", "ListHistoryRecordTasks");
         String version=listHistoryRecordTasksRequest.getVersion();
         if(org.apache.commons.lang.StringUtils.isBlank(version)){
             version="2017-01-01";

@@ -1,6 +1,6 @@
 package com.ksc.kls.model;
 
-import java.util.List;
+
 
 /**
  * Created by yangfan on 2017/7/25.
@@ -12,7 +12,30 @@ public class GetBlacklistDetail {
     private int RetCode;
     private String RetMsg;
     private int Total;
-    List<ListBlacklist> Recs;
+    private com.ksc.internal.SdkInternalList<ListBlacklist> Recs;
+
+    public void setRecs(java.util.Collection<ListBlacklist> rec) {
+        if (rec != null) {
+            this.Recs = new com.ksc.internal.SdkInternalList<ListBlacklist>(rec);
+        }
+    }
+
+    public void addRecs(ListBlacklist... lists) {
+        if (this.Recs == null) {
+            this.Recs = new com.ksc.internal.SdkInternalList<ListBlacklist>();
+        }
+        for (ListBlacklist list : lists) {
+            this.Recs.add(list);
+        }
+    }
+
+    public com.ksc.internal.SdkInternalList<ListBlacklist> getRecs() {
+        return Recs;
+    }
+
+    public void setRecs(com.ksc.internal.SdkInternalList<ListBlacklist> recs) {
+        this.Recs = recs;
+    }
 
     public String getUniqueName() {
         return UniqueName;
@@ -62,11 +85,9 @@ public class GetBlacklistDetail {
         Total = total;
     }
 
-    public List<ListBlacklist> getRecs() {
-        return Recs;
-    }
 
-    public void setRecs(List<ListBlacklist> recs) {
-        Recs = recs;
-    }
+
+
+
+
 }

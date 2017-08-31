@@ -17,6 +17,7 @@ import com.ksc.protocol.json.JsonOperationMetadata;
 import com.ksc.protocol.json.SdkJsonProtocolFactory;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
+import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
@@ -243,8 +244,8 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
         try {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
             try {
-                request = new CreateRecordRequestMarshaller()
-                        .marshall(super.beforeMarshalling(createRecordRequest));
+                request = new CreateRecordRequestMarshaller().marshall(super.beforeMarshalling(createRecordRequest));
+                // Binds the request metrics to the current request.
                 request.setKscRequestMetrics(kscRequestMetrics);
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
@@ -255,6 +256,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
                             new CreateRecordResultUnmarshaller());
 
             response = invoke(request, responseHandler, executionContext);
+
             return response.getKscResponse();
         } finally {
             endClientExecution(kscRequestMetrics, request, response);
@@ -525,25 +527,26 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
     }
 
     @Override
-    public ListHistoryPubStreamsErrInfoResult listHistoryPubStreamsInfo(ListHistoryPubStreamsErrInfoRequest listHistoryPubStreamsErrInfoRequest) {
-        ExecutionContext executionContext = createExecutionContext(listHistoryPubStreamsErrInfoRequest);
+    public ListHistoryPubStreamsInfoResult listHistoryPubStreamsInfo(ListHistoryPubStreamsInfoRequest listHistoryPubStreamsInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listHistoryPubStreamsInfoRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<ListHistoryPubStreamsErrInfoRequest> request = null;
-        Response<ListHistoryPubStreamsErrInfoResult> response = null;
+        Request<ListHistoryPubStreamsInfoRequest> request = null;
+        Response<ListHistoryPubStreamsInfoResult> response = null;
+
         try {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
             try {
-                request = new ListHistoryPubStreamsErrInfoMarshaller()
-                        .marshall(super.beforeMarshalling(listHistoryPubStreamsErrInfoRequest));
+                request = new ListHistoryPubStreamsInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listHistoryPubStreamsInfoRequest));
                 request.setKscRequestMetrics(kscRequestMetrics);
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
-            HttpResponseHandler<KscWebServiceResponse<ListHistoryPubStreamsErrInfoResult>> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<ListHistoryPubStreamsInfoResult>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
-                            new ListHistoryPubStreamsErrInfoUnmarshaller());
+                            new ListHistoryPubStreamsInfoUnmarshaller());
 
             response = invoke(request, responseHandler, executionContext);
 
@@ -552,6 +555,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+
 
     @Override
     public ListRealtimePubStreamsInfoResult listRealtimePubStreamsInfo(ListRealtimePubStreamsInfoRequest listRealtimePubStreamsInfoRequest) {
@@ -662,7 +666,6 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
                             new GetBlacklistUnmarshaller());
 
             response = invoke(request, responseHandler, executionContext);
-
             return response.getKscResponse();
         } finally {
             endClientExecution(kscRequestMetrics, request, response);

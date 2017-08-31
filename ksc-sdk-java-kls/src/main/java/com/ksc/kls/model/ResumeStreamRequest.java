@@ -1,65 +1,28 @@
 package com.ksc.kls.model;
 
 import com.ksc.KscWebServiceRequest;
+import com.ksc.Request;
+import com.ksc.kls.model.transform.ResumeStreamMarshaller;
+import com.ksc.model.DryRunSupportedRequest;
 
 /**
  * Created by yangfan on 2017/7/25.
  */
-public class ResumeStreamRequest extends KscWebServiceRequest {
-    private String Action;
-    private String Version;
-    private String UniqueName;
-    private String App;
-    private String Pubdomain;
-    private String Stream;
+public class ResumeStreamRequest extends KscWebServiceRequest implements DryRunSupportedRequest<ResumeStreamRequest> {
+    private String data;
 
-    public String getAction() {
-        return Action;
+    public String getData() {
+        return data;
     }
 
-    public void setAction(String action) {
-        Action = action;
+    public void setData(String data) {
+        this.data = data;
     }
 
     @Override
-    public String getVersion() {
-        return Version;
-    }
-
-    @Override
-    public void setVersion(String version) {
-        Version = version;
-    }
-
-    public String getUniqueName() {
-        return UniqueName;
-    }
-
-    public void setUniqueName(String uniqueName) {
-        UniqueName = uniqueName;
-    }
-
-    public String getApp() {
-        return App;
-    }
-
-    public void setApp(String app) {
-        App = app;
-    }
-
-    public String getPubdomain() {
-        return Pubdomain;
-    }
-
-    public void setPubdomain(String pubdomain) {
-        Pubdomain = pubdomain;
-    }
-
-    public String getStream() {
-        return Stream;
-    }
-
-    public void setStream(String stream) {
-        Stream = stream;
+    public Request<ResumeStreamRequest> getDryRunRequest() {
+        Request<ResumeStreamRequest> request = new ResumeStreamMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return null;
     }
 }

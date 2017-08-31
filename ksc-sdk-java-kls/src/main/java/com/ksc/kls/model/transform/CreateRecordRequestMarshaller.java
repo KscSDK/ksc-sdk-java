@@ -6,7 +6,8 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.CreateRecordRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * Created by yangfan on 2017/4/24.
@@ -37,21 +38,10 @@ public class CreateRecordRequestMarshaller implements Marshaller<Request<CreateR
         request.addParameter("Version", version);
 
 
-        request.addParameter("UniqueName", createRecordRequest.getUniqueName());
-        request.addParameter("App", createRecordRequest.getApp());
-        request.addParameter("Pubdomain", createRecordRequest.getPubdomain());
-        request.addParameter("Stream", createRecordRequest.getStream());
-        request.addParameter("StartUnixTime", StringUtils.fromInteger(createRecordRequest.getStartUnixTime()));
-        request.addParameter("EndUnixTime", StringUtils.fromInteger(createRecordRequest.getEndUnixTime()));
-        request.addParameter("Mp4VodEnable", StringUtils.fromInteger(createRecordRequest.getMp4VodEnable()));
-
-        if(createRecordRequest.getKs3FileNameM3U8() != null ){
-            request.addParameter("Ks3FileNameM3U8", createRecordRequest.getKs3FileNameM3U8());
-        }
-
-        if(createRecordRequest.getKs3FullPathMP4() != null ){
-            request.addParameter("Ks3FullPathMP4", createRecordRequest.getKs3FullPathMP4());
-        }
+        byte[] content = createRecordRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
         request.setHttpMethod(HttpMethodName.POST);
 
