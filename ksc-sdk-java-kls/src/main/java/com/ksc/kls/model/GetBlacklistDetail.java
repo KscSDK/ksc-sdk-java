@@ -20,7 +20,7 @@ public class GetBlacklistDetail {
         }
     }
 
-    public void addRecs(ListBlacklist... lists) {
+    public void addList(ListBlacklist... lists) {
         if (this.Recs == null) {
             this.Recs = new com.ksc.internal.SdkInternalList<ListBlacklist>();
         }

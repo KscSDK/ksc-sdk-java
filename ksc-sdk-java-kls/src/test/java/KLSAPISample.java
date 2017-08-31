@@ -295,38 +295,34 @@ public class KLSAPISample {
 
     /**
      * 查询黑名单列表（GetBlacklist）
-     *
-     *
      */
-//    @Test
-//    public void testGetBlacklist() {
-//        GetBlacklistRequest request = new GetBlacklistRequest();
-//        request.setUniqueName(this.uniquename);
-//        request.setApp(this.app);
-//        request.setPubdomain(this.pubdomain);
-//        GetBlacklistResult result = kls_client.getBlacklist(request);
-//        System.out.println("==============================");
-//        log.info(result);
-//        System.out.println("==============================");
-//    }
+    @Test
+    public void testGetBlacklist() {
+        GetBlacklistRequest request = new GetBlacklistRequest();
+        request.setUniqueName(this.uniquename);
+        request.setApp(this.app);
+        request.setPubdomain(this.pubdomain);
+        GetBlacklistResult result = kls_client.getBlacklist(request);
+        System.out.println("==============================");
+        log.info(result.getData().getApp());
+        System.out.println("==============================");
+    }
 
     /**
      * 检查流是否在黑名单内（CheckBlacklist）
-     *
-     *
      */
-//    @Test
-//    public void testCheckBlacklist() {
-//        CheckBlacklistRequest request = new CheckBlacklistRequest();
-//        request.setUniqueName(this.uniquename);
-//        request.setApp(this.app);
-//        request.setPubdomain(this.pubdomain);
-//        request.setStream(this.stream);
-//        CheckBlacklistsResult result = kls_client.checkBlacklist(request);
-//        System.out.println("==============================");
-//        log.info(result.getData());
-//        System.out.println("==============================");
-//    }
+    @Test
+    public void testCheckBlacklist() {
+        CheckBlacklistRequest request = new CheckBlacklistRequest();
+        request.setUniqueName(this.uniquename);
+        request.setApp(this.app);
+        request.setPubdomain(this.pubdomain);
+        request.setStream(this.stream);
+        CheckBlacklistsResult result = kls_client.checkBlacklist(request);
+        System.out.println("==============================");
+        log.info(result.getData().getRetMsg());
+        System.out.println("==============================");
+    }
 
     /**
      * 查询推流实时信息接口  ListRealtimePubStreamsInfo

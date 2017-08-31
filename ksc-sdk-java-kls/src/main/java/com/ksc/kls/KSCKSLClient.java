@@ -17,7 +17,6 @@ import com.ksc.protocol.json.JsonOperationMetadata;
 import com.ksc.protocol.json.SdkJsonProtocolFactory;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
