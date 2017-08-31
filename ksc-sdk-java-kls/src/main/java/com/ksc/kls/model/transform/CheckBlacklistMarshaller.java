@@ -38,7 +38,7 @@ public class CheckBlacklistMarshaller implements Marshaller<Request<CheckBlackli
         request.addParameter("Pubdomain",checkBlacklistRequest.getPubdomain());
         request.addParameter("Stream",checkBlacklistRequest.getStream());
 
-        request.setHttpMethod(HttpMethodName.POST);
+        request.setHttpMethod(HttpMethodName.GET);
         return request;
     }
 }

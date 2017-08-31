@@ -6,7 +6,8 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.StartStreamRecordRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * Created by yangfan on 2017/4/27.
@@ -36,19 +37,11 @@ public class StartStreamRecordMarshaller implements Marshaller<Request<StartStre
             version="2017-01-01";
         }
         request.addParameter("Version", version);
-        request.addParameter("UniqueName", startStreamRecordRequest.getUniqueName());
-        request.addParameter("App", startStreamRecordRequest.getApp());
-        request.addParameter("Pubdomain", startStreamRecordRequest.getPubdomain());
-        request.addParameter("Stream", startStreamRecordRequest.getStream());
-        request.addParameter("Mp4VodEnable", StringUtils.fromInteger(startStreamRecordRequest.getMp4VodEnable()));
 
-
-        if (startStreamRecordRequest.getKs3FileNameM3u8() != null ) {
-            request.addParameter("Ks3FileNameM3u8",startStreamRecordRequest.getKs3FileNameM3u8());
-        }
-        if (startStreamRecordRequest.getKs3FullPathMP4() != null ) {
-            request.addParameter("Ks3FullPathMP4",startStreamRecordRequest.getKs3FullPathMP4());
-        }
+        byte[] content = startStreamRecordRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
         request.setHttpMethod(HttpMethodName.POST);
         return request;

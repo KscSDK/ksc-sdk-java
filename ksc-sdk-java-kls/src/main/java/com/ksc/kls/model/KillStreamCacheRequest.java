@@ -1,64 +1,30 @@
 package com.ksc.kls.model;
 
 import com.ksc.KscWebServiceRequest;
+import com.ksc.Request;
 import com.ksc.auth.policy.Action;
+import com.ksc.kls.model.transform.ForbidStreamMarshaller;
+import com.ksc.kls.model.transform.KillStreamCacheMarshaller;
+import com.ksc.model.DryRunSupportedRequest;
 
 /**
  * Created by yangfan on 2017/5/19.
  */
-public class KillStreamCacheRequest extends KscWebServiceRequest {
-    private String Action;
-    private String Version;
-    private String[] NodeIPs;
-    private String PullDomain;
-    private String App;
-    private String Stream;
-
-    public String getAction() {
-        return Action;
+public class KillStreamCacheRequest extends KscWebServiceRequest implements DryRunSupportedRequest<KillStreamCacheRequest> {
+    public String getData() {
+        return data;
     }
 
-    public void setAction(String action) {
-        Action = action;
+    public void setData(String data) {
+        this.data = data;
     }
 
-    public String getVersion() {
-        return Version;
-    }
+    private String data;
 
-    public void setVersion(String version) {
-        Version = version;
-    }
-
-    public String[] getNodeIPs() {
-        return NodeIPs;
-    }
-
-    public void setNodeIPs(String[] nodeIPs) {
-        NodeIPs = nodeIPs;
-    }
-
-    public String getPullDomain() {
-        return PullDomain;
-    }
-
-    public void setPullDomain(String pullDomain) {
-        PullDomain = pullDomain;
-    }
-
-    public String getApp() {
-        return App;
-    }
-
-    public void setApp(String app) {
-        App = app;
-    }
-
-    public String getStream() {
-        return Stream;
-    }
-
-    public void setStream(String stream) {
-        Stream = stream;
+    @Override
+    public Request<KillStreamCacheRequest> getDryRunRequest() {
+        Request<KillStreamCacheRequest> request = new KillStreamCacheMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return null;
     }
 }

@@ -30,7 +30,7 @@ public class ListRelayStreamsInfoMarshaller  implements Marshaller<Request<ListR
         request.addParameter("Action", "listRelayStreamsInfo");
         String version=listRelayStreamsInfoRequest.getVersion();
         if(org.apache.commons.lang.StringUtils.isBlank(version)){
-            version="2017-01-01";
+            version="2016-09-25";
         }
         request.addParameter("Version", version);
 
@@ -43,7 +43,7 @@ public class ListRelayStreamsInfoMarshaller  implements Marshaller<Request<ListR
             request.addParameter("marker", StringUtils.fromInteger(listRelayStreamsInfoRequest.getMarker()));
         }
 
-        request.setHttpMethod(HttpMethodName.POST);
+        request.setHttpMethod(HttpMethodName.GET);
         return request;
     }
 }
