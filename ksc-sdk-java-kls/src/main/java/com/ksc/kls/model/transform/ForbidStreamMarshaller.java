@@ -6,7 +6,8 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.ForbidStreamRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * Created by yangfan on 2017/7/26.
@@ -35,14 +36,11 @@ public class ForbidStreamMarshaller  implements Marshaller<Request<ForbidStreamR
         }
         request.addParameter("Version", version);
 
-        request.addParameter("UniqueName",forbidStreamRequest.getUniqueName());
-        request.addParameter("App",forbidStreamRequest.getApp());
-        request.addParameter("Pubdomain",forbidStreamRequest.getPubdomain());
-        request.addParameter("Stream",forbidStreamRequest.getStream());
+        byte[] content = forbidStreamRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
-        if (forbidStreamRequest.getForbidTillUnixTime() != 0 ) {
-            request.addParameter("ForbidTillUnixTime", StringUtils.fromInteger(forbidStreamRequest.getForbidTillUnixTime()));
-        }
 
         request.setHttpMethod(HttpMethodName.POST);
         return request;
