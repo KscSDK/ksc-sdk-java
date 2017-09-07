@@ -60,6 +60,33 @@ public class LogoJsonUnmarshaller implements Unmarshaller<Logo, JsonUnmarshaller
 				} else if (context.testExpression("duration", targetDepth)) {
 					context.nextToken();
 					logoList.setDuration(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("optimal_w", targetDepth)) {
+					context.nextToken();
+					logoList.setOptimal_w(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("optimal_h", targetDepth)) {
+					context.nextToken();
+					logoList.setOptimal_h(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("loop", targetDepth)) {
+					context.nextToken();
+					logoList.setLoop(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("referPos", targetDepth)) {
+					context.nextToken();
+					logoList.setReferPos(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("width", targetDepth)) {
+					context.nextToken();
+					logoList.setWidth(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("height", targetDepth)) {
+					context.nextToken();
+					logoList.setHeight(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("dx", targetDepth)) {
+					context.nextToken();
+					logoList.setDx(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("dy", targetDepth)) {
+					context.nextToken();
+					logoList.setDy(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("opacity", targetDepth)) {
+					context.nextToken();
+					logoList.setOpacity(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

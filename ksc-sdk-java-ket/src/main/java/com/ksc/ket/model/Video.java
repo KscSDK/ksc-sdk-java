@@ -1,10 +1,29 @@
 package com.ksc.ket.model;
 
+import java.util.List;
+
+import com.ksc.internal.SdkInternalList;
+
 public class Video {
 	private int orientationAdapt;
 	private String codec = "";
-	
 	private com.ksc.internal.SdkInternalList<Logo> logoList;
+	private SdkInternalList<List<Logo>> multiImage;
+
+	public void setMultiImage(java.util.Collection<List<Logo>> logosList) {
+		if (logosList != null) {
+			this.multiImage = new SdkInternalList<List<Logo>>(logosList);
+		}
+	}
+
+	public void addMultiImage(SdkInternalList<Logo>... multiImage) {
+		if (this.multiImage == null) {
+			this.multiImage = new SdkInternalList<List<Logo>>();
+		}
+		for (SdkInternalList<Logo> logo : multiImage) {
+			this.multiImage.add(logo);
+		}
+	}
 
 	public int getOrientationAdapt() {
 		return orientationAdapt;
@@ -43,6 +62,14 @@ public class Video {
 
 	public void setCodec(String codec) {
 		this.codec = codec;
+	}
+
+	public SdkInternalList<List<Logo>> getMultiImage() {
+		return multiImage;
+	}
+
+	public void setMultiImage(SdkInternalList<List<Logo>> multiImage) {
+		this.multiImage = multiImage;
 	}
 
 }
