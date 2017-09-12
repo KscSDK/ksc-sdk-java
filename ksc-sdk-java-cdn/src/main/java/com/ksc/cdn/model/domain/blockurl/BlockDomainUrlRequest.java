@@ -27,16 +27,6 @@ public class BlockDomainUrlRequest implements GeneralRequest {
     @FieldValidate
     private List<TaskUrl> Urls;
 
-    /**
-     * (仅在解除屏蔽时生效)，解除屏蔽时，是否联动触发刷新任务 取值：on：触发刷新任务、off：不触发刷新任务 ，默认为off
-     */
-    private String RefreshOnUnblock;
-
-    /**
-     *
-     */
-    private Long BlockTime;
-
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("BlockDomainUrl", "2016-09-01", "/2016-09-01/content/BlockDomainUrl");
@@ -63,19 +53,4 @@ public class BlockDomainUrlRequest implements GeneralRequest {
         Urls = urls;
     }
 
-    public String getRefreshOnUnblock() {
-        return RefreshOnUnblock;
-    }
-
-    public void setRefreshOnUnblock(String refreshOnUnblock) {
-        RefreshOnUnblock = refreshOnUnblock;
-    }
-
-    public Long getBlockTime() {
-        return BlockTime;
-    }
-
-    public void setBlockTime(Long blockTime) {
-        BlockTime = blockTime;
-    }
 }

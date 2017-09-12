@@ -32,14 +32,12 @@ public class BlockUrlTest {
     @Test
     public void testBlockDomainUrl() throws Exception {
         BlockDomainUrlRequest request = new BlockDomainUrlRequest();
-        request.setBlockTime(3600L);
         request.setBlockType("block");
         List<TaskUrl> urls = new ArrayList<TaskUrl>();
         TaskUrl url1 = new TaskUrl();
         url1.setUrl("http://v6.365yg.com/video/m/220dffb44d4bcfe4473b44169b14e1575d911487f30000375a9b6a2f42/");
         urls.add(url1);
         request.setUrls(urls);
-        request.setRefreshOnUnblock("off");
         client.blockDomainUrl(request);
     }
 
