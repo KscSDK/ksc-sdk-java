@@ -29,7 +29,7 @@ public class GetPresetListRequestMarshaller implements Marshaller<Request<GetPre
 		} else if (kvsRequest.getPresetType() != null) {
 			request.addParameter("PresetType", StringUtils.fromString(kvsRequest.getPresetType()));
 		}
-		if (kvsRequest.getPreset() != null) {
+		if (kvsRequest.getPreset() != null || kvsRequest.getPresets() != null) {
 			request.addParameter("Presets", StringUtils.fromString(kvsRequest.getPreset()));
 		}
 		request.addParameter("WithDetail", StringUtils.fromInteger(kvsRequest.getWithDetail()));
