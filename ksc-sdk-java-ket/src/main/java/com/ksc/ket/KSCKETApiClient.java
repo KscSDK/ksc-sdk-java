@@ -10,7 +10,7 @@ import com.ksc.ket.model.PresetParam;
 import com.ksc.ket.model.TaskParam;
 import com.ksc.ket.util.AwsSignerV4Util;
 import com.ksc.ket.util.Header;
-import com.ksc.ket.util.HttpRequest;
+import com.ksc.ket.util.HttpClientHelper;
 
 public class KSCKETApiClient {
 	private String endpoint = "http://ket.cn-beijing-6.api.ksyun.com";
@@ -46,7 +46,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -66,7 +66,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -88,7 +88,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -110,7 +110,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -131,7 +131,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -151,7 +151,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -171,7 +171,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -193,7 +193,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -213,7 +213,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -233,7 +233,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -253,7 +253,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -277,7 +277,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -297,7 +297,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -317,7 +317,7 @@ public class KSCKETApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
+			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -339,7 +339,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -361,7 +361,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -381,7 +381,7 @@ public class KSCKETApiClient {
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			result = HttpRequest.sendGet(this.endpoint + "/", MapToString(parameters), header);
+			result = HttpClientHelper.sendGet(this.endpoint + "/", MapToString(parameters), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -8,6 +8,10 @@ public class TaskParam {
 	private int endDate;
 	private int marker;
 	private int limit;
+	private int startUnixTime;
+	private int endUnixTime;
+	private int granularity;
+	private int resultType;
 
 	public String getData() {
 		return data;
@@ -63,6 +67,38 @@ public class TaskParam {
 
 	public void setPipelineName(String pipelineName) {
 		this.pipelineName = pipelineName;
+	}
+
+	public int getStartUnixTime() {
+		return startUnixTime;
+	}
+
+	public void setStartUnixTime(int startUnixTime) {
+		this.startUnixTime = startUnixTime;
+	}
+
+	public int getEndUnixTime() {
+		return endUnixTime;
+	}
+
+	public void setEndUnixTime(int endUnixTime) {
+		this.endUnixTime = endUnixTime;
+	}
+
+	public int getGranularity() {
+		return granularity;
+	}
+
+	public void setGranularity(int granularity) {
+		this.granularity = granularity;
+	}
+
+	public int getResultType() {
+		return resultType;
+	}
+
+	public void setResultType(int resultType) {
+		this.resultType = resultType;
 	}
 
 }

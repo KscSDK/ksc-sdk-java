@@ -13,8 +13,7 @@ public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx",
-					"xxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx", "xxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -51,12 +50,20 @@ public class TestKvs {
 		System.out.println(getPresetDetailResult.getPresetDetail().getPresetType());
 
 		CreateTaskRequest createTaskRequest = new CreateTaskRequest();
-		String data2 = setTask("preset_avop1", "xxxxx", "ksyun_a.flv", "ksyun.flv");
+		String data2 = setTask();
 		createTaskRequest.setData(data2);
 		System.out.println("Create Task JSON " + data2);
 		CreateTasklResult createTasklResult = ksc.CreateTask(createTaskRequest);
 		System.out.println(createTasklResult.getErrNum());
 		System.out.println("taskid:" + createTasklResult.getTaskID());
+
+		CreateFlowTaskRequest createFlowTaskRequest = new CreateFlowTaskRequest();
+		data2 = setFlowTask();
+		createTaskRequest.setData(data2);
+		System.out.println("Create Flow Task JSON " + data2);
+		CreateTasklResult createFlowTasklResult = ksc.CreateFlowTask(createFlowTaskRequest);
+		System.out.println(createFlowTasklResult.getErrNum());
+		System.out.println("taskid:" + createFlowTasklResult.getTaskID());
 
 		DelTaskByTaskIDRequest delTaskByTaskIDRequest = new DelTaskByTaskIDRequest();
 		delTaskByTaskIDRequest.setTaskID("xxxxx");
@@ -83,29 +90,30 @@ public class TestKvs {
 		getTaskMetaInfoRequest.setStartDate(20161101);
 		GetTaskMetaResult getTaskMetaResult = ksc.GetTaskMetaInfo(getTaskMetaInfoRequest);
 		System.out.println(getTaskMetaResult.getErrNum());
-		
+
 		UpdatePipelineRequest updatePipelineRequest = new UpdatePipelineRequest();
 		updatePipelineRequest.setData(setPipeline("usual"));
 		KvsErrResult updatePipelineResult = ksc.UpdatePipeline(updatePipelineRequest);
 		System.out.println(updatePipelineResult.getErrNum());
-		
+
 		QueryPipelineRequest queryPipelineRequest = new QueryPipelineRequest();
 		queryPipelineRequest.setPipelineName("usual");
 		QueryPipelineResult queryPipelineResult = ksc.QueryPipeline(queryPipelineRequest);
 		System.out.println(queryPipelineResult.getErrNum());
-		
+
 		GetMediaTransDurationRequest getMediaTransDurationRequest = new GetMediaTransDurationRequest();
 		getMediaTransDurationRequest.setResultType(1);
-		GetMediaTransDurationResult getMediaTransDurationResult = ksc.GetMediaTransDuration(getMediaTransDurationRequest);
-		
+		GetMediaTransDurationResult getMediaTransDurationResult = ksc
+				.GetMediaTransDuration(getMediaTransDurationRequest);
+
 		GetScreenshotNumberRequest getScreenshotNumberRequest = new GetScreenshotNumberRequest();
 		getMediaTransDurationRequest.setResultType(1);
 		GetScreenshotNumberResult getScreenshotNumberResult = ksc.GetScreenshotNumber(getScreenshotNumberRequest);
-		
+
 		GetInterfaceNumberRequest getInterfaceNumberRequest = new GetInterfaceNumberRequest();
 		getMediaTransDurationRequest.setResultType(1);
 		GetInterfaceNumberResult getInterfaceNumberResult = ksc.GetInterfaceNumber(getInterfaceNumberRequest);
-		
+
 	}
 
 	private static String PresetSet(String preset) throws JSONException {
@@ -154,13 +162,32 @@ public class TestKvs {
 		return data.toString();
 	}
 
-	private static String setTask(String preset, String dst_bucket, String dst_object_key, String src_object_key)
-			throws JSONException {
+	private static String setFlowTask() throws JSONException {
+		JSONObject createData = new JSONObject();
+		JSONArray flowData = new JSONArray();
+		for (int i = 0; i < 2; i++) {
+			JSONObject data = new JSONObject();
+			data.put("Preset", "xxxx");
+			data.put("SrcInfo", TaskSrcInfo("xxxx", "xxxx"));
+			data.put("DstBucket", "xxxx");
+			data.put("DstObjectKey", "xxxx");
+			data.put("DstDir", "");
+			data.put("IsTop", 0);
+			data.put("DstAcl", "public-read");
+			flowData.put(data);
+		}
+		createData.put("FlowData", flowData);
+		createData.put("CbUrl", "");
+		createData.put("CbMethod", "POST");
+		return createData.toString();
+	}
+
+	private static String setTask() throws JSONException {
 		JSONObject data = new JSONObject();
-		data.put("Preset", preset);
-		data.put("SrcInfo", TaskSrcInfo(dst_bucket, src_object_key));
-		data.put("DstBucket", dst_bucket);
-		data.put("DstObjectKey", dst_object_key);
+		data.put("Preset", "xxxx");
+		data.put("SrcInfo", TaskSrcInfo("xxxx", "xxxx"));
+		data.put("DstBucket", "xxxx");
+		data.put("DstObjectKey", "xxxx");
 		data.put("DstDir", "");
 		data.put("IsTop", 0);
 		data.put("DstAcl", "public-read");
@@ -182,12 +209,12 @@ public class TestKvs {
 
 		return srcInfo;
 	}
-	
-	private static String setPipeline(String PipelineName){
+
+	private static String setPipeline(String PipelineName) {
 		JSONObject data = new JSONObject();
 		data.put("PipelineName", PipelineName);
 		data.put("State", "Active");
 		return data.toString();
-		
+
 	}
 }

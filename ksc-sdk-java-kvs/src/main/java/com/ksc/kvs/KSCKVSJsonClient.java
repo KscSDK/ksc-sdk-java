@@ -362,6 +362,34 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		}
 	}
 
+	public CreateTasklResult CreateFlowTask(CreateFlowTaskRequest createTaskRequest) {
+		ExecutionContext executionContext = createExecutionContext(createTaskRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateFlowTaskRequest> request = null;
+		Response<CreateTasklResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateFlowTaskRequestMarshaller().marshall(super.beforeMarshalling(createTaskRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<CreateTasklResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new KvsCreateTaskResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 	public KvsErrResult DelTaskByTaskID(DelTaskByTaskIDRequest delTaskByTaskIDRequest) {
 		// TODO Auto-generated method stub
 		ExecutionContext executionContext = createExecutionContext(delTaskByTaskIDRequest);

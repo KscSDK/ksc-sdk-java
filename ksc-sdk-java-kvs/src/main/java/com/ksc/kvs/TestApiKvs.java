@@ -12,65 +12,82 @@ public class TestApiKvs {
 	public static void main(String[] args) throws JSONException {
 		KSCKVSApiClient credentials = null;
 		try {
-			credentials = new KSCKVSApiClient("http://kvs.cn-beijing-6.api.ksyun.com",
-					"xxxx",
-					"xxxx");
+			credentials = new KSCKVSApiClient("http://kvs.cn-beijing-6.api.ksyun.com", "xxxx", "xxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
 					+ "location (~/.aws/credentials), and is in valid format.", e);
 		}
-		String result ;
+		String result;
 		PresetParam presetParam = new PresetParam();
-		//创建模板
+		// 创建模板
 		presetParam.setData(PresetSet("xxxx"));
 		result = credentials.Preset(presetParam);
-		System.out.println("result = " + result );
-		//更新模板
+		System.out.println("result = " + result);
+		// 更新模板
 		presetParam.setData(PresetSet("xxxx"));
 		result = credentials.UpdatePreset(presetParam);
-		System.out.println("result = " + result );
-		//删除模板
+		System.out.println("result = " + result);
+		// 删除模板
 		presetParam.setPreset("ceshishi");
 		result = credentials.DelPreset(presetParam);
-		System.out.println("result = " + result );
-		//查询模板列表
+		System.out.println("result = " + result);
+		// 查询模板列表
 		presetParam.setWithDetail(1);
 		result = credentials.GetPresetList(presetParam);
-		System.out.println("result = " + result );
-		//查询模板详情
+		System.out.println("result = " + result);
+		// 查询模板详情
 		presetParam.setPreset("ceshishi");
 		result = credentials.GetPresetDetail(presetParam);
-		System.out.println("result = " + result );
-		//创建任务
+		System.out.println("result = " + result);
+		// 创建任务
 		TaskParam taskParam = new TaskParam();
 		taskParam.setData(setTask("xxxx", "xxxxx", "xxxx", "xxxx"));
 		result = credentials.CreateTask(taskParam);
-		System.out.println("result = " + result );
-		//删除任务
+		System.out.println("result = " + result);
+		// 创建流式任务
+		taskParam = new TaskParam();
+		taskParam.setData(setFlowTask());
+		result = credentials.CreateTask(taskParam);
+		System.out.println("result = " + result);
+		// 删除任务
 		taskParam.setTaskID("xxxxxxxx");
 		result = credentials.DelTaskByTaskID(taskParam);
-		System.out.println("result = " + result );
-		//置顶任务
+		System.out.println("result = " + result);
+		// 置顶任务
 		taskParam.setTaskID("xxxxxxxx");
 		result = credentials.TopTaskByTaskID(taskParam);
-		System.out.println("result = " + result );
-		//查询任务列表
+		System.out.println("result = " + result);
+		// 查询任务列表
 		taskParam.setStartDate(20170822);
 		taskParam.setEndDate(20170822);
 		result = credentials.GetTaskList(taskParam);
-		System.out.println("result = " + result );
-		//查询任务详情
+		System.out.println("result = " + result);
+		// 查询任务详情
 		taskParam.setTaskID("xxxxxx");
 		result = credentials.GetTaskByTaskID(taskParam);
-		System.out.println("result = " + result );
-		//查询META信息
+		System.out.println("result = " + result);
+		// 查询META信息
 		taskParam.setStartDate(20170822);
 		taskParam.setEndDate(20170822);
 		taskParam.setTaskID(null);
 		result = credentials.GetTaskMetaInfo(taskParam);
-		System.out.println("result = " + result );
+		System.out.println("result = " + result);
+		// 媒体转码时长查询
+		taskParam.setResultType(1);
+		result = credentials.GetMediaTransDuration(taskParam);
+		System.out.println("result = " + result);
+		// 媒体转码截图查询
+		taskParam.setResultType(1);
+		result = credentials.GetScreenshotNumber(taskParam);
+		System.out.println("result = " + result);
+		// 媒体转码接口调用查询
+		taskParam.setResultType(1);
+		result = credentials.GetInterfaceNumber(taskParam);
+		System.out.println("result = " + result);
+
 	}
+
 	private static String PresetSet(String preset) throws JSONException {
 		String presettype = "avtrans";
 		JSONObject data = new JSONObject();
@@ -105,7 +122,7 @@ public class TestApiKvs {
 
 		return data.toString();
 	}
-	
+
 	private static JSONArray TaskSrcInfo(String dst_bucket, String dst_object_key) throws JSONException {
 		JSONArray srcInfo = new JSONArray();
 		JSONObject insrcInfo = new JSONObject();
@@ -117,7 +134,29 @@ public class TestApiKvs {
 
 		return srcInfo;
 	}
-	private static String setTask(String preset, String dst_bucket, String dst_object_key, String src_object_key) throws JSONException {
+
+	private static String setFlowTask() throws JSONException {
+		JSONObject createData = new JSONObject();
+		JSONArray flowData = new JSONArray();
+		for (int i = 0; i < 2; i++) {
+			JSONObject data = new JSONObject();
+			data.put("Preset", "xxxx");
+			data.put("SrcInfo", TaskSrcInfo("xxxx", "xxxx"));
+			data.put("DstBucket", "xxxx");
+			data.put("DstObjectKey", "xxxx");
+			data.put("DstDir", "");
+			data.put("IsTop", 0);
+			data.put("DstAcl", "public-read");
+			flowData.put(data);
+		}
+		createData.put("FlowData", flowData);
+		createData.put("CbUrl", "");
+		createData.put("CbMethod", "POST");
+		return createData.toString();
+	}
+
+	private static String setTask(String preset, String dst_bucket, String dst_object_key, String src_object_key)
+			throws JSONException {
 		JSONObject data = new JSONObject();
 		data.put("Preset", preset);
 		data.put("SrcInfo", TaskSrcInfo(dst_bucket, src_object_key));

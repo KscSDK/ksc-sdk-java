@@ -39,8 +39,7 @@ public class TestKet {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxx",
-					"xxxxxxxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxx", "xxxxxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -145,27 +144,27 @@ public class TestKet {
 		getLoopListRequest.setUniqName(UniqName);
 		GetLoopListResult getLoopListResult = ksc.GetLoopList(getLoopListRequest);
 		System.out.println(getLoopListResult.getList().get(0).getTaskID());
-		
-		//创建选流任务接口
+
+		// 创建选流任务接口
 		CreateDirectorTaskRequest createDirectorTaskRequest = new CreateDirectorTaskRequest();
 		createDirectorTaskRequest.setData(DirectorTaskSet());
 		ErrResult createDirectorTaskResult = ksc.CreateDirectorTask(createDirectorTaskRequest);
 		System.out.println(createDirectorTaskResult.getTaskID());
-		
-		//	更新选流任务接口
+
+		// 更新选流任务接口
 		UpdateDirectorTaskRequest updateDirectorTaskRequest = new UpdateDirectorTaskRequest();
 		updateDirectorTaskRequest.setData(DirectorTaskSet());
 		ErrResult updateDirectorTaskResult = ksc.UpdateDirectorTask(updateDirectorTaskRequest);
 		System.out.println(updateDirectorTaskResult.getErrNum());
-		
-		//	查询选流任务接口
+
+		// 查询选流任务接口
 		QueryDirectorTaskRequest queryDirectorTaskRequest = new QueryDirectorTaskRequest();
 		queryDirectorTaskRequest.setApp("live");
 		queryDirectorTaskRequest.setUniqName(UniqName);
 		QueryDirectorTaskResult queryDirectorTaskResult = ksc.QueryDirectorTask(queryDirectorTaskRequest);
 		System.out.println(queryDirectorTaskResult.getErrNum());
-		
-		//	删除选流任务接口
+
+		// 删除选流任务接口
 		DelDirectorTaskRequest delDirectorTaskRequest = new DelDirectorTaskRequest();
 		delDirectorTaskRequest.setApp("live");
 		delDirectorTaskRequest.setUniqName(UniqName);
@@ -253,17 +252,18 @@ public class TestKet {
 		data.put("Video", video);
 		return data.toString();
 	}
-	private static String DirectorTaskSet(){
+
+	private static String DirectorTaskSet() {
 		JSONObject data = new JSONObject();
 		data.put("App", "live");
 		data.put("UniqName", UniqName);
 		JSONArray SrcInfo = new JSONArray();
 		for (int i = 0; i < 2; i++) {
 			JSONObject info = new JSONObject();
-			info.put("SrcUrl","xxxx");
-			info.put("Index",i);
+			info.put("SrcUrl", "xxxx");
+			info.put("Index", i);
 			SrcInfo.put(info);
-		}		
+		}
 		data.put("SrcInfo", SrcInfo);
 		return data.toString();
 	}
