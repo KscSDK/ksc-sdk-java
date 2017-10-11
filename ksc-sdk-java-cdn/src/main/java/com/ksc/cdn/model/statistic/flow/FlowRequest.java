@@ -1,8 +1,8 @@
 package com.ksc.cdn.model.statistic.flow;
 
 import com.ksc.cdn.KscClientException;
-import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
+import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
 import org.apache.commons.lang3.StringUtils;
@@ -47,6 +47,13 @@ public class FlowRequest extends CommonFieldRequest {
 
     /**
      * 非必须
+     * 协议类型
+     * 取值为http:http协议数据; https:https协议数据
+     */
+    private String protocolType;
+
+    /**
+     * 非必须
      * 数据类型,edge边缘数据origin回源数据
      * 缺省为edge
      */
@@ -84,6 +91,14 @@ public class FlowRequest extends CommonFieldRequest {
         this.dataType = dataType;
     }
 
+    public String getProtocolType() {
+        return protocolType;
+    }
+
+    public void setProtocolType(String protocolType) {
+        this.protocolType = protocolType;
+    }
+
     @Override
     public Map<String, String> buildParams() throws KscClientException,ParseException {
         CommonValidUtil.check(this);
@@ -98,8 +113,12 @@ public class FlowRequest extends CommonFieldRequest {
 
         if (StringUtils.isNotBlank(this.getGranularity())) {
             params.put("Granularity", this.getGranularity());
-        }else {
-            params.put("Granularity",getGranularity(this.getStartTime(),this.getEndTime()));
+        } else {
+            params.put("Granularity", getGranularity(this.getStartTime(), this.getEndTime()));
+        }
+
+        if (StringUtils.isNotBlank(this.getProtocolType())) {
+            params.put("ProtocolType", this.getProtocolType());
         }
 
         if (StringUtils.isNotBlank(this.getDataType()))

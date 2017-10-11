@@ -79,8 +79,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPKcKkeR6RTHWVx6tVjehZKg",
-                "OD1CD7hTmaBmq75xTb8LAeeEq8V5sxHV6Qatdsoa4DYBTcLUsrJdaJtiweq52+PgwQ==",
+        cdnClient = new KscCdnClient("AKLT7YUABJyMSNCyCypfiJ3jyw",
+                "OJKg3svMFvIlEqn5Hn8/qzLxqGqZo+1IaYSfDP3YvY21jfGz+WAiDG6lDKWfyh330w==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -99,12 +99,13 @@ public class StatisticTest {
     @Test
     public void testGetBandwidthData() throws Exception {
         BpsRequest statisticsQuery = new BpsRequest();
-        statisticsQuery.setStartTime("2016-09-19T08:00+0800");//查询开始时间
-        statisticsQuery.setEndTime("2016-09-20T08:00+0800");//查询结束时间
+        statisticsQuery.setStartTime("2017-09-19T08:00+0800");//查询开始时间
+        statisticsQuery.setEndTime("2017-09-20T08:00+0800");//查询结束时间
         statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());//加速类型
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());//带宽数据返回类型
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());//查询区域
         statisticsQuery.setDataType(DataTypeEnum.ORIGIN.getValue());//数据类型,边缘或者回源
+        statisticsQuery.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 
         BpsResult bandwidthData = (BpsResult) cdnClient.generalGetStatisticsData(statisticsQuery, BpsResult.class);
         Assert.assertNotNull(bandwidthData.getDatas());
@@ -130,6 +131,7 @@ public class StatisticTest {
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());
         statisticsQuery.setDataType(DataTypeEnum.EDGE.getValue());
+        statisticsQuery.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 
         FlowResult flowDataByApi = (FlowResult) cdnClient.generalGetStatisticsData(statisticsQuery, FlowResult.class);
         Assert.assertNotNull(flowDataByApi);
@@ -216,6 +218,7 @@ public class StatisticTest {
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setDataType(DataTypeEnum.EDGE.getValue());
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());
+        statisticsQuery.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 //        statisticsQuery.setGranularity("5");
 
         PVResult pv = (PVResult) cdnClient.generalGetStatisticsData(statisticsQuery, PVResult.class);
@@ -894,6 +897,8 @@ public class StatisticTest {
         request.setEndTime("2017-02-28T23:56+0800");
         request.setCdnType("download");
         request.setRegions("CN,AS,NA,AU");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+
         PeakBandwidthDataResult result = (PeakBandwidthDataResult) cdnClient.generalGetStatisticsData(request, PeakBandwidthDataResult.class);
         Assert.assertNotNull(result);
     }
