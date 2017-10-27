@@ -36,8 +36,8 @@ public class HttpClientHelper {
 			String urlNameString = url + "?" + param;
 			get = new HttpGet(urlNameString);
 			// 构造消息头
-			get.setHeader("Content-type", "application/json; charset=utf-8");
 			get.setHeader("Connection", "Keep-Alive");
+			get.setHeader("Accept", "application/json");
 			for (String key : headers.keySet()) {
 				String value = headers.get(key);
 				get.setHeader(key, value);
@@ -82,6 +82,7 @@ public class HttpClientHelper {
 			// 构造消息头
 			post.setHeader("Content-type", "application/json; charset=utf-8");
 			post.setHeader("Connection", "Keep-Alive");
+			post.setHeader("Accept", "application/json");
 			for (com.ksc.kvs.util.Header header : header2) {
 				post.setHeader(header.getName(), header.getValue());
 			}

@@ -26,7 +26,7 @@ public class CreateFlowTaskRequestMarshaller implements Marshaller<Request<Creat
 			version = "2017-01-01";
 		}
 		request.addParameter("Version", version);
-
+		request.addHeader("Accept", "application/json");
 		byte[] content = createTaskRequest.getData().getBytes();
 		request.addHeader("Content-Type", "application/json");
 		request.setContent(new ByteArrayInputStream(content));

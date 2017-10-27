@@ -4,8 +4,12 @@ public class TaskParam {
 	private String data;
 	private String taskID;
 	private String pipelineName;
+	private String errorCode;
+	private String taskStatus;
 	private int startDate;
 	private int endDate;
+	private int startTime;
+	private int endTime;
 	private int marker;
 	private int limit;
 	private int startUnixTime;
@@ -13,8 +17,40 @@ public class TaskParam {
 	private int granularity;
 	private int resultType;
 
+	public int getStartTime() {
+		return startTime;
+	}
+
+	public void setStartTime(int startTime) {
+		this.startTime = startTime;
+	}
+
+	public int getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(int endTime) {
+		this.endTime = endTime;
+	}
+
 	public String getData() {
 		return data;
+	}
+
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	public String getTaskStatus() {
+		return taskStatus;
+	}
+
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
 	}
 
 	public void setData(String data) {

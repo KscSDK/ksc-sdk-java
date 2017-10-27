@@ -23,6 +23,7 @@ public class GetTaskMetaRequestMarshaller implements Marshaller<Request<GetTaskM
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
+		request.addHeader("Accept", "application/json");
 		request.addParameter("Version", version);
 		if (!getTaskMetaRequest.getTaskID().equals("")) {
 			request.addParameter("TaskID", StringUtils.fromString(getTaskMetaRequest.getTaskID()));

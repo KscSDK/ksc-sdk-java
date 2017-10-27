@@ -32,6 +32,7 @@ public class PresetRequestMarshaller implements Marshaller<Request<PresetRequest
 		request.setContent(new ByteArrayInputStream(content));
 		request.addHeader("Content-Length", Integer.toString(content.length));
 		request.setHttpMethod(HttpMethodName.POST);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 

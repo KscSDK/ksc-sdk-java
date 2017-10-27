@@ -5,6 +5,33 @@ public class Audio {
 	private String ab;
 	private String acodec;
 	private int an;
+	private String profile;
+	private int aacheCompatible;
+	private String resampler;
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public int getAacheCompatible() {
+		return aacheCompatible;
+	}
+
+	public void setAacheCompatible(int aacheCompatible) {
+		this.aacheCompatible = aacheCompatible;
+	}
+
+	public String getResampler() {
+		return resampler;
+	}
+
+	public void setResampler(String resampler) {
+		this.resampler = resampler;
+	}
 
 	// avm3u8
 	private int channels;

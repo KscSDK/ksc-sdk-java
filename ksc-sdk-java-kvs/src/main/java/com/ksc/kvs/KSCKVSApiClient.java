@@ -46,8 +46,6 @@ public class KSCKVSApiClient {
 			InputStream body = new ByteArrayInputStream(param.getData().getBytes("ISO-8859-1"));
 			List<Header> header = AwsSignerV4Util.getAuthHeaderForPost(uri, parameters, body, headers, this.serviceName,
 					this.region, this.accessKey, this.secretKey);
-			// result = HttpClientHelper.sendPost(this.endpoint + "/?" +
-			// MapToString(parameters), param.getData(), header);
 			result = HttpClientHelper.sendPost(this.endpoint + "/?" + MapToString(parameters), param.getData(), header);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -237,11 +235,23 @@ public class KSCKVSApiClient {
 		if (param.getEndDate() > 0) {
 			parameters.put("EndDate", String.valueOf(param.getEndDate()));
 		}
+		if (param.getStartTime() > 0) {
+			parameters.put("StartTime", String.valueOf(param.getStartTime()));
+		}
+		if (param.getEndTime() > 0) {
+			parameters.put("EndTime", String.valueOf(param.getEndTime()));
+		}
 		if (param.getMarker() > 0) {
 			parameters.put("Marker", String.valueOf(param.getMarker()));
 		}
 		if (param.getLimit() > 0) {
 			parameters.put("Limit", String.valueOf(param.getLimit()));
+		}
+		if (param.getErrorCode() != null){
+			parameters.put("ErrorCode", param.getErrorCode());
+		}
+		if (param.getTaskStatus() != null){
+			parameters.put("TaskStatus", param.getTaskStatus());
 		}
 		Map<String, String> headers = new HashMap<String, String>();
 		try {
@@ -295,9 +305,9 @@ public class KSCKVSApiClient {
 			parameters.put("Limit", String.valueOf(param.getLimit()));
 		}
 		if (param.getTaskID() != null) {
-			parameters.put("Limit", param.getTaskID());
+			parameters.put("TaskID", param.getTaskID());
 		}
-
+		
 		Map<String, String> headers = new HashMap<String, String>();
 		try {
 			Map<String, String> header = AwsSignerV4Util.getAuthHeaderForGet(uri, parameters, headers, this.serviceName,

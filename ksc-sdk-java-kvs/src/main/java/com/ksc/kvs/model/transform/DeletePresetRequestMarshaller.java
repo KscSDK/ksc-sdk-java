@@ -26,6 +26,7 @@ public class DeletePresetRequestMarshaller implements Marshaller<Request<DeleteP
 		if (!deletePresetRequest.getPreset().isEmpty()) {
 			request.addParameter("Preset", StringUtils.fromString(deletePresetRequest.getPreset()));
 		}
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 

@@ -239,9 +239,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new GetPresetListResultJsonUnmarshaller());
-
 			response = invoke(request, responseHandler, executionContext);
-
 			return response.getKscResponse();
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);

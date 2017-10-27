@@ -45,6 +45,15 @@ public class AudioJsonUnmarshaller implements Unmarshaller<Audio, JsonUnmarshall
 				} else if (context.testExpression("channels", targetDepth)) {
 					context.nextToken();
 					audio.setChannels(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("profile", targetDepth)) {
+					context.nextToken();
+					audio.setProfile(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("aacheCompatible", targetDepth)) {
+					context.nextToken();
+					audio.setAacheCompatible(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("resampler", targetDepth)) {
+					context.nextToken();
+					audio.setResampler(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

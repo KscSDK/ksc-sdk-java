@@ -26,18 +26,30 @@ public class GetTaskListRequestMarshaller implements Marshaller<Request<GetTaskL
 		}
 		request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
-
+		request.addHeader("Accept", "application/json");
 		if (getTaskListRequest.getStartDate() != -1) {
 			request.addParameter("StartDate", StringUtils.fromInteger(getTaskListRequest.getStartDate()));
 		}
 		if (getTaskListRequest.getEndDate() != -1) {
 			request.addParameter("EndDate", StringUtils.fromInteger(getTaskListRequest.getEndDate()));
 		}
+		if (getTaskListRequest.getStartTime() != -1) {
+			request.addParameter("StartTime", StringUtils.fromInteger(getTaskListRequest.getStartTime()));
+		}
+		if (getTaskListRequest.getEndTime() != -1) {
+			request.addParameter("EndTime", StringUtils.fromInteger(getTaskListRequest.getEndTime()));
+		}
 		if (getTaskListRequest.getMarker() != -1) {
 			request.addParameter("Marker", StringUtils.fromInteger(getTaskListRequest.getMarker()));
 		}
 		if (getTaskListRequest.getLimit() != -1) {
 			request.addParameter("Limit", StringUtils.fromInteger(getTaskListRequest.getLimit()));
+		}
+		if (getTaskListRequest.getErrorCode() != "") {			
+			request.addParameter("ErrorCode", getTaskListRequest.getErrorCode());
+		}
+		if (getTaskListRequest.getTaskStatus() != "") {
+			request.addParameter("TaskStatus", getTaskListRequest.getTaskStatus());
 		}
 
 		return request;

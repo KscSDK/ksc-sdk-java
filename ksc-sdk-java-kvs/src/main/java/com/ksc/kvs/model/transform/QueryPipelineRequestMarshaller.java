@@ -29,6 +29,7 @@ public class QueryPipelineRequestMarshaller implements Marshaller<Request<QueryP
 			request.addParameter("PipelineName", StringUtils.fromString(queryPipelineRequest.getPipelineName()));
 		}
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }

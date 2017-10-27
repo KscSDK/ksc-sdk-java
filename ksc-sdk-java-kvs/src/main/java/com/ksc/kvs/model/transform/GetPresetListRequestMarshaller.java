@@ -34,6 +34,7 @@ public class GetPresetListRequestMarshaller implements Marshaller<Request<GetPre
 		}
 		request.addParameter("WithDetail", StringUtils.fromInteger(kvsRequest.getWithDetail()));
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 
 		return request;
 	}
