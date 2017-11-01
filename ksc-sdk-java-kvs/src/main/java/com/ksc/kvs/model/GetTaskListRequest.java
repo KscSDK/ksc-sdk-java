@@ -14,6 +14,47 @@ public class GetTaskListRequest extends KscWebServiceRequest implements DryRunSu
 	private int Marker;
 
 	private int Limit;
+	
+	private String errorCode = "";
+
+	private String taskStatus = "";
+	
+	private int StartTime;
+	
+	private int EndTime;
+	
+	public int getStartTime() {
+		return StartTime;
+	}
+
+	public void setStartTime(int startTime) {
+		StartTime = startTime;
+	}
+
+	public int getEndTime() {
+		return EndTime;
+	}
+
+	public void setEndTime(int endTime) {
+		EndTime = endTime;
+	}
+
+	public String getErrorCode() {
+		return errorCode;
+	}
+
+	public void setErrorCode(String errorCode) {
+		this.errorCode = errorCode;
+	}
+
+	public String getTaskStatus() {
+		return taskStatus;
+	}
+
+	public void setTaskStatus(String taskStatus) {
+		this.taskStatus = taskStatus;
+	}
+
 
 	public int getStartDate() {
 		return StartDate;

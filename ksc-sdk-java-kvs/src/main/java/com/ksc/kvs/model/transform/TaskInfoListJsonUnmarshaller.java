@@ -7,6 +7,7 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
+import com.ksc.kvs.model.FlowDataInfo;
 import com.ksc.kvs.model.SrcInfo;
 import com.ksc.kvs.model.TaskInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
@@ -39,6 +40,9 @@ public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, Json
 				} else if (context.testExpression("Preset", targetDepth)) {
 					context.nextToken();
 					taskInfo.setPreset(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("IsFlow", targetDepth)) {
+					context.nextToken();
+					taskInfo.setIsFlow(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("DstBucket", targetDepth)) {
 					context.nextToken();
 					taskInfo.setDstBucket(context.getUnmarshaller(String.class).unmarshall(context));
@@ -79,6 +83,11 @@ public class TaskInfoListJsonUnmarshaller implements Unmarshaller<TaskInfo, Json
 				} else if (context.testExpression("TaskStatus", targetDepth)) {
 					context.nextToken();
 					taskInfo.setTaskStatus(context.getUnmarshaller(String.class).unmarshall(context));
+				} else if (context.testExpression("FlowData", targetDepth)) {
+					context.nextToken();
+					taskInfo.setFlowDataList(
+							new ListUnmarshaller<FlowDataInfo>(FlowDataInfoListJsonUnmarshaller.getInstance())
+									.unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

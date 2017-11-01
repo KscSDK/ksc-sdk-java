@@ -41,6 +41,7 @@ public class GetMediaTransDurationRequestMarshaller
 			request.addParameter("ResultType", StringUtils.fromInteger(getMediaTransDurationRequest.getResultType()));
 		}
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }

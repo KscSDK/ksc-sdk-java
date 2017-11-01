@@ -1,7 +1,6 @@
 package com.ksc.kvs.model.transform;
 
 import java.io.ByteArrayInputStream;
-
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
@@ -32,6 +31,7 @@ public class CreateTaskRequestMarshaller implements Marshaller<Request<CreateTas
 		request.setContent(new ByteArrayInputStream(content));
 		request.addHeader("Content-Length", Integer.toString(content.length));
 		request.setHttpMethod(HttpMethodName.POST);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 

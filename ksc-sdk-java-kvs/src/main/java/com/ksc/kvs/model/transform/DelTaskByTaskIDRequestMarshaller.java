@@ -30,6 +30,7 @@ public class DelTaskByTaskIDRequestMarshaller
 			request.addParameter("TaskID", StringUtils.fromString(taskRequest.getTaskID()));
 		}
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 

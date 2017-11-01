@@ -41,6 +41,7 @@ public class GetScreenshotNumberRequestMarshaller
 			request.addParameter("ResultType", StringUtils.fromInteger(getScreenshotNumberRequest.getResultType()));
 		}
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }

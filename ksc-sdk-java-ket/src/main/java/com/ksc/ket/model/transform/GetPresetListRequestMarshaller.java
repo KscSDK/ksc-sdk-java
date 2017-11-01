@@ -23,7 +23,7 @@ public class GetPresetListRequestMarshaller implements Marshaller<Request<GetPre
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
-
+		request.addHeader("Accept", "application/json");
 		request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
 		if (!getPresetListRequest.getApp().isEmpty()) {

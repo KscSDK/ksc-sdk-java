@@ -31,6 +31,7 @@ public class UpdatePresetRequestMarshaller implements Marshaller<Request<UpdateP
 		request.setContent(new ByteArrayInputStream(content));
 		request.addHeader("Content-Length", Integer.toString(content.length));
 		request.setHttpMethod(HttpMethodName.POST);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }

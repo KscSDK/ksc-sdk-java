@@ -31,6 +31,7 @@ public class GetTaskByTaskIDRequestMarshaller
 			request.addParameter("TaskID", StringUtils.fromString(getTaskByTaskIDRequest.getTaskID()));
 		}
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }
