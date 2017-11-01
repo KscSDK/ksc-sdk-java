@@ -19,7 +19,6 @@ public class StatisticsResolutionsJsonUnmarshaller
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
-		System.out.println(context);
 		JsonToken token = context.getCurrentToken();
 		if (token == null)
 			token = context.nextToken();

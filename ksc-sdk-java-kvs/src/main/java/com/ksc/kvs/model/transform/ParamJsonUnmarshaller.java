@@ -86,11 +86,23 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 				} else if (context.testExpression("autorotate", targetDepth)) {
 					context.nextToken();
 					param.setAutorotate(context.getUnmarshaller(Integer.class).unmarshall(context));
-				} else if (context.testExpression("logos", targetDepth)) {
+				} else if (context.testExpression("LOGOS", targetDepth)) {
 					context.nextToken();
 					List<List<Logo>> list = new NestListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance())
 							.unmarshall(context);
 					param.setLogos(list);
+				} else if (context.testExpression("spriteflag", targetDepth)) {
+					context.nextToken();
+					param.setSpriteflag(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("spritew", targetDepth)) {
+					context.nextToken();
+					param.setSpritew(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("spriteh", targetDepth)) {
+					context.nextToken();
+					param.setSpriteh(context.getUnmarshaller(Integer.class).unmarshall(context));
+				} else if (context.testExpression("ss", targetDepth)) {
+					context.nextToken();
+					param.setSs(context.getUnmarshaller(String.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

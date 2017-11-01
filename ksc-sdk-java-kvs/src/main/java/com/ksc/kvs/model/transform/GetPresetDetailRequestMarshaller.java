@@ -28,7 +28,7 @@ public class GetPresetDetailRequestMarshaller
 		if (!getPresetDetailRequest.getPreset().isEmpty()) {
 			request.addParameter("Preset", StringUtils.fromString(getPresetDetailRequest.getPreset()));
 		}
-
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 

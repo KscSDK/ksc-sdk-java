@@ -23,7 +23,7 @@ public class GetQuotaUsedRequestMarshaller implements Marshaller<Request<GetQuot
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
-
+		request.addHeader("Accept", "application/json");
 		request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
 		if (!getQuotaUsedRequest.getUniqName().isEmpty()) {

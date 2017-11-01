@@ -32,6 +32,7 @@ public class TopTaskByTaskIDRequestMarshaller
 		}
 
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }

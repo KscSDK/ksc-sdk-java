@@ -41,6 +41,7 @@ public class GetInterfaceNumberRequestMarshaller
 			request.addParameter("ResultType", StringUtils.fromInteger(getInterfaceNumberRequest.getResultType()));
 		}
 		request.setHttpMethod(HttpMethodName.GET);
+		request.addHeader("Accept", "application/json");
 		return request;
 	}
 }

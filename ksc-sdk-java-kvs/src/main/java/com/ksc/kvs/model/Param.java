@@ -13,6 +13,9 @@ public class Param {
 	private int shortSide;
 	// avsample
 	private int interval;
+	private int spriteflag;
+	private int spritew;
+	private int spriteh;
 	private Video video;
 	private Audio audio;
 	private int hlsTime;
@@ -23,6 +26,7 @@ public class Param {
 	private int start_segment_num;
 	private int start_segment_time;
 	private String segfile_acl;
+	private String ss;
 	// avlogo
 	private List<Image> image;
 	private SdkInternalList<List<Logo>> logos;
@@ -177,6 +181,38 @@ public class Param {
 
 	public void setLogos(SdkInternalList<List<Logo>> logos) {
 		this.logos = logos;
+	}
+
+	public int getSpriteflag() {
+		return spriteflag;
+	}
+
+	public void setSpriteflag(int spriteflag) {
+		this.spriteflag = spriteflag;
+	}
+
+	public int getSpritew() {
+		return spritew;
+	}
+
+	public void setSpritew(int spritew) {
+		this.spritew = spritew;
+	}
+
+	public int getSpriteh() {
+		return spriteh;
+	}
+
+	public void setSpriteh(int spriteh) {
+		this.spriteh = spriteh;
+	}
+
+	public String getSs() {
+		return ss;
+	}
+
+	public void setSs(String ss) {
+		this.ss = ss;
 	}
 
 	// public List<List<Logo>> getLogos() {
