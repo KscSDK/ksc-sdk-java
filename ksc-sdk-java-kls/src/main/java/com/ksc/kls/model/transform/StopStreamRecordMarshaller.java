@@ -6,7 +6,8 @@ import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.StopStreamRecordRequest;
 import com.ksc.transform.Marshaller;
-import com.ksc.util.StringUtils;
+
+import java.io.ByteArrayInputStream;
 
 /**
  * Created by yangfan on 2017/4/27.
@@ -35,12 +36,10 @@ public class StopStreamRecordMarshaller implements Marshaller<Request<StopStream
         }
         request.addParameter("Version", version);
 
-
-        request.addParameter("RecID", StringUtils.fromInteger(stopStreamRecordRequest.getRecID()));
-        request.addParameter("UniqueName",stopStreamRecordRequest.getUniqueName());
-        request.addParameter("App",stopStreamRecordRequest.getApp());
-        request.addParameter("Pubdomain",stopStreamRecordRequest.getPubdomain());
-        request.addParameter("Stream",stopStreamRecordRequest.getStream());
+        byte[] content = stopStreamRecordRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
         request.setHttpMethod(HttpMethodName.POST);
         return request;

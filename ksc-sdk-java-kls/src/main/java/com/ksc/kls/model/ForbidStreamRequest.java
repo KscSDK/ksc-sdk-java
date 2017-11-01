@@ -1,74 +1,29 @@
 package com.ksc.kls.model;
 
 import com.ksc.KscWebServiceRequest;
+import com.ksc.Request;
+import com.ksc.kls.model.transform.ForbidStreamMarshaller;
+import com.ksc.model.DryRunSupportedRequest;
 
 /**
  * Created by yangfan on 2017/7/25.
  */
-public class ForbidStreamRequest extends KscWebServiceRequest {
-    private String Action;
-    private String Version;
-    private String UniqueName;
-    private String App;
-    private String Pubdomain;
-    private String Stream;
-    private int ForbidTillUnixTime;
+public class ForbidStreamRequest extends KscWebServiceRequest implements DryRunSupportedRequest<ForbidStreamRequest> {
 
-    public String getAction() {
-        return Action;
+    private String data;
+
+    public String getData() {
+        return data;
     }
 
-    public void setAction(String action) {
-        Action = action;
+    public void setData(String data) {
+        this.data = data;
     }
 
     @Override
-    public String getVersion() {
-        return Version;
-    }
-
-    @Override
-    public void setVersion(String version) {
-        Version = version;
-    }
-
-    public String getUniqueName() {
-        return UniqueName;
-    }
-
-    public void setUniqueName(String uniqueName) {
-        UniqueName = uniqueName;
-    }
-
-    public String getApp() {
-        return App;
-    }
-
-    public void setApp(String app) {
-        App = app;
-    }
-
-    public String getPubdomain() {
-        return Pubdomain;
-    }
-
-    public void setPubdomain(String pubdomain) {
-        Pubdomain = pubdomain;
-    }
-
-    public String getStream() {
-        return Stream;
-    }
-
-    public void setStream(String stream) {
-        Stream = stream;
-    }
-
-    public int getForbidTillUnixTime() {
-        return ForbidTillUnixTime;
-    }
-
-    public void setForbidTillUnixTime(int forbidTillUnixTime) {
-        ForbidTillUnixTime = forbidTillUnixTime;
+    public Request<ForbidStreamRequest> getDryRunRequest() {
+        Request<ForbidStreamRequest> request = new ForbidStreamMarshaller().marshall(this);
+        request.addParameter("DryRun", Boolean.toString(true));
+        return null;
     }
 }

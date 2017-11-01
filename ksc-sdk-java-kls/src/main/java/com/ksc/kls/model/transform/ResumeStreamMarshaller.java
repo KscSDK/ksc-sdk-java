@@ -7,6 +7,9 @@ import com.ksc.http.HttpMethodName;
 import com.ksc.kls.model.ResumeStreamRequest;
 import com.ksc.transform.Marshaller;
 
+import java.io.ByteArrayInputStream;
+
+
 /**
  * Created by yangfan on 2017/7/26.
  */
@@ -33,10 +36,10 @@ public class ResumeStreamMarshaller implements Marshaller<Request<ResumeStreamRe
         }
         request.addParameter("Version", version);
 
-        request.addParameter("UniqueName",resumeStreamRequest.getUniqueName());
-        request.addParameter("App",resumeStreamRequest.getApp());
-        request.addParameter("Pubdomain",resumeStreamRequest.getPubdomain());
-        request.addParameter("Stream",resumeStreamRequest.getStream());
+        byte[] content = resumeStreamRequest.getData().getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
 
         request.setHttpMethod(HttpMethodName.POST);
