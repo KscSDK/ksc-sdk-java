@@ -20,8 +20,8 @@ public class ContentTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKTP3JFhAZ1pSv6oZXTmwMwwig",
-                "OMYiBs3IPxzhIH7SSJazuMLUtAq5qrloJ5On48dZb1xtVdhL0AyaJd2UYI3ZPoVDZA==",
+        client = new KscCdnClient("your ak",
+                "your sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");

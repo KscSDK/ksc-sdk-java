@@ -33,8 +33,8 @@ public class DomainTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKTP3b-6fAKtTqerD8ppBNIuFg",
-                "OE1cpDipjKXZjqNNPpMywx7duYi7i+P9Rh5xDk9v4ian5smGTfJ+dQMVFgx0IZPqgA==",
+        client = new KscCdnClient("your ak",
+                "your sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -43,21 +43,21 @@ public class DomainTest {
         domainId = "2D09X54";
 
     }
-    
-    
+
+
     /**
      * 获取域名当前的服务节点IP列表
-     * @throws Exception 
+     * @throws Exception
      */
     @Test
     public void testGetServiceIp() throws Exception{
     	GetServiceIpResult result = client.getServiceIp(domainId);
     	Assert.assertTrue(result.getDatas().length > 0);
     }
-    
-    
-    
-    
+
+
+
+
     /**
      * 域名列表查询
      *
