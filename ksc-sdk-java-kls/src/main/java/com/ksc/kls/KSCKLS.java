@@ -73,4 +73,7 @@ public interface KSCKLS {
     //转推历史错误统计接口
     public ListRelayErrInfoResult listRelayErrInfo(ListRelayErrInfoRequest listRelayErrInfoRequest);
 
+    //查询主播推拉流实时信息接口
+    public ListRealtimeStreamsInfoResult listRealtimeStreamsInfo(ListRealtimeStreamsInfoRequest listRealtimeStreamsInfoRequest);
+
 }
