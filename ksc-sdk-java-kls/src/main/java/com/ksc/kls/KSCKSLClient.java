@@ -758,5 +758,33 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
         }
     }
 
+    @Override
+    public ListRealtimeStreamsInfoResult listRealtimeStreamsInfo(ListRealtimeStreamsInfoRequest listRealtimeStreamsInfoRequest) {
+        ExecutionContext executionContext = createExecutionContext(listRealtimeStreamsInfoRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ListRealtimeStreamsInfoRequest> request = null;
+        Response<ListRealtimeStreamsInfoResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ListRealtimeStreamsInfoMarshaller()
+                        .marshall(super.beforeMarshalling(listRealtimeStreamsInfoRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+            HttpResponseHandler<KscWebServiceResponse<ListRealtimeStreamsInfoResult>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ListRealtimeStreamsInfoUnmarshaller());
+
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
 }

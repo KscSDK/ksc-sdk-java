@@ -22,6 +22,8 @@ public class ParamConstant {
 
     public static final String STREAM = "Stream";
 
+    public static final String STREAMS = "Streams";
+
     public static final String RECID = "RecID";
 
     public static final String RETCODE = "Retcode";
@@ -76,9 +78,19 @@ public class ParamConstant {
 
     public static final String BWIN = "BwIn";
 
-    public static final String BWINAUDIO = "BwInAudio";
+    public static final String BW = "Bw";
 
     public static final String BWREAL = "BwReal";
+
+    public static final String VCODEC = "Vcodec";
+
+    public static final String ACODEC = "Acodec";
+
+    public static final String ONLINE_USER = "OnlineUser";
+
+    public static final String BWINAUDIO = "BwInAudio";
+
+    public static final String BWDIFF = "BwDiff";
 
     public static final String CURBITRATE = "Curbitrate";
 
@@ -89,6 +101,8 @@ public class ParamConstant {
     public static final String HEIGHT = "Height";
 
     public static final String SAMPLE_RATE = "SampleRate";
+
+    public static final String PULLS = "Pulls";
 
     public static final String UPDATE_TIME = "UpdateTime";
 
@@ -101,6 +115,10 @@ public class ParamConstant {
     public static final String CHECK_RESULT = "CheckResult";
 
     public static final String ERRORNO = "errno";
+
+    public static final String NODE = "Node";
+
+    public static final String FLR = "FLR";
 
     public static final String ERROR_CODE = "errcode";
 

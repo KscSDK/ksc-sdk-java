@@ -20,7 +20,7 @@ public class KLSAPISample {
 
     KSCKSLClient kls_client = null;
     private String version = "2017-01-01";
-    private String uniquename = "uniquename";
+    private String uniquename = "uniqueName";
     private String action = "CreateRecordTask";
     private String app = "app";
     private String pubdomain = "pubdomain";
@@ -39,8 +39,6 @@ public class KLSAPISample {
     private int ordertime = 2;
     private int recStatusType = 1;
     private int forbidTillUnixTime = 0;
-
-
 
 
     @Before
@@ -186,6 +184,38 @@ public class KLSAPISample {
 
         /**
          * 以上参数全部为必选参数 https://docs.ksyun.com/read/latest/116/_book/KLSAPI/StopStreamRecord.html
+         */
+        return data.toString();
+    }
+
+
+    /**
+     * 查询主播推拉流实时信息接口(ListRealtimeStreamsInfo)
+     */
+    @Test
+    public void testListRealtimeStreamsInfo() {
+        ListRealtimeStreamsInfoRequest request = new ListRealtimeStreamsInfoRequest();
+        String data = PreparedListRealtimeStreamsInfoData();
+        request.setData(data);
+        ListRealtimeStreamsInfoResult result = kls_client.listRealtimeStreamsInfo(request);
+        System.out.println("==============================");
+        log.info(result.getData());
+        log.info(result.getData().getApp());
+        log.info(result.getData().getBw());
+        log.info(result.getData().getOnlineUser());
+        log.info(result.getData().getStreams());
+        log.info(result.getData().getRetCode());
+        log.info(result.getData().getRetMsg());
+        System.out.println("==============================");
+    }
+
+    //组织查询主播推拉流实时信息需要的数据
+    private String PreparedListRealtimeStreamsInfoData() {
+        JSONObject data = new JSONObject();
+        data.put("UniqueName", this.uniquename);
+        data.put("App", this.app);
+        /**
+         * 以上参数全部为必选参数 https://docs.ksyun.com/read/latest/116/_book/listrealtimestreamsinfo.html
          */
         return data.toString();
     }
