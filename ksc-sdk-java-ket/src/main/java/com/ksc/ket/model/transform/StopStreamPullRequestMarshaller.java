@@ -28,7 +28,7 @@ public class StopStreamPullRequestMarshaller
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
-
+		request.addHeader("Accept", "application/json");
 		byte[] content = stopStreamPullRequest.getData().getBytes();
 		request.addHeader("Content-Type", "application/json");
 		request.addParameter("Version", version);

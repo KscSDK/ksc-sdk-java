@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.2.0</version>
+		<version>0.2.5</version>
 	</parent>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java-ket</artifactId>
-	<version>1.0.4</version>
+	<version>0.2.5</version>
 	<packaging>jar</packaging>
 	<name>KSC SDK for Java - Ket</name>
 	<url>http://maven.apache.org</url>
@@ -27,7 +27,7 @@
 		<dependency>
 			<groupId>com.ksyun</groupId>
 			<artifactId>ksc-sdk-java-core</artifactId>
-			<version>0.2.0</version>
+			<version>0.2.5</version>
 		</dependency>
 
 		<dependency>
@@ -35,6 +35,12 @@
 			<artifactId>json</artifactId>
 			<version>20160212</version>
 		</dependency>
+		
+		 <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.4</version>
+        </dependency>
 	</dependencies>
 	<build>
 		<plugins>

@@ -35,6 +35,9 @@ public class ErrResultJsonUnmarshaller implements Unmarshaller<ErrResult, JsonUn
 				} else if (context.testExpression("ErrMsg", targetDepth)) {
 					context.nextToken();
 					kvsErrRequest.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				} else if (context.testExpression("TaskID", targetDepth)) {
+					context.nextToken();
+					kvsErrRequest.setTaskID((context.getUnmarshaller(String.class).unmarshall(context)));
 				}
 
 			} else if (token == END_ARRAY || token == END_OBJECT) {

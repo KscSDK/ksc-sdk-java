@@ -17,6 +17,8 @@ import com.ksc.auth.DefaultAWSCredentialsProviderChain;
 import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
+import com.ksc.ket.model.CreateDirectorTaskRequest;
+import com.ksc.ket.model.DelDirectorTaskRequest;
 import com.ksc.ket.model.DelPresetRequest;
 import com.ksc.ket.model.ErrResult;
 import com.ksc.ket.model.GetLoopListRequest;
@@ -30,13 +32,18 @@ import com.ksc.ket.model.GetQuotaUsedResult;
 import com.ksc.ket.model.GetStreamTranListRequest;
 import com.ksc.ket.model.GetStreamTranListResult;
 import com.ksc.ket.model.PresetRequest;
+import com.ksc.ket.model.QueryDirectorTaskRequest;
+import com.ksc.ket.model.QueryDirectorTaskResult;
 import com.ksc.ket.model.StartLoopRequest;
 import com.ksc.ket.model.StartLoopResult;
 import com.ksc.ket.model.StartStreamPullRequest;
 import com.ksc.ket.model.StopLoopRequest;
 import com.ksc.ket.model.StopStreamPullRequest;
+import com.ksc.ket.model.UpdateDirectorTaskRequest;
 import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
+import com.ksc.ket.model.transform.CreateDirectorTaskRequestMarshaller;
+import com.ksc.ket.model.transform.DelDirectorTaskRequestMarshaller;
 import com.ksc.ket.model.transform.DelPresetRequestMarshaller;
 import com.ksc.ket.model.transform.ErrResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.GetLoopListRequestMarshaller;
@@ -50,11 +57,14 @@ import com.ksc.ket.model.transform.GetQuotaUsedResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.GetStreamTranListRequestMarshaller;
 import com.ksc.ket.model.transform.GetStreamTranListResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.PresetRequestMarshaller;
+import com.ksc.ket.model.transform.QueryDirectorTaskRequestMarshaller;
+import com.ksc.ket.model.transform.QueryDirectorTaskResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.StartLoopRequestMarshaller;
 import com.ksc.ket.model.transform.StartLoopResultJsonUnmarshaller;
 import com.ksc.ket.model.transform.StartStreamPullRequestMarshaller;
 import com.ksc.ket.model.transform.StopLoopRequestMarshaller;
 import com.ksc.ket.model.transform.StopStreamPullRequestMarshaller;
+import com.ksc.ket.model.transform.UpdateDirectorTaskRequestMarshaller;
 import com.ksc.ket.model.transform.UpdateLoopRequestMarshaller;
 import com.ksc.ket.model.transform.UpdatePresetRequestMarshaller;
 import com.ksc.metrics.RequestMetricCollector;
@@ -588,6 +598,121 @@ public class KSCKETJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new GetLoopListResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public ErrResult CreateDirectorTask(CreateDirectorTaskRequest createDirectorTaskRequest) {
+		ExecutionContext executionContext = createExecutionContext(createDirectorTaskRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateDirectorTaskRequest> request = null;
+		Response<ErrResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateDirectorTaskRequestMarshaller()
+						.marshall(super.beforeMarshalling(createDirectorTaskRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<ErrResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new ErrResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public ErrResult UpdateDirectorTask(UpdateDirectorTaskRequest updateDirectorTaskRequest) {
+		ExecutionContext executionContext = createExecutionContext(updateDirectorTaskRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<UpdateDirectorTaskRequest> request = null;
+		Response<ErrResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new UpdateDirectorTaskRequestMarshaller()
+						.marshall(super.beforeMarshalling(updateDirectorTaskRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<ErrResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new ErrResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public QueryDirectorTaskResult QueryDirectorTask(QueryDirectorTaskRequest queryDirectorTaskRequest) {
+		ExecutionContext executionContext = createExecutionContext(queryDirectorTaskRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<QueryDirectorTaskRequest> request = null;
+		Response<QueryDirectorTaskResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new QueryDirectorTaskRequestMarshaller()
+						.marshall(super.beforeMarshalling(queryDirectorTaskRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<QueryDirectorTaskResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new QueryDirectorTaskResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public ErrResult DelDirectorTask(DelDirectorTaskRequest delDirectorTask) {
+		ExecutionContext executionContext = createExecutionContext(delDirectorTask);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DelDirectorTaskRequest> request = null;
+		Response<ErrResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DelDirectorTaskRequestMarshaller().marshall(super.beforeMarshalling(delDirectorTask));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<ErrResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new ErrResultJsonUnmarshaller());
 
 			response = invoke(request, responseHandler, executionContext);
 

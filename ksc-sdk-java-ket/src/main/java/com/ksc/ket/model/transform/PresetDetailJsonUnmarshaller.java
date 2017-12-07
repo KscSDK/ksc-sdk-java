@@ -40,8 +40,8 @@ public class PresetDetailJsonUnmarshaller implements Unmarshaller<PresetDetail, 
 					presetDetail.setDescription(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("Output", targetDepth)) {
 					context.nextToken();
-					presetDetail.setOutputList(
-							new ListUnmarshaller<Output>(OutputListJsonUnmarshaller.getInstance()).unmarshall(context));
+					presetDetail.setOutput(
+							new ListUnmarshaller<Output>(OutputJsonUnmarshaller.getInstance()).unmarshall(context));
 				} else if (context.testExpression("Video", targetDepth)) {
 					context.nextToken();
 					presetDetail.setVideo(VideoJsonUnmarshaller.getInstance().unmarshall(context));

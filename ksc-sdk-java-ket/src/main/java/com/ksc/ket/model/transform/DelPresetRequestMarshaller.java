@@ -23,7 +23,7 @@ public class DelPresetRequestMarshaller implements Marshaller<Request<DelPresetR
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
-
+		request.addHeader("Accept", "application/json");
 		request.addParameter("Version", version);
 		request.setHttpMethod(HttpMethodName.GET);
 		if (!delPresetRequest.getPreset().isEmpty()) {

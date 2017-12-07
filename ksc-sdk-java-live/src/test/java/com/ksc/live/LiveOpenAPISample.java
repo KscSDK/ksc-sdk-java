@@ -19,8 +19,8 @@ public class LiveOpenAPISample {
     private String uniquename = "uniquename";
     private int marker = 0;
     private int limit = 20;
-    private String app = "application";
-    private String pubdomain = "publishdomain";
+    private String app = "live";
+    private String pubdomain = "pubdomain";
 
 
     @Before
@@ -28,13 +28,13 @@ public class LiveOpenAPISample {
         AWSCredentials aws = new AWSCredentials() {
             @Override
             public String getAWSAccessKeyId() {
-                return "Accesskey";
+                return "your ak";
             }
 
 
             @Override
             public String getAWSSecretKey() {
-                return "AccessSecretKey";
+                return "your sk";
             }
 
         };
@@ -48,8 +48,8 @@ public class LiveOpenAPISample {
         GetListRequest request = new GetListRequest();
         request.setVersion(this.version);
         request.setUniquename(this.uniquename);
-//        request.setApp(this.app);
-        request.setPubdomain(this.pubdomain);
+        request.setApp(this.app);
+//        request.setPubdomain(this.pubdomain);
         request.setMarker(this.marker);
         request.setLimit(this.limit);
         LiveResult result = live_client.listPubStreamsInfo(request);

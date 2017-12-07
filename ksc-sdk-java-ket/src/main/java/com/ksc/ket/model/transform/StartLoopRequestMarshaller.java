@@ -25,7 +25,7 @@ public class StartLoopRequestMarshaller implements Marshaller<Request<StartLoopR
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
-
+		request.addHeader("Accept", "application/json");
 		byte[] content = startLoopRequest.getData().getBytes();
 		request.addHeader("Content-Type", "application/json");
 		request.addParameter("Version", version);

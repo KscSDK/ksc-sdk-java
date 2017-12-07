@@ -4,10 +4,10 @@ public class QuotaDetail {
 	private int QuotaPull;
 	private String QuotaTranDeadline;
 	private int QuotaCopy;
-	private int QuotaTranUsed;
-	private String QuotaTran;
+	private float QuotaTranUsed;
+	private int QuotaTran;
 	private String QuotaCopyDeadline;
-	private String QuotaPullUsed;
+	private int QuotaPullUsed;
 	private String QuotaPullDeadline;
 	private int QuotaCopyUsed;
 
@@ -35,19 +35,19 @@ public class QuotaDetail {
 		QuotaCopy = quotaCopy;
 	}
 
-	public int getQuotaTranUsed() {
+	public float getQuotaTranUsed() {
 		return QuotaTranUsed;
 	}
 
-	public void setQuotaTranUsed(int quotaTranUsed) {
+	public void setQuotaTranUsed(float quotaTranUsed) {
 		QuotaTranUsed = quotaTranUsed;
 	}
 
-	public String getQuotaTran() {
+	public int getQuotaTran() {
 		return QuotaTran;
 	}
 
-	public void setQuotaTran(String quotaTran) {
+	public void setQuotaTran(int quotaTran) {
 		QuotaTran = quotaTran;
 	}
 
@@ -59,11 +59,11 @@ public class QuotaDetail {
 		QuotaCopyDeadline = quotaCopyDeadline;
 	}
 
-	public String getQuotaPullUsed() {
+	public int getQuotaPullUsed() {
 		return QuotaPullUsed;
 	}
 
-	public void setQuotaPullUsed(String quotaPullUsed) {
+	public void setQuotaPullUsed(int quotaPullUsed) {
 		QuotaPullUsed = quotaPullUsed;
 	}
 
