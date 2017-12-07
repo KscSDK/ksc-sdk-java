@@ -64,6 +64,7 @@ import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
 import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 import com.ksc.cdn.model.statistic.uv.UvRequest;
 import com.ksc.cdn.model.statistic.uv.UvResult;
+import com.ksc.cdn.model.statistic.wildcard.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -900,6 +901,96 @@ public class StatisticTest {
         request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 
         PeakBandwidthDataResult result = (PeakBandwidthDataResult) cdnClient.generalGetStatisticsData(request, PeakBandwidthDataResult.class);
+        Assert.assertNotNull(result);
+    }
+
+    /**
+     * 描述 获取泛域名次级域名带宽数据，包括边缘带宽、回源带宽数据，单位：bit\/second
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔，查询的次级域名数量不能 超过100个
+     * 最多可获取最近62天的数据，可查一天内的数据
+     * 支持按照协议类型查询带宽数据，单对于ProtocolType非必选参数，如果不填，则默认的带宽数据即各部分协议数据之和
+     * 统计粒度：1天粒度；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 时效性：5分钟延迟
+     * 使用场景：
+     * 客户查询泛域名下次级域名的详细带宽数据，进行数据保存以及数据分析
+     * 业务类型说明：目前泛域名的明细查询只针对下载点播业务
+     * @throws Exception
+     */
+    @Test
+    public void testGetSubDomainsBandwidthData() throws Exception {
+        SubDomainsBandwidthRequest request = new SubDomainsBandwidthRequest();
+        request.setDomainId("2D09W48");
+        request.setDomains("www.cmcm.com");
+        request.setStartTime("2017-11-06T00:00+0800");
+        request.setEndTime("2017-11-06T11:00+0800");
+        request.setRegions("CN");
+        request.setResultType("1");
+        request.setGranularity("5");
+        request.setDataType("origin,edge");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+        SubDomainsBandwidthResult result = (SubDomainsBandwidthResult) cdnClient.generalGetStatisticsData(request, SubDomainsBandwidthResult.class);
+        System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
+        Assert.assertNotNull(result);
+    }
+
+    /**
+     * 描述 获取泛域名次级域名流量数据，包括边缘流量、回源流量数据，** 单位：byte***
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔，查询的次级域名数量不能 超过100个
+     * 最多可获取最近62天的数据，可查一天内的数据
+     * 支持按照协议类型查询带宽数据，单对于ProtocolType非必选参数，如果不填，则默认的带宽数据即各部分协议数据之和
+     * 统计粒度：1天粒度；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 时效性：5分钟延迟
+     * 使用场景：
+     * 客户查询泛域名下次级域名的详细带宽数据，进行数据保存以及数据分析
+     * 业务类型说明：目前泛域名的明细查询只针对下载点播业务
+     * @throws Exception
+     */
+    @Test
+    public void testGetSubDomainsFlowData() throws Exception {
+        SubDomainsFlowRequest request = new SubDomainsFlowRequest();
+        request.setDomainId("2D09W48");
+        request.setDomains("www.cmcm.com");
+        request.setStartTime("2017-11-06T00:00+0800");
+        request.setEndTime("2017-11-06T11:00+0800");
+        request.setRegions("CN");
+        request.setResultType("1");
+        request.setGranularity("5");
+        request.setDataType("origin,edge");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+        SubDomainsFlowResult result = (SubDomainsFlowResult) cdnClient.generalGetStatisticsData(request, SubDomainsFlowResult.class);
+        System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
+        Assert.assertNotNull(result);
+    }
+
+    /**
+     * 描述 获取泛域名次级域名流量数据，包括边缘流量、回源流量数据，** 单位：byte***
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔，查询的次级域名数量不能 超过100个
+     * 最多可获取最近62天的数据，可查一天内的数据
+     * 支持按照协议类型查询带宽数据，单对于ProtocolType非必选参数，如果不填，则默认的带宽数据即各部分协议数据之和
+     * 统计粒度：1天粒度；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 时效性：5分钟延迟
+     * 使用场景：
+     * 客户查询泛域名下次级域名的详细带宽数据，进行数据保存以及数据分析
+     * 业务类型说明：目前泛域名的明细查询只针对下载点播业务
+     * @throws Exception
+     */
+    @Test
+    public void testGetSubDomainsPvData() throws Exception {
+        SubDomainsPvRequest request = new SubDomainsPvRequest();
+        request.setDomainId("2D09W48");
+        request.setDomains("www.cmcm.com");
+        request.setStartTime("2017-11-06T00:00+0800");
+        request.setEndTime("2017-11-06T11:00+0800");
+        request.setRegions("CN");
+        request.setResultType("1");
+        request.setGranularity("5");
+        request.setDataType("origin,edge");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+        SubDomainsPvResult result = (SubDomainsPvResult) cdnClient.generalGetStatisticsData(request, SubDomainsPvResult.class);
+        System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
         Assert.assertNotNull(result);
     }
 }

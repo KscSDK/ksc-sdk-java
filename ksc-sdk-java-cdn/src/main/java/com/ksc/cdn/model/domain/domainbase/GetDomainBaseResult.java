@@ -80,6 +80,9 @@ public class GetDomainBaseResult {
      */
     private String ModifiedTime;
 
+
+    private String SearchUrl;
+
     public String getDomainName() {
         return DomainName;
     }
@@ -222,5 +225,13 @@ public class GetDomainBaseResult {
 
     public void setModifiedTime(String modifiedTime) {
         ModifiedTime = modifiedTime;
+    }
+
+    public String getSearchUrl() {
+        return SearchUrl;
+    }
+
+    public void setSearchUrl(String searchUrl) {
+        SearchUrl = searchUrl;
     }
 }

@@ -13,7 +13,6 @@ import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
 import com.ksc.cdn.model.domain.domaindetail.*;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -34,7 +33,7 @@ public class DomainTest {
     @Before
     public void setup() {
         client = new KscCdnClient("your ak",
-                "your sk",
+                "OL+eOALHk2Qz98AVY3QSAinG1LLr9mvxOjajkTd1ZRrTUSk4XRoqZoqjaVvP7D7z4Q==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -304,5 +303,62 @@ public class DomainTest {
     @Test
     public void testSetRemark() throws Exception {
         client.setRemark(domainId, "设置备注信息");
+    }
+
+    /**
+     * 设置单个域名多项配置
+     * @throws Exception
+     */
+    @Test
+    public void testSetDomainConfigs() throws Exception{
+        AllConfigsRequest request = new AllConfigsRequest();
+        request.setDomainId(domainId);
+        BackOriginHostConfig backOriginHostConfig = new BackOriginHostConfig();
+        backOriginHostConfig.setBackOriginHost("www.baidu.com");
+        request.setBackOriginHostConfig(backOriginHostConfig);
+        CacheRuleConfig cacheRuleConfig = new CacheRuleConfig();
+        CacheRule rule1 = new CacheRule();
+        CacheRule rule2 = new CacheRule();
+        rule1.setCacheRuleType(CacheRuleTypeEnum.FILE_SUFFIX.getValue());
+        rule1.setCacheTime(10l);
+        rule1.setValue("jpg");
+        rule2.setCacheRuleType(CacheRuleTypeEnum.DIRECTORY.getValue());
+        rule2.setCacheTime(100l);
+        rule2.setValue("/aaa/");
+        cacheRuleConfig.setCacheRules(new CacheRule[]{rule1,rule2});
+        request.setCacheRuleConfig(cacheRuleConfig);
+        IpProtectionConfig ipProtectionConfig = new IpProtectionConfig();
+        ipProtectionConfig.setEnable("on");
+        ipProtectionConfig.setIpType("allow");
+        ipProtectionConfig.setIpList("123.45.78.13");
+        request.setIpProtectionConfig(ipProtectionConfig);
+        ReferProtectionConfig referProtectionConfig = new ReferProtectionConfig();
+        referProtectionConfig.setEnable("on");
+        referProtectionConfig.setReferType("block");
+        referProtectionConfig.setReferList("www.baidu.com");
+        referProtectionConfig.setAllowEmpty("off");
+        request.setReferProtectionConfig(referProtectionConfig);
+        IgnoreQueryStringConfig ignoreQueryStringConfig = new IgnoreQueryStringConfig();
+        ignoreQueryStringConfig.setEnable("on");
+        request.setIgnoreQueryStringConfig(ignoreQueryStringConfig);
+        client.setDomainConfigs(request);
+    }
+
+    /**
+     * 根据源站地址获取域名列表
+     * @throws Exception
+     */
+    @Test
+    public void testGetDomainsByOrigin() throws Exception{
+        client.getDomainsByOrigin("pie-bj.ks3-cn-beijing.ksyun.com");
+    }
+
+    /**
+     * 产商CNAME后缀
+     * @throws Exception
+     */
+    @Test
+    public void testGetCnameSuffixs() throws Exception{
+        client.getCnameSuffixs();
     }
 }

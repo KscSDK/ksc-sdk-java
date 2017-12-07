@@ -38,6 +38,8 @@ public class ModifyDomainRequest {
      */
     private String Origin;
 
+    private String SearchUrl;
+
     public String getDomainId() {
         return DomainId;
     }
@@ -78,6 +80,14 @@ public class ModifyDomainRequest {
         Origin = origin;
     }
 
+    public String getSearchUrl() {
+        return SearchUrl;
+    }
+
+    public void setSearchUrl(String searchUrl) {
+        SearchUrl = searchUrl;
+    }
+
     public Map<String,String> buildParams() throws KscClientException {
         CommonValidUtil.check(this);
 
@@ -97,6 +107,9 @@ public class ModifyDomainRequest {
 
         if(StringUtils.isNotBlank(Origin))
             params.put("Origin",Origin);
+
+        if(StringUtils.isNotBlank(SearchUrl))
+            params.put("SearchUrl",SearchUrl);
 
         return params;
     }

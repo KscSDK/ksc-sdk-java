@@ -7,10 +7,9 @@ import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
 import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
-import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
-import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
-import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
-import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.domaindetail.*;
+import com.ksc.cdn.model.domain.tool.GetCnameSuffixsResult;
+import com.ksc.cdn.model.domain.tool.GetDomainsByOriginResult;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
@@ -26,6 +25,26 @@ import com.ksc.cdn.model.enums.SwitchEnum;
  * @date 04/11/2016
  */
 public interface KscCdnDomain {
+
+    /**
+     *加速域名后缀
+     */
+    String GETCNAMESUFFIXS_URL = "/2016-09-01/domain/GetCnameSuffixs";
+    String GETCNAMESUFFIXS_VERSION = "2016-09-01";
+    String GETCNAMESUFFIXS_ACTION = "GetCnameSuffixs";
+
+    /**
+     *根据源站地址获取加速域名
+     */
+    String GETDOMAINSBYORIGIN_URL = "/2016-09-01/domain/GetDomainsByOrigin";
+    String GETDOMAINSBYORIGIN_VERSION = "2016-09-01";
+    String GETDOMAINSBYORIGIN_ACTION = "GetDomainsByOrigin";
+    /**
+     *单域名多项配置设置
+     */
+    String SETDOMAINCONFIGS_URL = "/2016-09-01/domain/SetDomainConfigs";
+    String SETDOMAINCONFIGS_VERSION = "2016-09-01";
+    String SETDOMAINCONFIGS_ACTION = "SetDomainConfigs";
 
     /**
      * 设置备注信息
@@ -281,4 +300,11 @@ public interface KscCdnDomain {
     void setRemark(String domainId, String remark) throws Exception;
 
     GetServiceIpResult getServiceIp(String domainId) throws Exception;
+
+    void setDomainConfigs(AllConfigsRequest allConfigs) throws Exception;
+
+    GetDomainsByOriginResult getDomainsByOrigin(String origin) throws Exception;
+
+    GetCnameSuffixsResult getCnameSuffixs() throws Exception;
+
 }
