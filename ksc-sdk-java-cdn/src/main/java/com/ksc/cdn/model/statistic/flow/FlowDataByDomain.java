@@ -11,6 +11,11 @@ public class FlowDataByDomain {
      * 域名ID
      */
     private String DomainId;
+
+    /**
+     * 域名
+     */
+    private String Domain;
     /**
      * 边缘流量（该域名的边缘流量，若选择多个区域，则返回该域名多个区域的数据合并值）
      */
@@ -30,6 +35,14 @@ public class FlowDataByDomain {
 
     public void setDomainId(String domainId) {
         DomainId = domainId;
+    }
+
+    public String getDomain() {
+        return Domain;
+    }
+
+    public void setDomain(String domain) {
+        Domain = domain;
     }
 
     public Long getFlow() {

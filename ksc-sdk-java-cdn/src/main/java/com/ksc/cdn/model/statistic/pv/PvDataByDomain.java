@@ -11,6 +11,11 @@ public class PvDataByDomain{
      * 域名ID
      */
     private String DomainId;
+
+    /**
+     * 域名
+     */
+    private String Domain;
     /**
      * 边缘请求数（该域名的边缘请求数，若选择多个区域，则返回该域名多个区域的数据合并值）
      */
@@ -54,5 +59,13 @@ public class PvDataByDomain{
 
     public void setRegions(PvDataByRegion[] regions) {
         Regions = regions;
+    }
+
+    public String getDomain() {
+        return Domain;
+    }
+
+    public void setDomain(String domain) {
+        Domain = domain;
     }
 }

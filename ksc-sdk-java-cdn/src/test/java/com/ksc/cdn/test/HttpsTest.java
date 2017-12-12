@@ -16,8 +16,8 @@ public class HttpsTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKLTak2xkznHTVSs7a-8klJWug",
-                "OEZTydYQ7suCyRwmv+s5L89g7gpNvB3PxJmPvxw3MXLIe6/N8Hsm8aXKPXD5+VvCKQ==",
+        client = new KscCdnClient("your ak",
+                "your sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-2",
                 "cdn");
