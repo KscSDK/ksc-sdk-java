@@ -26,6 +26,13 @@ public class PeakBandwidthDataRequest extends CommonFieldRequest {
      */
     private String regions;
 
+    /**
+     * 非必须
+     * 协议类型
+     * 取值为http:http协议数据; https:https协议数据
+     */
+    private String protocolType;
+
     @Override
     public Map<String, String> buildParams() throws KscClientException, ParseException {
 
@@ -35,6 +42,10 @@ public class PeakBandwidthDataRequest extends CommonFieldRequest {
 
         if (StringUtils.isNotBlank(this.getRegions()))
             params.put("Regions", this.getRegions());
+
+        if (StringUtils.isNotBlank(this.getProtocolType())) {
+            params.put("ProtocolType", this.getProtocolType());
+        }
 
         return params;
     }
@@ -53,5 +64,13 @@ public class PeakBandwidthDataRequest extends CommonFieldRequest {
 
     public void setRegions(String regions) {
         this.regions = regions;
+    }
+
+    public String getProtocolType() {
+        return protocolType;
+    }
+
+    public void setProtocolType(String protocolType) {
+        this.protocolType = protocolType;
     }
 }

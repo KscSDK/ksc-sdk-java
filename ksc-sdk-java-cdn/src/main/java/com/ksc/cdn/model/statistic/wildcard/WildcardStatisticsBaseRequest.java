@@ -1,7 +1,6 @@
-package com.ksc.cdn.model.statistic.flow;
+package com.ksc.cdn.model.statistic.wildcard;
 
 import com.ksc.cdn.KscClientException;
-import com.ksc.cdn.model.GeneralRequestParam;
 import com.ksc.cdn.model.statistic.CommonFieldRequest;
 import com.ksc.cdn.model.valid.CommonValidUtil;
 import com.ksc.cdn.model.valid.FieldValidate;
@@ -11,18 +10,24 @@ import java.text.ParseException;
 import java.util.Map;
 
 /**
- * FlowRequest
- * <p>
- * 获取域名流量数据，包括边缘流量、回源流量数据， 单位：byte<p>
- * 支持按指定的起止时间查询，两者需要同时指定<p>
- * 支持批量域名查询，多个域名ID用逗号（半角）分隔<p>
- * 最多可获取最近一年内93天跨度的数据<p>
- * 统计粒度：5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；1天粒度；以上粒度均取该粒度时间段的流量之和<p>
- *
- * @author jiangran@kingsoft.com
- * @date 2016/11/16
+ * description：
+ * author：ZHOURONG
+ * date: 2017/12/7
+ * mail：yangxueyi@kingsoft.com
  */
-public class FlowRequest extends CommonFieldRequest {
+public class WildcardStatisticsBaseRequest extends CommonFieldRequest {
+
+
+    /**
+     * 表示一个泛域名
+     */
+    @FieldValidate
+    private String domainId;
+    /**
+     * 表示泛域名的次级域名，但查询次级域名的个数≤100个
+     */
+    @FieldValidate
+    private String domains;
     /**
      * 非必须
      * 缺省为CN
@@ -33,7 +38,6 @@ public class FlowRequest extends CommonFieldRequest {
     /**
      * 0:多域名多计费区域数据做合并
      * 1：每个域名每个计费区域的数据分别返回
-     * @see com.ksc.cdn.model.enums.ResultTypeEnum
      */
     @FieldValidate
     private String resultType;
@@ -47,17 +51,17 @@ public class FlowRequest extends CommonFieldRequest {
 
     /**
      * 非必须
-     * 协议类型
-     * 取值为http:http协议数据; https:https协议数据
-     */
-    private String protocolType;
-
-    /**
-     * 非必须
      * 数据类型,edge边缘数据origin回源数据
      * 缺省为edge
      */
     private String dataType;
+
+    /**
+     * 非必须
+     * 协议类型
+     * 取值为http:http协议数据; https:https协议数据
+     */
+    private String protocolType;
 
     public String getRegions() {
         return regions;
@@ -65,6 +69,22 @@ public class FlowRequest extends CommonFieldRequest {
 
     public void setRegions(String regions) {
         this.regions = regions;
+    }
+
+    public String getDomainId() {
+        return domainId;
+    }
+
+    public void setDomainId(String domainId) {
+        this.domainId = domainId;
+    }
+
+    public String getDomains() {
+        return domains;
+    }
+
+    public void setDomains(String domains) {
+        this.domains = domains;
     }
 
     public String getResultType() {
@@ -100,10 +120,14 @@ public class FlowRequest extends CommonFieldRequest {
     }
 
     @Override
-    public Map<String, String> buildParams() throws KscClientException,ParseException {
+    public Map<String, String> buildParams() throws KscClientException, ParseException {
         CommonValidUtil.check(this);
 
         Map params = super.buildParams();
+
+        params.put("DomainId",this.getDomainId());
+
+        params.put("Domains",this.getDomains());
 
         if (StringUtils.isNotBlank(this.getRegions()))
             params.put("Regions", this.getRegions());
@@ -124,11 +148,8 @@ public class FlowRequest extends CommonFieldRequest {
         if (StringUtils.isNotBlank(this.getDataType()))
             params.put("DataType", this.getDataType());
 
-        return params;
-    }
+        params.put("AccountId","73406303");
 
-    @Override
-    public GeneralRequestParam getGeneralRequestParam() {
-        return new GeneralRequestParam("GetFlowData","2016-09-01","/2016-09-01/statistics/GetFlowData");
+        return params;
     }
 }

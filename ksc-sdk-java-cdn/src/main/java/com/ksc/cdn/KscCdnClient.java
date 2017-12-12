@@ -16,11 +16,10 @@ import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
 import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
-import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
-import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
-import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
-import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.domaindetail.*;
 import com.ksc.cdn.model.domain.domainhttps.*;
+import com.ksc.cdn.model.domain.tool.GetCnameSuffixsResult;
+import com.ksc.cdn.model.domain.tool.GetDomainsByOriginResult;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
@@ -69,6 +68,29 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         Map<String, String> params = new HashMap<String, String>();
         params.put("DomainId", domainId);
         GetServiceIpResult result = this.httpExecute(HttpMethod.GET, GETSERVICEIP_URL, params, buildHeaders, GetServiceIpResult.class);
+        return result;
+    }
+
+    @Override
+    public void setDomainConfigs(AllConfigsRequest allConfigs) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(SETDOMAINCONFIGS_VERSION, SETDOMAINCONFIGS_ACTION,true);
+        this.httpExecute(HttpMethod.POST, SETDOMAINCONFIGS_URL, allConfigs, buildHeaders, Void.class);
+    }
+
+    @Override
+    public GetDomainsByOriginResult getDomainsByOrigin(String origin) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(GETDOMAINSBYORIGIN_VERSION, GETDOMAINSBYORIGIN_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        GetDomainsByOriginResult result = this.httpExecute(HttpMethod.GET, GETDOMAINSBYORIGIN_URL,params,buildHeaders, GetDomainsByOriginResult.class);
+        return result;
+    }
+
+    @Override
+    public GetCnameSuffixsResult getCnameSuffixs() throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(GETCNAMESUFFIXS_VERSION, GETCNAMESUFFIXS_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("AccountId", "2000001954");
+        GetCnameSuffixsResult result = this.httpExecute(HttpMethod.GET, GETCNAMESUFFIXS_URL,params,buildHeaders, GetCnameSuffixsResult.class);
         return result;
     }
 

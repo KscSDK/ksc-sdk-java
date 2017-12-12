@@ -56,6 +56,8 @@ public class AddDomainRequest {
     @FieldValidate
     private String Origin;
 
+    private String SearchUrl;
+
     public String getDomainName() {
         return DomainName;
     }
@@ -127,6 +129,15 @@ public class AddDomainRequest {
     public void setOrigin(String origin) {
         Origin = origin;
     }
+
+    public String getSearchUrl() {
+        return SearchUrl;
+    }
+
+    public void setSearchUrl(String searchUrl) {
+        SearchUrl = searchUrl;
+    }
+
     public Map<String,String> buildParams(){
         Map<String,String> params=new HashMap<String, String>();
 
@@ -148,7 +159,8 @@ public class AddDomainRequest {
             params.put("OriginPort",String.valueOf(OriginPort));
         if(StringUtils.isNotBlank(Origin))
             params.put("Origin",Origin);
-
+        if(StringUtils.isNotBlank(SearchUrl))
+            params.put("SearchUrl",SearchUrl);
         return params;
     }
     private void validField(){

@@ -21,8 +21,8 @@ public class LogTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKTPyj-S6IGoTby4oUtCbGWJAg",
-                "OAbBV3Inl1e+nD5GCK+RvIy1CWwZlCbgxanWh3PN/oUvL2EVYd2DOZDmiPYHM7ohSw==",
+        client = new KscCdnClient("your ak",
+                "your sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
