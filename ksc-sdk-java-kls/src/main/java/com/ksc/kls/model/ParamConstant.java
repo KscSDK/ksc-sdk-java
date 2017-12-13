@@ -68,9 +68,13 @@ public class ParamConstant {
 
     public static final String CLIENT_IP = "Clientip";
 
+    public static final String CLIENTIP = "ClientIP";
+
     public static final String FIN_TIME = "Fintime";
 
     public static final String PUB_TIME = "Pubtime";
+
+    public static final String PUBTIME = "PubTime";
 
     public static final String STATUS_CODE = "StatusCode";
 
