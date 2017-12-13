@@ -20,7 +20,7 @@ public class KLSAPISample {
 
     KSCKSLClient kls_client = null;
     private String version = "2017-01-01";
-    private String uniquename = "uniqueName";
+    private String uniquename = "uniquename";
     private String action = "CreateRecordTask";
     private String app = "app";
     private String pubdomain = "pubdomain";
@@ -61,10 +61,6 @@ public class KLSAPISample {
         kls_client.setEndpoint("http://kls.api.ksyun.com");
 
     }
-
-
-
-
 
     /**
      * 定时录制接口(CreateRecordTask)
@@ -201,9 +197,19 @@ public class KLSAPISample {
         System.out.println("==============================");
         log.info(result.getData());
         log.info(result.getData().getApp());
+        System.out.println("============Bw==================");
         log.info(result.getData().getBw());
+        System.out.println("============OnlineUser==================");
         log.info(result.getData().getOnlineUser());
-        log.info(result.getData().getStreams());
+        System.out.println("============Streams 第一条的BW信息==================");
+        log.info(result.getData().getStreams().get(0).getBw());
+        System.out.println("============Streams clientIP==================");
+        log.info(result.getData().getStreams().get(0).getClientip());
+        System.out.println("============Streams pubtime==================");
+        log.info(result.getData().getStreams().get(0).getPubtime());
+        System.out.println("============Streams framerate==================");
+        log.info(result.getData().getStreams().get(0).getFrameRate());
+        System.out.println("============返回参数==================");
         log.info(result.getData().getRetCode());
         log.info(result.getData().getRetMsg());
         System.out.println("==============================");

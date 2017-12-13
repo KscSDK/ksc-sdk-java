@@ -21,6 +21,7 @@ public class ThirdStreamsInfoDetailUnmarshaller implements Unmarshaller<ThirdStr
 
     @Override
     public ThirdStreamsInfoDetail unmarshall(JsonUnmarshallerContext context) throws Exception {
+
         ThirdStreamsInfoDetail result = new ThirdStreamsInfoDetail();
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
@@ -71,7 +72,7 @@ public class ThirdStreamsInfoDetailUnmarshaller implements Unmarshaller<ThirdStr
                 } else if (context.testExpression(ParamConstant.WIDTH, targetDepth)) {
                     context.nextToken();
                     result.setWidth(context.getUnmarshaller(Integer.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.CLIENT_IP, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.CLIENTIP, targetDepth)) {
                     context.nextToken();
                     result.setClientip(context.getUnmarshaller(String.class).unmarshall(context));
                 } else if (context.testExpression(ParamConstant.CURBITRATE, targetDepth)) {
@@ -86,7 +87,7 @@ public class ThirdStreamsInfoDetailUnmarshaller implements Unmarshaller<ThirdStr
                 } else if (context.testExpression(ParamConstant.HEIGHT, targetDepth)) {
                     context.nextToken();
                     result.setHeight(context.getUnmarshaller(Integer.class).unmarshall(context));
-                } else if (context.testExpression(ParamConstant.PUB_TIME, targetDepth)) {
+                } else if (context.testExpression(ParamConstant.PUBTIME, targetDepth)) {
                     context.nextToken();
                     result.setPubtime(context.getUnmarshaller(Integer.class).unmarshall(context));
                 } else if (context.testExpression(ParamConstant.SAMPLE_RATE, targetDepth)) {
