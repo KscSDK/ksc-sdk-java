@@ -33,7 +33,7 @@ public class DomainTest {
     @Before
     public void setup() {
         client = new KscCdnClient("your ak",
-                "OL+eOALHk2Qz98AVY3QSAinG1LLr9mvxOjajkTd1ZRrTUSk4XRoqZoqjaVvP7D7z4Q==",
+                "your sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -360,5 +360,52 @@ public class DomainTest {
     @Test
     public void testGetCnameSuffixs() throws Exception{
         client.getCnameSuffixs();
+    }
+
+    /**
+     * 设置视频拖拽
+     * @throws Exception
+     */
+    @Test
+    public void testSetVideoSeekConfig() throws Exception{
+        client.setVideoSeekConfig("2D09HG3", SwitchEnum.ON);
+    }
+
+    /**
+     * 获取视频拖拽信息
+     * @throws Exception
+     */
+    @Test
+    public void testGetVideoSeekConfig() throws Exception{
+        VideoSeekConfig videoSeekConfig = client.getVideoSeekConfig("2D09HG3");
+        Assert.assertEquals(SwitchEnum.ON.getValue(), videoSeekConfig.getEnable());
+    }
+
+    /**
+     * 设置http响应头
+     * @throws Exception
+     */
+    @Test
+    public void testSetHttpHeadersConfig() throws Exception{
+        client.setHttpHeadersConfig("2D09HG3",HttpHeaderKeyEnum.Expires,"20");
+    }
+
+    /**
+     * 删除http响应头
+     * @throws Exception
+     */
+    @Test
+    public void testDeleteHttpHeadersConfig() throws Exception{
+        client.deleteHttpHeadersConfig("2D09HG3",HttpHeaderKeyEnum.Expires);
+    }
+
+    /**
+     * 获取http响应头
+     * @throws Exception
+     */
+    @Test
+    public void testGetHttpHeaderList() throws Exception{
+        HttpHeadersList httpHeaderList = client.getHttpHeaderList("2D09HG3");
+        Assert.assertEquals(HttpHeaderKeyEnum.Expires.getValue(), httpHeaderList.getHttpHeadList()[0].getHeaderKey());
     }
 }

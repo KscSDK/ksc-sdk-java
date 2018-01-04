@@ -33,4 +33,27 @@ public class HttpHeaderRule{
      */
     private String HeaderValue;
 
+    public String getHttpHeaderRuleType() {
+        return HttpHeaderRuleType;
+    }
+
+    public void setHttpHeaderRuleType(String httpHeaderRuleType) {
+        HttpHeaderRuleType = httpHeaderRuleType;
+    }
+
+    public String getHeaderKey() {
+        return HeaderKey;
+    }
+
+    public void setHeaderKey(String headerKey) {
+        HeaderKey = headerKey;
+    }
+
+    public String getHeaderValue() {
+        return HeaderValue;
+    }
+
+    public void setHeaderValue(String headerValue) {
+        HeaderValue = headerValue;
+    }
 }
