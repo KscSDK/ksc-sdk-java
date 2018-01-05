@@ -13,6 +13,7 @@ import com.ksc.cdn.model.domain.tool.GetDomainsByOriginResult;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
+import com.ksc.cdn.model.enums.HttpHeaderKeyEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 
 
@@ -157,6 +158,41 @@ public interface KscCdnDomain {
     String SETREMARKCONFIG_URL = "/2016-09-01/domain/SetRemarkConfig";
     String SETREMARKCONFIG_VERSION = "2016-09-01";
     String SETREMARKCONFIG_ACTION = "SetRemarkConfig";
+
+    /**
+     * 设置视频拖拽
+     */
+    String SETVIDEOSEEKCONFIG_URL = "/2016-09-01/domain/SetVideoSeekConfig";
+    String SETVIDEOSEEKCONFIG_VERSION = "2016-09-01";
+    String SETVIDEOSEEKCONFIG_ACTION = "SetVideoSeekConfig";
+
+    /**
+     * 获取视频拖拽信息
+     */
+    String GETVIDEOSEEKCONFIG_URL = "/2016-09-01/domain/GetVideoSeekConfig";
+    String GETVIDEOSEEKCONFIG_VERSION = "2016-09-01";
+    String GETVIDEOSEEKCONFIG_ACTION = "GetVideoSeekConfig";
+
+    /**
+     * 设置Http响应头
+     */
+    String SETHTTPHEADERSCONFIG_URL = "/2016-09-01/domain/SetHttpHeadersConfig";
+    String SETHTTPHEADERSCONFIG_VERSION = "2016-09-01";
+    String SETHTTPHEADERSCONFIG_ACTION = "SetHttpHeadersConfig";
+
+    /**
+     * 删除Http响应头
+     */
+    String DELETEHTTPHEADERSCONFIG_URL = "/2016-09-01/domain/DeleteHttpHeadersConfig";
+    String DELETEHTTPHEADERSCONFIG_VERSION = "2016-09-01";
+    String DELETEHTTPHEADERSCONFIG_ACTION = "DeleteHttpHeadersConfig";
+
+    /**
+     * 获取Http响应头列表
+     */
+    String GETHTTPHEADERLIST_URL = "/2016-09-01/domain/GetHttpHeaderList";
+    String GETHTTPHEADERLIST_VERSION = "2016-09-01";
+    String GETHTTPHEADERLIST_ACTION = "GetHttpHeaderList";
 
 
     /**
@@ -307,4 +343,44 @@ public interface KscCdnDomain {
 
     GetCnameSuffixsResult getCnameSuffixs() throws Exception;
 
+    /**
+     * 设置视频拖拽配置
+     * @param domainId
+     * @param enable
+     * @throws Exception
+     */
+    void setVideoSeekConfig(String domainId, SwitchEnum enable) throws Exception;
+
+    /**
+     * 获取视频拖拽配置
+     * @param domainId
+     * @return
+     * @throws Exception
+     */
+    VideoSeekConfig getVideoSeekConfig(String domainId) throws  Exception;
+
+    /**
+     * 设置http响应头
+     * @param domainId
+     * @param httpHeaderKeyEnum
+     * @param headerValue
+     * @throws Exception
+     */
+    void setHttpHeadersConfig(String domainId, HttpHeaderKeyEnum httpHeaderKeyEnum, String headerValue) throws Exception;
+
+    /**
+     * 删除http响应头
+     * @param domainId
+     * @param httpHeaderKeyEnum
+     * @throws Exception
+     */
+    void deleteHttpHeadersConfig(String domainId, HttpHeaderKeyEnum httpHeaderKeyEnum) throws Exception;
+
+    /**
+     * 获取http响应头
+     * @param domainId
+     * @return
+     * @throws Exception
+     */
+    HttpHeadersList getHttpHeaderList(String domainId) throws Exception;
 }
