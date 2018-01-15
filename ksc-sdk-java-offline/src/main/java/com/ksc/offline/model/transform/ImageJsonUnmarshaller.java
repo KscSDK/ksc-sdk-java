@@ -11,10 +11,10 @@ import com.ksc.offline.model.Image;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-public class ImageJsonUnmarshaller implements Unmarshaller<Image, JsonUnmarshallerContext>{
-	
+public class ImageJsonUnmarshaller implements Unmarshaller<Image, JsonUnmarshallerContext> {
+
 	public Image unmarshall(JsonUnmarshallerContext context) throws Exception {
-		Image image= new Image();
+		Image image = new Image();
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
@@ -30,7 +30,7 @@ public class ImageJsonUnmarshaller implements Unmarshaller<Image, JsonUnmarshall
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("logoUrl", targetDepth)) {
 					context.nextToken();
 					image.setLogoUrl(context.getUnmarshaller(String.class).unmarshall(context));
@@ -40,7 +40,7 @@ public class ImageJsonUnmarshaller implements Unmarshaller<Image, JsonUnmarshall
 				} else if (context.testExpression("offsetY", targetDepth)) {
 					context.nextToken();
 					image.setOffsetY(context.getUnmarshaller(Double.class).unmarshall(context));
-				} 
+				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {

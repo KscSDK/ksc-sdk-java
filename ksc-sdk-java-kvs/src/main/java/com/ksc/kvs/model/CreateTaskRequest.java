@@ -4,13 +4,11 @@ import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.kvs.model.transform.CreateTaskRequestMarshaller;
-import com.ksc.kvs.model.transform.DeletePresetRequestMarshaller;
 
-public class CreateTaskRequest extends KscWebServiceRequest
-implements DryRunSupportedRequest<CreateTaskRequest>{
-	
+public class CreateTaskRequest extends KscWebServiceRequest implements DryRunSupportedRequest<CreateTaskRequest> {
+
 	private String data;
-	
+
 	public String getData() {
 		return data;
 	}
@@ -21,11 +19,9 @@ implements DryRunSupportedRequest<CreateTaskRequest>{
 
 	public Request<CreateTaskRequest> getDryRunRequest() {
 		// TODO Auto-generated method stub
-		Request<CreateTaskRequest> request = new CreateTaskRequestMarshaller()
-				.marshall(this);
+		Request<CreateTaskRequest> request = new CreateTaskRequestMarshaller().marshall(this);
 		request.addParameter("DryRun", Boolean.toString(true));
 		return null;
 	}
-	
 
 }

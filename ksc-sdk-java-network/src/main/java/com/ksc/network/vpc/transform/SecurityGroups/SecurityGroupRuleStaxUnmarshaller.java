@@ -37,6 +37,16 @@ public class SecurityGroupRuleStaxUnmarshaller implements Unmarshaller<SecurityG
 					continue;
 				}
 
+				if (context.testExpression("Description", targetDepth)) {
+					rule.setDescription(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("SecurityGroupId", targetDepth)) {
+					rule.setSecurityGroupId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
+
 				if (context.testExpression("CidrBlock", targetDepth)) {
 					rule.setCidrBlock(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;

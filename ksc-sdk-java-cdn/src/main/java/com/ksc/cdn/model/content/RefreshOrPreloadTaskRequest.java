@@ -3,7 +3,6 @@ package com.ksc.cdn.model.content;
 import com.ksc.cdn.KscClientException;
 import com.ksc.cdn.model.GeneralRequest;
 import com.ksc.cdn.model.GeneralRequestParam;
-import lombok.Data;
 
 import java.text.ParseException;
 import java.util.Map;
@@ -20,7 +19,6 @@ import java.util.Map;
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class RefreshOrPreloadTaskRequest implements GeneralRequest {
 
     /**
@@ -53,6 +51,11 @@ public class RefreshOrPreloadTaskRequest implements GeneralRequest {
      */
     private Long PageNumber;
 
+    /**
+     * 任务类别，取值为：refresh，刷新任务；取值为:preload,预热任务
+     */
+    private String Type;
+
     @Override
     public GeneralRequestParam getGeneralRequestParam() {
         return new GeneralRequestParam("GetRefreshOrPreloadTask", "2016-09-01", "/2016-09-01/content/GetRefreshOrPreloadTask");
@@ -62,4 +65,61 @@ public class RefreshOrPreloadTaskRequest implements GeneralRequest {
     public Map<String, String> buildParams() throws KscClientException, ParseException {
         return null;
     }
+
+    public String getStartTime() {
+        return StartTime;
+    }
+
+    public void setStartTime(String startTime) {
+        StartTime = startTime;
+    }
+
+    public String getEndTime() {
+        return EndTime;
+    }
+
+    public void setEndTime(String endTime) {
+        EndTime = endTime;
+    }
+
+    public String getTaskId() {
+        return TaskId;
+    }
+
+    public void setTaskId(String taskId) {
+        TaskId = taskId;
+    }
+
+    public Url[] getUrls() {
+        return Urls;
+    }
+
+    public void setUrls(Url[] urls) {
+        Urls = urls;
+    }
+
+    public Long getPageSize() {
+        return PageSize;
+    }
+
+    public void setPageSize(Long pageSize) {
+        PageSize = pageSize;
+    }
+
+    public Long getPageNumber() {
+        return PageNumber;
+    }
+
+    public void setPageNumber(Long pageNumber) {
+        PageNumber = pageNumber;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
 }

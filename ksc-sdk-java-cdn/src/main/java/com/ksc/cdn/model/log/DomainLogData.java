@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.log;
 
-import lombok.Data;
-
 /**
  * DomainLogData
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class DomainLogData {
 
     /**
@@ -35,4 +32,44 @@ public class DomainLogData {
      * 日志大小，单位Byte
      */
     private String LogSize;
+
+    public String getStartTime() {
+        return StartTime;
+    }
+
+    public void setStartTime(String startTime) {
+        StartTime = startTime;
+    }
+
+    public String getEndTime() {
+        return EndTime;
+    }
+
+    public void setEndTime(String endTime) {
+        EndTime = endTime;
+    }
+
+    public String getLogName() {
+        return LogName;
+    }
+
+    public void setLogName(String logName) {
+        LogName = logName;
+    }
+
+    public String getLogUrl() {
+        return LogUrl;
+    }
+
+    public void setLogUrl(String logUrl) {
+        LogUrl = logUrl;
+    }
+
+    public String getLogSize() {
+        return LogSize;
+    }
+
+    public void setLogSize(String logSize) {
+        LogSize = logSize;
+    }
 }

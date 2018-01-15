@@ -1,14 +1,11 @@
 package com.ksc.cdn.model.statistic.province.isp.pv;
 
-import lombok.Data;
-
 /**
  * PvDataByDomain
  *
  * @author qichao@kingsoft.com
  * @date 2017/02/27
  */
-@Data
 public class PvDataByDomain {
     /**
      * 域名ID
@@ -22,4 +19,28 @@ public class PvDataByDomain {
      * 该域名在每个区域的请求数详细数据
      */
     private PvDataByProvince[] Provinces;
+
+    public String getDomainId() {
+        return DomainId;
+    }
+
+    public void setDomainId(String domainId) {
+        DomainId = domainId;
+    }
+
+    public Long getPv() {
+        return Pv;
+    }
+
+    public void setPv(Long pv) {
+        Pv = pv;
+    }
+
+    public PvDataByProvince[] getProvinces() {
+        return Provinces;
+    }
+
+    public void setProvinces(PvDataByProvince[] provinces) {
+        Provinces = provinces;
+    }
 }

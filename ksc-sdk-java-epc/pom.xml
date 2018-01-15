@@ -4,9 +4,9 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.ksc</groupId>
+		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.1.9</version>
+		<version>0.2.5</version>
 	</parent>
 	<artifactId>ksc-sdk-java-epc</artifactId>
 	<name>KSC SDK for Java - epc</name>
@@ -19,9 +19,9 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.ksc</groupId>
+			<groupId>com.ksyun</groupId>
 			<artifactId>ksc-sdk-java-core</artifactId>
-			<version>0.1.9</version>
+			<version>0.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -65,9 +65,12 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 			</plugin>
-			<plugin>
-				<artifactId>maven-javadoc-plugin</artifactId>
-			</plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>

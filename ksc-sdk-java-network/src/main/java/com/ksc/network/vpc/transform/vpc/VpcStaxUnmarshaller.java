@@ -1,12 +1,12 @@
 package com.ksc.network.vpc.transform.vpc;
 
-import javax.xml.stream.events.XMLEvent;
-
 import com.ksc.network.vpc.model.vpc.Vpc;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.BooleanStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
+
+import javax.xml.stream.events.XMLEvent;
 
 /**
  * Vpc StAX Unmarshaller
@@ -54,7 +54,7 @@ public class VpcStaxUnmarshaller implements
 				}
 
 				if (context.testExpression("IsDefault", targetDepth)) {
-					vpc.setIsDefault(BooleanStaxUnmarshaller.getInstance()
+					vpc.setDefault(BooleanStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}

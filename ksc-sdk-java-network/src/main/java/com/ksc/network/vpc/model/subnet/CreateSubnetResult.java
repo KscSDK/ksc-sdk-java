@@ -1,7 +1,5 @@
 package com.ksc.network.vpc.model.subnet;
 
-import com.ksc.network.vpc.model.vpc.Vpc;
-
 import lombok.ToString;
 
 import java.io.Serializable;
@@ -14,7 +12,6 @@ import java.io.Serializable;
 @ToString
 public class CreateSubnetResult implements Serializable, Cloneable {
 
-	
 	private String RequestId;
 
 	private Subnet subnet;

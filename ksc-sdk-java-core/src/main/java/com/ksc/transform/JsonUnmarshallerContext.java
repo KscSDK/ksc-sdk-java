@@ -215,5 +215,8 @@ public abstract class JsonUnmarshallerContext {
     public <T> Unmarshaller<T, JsonUnmarshallerContext> getUnmarshaller(Class<T> type) {
         return null;
     }
-
+    
+    public void setCurrentField(String currentField){
+    	
+    }
 }

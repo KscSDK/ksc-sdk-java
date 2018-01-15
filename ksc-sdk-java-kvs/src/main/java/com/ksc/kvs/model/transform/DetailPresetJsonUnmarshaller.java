@@ -6,23 +6,15 @@ import static com.fasterxml.jackson.core.JsonToken.FIELD_NAME;
 import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-
 import com.fasterxml.jackson.core.JsonToken;
-import com.ksc.kvs.model.Audio;
 import com.ksc.kvs.model.DetailPreset;
-import com.ksc.kvs.model.Param;
-import com.ksc.kvs.model.Preset;
-import com.ksc.kvs.model.Video;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 
-public class DetailPresetJsonUnmarshaller implements Unmarshaller<DetailPreset, JsonUnmarshallerContext>{
-	
+public class DetailPresetJsonUnmarshaller implements Unmarshaller<DetailPreset, JsonUnmarshallerContext> {
+
 	public DetailPreset unmarshall(JsonUnmarshallerContext context) throws Exception {
-		DetailPreset detailPreset= new DetailPreset();
+		DetailPreset detailPreset = new DetailPreset();
 		int originalDepth = context.getCurrentDepth();
 		String currentParentElement = context.getCurrentParentElement();
 		int targetDepth = originalDepth + 1;
@@ -38,15 +30,15 @@ public class DetailPresetJsonUnmarshaller implements Unmarshaller<DetailPreset, 
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
-				if (context.testExpression("PresetType", targetDepth)) {
+
+				if (context.testExpression("PresetType", targetDepth)
+						|| context.testExpression("Presettype", targetDepth)) {
 					context.nextToken();
 					detailPreset.setPresetType(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("Param", targetDepth)) {
 					context.nextToken();
 					detailPreset.setParam(ParamJsonUnmarshaller.getInstance().unmarshall(context));
-				} 
-				else if (context.testExpression("Description", targetDepth)) {
+				} else if (context.testExpression("Description", targetDepth)) {
 					context.nextToken();
 					detailPreset.setDescription(context.getUnmarshaller(String.class).unmarshall(context));
 				} else if (context.testExpression("CreateTime", targetDepth)) {
@@ -55,7 +47,7 @@ public class DetailPresetJsonUnmarshaller implements Unmarshaller<DetailPreset, 
 				} else if (context.testExpression("UpdateTime", targetDepth)) {
 					context.nextToken();
 					detailPreset.setUpdateTime(context.getUnmarshaller(String.class).unmarshall(context));
-				} 
+				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null
 						|| context.getLastParsedParentElement().equals(currentParentElement)) {

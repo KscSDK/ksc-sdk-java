@@ -2,6 +2,7 @@ package com.ksc.kvs.model;
 
 public class TaskInfo {
 	private String TaskID;
+	private int IsFlow;
 	private String Preset;
 	private String DstBucket;
 	private String DstDir;
@@ -10,13 +11,44 @@ public class TaskInfo {
 	private String IsTop;
 	private String CreateTime;
 	private com.ksc.internal.SdkInternalList<SrcInfo> SrcInfoList;
-	
+	private com.ksc.internal.SdkInternalList<FlowDataInfo> FlowDataList;
 	private String DstAcl;
 	private String CbUrl;
 	private String CbMethod;
 	private String ExtParam;
 	private String ErrorMsg;
 	private String ErrorCode;
+
+	public int getIsFlow() {
+		return IsFlow;
+	}
+
+	public void setIsFlow(int isFlow) {
+		IsFlow = isFlow;
+	}
+
+	public void setFlowDataList(java.util.Collection<FlowDataInfo> flowDataList) {
+		if (flowDataList != null) {
+			FlowDataList = new com.ksc.internal.SdkInternalList<FlowDataInfo>(flowDataList);
+		}
+	}
+
+	public void addFlowDataList(FlowDataInfo... flowDataInfos) {
+		if (FlowDataList == null) {
+			FlowDataList = new com.ksc.internal.SdkInternalList<FlowDataInfo>();
+		}
+		for (FlowDataInfo flowDataInfo : flowDataInfos) {
+			FlowDataList.add(flowDataInfo);
+		}
+	}
+
+	public com.ksc.internal.SdkInternalList<FlowDataInfo> getFlowDataList() {
+		return FlowDataList;
+	}
+
+	public void setFlowDataList(com.ksc.internal.SdkInternalList<FlowDataInfo> flowDataList) {
+		FlowDataList = flowDataList;
+	}
 
 	public com.ksc.internal.SdkInternalList<SrcInfo> getSrcInfoList() {
 		return SrcInfoList;
@@ -28,7 +60,7 @@ public class TaskInfo {
 		}
 	}
 
-	public void addSrc(SrcInfo... scrinfos) {
+	public void addSrcInfoList(SrcInfo... scrinfos) {
 		if (SrcInfoList == null) {
 			SrcInfoList = new com.ksc.internal.SdkInternalList<SrcInfo>();
 		}
@@ -153,5 +185,4 @@ public class TaskInfo {
 		SrcInfoList = srcInfoList;
 	}
 
-	
 }

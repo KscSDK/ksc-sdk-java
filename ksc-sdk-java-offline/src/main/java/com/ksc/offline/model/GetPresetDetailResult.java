@@ -3,9 +3,9 @@ package com.ksc.offline.model;
 public class GetPresetDetailResult {
 	private int errNum;
 	private String errMsg;
-	
+
 	private DetailPreset presetdetail;
-	
+
 	public DetailPreset getPresetdetail() {
 		return presetdetail;
 	}
@@ -30,7 +30,4 @@ public class GetPresetDetailResult {
 		this.errMsg = errMsg;
 	}
 
-
-	
-	
 }

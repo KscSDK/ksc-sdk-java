@@ -1,8 +1,6 @@
 package com.ksc.network.vpc.transform.SecurityGroups;
 
 import com.ksc.network.vpc.model.SecurityGroups.AuthorizeSecurityGroupEntryResult;
-import com.ksc.network.vpc.model.SecurityGroups.DeleteSecurityGroupResult;
-import com.ksc.network.vpc.model.vpc.DeleteVpcResult;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -10,7 +8,7 @@ import com.ksc.transform.Unmarshaller;
 import javax.xml.stream.events.XMLEvent;
 
 /**
- * DeleteSecurityGroupResult StAX Unmarshaller
+ * AuthorizeSecurityGroupEntryResult StAX Unmarshaller
  */
 public class AuthorizeSecurityGroupEntryResultStaxUnmarshaller implements
 		Unmarshaller<AuthorizeSecurityGroupEntryResult, StaxUnmarshallerContext> {

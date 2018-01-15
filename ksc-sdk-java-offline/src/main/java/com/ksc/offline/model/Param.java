@@ -4,23 +4,23 @@ import java.util.List;
 
 public class Param {
 	private String f;
-	
-	//avsample & avsnapshot
+
+	// avsample & avsnapshot
 	private int width;
 	private int height;
 	private int shortSide;
-	//avsample
+	// avsample
 	private int interval;
-	
+
 	private Video video;
 	private Audio audio;
-	
+
 	private int hlsTime;
 	private int clearmeta;
-	
+
 	private int intelligentSwitch;
-	
-	//avlogo
+
+	// avlogo
 	private List<Image> image;
 
 	public String getF() {
@@ -110,5 +110,5 @@ public class Param {
 	public void setIntelligentSwitch(int intelligentSwitch) {
 		this.intelligentSwitch = intelligentSwitch;
 	}
-	
+
 }

@@ -19,42 +19,8 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.kvs.KSCKVSJsonClient;
-import com.ksc.kvs.model.CreateTaskRequest;
-import com.ksc.kvs.model.CreateTasklResult;
-import com.ksc.kvs.model.DelTaskByTaskIDRequest;
-import com.ksc.kvs.model.DeletePresetRequest;
-import com.ksc.kvs.model.GetListRequest;
-import com.ksc.kvs.model.GetPresetDetailRequest;
-import com.ksc.kvs.model.GetPresetDetailResult;
-import com.ksc.kvs.model.GetTaskByTaskIDRequest;
-import com.ksc.kvs.model.GetTaskByTaskIDResult;
-import com.ksc.kvs.model.GetTaskListRequest;
-import com.ksc.kvs.model.GetTaskListResult;
-import com.ksc.kvs.model.GetTaskMetaRequest;
-import com.ksc.kvs.model.GetTaskMetaResult;
-import com.ksc.kvs.model.KvsErrResult;
-import com.ksc.kvs.model.KvsResult;
-import com.ksc.kvs.model.PresetRequest;
-import com.ksc.kvs.model.TopTaskByTaskIDRequest;
-import com.ksc.kvs.model.UpdatePersetRequest;
-import com.ksc.kvs.model.transform.CreateTaskRequestMarshaller;
-import com.ksc.kvs.model.transform.DeletePresetRequestMarshaller;
-import com.ksc.kvs.model.transform.GetListRequestMarshaller;
-import com.ksc.kvs.model.transform.GetPresetDetailRequestMarshaller;
-import com.ksc.kvs.model.transform.GetTaskByTaskIDRequestMarshaller;
-import com.ksc.kvs.model.transform.GetTaskByTaskIDResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.GetTaskListRequestMarshaller;
-import com.ksc.kvs.model.transform.GetTaskListResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.GetTaskMetaRequestMarshaller;
-import com.ksc.kvs.model.transform.GetTaskMetaResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.KvsCreateTaskResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.KvsDetailResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.KvsErrResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.KvsResultJsonUnmarshaller;
-import com.ksc.kvs.model.transform.PresetRequestMarshaller;
-import com.ksc.kvs.model.transform.DelTaskByTaskIDRequestMarshaller;
-import com.ksc.kvs.model.transform.TopTaskByTaskIDRequestMarshaller;
-import com.ksc.kvs.model.transform.UpdatePresetRequestMarshaller;
+import com.ksc.kvs.model.*;
+import com.ksc.kvs.model.transform.*;
 import com.ksc.protocol.json.JsonClientMetadata;
 import com.ksc.protocol.json.JsonErrorResponseMetadata;
 import com.ksc.protocol.json.JsonOperationMetadata;
@@ -78,13 +44,11 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 	 * this client
 	 */
 	protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
-	
+
 	private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(
 			new JsonClientMetadata().withSupportsCbor(false));
-	
-	
-	private static final Log log =
-	        LogFactory.getLog(KSCKVSJsonClient.class);
+
+	private static final Log log = LogFactory.getLog(KSCKVSJsonClient.class);
 
 	/**
 	 * Constructs a new client to invoke service methods on EIP. A credentials
@@ -227,9 +191,8 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		this.kscCredentialsProvider = awsCredentialsProvider;
 		init();
 	}
-	
 
-	public KvsErrResult Preset(PresetRequest presetRequest){
+	public KvsErrResult Preset(PresetRequest presetRequest) {
 		ExecutionContext executionContext = createExecutionContext(presetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -238,8 +201,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new PresetRequestMarshaller()
-						.marshall(super.beforeMarshalling(presetRequest));
+				request = new PresetRequestMarshaller().marshall(super.beforeMarshalling(presetRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
@@ -249,7 +211,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new KvsErrResultJsonUnmarshaller());
-			
+
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();
@@ -257,39 +219,35 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
-	public KvsResult GetPresetList(GetListRequest kvsRequest) {
+
+	public GetPresetListResult GetPresetList(GetPresetListRequest kvsRequest) {
 		ExecutionContext executionContext = createExecutionContext(kvsRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<GetListRequest> request = null;
-		Response<KvsResult> response = null;
+		Request<GetPresetListRequest> request = null;
+		Response<GetPresetListResult> response = null;
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new GetListRequestMarshaller()
-						.marshall(super.beforeMarshalling(kvsRequest));
+				request = new GetPresetListRequestMarshaller().marshall(super.beforeMarshalling(kvsRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
 				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 			}
-			HttpResponseHandler<KscWebServiceResponse<KvsResult>> responseHandler = protocolFactory
+			HttpResponseHandler<KscWebServiceResponse<GetPresetListResult>> responseHandler = protocolFactory
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
-							new KvsResultJsonUnmarshaller());
-			
+							new GetPresetListResultJsonUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
-
 			return response.getKscResponse();
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 
 	}
-	
 
-	public KvsErrResult DelPreset(DeletePresetRequest deletePresetRequest){
+	public KvsErrResult DelPreset(DeletePresetRequest deletePresetRequest) {
 		ExecutionContext executionContext = createExecutionContext(deletePresetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -298,8 +256,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new DeletePresetRequestMarshaller()
-						.marshall(super.beforeMarshalling(deletePresetRequest));
+				request = new DeletePresetRequestMarshaller().marshall(super.beforeMarshalling(deletePresetRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
@@ -309,7 +266,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new KvsErrResultJsonUnmarshaller());
-			
+
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();
@@ -317,19 +274,17 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
 
-	public KvsErrResult UpdatePreset(UpdatePersetRequest updatePersetRequest){
+	public KvsErrResult UpdatePreset(UpdatePresetRequest updatePersetRequest) {
 		ExecutionContext executionContext = createExecutionContext(updatePersetRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<UpdatePersetRequest> request = null;
+		Request<UpdatePresetRequest> request = null;
 		Response<KvsErrResult> response = null;
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new UpdatePresetRequestMarshaller()
-						.marshall(super.beforeMarshalling(updatePersetRequest));
+				request = new UpdatePresetRequestMarshaller().marshall(super.beforeMarshalling(updatePersetRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
@@ -339,7 +294,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new KvsErrResultJsonUnmarshaller());
-			
+
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();
@@ -347,9 +302,8 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
 
-	public GetPresetDetailResult GetPresetDetail(GetPresetDetailRequest getPresetDetailRequest){
+	public GetPresetDetailResult GetPresetDetail(GetPresetDetailRequest getPresetDetailRequest) {
 		ExecutionContext executionContext = createExecutionContext(getPresetDetailRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -369,7 +323,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new KvsDetailResultJsonUnmarshaller());
-			
+
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();
@@ -377,10 +331,8 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
-	
-	
-	public CreateTasklResult CreateTask(CreateTaskRequest createTaskRequest){
+
+	public CreateTasklResult CreateTask(CreateTaskRequest createTaskRequest) {
 		ExecutionContext executionContext = createExecutionContext(createTaskRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
@@ -389,8 +341,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new CreateTaskRequestMarshaller()
-						.marshall(super.beforeMarshalling(createTaskRequest));
+				request = new CreateTaskRequestMarshaller().marshall(super.beforeMarshalling(createTaskRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
@@ -400,7 +351,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new KvsCreateTaskResultJsonUnmarshaller());
-			
+
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();
@@ -408,9 +359,35 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
 
-	
+	public CreateTasklResult CreateFlowTask(CreateFlowTaskRequest createTaskRequest) {
+		ExecutionContext executionContext = createExecutionContext(createTaskRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateFlowTaskRequest> request = null;
+		Response<CreateTasklResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateFlowTaskRequestMarshaller().marshall(super.beforeMarshalling(createTaskRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<CreateTasklResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new KvsCreateTaskResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 	public KvsErrResult DelTaskByTaskID(DelTaskByTaskIDRequest delTaskByTaskIDRequest) {
 		// TODO Auto-generated method stub
 		ExecutionContext executionContext = createExecutionContext(delTaskByTaskIDRequest);
@@ -422,7 +399,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
 				request = new DelTaskByTaskIDRequestMarshaller()
-							.marshall(super.beforeMarshalling(delTaskByTaskIDRequest));
+						.marshall(super.beforeMarshalling(delTaskByTaskIDRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
@@ -440,7 +417,6 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
 
 	public KvsErrResult TopTaskByTaskID(TopTaskByTaskIDRequest topTaskByTaskIDRequest) {
 		ExecutionContext executionContext = createExecutionContext(topTaskByTaskIDRequest);
@@ -452,7 +428,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
 				request = new TopTaskByTaskIDRequestMarshaller()
-							.marshall(super.beforeMarshalling(topTaskByTaskIDRequest));
+						.marshall(super.beforeMarshalling(topTaskByTaskIDRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
@@ -464,48 +440,44 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 							new KvsErrResultJsonUnmarshaller());
 
 			response = invoke(request, responseHandler, executionContext);
-			
+
 			return response.getKscResponse();
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
 
-	public GetTaskListResult GetTaskList(GetTaskListRequest getTaskListRequest){
+	public GetTaskListResult GetTaskList(GetTaskListRequest getTaskListRequest) {
 		ExecutionContext executionContext = createExecutionContext(getTaskListRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
 		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
 		Request<GetTaskListRequest> request = null;
 		Response<GetTaskListResult> response = null;
 		try {
-			
+
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new GetTaskListRequestMarshaller()
-							.marshall(super.beforeMarshalling(getTaskListRequest));
+				request = new GetTaskListRequestMarshaller().marshall(super.beforeMarshalling(getTaskListRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
 				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 			}
-			
+
 			HttpResponseHandler<KscWebServiceResponse<GetTaskListResult>> responseHandler = protocolFactory
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new GetTaskListResultJsonUnmarshaller());
 
 			response = invoke(request, responseHandler, executionContext);
-			
+
 			return response.getKscResponse();
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
-		
-		
-	}
-	
 
-	
+	}
+
 	public GetTaskByTaskIDResult GetTaskByTaskID(GetTaskByTaskIDRequest getTaskByTaskIDRequest) {
 		// TODO Auto-generated method stub
 		ExecutionContext executionContext = createExecutionContext(getTaskByTaskIDRequest);
@@ -517,13 +489,13 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
 				request = new GetTaskByTaskIDRequestMarshaller()
-							.marshall(super.beforeMarshalling(getTaskByTaskIDRequest));
+						.marshall(super.beforeMarshalling(getTaskByTaskIDRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
 				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 			}
-			
+
 			HttpResponseHandler<KscWebServiceResponse<GetTaskByTaskIDResult>> responseHandler = protocolFactory
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
@@ -531,12 +503,12 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 
 			response = invoke(request, responseHandler, executionContext);
 			return response.getKscResponse();
-			
+
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
+
 	public GetTaskMetaResult GetTaskMetaInfo(GetTaskMetaRequest getTaskMetaInfoRequest) {
 		ExecutionContext executionContext = createExecutionContext(getTaskMetaInfoRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -546,29 +518,171 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		try {
 			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
 			try {
-				request = new GetTaskMetaRequestMarshaller()
-							.marshall(super.beforeMarshalling(getTaskMetaInfoRequest));
+				request = new GetTaskMetaRequestMarshaller().marshall(super.beforeMarshalling(getTaskMetaInfoRequest));
 				// Binds the request metrics to the current request.
 				request.setKscRequestMetrics(kscRequestMetrics);
 			} finally {
 				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
 			}
-			
+
 			HttpResponseHandler<KscWebServiceResponse<GetTaskMetaResult>> responseHandler = protocolFactory
 					.createResponseHandler(
 							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
 							new GetTaskMetaResultJsonUnmarshaller());
 
 			response = invoke(request, responseHandler, executionContext);
-			
+
 			return response.getKscResponse();
 		} finally {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
 
-	
-	
+	public KvsErrResult UpdatePipeline(UpdatePipelineRequest updatePipelineRequest) {
+		ExecutionContext executionContext = createExecutionContext(updatePipelineRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<UpdatePipelineRequest> request = null;
+		Response<KvsErrResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new UpdatePipelineRequestMarshaller()
+						.marshall(super.beforeMarshalling(updatePipelineRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<KvsErrResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new KvsErrResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public QueryPipelineResult QueryPipeline(QueryPipelineRequest queryPipelineRequest) {
+		ExecutionContext executionContext = createExecutionContext(queryPipelineRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<QueryPipelineRequest> request = null;
+		Response<QueryPipelineResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new QueryPipelineRequestMarshaller().marshall(super.beforeMarshalling(queryPipelineRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<QueryPipelineResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new QueryPipelineResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public GetMediaTransDurationResult GetMediaTransDuration(
+			GetMediaTransDurationRequest getMediaTransDurationRequest) {
+		ExecutionContext executionContext = createExecutionContext(getMediaTransDurationRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetMediaTransDurationRequest> request = null;
+		Response<GetMediaTransDurationResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetMediaTransDurationRequestMarshaller()
+						.marshall(super.beforeMarshalling(getMediaTransDurationRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<GetMediaTransDurationResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetMediaTransDurationResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public GetInterfaceNumberResult GetInterfaceNumber(GetInterfaceNumberRequest getInterfaceNumberRequest) {
+		ExecutionContext executionContext = createExecutionContext(getInterfaceNumberRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetInterfaceNumberRequest> request = null;
+		Response<GetInterfaceNumberResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetInterfaceNumberRequestMarshaller()
+						.marshall(super.beforeMarshalling(getInterfaceNumberRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<GetInterfaceNumberResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetInterfaceNumberResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	public GetScreenshotNumberResult GetScreenshotNumber(GetScreenshotNumberRequest getScreenshotNumberRequest) {
+		ExecutionContext executionContext = createExecutionContext(getScreenshotNumberRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetScreenshotNumberRequest> request = null;
+		Response<GetScreenshotNumberResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetScreenshotNumberRequestMarshaller()
+						.marshall(super.beforeMarshalling(getScreenshotNumberRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<GetScreenshotNumberResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetScreenshotNumberResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 	private void init() {
 		setServiceNameIntern(DEFAULT_SIGNING_NAME);
 		setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
@@ -588,6 +702,7 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 
 		return doInvoke(request, responseHandler, executionContext);
 	}
+
 	/**
 	 * Invoke the request using the http client. Assumes credentials (or lack
 	 * thereof) have been configured in the ExecutionContext beforehand.
@@ -597,12 +712,11 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		request.setEndpoint(endpoint);
 		request.setTimeOffset(timeOffset);
 
-		
 		HttpResponseHandler<KscServiceException> errorResponseHandler = protocolFactory
-                .createErrorResponseHandler(new JsonErrorResponseMetadata());
-		try{
+				.createErrorResponseHandler(new JsonErrorResponseMetadata());
+		try {
 			return client.execute(request, responseHandler, errorResponseHandler, executionContext);
-		}catch(Exception e){
+		} catch (Exception e) {
 			log.error(e);
 			return null;
 		}

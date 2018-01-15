@@ -23,6 +23,9 @@ public class GetMetricStatisticsResponse {
 	public void setGetMetricStatisticsResult(GetMetricStatisticsResult getMetricStatisticsResult) {
 		GetMetricStatisticsResult = getMetricStatisticsResult;
 	}
+
+
+	
 	
 
 }
