@@ -197,7 +197,7 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     public R generalGetStatisticsData(GeneralRequest request, Class rType) throws Exception {
         GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction());
-        R result = (R) this.httpExecute(HttpMethod.GET, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, rType);
+        R result = (R) this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request.buildParams(), buildHeaders, rType);
         return result;
     }
 
