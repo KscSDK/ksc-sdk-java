@@ -48,6 +48,20 @@ public class DescribeInstancesRequestMarshaller implements
             }
         }
 
+        com.ksc.internal.SdkInternalList<String> projectIdsList = (com.ksc.internal.SdkInternalList<String>) describeInstancesRequest
+                .getProjectIds();
+        if (!projectIdsList.isEmpty() || !projectIdsList.isAutoConstruct()) {
+            int projectIdsListIndex = 1;
+
+            for (String projectIdsListValue : projectIdsList) {
+                if (projectIdsListValue != null) {
+                    request.addParameter("ProjectId." + projectIdsListIndex,
+                            StringUtils.fromString(projectIdsListValue));
+                }
+                projectIdsListIndex++;
+            }
+        }
+
         com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeInstancesRequest
                 .getFilters();
         if (!filtersList.isEmpty() || !filtersList.isAutoConstruct()) {

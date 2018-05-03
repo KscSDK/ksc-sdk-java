@@ -123,6 +123,22 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private Boolean SriovNetSupport;
+	/**
+	 * <p>
+	 * 项目ID，
+	 * 创建出的实例属于哪个项目。
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private Long ProjectId;
+
+	public Long getProjectId() {
+		return ProjectId;
+	}
+
+	public void setProjectId(Long projectId) {
+		ProjectId = projectId;
+	}
 
 	public String getImageId() {
 		return ImageId;
