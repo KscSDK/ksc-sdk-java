@@ -90,6 +90,10 @@ public class RunInstancesRequestMarshaller implements
             request.addParameter("SriovNetSupport",
                     StringUtils.fromBoolean(runInstancesRequest.getSriovNetSupport()));
         }
+        if(runInstancesRequest.getProjectId()!=null) {
+            request.addParameter("ProjectId",
+                    StringUtils.fromLong(runInstancesRequest.getProjectId()));
+        }
         return request;
     }
 
