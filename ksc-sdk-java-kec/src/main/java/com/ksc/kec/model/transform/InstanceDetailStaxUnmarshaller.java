@@ -107,6 +107,11 @@ public class InstanceDetailStaxUnmarshaller implements
 					continue;
 				}
 
+				if (context.testExpression("ProjectId", targetDepth)) {
+					vm.setProjectId(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return vm;
