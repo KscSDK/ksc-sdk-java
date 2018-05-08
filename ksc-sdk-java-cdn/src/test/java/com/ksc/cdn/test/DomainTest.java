@@ -32,8 +32,8 @@ public class DomainTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("your ak",
-                "your sk",
+        client = new KscCdnClient("AKLT7YUABJyMSNCyCypfiJ3jyw",
+                "OJKg3svMFvIlEqn5Hn8/qzLxqGqZo+1IaYSfDP3YvY21jfGz+WAiDG6lDKWfyh330w==",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -122,6 +122,29 @@ public class DomainTest {
         request.setRegions(RegionsEnum.CN.getValue());//加速区域，默认CN， 可以输入多个，以逗号间隔。
 
         AddDomainResult addDomainResult = client.addDomainBase(request);
+        Assert.assertNotNull(addDomainResult.getDomainId());
+        System.out.print(addDomainResult.getDomainId() + "\n");
+    }
+
+    /**
+     * 添加加速域名v2
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAddDomainV2Base() throws Exception {
+        AddDomainRequest request = new AddDomainRequest();
+
+        request.setDomainName("testv2.qunar.com");//加速域名
+        request.setCdnType(CdnTypeEnum.download.getValue());//加速类型
+        request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());//客户访问边缘节点的协议。默认http
+        request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//源站类型
+        request.setOrigin("www.ksyun.com");//源站域名
+        request.setOriginProtocol(CdnProtocolEnum.HTTP.getValue());//回源协议
+        request.setOriginPort(80);//源站域名端口号
+        request.setRegions(RegionsEnum.CN.getValue());//加速区域，默认CN， 可以输入多个，以逗号间隔。
+
+        AddDomainResult addDomainResult = client.addDomainV2Base(request);
         Assert.assertNotNull(addDomainResult.getDomainId());
         System.out.print(addDomainResult.getDomainId() + "\n");
     }
