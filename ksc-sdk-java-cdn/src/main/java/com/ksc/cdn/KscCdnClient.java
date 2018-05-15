@@ -16,14 +16,14 @@ import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
 import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
-import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
-import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
-import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
-import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.domaindetail.*;
 import com.ksc.cdn.model.domain.domainhttps.*;
+import com.ksc.cdn.model.domain.tool.GetCnameSuffixsResult;
+import com.ksc.cdn.model.domain.tool.GetDomainsByOriginResult;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
+import com.ksc.cdn.model.enums.HttpHeaderKeyEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 import com.ksc.cdn.model.log.*;
 import com.ksc.cdn.model.valid.CommonValidUtil;
@@ -69,6 +69,29 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         Map<String, String> params = new HashMap<String, String>();
         params.put("DomainId", domainId);
         GetServiceIpResult result = this.httpExecute(HttpMethod.GET, GETSERVICEIP_URL, params, buildHeaders, GetServiceIpResult.class);
+        return result;
+    }
+
+    @Override
+    public void setDomainConfigs(AllConfigsRequest allConfigs) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(SETDOMAINCONFIGS_VERSION, SETDOMAINCONFIGS_ACTION,true);
+        this.httpExecute(HttpMethod.POST, SETDOMAINCONFIGS_URL, allConfigs, buildHeaders, Void.class);
+    }
+
+    @Override
+    public GetDomainsByOriginResult getDomainsByOrigin(String origin) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(GETDOMAINSBYORIGIN_VERSION, GETDOMAINSBYORIGIN_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        GetDomainsByOriginResult result = this.httpExecute(HttpMethod.GET, GETDOMAINSBYORIGIN_URL,params,buildHeaders, GetDomainsByOriginResult.class);
+        return result;
+    }
+
+    @Override
+    public GetCnameSuffixsResult getCnameSuffixs() throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(GETCNAMESUFFIXS_VERSION, GETCNAMESUFFIXS_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("AccountId", "2000001954");
+        GetCnameSuffixsResult result = this.httpExecute(HttpMethod.GET, GETCNAMESUFFIXS_URL,params,buildHeaders, GetCnameSuffixsResult.class);
         return result;
     }
 
@@ -309,5 +332,50 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         matcher.find();
         return matcher.group();
     }
+
+    @Override
+    public void setVideoSeekConfig(String domainId, SwitchEnum enable) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(SETVIDEOSEEKCONFIG_VERSION, SETVIDEOSEEKCONFIG_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("DomainId", domainId);
+        params.put("Enable", enable.getValue());
+        this.httpExecute(HttpMethod.POST, SETVIDEOSEEKCONFIG_URL, params, buildHeaders, Void.class);
+    }
+
+    @Override
+    public VideoSeekConfig getVideoSeekConfig(String domainId) throws Exception{
+        Map<String, String> buildHeaders = this.buildHeaders(GETVIDEOSEEKCONFIG_VERSION, GETVIDEOSEEKCONFIG_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("DomainId", domainId);
+        return this.httpExecute(HttpMethod.POST, GETVIDEOSEEKCONFIG_URL, params, buildHeaders, VideoSeekConfig.class);
+    }
+
+    @Override
+    public void setHttpHeadersConfig(String domainId, HttpHeaderKeyEnum httpHeaderKeyEnum, String headerValue) throws Exception{
+        Map<String, String> buildHeaders = this.buildHeaders(SETHTTPHEADERSCONFIG_VERSION, SETHTTPHEADERSCONFIG_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("DomainId", domainId);
+        params.put("HeaderKey", httpHeaderKeyEnum.getValue());
+        params.put("HeaderValue",headerValue);
+        this.httpExecute(HttpMethod.POST, SETHTTPHEADERSCONFIG_URL, params, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void deleteHttpHeadersConfig(String domainId, HttpHeaderKeyEnum httpHeaderKeyEnum) throws Exception{
+        Map<String, String> buildHeaders = this.buildHeaders(DELETEHTTPHEADERSCONFIG_VERSION, DELETEHTTPHEADERSCONFIG_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("DomainId", domainId);
+        params.put("HeaderKey", httpHeaderKeyEnum.getValue());
+        this.httpExecute(HttpMethod.POST, DELETEHTTPHEADERSCONFIG_URL, params, buildHeaders, Void.class);
+    }
+
+    @Override
+    public HttpHeadersList getHttpHeaderList(String domainId) throws Exception{
+        Map<String, String> buildHeaders = this.buildHeaders(GETHTTPHEADERLIST_VERSION, GETHTTPHEADERLIST_ACTION);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("DomainId", domainId);
+        return this.httpExecute(HttpMethod.POST, GETHTTPHEADERLIST_URL, params, buildHeaders, HttpHeadersList.class);
+    }
+
 
 }

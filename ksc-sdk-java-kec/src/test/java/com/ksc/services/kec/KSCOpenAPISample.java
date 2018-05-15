@@ -84,7 +84,8 @@ public class KSCOpenAPISample {
 		kec_client.setServiceNameIntern("kec");
 
 		DescribeInstancesRequest describe_instances_request = new DescribeInstancesRequest();
-		describe_instances_request.withInstanceIds("f9a732d4-4d3f-448c-a5d1-cef402474f9b");
+		describe_instances_request.withInstanceIds("7ac7faf8-1c39-4479-bf65-db3489d850e4");
+		describe_instances_request.withProjectIds("208");
 //		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult result = kec_client
 				.describeInstances(describe_instances_request);
@@ -109,19 +110,20 @@ public class KSCOpenAPISample {
 	@Test
 	public void runInstances(){
 		RunInstancesRequest request=new RunInstancesRequest();
-		request.setImageId("cce6789c-83a1-4d51-94b4-74b59c60e39d");
+		request.setImageId("b2e78146-58f1-4298-9397-ebf942246a2b");
 		request.setInstanceType("I1.1A");
 		request.setDataDiskGb(50);
 		request.setMaxCount(1);
 		request.setMinCount(1);
-		request.setSubnetId("0773c3e5-f2ec-4d3e-82b3-91102915e19a");
+		request.setSubnetId("9fd83a5e-33cf-4196-b8df-59fc57478488");
 		request.setInstancePassword("Qwer@1234");
-		request.setChargeType("Monthly");
+		request.setChargeType("Daily");
 		request.setPurchaseTime(1);
-		request.setSecurityGroupId("f467f1b9-26e4-4b9f-8901-ee260bde9869");
+		request.setSecurityGroupId("31a5484d-8077-4aca-8f79-e093f9d4bbc1");
 		request.setInstanceName("sdk-test");
 		request.setInstanceNameSuffix("1");
 		request.setSriovNetSupport(false);
+		request.setProjectId(208L);
 
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
