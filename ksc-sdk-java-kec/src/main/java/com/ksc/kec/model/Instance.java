@@ -37,6 +37,16 @@ public class Instance {
 
 	private String AvailabilityZone;
 
+	private String ProjectId;
+
+	public String getProjectId() {
+		return ProjectId;
+	}
+
+	public void setProjectId(String projectId) {
+		ProjectId = projectId;
+	}
+
 	public String getAvailabilityZone() {
 		return AvailabilityZone;
 	}
