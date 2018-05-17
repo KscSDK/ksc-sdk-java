@@ -7,6 +7,8 @@ import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 import org.omg.CORBA.INTERNAL;
 
+import java.math.BigDecimal;
+
 import static com.fasterxml.jackson.core.JsonToken.*;
 
 /**
@@ -27,7 +29,6 @@ public class RealtimePubStreamsInfoUnmarshaller implements Unmarshaller<StreamIn
         int originalDepth = context.getCurrentDepth();
         String currentParentElement = context.getCurrentParentElement();
         int targetDepth = originalDepth + 1;
-
 
         JsonToken token = context.getCurrentToken();
         if (token == null)
@@ -66,7 +67,8 @@ public class RealtimePubStreamsInfoUnmarshaller implements Unmarshaller<StreamIn
                     result.setHeight(context.getUnmarshaller(String.class).unmarshall(context));
                 } else if (context.testExpression(ParamConstant.PUBDOMAIN,targetDepth)) {
                     context.nextToken();
-                    result.setPubtime(context.getUnmarshaller(Integer.class).unmarshall(context));
+                    BigDecimal temPubTime = new BigDecimal(context.getUnmarshaller(String.class).unmarshall(context));
+                    result.setPubtime(Integer.parseInt(temPubTime.toString()));
                 } else if (context.testExpression(ParamConstant.SAMPLE_RATE,targetDepth)) {
                     context.nextToken();
                     result.setSampleRate(context.getUnmarshaller(String.class).unmarshall(context));
@@ -75,7 +77,8 @@ public class RealtimePubStreamsInfoUnmarshaller implements Unmarshaller<StreamIn
                     result.setStream(context.getUnmarshaller(String.class).unmarshall(context));
                 } else if (context.testExpression(ParamConstant.UPDATE_TIME,targetDepth)) {
                     context.nextToken();
-                    result.setUpdateTime(context.getUnmarshaller(Integer.class).unmarshall(context));
+                    BigDecimal tempUpdateTime = new BigDecimal(context.getUnmarshaller(String.class).unmarshall(context));
+                    result.setUpdateTime(Integer.parseInt(tempUpdateTime.toString()));
                 } else if (context.testExpression(ParamConstant.WIDTH,targetDepth)) {
                     context.nextToken();
                     result.setWidth(context.getUnmarshaller(String.class).unmarshall(context));
