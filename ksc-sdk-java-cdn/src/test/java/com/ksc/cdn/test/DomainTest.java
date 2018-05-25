@@ -32,8 +32,8 @@ public class DomainTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKLT7YUABJyMSNCyCypfiJ3jyw",
-                "OJKg3svMFvIlEqn5Hn8/qzLxqGqZo+1IaYSfDP3YvY21jfGz+WAiDG6lDKWfyh330w==",
+        client = new KscCdnClient("ak",
+                "sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
