@@ -18,6 +18,8 @@ import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
 import com.ksc.cdn.model.domain.domaindetail.*;
 import com.ksc.cdn.model.domain.domainhttps.*;
+import com.ksc.cdn.model.domain.ipcheck.IpCheckRequest;
+import com.ksc.cdn.model.domain.ipcheck.IpCheckResponse;
 import com.ksc.cdn.model.domain.tool.GetCnameSuffixsResult;
 import com.ksc.cdn.model.domain.tool.GetDomainsByOriginResult;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
@@ -38,7 +40,7 @@ import java.util.regex.Pattern;
 /**
  * api接口功能实现
  */
-public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps, KscCdnBlockUrl {
+public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps, KscCdnBlockUrl, KscIpCheck {
 
     public KscCdnClient() {
 
@@ -385,4 +387,10 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
     }
 
 
+    @Override
+    public IpCheckResponse ipCheck(IpCheckRequest request) throws Exception {
+        GeneralRequestParam generalRequestParam = request.getGeneralRequestParam();
+        Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
+        return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, IpCheckResponse.class);
+    }
 }

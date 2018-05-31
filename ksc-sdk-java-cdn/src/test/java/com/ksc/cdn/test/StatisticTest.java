@@ -26,6 +26,8 @@ import com.ksc.cdn.model.statistic.isp.IspRequest;
 import com.ksc.cdn.model.statistic.isp.IspResult;
 import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainRequest;
 import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainResult;
+import com.ksc.cdn.model.statistic.live.playstat.GetLivePlayStatDataRequest;
+import com.ksc.cdn.model.statistic.live.playstat.GetLivePlayStatDataResponse;
 import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamRequest;
 import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamResult;
 import com.ksc.cdn.model.statistic.live.stream.flow.DataByTime;
@@ -80,8 +82,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("your ak",
-                "your sk",
+        cdnClient = new KscCdnClient("",
+                "",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -992,5 +994,14 @@ public class StatisticTest {
         SubDomainsPvResult result = (SubDomainsPvResult) cdnClient.generalGetStatisticsData(request, SubDomainsPvResult.class);
         System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
         Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void testGetLivePlayStatData() throws Exception {
+        GetLivePlayStatDataRequest request = new GetLivePlayStatDataRequest();
+        request.setResultType("0");
+        request.setStartTime("2018-05-30T02:00+0800");
+        GetLivePlayStatDataResponse result = (GetLivePlayStatDataResponse)cdnClient.generalGetStatisticsData(request, GetLivePlayStatDataResponse.class);
+        System.out.print(result.getDatas().size());
     }
 }
