@@ -878,7 +878,7 @@ public class StatisticTest {
         BillingRequest request = new BillingRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-28T23:56+0800");
-        request.setCdnType("download");
+        request.setCdnType("video");
         request.setBillingMode("monthflow");
         request.setRegions("CN,AS,NA,AU");
         BillingWebResponse result = (BillingWebResponse) cdnClient.generalGetStatisticsData(request, BillingWebResponse.class);
@@ -898,7 +898,7 @@ public class StatisticTest {
         PeakBandwidthDataRequest request = new PeakBandwidthDataRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-28T23:56+0800");
-        request.setCdnType("download");
+        request.setCdnType("video");
         request.setRegions("CN,AS,NA,AU");
         request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 
