@@ -68,7 +68,7 @@ public class DomainTest {
         //设置查询条件,可以多个条件组合查询,也可无查询条件查所有
         request.setPageNumber(1l);
         request.setPageSize(20l);
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setDomainStatus(DomainStatus.ONLINE.getCode());
         request.setDomainName("");
         request.setFuzzyMatch("");
@@ -113,7 +113,7 @@ public class DomainTest {
         AddDomainRequest request = new AddDomainRequest();
 
         request.setDomainName("www.qunar.com");//加速域名
-        request.setCdnType(CdnTypeEnum.download.getValue());//加速类型
+        request.setCdnType(CdnTypeEnum.video.getValue());//加速类型
         request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());//客户访问边缘节点的协议。默认http
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//源站类型
         request.setOrigin("www.ksyun.com");//源站域名
