@@ -17,6 +17,8 @@ public class DescribeLocalVolumesRequest extends KscWebServiceRequest
 
 	private static final long serialVersionUID = 1L;
 	private String InstanceName;
+	private Integer maxResults;
+	private Integer marker;
 	
 	@Override
 	public Request<DescribeLocalVolumesRequest> getDryRunRequest() {
@@ -33,5 +35,20 @@ public class DescribeLocalVolumesRequest extends KscWebServiceRequest
 	public void setInstanceName(String instanceName) {
 		InstanceName = instanceName;
 	}
-	
+
+	public Integer getMaxResults() {
+		return maxResults;
+	}
+
+	public void setMaxResults(Integer maxResults) {
+		this.maxResults = maxResults;
+	}
+
+	public Integer getMarker() {
+		return marker;
+	}
+
+	public void setMarker(Integer marker) {
+		this.marker = marker;
+	}
 }
