@@ -33,7 +33,14 @@ public class DescribeLocalVolumesRequestMarshaller implements
         	request.addParameter("InstanceName", 
                     StringUtils.fromString(describeLocalVolumesRequest.getInstanceName()));
         }
-        
+        if(describeLocalVolumesRequest.getMarker() != null){
+            request.addParameter("Marker",
+                    StringUtils.fromInteger(describeLocalVolumesRequest.getMarker()));
+        }
+        if(describeLocalVolumesRequest.getMaxResults() != null){
+            request.addParameter("MaxResults",
+                    StringUtils.fromInteger(describeLocalVolumesRequest.getMaxResults()));
+        }
         return request;
     }
 }
