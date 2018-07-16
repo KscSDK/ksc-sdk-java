@@ -15,7 +15,10 @@ implements DryRunSupportedRequest<ListMetricsRequest>{
 	private String MetricName;
 	private Integer PageIndex;
 	private Integer PageSize;
-	
+	/**
+	 * 监控指标维度，目前只支持docker 
+	 */
+	private HashMap<String,String> dimensions;
 	@Override
 	public Request<ListMetricsRequest> getDryRunRequest() {
 		Request<ListMetricsRequest> request = new ListMetricsRequestMarshaller()
@@ -62,5 +65,13 @@ implements DryRunSupportedRequest<ListMetricsRequest>{
 
 	public void setPageSize(Integer pageSize) {
 		PageSize = pageSize;
+	}
+	
+	public HashMap<String, String> getDimensions() {
+		return dimensions;
+	}
+
+	public void setDimensions(HashMap<String, String> dimensions) {
+		this.dimensions = dimensions;
 	}
 }
