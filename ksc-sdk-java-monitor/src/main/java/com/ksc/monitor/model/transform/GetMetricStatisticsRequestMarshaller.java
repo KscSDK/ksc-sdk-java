@@ -1,5 +1,8 @@
 package com.ksc.monitor.model.transform;
 
+import java.util.HashMap;
+import java.util.Map.Entry;
+
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
@@ -47,6 +50,17 @@ public class GetMetricStatisticsRequestMarshaller
 		}
 		if (getMetricStatisticsRequest.getAggregate() != null) {
 			request.addParameter("Aggregate", StringUtils.fromString(getMetricStatisticsRequest.getAggregate()));
+		}
+		if (getMetricStatisticsRequest.getDimensions() != null) {
+			HashMap<String,String> dimensions=getMetricStatisticsRequest.getDimensions() ;
+			if (dimensions.size()!=0){
+				 for (Entry<String, String> entry : dimensions.entrySet()) {
+					 if ((entry.getValue()!=null &&entry.getValue()!="")&&(entry.getKey()!=null &&entry.getKey()!="")){
+						 request.addParameter(entry.getKey(), StringUtils.fromString(entry.getValue()));
+					 }
+				 }
+			}
+			
 		}
 		return request;
 	}
