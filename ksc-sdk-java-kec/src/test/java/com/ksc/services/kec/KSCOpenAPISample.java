@@ -274,7 +274,9 @@ public class KSCOpenAPISample {
 	@Test
 	public void describeLocalVolumes(){
 		DescribeLocalVolumesRequest request=new DescribeLocalVolumesRequest();
-		request.setInstanceName("KSC170518204032_");
+//		request.setInstanceName("KSC170518204032_");
+		request.setMarker(0);
+		request.setMaxResults(5);
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
