@@ -29,8 +29,14 @@ import com.ksc.kec.model.CreateLocalVolumeSnapshotRequest;
 import com.ksc.kec.model.CreateLocalVolumeSnapshotResult;
 import com.ksc.kec.model.DeleteLocalVolumeSnapshotRequest;
 import com.ksc.kec.model.DeleteLocalVolumeSnapshotResult;
+import com.ksc.kec.model.DescribeAvailabilityZonesRequest;
+import com.ksc.kec.model.DescribeAvailabilityZonesResult;
 import com.ksc.kec.model.DescribeImagesRequest;
 import com.ksc.kec.model.DescribeImagesResult;
+import com.ksc.kec.model.DescribeInstanceFamilysRequest;
+import com.ksc.kec.model.DescribeInstanceFamilysResult;
+import com.ksc.kec.model.DescribeInstanceTypeConfigsRequest;
+import com.ksc.kec.model.DescribeInstanceTypeConfigsResult;
 import com.ksc.kec.model.DescribeInstanceVncRequest;
 import com.ksc.kec.model.DescribeInstanceVncResult;
 import com.ksc.kec.model.DescribeInstancesRequest;
@@ -77,8 +83,14 @@ import com.ksc.kec.model.transform.CreateLocalVolumeSnapshotRequestMarshaller;
 import com.ksc.kec.model.transform.CreateLocalVolumeSnapshotResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotRequestMarshaller;
 import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DescribeAvailabilityZonesRequestMarshaller;
+import com.ksc.kec.model.transform.DescribeAvailabilityZonesResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.DescribeImagesRequestMarshaller;
 import com.ksc.kec.model.transform.DescribeImagesResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DescribeInstanceFamilysRequestMarshaller;
+import com.ksc.kec.model.transform.DescribeInstanceFamilysResultStaxUnmarshaller;
+import com.ksc.kec.model.transform.DescribeInstanceTypeConfigsRequestMarshaller;
+import com.ksc.kec.model.transform.DescribeInstanceTypeConfigsResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.DescribeInstanceVncRequestMarshaller;
 import com.ksc.kec.model.transform.DescribeInstanceVncResultStaxUnmarshaller;
 import com.ksc.kec.model.transform.DescribeInstancesRequestMarshaller;
@@ -1117,6 +1129,100 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 
 			StaxResponseHandler<DetachNetworkInterfaceResult> responseHandler = new StaxResponseHandler<DetachNetworkInterfaceResult>(
 					new DetachNetworkInterfaceResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	
+	@Override
+	public DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest){
+		ExecutionContext executionContext = createExecutionContext(describeAvailabilityZonesRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeAvailabilityZonesRequest> request = null;
+		Response<DescribeAvailabilityZonesResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeAvailabilityZonesRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeAvailabilityZonesRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeAvailabilityZonesResult> responseHandler = new StaxResponseHandler<DescribeAvailabilityZonesResult>(
+					new DescribeAvailabilityZonesResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	@Override
+	public DescribeInstanceTypeConfigsResult describeInstanceTypeConfigs(DescribeInstanceTypeConfigsRequest describeInstanceTypeConfigsRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeInstanceTypeConfigsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeInstanceTypeConfigsRequest> request = null;
+		Response<DescribeInstanceTypeConfigsResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeInstanceTypeConfigsRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeInstanceTypeConfigsRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeInstanceTypeConfigsResult> responseHandler = new StaxResponseHandler<DescribeInstanceTypeConfigsResult>(
+					new DescribeInstanceTypeConfigsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	
+	@Override
+	public DescribeInstanceFamilysResult describeInstanceFamilys(DescribeInstanceFamilysRequest describeInstanceFamilysRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeInstanceFamilysRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeInstanceFamilysRequest> request = null;
+		Response<DescribeInstanceFamilysResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeInstanceFamilysRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeInstanceFamilysRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeInstanceFamilysResult> responseHandler = new StaxResponseHandler<DescribeInstanceFamilysResult>(
+					new DescribeInstanceFamilysResultStaxUnmarshaller());
 			response = invoke(request, responseHandler, executionContext);
 
 			return response.getKscResponse();

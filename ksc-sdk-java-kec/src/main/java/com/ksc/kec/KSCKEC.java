@@ -8,8 +8,14 @@ import com.ksc.kec.model.CreateLocalVolumeSnapshotRequest;
 import com.ksc.kec.model.CreateLocalVolumeSnapshotResult;
 import com.ksc.kec.model.DeleteLocalVolumeSnapshotRequest;
 import com.ksc.kec.model.DeleteLocalVolumeSnapshotResult;
+import com.ksc.kec.model.DescribeAvailabilityZonesRequest;
+import com.ksc.kec.model.DescribeAvailabilityZonesResult;
 import com.ksc.kec.model.DescribeImagesRequest;
 import com.ksc.kec.model.DescribeImagesResult;
+import com.ksc.kec.model.DescribeInstanceFamilysRequest;
+import com.ksc.kec.model.DescribeInstanceFamilysResult;
+import com.ksc.kec.model.DescribeInstanceTypeConfigsRequest;
+import com.ksc.kec.model.DescribeInstanceTypeConfigsResult;
 import com.ksc.kec.model.DescribeInstanceVncRequest;
 import com.ksc.kec.model.DescribeInstanceVncResult;
 import com.ksc.kec.model.DescribeInstancesRequest;
@@ -288,4 +294,25 @@ public interface KSCKEC {
 	 * @return
 	 */
 	DetachNetworkInterfaceResult detachNetworkInterface(DetachNetworkInterfaceRequest detachNetworkInterfaceRequest);
+
+	/**
+	 * 查询可用区列表
+	 * @param describeAvailabilityZonesRequest
+	 * @return
+	 */
+	DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest);
+
+	/**
+	 * 查询机型套餐配置信息
+	 * @param describeInstanceTypeConfigsRequest
+	 * @return
+	 */
+	DescribeInstanceTypeConfigsResult describeInstanceTypeConfigs(DescribeInstanceTypeConfigsRequest describeInstanceTypeConfigsRequest);
+
+	/**
+	 * 查询机型配置信息
+	 * @param describeInstanceFamilysRequest
+	 * @return
+	 */
+	DescribeInstanceFamilysResult describeInstanceFamilys(DescribeInstanceFamilysRequest describeInstanceFamilysRequest);
 }
