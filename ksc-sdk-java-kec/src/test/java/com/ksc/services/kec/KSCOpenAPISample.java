@@ -13,8 +13,8 @@ import com.ksc.kec.KSCKECClient;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "";
-	public static final String AWS_SK = "";
+	public static final String AWS_AK = "AKLTaX9enqQbSKS1gb8r88-Gtw";
+	public static final String AWS_SK = "OINcA3uPsg0Xu+QTRfDVn59PYQ8K0QhMqQDC2ABb19bu0U9BuJmyyp6WQzUVfW1xAQ==";
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
@@ -95,7 +95,8 @@ public class KSCOpenAPISample {
 	@Test
 	public void DescribeImages(){
 		DescribeImagesRequest request=new DescribeImagesRequest();
-		request.setImageId("0a7b5f5a-13c7-447b-8df0-97bd90c5a8f8");
+		request.setImageId("28adde6a-f33f-43a3-b1bd-09b81f6f2167");
+//		request.setImageType("share");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");

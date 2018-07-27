@@ -35,6 +35,9 @@ public class DescribeImagesRequestMarshaller implements
         	request.addParameter("ImageId", describeImagesRequest.getImageId());
         }
 
+        if(describeImagesRequest.getImageType()!=null){
+            request.addParameter("ImageType", describeImagesRequest.getImageType());
+        }
         return request;
     }
 
