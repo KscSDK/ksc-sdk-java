@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "AKLTaX9enqQbSKS1gb8r88-Gtw";
-	public static final String AWS_SK = "OINcA3uPsg0Xu+QTRfDVn59PYQ8K0QhMqQDC2ABb19bu0U9BuJmyyp6WQzUVfW1xAQ==";
+	public static final String AWS_AK = "";
+	public static final String AWS_SK = "";
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
