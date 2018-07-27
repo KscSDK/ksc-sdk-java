@@ -3,6 +3,8 @@ package com.ksc.kec;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.ksc.kec.model.*;
+import com.ksc.kec.model.transform.*;
 import org.w3c.dom.Node;
 
 import com.ksc.ClientConfiguration;
@@ -21,114 +23,6 @@ import com.ksc.http.ExecutionContext;
 import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
-import com.ksc.kec.model.AttachNetworkInterfaceRequest;
-import com.ksc.kec.model.AttachNetworkInterfaceResult;
-import com.ksc.kec.model.CreateImageRequest;
-import com.ksc.kec.model.CreateImageResult;
-import com.ksc.kec.model.CreateLocalVolumeSnapshotRequest;
-import com.ksc.kec.model.CreateLocalVolumeSnapshotResult;
-import com.ksc.kec.model.DeleteLocalVolumeSnapshotRequest;
-import com.ksc.kec.model.DeleteLocalVolumeSnapshotResult;
-import com.ksc.kec.model.DescribeAvailabilityZonesRequest;
-import com.ksc.kec.model.DescribeAvailabilityZonesResult;
-import com.ksc.kec.model.DescribeImagesRequest;
-import com.ksc.kec.model.DescribeImagesResult;
-import com.ksc.kec.model.DescribeInstanceFamilysRequest;
-import com.ksc.kec.model.DescribeInstanceFamilysResult;
-import com.ksc.kec.model.DescribeInstanceTypeConfigsRequest;
-import com.ksc.kec.model.DescribeInstanceTypeConfigsResult;
-import com.ksc.kec.model.DescribeInstanceVncRequest;
-import com.ksc.kec.model.DescribeInstanceVncResult;
-import com.ksc.kec.model.DescribeInstancesRequest;
-import com.ksc.kec.model.DescribeInstancesResult;
-import com.ksc.kec.model.DescribeLocalVolumeSnapshotsRequest;
-import com.ksc.kec.model.DescribeLocalVolumeSnapshotsResult;
-import com.ksc.kec.model.DescribeLocalVolumesRequest;
-import com.ksc.kec.model.DescribeLocalVolumesResult;
-import com.ksc.kec.model.DetachNetworkInterfaceRequest;
-import com.ksc.kec.model.DetachNetworkInterfaceResult;
-import com.ksc.kec.model.ModifyImageAttributeRequest;
-import com.ksc.kec.model.ModifyImageAttributeResult;
-import com.ksc.kec.model.ModifyInstanceAttributeRequest;
-import com.ksc.kec.model.ModifyInstanceAttributeResult;
-import com.ksc.kec.model.ModifyInstanceImageRequest;
-import com.ksc.kec.model.ModifyInstanceImageResult;
-import com.ksc.kec.model.ModifyInstanceTypeRequest;
-import com.ksc.kec.model.ModifyInstanceTypeResult;
-import com.ksc.kec.model.ModifyNetworkInterfaceAttributeRequest;
-import com.ksc.kec.model.ModifyNetworkInterfaceAttributeResult;
-import com.ksc.kec.model.MonitorInstancesRequest;
-import com.ksc.kec.model.MonitorInstancesResult;
-import com.ksc.kec.model.RebootInstancesRequest;
-import com.ksc.kec.model.RebootInstancesResult;
-import com.ksc.kec.model.RemoveImagesRequest;
-import com.ksc.kec.model.RemoveImagesResult;
-import com.ksc.kec.model.RollbackLocalVolumeRequest;
-import com.ksc.kec.model.RollbackLocalVolumeResult;
-import com.ksc.kec.model.RunInstancesRequest;
-import com.ksc.kec.model.RunInstancesResult;
-import com.ksc.kec.model.StartInstancesRequest;
-import com.ksc.kec.model.StartInstancesResult;
-import com.ksc.kec.model.StopInstancesRequest;
-import com.ksc.kec.model.StopInstancesResult;
-import com.ksc.kec.model.TerminateInstancesRequest;
-import com.ksc.kec.model.TerminateInstancesResult;
-import com.ksc.kec.model.UnmonitorInstancesRequest;
-import com.ksc.kec.model.UnmonitorInstancesResult;
-import com.ksc.kec.model.transform.AttachNetworkInterfaceRequestMarshaller;
-import com.ksc.kec.model.transform.AttachNetworkInterfaceResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.CreateImageRequestMarshaller;
-import com.ksc.kec.model.transform.CreateImageResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.CreateLocalVolumeSnapshotRequestMarshaller;
-import com.ksc.kec.model.transform.CreateLocalVolumeSnapshotResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotRequestMarshaller;
-import com.ksc.kec.model.transform.DeleteLocalVolumeSnapshotResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeAvailabilityZonesRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeAvailabilityZonesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeImagesRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeImagesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeInstanceFamilysRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeInstanceFamilysResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeInstanceTypeConfigsRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeInstanceTypeConfigsResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeInstanceVncRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeInstanceVncResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeLocalVolumeSnapshotsRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeLocalVolumeSnapshotsResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DescribeLocalVolumesRequestMarshaller;
-import com.ksc.kec.model.transform.DescribeLocalVolumesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.DetachNetworkInterfaceRequestMarshaller;
-import com.ksc.kec.model.transform.DetachNetworkInterfaceResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.ModifyImageAttributeRequestMarshaller;
-import com.ksc.kec.model.transform.ModifyImageAttributeResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.ModifyInstanceAttributeRequestMarshaller;
-import com.ksc.kec.model.transform.ModifyInstanceAttributeResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.ModifyInstanceImageRequestMarshaller;
-import com.ksc.kec.model.transform.ModifyInstanceImageResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.ModifyInstanceTypeRequestMarshaller;
-import com.ksc.kec.model.transform.ModifyInstanceTypeResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.ModifyNetworkInterfaceAttributeRequestMarshaller;
-import com.ksc.kec.model.transform.ModifyNetworkInterfaceAttributeResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.MonitorInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.MonitorInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.RebootInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.RebootInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.RemoveImagesRequestMarshaller;
-import com.ksc.kec.model.transform.RemoveImagesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.RollbackLocalVolumeRequestMarshaller;
-import com.ksc.kec.model.transform.RollbackLocalVolumeResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.RunInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.RunInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.StartInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.StartInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.StopInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.StopInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.TerminateInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.TerminateInstancesResultStaxUnmarshaller;
-import com.ksc.kec.model.transform.UnmonitorInstancesRequestMarshaller;
-import com.ksc.kec.model.transform.UnmonitorInstancesResultStaxUnmarshaller;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
@@ -1138,7 +1032,37 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
+
+	@Override
+	public DescribeRegionsResult describeRegions(DescribeRegionsRequest describeRegionsRequest){
+		ExecutionContext executionContext = createExecutionContext(describeRegionsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeRegionsRequest> request = null;
+		Response<DescribeRegionsResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeRegionsRequestMarshaller()
+						.marshall(super.beforeMarshalling(describeRegionsRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeRegionsResult> responseHandler = new StaxResponseHandler<DescribeRegionsResult>(
+					new DescribeRegionsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
 	
 	@Override
 	public DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest){
