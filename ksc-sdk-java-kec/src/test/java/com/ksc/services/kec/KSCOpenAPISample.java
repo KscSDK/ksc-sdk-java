@@ -1,14 +1,16 @@
 package com.ksc.services.kec;
 
-import com.ksc.kec.model.*;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-
 import com.google.gson.Gson;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.kec.KSCKECClient;
+import com.ksc.kec.model.*;
+import com.ksc.model.Filter;
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
+import java.util.Arrays;
 
 public class KSCOpenAPISample {
 
@@ -95,7 +97,8 @@ public class KSCOpenAPISample {
 	@Test
 	public void DescribeImages(){
 		DescribeImagesRequest request=new DescribeImagesRequest();
-		request.setImageId("0a7b5f5a-13c7-447b-8df0-97bd90c5a8f8");
+		request.setImageId("28adde6a-f33f-43a3-b1bd-09b81f6f2167");
+//		request.setImageType("share");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
@@ -387,5 +390,66 @@ public class KSCOpenAPISample {
 		DetachNetworkInterfaceResult result=kec_client.detachNetworkInterface(request);
 		Gson gson = new Gson();
 		log.info("detachNetworkInterface Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void describeRegions(){
+		DescribeRegionsRequest request = new DescribeRegionsRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		DescribeRegionsResult result=kec_client.describeRegions(request);
+		Gson gson = new Gson();
+		log.info("describeRegions Result: "+gson.toJson(result));
+	}
+	
+	@Test
+	public void describeAvailabilityZones(){
+		DescribeAvailabilityZonesRequest request = new DescribeAvailabilityZonesRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		DescribeAvailabilityZonesResult result=kec_client.describeAvailabilityZones(request);
+		Gson gson = new Gson();
+		log.info("describeAvailabilityZones Result: "+gson.toJson(result));
+	}
+	
+	@Test
+	public void describeInstanceTypeConfigs(){
+		DescribeInstanceTypeConfigsRequest request = new DescribeInstanceTypeConfigsRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		com.ksc.internal.SdkInternalList<Filter> filters = new com.ksc.internal.SdkInternalList<Filter>();
+		
+		Filter filter = new Filter();
+		filter.setName("availability-zone");
+		filter.setValues(Arrays.asList("cn-shanghai-3a"));
+		filters.add(filter);
+		
+		Filter filter1 = new Filter();
+		filter1.setName("instance-family");
+		filter1.setValues(Arrays.asList("I1"));
+		filters.add(filter1);
+		
+		request.setFilters(filters);
+		DescribeInstanceTypeConfigsResult result=kec_client.describeInstanceTypeConfigs(request);
+		Gson gson = new Gson();
+		log.info("DescribeInstanceTypeConfigs Result: "+gson.toJson(result));
+	}
+	
+	@Test
+	public void describeInstanceFamilys(){
+		DescribeInstanceFamilysRequest request = new DescribeInstanceFamilysRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		DescribeInstanceFamilysResult result=kec_client.describeInstanceFamilys(request);
+		Gson gson = new Gson();
+		log.info("describeInstanceFamilys Result: "+gson.toJson(result));
 	}
 }
