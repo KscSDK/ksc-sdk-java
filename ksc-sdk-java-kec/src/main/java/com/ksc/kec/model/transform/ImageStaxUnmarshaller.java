@@ -47,6 +47,16 @@ public class ImageStaxUnmarshaller implements Unmarshaller<Image, StaxUnmarshall
 					info.setPlatform(StringStaxUnmarshaller.getInstance().unmarshall(context));
 				}else if (context.testExpression("ImageState", targetDepth)) {
 					info.setImageState(StringStaxUnmarshaller.getInstance().unmarshall(context));
+				}else if (context.testExpression("IsNpe", targetDepth)) {
+					info.setIsNpe(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+				}else if (context.testExpression("UserCategory", targetDepth)) {
+					info.setUserCategory(StringStaxUnmarshaller.getInstance().unmarshall(context));
+				}else if (context.testExpression("SysDisk", targetDepth)) {
+					info.setSysDisk(StringStaxUnmarshaller.getInstance().unmarshall(context));
+				}else if (context.testExpression("Progress", targetDepth)) {
+					info.setProgress(StringStaxUnmarshaller.getInstance().unmarshall(context));
+				}else if (context.testExpression("ImageSource", targetDepth)) {
+					info.setImageSource(StringStaxUnmarshaller.getInstance().unmarshall(context));
 				}
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {

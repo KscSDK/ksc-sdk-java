@@ -16,6 +16,16 @@ public class Image {
 
 	private Boolean IsPublic;
 
+	private Boolean IsNpe;
+
+	private String UserCategory;
+
+	private String SysDisk;
+
+	private String Progress;
+
+	private String ImageSource;
+
 	private String InstanceId;
 
 	public String getImageId() {
@@ -73,5 +83,44 @@ public class Image {
 	public void setInstanceId(String instanceId) {
 		InstanceId = instanceId;
 	}
-	
+
+	public Boolean getIsNpe() {
+		return IsNpe;
+	}
+
+	public void setIsNpe(Boolean isNpe) {
+		IsNpe = isNpe;
+	}
+
+	public String getUserCategory() {
+		return UserCategory;
+	}
+
+	public void setUserCategory(String userCategory) {
+		UserCategory = userCategory;
+	}
+
+	public String getSysDisk() {
+		return SysDisk;
+	}
+
+	public void setSysDisk(String sysDisk) {
+		SysDisk = sysDisk;
+	}
+
+	public String getProgress() {
+		return Progress;
+	}
+
+	public void setProgress(String progress) {
+		Progress = progress;
+	}
+
+	public String getImageSource() {
+		return ImageSource;
+	}
+
+	public void setImageSource(String imageSource) {
+		ImageSource = imageSource;
+	}
 }
