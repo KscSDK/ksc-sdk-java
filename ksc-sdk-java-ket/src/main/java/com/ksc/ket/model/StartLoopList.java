@@ -3,7 +3,7 @@ package com.ksc.ket.model;
 public class StartLoopList {
 	private String Format;
 	private String TaskID;
-
+	
 	public String getFormat() {
 		return Format;
 	}

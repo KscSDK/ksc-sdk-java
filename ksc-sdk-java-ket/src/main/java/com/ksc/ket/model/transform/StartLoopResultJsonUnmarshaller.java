@@ -7,6 +7,7 @@ import static com.fasterxml.jackson.core.JsonToken.START_OBJECT;
 import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
+import com.ksc.ket.model.FilePathList;
 import com.ksc.ket.model.StartLoopList;
 import com.ksc.ket.model.StartLoopResult;
 import com.ksc.transform.JsonUnmarshallerContext;
@@ -42,6 +43,10 @@ public class StartLoopResultJsonUnmarshaller implements Unmarshaller<StartLoopRe
 				} else if (context.testExpression("ErrMsg", targetDepth)) {
 					context.nextToken();
 					startLoopResult.setErrMsg((context.getUnmarshaller(String.class).unmarshall(context)));
+				} else if (context.testExpression("ErrFilePath", targetDepth)) {
+					context.nextToken();
+					startLoopResult.setErrFilePath(
+							new ListUnmarshaller<FilePathList>(FilePathListJsonUnmarshaller.getInstance()).unmarshall(context));
 				}
 
 			} else if (token == END_ARRAY || token == END_OBJECT) {
