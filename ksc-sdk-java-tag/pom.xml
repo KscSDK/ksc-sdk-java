@@ -3,7 +3,7 @@
   <parent>
     <groupId>com.ksyun</groupId>
     <artifactId>ksc-sdk-java</artifactId>
-    <version>0.2.5</version>
+    <version>0.2.6</version>
   </parent>
   <artifactId>ksc-sdk-java-tag</artifactId>
   
