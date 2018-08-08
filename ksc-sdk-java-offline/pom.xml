@@ -10,7 +10,7 @@
 
   <groupId>com.ksyun</groupId>
   <artifactId>ksc-sdk-java-offline</artifactId>
-  <version>0.2.5</version>
+  <version>0.2.8</version>
   <packaging>jar</packaging>
   
   
