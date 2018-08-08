@@ -5,7 +5,7 @@
   <parent>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
-	<version>0.2.6</version>
+	<version>0.2.8</version>
   </parent>
   <artifactId>ksc-sdk-java-bom</artifactId>
   <packaging>pom</packaging>
