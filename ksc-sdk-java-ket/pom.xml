@@ -6,11 +6,11 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.2.8</version>
+		<version>0.2.9</version>
 	</parent>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java-ket</artifactId>
-	<version>0.2.8</version>
+	<version>0.2.9</version>
 	<packaging>jar</packaging>
 	<name>KSC SDK for Java - Ket</name>
 	<url>http://maven.apache.org</url>
