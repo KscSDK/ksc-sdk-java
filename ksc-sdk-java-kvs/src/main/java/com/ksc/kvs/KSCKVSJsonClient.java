@@ -722,4 +722,35 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		}
 	}
 
+	public GetPlayInfoResult GetPlayInfo(GetPlayInfoRequest getPlayInfoRequest) {
+		// TODO Auto-generated method stub
+		ExecutionContext executionContext = createExecutionContext(getPlayInfoRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetPlayInfoRequest> request = null;
+		Response<GetPlayInfoResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetPlayInfoRequestMarshaller()
+						.marshall(super.beforeMarshalling(getPlayInfoRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			HttpResponseHandler<KscWebServiceResponse<GetPlayInfoResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetPlayInfoResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+			return response.getKscResponse();
+
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 }
