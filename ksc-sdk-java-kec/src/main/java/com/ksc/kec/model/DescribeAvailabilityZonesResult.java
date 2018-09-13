@@ -21,7 +21,15 @@ public class DescribeAvailabilityZonesResult implements Serializable, Cloneable{
 	public void setRequestId(String requestId) {
 		RequestId = requestId;
 	}
-	
+
+	public List<AvailabilityZone> getAvailabilityZoneSet() {
+		return AvailabilityZoneSet;
+	}
+
+	public void setAvailabilityZoneSet(List<AvailabilityZone> availabilityZoneSet) {
+		AvailabilityZoneSet = availabilityZoneSet;
+	}
+
 	public DescribeAvailabilityZonesResult withAvailabilityZone(AvailabilityZone... instances) {
 		if(this.AvailabilityZoneSet == null){
 			this.AvailabilityZoneSet = new ArrayList<AvailabilityZone>();
