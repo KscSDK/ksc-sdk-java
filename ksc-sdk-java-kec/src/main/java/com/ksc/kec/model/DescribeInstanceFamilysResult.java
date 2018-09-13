@@ -39,6 +39,13 @@ public class DescribeInstanceFamilysResult implements Serializable, Cloneable {
 		RequestId = requestId;
 	}
 
+	public List<InstanceFamily> getInstanceFamilySet() {
+		return InstanceFamilySet;
+	}
+
+	public void setInstanceFamilySet(List<InstanceFamily> instanceFamilySet) {
+		InstanceFamilySet = instanceFamilySet;
+	}
 
 	@Override
 	public DescribeInstanceFamilysResult clone() {

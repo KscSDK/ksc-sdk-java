@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.2.9</version>
+		<version>0.3.0</version>
 	</parent>
 	<artifactId>ksc-sdk-java-kec</artifactId>
 	<name>KSC SDK for Java - KEC</name>
