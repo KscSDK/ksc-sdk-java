@@ -3,6 +3,8 @@ import com.ksc.monitor.model.GetMetricStatisticsRequest;
 import com.ksc.monitor.model.GetCustomMetricStatisticsRequest;
 import com.ksc.monitor.model.GetMetricStatisticsResponse;
 import com.ksc.monitor.model.GetCustomMetricStatisticsResponse;
+import com.ksc.monitor.model.GetMetricStatisticsBatchRequest;
+import com.ksc.monitor.model.GetMetricStatisticsBatchResponse;
 import com.ksc.monitor.model.ListMetricsRequest;
 import com.ksc.monitor.model.ListCustomMetricsRequest;
 import com.ksc.monitor.model.ListMetricsResponse;
@@ -23,6 +25,7 @@ public interface KSCMonitor {
 	 * @sample KSC.GetMetricStatistics
 	 */
 	public GetMetricStatisticsResponse getMetricStatistics(GetMetricStatisticsRequest getMetricStatisticsRequest);
+	public GetMetricStatisticsBatchResponse getMetricStatisticsBatch(GetMetricStatisticsBatchRequest getMetricStatisticsBatchRequest);
 	public GetCustomMetricStatisticsResponse getCustomMetricStatistics(GetCustomMetricStatisticsRequest getCustomMetricStatisticsRequest);
 	/**
 	 * <p>
