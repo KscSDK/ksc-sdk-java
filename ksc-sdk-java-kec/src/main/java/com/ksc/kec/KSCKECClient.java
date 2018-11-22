@@ -1156,5 +1156,128 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
-	
+
+	@Override
+	public ImageImportResult imageImport(ImageImportRequest imageImportRequest) {
+		ExecutionContext executionContext = createExecutionContext(imageImportRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ImageImportRequest> request = null;
+		Response<ImageImportResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ImageImportRequestMarshaller()
+						.marshall(super.beforeMarshalling(imageImportRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ImageImportResult> responseHandler = new StaxResponseHandler<ImageImportResult>(
+					new ImageImportStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ImageCopyResult imageCopy(ImageCopyRequest imageCopyRequest) {
+		ExecutionContext executionContext = createExecutionContext(imageCopyRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ImageCopyRequest> request = null;
+		Response<ImageCopyResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ImageCopyRequestMarshaller()
+						.marshall(super.beforeMarshalling(imageCopyRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ImageCopyResult> responseHandler = new StaxResponseHandler<ImageCopyResult>(
+					new ImageCopyStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyImageSharePermissionResult modifyImageSharePermission(ModifyImageSharePermissionRequest modifyImageSharePermissionRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyImageSharePermissionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyImageSharePermissionRequest> request = null;
+		Response<ModifyImageSharePermissionResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyImageSharePermissionMarshaller()
+						.marshall(super.beforeMarshalling(modifyImageSharePermissionRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ModifyImageSharePermissionResult> responseHandler = new StaxResponseHandler<ModifyImageSharePermissionResult>(
+					new ModifyImageSharePermissionStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeImageSharePermissionResult describeImageSharePermission(DescribeImageSharePermissionRequest describeImageSharePermissionRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeImageSharePermissionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeImageSharePermissionRequest> request = null;
+		Response<DescribeImageSharePermissionResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeImageSharePermissionMarshaller()
+						.marshall(super.beforeMarshalling(describeImageSharePermissionRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribeImageSharePermissionResult> responseHandler = new StaxResponseHandler<DescribeImageSharePermissionResult>(
+					new DescribeImageSharePermissionStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
 }
