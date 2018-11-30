@@ -269,4 +269,29 @@ public interface KSCKEC {
 	 * @return
 	 */
 	DescribeInstanceFamilysResult describeInstanceFamilys(DescribeInstanceFamilysRequest describeInstanceFamilysRequest);
+	/**
+	 * 导入镜像
+	 * @param imageImportRequest
+	 * @return
+	 */
+	ImageImportResult imageImport(ImageImportRequest imageImportRequest);
+	/**
+	 * 复制镜像
+	 * @param imageCopyRequest
+	 * @return
+	 */
+	ImageCopyResult imageCopy(ImageCopyRequest imageCopyRequest);
+	/**
+	 * 共享、取消共享镜像
+	 * @param modifyImageSharePermissionRequest
+	 * @return
+	 */
+	ModifyImageSharePermissionResult modifyImageSharePermission(ModifyImageSharePermissionRequest modifyImageSharePermissionRequest);
+	/**
+	 * 查询镜像共享用户
+	 * @param describeImageSharePermissionRequest
+	 * @return
+	 */
+	DescribeImageSharePermissionResult describeImageSharePermission(DescribeImageSharePermissionRequest describeImageSharePermissionRequest);
+
 }

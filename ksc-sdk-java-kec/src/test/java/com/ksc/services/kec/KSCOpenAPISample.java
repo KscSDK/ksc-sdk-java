@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "";
-	public static final String AWS_SK = "";
+	public static final String AWS_AK = "AKLTaX9enqQbSKS1gb8r88-Gtw";
+	public static final String AWS_SK = "OINcA3uPsg0Xu+QTRfDVn59PYQ8K0QhMqQDC2ABb19bu0U9BuJmyyp6WQzUVfW1xAQ==";
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
@@ -451,5 +451,63 @@ public class KSCOpenAPISample {
 		DescribeInstanceFamilysResult result=kec_client.describeInstanceFamilys(request);
 		Gson gson = new Gson();
 		log.info("describeInstanceFamilys Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void imageImport(){
+		ImageImportRequest request = new ImageImportRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setImageName("中文2");
+		request.setImageUrl("http://ks3-cn-shanghai.ksyun.com/my-test/centos_6.5.img.base");
+		request.setPlatform("centos-6");
+		request.setArchitecture("x86_64");
+		request.setImageFormat("qcow2");
+		ImageImportResult result=kec_client.imageImport(request);
+		Gson gson = new Gson();
+		log.info("imageImport Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void imageCopy(){
+		ImageCopyRequest request = new ImageCopyRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setDestinationImageName("copy_test");
+		request.withImageIds("13ef6101-a4a0-4dfe-89f9-036a63d06151");
+		request.withDestinationRegions("cn-shanghai-3");
+		ImageCopyResult result=kec_client.imageCopy(request);
+		Gson gson = new Gson();
+		log.info("imageCopy Result: "+gson.toJson(result));
+	}
+	@Test
+	public void modifyImageSharePermission(){
+		ModifyImageSharePermissionRequest request = new ModifyImageSharePermissionRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setImageId("13ef6101-a4a0-4dfe-89f9-036a63d06151");
+		request.setPermission("share");
+		request.withAccountIds("2000001278");
+		ModifyImageSharePermissionResult result=kec_client.modifyImageSharePermission(request);
+		Gson gson = new Gson();
+		log.info("modifyImageSharePermission Result: "+gson.toJson(result));
+	}
+	@Test
+	public void describeImageSharePermission(){
+        DescribeImageSharePermissionRequest request = new DescribeImageSharePermissionRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setImageId("13ef6101-a4a0-4dfe-89f9-036a63d06151");
+        DescribeImageSharePermissionResult result=kec_client.describeImageSharePermission(request);
+		Gson gson = new Gson();
+		log.info("describeImageSharePermission Result: "+gson.toJson(result));
 	}
 }
