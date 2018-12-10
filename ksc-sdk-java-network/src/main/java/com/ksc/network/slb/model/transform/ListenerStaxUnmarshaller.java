@@ -93,7 +93,7 @@ public class ListenerStaxUnmarshaller implements Unmarshaller<Listener, StaxUnma
                     listener.addRealServer(RealServerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
-            }else if (xmlEvent.isEndDocument()){
+            }else if (xmlEvent.isEndElement()){
                 if (context.getCurrentDepth() < originalDepth){
                     return listener;
                 }
