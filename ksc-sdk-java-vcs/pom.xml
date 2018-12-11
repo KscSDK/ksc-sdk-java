@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.2.0</version>
+		<version>0.3.1</version>
 	</parent>
 	<artifactId>ksc-sdk-java-vcs</artifactId>
 	<name>KSC SDK for Java - VCS</name>
@@ -21,7 +21,7 @@
 		<dependency>
 			<groupId>com.ksyun</groupId>
 			<artifactId>ksc-sdk-java-core</artifactId>
-			<version>0.2.0</version>
+			<version>0.2.5</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>

@@ -1,6 +1,5 @@
 package com.ksc.kvs.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ksc.internal.SdkInternalList;
@@ -14,6 +13,9 @@ public class Param {
 	private int shortSide;
 	// avsample
 	private int interval;
+	private int spriteflag;
+	private int spritew;
+	private int spriteh;
 	private Video video;
 	private Audio audio;
 	private int hlsTime;
@@ -24,17 +26,19 @@ public class Param {
 	private int start_segment_num;
 	private int start_segment_time;
 	private String segfile_acl;
+	private String ss;
 	// avlogo
 	private List<Image> image;
 	private SdkInternalList<List<Logo>> logos;
-	//private List<List<Logo>> logos;
-	
-	public void setLogos(java.util.Collection<List<Logo>> logosList){
+	// private List<List<Logo>> logos;
+
+	public void setLogos(java.util.Collection<List<Logo>> logosList) {
 		if (logosList != null) {
 			this.logos = new SdkInternalList<List<Logo>>(logosList);
 		}
 	}
-	public void addLogos(SdkInternalList<Logo>...logos){
+
+	public void addLogos(SdkInternalList<Logo>... logos) {
 		if (this.logos == null) {
 			this.logos = new SdkInternalList<List<Logo>>();
 		}
@@ -42,6 +46,7 @@ public class Param {
 			this.logos.add(logo);
 		}
 	}
+
 	public String getF() {
 		return f;
 	}
@@ -169,19 +174,53 @@ public class Param {
 	public void setSegfile_acl(String segfile_acl) {
 		this.segfile_acl = segfile_acl;
 	}
+
 	public List<List<Logo>> getLogos() {
 		return logos;
 	}
+
 	public void setLogos(SdkInternalList<List<Logo>> logos) {
 		this.logos = logos;
 	}
 
-//	public List<List<Logo>> getLogos() {
-//		return logos;
-//	}
-//
-//	public void setLogos(List<List<Logo>> logos) {
-//		this.logos = logos;
-//	}
+	public int getSpriteflag() {
+		return spriteflag;
+	}
+
+	public void setSpriteflag(int spriteflag) {
+		this.spriteflag = spriteflag;
+	}
+
+	public int getSpritew() {
+		return spritew;
+	}
+
+	public void setSpritew(int spritew) {
+		this.spritew = spritew;
+	}
+
+	public int getSpriteh() {
+		return spriteh;
+	}
+
+	public void setSpriteh(int spriteh) {
+		this.spriteh = spriteh;
+	}
+
+	public String getSs() {
+		return ss;
+	}
+
+	public void setSs(String ss) {
+		this.ss = ss;
+	}
+
+	// public List<List<Logo>> getLogos() {
+	// return logos;
+	// }
+	//
+	// public void setLogos(List<List<Logo>> logos) {
+	// this.logos = logos;
+	// }
 
 }

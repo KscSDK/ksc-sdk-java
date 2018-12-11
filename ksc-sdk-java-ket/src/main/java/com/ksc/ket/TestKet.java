@@ -7,6 +7,8 @@ import org.json.JSONObject;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
+import com.ksc.ket.model.CreateDirectorTaskRequest;
+import com.ksc.ket.model.DelDirectorTaskRequest;
 import com.ksc.ket.model.DelPresetRequest;
 import com.ksc.ket.model.ErrResult;
 import com.ksc.ket.model.GetLoopListRequest;
@@ -20,22 +22,24 @@ import com.ksc.ket.model.GetQuotaUsedResult;
 import com.ksc.ket.model.GetStreamTranListRequest;
 import com.ksc.ket.model.GetStreamTranListResult;
 import com.ksc.ket.model.PresetRequest;
+import com.ksc.ket.model.QueryDirectorTaskRequest;
+import com.ksc.ket.model.QueryDirectorTaskResult;
 import com.ksc.ket.model.StartLoopRequest;
 import com.ksc.ket.model.StartLoopResult;
 import com.ksc.ket.model.StartStreamPullRequest;
 import com.ksc.ket.model.StopLoopRequest;
 import com.ksc.ket.model.StopStreamPullRequest;
+import com.ksc.ket.model.UpdateDirectorTaskRequest;
 import com.ksc.ket.model.UpdateLoopRequest;
 import com.ksc.ket.model.UpdatePresetRequest;
 
 public class TestKet {
-	private static String UniqName = "videoqa";
+	private static String UniqName = "xxxxx";
 
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxx",
-					"xxxxxxxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxx", "xxxxxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -46,14 +50,14 @@ public class TestKet {
 
 		// 创建模板
 		PresetRequest presetRequest = new PresetRequest();
-		String data = PresetSet("looppreset", 1);
+		String data = PresetSet("xxxx", 1);
 		presetRequest.setData(data);
 		ErrResult presetResult = ksc.Preset(presetRequest);
 		System.out.println("ErrNum: " + presetResult.getErrNum() + ",ErrMsg: " + presetResult.getErrMsg());
 
 		// 更新模板
 		UpdatePresetRequest updatepresetRequest = new UpdatePresetRequest();
-		String udata = PresetSet("looppreset", 3);
+		String udata = PresetSet("xxxx", 3);
 		updatepresetRequest.setData(udata);
 		ErrResult updatepresetResult = ksc.UpdatePreset(updatepresetRequest);
 		System.out.println("ErrNum: " + updatepresetResult.getErrNum() + ",ErrMsg: " + updatepresetResult.getErrMsg());
@@ -62,13 +66,13 @@ public class TestKet {
 		DelPresetRequest delpresetRequest = new DelPresetRequest();
 		delpresetRequest.setApp("live");
 		delpresetRequest.setUniqName(UniqName);
-		delpresetRequest.setPreset("looppreset");
+		delpresetRequest.setPreset("xxxxx");
 		ErrResult delpresetResult = ksc.DelPreset(delpresetRequest);
 		System.out.println("ErrNum: " + delpresetResult.getErrNum() + ",ErrMsg: " + delpresetResult.getErrMsg());
 
 		// 获取模板列表
 		GetPresetListRequest getPresetListRequest = new GetPresetListRequest();
-		getPresetListRequest.setApp("live");
+		getPresetListRequest.setApp("xxxx");
 		getPresetListRequest.setUniqName(UniqName);
 		GetPresetListResult getpresetlistResult = ksc.GetPresetList(getPresetListRequest);
 		System.out
@@ -76,16 +80,16 @@ public class TestKet {
 		System.out.println("size:" + getpresetlistResult.getPresetList().size());
 		// 获取模板详情
 		GetPresetDetailRequest getPresetDetailRequest = new GetPresetDetailRequest();
-		getPresetDetailRequest.setApp("live");
+		getPresetDetailRequest.setApp("xxxx");
 		getPresetDetailRequest.setUniqName(UniqName);
-		getPresetDetailRequest.setPreset("hlsMultiRate");
+		getPresetDetailRequest.setPreset("xxxxxx");
 		GetPresetDetailResult getPresetDetailResult = ksc.GetPresetDetail(getPresetDetailRequest);
 		System.out.println(
 				"ErrNum: " + getPresetDetailResult.getErrNum() + ",ErrMsg: " + getPresetDetailResult.getErrMsg());
 
 		// 发起外网拉流
 		StartStreamPullRequest startStreamPullRequest = new StartStreamPullRequest();
-		String data1 = StreamPullSet("test123", 0);
+		String data1 = StreamPullSet("xxxx", 0);
 		startStreamPullRequest.setData(data1);
 		ErrResult startStreamPullResult = ksc.StartStreamPull(startStreamPullRequest);
 		System.out.println(
@@ -101,7 +105,7 @@ public class TestKet {
 
 		// 停止外网拉流
 		StopStreamPullRequest stopStreamPullRequest = new StopStreamPullRequest();
-		String data2 = StreamPullSet("test123", 1);
+		String data2 = StreamPullSet("xxxx", 1);
 		stopStreamPullRequest.setData(data2);
 		ErrResult stopStreamPullResult = ksc.StopStreamPull(stopStreamPullRequest);
 		System.out.println(
@@ -141,13 +145,38 @@ public class TestKet {
 		GetLoopListResult getLoopListResult = ksc.GetLoopList(getLoopListRequest);
 		System.out.println(getLoopListResult.getList().get(0).getTaskID());
 
+		// 创建选流任务接口
+		CreateDirectorTaskRequest createDirectorTaskRequest = new CreateDirectorTaskRequest();
+		createDirectorTaskRequest.setData(DirectorTaskSet());
+		ErrResult createDirectorTaskResult = ksc.CreateDirectorTask(createDirectorTaskRequest);
+		System.out.println(createDirectorTaskResult.getTaskID());
+
+		// 更新选流任务接口
+		UpdateDirectorTaskRequest updateDirectorTaskRequest = new UpdateDirectorTaskRequest();
+		updateDirectorTaskRequest.setData(DirectorTaskSet());
+		ErrResult updateDirectorTaskResult = ksc.UpdateDirectorTask(updateDirectorTaskRequest);
+		System.out.println(updateDirectorTaskResult.getErrNum());
+
+		// 查询选流任务接口
+		QueryDirectorTaskRequest queryDirectorTaskRequest = new QueryDirectorTaskRequest();
+		queryDirectorTaskRequest.setApp("live");
+		queryDirectorTaskRequest.setUniqName(UniqName);
+		QueryDirectorTaskResult queryDirectorTaskResult = ksc.QueryDirectorTask(queryDirectorTaskRequest);
+		System.out.println(queryDirectorTaskResult.getErrNum());
+
+		// 删除选流任务接口
+		DelDirectorTaskRequest delDirectorTaskRequest = new DelDirectorTaskRequest();
+		delDirectorTaskRequest.setApp("live");
+		delDirectorTaskRequest.setUniqName(UniqName);
+		ErrResult delDirectorTaskResult = ksc.DelDirectorTask(delDirectorTaskRequest);
+		System.out.println(delDirectorTaskResult.getErrNum());
 	}
 
 	private static String UpdateLoopSet() {
 		JSONObject data = new JSONObject();
 		data.put("App", "live");
 		data.put("UniqName", UniqName);
-		data.put("StreamID", "java_sdk_1234");
+		data.put("StreamID", "xxxx");
 		data.put("DurationHour", 10);
 		return data.toString();
 	}
@@ -163,14 +192,14 @@ public class TestKet {
 	private static String StartLoopSet() {
 		JSONObject data = new JSONObject();
 		JSONArray srcInfo = new JSONArray();
-		data.put("PubDomain", "videoqa.uplive.ks-cdn.com");
+		data.put("PubDomain", "xxxxx");
 		data.put("UniqName", UniqName);
-		data.put("Preset", "looppreset");
+		data.put("Preset", "xxxx");
 		data.put("StreamID", "java_sdk_1234");
 		data.put("App", "live");
 		data.put("DurationHour", 168);
 		JSONObject tmp = new JSONObject();
-		tmp.put("Path", "http://ks3-cn-beijing-internal.ksyun.com/qa-screenshot/offline_source_file/offline_mkv.mkv");
+		tmp.put("Path", "xxxxxxxx");
 		tmp.put("Index", 0);
 		srcInfo.put(tmp);
 		data.put("SrcInfo", srcInfo);
@@ -182,7 +211,7 @@ public class TestKet {
 		data.put("UniqName", UniqName);
 		data.put("StreamID", StreamID);
 		if (type == 0) {
-			data.put("SrcUrl", "rtmp://foreagles.live.ks-cdn.com/live/gy1234");
+			data.put("SrcUrl", "xxxxxxxxx");
 		}
 		data.put("App", "live");
 		return data.toString();
@@ -215,12 +244,27 @@ public class TestKet {
 		video.put("orientationAdapt", 1);
 		for (int i = 0; i < num; i++) {
 			JSONObject logo_tmp = new JSONObject();
-			logo_tmp.put("pic", "/qa-screenshot/100x100.jpg");
+			logo_tmp.put("pic", "xxxx");
 			logo_tmp.put("short_side", 640);
 			logo.put(logo_tmp);
 		}
 		video.put("logo", logo);
 		data.put("Video", video);
+		return data.toString();
+	}
+
+	private static String DirectorTaskSet() {
+		JSONObject data = new JSONObject();
+		data.put("App", "live");
+		data.put("UniqName", UniqName);
+		JSONArray SrcInfo = new JSONArray();
+		for (int i = 0; i < 2; i++) {
+			JSONObject info = new JSONObject();
+			info.put("SrcUrl", "xxxx");
+			info.put("Index", i);
+			SrcInfo.put(info);
+		}
+		data.put("SrcInfo", SrcInfo);
 		return data.toString();
 	}
 }

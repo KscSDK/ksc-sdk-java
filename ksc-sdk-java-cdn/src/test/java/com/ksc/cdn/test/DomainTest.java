@@ -13,7 +13,6 @@ import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
 import com.ksc.cdn.model.domain.domaindetail.*;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.*;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -33,8 +32,8 @@ public class DomainTest {
 
     @Before
     public void setup() {
-        client = new KscCdnClient("AKTP3b-6fAKtTqerD8ppBNIuFg",
-                "OE1cpDipjKXZjqNNPpMywx7duYi7i+P9Rh5xDk9v4ian5smGTfJ+dQMVFgx0IZPqgA==",
+        client = new KscCdnClient("ak",
+                "sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -43,21 +42,21 @@ public class DomainTest {
         domainId = "2D09X54";
 
     }
-    
-    
+
+
     /**
      * 获取域名当前的服务节点IP列表
-     * @throws Exception 
+     * @throws Exception
      */
     @Test
     public void testGetServiceIp() throws Exception{
     	GetServiceIpResult result = client.getServiceIp(domainId);
     	Assert.assertTrue(result.getDatas().length > 0);
     }
-    
-    
-    
-    
+
+
+
+
     /**
      * 域名列表查询
      *
@@ -69,7 +68,7 @@ public class DomainTest {
         //设置查询条件,可以多个条件组合查询,也可无查询条件查所有
         request.setPageNumber(1l);
         request.setPageSize(20l);
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setDomainStatus(DomainStatus.ONLINE.getCode());
         request.setDomainName("");
         request.setFuzzyMatch("");
@@ -114,7 +113,7 @@ public class DomainTest {
         AddDomainRequest request = new AddDomainRequest();
 
         request.setDomainName("www.qunar.com");//加速域名
-        request.setCdnType(CdnTypeEnum.download.getValue());//加速类型
+        request.setCdnType(CdnTypeEnum.video.getValue());//加速类型
         request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());//客户访问边缘节点的协议。默认http
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//源站类型
         request.setOrigin("www.ksyun.com");//源站域名
@@ -123,6 +122,29 @@ public class DomainTest {
         request.setRegions(RegionsEnum.CN.getValue());//加速区域，默认CN， 可以输入多个，以逗号间隔。
 
         AddDomainResult addDomainResult = client.addDomainBase(request);
+        Assert.assertNotNull(addDomainResult.getDomainId());
+        System.out.print(addDomainResult.getDomainId() + "\n");
+    }
+
+    /**
+     * 添加加速域名v2
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAddDomainV2Base() throws Exception {
+        AddDomainRequest request = new AddDomainRequest();
+
+        request.setDomainName("testv2.qunar.com");//加速域名
+        request.setCdnType(CdnTypeEnum.video.getValue());//加速类型
+        request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());//客户访问边缘节点的协议。默认http
+        request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//源站类型
+        request.setOrigin("www.ksyun.com");//源站域名
+        request.setOriginProtocol(CdnProtocolEnum.HTTP.getValue());//回源协议
+        request.setOriginPort(80);//源站域名端口号
+        request.setRegions(RegionsEnum.CN.getValue());//加速区域，默认CN， 可以输入多个，以逗号间隔。
+
+        AddDomainResult addDomainResult = client.addDomainV2Base(request);
         Assert.assertNotNull(addDomainResult.getDomainId());
         System.out.print(addDomainResult.getDomainId() + "\n");
     }
@@ -304,5 +326,109 @@ public class DomainTest {
     @Test
     public void testSetRemark() throws Exception {
         client.setRemark(domainId, "设置备注信息");
+    }
+
+    /**
+     * 设置单个域名多项配置
+     * @throws Exception
+     */
+    @Test
+    public void testSetDomainConfigs() throws Exception{
+        AllConfigsRequest request = new AllConfigsRequest();
+        request.setDomainId(domainId);
+        BackOriginHostConfig backOriginHostConfig = new BackOriginHostConfig();
+        backOriginHostConfig.setBackOriginHost("www.baidu.com");
+        request.setBackOriginHostConfig(backOriginHostConfig);
+        CacheRuleConfig cacheRuleConfig = new CacheRuleConfig();
+        CacheRule rule1 = new CacheRule();
+        CacheRule rule2 = new CacheRule();
+        rule1.setCacheRuleType(CacheRuleTypeEnum.FILE_SUFFIX.getValue());
+        rule1.setCacheTime(10l);
+        rule1.setValue("jpg");
+        rule2.setCacheRuleType(CacheRuleTypeEnum.DIRECTORY.getValue());
+        rule2.setCacheTime(100l);
+        rule2.setValue("/aaa/");
+        cacheRuleConfig.setCacheRules(new CacheRule[]{rule1,rule2});
+        request.setCacheRuleConfig(cacheRuleConfig);
+        IpProtectionConfig ipProtectionConfig = new IpProtectionConfig();
+        ipProtectionConfig.setEnable("on");
+        ipProtectionConfig.setIpType("allow");
+        ipProtectionConfig.setIpList("123.45.78.13");
+        request.setIpProtectionConfig(ipProtectionConfig);
+        ReferProtectionConfig referProtectionConfig = new ReferProtectionConfig();
+        referProtectionConfig.setEnable("on");
+        referProtectionConfig.setReferType("block");
+        referProtectionConfig.setReferList("www.baidu.com");
+        referProtectionConfig.setAllowEmpty("off");
+        request.setReferProtectionConfig(referProtectionConfig);
+        IgnoreQueryStringConfig ignoreQueryStringConfig = new IgnoreQueryStringConfig();
+        ignoreQueryStringConfig.setEnable("on");
+        request.setIgnoreQueryStringConfig(ignoreQueryStringConfig);
+        client.setDomainConfigs(request);
+    }
+
+    /**
+     * 根据源站地址获取域名列表
+     * @throws Exception
+     */
+    @Test
+    public void testGetDomainsByOrigin() throws Exception{
+        client.getDomainsByOrigin("pie-bj.ks3-cn-beijing.ksyun.com");
+    }
+
+    /**
+     * 产商CNAME后缀
+     * @throws Exception
+     */
+    @Test
+    public void testGetCnameSuffixs() throws Exception{
+        client.getCnameSuffixs();
+    }
+
+    /**
+     * 设置视频拖拽
+     * @throws Exception
+     */
+    @Test
+    public void testSetVideoSeekConfig() throws Exception{
+        client.setVideoSeekConfig("2D09HG3", SwitchEnum.ON);
+    }
+
+    /**
+     * 获取视频拖拽信息
+     * @throws Exception
+     */
+    @Test
+    public void testGetVideoSeekConfig() throws Exception{
+        VideoSeekConfig videoSeekConfig = client.getVideoSeekConfig("2D09HG3");
+        Assert.assertEquals(SwitchEnum.ON.getValue(), videoSeekConfig.getEnable());
+    }
+
+    /**
+     * 设置http响应头
+     * @throws Exception
+     */
+    @Test
+    public void testSetHttpHeadersConfig() throws Exception{
+        client.setHttpHeadersConfig("2D09HG3",HttpHeaderKeyEnum.Expires,"20");
+    }
+
+    /**
+     * 删除http响应头
+     * @throws Exception
+     */
+    @Test
+    public void testDeleteHttpHeadersConfig() throws Exception{
+        client.deleteHttpHeadersConfig("2D09HG3",HttpHeaderKeyEnum.Expires);
+    }
+
+    /**
+     * 获取http响应头
+     * @throws Exception
+     */
+    @Test
+    public void testGetHttpHeaderList() throws Exception{
+        HttpHeadersList httpHeaderList = client.getHttpHeaderList("2D09HG3");
+        Assert.assertEquals(HttpHeaderKeyEnum.Expires.getValue(), httpHeaderList.getHttpHeadList()[0].getHeaderKey());
     }
 }

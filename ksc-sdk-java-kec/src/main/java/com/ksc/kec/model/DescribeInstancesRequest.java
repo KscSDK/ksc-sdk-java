@@ -2,6 +2,7 @@ package com.ksc.kec.model;
 
 import java.io.Serializable;
 
+import com.ksc.internal.SdkInternalList;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
@@ -75,7 +76,37 @@ public class DescribeInstancesRequest extends KscWebServiceRequest implements
 	private Integer marker;
 	
 	private String Search;
-	
+
+	/**
+	 * <p>
+	 * One or more project IDs.
+	 * </p>
+	 * <p>
+	 * Default: Describes all your project.
+	 * </p>
+	 */
+	private com.ksc.internal.SdkInternalList<String> projectIds;
+	public SdkInternalList<String> getProjectIds() {
+		if (projectIds == null) {
+			projectIds = new com.ksc.internal.SdkInternalList<String>();
+		}
+		return projectIds;
+	}
+
+	public void setProjectIds(SdkInternalList<String> projectIds) {
+		this.projectIds = projectIds;
+	}
+	public DescribeInstancesRequest withProjectIds(String... projectIds) {
+		if (this.projectIds == null) {
+			setProjectIds(new com.ksc.internal.SdkInternalList<String>(
+					projectIds.length));
+		}
+		for (String ele : projectIds) {
+			this.projectIds.add(ele);
+		}
+		return this;
+	}
+
 	/**
 	 * <p>
 	 * One or more instance IDs.

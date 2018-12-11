@@ -33,7 +33,7 @@ public class PresetListJsonUnmarshaller implements Unmarshaller<Preset, JsonUnma
 				break;
 
 			if (token == FIELD_NAME || token == START_OBJECT) {
-				
+
 				if (context.testExpression("Preset", targetDepth)) {
 					context.nextToken();
 					preset.setPreset(context.getUnmarshaller(String.class).unmarshall(context));

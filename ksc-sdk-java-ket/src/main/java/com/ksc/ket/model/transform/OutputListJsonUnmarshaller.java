@@ -37,6 +37,9 @@ public class OutputListJsonUnmarshaller implements Unmarshaller<Output, JsonUnma
 				} else if (context.testExpression("switch", targetDepth)) {
 					context.nextToken();
 					output.setSwitch(SwitchJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("Index", targetDepth)) {
+					context.nextToken();
+					output.setIndex(context.getUnmarshaller(Integer.class).unmarshall(context));
 				}
 			} else if (token == END_ARRAY || token == END_OBJECT) {
 				if (context.getLastParsedParentElement() == null

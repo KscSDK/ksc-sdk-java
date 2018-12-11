@@ -4,8 +4,6 @@ import com.ksc.cdn.KscCdnClient;
 import com.ksc.cdn.KscCdnStatistics;
 import com.ksc.cdn.model.statistic.billing.BillingModeRequest;
 import com.ksc.cdn.model.statistic.billing.BillingModeWebResponse;
-import com.ksc.cdn.model.statistic.billing.BillingRequest;
-import com.ksc.cdn.model.statistic.billing.BillingWebResponse;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -18,8 +16,8 @@ public class ServiceTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTP7u5zSo8fS_qHwc9t0c7hsg",
-                "OEmaXB9L88DWnq2xPE7PGsQgxBVk+Z3I1KFRFU0dev9CCCV8LwytFFEZCE6rQe5rWQ==",
+        cdnClient = new KscCdnClient("your ak",
+                "your sk",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");

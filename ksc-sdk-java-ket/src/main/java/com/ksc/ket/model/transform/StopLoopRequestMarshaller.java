@@ -25,7 +25,7 @@ public class StopLoopRequestMarshaller implements Marshaller<Request<StopLoopReq
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {
 			version = "2017-01-01";
 		}
-
+		request.addHeader("Accept", "application/json");
 		byte[] content = stopLoopRequest.getData().getBytes();
 		request.addHeader("Content-Type", "application/json");
 		request.addParameter("Version", version);

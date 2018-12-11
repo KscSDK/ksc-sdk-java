@@ -11,6 +11,11 @@ public class BpsDataByDomain{
      * 域名ID
      */
     private String DomainId;
+
+    /**
+     * 域名
+     */
+    private String Domain;
     /**
      * 边缘带宽（该域名的边缘带宽，若选择多个区域，则返回该域名多个区域的数据合并值）
      */
@@ -20,6 +25,14 @@ public class BpsDataByDomain{
      */
     private Long SrcBw;
     private BpsDataByRegion[] Regions;
+
+    public String getDomain() {
+        return Domain;
+    }
+
+    public void setDomain(String domain) {
+        Domain = domain;
+    }
 
     public String getDomainId() {
         return DomainId;

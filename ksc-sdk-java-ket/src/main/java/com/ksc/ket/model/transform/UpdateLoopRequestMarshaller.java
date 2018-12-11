@@ -21,7 +21,7 @@ implements Marshaller<Request<UpdateLoopRequest>, UpdateLoopRequest> {
 
 		Request<UpdateLoopRequest> request = new DefaultRequest<UpdateLoopRequest>(updateLoopRequest,
 				"ket");
-
+		request.addHeader("Accept", "application/json");
 		request.addParameter("Action", "UpdateLoop");
 		String version = updateLoopRequest.getVersion();
 		if (org.apache.commons.lang.StringUtils.isBlank(version)) {

@@ -1,20 +1,22 @@
 package com.ksc.services.kec;
 
-import com.ksc.kec.model.*;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-
 import com.google.gson.Gson;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.kec.KSCKECClient;
+import com.ksc.kec.model.*;
+import com.ksc.model.Filter;
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
+import java.util.Arrays;
 
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "";
-	public static final String AWS_SK = "";
+	public static final String AWS_AK = "AKLTaX9enqQbSKS1gb8r88-Gtw";
+	public static final String AWS_SK = "OINcA3uPsg0Xu+QTRfDVn59PYQ8K0QhMqQDC2ABb19bu0U9BuJmyyp6WQzUVfW1xAQ==";
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
@@ -84,7 +86,8 @@ public class KSCOpenAPISample {
 		kec_client.setServiceNameIntern("kec");
 
 		DescribeInstancesRequest describe_instances_request = new DescribeInstancesRequest();
-		describe_instances_request.withInstanceIds("f9a732d4-4d3f-448c-a5d1-cef402474f9b");
+		describe_instances_request.withInstanceIds("7ac7faf8-1c39-4479-bf65-db3489d850e4");
+		describe_instances_request.withProjectIds("208");
 //		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult result = kec_client
 				.describeInstances(describe_instances_request);
@@ -94,7 +97,8 @@ public class KSCOpenAPISample {
 	@Test
 	public void DescribeImages(){
 		DescribeImagesRequest request=new DescribeImagesRequest();
-		request.setImageId("0a7b5f5a-13c7-447b-8df0-97bd90c5a8f8");
+		request.setImageId("28adde6a-f33f-43a3-b1bd-09b81f6f2167");
+//		request.setImageType("share");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
@@ -109,19 +113,20 @@ public class KSCOpenAPISample {
 	@Test
 	public void runInstances(){
 		RunInstancesRequest request=new RunInstancesRequest();
-		request.setImageId("cce6789c-83a1-4d51-94b4-74b59c60e39d");
+		request.setImageId("b2e78146-58f1-4298-9397-ebf942246a2b");
 		request.setInstanceType("I1.1A");
 		request.setDataDiskGb(50);
 		request.setMaxCount(1);
 		request.setMinCount(1);
-		request.setSubnetId("0773c3e5-f2ec-4d3e-82b3-91102915e19a");
+		request.setSubnetId("9fd83a5e-33cf-4196-b8df-59fc57478488");
 		request.setInstancePassword("Qwer@1234");
-		request.setChargeType("Monthly");
+		request.setChargeType("Daily");
 		request.setPurchaseTime(1);
-		request.setSecurityGroupId("f467f1b9-26e4-4b9f-8901-ee260bde9869");
+		request.setSecurityGroupId("31a5484d-8077-4aca-8f79-e093f9d4bbc1");
 		request.setInstanceName("sdk-test");
 		request.setInstanceNameSuffix("1");
 		request.setSriovNetSupport(false);
+		request.setProjectId(208L);
 
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
@@ -272,7 +277,9 @@ public class KSCOpenAPISample {
 	@Test
 	public void describeLocalVolumes(){
 		DescribeLocalVolumesRequest request=new DescribeLocalVolumesRequest();
-		request.setInstanceName("KSC170518204032_");
+//		request.setInstanceName("KSC170518204032_");
+		request.setMarker(0);
+		request.setMaxResults(5);
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
@@ -383,5 +390,124 @@ public class KSCOpenAPISample {
 		DetachNetworkInterfaceResult result=kec_client.detachNetworkInterface(request);
 		Gson gson = new Gson();
 		log.info("detachNetworkInterface Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void describeRegions(){
+		DescribeRegionsRequest request = new DescribeRegionsRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		DescribeRegionsResult result=kec_client.describeRegions(request);
+		Gson gson = new Gson();
+		log.info("describeRegions Result: "+gson.toJson(result));
+	}
+	
+	@Test
+	public void describeAvailabilityZones(){
+		DescribeAvailabilityZonesRequest request = new DescribeAvailabilityZonesRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		DescribeAvailabilityZonesResult result=kec_client.describeAvailabilityZones(request);
+		Gson gson = new Gson();
+		log.info("describeAvailabilityZones Result: "+gson.toJson(result));
+	}
+	
+	@Test
+	public void describeInstanceTypeConfigs(){
+		DescribeInstanceTypeConfigsRequest request = new DescribeInstanceTypeConfigsRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		com.ksc.internal.SdkInternalList<Filter> filters = new com.ksc.internal.SdkInternalList<Filter>();
+		
+		Filter filter = new Filter();
+		filter.setName("availability-zone");
+		filter.setValues(Arrays.asList("cn-shanghai-3a"));
+		filters.add(filter);
+		
+		Filter filter1 = new Filter();
+		filter1.setName("instance-family");
+		filter1.setValues(Arrays.asList("I1"));
+		filters.add(filter1);
+		
+		request.setFilters(filters);
+		DescribeInstanceTypeConfigsResult result=kec_client.describeInstanceTypeConfigs(request);
+		Gson gson = new Gson();
+		log.info("DescribeInstanceTypeConfigs Result: "+gson.toJson(result));
+	}
+	
+	@Test
+	public void describeInstanceFamilys(){
+		DescribeInstanceFamilysRequest request = new DescribeInstanceFamilysRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		DescribeInstanceFamilysResult result=kec_client.describeInstanceFamilys(request);
+		Gson gson = new Gson();
+		log.info("describeInstanceFamilys Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void imageImport(){
+		ImageImportRequest request = new ImageImportRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setImageName("中文2");
+		request.setImageUrl("http://ks3-cn-shanghai.ksyun.com/my-test/centos_6.5.img.base");
+		request.setPlatform("centos-6");
+		request.setArchitecture("x86_64");
+		request.setImageFormat("qcow2");
+		ImageImportResult result=kec_client.imageImport(request);
+		Gson gson = new Gson();
+		log.info("imageImport Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void imageCopy(){
+		ImageCopyRequest request = new ImageCopyRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setDestinationImageName("copy_test");
+		request.withImageIds("13ef6101-a4a0-4dfe-89f9-036a63d06151");
+		request.withDestinationRegions("cn-shanghai-3");
+		ImageCopyResult result=kec_client.imageCopy(request);
+		Gson gson = new Gson();
+		log.info("imageCopy Result: "+gson.toJson(result));
+	}
+	@Test
+	public void modifyImageSharePermission(){
+		ModifyImageSharePermissionRequest request = new ModifyImageSharePermissionRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setImageId("13ef6101-a4a0-4dfe-89f9-036a63d06151");
+		request.setPermission("share");
+		request.withAccountIds("2000001278");
+		ModifyImageSharePermissionResult result=kec_client.modifyImageSharePermission(request);
+		Gson gson = new Gson();
+		log.info("modifyImageSharePermission Result: "+gson.toJson(result));
+	}
+	@Test
+	public void describeImageSharePermission(){
+        DescribeImageSharePermissionRequest request = new DescribeImageSharePermissionRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.setImageId("13ef6101-a4a0-4dfe-89f9-036a63d06151");
+        DescribeImageSharePermissionResult result=kec_client.describeImageSharePermission(request);
+		Gson gson = new Gson();
+		log.info("describeImageSharePermission Result: "+gson.toJson(result));
 	}
 }

@@ -7,13 +7,13 @@ import com.ksc.cdn.model.domain.domainbase.ModifyDomainRequest;
 import com.ksc.cdn.model.domain.domaincache.CacheConfigRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsRequest;
 import com.ksc.cdn.model.domain.domaincollect.GetCdnDomainsResult;
-import com.ksc.cdn.model.domain.domaindetail.GetDomainConfigResult;
-import com.ksc.cdn.model.domain.domaindetail.IpProtectionRequest;
-import com.ksc.cdn.model.domain.domaindetail.OriginAdvancedConfigRequest;
-import com.ksc.cdn.model.domain.domaindetail.ReferProtectionRequest;
+import com.ksc.cdn.model.domain.domaindetail.*;
+import com.ksc.cdn.model.domain.tool.GetCnameSuffixsResult;
+import com.ksc.cdn.model.domain.tool.GetDomainsByOriginResult;
 import com.ksc.cdn.model.domain.tool.GetServiceIpResult;
 import com.ksc.cdn.model.enums.ActionTypeEnum;
 import com.ksc.cdn.model.enums.DomainConfigEnum;
+import com.ksc.cdn.model.enums.HttpHeaderKeyEnum;
 import com.ksc.cdn.model.enums.SwitchEnum;
 
 
@@ -26,25 +26,54 @@ import com.ksc.cdn.model.enums.SwitchEnum;
  * @date 04/11/2016
  */
 public interface KscCdnDomain {
-	
-	/**
+
+    /**
+     * 加速域名后缀
+     */
+    String GETCNAMESUFFIXS_URL = "/2016-09-01/domain/GetCnameSuffixs";
+    String GETCNAMESUFFIXS_VERSION = "2016-09-01";
+    String GETCNAMESUFFIXS_ACTION = "GetCnameSuffixs";
+
+    /**
+     * 根据源站地址获取加速域名
+     */
+    String GETDOMAINSBYORIGIN_URL = "/2016-09-01/domain/GetDomainsByOrigin";
+    String GETDOMAINSBYORIGIN_VERSION = "2016-09-01";
+    String GETDOMAINSBYORIGIN_ACTION = "GetDomainsByOrigin";
+    /**
+     * 单域名多项配置设置
+     */
+    String SETDOMAINCONFIGS_URL = "/2016-09-01/domain/SetDomainConfigs";
+    String SETDOMAINCONFIGS_VERSION = "2016-09-01";
+    String SETDOMAINCONFIGS_ACTION = "SetDomainConfigs";
+
+    /**
      * 设置备注信息
      */
     String GETSERVICEIP_URL = "/2016-09-01/domain/GetServiceIpData";
     String GETSERVICEIP_VERSION = "2016-09-01";
     String GETSERVICEIP_ACTION = "GetServiceIpData";
+
     /**
      * 域名列表
      */
     String GETCDNDOMAINS_URL = "/2016-09-01/domain/GetCdnDomains";
     String GETCDNDOMAINS_VERSION = "2016-09-01";
     String GETCDNDOMAINS_ACTION = "GetCdnDomains";
+
     /**
      * 新增域名
      */
     String ADD_DOMAIN_URL = "/2016-09-01/domain/AddCdnDomain";
     String ADD_DOMAIN_VERSION = "2016-09-01";
     String ADD_DOMAIN_ACTION = "AddCdnDomain";
+
+    /**
+     * 新增域名v2
+     */
+    String ADD_DOMAIN_V2_URL = "/2016-09-01/domain/AddCdnDomain";
+    String ADD_DOMAIN_V2_VERSION = "2016-09-01";
+    String ADD_DOMAIN_V2_ACTION = "AddCdnDomain";
 
     /**
      * 域名基本信息
@@ -87,18 +116,21 @@ public interface KscCdnDomain {
     String IGNORE_QUERY_STRING_URL = "/2016-09-01/domain/SetIgnoreQueryStringConfig";
     String IGNORE_QUERY_STRING_VERSION = "2016-09-01";
     String IGNORE_QUERY_STRING_ACTION = "SetIgnoreQueryStringConfig";
+
     /**
      * 设置回源host
      */
     String BACK_ORIGIN_URL = "/2016-09-01/domain/SetBackOriginHostConfig";
     String BACK_ORIGIN_VERSION = "2016-09-01";
     String BACK_ORIGIN_ACTION = "SetBackOriginHostConfig";
+
     /**
      * 设置refer防盗链
      */
     String REFER_PROTECTION_URL = "/2016-09-01/domain/SetReferProtectionConfig";
     String REFER_PROTECTION_VERSION = "2016-09-01";
     String REFER_PROTECTION_ACTION = "SetReferProtectionConfig";
+
     /**
      * 设置Ip防盗链
      */
@@ -112,6 +144,7 @@ public interface KscCdnDomain {
     String SETCACHERULECONFIG_URL = "/2016-09-01/domain/SetCacheRuleConfig";
     String SETCACHERULECONFIG_VERSION = "2016-09-01";
     String SETCACHERULECONFIG_ACTION = "SetCacheRuleConfig";
+
     /**
      * 设置测试URL
      */
@@ -125,12 +158,49 @@ public interface KscCdnDomain {
     String SETORIGINADVANCEDCONFIG_URL = "/2016-09-01/domain/SetOriginAdvancedConfig";
     String SETORIGINADVANCEDCONFIG_VERSION = "2016-09-01";
     String SETORIGINADVANCEDCONFIG_ACTION = "SetOriginAdvancedConfig";
+
     /**
      * 设置备注信息
      */
     String SETREMARKCONFIG_URL = "/2016-09-01/domain/SetRemarkConfig";
     String SETREMARKCONFIG_VERSION = "2016-09-01";
     String SETREMARKCONFIG_ACTION = "SetRemarkConfig";
+
+    /**
+     * 设置视频拖拽
+     */
+    String SETVIDEOSEEKCONFIG_URL = "/2016-09-01/domain/SetVideoSeekConfig";
+    String SETVIDEOSEEKCONFIG_VERSION = "2016-09-01";
+    String SETVIDEOSEEKCONFIG_ACTION = "SetVideoSeekConfig";
+
+    /**
+     * 获取视频拖拽信息
+     */
+    String GETVIDEOSEEKCONFIG_URL = "/2016-09-01/domain/GetVideoSeekConfig";
+    String GETVIDEOSEEKCONFIG_VERSION = "2016-09-01";
+    String GETVIDEOSEEKCONFIG_ACTION = "GetVideoSeekConfig";
+
+    /**
+     * 设置Http响应头
+     */
+    String SETHTTPHEADERSCONFIG_URL = "/2016-09-01/domain/SetHttpHeadersConfig";
+    String SETHTTPHEADERSCONFIG_VERSION = "2016-09-01";
+    String SETHTTPHEADERSCONFIG_ACTION = "SetHttpHeadersConfig";
+
+    /**
+     * 删除Http响应头
+     */
+    String DELETEHTTPHEADERSCONFIG_URL = "/2016-09-01/domain/DeleteHttpHeadersConfig";
+    String DELETEHTTPHEADERSCONFIG_VERSION = "2016-09-01";
+    String DELETEHTTPHEADERSCONFIG_ACTION = "DeleteHttpHeadersConfig";
+
+    /**
+     * 获取Http响应头列表
+     */
+    String GETHTTPHEADERLIST_URL = "/2016-09-01/domain/GetHttpHeaderList";
+    String GETHTTPHEADERLIST_VERSION = "2016-09-01";
+    String GETHTTPHEADERLIST_ACTION = "GetHttpHeaderList";
+
 
     /**
      * 获取域名列表
@@ -149,6 +219,15 @@ public interface KscCdnDomain {
      * @throws Exception
      */
     AddDomainResult addDomainBase(AddDomainRequest domainParam) throws Exception;
+
+    /**
+     * 添加加速域名v2
+     *
+     * @param domainParam
+     * @return
+     * @throws Exception
+     */
+    AddDomainResult addDomainV2Base(AddDomainRequest domainParam) throws Exception;
 
     /**
      * 获取指定加速域名配置的基本信息
@@ -272,5 +351,57 @@ public interface KscCdnDomain {
      */
     void setRemark(String domainId, String remark) throws Exception;
 
-	GetServiceIpResult getServiceIp(String domainId) throws Exception;
+    GetServiceIpResult getServiceIp(String domainId) throws Exception;
+
+    void setDomainConfigs(AllConfigsRequest allConfigs) throws Exception;
+
+    GetDomainsByOriginResult getDomainsByOrigin(String origin) throws Exception;
+
+    GetCnameSuffixsResult getCnameSuffixs() throws Exception;
+
+    /**
+     * 设置视频拖拽配置
+     *
+     * @param domainId
+     * @param enable
+     * @throws Exception
+     */
+    void setVideoSeekConfig(String domainId, SwitchEnum enable) throws Exception;
+
+    /**
+     * 获取视频拖拽配置
+     *
+     * @param domainId
+     * @return
+     * @throws Exception
+     */
+    VideoSeekConfig getVideoSeekConfig(String domainId) throws Exception;
+
+    /**
+     * 设置http响应头
+     *
+     * @param domainId
+     * @param httpHeaderKeyEnum
+     * @param headerValue
+     * @throws Exception
+     */
+    void setHttpHeadersConfig(String domainId, HttpHeaderKeyEnum httpHeaderKeyEnum, String headerValue) throws Exception;
+
+    /**
+     * 删除http响应头
+     *
+     * @param domainId
+     * @param httpHeaderKeyEnum
+     * @throws Exception
+     */
+    void deleteHttpHeadersConfig(String domainId, HttpHeaderKeyEnum httpHeaderKeyEnum) throws Exception;
+
+    /**
+     * 获取http响应头
+     *
+     * @param domainId
+     * @return
+     * @throws Exception
+     */
+    HttpHeadersList getHttpHeaderList(String domainId) throws Exception;
 }

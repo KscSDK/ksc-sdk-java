@@ -26,6 +26,8 @@ import com.ksc.cdn.model.statistic.isp.IspRequest;
 import com.ksc.cdn.model.statistic.isp.IspResult;
 import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainRequest;
 import com.ksc.cdn.model.statistic.live.domain.LiveOnlineUserByDomainResult;
+import com.ksc.cdn.model.statistic.live.playstat.GetLivePlayStatDataRequest;
+import com.ksc.cdn.model.statistic.live.playstat.GetLivePlayStatDataResponse;
 import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamRequest;
 import com.ksc.cdn.model.statistic.live.stream.bandwidth.LiveBandwidthByStreamResult;
 import com.ksc.cdn.model.statistic.live.stream.flow.DataByTime;
@@ -64,6 +66,7 @@ import com.ksc.cdn.model.statistic.top.url.TopUrlRequest;
 import com.ksc.cdn.model.statistic.top.url.TopUrlResult;
 import com.ksc.cdn.model.statistic.uv.UvRequest;
 import com.ksc.cdn.model.statistic.uv.UvResult;
+import com.ksc.cdn.model.statistic.wildcard.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -79,8 +82,8 @@ public class StatisticTest {
 
     @Before
     public void setup() {
-        cdnClient = new KscCdnClient("AKTPKcKkeR6RTHWVx6tVjehZKg",
-                "OD1CD7hTmaBmq75xTb8LAeeEq8V5sxHV6Qatdsoa4DYBTcLUsrJdaJtiweq52+PgwQ==",
+        cdnClient = new KscCdnClient("",
+                "",
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
@@ -99,12 +102,13 @@ public class StatisticTest {
     @Test
     public void testGetBandwidthData() throws Exception {
         BpsRequest statisticsQuery = new BpsRequest();
-        statisticsQuery.setStartTime("2016-09-19T08:00+0800");//查询开始时间
-        statisticsQuery.setEndTime("2016-09-20T08:00+0800");//查询结束时间
-        statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());//加速类型
+        statisticsQuery.setStartTime("2017-09-19T08:00+0800");//查询开始时间
+        statisticsQuery.setEndTime("2017-09-20T08:00+0800");//查询结束时间
+        statisticsQuery.setCdnType(CdnTypeEnum.video.getValue());//加速类型
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());//带宽数据返回类型
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());//查询区域
         statisticsQuery.setDataType(DataTypeEnum.ORIGIN.getValue());//数据类型,边缘或者回源
+        statisticsQuery.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 
         BpsResult bandwidthData = (BpsResult) cdnClient.generalGetStatisticsData(statisticsQuery, BpsResult.class);
         Assert.assertNotNull(bandwidthData.getDatas());
@@ -126,10 +130,11 @@ public class StatisticTest {
         FlowRequest statisticsQuery = new FlowRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");
-        statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
+        statisticsQuery.setCdnType(CdnTypeEnum.video.getValue());
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());
         statisticsQuery.setDataType(DataTypeEnum.EDGE.getValue());
+        statisticsQuery.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 
         FlowResult flowDataByApi = (FlowResult) cdnClient.generalGetStatisticsData(statisticsQuery, FlowResult.class);
         Assert.assertNotNull(flowDataByApi);
@@ -154,7 +159,7 @@ public class StatisticTest {
     @Test
     public void testGetHitRate() throws Exception {
         HitRateRequest request = new HitRateRequest();
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setStartTime("2016-09-19T08:00+0800");
         request.setEndTime("2016-09-20T08:00+0800");
 
@@ -184,7 +189,7 @@ public class StatisticTest {
         HitRateDetailRequest statisticsQuery = new HitRateDetailRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");
-        statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
+        statisticsQuery.setCdnType(CdnTypeEnum.video.getValue());
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setHitType(HitTypeEnum.FLOW_HIT_RATE.getValue());//数据类型,按流量或者请求数统计
 
@@ -212,10 +217,11 @@ public class StatisticTest {
         PVRequest statisticsQuery = new PVRequest();
         statisticsQuery.setStartTime("2016-09-19T08:00+0800");
         statisticsQuery.setEndTime("2016-09-20T08:00+0800");
-        statisticsQuery.setCdnType(CdnTypeEnum.download.getValue());
+        statisticsQuery.setCdnType(CdnTypeEnum.video.getValue());
         statisticsQuery.setResultType(ResultTypeEnum.MERGE.getCode());
         statisticsQuery.setDataType(DataTypeEnum.EDGE.getValue());
         statisticsQuery.setRegions(RegionsEnum.CN.getValue());
+        statisticsQuery.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
 //        statisticsQuery.setGranularity("5");
 
         PVResult pv = (PVResult) cdnClient.generalGetStatisticsData(statisticsQuery, PVResult.class);
@@ -239,7 +245,7 @@ public class StatisticTest {
         DomainRankingRequest request = new DomainRankingRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 
         DomainRankingResult domainRankingList = (DomainRankingResult) cdnClient.generalGetStatisticsData(request, DomainRankingResult.class);
         Assert.assertNotNull(domainRankingList);
@@ -265,7 +271,7 @@ public class StatisticTest {
         ProvinceAndIspFlowRequest request = new ProvinceAndIspFlowRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setResultType(ResultTypeEnum.MERGE.getCode());
 //        request.setResultType(ResultTypeEnum.ALONE.getCode());
 
@@ -303,7 +309,7 @@ public class StatisticTest {
         ProvinceAndIspBWRequest request = new ProvinceAndIspBWRequest();
         request.setStartTime("2017-02-09T00:00+0800");
         request.setEndTime("2017-02-09T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 //        request.setResultType(ResultTypeEnum.MERGE.getCode());
         request.setResultType(ResultTypeEnum.ALONE.getCode());
         request.setGranularity("1440");
@@ -330,7 +336,7 @@ public class StatisticTest {
         HttpCodeRequest request = new HttpCodeRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 
         HttpCodeResult httpCodeData = (HttpCodeResult) cdnClient.generalGetStatisticsData(request, HttpCodeResult.class);
         Assert.assertNotNull(httpCodeData);
@@ -352,7 +358,7 @@ public class StatisticTest {
         HttpCodeDetailRequest request = new HttpCodeDetailRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 
         request.setResultType(ResultTypeEnum.MERGE.getCode());//返回类型为分别返回
 //        request.setGranularity("480");//时间粒度为8个小时
@@ -376,7 +382,7 @@ public class StatisticTest {
         TopUrlRequest request = new TopUrlRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setLimitN("5");
 
         TopUrlResult topUrl = (TopUrlResult) cdnClient.generalGetStatisticsData(request, TopUrlResult.class);
@@ -401,7 +407,7 @@ public class StatisticTest {
         AreaRequest request = new AreaRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 
         AreaResult areaData = (AreaResult) cdnClient.generalGetStatisticsData(request, AreaResult.class);
         Assert.assertNotNull(areaData);
@@ -424,7 +430,7 @@ public class StatisticTest {
         IspRequest request = new IspRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 
         IspResult ispData = (IspResult) cdnClient.generalGetStatisticsData(request, IspResult.class);
         Assert.assertNotNull(ispData);
@@ -582,7 +588,7 @@ public class StatisticTest {
         TopReferRequest request = new TopReferRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-01T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setLimitN("5");
 
         TopReferResult topRefer = (TopReferResult) cdnClient.generalGetStatisticsData(request, TopReferResult.class);
@@ -604,7 +610,7 @@ public class StatisticTest {
         ProvinceAndIspHttpCodeRequest request = new ProvinceAndIspHttpCodeRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setResultType(ResultTypeEnum.MERGE.getCode());
 
         ProvinceAndIspHttpCodeResult provinceAndIspHttpCode = (ProvinceAndIspHttpCodeResult) cdnClient.generalGetStatisticsData(request, ProvinceAndIspHttpCodeResult.class);
@@ -629,7 +635,7 @@ public class StatisticTest {
         ProvinceAndIspHitRateDetailRequest request = new ProvinceAndIspHitRateDetailRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T00:05+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setResultType(ResultTypeEnum.ALONE.getCode());
 
         ProvinceAndIspHitRateDetailResult provinceAndIspHitRateDetail = (ProvinceAndIspHitRateDetailResult) cdnClient.generalGetStatisticsData(request, ProvinceAndIspHitRateDetailResult.class);
@@ -654,7 +660,7 @@ public class StatisticTest {
         ProvinceAndIspHttpCodeDetailRequest request = new ProvinceAndIspHttpCodeDetailRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T00:05+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setResultType(ResultTypeEnum.MERGE.getCode());
 
         ProvinceAndIspHttpCodeDetailResult provinceAndIspHttpCodeDetail = (ProvinceAndIspHttpCodeDetailResult) cdnClient.generalGetStatisticsData(request, ProvinceAndIspHttpCodeDetailResult.class);
@@ -679,7 +685,7 @@ public class StatisticTest {
         ProvinceAndIspPvRequest request = new ProvinceAndIspPvRequest();
         request.setStartTime("2016-09-19T00:00+0800");
         request.setEndTime("2016-09-19T00:05+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setResultType(ResultTypeEnum.ALONE.getCode());
 
         ProvinceAndIspPvResult provinceAndIspPv = (ProvinceAndIspPvResult) cdnClient.generalGetStatisticsData(request, ProvinceAndIspPvResult.class);
@@ -701,7 +707,7 @@ public class StatisticTest {
         SrcHttpCodeRequest request = new SrcHttpCodeRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-01T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
 
         SrcHttpCodeResult srcHttpCode = (SrcHttpCodeResult) cdnClient.generalGetStatisticsData(request, SrcHttpCodeResult.class);
         Assert.assertNotNull(srcHttpCode);
@@ -721,7 +727,7 @@ public class StatisticTest {
         SrcHttpCodeDetailRequest request = new SrcHttpCodeDetailRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-01T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setResultType(ResultTypeEnum.ALONE.getCode());
 
         SrcHttpCodeDetailResult srcHttpCodeDetail = (SrcHttpCodeDetailResult) cdnClient.generalGetStatisticsData(request, SrcHttpCodeDetailResult.class);
@@ -743,7 +749,7 @@ public class StatisticTest {
         TopIpRequest request = new TopIpRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-01T23:00+0800");
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setLimitN("5");
 
         TopIpResult topIp = (TopIpResult) cdnClient.generalGetStatisticsData(request, TopIpResult.class);
@@ -768,7 +774,7 @@ public class StatisticTest {
         UvRequest uvRequest = new UvRequest();
         uvRequest.setStartTime("2017-02-01T08:00+0800");
         uvRequest.setEndTime("2017-02-02T08:00+0800");
-        uvRequest.setCdnType(CdnTypeEnum.download.getValue());
+        uvRequest.setCdnType(CdnTypeEnum.video.getValue());
         uvRequest.setResultType(ResultTypeEnum.ALONE.getCode());
 
         UvResult uv = (UvResult) cdnClient.generalGetStatisticsData(uvRequest, UvResult.class);
@@ -872,7 +878,7 @@ public class StatisticTest {
         BillingRequest request = new BillingRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-28T23:56+0800");
-        request.setCdnType("download");
+        request.setCdnType("video");
         request.setBillingMode("monthflow");
         request.setRegions("CN,AS,NA,AU");
         BillingWebResponse result = (BillingWebResponse) cdnClient.generalGetStatisticsData(request, BillingWebResponse.class);
@@ -892,9 +898,110 @@ public class StatisticTest {
         PeakBandwidthDataRequest request = new PeakBandwidthDataRequest();
         request.setStartTime("2017-02-01T00:00+0800");
         request.setEndTime("2017-02-28T23:56+0800");
-        request.setCdnType("download");
+        request.setCdnType("video");
         request.setRegions("CN,AS,NA,AU");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+
         PeakBandwidthDataResult result = (PeakBandwidthDataResult) cdnClient.generalGetStatisticsData(request, PeakBandwidthDataResult.class);
         Assert.assertNotNull(result);
+    }
+
+    /**
+     * 描述 获取泛域名次级域名带宽数据，包括边缘带宽、回源带宽数据，单位：bit\/second
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔，查询的次级域名数量不能 超过100个
+     * 最多可获取最近62天的数据，可查一天内的数据
+     * 支持按照协议类型查询带宽数据，单对于ProtocolType非必选参数，如果不填，则默认的带宽数据即各部分协议数据之和
+     * 统计粒度：1天粒度；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 时效性：5分钟延迟
+     * 使用场景：
+     * 客户查询泛域名下次级域名的详细带宽数据，进行数据保存以及数据分析
+     * 业务类型说明：目前泛域名的明细查询只针对下载点播业务
+     * @throws Exception
+     */
+    @Test
+    public void testGetSubDomainsBandwidthData() throws Exception {
+        SubDomainsBandwidthRequest request = new SubDomainsBandwidthRequest();
+        request.setDomainId("2D09W48");
+        request.setDomains("www.cmcm.com");
+        request.setStartTime("2017-11-06T00:00+0800");
+        request.setEndTime("2017-11-06T11:00+0800");
+        request.setRegions("CN");
+        request.setResultType("1");
+        request.setGranularity("5");
+        request.setDataType("origin,edge");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+        SubDomainsBandwidthResult result = (SubDomainsBandwidthResult) cdnClient.generalGetStatisticsData(request, SubDomainsBandwidthResult.class);
+        System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
+        Assert.assertNotNull(result);
+    }
+
+    /**
+     * 描述 获取泛域名次级域名流量数据，包括边缘流量、回源流量数据，** 单位：byte***
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔，查询的次级域名数量不能 超过100个
+     * 最多可获取最近62天的数据，可查一天内的数据
+     * 支持按照协议类型查询带宽数据，单对于ProtocolType非必选参数，如果不填，则默认的带宽数据即各部分协议数据之和
+     * 统计粒度：1天粒度；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 时效性：5分钟延迟
+     * 使用场景：
+     * 客户查询泛域名下次级域名的详细带宽数据，进行数据保存以及数据分析
+     * 业务类型说明：目前泛域名的明细查询只针对下载点播业务
+     * @throws Exception
+     */
+    @Test
+    public void testGetSubDomainsFlowData() throws Exception {
+        SubDomainsFlowRequest request = new SubDomainsFlowRequest();
+        request.setDomainId("2D09W48");
+        request.setDomains("www.cmcm.com");
+        request.setStartTime("2017-11-06T00:00+0800");
+        request.setEndTime("2017-11-06T11:00+0800");
+        request.setRegions("CN");
+        request.setResultType("1");
+        request.setGranularity("5");
+        request.setDataType("origin,edge");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+        SubDomainsFlowResult result = (SubDomainsFlowResult) cdnClient.generalGetStatisticsData(request, SubDomainsFlowResult.class);
+        System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
+        Assert.assertNotNull(result);
+    }
+
+    /**
+     * 描述 获取泛域名次级域名流量数据，包括边缘流量、回源流量数据，** 单位：byte***
+     * 支持按指定的起止时间查询，两者需要同时指定
+     * 支持批量域名查询，多个域名ID用逗号（半角）分隔，查询的次级域名数量不能 超过100个
+     * 最多可获取最近62天的数据，可查一天内的数据
+     * 支持按照协议类型查询带宽数据，单对于ProtocolType非必选参数，如果不填，则默认的带宽数据即各部分协议数据之和
+     * 统计粒度：1天粒度；5分钟粒度；10分钟粒度；20分钟粒度；1小时粒度；4小时粒度；8小时粒度；以上粒度的带宽值均取该粒度时间段的峰值
+     * 时效性：5分钟延迟
+     * 使用场景：
+     * 客户查询泛域名下次级域名的详细带宽数据，进行数据保存以及数据分析
+     * 业务类型说明：目前泛域名的明细查询只针对下载点播业务
+     * @throws Exception
+     */
+    @Test
+    public void testGetSubDomainsPvData() throws Exception {
+        SubDomainsPvRequest request = new SubDomainsPvRequest();
+        request.setDomainId("2D09W48");
+        request.setDomains("www.cmcm.com");
+        request.setStartTime("2017-11-06T00:00+0800");
+        request.setEndTime("2017-11-06T11:00+0800");
+        request.setRegions("CN");
+        request.setResultType("1");
+        request.setGranularity("5");
+        request.setDataType("origin,edge");
+        request.setProtocolType(ProtocolTypeEnum.HTTP.getValue());
+        SubDomainsPvResult result = (SubDomainsPvResult) cdnClient.generalGetStatisticsData(request, SubDomainsPvResult.class);
+        System.out.print(result.getDatas()[0].getDomains()[0].getDomain());
+        Assert.assertNotNull(result);
+    }
+
+    @Test
+    public void testGetLivePlayStatData() throws Exception {
+        GetLivePlayStatDataRequest request = new GetLivePlayStatDataRequest();
+        request.setResultType("0");
+        request.setStartTime("2018-05-30T02:00+0800");
+        GetLivePlayStatDataResponse result = (GetLivePlayStatDataResponse)cdnClient.generalGetStatisticsData(request, GetLivePlayStatDataResponse.class);
+        System.out.print(result.getDatas().size());
     }
 }

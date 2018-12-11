@@ -12,12 +12,22 @@ public class DescribeImagesRequest extends KscWebServiceRequest
 implements DryRunSupportedRequest<DescribeImagesRequest>{
 	private String ImageId;
 
+	private String ImageType;
+
 	public String getImageId() {
 		return ImageId;
 	}
 
 	public void setImageId(String imageId) {
 		ImageId = imageId;
+	}
+
+	public String getImageType() {
+		return ImageType;
+	}
+
+	public void setImageType(String imageType) {
+		ImageType = imageType;
 	}
 
 	@Override
