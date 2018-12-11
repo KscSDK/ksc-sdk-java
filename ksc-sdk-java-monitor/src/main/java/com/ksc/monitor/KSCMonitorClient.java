@@ -398,7 +398,35 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+	@Override
+	public GetMetricStatisticsBatchResponse getMetricStatisticsBatch(GetMetricStatisticsBatchRequest getMetricStatisticsBatchRequest) {
+		ExecutionContext executionContext = createExecutionContext(getMetricStatisticsBatchRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetMetricStatisticsBatchRequest> request = null;
+		
+			Response<GetMetricStatisticsBatchResponse> response = null;
+			try {
+				kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+				try {
+					request = new GetMetricStatisticsBatchRequestMarshaller()
+							.marshall(super.beforeMarshalling(getMetricStatisticsBatchRequest));
+					// Binds the request metrics to the current request.
+					request.setKscRequestMetrics(kscRequestMetrics);
+				} finally {
+					kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+				}
+				StaxResponseHandler<GetMetricStatisticsBatchResponse> responseHandler = new StaxResponseHandler<GetMetricStatisticsBatchResponse>(
+						new GetMetricStatisticsBatchResponseStaxUnmarshaller());
+				response = invoke(request, responseHandler, executionContext);
 
+				return response.getKscResponse();
+			} finally {
+				endClientExecution(kscRequestMetrics, request, response);
+			}
+		
+
+	}
 	@Override
 	public GetMetricStatisticsBatchV2Response getMetricStatisticsBatchV2(GetMetricStatisticsBatchRequest getMetricStatisticsBatchRequest) {
 		ExecutionContext executionContext = createExecutionContext(getMetricStatisticsBatchRequest);
@@ -428,4 +456,5 @@ public class KSCMonitorClient extends KscWebServiceClient implements KSCMonitor 
 		
 
 	}
+
 }

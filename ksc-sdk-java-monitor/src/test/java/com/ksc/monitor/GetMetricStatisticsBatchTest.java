@@ -9,23 +9,22 @@ import org.junit.Test;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.monitor.model.GetMetricStatisticsBatchRequest;
-import com.ksc.monitor.model.GetMetricStatisticsBatchV2Response;
+import com.ksc.monitor.model.GetMetricStatisticsBatchResponse;
 
-
-public class GetMetricStatisticsBatchV2Test {
-    private static final Logger log = Logger.getLogger(GetMetricStatisticsBatchV2Test.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AKaTiSmB10O3nDiAw",
-            "ODohMFYQQUPnU0fyy1W7F0d/oK9t9R9A==");
+public class GetMetricStatisticsBatchTest {
+    private static final Logger log = Logger.getLogger(GetMetricStatisticsBatchTest.class);
+    private AWSCredentials credentials = new BasicAWSCredentials("AKLTdsdasdsTiSmB10O3nDiAw",
+            "ODohMFYQQUPnU0fxOUdfdsgfdgfgfgOoMgTt+yy1W7F0d/oK9t9R9A==");
 
     @Test
-    public void getMetricStatisticsBatchV2() {
+    public void getMetricStatisticsBatch() {
     	GetMetricStatisticsBatchRequest request = new GetMetricStatisticsBatchRequest();
-        request.setVersion("2018-11-14");
+        request.setVersion("2018-09-29");
         String data = body();
         request.setData(data);
         KSCMonitorClient client = new KSCMonitorClient(credentials);
         client.setEndpoint("http://monitor.cn-beijing-6.api.ksyun.com");
-        GetMetricStatisticsBatchV2Response result = client.getMetricStatisticsBatchV2(request);
+        GetMetricStatisticsBatchResponse result = client.getMetricStatisticsBatch(request);
         System.out.println(result);
     }
 
@@ -48,7 +47,7 @@ public class GetMetricStatisticsBatchV2Test {
         metric1.put("MetricName","eip.bps.in");
         JSONObject metric2 = new JSONObject();
         metric2.put("InstanceID","62033090-9298-4d28-a413-1d6a08cf7270");
-        metric2.put("MetricName","eip.bps.out1");
+        metric2.put("MetricName","eip.bps.out");
         JSONArray metrics = new JSONArray();
         metrics.put(metric1);
         metrics.put(metric2);
