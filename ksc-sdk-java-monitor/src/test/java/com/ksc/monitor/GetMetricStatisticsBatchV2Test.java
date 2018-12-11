@@ -16,8 +16,8 @@ import com.ksc.monitor.model.PutMetricDataResponse;
 
 public class GetMetricStatisticsBatchV2Test {
     private static final Logger log = Logger.getLogger(GetMetricStatisticsBatchV2Test.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AKLTY9fKqksgSwiydzCpApA-RQ",
-            "OBfTcZ5iVpn2yhZrk1AtujJZoaDjYgvI8tJadgh0QKgqdFMJVHOyh2vSusqK2nPYEQ==");
+    private AWSCredentials credentials = new BasicAWSCredentials("AKLTY9fKqksgSwvvvCpApA-RQ",
+            "OBfTcZ5iVpn2yhZrk1AtujJZoaDjYgvI8tJadgh0QKgqvvvvOyh2vSusqK2nPYEQ==");
 
     @Test
     public void getMetricStatisticsBatchV2() {
