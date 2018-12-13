@@ -79,7 +79,7 @@ public class HealthCheckStaxUnmarshaller implements Unmarshaller<HealthCheck, St
                     continue;
                 }
 
-            }else if (xmlEvent.isEndDocument()){
+            }else if (xmlEvent.isEndElement()){
                 if (context.getCurrentDepth() < originalDepth){
                     return healthCheck;
                 }
