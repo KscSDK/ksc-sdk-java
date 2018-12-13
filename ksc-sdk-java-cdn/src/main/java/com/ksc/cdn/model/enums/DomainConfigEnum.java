@@ -25,7 +25,8 @@ public enum DomainConfigEnum {
     optimize("optimize", "页面优化"),
     waf("waf", "Waf防护功能"),
     notify_url("notify_url", "视频直播notify url"),
-    redirect_type("redirect_type", "强制访问跳转方式");
+    redirect_type("redirect_type", "强制访问跳转方式"),
+    request_auth("request_auth", "时间戳共享秘钥防盗链");
 
     private String value;
     private String desc;

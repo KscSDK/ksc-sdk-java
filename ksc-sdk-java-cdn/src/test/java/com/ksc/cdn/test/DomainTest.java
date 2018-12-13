@@ -37,9 +37,9 @@ public class DomainTest {
                 "http://cdn.api.ksyun.com",
                 "cn-shanghai-1",
                 "cdn");
-        /*client=new KscCdnClient("AKTPf-QTNRxOTfOJsue-gZ4Saw",
-                "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==");*/
-        domainId = "2D09X54";
+        /*client=new KscCdnClient("",
+                "");*/
+        domainId = "2D093GC";
 
     }
 
@@ -430,5 +430,26 @@ public class DomainTest {
     public void testGetHttpHeaderList() throws Exception{
         HttpHeadersList httpHeaderList = client.getHttpHeaderList("2D09HG3");
         Assert.assertEquals(HttpHeaderKeyEnum.Expires.getValue(), httpHeaderList.getHttpHeadList()[0].getHeaderKey());
+    }
+
+    /**
+     * 设置Ip 防盗链
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetRequestAuthConfig() throws Exception {
+        RequestAuthConfig request = new RequestAuthConfig();
+        request.setDomainId(domainId);//待设置域名id
+        request.setEnable(SwitchEnum.ON.getValue());//打开配置
+        request.setAuthType("typeA");
+        request.setKey1("aaaaaa");
+        request.setKey2("bbbbbb,cccccc");
+        request.setExpirationTime(100L);
+
+        client.setRequestAuthConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals(SwitchEnum.ON.getValue(), domainConfigs.getRequestAuthConfig().getEnable());
+        Assert.assertEquals("aaaaaa", domainConfigs.getRequestAuthConfig().getKey1());
     }
 }
