@@ -201,6 +201,13 @@ public interface KscCdnDomain {
     String GETHTTPHEADERLIST_VERSION = "2016-09-01";
     String GETHTTPHEADERLIST_ACTION = "GetHttpHeaderList";
 
+    /**
+     * 时间戳防盗链
+     */
+    String SETREQUESTAUTHCONFIG_URL = "/2016-09-01/domain/SetRequestAuthConfig";
+    String SETREQUESTAUTHCONFIG_VERSION = "2016-09-01";
+    String SETREQUESTAUTHCONFIG_ACTION = "SetRequestAuthConfig";
+
 
     /**
      * 获取域名列表
@@ -404,4 +411,11 @@ public interface KscCdnDomain {
      * @throws Exception
      */
     HttpHeadersList getHttpHeaderList(String domainId) throws Exception;
+
+    /**
+     * 时间戳共享秘钥防盗链
+     * @param requestAuthConfig
+     * @throws Exception
+     */
+    void setRequestAuthConfig(RequestAuthConfig requestAuthConfig) throws Exception;
 }
