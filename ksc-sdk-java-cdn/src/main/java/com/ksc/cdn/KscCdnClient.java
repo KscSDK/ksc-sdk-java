@@ -393,4 +393,10 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         Map<String, String> buildHeaders = this.buildHeaders(generalRequestParam.getVersion(), generalRequestParam.getAction(), true);
         return this.httpExecute(HttpMethod.POST, generalRequestParam.getUrl(), request, buildHeaders, IpCheckResponse.class);
     }
+
+    @Override
+    public void setRequestAuthConfig(RequestAuthConfig requestAuthConfig) throws Exception{
+        Map<String, String> buildHeaders = this.buildHeaders(SETREQUESTAUTHCONFIG_VERSION, SETREQUESTAUTHCONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, SETREQUESTAUTHCONFIG_URL, requestAuthConfig, buildHeaders, Void.class);
+    }
 }
