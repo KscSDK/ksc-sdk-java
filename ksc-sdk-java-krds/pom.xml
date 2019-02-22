@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.ksyun</groupId>
+    <artifactId>ksc-sdk-java-krds</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <description>
+        The KSC SDK for Java - KRDS module holds the classes that is used
+        by the individual service clients to interact with KSC Web Services.
+        Users need to depend on krds-java-sdk artifact for accessing individual client classes.
+    </description>
+    <url>https://www.ksyun.com/sdkforjava</url>
+    <properties>
+        <dep.jackson.version>2.6.6</dep.jackson.version>
+        <dep.jackson-lombok.version>1.1</dep.jackson-lombok.version>
+        <dep.jackson.version>2.6.6</dep.jackson.version>
+        <dep.gson.version>2.3.1</dep.gson.version>
+        <dep.jackson.version>2.6.6</dep.jackson.version>
+        <dep.junit.version>4.12</dep.junit.version>
+        <dep.log4j.version>1.2.17</dep.log4j.version>
+        <dep.slf4j.version>1.7.7</dep.slf4j.version>
+        <project.build.targetJdk>1.7</project.build.targetJdk>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <maven.compiler.compilerVersion>1.7</maven.compiler.compilerVersion>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>${dep.gson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-core</artifactId>
+            <version>${dep.jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.xebia</groupId>
+            <artifactId>jackson-lombok</artifactId>
+            <version>${dep.jackson-lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ksyun</groupId>
+            <artifactId>ksc-sdk-java-core</artifactId>
+            <version>0.2.5</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${dep.log4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${dep.slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <scope>test</scope>
+            <version>${dep.junit.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-all</artifactId>
+            <version>1.10.19</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>nl.jqno.equalsverifier</groupId>
+            <artifactId>equalsverifier</artifactId>
+            <version>1.7.5</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-javadoc-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
