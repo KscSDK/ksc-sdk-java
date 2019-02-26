@@ -39,6 +39,12 @@ public class Instance {
 
 	private String ProjectId;
 
+	private String ServiceEndTime;
+
+	private String ChargeType;
+
+	private Integer ProductType;
+
 	public String getProjectId() {
 		return ProjectId;
 	}
@@ -161,4 +167,27 @@ public class Instance {
 		CreationDate = creationDate;
 	}
 
+	public String getServiceEndTime() {
+		return ServiceEndTime;
+	}
+
+	public void setServiceEndTime(String serviceEndTime) {
+		ServiceEndTime = serviceEndTime;
+	}
+
+	public String getChargeType() {
+		return ChargeType;
+	}
+
+	public void setChargeType(String chargeType) {
+		ChargeType = chargeType;
+	}
+
+	public Integer getProductType() {
+		return ProductType;
+	}
+
+	public void setProductType(Integer productType) {
+		ProductType = productType;
+	}
 }

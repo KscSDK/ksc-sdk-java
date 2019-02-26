@@ -15,8 +15,8 @@ import java.util.Arrays;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "AKLTaX9enqQbSKS1gb8r88-Gtw";
-	public static final String AWS_SK = "OINcA3uPsg0Xu+QTRfDVn59PYQ8K0QhMqQDC2ABb19bu0U9BuJmyyp6WQzUVfW1xAQ==";
+	public static final String AWS_AK = "";
+	public static final String AWS_SK = "";
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
@@ -86,8 +86,8 @@ public class KSCOpenAPISample {
 		kec_client.setServiceNameIntern("kec");
 
 		DescribeInstancesRequest describe_instances_request = new DescribeInstancesRequest();
-		describe_instances_request.withInstanceIds("7ac7faf8-1c39-4479-bf65-db3489d850e4");
-		describe_instances_request.withProjectIds("208");
+		describe_instances_request.withInstanceIds("2d52bf5b-cd0c-48fc-a941-2418b9ccfafc");
+		describe_instances_request.withProjectIds("0");
 //		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult result = kec_client
 				.describeInstances(describe_instances_request);
