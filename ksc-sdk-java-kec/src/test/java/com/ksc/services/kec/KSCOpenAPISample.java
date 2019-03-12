@@ -1,16 +1,83 @@
 package com.ksc.services.kec;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+import org.junit.Test;
+
 import com.google.gson.Gson;
 import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.kec.KSCKECClient;
-import com.ksc.kec.model.*;
+import com.ksc.kec.model.AttachNetworkInterfaceRequest;
+import com.ksc.kec.model.AttachNetworkInterfaceResult;
+import com.ksc.kec.model.CreateImageRequest;
+import com.ksc.kec.model.CreateImageResult;
+import com.ksc.kec.model.CreateLocalVolumeSnapshotRequest;
+import com.ksc.kec.model.CreateLocalVolumeSnapshotResult;
+import com.ksc.kec.model.DataDisk;
+import com.ksc.kec.model.DeleteLocalVolumeSnapshotRequest;
+import com.ksc.kec.model.DeleteLocalVolumeSnapshotResult;
+import com.ksc.kec.model.DescribeAvailabilityZonesRequest;
+import com.ksc.kec.model.DescribeAvailabilityZonesResult;
+import com.ksc.kec.model.DescribeImageSharePermissionRequest;
+import com.ksc.kec.model.DescribeImageSharePermissionResult;
+import com.ksc.kec.model.DescribeImagesRequest;
+import com.ksc.kec.model.DescribeImagesResult;
+import com.ksc.kec.model.DescribeInstanceFamilysRequest;
+import com.ksc.kec.model.DescribeInstanceFamilysResult;
+import com.ksc.kec.model.DescribeInstanceTypeConfigsRequest;
+import com.ksc.kec.model.DescribeInstanceTypeConfigsResult;
+import com.ksc.kec.model.DescribeInstanceVncRequest;
+import com.ksc.kec.model.DescribeInstanceVncResult;
+import com.ksc.kec.model.DescribeInstancesRequest;
+import com.ksc.kec.model.DescribeInstancesResult;
+import com.ksc.kec.model.DescribeLocalVolumeSnapshotsRequest;
+import com.ksc.kec.model.DescribeLocalVolumeSnapshotsResult;
+import com.ksc.kec.model.DescribeLocalVolumesRequest;
+import com.ksc.kec.model.DescribeLocalVolumesResult;
+import com.ksc.kec.model.DescribeRegionsRequest;
+import com.ksc.kec.model.DescribeRegionsResult;
+import com.ksc.kec.model.DetachNetworkInterfaceRequest;
+import com.ksc.kec.model.DetachNetworkInterfaceResult;
+import com.ksc.kec.model.ImageCopyRequest;
+import com.ksc.kec.model.ImageCopyResult;
+import com.ksc.kec.model.ImageImportRequest;
+import com.ksc.kec.model.ImageImportResult;
+import com.ksc.kec.model.ModifyImageAttributeRequest;
+import com.ksc.kec.model.ModifyImageAttributeResult;
+import com.ksc.kec.model.ModifyImageSharePermissionRequest;
+import com.ksc.kec.model.ModifyImageSharePermissionResult;
+import com.ksc.kec.model.ModifyInstanceAttributeRequest;
+import com.ksc.kec.model.ModifyInstanceAttributeResult;
+import com.ksc.kec.model.ModifyInstanceImageRequest;
+import com.ksc.kec.model.ModifyInstanceImageResult;
+import com.ksc.kec.model.ModifyInstanceTypeRequest;
+import com.ksc.kec.model.ModifyInstanceTypeResult;
+import com.ksc.kec.model.ModifyNetworkInterfaceAttributeRequest;
+import com.ksc.kec.model.ModifyNetworkInterfaceAttributeResult;
+import com.ksc.kec.model.MonitorInstancesRequest;
+import com.ksc.kec.model.MonitorInstancesResult;
+import com.ksc.kec.model.RebootInstancesRequest;
+import com.ksc.kec.model.RebootInstancesResult;
+import com.ksc.kec.model.RemoveImagesRequest;
+import com.ksc.kec.model.RemoveImagesResult;
+import com.ksc.kec.model.RollbackLocalVolumeRequest;
+import com.ksc.kec.model.RollbackLocalVolumeResult;
+import com.ksc.kec.model.RunInstancesRequest;
+import com.ksc.kec.model.RunInstancesResult;
+import com.ksc.kec.model.StartInstancesRequest;
+import com.ksc.kec.model.StartInstancesResult;
+import com.ksc.kec.model.StopInstancesRequest;
+import com.ksc.kec.model.StopInstancesResult;
+import com.ksc.kec.model.TerminateInstancesRequest;
+import com.ksc.kec.model.TerminateInstancesResult;
+import com.ksc.kec.model.UnmonitorInstancesRequest;
+import com.ksc.kec.model.UnmonitorInstancesResult;
 import com.ksc.model.Filter;
-import org.apache.log4j.Logger;
-import org.junit.Test;
-
-import java.util.Arrays;
 
 public class KSCOpenAPISample {
 
@@ -86,7 +153,7 @@ public class KSCOpenAPISample {
 		kec_client.setServiceNameIntern("kec");
 
 		DescribeInstancesRequest describe_instances_request = new DescribeInstancesRequest();
-		describe_instances_request.withInstanceIds("2d52bf5b-cd0c-48fc-a941-2418b9ccfafc");
+		describe_instances_request.withInstanceIds("c4d58cc8-335a-4776-b081-b200e725d988");
 		describe_instances_request.withProjectIds("0");
 //		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult result = kec_client
@@ -114,7 +181,7 @@ public class KSCOpenAPISample {
 	public void runInstances(){
 		RunInstancesRequest request=new RunInstancesRequest();
 		request.setImageId("b2e78146-58f1-4298-9397-ebf942246a2b");
-		request.setInstanceType("I1.1A");
+		request.setInstanceType("N2.1A");
 		request.setDataDiskGb(50);
 		request.setMaxCount(1);
 		request.setMinCount(1);
@@ -123,10 +190,23 @@ public class KSCOpenAPISample {
 		request.setChargeType("Daily");
 		request.setPurchaseTime(1);
 		request.setSecurityGroupId("31a5484d-8077-4aca-8f79-e093f9d4bbc1");
-		request.setInstanceName("sdk-test");
+		request.setInstanceName("sdk-test-ebs");
 		request.setInstanceNameSuffix("1");
 		request.setSriovNetSupport(false);
 		request.setProjectId(208L);
+		
+		List<DataDisk> dataDiskList = new ArrayList<DataDisk>();
+		DataDisk dataDisk = new DataDisk();
+		dataDisk.setType("SSD3.0");
+		dataDisk.setSize(10);
+		dataDisk.setDeleteWithInstance(true);
+		dataDiskList.add(dataDisk);
+		request.setDataDisk(dataDiskList);
+		
+		request.setAddressBandWidth(1);
+		request.setAddressChargeType("PostPaidByDay");
+		request.setLineId("111765e4-f55f-4822-9ed6-b2464252fab2");
+		request.setAddressPurchaseTime(0);
 
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
