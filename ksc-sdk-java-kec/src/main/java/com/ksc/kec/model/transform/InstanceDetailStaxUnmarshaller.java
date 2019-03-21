@@ -3,6 +3,7 @@ package com.ksc.kec.model.transform;
 import javax.xml.stream.events.XMLEvent;
 
 import com.ksc.kec.model.Instance;
+import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -109,6 +110,21 @@ public class InstanceDetailStaxUnmarshaller implements
 
 				if (context.testExpression("ProjectId", targetDepth)) {
 					vm.setProjectId(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+				if (context.testExpression("ServiceEndTime", targetDepth)) {
+					vm.setServiceEndTime(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+				if (context.testExpression("ChargeType", targetDepth)) {
+					vm.setChargeType(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+				if (context.testExpression("ProductType", targetDepth)) {
+					vm.setProductType(SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;
 				}
