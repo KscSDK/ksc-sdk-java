@@ -94,6 +94,36 @@ public class RunInstancesRequestMarshaller implements
             request.addParameter("ProjectId",
                     StringUtils.fromLong(runInstancesRequest.getProjectId()));
         }
+        if(runInstancesRequest.getDataDisk() != null && runInstancesRequest.getDataDisk().size() > 0){
+        	for(int i=0; i<runInstancesRequest.getDataDisk().size(); i++){
+        		request.addParameter("DataDisk." + (i+1) + ".Type",
+        				StringUtils.fromString(runInstancesRequest.getDataDisk().get(i).getType()));
+        		request.addParameter("DataDisk." + (i+1) + ".Size",
+        				StringUtils.fromInteger(runInstancesRequest.getDataDisk().get(i).getSize()));
+        		request.addParameter("DataDisk." + (i+1) + ".DeleteWithInstance",
+                        StringUtils.fromBoolean(runInstancesRequest.getDataDisk().get(i).getDeleteWithInstance()));
+        	}
+        }
+        if(runInstancesRequest.getAddressBandWidth() != null){
+        	 request.addParameter("AddressBandWidth",
+                     StringUtils.fromInteger(runInstancesRequest.getAddressBandWidth()));
+        }
+        if(runInstancesRequest.getLineId() != null){
+        	 request.addParameter("LineId",
+                     StringUtils.fromString(runInstancesRequest.getLineId()));
+        }
+        if(runInstancesRequest.getAddressChargeType() != null){
+       	     request.addParameter("AddressChargeType",
+                    StringUtils.fromString(runInstancesRequest.getAddressChargeType()));
+        }
+        if(runInstancesRequest.getAddressPurchaseTime() != null){
+       	     request.addParameter("AddressPurchaseTime",
+                    StringUtils.fromInteger(runInstancesRequest.getAddressPurchaseTime()));
+        }
+        if(runInstancesRequest.getAddressProjectId() != null){
+          	 request.addParameter("AddressProjectId",
+                       StringUtils.fromString(runInstancesRequest.getAddressProjectId()));
+        }
         return request;
     }
 

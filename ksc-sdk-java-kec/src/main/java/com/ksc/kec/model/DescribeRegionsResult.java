@@ -21,7 +21,15 @@ public class DescribeRegionsResult implements Serializable, Cloneable{
 	public void setRequestId(String requestId) {
 		RequestId = requestId;
 	}
-	
+
+	public List<Region> getRegionSet() {
+		return RegionSet;
+	}
+
+	public void setRegionSet(List<Region> regionSet) {
+		RegionSet = regionSet;
+	}
+
 	public DescribeRegionsResult withRegion(Region... instances) {
 		if(this.RegionSet == null){
 			this.RegionSet = new ArrayList<Region>();

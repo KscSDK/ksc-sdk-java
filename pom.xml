@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
-	<version>0.2.5</version>
+	<version>0.3.3</version>
 	<packaging>pom</packaging>
 	<name>KSC SDK for Java</name>
 	<description>
@@ -54,7 +54,9 @@
 		<module>ksc-sdk-java-live</module>
 		<module>ksc-sdk-java-sts</module>
 		<module>ksc-sdk-java-ket</module>
-    </modules>
+		<module>ksc-sdk-java-redis</module>
+		<module>ksc-sdk-java-memcached</module>
+	</modules>
 	<scm>
 		<url>https://github.com/ksc/ksc-sdk-java.git</url>
 	</scm>
@@ -224,15 +226,13 @@
 		</profile>
 	</profiles>
 	<distributionManagement>
-		<repository>
-			<id>release</id>
-			<name>develop ksyun-parent Nexus Repository</name>
-			<url>http://10.69.34.219:8888/nexus/content/repositories/releases</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshot</id>
-			<name>develop ksyun-parent-snapshot Nexus Repository</name>
-			<url>http://10.69.34.219:8888/nexus/content/repositories/snapshots</url>
-		</snapshotRepository>
+    		<snapshotRepository>
+    		<id>ossrh</id>
+    		<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+    		</snapshotRepository>
+    	<repository>
+    		<id>ossrh</id>
+    		<url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+    	</repository>
 	</distributionManagement>
 </project>

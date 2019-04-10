@@ -39,6 +39,13 @@ public class DescribeInstanceTypeConfigsResult implements Serializable, Cloneabl
 		RequestId = requestId;
 	}
 
+	public List<InstanceTypeConfig> getInstanceTypeConfigSet() {
+		return InstanceTypeConfigSet;
+	}
+
+	public void setInstanceTypeConfigSet(List<InstanceTypeConfig> instanceTypeConfigSet) {
+		InstanceTypeConfigSet = instanceTypeConfigSet;
+	}
 
 	@Override
 	public DescribeInstanceTypeConfigsResult clone() {

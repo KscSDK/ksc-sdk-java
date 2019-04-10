@@ -21,6 +21,7 @@ public class GetDomainConfigResult {
     private DetectOriginConfig DetectOriginConfig;
     private TestUrlConfig TestUrlConfig;
     private HttpHeadersConfig HttpHeadersConfig;
+    private RequestAuthConfig RequestAuthConfig;
 
     public com.ksc.cdn.model.domain.domaindetail.CacheRuleConfig getCacheRuleConfig() {
         return CacheRuleConfig;
@@ -124,5 +125,13 @@ public class GetDomainConfigResult {
 
     public void setHttpHeadersConfig(com.ksc.cdn.model.domain.domaindetail.HttpHeadersConfig httpHeadersConfig) {
         HttpHeadersConfig = httpHeadersConfig;
+    }
+
+    public com.ksc.cdn.model.domain.domaindetail.RequestAuthConfig getRequestAuthConfig() {
+        return RequestAuthConfig;
+    }
+
+    public void setRequestAuthConfig(com.ksc.cdn.model.domain.domaindetail.RequestAuthConfig requestAuthConfig) {
+        RequestAuthConfig = requestAuthConfig;
     }
 }

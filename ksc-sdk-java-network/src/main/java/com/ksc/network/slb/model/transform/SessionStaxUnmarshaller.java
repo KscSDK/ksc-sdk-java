@@ -49,7 +49,7 @@ public class SessionStaxUnmarshaller implements Unmarshaller<Session, StaxUnmars
                     continue;
                 }
 
-            }else if (xmlEvent.isEndDocument()){
+            }else if (xmlEvent.isEndElement()){
                 if (context.getCurrentDepth() < originalDepth){
                     return session;
                 }
