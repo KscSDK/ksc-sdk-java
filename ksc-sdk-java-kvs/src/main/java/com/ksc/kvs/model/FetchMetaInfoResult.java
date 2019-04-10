@@ -1,16 +1,10 @@
 package com.ksc.kvs.model;
 
-public class CreateTasklResult {
+public class FetchMetaInfoResult {
 	
-	private String TaskID;
 	private int ErrNum;
 	private String ErrMsg;
-	public String getTaskID() {
-		return TaskID;
-	}
-	public void setTaskID(String taskID) {
-		TaskID = taskID;
-	}
+	private String MetaInfo;
 	public int getErrNum() {
 		return ErrNum;
 	}
@@ -23,4 +17,12 @@ public class CreateTasklResult {
 	public void setErrMsg(String errMsg) {
 		ErrMsg = errMsg;
 	}
+	public String getMetaInfo() {
+		return MetaInfo;
+	}
+	public void setMetaInfo(String metaInfo) {
+		MetaInfo = metaInfo;
+	}
+	
+
 }
