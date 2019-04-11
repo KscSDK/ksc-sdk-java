@@ -20,7 +20,7 @@ public class MemcachedResponseConversion {
      * @throws IOException
      */
     public static <T> MemcachedResponse<T> invoke(JsonParser jsonParser, Class<T> clazz) throws IOException {
-        MemcachedResponse<T> redisResponse = new MemcachedResponse<>();
+        MemcachedResponse<T> redisResponse = new MemcachedResponse<T>();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
