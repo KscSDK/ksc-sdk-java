@@ -16,7 +16,7 @@ public class SetRedisSecurityGroupMarshaller implements Marshaller<Request<SetRe
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<SetRedisSecurityGroupRequest> request = new DefaultRequest<>(setRedisSecurityGroupRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<SetRedisSecurityGroupRequest> request = new DefaultRequest<SetRedisSecurityGroupRequest>(setRedisSecurityGroupRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "SetCacheParameterGroup");
         request.addParameter("Version", "2016-07-01");

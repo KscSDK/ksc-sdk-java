@@ -16,7 +16,7 @@ public class FlushRedisMarshaller implements Marshaller<Request<FlushRedisReques
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<FlushRedisRequest> request = new DefaultRequest<>(flushRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<FlushRedisRequest> request = new DefaultRequest<FlushRedisRequest>(flushRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "FlushCacheCluster");
         request.addParameter("Version", "2016-07-01");

@@ -16,7 +16,7 @@ public class DeleteReadOnlyRedisMarshaller implements Marshaller<Request<DeleteR
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DeleteReadOnlyRedisRequest> request = new DefaultRequest<>(deleteReadOnlyRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<DeleteReadOnlyRedisRequest> request = new DefaultRequest<DeleteReadOnlyRedisRequest>(deleteReadOnlyRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "DeleteCacheSlaveNode");
         request.addParameter("Version", "2017-04-01");

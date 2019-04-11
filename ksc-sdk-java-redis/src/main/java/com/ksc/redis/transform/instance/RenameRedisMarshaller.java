@@ -16,7 +16,7 @@ public class RenameRedisMarshaller implements Marshaller<Request<RenameRedisRequ
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<RenameRedisRequest> request = new DefaultRequest<>(renameRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<RenameRedisRequest> request = new DefaultRequest<RenameRedisRequest>(renameRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "RenameCacheCluster");
         request.addParameter("Version", "2016-07-01");

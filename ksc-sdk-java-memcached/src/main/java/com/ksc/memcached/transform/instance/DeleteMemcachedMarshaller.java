@@ -16,7 +16,7 @@ public class DeleteMemcachedMarshaller implements Marshaller<Request<DeleteMemca
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DeleteMemcachedRequest> request = new DefaultRequest<>(deleteMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<DeleteMemcachedRequest> request = new DefaultRequest<DeleteMemcachedRequest>(deleteMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.DELETE);
         request.addParameter("Action", "DeleteCacheCluster");
         request.addParameter("Version", "2018-06-27");

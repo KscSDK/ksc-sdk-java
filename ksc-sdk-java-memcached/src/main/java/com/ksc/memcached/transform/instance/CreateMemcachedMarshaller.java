@@ -19,7 +19,7 @@ public class CreateMemcachedMarshaller implements Marshaller<Request<CreateMemca
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<CreateMemcachedRequest> request = new DefaultRequest<>(createMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<CreateMemcachedRequest> request = new DefaultRequest<CreateMemcachedRequest>(createMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.POST);
         request.addParameter("Action", "CreateCacheCluster");
         request.addParameter("Version", "2018-06-27");

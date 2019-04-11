@@ -16,7 +16,7 @@ public class DescribeMemcachedMarshaller implements Marshaller<Request<DescribeM
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DescribeMemcachedRequest> request = new DefaultRequest<>(describeMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<DescribeMemcachedRequest> request = new DefaultRequest<DescribeMemcachedRequest>(describeMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.GET);
         request.addParameter("Action", "DescribeCacheCluster");
         request.addParameter("Version", "2018-06-27");

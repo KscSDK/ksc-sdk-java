@@ -16,7 +16,7 @@ public class RenameMemcachedMarshaller implements Marshaller<Request<RenameMemca
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<RenameMemcachedRequest> request = new DefaultRequest<>(renameMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<RenameMemcachedRequest> request = new DefaultRequest<RenameMemcachedRequest>(renameMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "RenameCacheCluster");
         request.addParameter("Version", "2018-06-27");

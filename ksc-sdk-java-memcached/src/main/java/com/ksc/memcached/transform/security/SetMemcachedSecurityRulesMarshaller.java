@@ -18,7 +18,7 @@ public class SetMemcachedSecurityRulesMarshaller implements Marshaller<Request<S
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<SetMemcachedSecurityRulesRequest> request = new DefaultRequest<>(setMemcachedSecurityRulesRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<SetMemcachedSecurityRulesRequest> request = new DefaultRequest<SetMemcachedSecurityRulesRequest>(setMemcachedSecurityRulesRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "SetCacheSecurityRules");
         request.addParameter("Version", "2018-06-27");
