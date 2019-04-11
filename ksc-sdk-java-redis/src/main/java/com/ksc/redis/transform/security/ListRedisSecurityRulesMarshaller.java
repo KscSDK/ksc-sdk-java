@@ -16,7 +16,7 @@ public class ListRedisSecurityRulesMarshaller implements Marshaller<Request<List
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<ListRedisSecurityRulesRequest> request = new DefaultRequest<>(listRedisSecurityRulesRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<ListRedisSecurityRulesRequest> request = new DefaultRequest<ListRedisSecurityRulesRequest>(listRedisSecurityRulesRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.GET);
         request.addParameter("Action", "DescribeCacheSecurityRules");
         request.addParameter("Version", "2016-07-01");

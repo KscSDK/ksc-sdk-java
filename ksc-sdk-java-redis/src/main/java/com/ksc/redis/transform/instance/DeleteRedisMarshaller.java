@@ -16,7 +16,7 @@ public class DeleteRedisMarshaller implements Marshaller<Request<DeleteRedisRequ
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DeleteRedisRequest> request = new DefaultRequest<>(deleteRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<DeleteRedisRequest> request = new DefaultRequest<DeleteRedisRequest>(deleteRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.DELETE);
         request.addParameter("Action", "DeleteCacheCluster");
         request.addParameter("Version", "2016-07-01");

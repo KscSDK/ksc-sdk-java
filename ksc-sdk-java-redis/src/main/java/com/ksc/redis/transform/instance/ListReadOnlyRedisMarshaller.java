@@ -16,7 +16,7 @@ public class ListReadOnlyRedisMarshaller implements Marshaller<Request<ListReadO
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<ListReadOnlyRedisRequest> request = new DefaultRequest<>(listReadOnlyRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<ListReadOnlyRedisRequest> request = new DefaultRequest<ListReadOnlyRedisRequest>(listReadOnlyRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.GET);
         request.addParameter("Action", "DescribeCacheReadonlyNode");
         request.addParameter("Version", "2017-04-01");
