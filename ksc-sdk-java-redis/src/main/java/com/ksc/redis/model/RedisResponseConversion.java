@@ -20,7 +20,7 @@ public class RedisResponseConversion {
      * @throws IOException
      */
     public static <T> RedisResponse<T> invoke(JsonParser jsonParser, Class<T> clazz) throws IOException {
-        RedisResponse<T> redisResponse = new RedisResponse<>();
+        RedisResponse<T> redisResponse = new RedisResponse<T>();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
