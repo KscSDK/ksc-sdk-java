@@ -16,7 +16,7 @@ public class FlushMemcachedMarshaller implements Marshaller<Request<FlushMemcach
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<FlushMemcachedRequest> request = new DefaultRequest<>(flushMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<FlushMemcachedRequest> request = new DefaultRequest<FlushMemcachedRequest>(flushMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "FlushCacheCluster");
         request.addParameter("Version", "2018-06-27");

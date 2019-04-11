@@ -16,7 +16,7 @@ public class UpdateMemcachedPassWordMarshaller implements Marshaller<Request<Upd
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<UpdateMemcachedPassWordRequest> request = new DefaultRequest<>(updateMemcachedPassWordRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<UpdateMemcachedPassWordRequest> request = new DefaultRequest<UpdateMemcachedPassWordRequest>(updateMemcachedPassWordRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "UpdatePassword");
         request.addParameter("Version", "2018-06-27");

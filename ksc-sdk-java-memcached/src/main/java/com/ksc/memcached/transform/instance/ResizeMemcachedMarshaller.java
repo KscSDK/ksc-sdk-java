@@ -16,7 +16,7 @@ public class ResizeMemcachedMarshaller implements Marshaller<Request<ResizeMemca
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<ResizeMemcachedRequest> request = new DefaultRequest<>(resizeMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<ResizeMemcachedRequest> request = new DefaultRequest<ResizeMemcachedRequest>(resizeMemcachedRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "ResizeCacheCluster");
         request.addParameter("Version", "2018-06-27");

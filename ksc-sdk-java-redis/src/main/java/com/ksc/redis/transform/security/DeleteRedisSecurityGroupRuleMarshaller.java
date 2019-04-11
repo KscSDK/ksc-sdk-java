@@ -16,7 +16,7 @@ public class DeleteRedisSecurityGroupRuleMarshaller implements Marshaller<Reques
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DeleteRedisSecurityGroupRuleRequest> request = new DefaultRequest<>(deleteRedisSecurityGroupRuleRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<DeleteRedisSecurityGroupRuleRequest> request = new DefaultRequest<DeleteRedisSecurityGroupRuleRequest>(deleteRedisSecurityGroupRuleRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.DELETE);
         request.addParameter("Action", "DeleteCacheSecurityGroupRule");
         request.addParameter("Version", "2016-07-01");

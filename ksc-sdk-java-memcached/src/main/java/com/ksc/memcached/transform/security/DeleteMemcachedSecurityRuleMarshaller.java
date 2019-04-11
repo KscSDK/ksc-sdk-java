@@ -16,7 +16,7 @@ public class DeleteMemcachedSecurityRuleMarshaller implements Marshaller<Request
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DeleteMemcachedSecurityRuleRequest> request = new DefaultRequest<>(deleteMemcachedSecurityRuleRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
+        Request<DeleteMemcachedSecurityRuleRequest> request = new DefaultRequest<DeleteMemcachedSecurityRuleRequest>(deleteMemcachedSecurityRuleRequest, KscMemcachedClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.DELETE);
         request.addParameter("Action", "DeleteCacheSecurityRule");
         request.addParameter("Version", "2018-06-27");

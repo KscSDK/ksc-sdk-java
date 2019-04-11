@@ -16,7 +16,7 @@ public class CreateReadOnlyRedisMarshaller implements Marshaller<Request<CreateR
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<CreateReadOnlyRedisRequest> request = new DefaultRequest<>(createReadOnlyRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<CreateReadOnlyRedisRequest> request = new DefaultRequest<CreateReadOnlyRedisRequest>(createReadOnlyRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.PUT);
         request.addParameter("Action", "AddCacheSlaveNode");
         request.addParameter("Version", "2017-04-01");

@@ -19,7 +19,7 @@ public class CreateRedisMarshaller implements Marshaller<Request<CreateRedisRequ
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<CreateRedisRequest> request = new DefaultRequest<>(createRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
+        Request<CreateRedisRequest> request = new DefaultRequest<CreateRedisRequest>(createRedisRequest, KscRedisClient.DEFAULT_SIGNING_NAME);
         request.setHttpMethod(HttpMethodName.POST);
         request.addParameter("Action", "CreateCacheCluster");
         request.addParameter("Version", "2016-07-01");
