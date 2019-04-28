@@ -4,13 +4,13 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.3.2</version>
+		<version>0.3.4</version>
 	</parent>
 
 
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java-kvs</artifactId>
-	<version>0.3.2</version>
+	<version>0.3.4</version>
 	<packaging>jar</packaging>
 
 

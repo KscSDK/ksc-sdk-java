@@ -23,7 +23,4 @@ public class CreateTasklResult {
 	public void setErrMsg(String errMsg) {
 		ErrMsg = errMsg;
 	}
-	
-	
-
 }

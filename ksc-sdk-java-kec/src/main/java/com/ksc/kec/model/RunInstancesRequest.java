@@ -1,13 +1,16 @@
 package com.ksc.kec.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.kec.model.transform.RunInstancesRequestMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
+
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
-import java.io.Serializable;
 
 /**
  * <p>
@@ -131,6 +134,56 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private Long ProjectId;
+	
+	/**
+	 * <p>
+	 * 数据盘（云盘）的支持
+	 * 是否可缺省：是
+	 * </p>
+	 */
+	private List<DataDisk> DataDisk;
+	
+	/**
+	 * <p>
+	 * 弹性IP的带宽
+	 * 是否可缺省: 是，购买弹性IP时不可缺省
+	 * </p>
+	 */
+	private Integer AddressBandWidth;
+	
+	/**
+	 * <p>
+	 * 弹性IP的链路类型的ID
+	 * 是否可缺省: 是，购买弹性IP时不可缺省
+	 * </p>
+	 */
+	private String LineId;
+	
+	/**
+	 * <p>
+	 * 弹性IP的计费类型
+	 * 有效值: PrePaidByMonth ：包年包月，有到期时间，只能升带宽 PostPaidByPeak：按峰值月结，无到期时间，可升降带宽 PostPaidByDay：按日月结，无到期时间，可升降带宽 PostPaidByTransfer：按流量月结，无到期时间，可升降带宽 PostPaidByHour：按小时月结，无到期时间，可升降带宽
+	 * 是否可缺省: 是，购买弹性IP时不可缺省
+	 * </p>
+	 */
+	private String AddressChargeType;
+	
+	/**
+	 * <p>
+	 * 购买时长，只有购买包年包月弹性IP时不可缺省。
+	 *是否可缺省: 是
+	 * </p>
+	 */
+	private Integer AddressPurchaseTime;
+	
+	/**
+	 * <p>
+	 * 弹性IP项目的ID
+	 *是否可缺省: 是
+	 *缺省值: 默认项目
+	 * </p>
+	 */
+	private String AddressProjectId;
 
 	public Long getProjectId() {
 		return ProjectId;
@@ -258,6 +311,54 @@ public class RunInstancesRequest extends KscWebServiceRequest
 				.marshall(this);
 		request.addParameter("DryRun", Boolean.toString(true));
 		return request;
+	}
+
+	public List<DataDisk> getDataDisk() {
+		return DataDisk;
+	}
+
+	public void setDataDisk(List<DataDisk> dataDisk) {
+		DataDisk = dataDisk;
+	}
+
+	public Integer getAddressBandWidth() {
+		return AddressBandWidth;
+	}
+
+	public void setAddressBandWidth(Integer addressBandWidth) {
+		AddressBandWidth = addressBandWidth;
+	}
+
+	public String getLineId() {
+		return LineId;
+	}
+
+	public void setLineId(String lineId) {
+		LineId = lineId;
+	}
+
+	public String getAddressChargeType() {
+		return AddressChargeType;
+	}
+
+	public void setAddressChargeType(String addressChargeType) {
+		AddressChargeType = addressChargeType;
+	}
+
+	public Integer getAddressPurchaseTime() {
+		return AddressPurchaseTime;
+	}
+
+	public void setAddressPurchaseTime(Integer addressPurchaseTime) {
+		AddressPurchaseTime = addressPurchaseTime;
+	}
+
+	public String getAddressProjectId() {
+		return AddressProjectId;
+	}
+
+	public void setAddressProjectId(String addressProjectId) {
+		AddressProjectId = addressProjectId;
 	}
 
 }
