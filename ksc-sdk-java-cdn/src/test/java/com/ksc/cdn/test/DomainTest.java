@@ -300,17 +300,9 @@ public class DomainTest {
         request.setEnable(SwitchEnum.ON.getValue());//打开配置
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//设置源站类型
         //源站信息
-        List<OriginAdvancedItem> items = new ArrayList<OriginAdvancedItem>();
-        OriginAdvancedItem advancedItems = new OriginAdvancedItem();
-        advancedItems.setOrigin("www.b.qunar.com");//设置回源地址
-        advancedItems.setOriginLine(OriginLineEnum.DEFAULT.getValue());//设置源站线路
-        items.add(advancedItems);
-        advancedItems = new OriginAdvancedItem();
-        advancedItems.setOrigin("www.c.qunar.com");
-        advancedItems.setOriginLine(OriginLineEnum.CM.getValue());
-        items.add(advancedItems);
-        request.setOriginAdvancedItems(items);
-
+        request.setOrigin("tets.com");
+        request.setBackupOrigin("1.1.1.1");
+        request.setBackupOriginType(OriginTypeEnum.IPADDR.getValue());
         request.setOriginPolicy(OriginPolicyEnum.QUALITY.getValue());//设置回源策略 rr: 轮询； quality: 按质量最优的topN来轮询回源
         request.setOriginPolicyBestCount(1l);//当OriginPolicy是quality时，该项必填。取值1-10
         client.setOriginAdvanced(request);
