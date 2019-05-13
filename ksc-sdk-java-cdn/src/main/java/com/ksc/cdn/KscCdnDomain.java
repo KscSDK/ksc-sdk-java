@@ -209,6 +209,22 @@ public interface KscCdnDomain {
     String SETREQUESTAUTHCONFIG_ACTION = "SetRequestAuthConfig";
 
 
+    String NOPAHT_URL = "/";
+    String VERSION_20160901 = "2016-09-01";
+    /**
+     * 设置强制跳转
+     */
+    String SETFORCEREDIRECTCONFIG_ACTION = "SetForceRedirectConfig";
+
+
+    String SETHTTP2OPTIONCONFIG_ACTION = "SetHttp2OptionConfig";
+
+
+    String SETERRORPAGECONFIG_ACTION = "SetErrorPageConfig";
+
+
+    String SETPAGECOMPRESSCONFIG_ACTION = "SetPageCompressConfig";
+
     /**
      * 获取域名列表
      *
@@ -418,4 +434,39 @@ public interface KscCdnDomain {
      * @throws Exception
      */
     void setRequestAuthConfig(RequestAuthConfig requestAuthConfig) throws Exception;
+
+    /**
+     * 设置强制跳转
+     * @param forceRedirectConfig
+     * @throws Exception
+     */
+    void setForceRedirectConfig(ForceRedirectConfig forceRedirectConfig) throws Exception;
+
+    /**
+     * 设置HTTP 2.0
+     * @param http2OptionConfig
+     * @throws Exception
+     */
+    void setHttp2OptionConfig(Http2OptionConfig http2OptionConfig) throws Exception;
+
+    /**
+     * 自定义错误页面
+     * @param errorPageConfig
+     * @throws Exception
+     */
+    void setErrorPageConfig(ErrorPageConfig errorPageConfig) throws Exception;
+
+    /**
+     * 设置智能压缩
+     * @param pageCompressConfig
+     * @throws Exception
+     */
+    void setPageCompressConfig(PageCompressConfig pageCompressConfig) throws Exception;
+
+    /**
+     * 设置过滤参数
+     * @param ignoreQueryStringConfig
+     * @throws Exception
+     */
+    void setIgnoreQueryStringConfig(IgnoreQueryStringConfig ignoreQueryStringConfig) throws Exception;
 }
