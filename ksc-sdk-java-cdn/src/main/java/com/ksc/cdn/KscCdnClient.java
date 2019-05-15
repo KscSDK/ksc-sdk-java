@@ -42,6 +42,7 @@ import java.util.regex.Pattern;
  */
 public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCdnStatistics, KscCdnLog, KscCdnContent, KscCdnHttps, KscCdnBlockUrl, KscIpCheck {
 
+
     public KscCdnClient() {
 
     }
@@ -399,4 +400,35 @@ public class KscCdnClient<R> extends KscApiCommon implements KscCdnDomain, KscCd
         Map<String, String> buildHeaders = this.buildHeaders(SETREQUESTAUTHCONFIG_VERSION, SETREQUESTAUTHCONFIG_ACTION, true);
         this.httpExecute(HttpMethod.POST, SETREQUESTAUTHCONFIG_URL, requestAuthConfig, buildHeaders, Void.class);
     }
+
+    @Override
+    public void setForceRedirectConfig(ForceRedirectConfig forceRedirectConfig) throws Exception{
+        Map<String, String> buildHeaders = this.buildHeaders(VERSION_20160901, SETFORCEREDIRECTCONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, NOPAHT_URL, forceRedirectConfig, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setHttp2OptionConfig(Http2OptionConfig http2OptionConfig) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(VERSION_20160901, SETHTTP2OPTIONCONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, NOPAHT_URL, http2OptionConfig, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setErrorPageConfig(ErrorPageConfig errorPageConfig) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(VERSION_20160901, SETERRORPAGECONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, NOPAHT_URL, errorPageConfig, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setPageCompressConfig(PageCompressConfig pageCompressConfig) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(VERSION_20160901, SETPAGECOMPRESSCONFIG_ACTION, true);
+        this.httpExecute(HttpMethod.POST, NOPAHT_URL, pageCompressConfig, buildHeaders, Void.class);
+    }
+
+    @Override
+    public void setIgnoreQueryStringConfig(IgnoreQueryStringConfig ignoreQueryStringConfig) throws Exception {
+        Map<String, String> buildHeaders = this.buildHeaders(VERSION_20160901, IGNORE_QUERY_STRING_ACTION, true);
+        this.httpExecute(HttpMethod.POST, NOPAHT_URL, ignoreQueryStringConfig, buildHeaders, Void.class);
+    }
+
 }

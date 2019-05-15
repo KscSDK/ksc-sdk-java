@@ -22,6 +22,10 @@ public enum CdnTypeEnum {
      */
     file("file","大文件下载"),
     /**
+     * 大文件下载业务
+     */
+    page("page","图片小文件"),
+    /**
      * 直播业务
      */
     live("live", "直播");
