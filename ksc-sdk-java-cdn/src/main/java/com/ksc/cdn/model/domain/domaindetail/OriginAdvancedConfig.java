@@ -23,8 +23,13 @@ public class OriginAdvancedConfig{
      */
     @FieldValidate
     private String OriginType;
+
+    /**
+     * 主源站回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。
+     */
     @FieldValidate
-    private List<OriginAdvancedItem> OriginAdvancedItems;
+    private String Origin;
+
     /**
      * rr: 轮询； quality: 按质量最优的topN来轮询回源
      */
@@ -35,6 +40,18 @@ public class OriginAdvancedConfig{
      */
     @FieldValidate
     private Long OriginPolicyBestCount;
+
+    /**
+     * 热备源站类型，取值：ipaddr、 domain，分别表示：IP源站、域名源站。
+     */
+    @FieldValidate
+    private String BackupOriginType;
+
+    /**
+     * 热备源站回源地址，可以是IP或域名；IP支持最多20个，以逗号区分，域名只能输入一个。IP与域名不能同时输入。
+     */
+    @FieldValidate
+    private String BackupOrigin;
 
     public String getEnable() {
         return Enable;
@@ -61,19 +78,35 @@ public class OriginAdvancedConfig{
         OriginPolicy = originPolicy;
     }
 
-    public List<OriginAdvancedItem> getOriginAdvancedItems() {
-        return OriginAdvancedItems;
-    }
-
-    public void setOriginAdvancedItems(List<OriginAdvancedItem> originAdvancedItems) {
-        OriginAdvancedItems = originAdvancedItems;
-    }
-
     public Long getOriginPolicyBestCount() {
         return OriginPolicyBestCount;
     }
 
     public void setOriginPolicyBestCount(Long originPolicyBestCount) {
         OriginPolicyBestCount = originPolicyBestCount;
+    }
+
+    public String getOrigin() {
+        return Origin;
+    }
+
+    public void setOrigin(String origin) {
+        Origin = origin;
+    }
+
+    public String getBackupOriginType() {
+        return BackupOriginType;
+    }
+
+    public void setBackupOriginType(String backupOriginType) {
+        BackupOriginType = backupOriginType;
+    }
+
+    public String getBackupOrigin() {
+        return BackupOrigin;
+    }
+
+    public void setBackupOrigin(String backupOrigin) {
+        BackupOrigin = backupOrigin;
     }
 }

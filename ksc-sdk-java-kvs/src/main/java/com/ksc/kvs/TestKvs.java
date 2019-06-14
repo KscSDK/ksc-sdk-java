@@ -119,6 +119,12 @@ public class TestKvs {
 		GetInterfaceNumberRequest getInterfaceNumberRequest = new GetInterfaceNumberRequest();
 		getMediaTransDurationRequest.setResultType(1);
 		GetInterfaceNumberResult getInterfaceNumberResult = ksc.GetInterfaceNumber(getInterfaceNumberRequest);
+		
+		FetchMetaInfoRequest fetchMetaInfoRequestRequest = new FetchMetaInfoRequest();
+		String data3 = setMetaInfo("xxx/xxxx.mp4");
+		fetchMetaInfoRequestRequest.setData(data3);
+		FetchMetaInfoResult fetchMetaInfoResult = ksc.FetchMetaInfo(fetchMetaInfoRequestRequest);
+		System.out.println(fetchMetaInfoResult.getMetaInfo());
 
 	}
 
@@ -222,5 +228,11 @@ public class TestKvs {
 		data.put("State", "Active");
 		return data.toString();
 
+	}
+	
+	private static String setMetaInfo(String srcPath) {
+		JSONObject data = new JSONObject();
+		data.put("SrcPath", srcPath);
+		return data.toString();
 	}
 }
