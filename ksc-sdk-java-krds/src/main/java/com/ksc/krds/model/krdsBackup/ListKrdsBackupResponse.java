@@ -2,25 +2,42 @@ package com.ksc.krds.model.krdsBackup;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import lombok.Getter;
-import lombok.Setter;
 
 import java.util.List;
 
-@Getter
-@Setter
+
 public class ListKrdsBackupResponse {
     private Data Data = new Data();
     private String RequestId;
 
-    @Getter
-    @Setter
-    public class Data{
-        List<DBBackup> DBBackup;
+    public ListKrdsBackupResponse.Data getData() {
+        return Data;
     }
 
-    @Getter
-    @Setter
+    public void setData(ListKrdsBackupResponse.Data data) {
+        Data = data;
+    }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    public class Data{
+        List<DBBackup> DBBackup;
+
+        public List<ListKrdsBackupResponse.DBBackup> getDBBackup() {
+            return DBBackup;
+        }
+
+        public void setDBBackup(List<ListKrdsBackupResponse.DBBackup> DBBackup) {
+            this.DBBackup = DBBackup;
+        }
+    }
+
     public class DBBackup{
 
         private String DBBackupIdentifier;
@@ -37,6 +54,110 @@ public class ListKrdsBackupResponse {
         private String DBInstanceIdentifier;
         private String Engine;
         private String EngineVersion;
+
+        public String getDBBackupIdentifier() {
+            return DBBackupIdentifier;
+        }
+
+        public void setDBBackupIdentifier(String DBBackupIdentifier) {
+            this.DBBackupIdentifier = DBBackupIdentifier;
+        }
+
+        public String getDBBackupName() {
+            return DBBackupName;
+        }
+
+        public void setDBBackupName(String DBBackupName) {
+            this.DBBackupName = DBBackupName;
+        }
+
+        public String getBackupCreateTime() {
+            return BackupCreateTime;
+        }
+
+        public void setBackupCreateTime(String backupCreateTime) {
+            BackupCreateTime = backupCreateTime;
+        }
+
+        public String getBackupUpdatedTime() {
+            return BackupUpdatedTime;
+        }
+
+        public void setBackupUpdatedTime(String backupUpdatedTime) {
+            BackupUpdatedTime = backupUpdatedTime;
+        }
+
+        public String getStatus() {
+            return Status;
+        }
+
+        public void setStatus(String status) {
+            Status = status;
+        }
+
+        public Double getBackupSize() {
+            return BackupSize;
+        }
+
+        public void setBackupSize(Double backupSize) {
+            BackupSize = backupSize;
+        }
+
+        public String getRemotePath() {
+            return RemotePath;
+        }
+
+        public void setRemotePath(String remotePath) {
+            RemotePath = remotePath;
+        }
+
+        public String getBackupMode() {
+            return BackupMode;
+        }
+
+        public void setBackupMode(String backupMode) {
+            BackupMode = backupMode;
+        }
+
+        public String getBackupType() {
+            return BackupType;
+        }
+
+        public void setBackupType(String backupType) {
+            BackupType = backupType;
+        }
+
+        public String getParentId() {
+            return ParentId;
+        }
+
+        public void setParentId(String parentId) {
+            ParentId = parentId;
+        }
+
+        public String getDBInstanceIdentifier() {
+            return DBInstanceIdentifier;
+        }
+
+        public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
+            this.DBInstanceIdentifier = DBInstanceIdentifier;
+        }
+
+        public String getEngine() {
+            return Engine;
+        }
+
+        public void setEngine(String engine) {
+            Engine = engine;
+        }
+
+        public String getEngineVersion() {
+            return EngineVersion;
+        }
+
+        public void setEngineVersion(String engineVersion) {
+            EngineVersion = engineVersion;
+        }
 
         public String toString(){
             ObjectMapper objectMapper=new ObjectMapper();

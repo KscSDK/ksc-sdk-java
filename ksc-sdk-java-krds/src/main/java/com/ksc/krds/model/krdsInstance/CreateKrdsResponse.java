@@ -1,17 +1,34 @@
 package com.ksc.krds.model.krdsInstance;
 
-import lombok.Getter;
-import lombok.Setter;
-
-@Getter
-@Setter
 public class CreateKrdsResponse {
     Data Data = new Data();
     private String RequestId;
 
-    @Getter
-    @Setter
+    public CreateKrdsResponse.Data getData() {
+        return Data;
+    }
+
+    public void setData(CreateKrdsResponse.Data data) {
+        Data = data;
+    }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
     public class Data{
         Instance DBInstance;
+
+        public Instance getDBInstance() {
+            return DBInstance;
+        }
+
+        public void setDBInstance(Instance DBInstance) {
+            this.DBInstance = DBInstance;
+        }
     }
 }
