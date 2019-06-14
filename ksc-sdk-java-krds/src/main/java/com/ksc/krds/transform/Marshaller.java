@@ -10,21 +10,20 @@ import com.google.gson.Gson;
 import com.ksc.krds.exception.KWSClientException;
 import com.ksc.krds.exception.KWSServiceException;
 import com.xebia.jacksonlombok.JacksonLombokAnnotationIntrospector;
-import lombok.extern.log4j.Log4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Objects;
 
 import static com.ksc.krds.transform.TypeHelper.getPropertyDescriptors;
 
 
-@Log4j
 public abstract class Marshaller<TMarshall,TUnmashall> {
+    private static Logger log = LoggerFactory.getLogger(Marshaller.class);
     private static ObjectMapper objectMapper = new ObjectMapper();
     private static Gson gson = new Gson();
 
@@ -49,7 +48,7 @@ public abstract class Marshaller<TMarshall,TUnmashall> {
             Class<?> object_class = request.getClass();
             for (PropertyDescriptor propertyDescriptor :
                     getPropertyDescriptors(object_class)) {
-                if (Objects.equals(propertyDescriptor.getName(), "class"))
+                if ("class".equals(propertyDescriptor.getName()))
                     continue;
                 Field field = TypeHelper.getPropertyFieldWithinSuperClass(object_class, propertyDescriptor);
                 field.setAccessible(true);

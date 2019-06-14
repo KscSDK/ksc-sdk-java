@@ -1,19 +1,37 @@
 package com.ksc.krds.model.krdsInstance;
 
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.List;
 
-@Getter
-@Setter
+
 public class ListKrdsResponse {
     Data Data = new Data();
     private String RequestId;
 
-    @Getter
-    @Setter
+    public ListKrdsResponse.Data getData() {
+        return Data;
+    }
+
+    public void setData(ListKrdsResponse.Data data) {
+        Data = data;
+    }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
     public class Data{
         List<Instance> Instances;
+
+        public List<Instance> getInstances() {
+            return Instances;
+        }
+
+        public void setInstances(List<Instance> instances) {
+            Instances = instances;
+        }
     }
 }

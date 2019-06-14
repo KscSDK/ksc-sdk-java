@@ -12,6 +12,14 @@ public class DescribeSecurityGroupRequest extends KscWebServiceRequest
 
     private String SecurityGroupId;
 
+    public String getSecurityGroupId() {
+        return SecurityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
+
     public Request<DescribeSecurityGroupRequest> getDryRunRequest() {
         Request<DescribeSecurityGroupRequest> request = new DescribeSecurityGroupMarshaller().marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
