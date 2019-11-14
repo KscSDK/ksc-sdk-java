@@ -46,35 +46,35 @@ public class AllConfigsRequest {
         this.backOriginHostConfig = backOriginHostConfig;
     }
 
-    public com.ksc.cdn.model.domain.domaindetail.CacheRuleConfig getCacheRuleConfig() {
+    public CacheRuleConfig getCacheRuleConfig() {
         return CacheRuleConfig;
     }
 
-    public void setCacheRuleConfig(com.ksc.cdn.model.domain.domaindetail.CacheRuleConfig cacheRuleConfig) {
+    public void setCacheRuleConfig(CacheRuleConfig cacheRuleConfig) {
         CacheRuleConfig = cacheRuleConfig;
     }
 
-    public com.ksc.cdn.model.domain.domaindetail.IpProtectionConfig getIpProtectionConfig() {
+    public IpProtectionConfig getIpProtectionConfig() {
         return IpProtectionConfig;
     }
 
-    public void setIpProtectionConfig(com.ksc.cdn.model.domain.domaindetail.IpProtectionConfig ipProtectionConfig) {
+    public void setIpProtectionConfig(IpProtectionConfig ipProtectionConfig) {
         IpProtectionConfig = ipProtectionConfig;
     }
 
-    public com.ksc.cdn.model.domain.domaindetail.ReferProtectionConfig getReferProtectionConfig() {
+    public ReferProtectionConfig getReferProtectionConfig() {
         return ReferProtectionConfig;
     }
 
-    public void setReferProtectionConfig(com.ksc.cdn.model.domain.domaindetail.ReferProtectionConfig referProtectionConfig) {
+    public void setReferProtectionConfig(ReferProtectionConfig referProtectionConfig) {
         ReferProtectionConfig = referProtectionConfig;
     }
 
-    public com.ksc.cdn.model.domain.domaindetail.IgnoreQueryStringConfig getIgnoreQueryStringConfig() {
+    public IgnoreQueryStringConfig getIgnoreQueryStringConfig() {
         return IgnoreQueryStringConfig;
     }
 
-    public void setIgnoreQueryStringConfig(com.ksc.cdn.model.domain.domaindetail.IgnoreQueryStringConfig ignoreQueryStringConfig) {
+    public void setIgnoreQueryStringConfig(IgnoreQueryStringConfig ignoreQueryStringConfig) {
         IgnoreQueryStringConfig = ignoreQueryStringConfig;
     }
 }

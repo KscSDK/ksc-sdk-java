@@ -16,8 +16,8 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 @Slf4j
 public class TypeHelper {
-    private static Map<Class, Map<PropertyDescriptor, Field>> fieldCache = new IdentityHashMap<>();
-    private static Map<Class, PropertyDescriptor[]> propertyDescriptorsCache = new IdentityHashMap<>();
+    private static Map<Class, Map<PropertyDescriptor, Field>> fieldCache = new IdentityHashMap<Class, Map<PropertyDescriptor, Field>>();
+    private static Map<Class, PropertyDescriptor[]> propertyDescriptorsCache = new IdentityHashMap<Class, PropertyDescriptor[]>();
     private static ReadWriteLock propertyDescriptorsCacheLock = new ReentrantReadWriteLock();
     private static ReadWriteLock fieldCacheLock = new ReentrantReadWriteLock();
 
@@ -61,7 +61,7 @@ public class TypeHelper {
             fieldCacheLock.readLock().lock();
             propertyDescriptorFieldMap = fieldCache.get(object_class);
             if (propertyDescriptorFieldMap == null) {
-                propertyDescriptorFieldMap = new IdentityHashMap<>();
+                propertyDescriptorFieldMap = new IdentityHashMap<PropertyDescriptor, Field>();
                 fieldCacheLock.readLock().unlock();
                 fieldCacheLock.writeLock().lock();
                 fieldCache.put(object_class, propertyDescriptorFieldMap);
@@ -74,7 +74,7 @@ public class TypeHelper {
             Field field = null;
             //noinspection Duplicates
             int try_capitailized = 1;
-            Set<String> testedName = new HashSet<>();
+            Set<String> testedName = new HashSet<String>();
             while (true) {
                 String name = propertyDescriptor.getName();
                 if (try_capitailized == 1) {

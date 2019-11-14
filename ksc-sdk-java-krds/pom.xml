@@ -3,10 +3,15 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ksyun</groupId>
+        <artifactId>ksc-sdk-java</artifactId>
+        <version>0.3.6</version>
+    </parent>
 
-    <groupId>com.ksyun</groupId>
+    <name>KSC SDK for Java - krds</name>
     <artifactId>ksc-sdk-java-krds</artifactId>
-    <version>1.0-SNAPSHOT</version>
+
     <description>
         The KSC SDK for Java - KRDS module holds the classes that is used
         by the individual service clients to interact with KSC Web Services.
