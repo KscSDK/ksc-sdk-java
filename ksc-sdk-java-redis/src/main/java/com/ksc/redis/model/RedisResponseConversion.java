@@ -34,6 +34,14 @@ public class RedisResponseConversion {
         return redisResponse;
     }
 
+    public static <T> T invoke1(JsonParser jsonParser, Class<T> clazz) throws IOException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
+        return objectMapper.convertValue(objectMapper.readTree(jsonParser), clazz);
+    }
+
     /**
      * Jackson parses JSON objects as strings
      *
