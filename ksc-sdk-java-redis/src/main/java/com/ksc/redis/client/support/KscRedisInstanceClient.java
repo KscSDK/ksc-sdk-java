@@ -79,4 +79,16 @@ public class KscRedisInstanceClient extends KscRedisClient {
         return doAction(new ListReadOnlyRedisMarshaller().marshall(super.beforeMarshalling(listReadOnlyRedisRequest)),
                 new ListReadOnlyRedisUnmarshaller()).getKscResponse();
     }
+
+    public RedisResponse<StatisticDBInstancesResponse> statisticDBInstances(StatisticDBInstancesRequest req) {
+        return doAction(new StatisticDBInstancesMarshaller().marshall(super.beforeMarshalling(req)), new StatisticDBInstancesUnmarshaller()).getKscResponse();
+    }
+
+    public DescribeRegionsResponse describeRegions(DescribeRegionsRequest req) {
+        return doAction(new DescribeRegionsMarshaller().marshall(super.beforeMarshalling(req)), new DescribeRegionsUnmarshaller()).getKscResponse();
+    }
+
+    public DescribeAvailabilityZonesResponse describeAvailabilityZones(DescribeAvailabilityZonesRequest req) {
+        return doAction(new DescribeAvailabilityZonesMarshaller().marshall(super.beforeMarshalling(req)), new DescribeAvailabilityZonesUnmarshaller()).getKscResponse();
+    }
 }
