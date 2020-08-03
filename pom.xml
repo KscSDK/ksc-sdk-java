@@ -72,7 +72,7 @@
 		<httpcomponents.httpclient.version>4.5.2</httpcomponents.httpclient.version>
 		<dep.commons-lang.version>2.6</dep.commons-lang.version>
 		<dep.maven-eclipse-plugin.version>2.10</dep.maven-eclipse-plugin.version>
-		<dep.maven-source-plugin.version>3.0.1</dep.maven-source-plugin.version>
+		<dep.maven-source-plugin.version>3.2.0</dep.maven-source-plugin.version>
 	</properties>
 	<dependencyManagement>
 		<dependencies>
@@ -124,12 +124,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.3</version>
+					<version>3.1</version>
 					<configuration>
 						<source>${jre.version}</source>
 						<target>${jre.version}</target>
 						<encoding>${project.build.sourceEncoding}</encoding>
-<!--						<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
+						<forceJavacCompilerUse>true</forceJavacCompilerUse>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -154,7 +154,7 @@
 					<execution>
 					  <id>attach-sources</id>
 					  <goals>
-						<goal>jar</goal>
+						<goal>jar-no-fork</goal>
 					  </goals>
 					</execution>
 				  </executions>
@@ -162,12 +162,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-javadoc-plugin</artifactId>
-					<version>2.9.1</version>
+					<version>3.1.1</version>
 					<configuration>
 						<excludePackageNames>*.internal:*.transform</excludePackageNames>
 						<minmemory>128m</minmemory>
 						<maxmemory>1024m</maxmemory>
-						<additionalparam>-Xdoclint:none</additionalparam>
+						<doclint>none</doclint>
 					</configuration>
 					  <executions>
 						<execution>
@@ -216,7 +216,7 @@
 					<plugin>
 						<groupId>org.sonatype.plugins</groupId>
 						<artifactId>nexus-staging-maven-plugin</artifactId>
-						<version>1.5.1</version>
+						<version>1.6.8</version>
 						<extensions>true</extensions>
 						<configuration>
 							<serverId>sonatype-nexus-staging</serverId>
