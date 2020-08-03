@@ -43,10 +43,16 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 				} else if (context.testExpression("VIDEO", targetDepth)) {
 					context.nextToken();
 					param.setVideo(VideoJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("video", targetDepth)) {
+					context.nextToken();
+					param.setVideo(VideoJsonUnmarshaller.getInstance().unmarshall(context));
 				} else if (context.testExpression("AUDIO", targetDepth)) {
 					context.nextToken();
 					param.setAudio(AudioJsonUnmarshaller.getInstance().unmarshall(context));
-				} else if (context.testExpression("IMAGE", targetDepth)) {
+				} else if (context.testExpression("audio", targetDepth)) {
+					context.nextToken();
+					param.setAudio(AudioJsonUnmarshaller.getInstance().unmarshall(context));
+				} else if (context.testExpression("image", targetDepth)) {
 					context.nextToken();
 					param.setImage(
 							new ListUnmarshaller<Image>(ImageJsonUnmarshaller.getInstance()).unmarshall(context));
@@ -87,6 +93,11 @@ public class ParamJsonUnmarshaller implements Unmarshaller<Param, JsonUnmarshall
 					context.nextToken();
 					param.setAutorotate(context.getUnmarshaller(Integer.class).unmarshall(context));
 				} else if (context.testExpression("LOGOS", targetDepth)) {
+					context.nextToken();
+					List<List<Logo>> list = new NestListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance())
+							.unmarshall(context);
+					param.setLogos(list);
+				} else if (context.testExpression("logos", targetDepth)) {
 					context.nextToken();
 					List<List<Logo>> list = new NestListUnmarshaller<Logo>(LogoJsonUnmarshaller.getInstance())
 							.unmarshall(context);
