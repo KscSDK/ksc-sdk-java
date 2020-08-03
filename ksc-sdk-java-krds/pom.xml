@@ -6,7 +6,7 @@
     <parent>
         <groupId>com.ksyun</groupId>
         <artifactId>ksc-sdk-java</artifactId>
-        <version>0.3.7</version>
+        <version>0.3.8</version>
     </parent>
 
     <name>KSC SDK for Java - krds</name>

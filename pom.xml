@@ -10,7 +10,7 @@
   <modelVersion>4.0.0</modelVersion>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
-	<version>0.3.7</version>
+	<version>0.3.8</version>
 	<packaging>pom</packaging>
 	<name>KSC SDK for Java</name>
 	<description>
@@ -129,7 +129,7 @@
 						<source>${jre.version}</source>
 						<target>${jre.version}</target>
 						<encoding>${project.build.sourceEncoding}</encoding>
-						<forceJavacCompilerUse>true</forceJavacCompilerUse>
+<!--						<forceJavacCompilerUse>true</forceJavacCompilerUse>-->
 					</configuration>
 				</plugin>
 				<plugin>
