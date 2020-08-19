@@ -47,6 +47,10 @@ public class RebootInstancesRequestMarshaller implements
             }
         }
 
+        if(rebootInstancesRequest.getForceReboot()!=null && rebootInstancesRequest.getForceReboot()){
+            request.addParameter("ForceReboot", String.valueOf(rebootInstancesRequest.getForceReboot()));
+        }
+
         return request;
     }
 
