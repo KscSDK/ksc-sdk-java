@@ -1,14 +1,13 @@
 package com.ksc.kec.model;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.kec.model.transform.RebootInstancesRequestMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
-
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -71,6 +70,23 @@ public class RebootInstancesRequest extends KscWebServiceRequest
 			this.instanceIds.add(ele);
 		}
 	}
+
+	/**
+	 * <p>
+	 * 强制重启
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private Boolean forceReboot = Boolean.FALSE;
+
+	public Boolean getForceReboot() {
+		return forceReboot;
+	}
+
+	public void setForceReboot(Boolean forceReboot) {
+		this.forceReboot = forceReboot;
+	}
+
 	@Override
 	public Request<RebootInstancesRequest> getDryRunRequest() {
 		Request<RebootInstancesRequest> request = new RebootInstancesRequestMarshaller()

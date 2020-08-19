@@ -46,6 +46,10 @@ public class TerminateInstancesRequestMarshaller implements
             }
         }
 
+        if(terminateInstancesRequest.getForceDelete()!=null && terminateInstancesRequest.getForceDelete()){
+            request.addParameter("ForceDelete", String.valueOf(terminateInstancesRequest.getForceDelete()));
+        }
+
         return request;
     }
 

@@ -67,4 +67,19 @@ public class TerminateInstancesRequest extends KscWebServiceRequest
 		return request;
 	}
 
+	/**
+	 * <p>
+	 * 强制销毁
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private Boolean forceDelete = Boolean.FALSE;
+
+	public Boolean getForceDelete() {
+		return forceDelete;
+	}
+
+	public void setForceDelete(Boolean forceDelete) {
+		this.forceDelete = forceDelete;
+	}
 }
