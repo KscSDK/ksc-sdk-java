@@ -7,7 +7,7 @@ public interface KSCSLB {
 	 * <p>
 	 * Describes one or more of your LoadBalancers.
 	 * </p>
-	 * 
+	 *
 	 * @param describeLoadBalancersRequest
 	 *            Contains the parameters for DescribeLoadBalancers.
 	 * @return Result of the DescribeAddresses operation returned by the

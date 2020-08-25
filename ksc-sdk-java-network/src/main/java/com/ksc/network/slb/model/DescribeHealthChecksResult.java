@@ -20,7 +20,7 @@ public class DescribeHealthChecksResult implements Serializable, Cloneable {
 	private String RequestId;
 	/**
 	 * <p>
-	 * 负载均衡信息
+	 * 健康检查信息
 	 * </p>
 	 */
 	private SdkInternalList<HealthCheck> HealthCheckSet;

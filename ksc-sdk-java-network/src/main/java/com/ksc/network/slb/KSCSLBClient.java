@@ -61,11 +61,11 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	 * <li>Instance profile credentials delivered through the SLB metadata
 	 * service</li>
 	 * </ul>
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @see DefaultAWSCredentialsProviderChain
 	 */
 	public KSCSLBClient() {
@@ -81,15 +81,15 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	 * <li>Instance profile credentials delivered through the SLB metadata
 	 * service</li>
 	 * </ul>
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @param clientConfiguration
 	 *            The client configuration options controlling how this client
 	 *            connects to KSC (ex: proxy settings, retry counts, etc.).
-	 * 
+	 *
 	 * @see DefaultAWSCredentialsProviderChain
 	 */
 	public KSCSLBClient(ClientConfiguration clientConfiguration) {
@@ -99,11 +99,11 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	/**
 	 * Constructs a new client to invoke service methods on SLB using the
 	 * specified AWS account credentials.
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @param awsCredentials
 	 *            The AWS credentials (access key ID and secret key) to use when
 	 *            authenticating with AWS services.
@@ -115,11 +115,11 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	/**
 	 * Constructs a new client to invoke service methods on SLB using the
 	 * specified AWS account credentials and client configuration options.
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @param awsCredentials
 	 *            The AWS credentials (access key ID and secret key) to use when
 	 *            authenticating with AWS services.
@@ -136,11 +136,11 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	/**
 	 * Constructs a new client to invoke service methods on SLB using the
 	 * specified AWS account credentials provider.
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @param awsCredentialsProvider
 	 *            The AWS credentials provider which will provide credentials to
 	 *            authenticate requests with KSC services.
@@ -153,11 +153,11 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	 * Constructs a new client to invoke service methods on SLB using the
 	 * specified AWS account credentials provider and client configuration
 	 * options.
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @param awsCredentialsProvider
 	 *            The AWS credentials provider which will provide credentials to
 	 *            authenticate requests with KSC services.
@@ -173,11 +173,11 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	 * Constructs a new client to invoke service methods on SLB using the
 	 * specified KSC account credentials provider, client configuration options,
 	 * and request metric collector.
-	 * 
+	 *
 	 * <p>
 	 * All service calls made using this new client object are blocking, and
 	 * will not return until the service call completes.
-	 * 
+	 *
 	 * @param awsCredentialsProvider
 	 *            The AWS credentials provider which will provide credentials to
 	 *            authenticate requests with KSC services.

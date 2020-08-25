@@ -404,4 +404,33 @@ public class KSCEIPClient extends KscWebServiceClient implements KSCEIP{
         }
     }
 
+	@Override
+	public ModifyAddressResult modifyAddress(ModifyAddressRequest modifyAddressRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyAddressRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyAddressRequest> request = null;
+		Response<ModifyAddressResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyAddressRequestMarshaller().marshall(super
+						.beforeMarshalling(modifyAddressRequest));
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ModifyAddressResult> responseHandler = new StaxResponseHandler<ModifyAddressResult>(
+					new ModifyAddressResultStaxUnMarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 }
