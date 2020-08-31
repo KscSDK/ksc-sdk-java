@@ -6,8 +6,41 @@ import com.ksc.auth.AWSCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.redis.client.KscRedisClient;
 import com.ksc.redis.model.RedisResponse;
-import com.ksc.redis.model.security.*;
-import com.ksc.redis.transform.security.*;
+import com.ksc.redis.model.security.AllocateSecurityGroupRequest;
+import com.ksc.redis.model.security.AllocateSecurityGroupResponse;
+import com.ksc.redis.model.security.CloneSecurityGroupRequest;
+import com.ksc.redis.model.security.CreateSecurityGroupRequest;
+import com.ksc.redis.model.security.CreateSecurityGroupResponse;
+import com.ksc.redis.model.security.CreateSecurityGroupRuleRequest;
+import com.ksc.redis.model.security.DeallocateSecurityGroupRequest;
+import com.ksc.redis.model.security.DeleteSecurityGroupRequest;
+import com.ksc.redis.model.security.DeleteSecurityGroupResponse;
+import com.ksc.redis.model.security.DeleteSecurityGroupRuleRequest;
+import com.ksc.redis.model.security.DescribeSecurityGroupRequest;
+import com.ksc.redis.model.security.DescribeSecurityGroupResponse;
+import com.ksc.redis.model.security.DescribeSecurityGroupsRequest;
+import com.ksc.redis.model.security.DescribeSecurityGroupsResponse;
+import com.ksc.redis.model.security.ModifySecurityGroupRequest;
+import com.ksc.redis.transform.security.AllocateSecurityGroupMarshaller;
+import com.ksc.redis.transform.security.AllocateSecurityGroupUnmarshaller;
+import com.ksc.redis.transform.security.CloneSecurityGroupMarshaller;
+import com.ksc.redis.transform.security.CloneSecurityGroupUnmarshaller;
+import com.ksc.redis.transform.security.CreateSecurityGroupMarshaller;
+import com.ksc.redis.transform.security.CreateSecurityGroupRuleMarshaller;
+import com.ksc.redis.transform.security.CreateSecurityGroupRuleUnmarshaller;
+import com.ksc.redis.transform.security.CreateSecurityGroupUnmarshaller;
+import com.ksc.redis.transform.security.DeallocateSecurityGroupMarshaller;
+import com.ksc.redis.transform.security.DeallocateSecurityGroupUnmarshaller;
+import com.ksc.redis.transform.security.DeleteSecurityGroupMarshaller;
+import com.ksc.redis.transform.security.DeleteSecurityGroupRuleMarshaller;
+import com.ksc.redis.transform.security.DeleteSecurityGroupRuleUnmarshaller;
+import com.ksc.redis.transform.security.DeleteSecurityGroupUnmarshaller;
+import com.ksc.redis.transform.security.DescribeSecurityGroupMarshaller;
+import com.ksc.redis.transform.security.DescribeSecurityGroupUnmarshaller;
+import com.ksc.redis.transform.security.DescribeSecurityGroupsMarshaller;
+import com.ksc.redis.transform.security.DescribeSecurityGroupsUnmarshaller;
+import com.ksc.redis.transform.security.ModifySecurityGroupMarshaller;
+import com.ksc.redis.transform.security.ModifySecurityGroupUnmarshaller;
 
 public class KscRedisSecurityClient extends KscRedisClient {
     public KscRedisSecurityClient() {
@@ -30,48 +63,53 @@ public class KscRedisSecurityClient extends KscRedisClient {
         super(awsCredentialsProvider, clientConfiguration, requestMetricCollector, az);
     }
 
-    public RedisResponse setRedisSecurityRules(SetRedisSecurityRulesRequest setRedisSecurityRulesRequest) {
-        return doAction(new SetRedisSecurityRulesMarshaller().marshall(super.beforeMarshalling(setRedisSecurityRulesRequest)),
-                new SetRedisSecurityRulesUnmarshaller()).getKscResponse();
+    public RedisResponse<CreateSecurityGroupResponse> createSecurityGroup(CreateSecurityGroupRequest request) {
+        return doAction(new CreateSecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new CreateSecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse<ListRedisSecurityRulesResponse[]> listRedisSecurityRules(ListRedisSecurityRulesRequest listRedisSecurityRulesRequest) {
-        return doAction(new ListRedisSecurityRulesMarshaller().marshall(super.beforeMarshalling(listRedisSecurityRulesRequest)),
-                new ListRedisSecurityRulesUnmarshaller()).getKscResponse();
+    public RedisResponse<CreateSecurityGroupResponse> cloneSecurityGroup(CloneSecurityGroupRequest request) {
+        return doAction(new CloneSecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new CloneSecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse deleteRedisSecurityRule(DeleteRedisSecurityRuleRequest deleteRedisSecurityRuleRequest) {
-        return doAction(new DeleteRedisSecurityRuleMarshaller().marshall(super.beforeMarshalling(deleteRedisSecurityRuleRequest)),
-                new DeleteRedisSecurityRuleUnmarshaller()).getKscResponse();
+    public RedisResponse<DeleteSecurityGroupResponse[]> deleteSecurityGroup(DeleteSecurityGroupRequest request) {
+        return doAction(new DeleteSecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new DeleteSecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse<CreateRedisSecurityGroupResponse> createRedisSecurityGroup(CreateRedisSecurityGroupRequest createRedisSecurityGroupRequest) {
-        return doAction(new CreateRedisSecurityGroupMarshaller().marshall(super.beforeMarshalling(createRedisSecurityGroupRequest)),
-                new CreateRedisSecurityGroupUnmarshaller()).getKscResponse();
+    public RedisResponse modifySecurityGroup(ModifySecurityGroupRequest request) {
+        return doAction(new ModifySecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new ModifySecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse deleteRedisSecurityGroup(DeleteRedisSecurityGroupRequest deleteRedisSecurityGroupRequest) {
-        return doAction(new DeleteRedisSecurityGroupMarshaller().marshall(super.beforeMarshalling(deleteRedisSecurityGroupRequest)),
-                new DeleteRedisSecurityGroupUnmarshaller()).getKscResponse();
+    public RedisResponse<DescribeSecurityGroupsResponse> describeSecurityGroups(DescribeSecurityGroupsRequest request) {
+        return doAction(new DescribeSecurityGroupsMarshaller().marshall(super.beforeMarshalling(request)),
+                new DescribeSecurityGroupsUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse setRedisSecurityGroup(SetRedisSecurityGroupRequest setRedisSecurityGroupRequest) {
-        return doAction(new SetRedisSecurityGroupMarshaller().marshall(super.beforeMarshalling(setRedisSecurityGroupRequest)),
-                new SetRedisSecurityGroupUnmarshaller()).getKscResponse();
+    public RedisResponse<DescribeSecurityGroupResponse> describeSecurityGroup(DescribeSecurityGroupRequest request) {
+        return doAction(new DescribeSecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new DescribeSecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse modifyRedisSecurityGroup(ModifyRedisSecurityGroupRequest modifyRedisSecurityGroupRequest) {
-        return doAction(new ModifyRedisSecurityGroupMarshaller().marshall(super.beforeMarshalling(modifyRedisSecurityGroupRequest)),
-                new ModifyRedisSecurityGroupUnmarshaller()).getKscResponse();
+    public RedisResponse<AllocateSecurityGroupResponse[]> allocateSecurityGroup(AllocateSecurityGroupRequest request) {
+        return doAction(new AllocateSecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new AllocateSecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse deleteRedisSecurityGroupRule(DeleteRedisSecurityGroupRuleRequest deleteRedisSecurityGroupRuleRequest) {
-        return doAction(new DeleteRedisSecurityGroupRuleMarshaller().marshall(super.beforeMarshalling(deleteRedisSecurityGroupRuleRequest)),
-                new DeleteRedisSecurityGroupRuleUnmarshaller()).getKscResponse();
+    public RedisResponse<AllocateSecurityGroupResponse[]> deallocateSecurityGroup(DeallocateSecurityGroupRequest request) {
+        return doAction(new DeallocateSecurityGroupMarshaller().marshall(super.beforeMarshalling(request)),
+                new DeallocateSecurityGroupUnmarshaller()).getKscResponse();
     }
 
-    public RedisResponse<ListRedisSecurityGroupsResponse> listRedisSecurityGroups(ListRedisSecurityGroupsRequest listRedisSecurityGroupsRequest) {
-        return doAction(new ListRedisSecurityGroupsMarshaller().marshall(super.beforeMarshalling(listRedisSecurityGroupsRequest)),
-                new ListRedisSecurityGroupsUnmarshaller()).getKscResponse();
+    public RedisResponse createSecurityGroupRule(CreateSecurityGroupRuleRequest request) {
+        return doAction(new CreateSecurityGroupRuleMarshaller().marshall(super.beforeMarshalling(request)),
+                new CreateSecurityGroupRuleUnmarshaller()).getKscResponse();
+    }
+
+    public RedisResponse deleteSecurityGroupRule(DeleteSecurityGroupRuleRequest request) {
+        return doAction(new DeleteSecurityGroupRuleMarshaller().marshall(super.beforeMarshalling(request)),
+                new DeleteSecurityGroupRuleUnmarshaller()).getKscResponse();
     }
 }

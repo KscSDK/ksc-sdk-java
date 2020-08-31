@@ -3,7 +3,16 @@ package com.ksc.redis.security;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.redis.client.support.KscRedisSecurityClient;
 import com.ksc.redis.model.RedisResponseConversion;
-import com.ksc.redis.model.security.*;
+import com.ksc.redis.model.security.AllocateSecurityGroupRequest;
+import com.ksc.redis.model.security.CloneSecurityGroupRequest;
+import com.ksc.redis.model.security.CreateSecurityGroupRequest;
+import com.ksc.redis.model.security.CreateSecurityGroupRuleRequest;
+import com.ksc.redis.model.security.DeallocateSecurityGroupRequest;
+import com.ksc.redis.model.security.DeleteSecurityGroupRequest;
+import com.ksc.redis.model.security.DeleteSecurityGroupRuleRequest;
+import com.ksc.redis.model.security.DescribeSecurityGroupRequest;
+import com.ksc.redis.model.security.DescribeSecurityGroupsRequest;
+import com.ksc.redis.model.security.ModifySecurityGroupRequest;
 import com.ksc.regions.RegionUtils;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -17,75 +26,85 @@ public class KscRedisSecurityClientTest {
 
     @Before
     public void setup() {
-        kscRedisSecurityClient = new KscRedisSecurityClient(new BasicAWSCredentials("ak", "sk=="), "az");
+        kscRedisSecurityClient = new KscRedisSecurityClient(new BasicAWSCredentials("ak", "sk"), "az");
         kscRedisSecurityClient.setRegion(RegionUtils.getRegion("region"));
     }
 
     @Test
-    public void setRedisSecurityRules(){
-        SetRedisSecurityRulesRequest setRedisSecurityRulesRequest = new SetRedisSecurityRulesRequest();
-        setRedisSecurityRulesRequest.setCacheId("cacheId");
-        setRedisSecurityRulesRequest.setSecurityRules(Arrays.asList(new String[]{"0.0.0.0/32"}));
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.setRedisSecurityRules(setRedisSecurityRulesRequest)));
+    public void createSecurityGroup() {
+        CreateSecurityGroupRequest request = new CreateSecurityGroupRequest();
+        request.setName("testSecSdk");
+        request.setDescription("testSecSdk");
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.createSecurityGroup(request)));
     }
 
     @Test
-    public void listRedisSecurityRules(){
-        ListRedisSecurityRulesRequest listRedisSecurityRulesRequest = new ListRedisSecurityRulesRequest();
-        listRedisSecurityRulesRequest.setCacheId("cacheId");
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.listRedisSecurityRules(listRedisSecurityRulesRequest)));
+    public void cloneSecurityGroup() {
+        CloneSecurityGroupRequest request = new CloneSecurityGroupRequest();
+        request.setSrcSecurityGroupId("srcSecurityGroupId");
+        request.setName("testSecSdkClone");
+        request.setDescription("testSecSdkClone");
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.cloneSecurityGroup(request)));
     }
 
     @Test
-    public void deleteRedisSecurityRule(){
-        DeleteRedisSecurityRuleRequest deleteRedisSecurityRuleRequest = new DeleteRedisSecurityRuleRequest();
-        deleteRedisSecurityRuleRequest.setCacheId("cacheId");
-        deleteRedisSecurityRuleRequest.setSecurityRuleId("1");
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.deleteRedisSecurityRule(deleteRedisSecurityRuleRequest)));
+    public void deleteSecurityGroup() {
+        DeleteSecurityGroupRequest request = new DeleteSecurityGroupRequest();
+        request.setSecurityGroupId(Arrays.asList("securityGroupId"));
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.deleteSecurityGroup(request)));
     }
 
     @Test
-    public void createRedisSecurityGroup(){
-        CreateRedisSecurityGroupRequest createRedisSecurityGroupRequest = new CreateRedisSecurityGroupRequest();
-        createRedisSecurityGroupRequest.setDescription("1111");
-        createRedisSecurityGroupRequest.setName("1111");
-        createRedisSecurityGroupRequest.setSecurityGroupRules(Arrays.asList(new String[]{"0.0.0.0/32"}));
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.createRedisSecurityGroup(createRedisSecurityGroupRequest)));
+    public void modifySecurityGroup() {
+        ModifySecurityGroupRequest request = new ModifySecurityGroupRequest();
+        request.setSecurityGroupId("securityGroupId");
+        request.setName("testSecSdk777");
+        request.setDescription("testSecSdk777");
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.modifySecurityGroup(request)));
     }
 
     @Test
-    public void deleteRedisSecurityGroup(){
-        DeleteRedisSecurityGroupRequest deleteRedisSecurityGroupRequest = new DeleteRedisSecurityGroupRequest();
-        deleteRedisSecurityGroupRequest.setCacheSecurityGroupId("1");
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.deleteRedisSecurityGroup(deleteRedisSecurityGroupRequest)));
+    public void describeSecurityGroups() {
+        DescribeSecurityGroupsRequest request = new DescribeSecurityGroupsRequest();
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.describeSecurityGroups(request)));
     }
 
     @Test
-    public void setRedisSecurityGroup(){
-        SetRedisSecurityGroupRequest setRedisSecurityGroupRequest = new SetRedisSecurityGroupRequest();
-        setRedisSecurityGroupRequest.setCacheId("cacheId");
-        setRedisSecurityGroupRequest.setCacheSecurityGroupId("1");
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.setRedisSecurityGroup(setRedisSecurityGroupRequest)));
+    public void describeSecurityGroup() {
+        DescribeSecurityGroupRequest request = new DescribeSecurityGroupRequest();
+        request.setSecurityGroupId("securityGroupId");
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.describeSecurityGroup(request)));
     }
 
     @Test
-    public void modifyRedisSecurityGroup(){
-        ModifyRedisSecurityGroupRequest modifyRedisSecurityGroupRequest = new ModifyRedisSecurityGroupRequest();
-        modifyRedisSecurityGroupRequest.setCacheSecurityGroupId("1");
-        modifyRedisSecurityGroupRequest.setDescription("test");
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.modifyRedisSecurityGroup(modifyRedisSecurityGroupRequest)));
+    public void allocateSecurityGroup() {
+        AllocateSecurityGroupRequest request = new AllocateSecurityGroupRequest();
+        request.setCacheId(Arrays.asList("cacheId"));
+        request.setSecurityGroupId(Arrays.asList("securityGroupId"));
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.allocateSecurityGroup(request)));
     }
 
     @Test
-    public void deleteRedisSecurityGroupRule(){
-        DeleteRedisSecurityGroupRuleRequest deleteRedisSecurityGroupRuleRequest = new DeleteRedisSecurityGroupRuleRequest();
-        deleteRedisSecurityGroupRuleRequest.setCacheSecurityGroupId("groupId");
-        deleteRedisSecurityGroupRuleRequest.setSecurityRuleId("ruleId");
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.deleteRedisSecurityGroupRule(deleteRedisSecurityGroupRuleRequest)));
+    public void deallocateSecurityGroup() {
+        DeallocateSecurityGroupRequest request = new DeallocateSecurityGroupRequest();
+        request.setCacheId(Arrays.asList("cacheId"));
+        request.setSecurityGroupId("securityGroupId");
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.deallocateSecurityGroup(request)));
     }
 
     @Test
-    public void listRedisSecurityGroups(){
-        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.listRedisSecurityGroups(new ListRedisSecurityGroupsRequest())));
+    public void createSecurityGroupRule() {
+        CreateSecurityGroupRuleRequest request = new CreateSecurityGroupRuleRequest();
+        request.setSecurityGroupId("securityGroupId");
+        request.setCidrs(Arrays.asList("172.10.1.0/16", "173.10.1.0/16"));
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.createSecurityGroupRule(request)));
+    }
+
+    @Test
+    public void deleteSecurityGroupRule() {
+        DeleteSecurityGroupRuleRequest request = new DeleteSecurityGroupRuleRequest();
+        request.setSecurityGroupId("securityGroupId");
+        request.setSecurityGroupRuleId(Arrays.asList("securityGroupRuleId"));
+        log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.deleteSecurityGroupRule(request)));
     }
 }
