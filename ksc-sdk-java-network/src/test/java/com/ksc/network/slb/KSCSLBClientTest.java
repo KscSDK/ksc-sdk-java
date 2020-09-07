@@ -1,6 +1,8 @@
 package com.ksc.network.slb;
 
 import com.ksc.network.slb.model.*;
+import com.ksc.regions.InMemoryRegionImpl;
+import com.ksc.regions.Region;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -231,6 +233,66 @@ public class KSCSLBClientTest {
 //		request.setState("associate");
         //request.withVpcIds("147d81eb-f780-434d-8355-dc125013520e");
         DescribeInstancesWithListenerResult result=client.describeInstancesWithListener(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateHostHeaderRequest request = new CreateHostHeaderRequest();
+        request.setHostHeader("www.baidu.stop1");
+        request.setListenerId("eb9729de-93e6-48c6-946e-f75cb92ccb26");
+
+        CreateHostHeaderResult result = client.createHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyHostHeaderRequest request = new ModifyHostHeaderRequest();
+        request.setHostHeaderId("04f81a2e-bb2a-46e4-9dff-ec4510cc7636");
+        request.setCertificateId("8998c583-d2b2-4141-ae40-d62286d58051");
+
+        ModifyHostHeaderResult result = client.modifyHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteHostHeaderRequest request = new DeleteHostHeaderRequest();
+        request.setHostHeaderId("b2ed60ce-8377-48ac-bbe4-d43215275629");
+
+        DeleteHostHeaderResult result = client.deleteHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeHostHeadersRequest request = new DescribeHostHeadersRequest();
+        /*List<String> values = new ArrayList<String>();
+        values.add("eb9729de-93e6-48c6-946e-f75cb92ccb26");
+        Filter filter = new Filter("listener-id", values);
+        request.addFilters(filter);*/
+        DescribeHostHeadersResult result = client.describeHostHeader(request);
         log.info(result);
     }
 }

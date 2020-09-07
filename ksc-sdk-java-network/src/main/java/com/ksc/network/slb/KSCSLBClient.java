@@ -611,7 +611,111 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
         }
     }
 
-    private void init() {
+	@Override
+	public CreateHostHeaderResult createHostHeader(CreateHostHeaderRequest createHostHeaderRequest) {
+		ExecutionContext executionContext = createExecutionContext(createHostHeaderRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateHostHeaderRequest> request = null;
+		Response<CreateHostHeaderResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateHostHeaderRequestMarshaller()
+						.marshall(createHostHeaderRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateHostHeaderResult> responseHandler = new StaxResponseHandler<CreateHostHeaderResult>(
+					new CreateHostHeaderResultStaxUnMarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyHostHeaderResult modifyHostHeader(ModifyHostHeaderRequest modifyHostHeaderRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyHostHeaderRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyHostHeaderRequest> request = null;
+		Response<ModifyHostHeaderResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyHostHeaderRequestMarshaller()
+						.marshall(modifyHostHeaderRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyHostHeaderResult> responseHandler = new StaxResponseHandler<ModifyHostHeaderResult>(
+					new ModifyHostHeaderResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteHostHeaderResult deleteHostHeader(DeleteHostHeaderRequest deleteHostHeaderRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteHostHeaderRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteHostHeaderRequest> request = null;
+		Response<DeleteHostHeaderResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteHostHeaderRequestMarshaller()
+						.marshall(deleteHostHeaderRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteHostHeaderResult> responseHandler = new StaxResponseHandler<DeleteHostHeaderResult>(
+					new DeleteHostHeaderResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeHostHeadersResult describeHostHeader(DescribeHostHeadersRequest describeHostHeadersRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeHostHeadersRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeHostHeadersRequest> request = null;
+		Response<DescribeHostHeadersResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeHostHeadersRequestMarshaller()
+						.marshall(describeHostHeadersRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			}finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeHostHeadersResult> responseHandler = new StaxResponseHandler<DescribeHostHeadersResult>(
+					new DescribeHostHeadersResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
 		exceptionUnmarshallers.add(new LegacyErrorUnmarshaller());
 		setServiceNameIntern(DEFAULT_SIGNING_NAME);

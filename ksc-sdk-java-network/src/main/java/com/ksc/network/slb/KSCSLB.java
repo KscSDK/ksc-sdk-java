@@ -99,4 +99,24 @@ public interface KSCSLB {
     public DescribeInstancesWithListenerResult describeInstancesWithListener(
     		DescribeInstancesWithListenerRequest describeInstancesWithListenerRequest);
 
+    /**
+     * 创建域名
+     */
+    public CreateHostHeaderResult createHostHeader(CreateHostHeaderRequest createHostHeaderRequest);
+
+    /**
+     * 修改域名
+     */
+    public ModifyHostHeaderResult modifyHostHeader(ModifyHostHeaderRequest modifyHostHeaderRequest);
+
+    /**
+     * 删除域名
+     */
+    public DeleteHostHeaderResult deleteHostHeader(DeleteHostHeaderRequest deleteHostHeaderRequest);
+
+    /**
+     * 获取域名列表
+     */
+    public DescribeHostHeadersResult describeHostHeader(DescribeHostHeadersRequest describeHostHeadersRequest);
+
 }
