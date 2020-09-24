@@ -35,6 +35,12 @@ public class InstanceNetworkStaxUnmarshaller implements
 					continue;
 				}
 
+				if (context.testExpression("NetworkInterfaceType", targetDepth)) {
+					n.setNetworkInterfaceType(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
 				if (context.testExpression("VpcId", targetDepth)) {
 					n.setVpcId(StringStaxUnmarshaller.getInstance().unmarshall(
 							context));
@@ -60,6 +66,24 @@ public class InstanceNetworkStaxUnmarshaller implements
 				}
 				if (context.testExpression("GroupSet/Item", targetDepth)) {
 					n.withNetworkSecurityGroup(InstanceSecurityGroupStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("SecurityGroupSet/Item", targetDepth)) {
+					n.withInstanceNetworkSecurityGroup(InstanceNetworkSecurityGroupStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("PublicIp", targetDepth)) {
+					n.setPublicIp(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("AllocationId", targetDepth)) {
+					n.setAllocationId(StringStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;
 				}
