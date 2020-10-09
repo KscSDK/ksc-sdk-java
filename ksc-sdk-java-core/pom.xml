@@ -6,7 +6,8 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.3.9</version>
+		<version>0.3.10</version>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>ksc-sdk-java-core</artifactId>
 	<name>KSC SDK for Java - Core</name>
