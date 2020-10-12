@@ -25,7 +25,7 @@
         <dep.jackson.version>2.6.6</dep.jackson.version>
         <dep.gson.version>2.3.1</dep.gson.version>
         <dep.jackson.version>2.6.6</dep.jackson.version>
-        <dep.junit.version>4.12</dep.junit.version>
+        <dep.junit.version>4.13.1</dep.junit.version>
         <dep.log4j.version>1.2.17</dep.log4j.version>
         <dep.slf4j.version>1.7.7</dep.slf4j.version>
         <project.build.targetJdk>1.7</project.build.targetJdk>
