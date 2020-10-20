@@ -119,4 +119,24 @@ public interface KSCSLB {
      */
     public DescribeHostHeadersResult describeHostHeader(DescribeHostHeadersRequest describeHostHeadersRequest);
 
+	/**
+	 * 创建负载均衡ACL
+	 */
+	public CreateLoadBalancerAclResult createLoadBalancerAcl(CreateLoadBalancerAclRequest createLoadBalancerAclRequest);
+
+	/**
+	 * 修改负载均衡ACL
+	 */
+	public ModifyLoadBalancerAclResult modifyLoadBalancerAcl(ModifyLoadBalancerAclRequest modifyLoadBalancerAclRequest);
+
+	/**
+	 * 删除负载均衡ACL
+	 */
+	public DeleteLoadBalancerAclResult deleteLoadBalancerAcl(DeleteLoadBalancerAclRequest deleteLoadBalancerAclRequest);
+
+	/**
+	 * 获取负载均衡ACL列表
+	 */
+	public DescribeLoadBalancerAclsResult describeLoadBalancerAcls(DescribeLoadBalancerAclsRequest describeLoadBalancerAclsRequest);
+
 }

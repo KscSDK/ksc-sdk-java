@@ -715,6 +715,111 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 		}
 	}
 
+	@Override
+	public CreateLoadBalancerAclResult createLoadBalancerAcl(CreateLoadBalancerAclRequest createLoadBalancerAclRequest) {
+		ExecutionContext executionContext = createExecutionContext(createLoadBalancerAclRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateLoadBalancerAclRequest> request = null;
+		Response<CreateLoadBalancerAclResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateLoadBalancerAclRequestMarshaller()
+						.marshall(createLoadBalancerAclRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateLoadBalancerAclResult> responseHandler = new StaxResponseHandler<CreateLoadBalancerAclResult>(
+					new CreateLoadBalancerAclResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteLoadBalancerAclResult deleteLoadBalancerAcl(DeleteLoadBalancerAclRequest deleteLoadBalancerAclRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteLoadBalancerAclRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteLoadBalancerAclRequest> request = null;
+		Response<DeleteLoadBalancerAclResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteLoadBalancerAclRequestMarshaller()
+						.marshall(deleteLoadBalancerAclRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteLoadBalancerAclResult> responseHandler = new StaxResponseHandler<DeleteLoadBalancerAclResult>(
+					new DeleteLoadBalancerAclResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyLoadBalancerAclResult modifyLoadBalancerAcl(ModifyLoadBalancerAclRequest modifyLoadBalancerAclRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyLoadBalancerAclRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyLoadBalancerAclRequest> request = null;
+		Response<ModifyLoadBalancerAclResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyLoadBalancerAclRequestMarshaller()
+						.marshall(modifyLoadBalancerAclRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyLoadBalancerAclResult> responseHandler = new StaxResponseHandler<ModifyLoadBalancerAclResult>(
+					new ModifyLoadBalancerAclResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeLoadBalancerAclsResult describeLoadBalancerAcls(DescribeLoadBalancerAclsRequest describeLoadBalancerAclsRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeLoadBalancerAclsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeLoadBalancerAclsRequest> request = null;
+		Response<DescribeLoadBalancerAclsResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeLoadBalancerAclsRequestMarshaller()
+						.marshall(describeLoadBalancerAclsRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeLoadBalancerAclsResult> responseHandler = new StaxResponseHandler<DescribeLoadBalancerAclsResult>(
+					new DescribeLoadBalancerAclsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+
 	private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
 		exceptionUnmarshallers.add(new LegacyErrorUnmarshaller());

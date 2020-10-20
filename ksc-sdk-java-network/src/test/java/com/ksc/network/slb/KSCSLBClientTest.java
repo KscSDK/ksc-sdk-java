@@ -295,4 +295,60 @@ public class KSCSLBClientTest {
         DescribeHostHeadersResult result = client.describeHostHeader(request);
         log.info(result);
     }
+
+    @Test
+    public void createLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateLoadBalancerAclRequest request = new CreateLoadBalancerAclRequest();
+        request.setLoadBalancerAclName("test");
+        request.setIpVersion("ipv4");
+        CreateLoadBalancerAclResult result = client.createLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteLoadBalancerAclRequest request = new DeleteLoadBalancerAclRequest();
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        DeleteLoadBalancerAclResult result = client.deleteLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyLoadBalancerAclRequest request = new ModifyLoadBalancerAclRequest();
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        request.setLoadBalancerAclName("test1");
+        ModifyLoadBalancerAclResult result = client.modifyLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeLoadBalancerAcls(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeLoadBalancerAclsRequest request = new DescribeLoadBalancerAclsRequest();
+        com.ksc.internal.SdkInternalList<String> ids = new com.ksc.internal.SdkInternalList<String>();
+        ids.add("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        request.setLoadBalancerAclIds(ids);
+        DescribeLoadBalancerAclsResult result = client.describeLoadBalancerAcls(request);
+        log.info(result);
+    }
 }
