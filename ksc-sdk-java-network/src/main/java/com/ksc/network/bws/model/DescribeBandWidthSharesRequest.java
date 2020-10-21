@@ -71,29 +71,31 @@ public class DescribeBandWidthSharesRequest extends KscWebServiceRequest impleme
     }
 
     public void addFilters(Filter... filters) {
-		if (this.filters == null) {
-			this.filters = new com.ksc.internal.SdkInternalList<Filter>();
-		}
-		for (Filter filter : filters) {
-			this.filters.add(filter);
-		}
-	}
-        public void addBandWidthShareIds(String... bandWidthShareIds){
-            if (this.bandWidthShareIds == null) {
-                this.bandWidthShareIds = new com.ksc.internal.SdkInternalList<String>();
-            }
-            for(String value : bandWidthShareIds){
-                this.bandWidthShareIds.add(value);
-            }
+        if (this.filters == null) {
+            this.filters = new com.ksc.internal.SdkInternalList<Filter>();
         }
-        public void addProjectIds(String... projectIds){
-            if (this.projectIds == null) {
-                this.projectIds = new com.ksc.internal.SdkInternalList<String>();
-            }
-            for(String value : projectIds){
-                this.projectIds.add(value);
-            }
+        for (Filter filter : filters) {
+            this.filters.add(filter);
         }
+    }
+
+    public void addBandWidthShareIds(String... bandWidthShareIds) {
+        if (this.bandWidthShareIds == null) {
+            this.bandWidthShareIds = new com.ksc.internal.SdkInternalList<String>();
+        }
+        for (String value : bandWidthShareIds) {
+            this.bandWidthShareIds.add(value);
+        }
+    }
+
+    public void addProjectIds(String... projectIds) {
+        if (this.projectIds == null) {
+            this.projectIds = new com.ksc.internal.SdkInternalList<String>();
+        }
+        for (String value : projectIds) {
+            this.projectIds.add(value);
+        }
+    }
 
     @Override
     public Request<DescribeBandWidthSharesRequest> getDryRunRequest() {

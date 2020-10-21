@@ -48,6 +48,9 @@ public class AllocateAddressRequestMarshaller implements
             request.addParameter("PurchaseTime", StringUtils
                     .fromInteger(allocateAddressRequest.getPurchaseTime()));
         }
+        if (!StringUtils.isNullOrEmpty(allocateAddressRequest.getProjectId())) {
+            request.addParameter("ProjectId", allocateAddressRequest.getProjectId());
+        }
         
         return request;
     }

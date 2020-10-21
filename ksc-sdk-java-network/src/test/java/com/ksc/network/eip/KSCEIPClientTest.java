@@ -18,7 +18,7 @@ public class KSCEIPClientTest {
         request.setLineId("111765e4-f55f-4822-9ed6-b2464252fab2");
         request.setBandWidth(20);
         request.setChargeType("Peak");
-//        request.setPurchaseTime(20);
+        request.setProjectId("472");
         AllocateAddressResult result=client.allocateAddress(request);
         log.info(result);
     }

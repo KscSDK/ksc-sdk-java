@@ -28,51 +28,51 @@ public class DescribeBandWidthSharesRequestMarshaller implements
         request.addParameter("Version", version);
         request.setHttpMethod(HttpMethodName.GET);
 
-            com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeBandWidthSharesRequest.getFilters();
-            if (filtersList != null && (!filtersList.isEmpty() || !filtersList.isAutoConstruct())) {
-			    int filtersListIndex = 1;
-			    for (Filter filtersListValue : filtersList) {
-				    if (filtersListValue.getName() != null) {
-					    request.addParameter("Filter." + filtersListIndex + ".Name", StringUtils.fromString(filtersListValue.getName()));
-				    }
+        com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeBandWidthSharesRequest.getFilters();
+        if (filtersList != null && (!filtersList.isEmpty() || !filtersList.isAutoConstruct())) {
+            int filtersListIndex = 1;
+            for (Filter filtersListValue : filtersList) {
+                if (filtersListValue.getName() != null) {
+                    request.addParameter("Filter." + filtersListIndex + ".Name", StringUtils.fromString(filtersListValue.getName()));
+                }
 
-				    com.ksc.internal.SdkInternalList<String> valuesList = (com.ksc.internal.SdkInternalList<String>) filtersListValue .getValues();
-				    if (valuesList != null && (!valuesList.isEmpty() || !valuesList.isAutoConstruct())) {
-					    int valuesListIndex = 1;
-					    for (String valuesListValue : valuesList) {
-						    if (valuesListValue != null) {
-							    request.addParameter("Filter." + filtersListIndex + ".Value." + valuesListIndex, StringUtils.fromString(valuesListValue));
-						    }
-						    valuesListIndex++;
-					    }
-				    }
-				    filtersListIndex++;
-			    }
-		    }
-            com.ksc.internal.SdkInternalList<String> bandWidthShareIds = (com.ksc.internal.SdkInternalList<String>) describeBandWidthSharesRequest
-				.getBandWidthShareIds();
-		    if (bandWidthShareIds != null && (!bandWidthShareIds.isEmpty() || !bandWidthShareIds.isAutoConstruct())) {
-			    int index = 1;
+                com.ksc.internal.SdkInternalList<String> valuesList = (com.ksc.internal.SdkInternalList<String>) filtersListValue.getValues();
+                if (valuesList != null && (!valuesList.isEmpty() || !valuesList.isAutoConstruct())) {
+                    int valuesListIndex = 1;
+                    for (String valuesListValue : valuesList) {
+                        if (valuesListValue != null) {
+                            request.addParameter("Filter." + filtersListIndex + ".Value." + valuesListIndex, StringUtils.fromString(valuesListValue));
+                        }
+                        valuesListIndex++;
+                    }
+                }
+                filtersListIndex++;
+            }
+        }
+        com.ksc.internal.SdkInternalList<String> bandWidthShareIds = (com.ksc.internal.SdkInternalList<String>) describeBandWidthSharesRequest
+                .getBandWidthShareIds();
+        if (bandWidthShareIds != null && (!bandWidthShareIds.isEmpty() || !bandWidthShareIds.isAutoConstruct())) {
+            int index = 1;
 
-			    for (String value : bandWidthShareIds) {
-				if (value != null) {
-					request.addParameter("BandWidthShareId." + index, StringUtils.fromString(value));
-				}
-				index ++;
-			    }
-		    }
-            com.ksc.internal.SdkInternalList<String> projectIds = (com.ksc.internal.SdkInternalList<String>) describeBandWidthSharesRequest
-				.getProjectIds();
-		    if (projectIds != null && (!projectIds.isEmpty() || !projectIds.isAutoConstruct())) {
-			    int index = 1;
+            for (String value : bandWidthShareIds) {
+                if (value != null) {
+                    request.addParameter("BandWidthShareId." + index, StringUtils.fromString(value));
+                }
+                index++;
+            }
+        }
+        com.ksc.internal.SdkInternalList<String> projectIds = (com.ksc.internal.SdkInternalList<String>) describeBandWidthSharesRequest
+                .getProjectIds();
+        if (projectIds != null && (!projectIds.isEmpty() || !projectIds.isAutoConstruct())) {
+            int index = 1;
 
-			    for (String value : projectIds) {
-				if (value != null) {
-					request.addParameter("ProjectId." + index, StringUtils.fromString(value));
-				}
-				index ++;
-			    }
-		    }
+            for (String value : projectIds) {
+                if (value != null) {
+                    request.addParameter("ProjectId." + index, StringUtils.fromString(value));
+                }
+                index++;
+            }
+        }
         if (!StringUtils.isNullOrEmpty(describeBandWidthSharesRequest.getMaxResults())) {
             request.addParameter("MaxResults", describeBandWidthSharesRequest.getMaxResults());
         }
