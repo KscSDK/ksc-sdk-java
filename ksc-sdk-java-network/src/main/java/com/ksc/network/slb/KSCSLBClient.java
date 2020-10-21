@@ -923,6 +923,317 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+	@Override
+	public CreateSlbRuleResult createSlbRule(CreateSlbRuleRequest createSlbRuleRequest) {
+		ExecutionContext executionContext = createExecutionContext(createSlbRuleRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateSlbRuleRequest> request = null;
+		Response<CreateSlbRuleResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateSlbRuleRequestMarshaller()
+						.marshall(createSlbRuleRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateSlbRuleResult> responseHandler = new StaxResponseHandler<CreateSlbRuleResult>(
+					new CreateSlbRuleResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifySlbRuleResult modifySlbRule(ModifySlbRuleRequest modifySlbRuleRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifySlbRuleRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifySlbRuleRequest> request = null;
+		Response<ModifySlbRuleResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifySlbRuleRequestMarshaller()
+						.marshall(modifySlbRuleRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifySlbRuleResult> responseHandler = new StaxResponseHandler<ModifySlbRuleResult>(
+					new ModifySlbRuleResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteRuleResult deleteRule(DeleteRuleRequest deleteRuleRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteRuleRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteRuleRequest> request = null;
+		Response<DeleteRuleResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteRuleRequestMarshaller()
+						.marshall(deleteRuleRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteRuleResult> responseHandler = new StaxResponseHandler<DeleteRuleResult>(
+					new DeleteRuleResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeRulesResult describeRules(DescribeRulesRequest describeRulesRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeRulesRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeRulesRequest> request = null;
+		Response<DescribeRulesResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeRulesRequestMarshaller()
+						.marshall(describeRulesRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeRulesResult> responseHandler = new StaxResponseHandler<DescribeRulesResult>(
+					new DescribeRulesResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public CreateBackendServerGroupResult createBackendServerGroup(CreateBackendServerGroupRequest createBackendServerGroupRequest) {
+		ExecutionContext executionContext = createExecutionContext(createBackendServerGroupRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateBackendServerGroupRequest> request = null;
+		Response<CreateBackendServerGroupResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateBackendServerGroupRequestMarshaller()
+						.marshall(createBackendServerGroupRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateBackendServerGroupResult> responseHandler = new StaxResponseHandler<CreateBackendServerGroupResult>(
+					new CreateBackendServerGroupResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyBackendServerGroupResult modifyBackendServerGroup(ModifyBackendServerGroupRequest modifyBackendServerGroupRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyBackendServerGroupRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyBackendServerGroupRequest> request = null;
+		Response<ModifyBackendServerGroupResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyBackendServerGroupRequestMarshaller()
+						.marshall(modifyBackendServerGroupRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyBackendServerGroupResult> responseHandler = new StaxResponseHandler<ModifyBackendServerGroupResult>(
+					new ModifyBackendServerGroupResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteBackendServerGroupResult deleteBackendServerGroup(DeleteBackendServerGroupRequest deleteBackendServerGroupRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteBackendServerGroupRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteBackendServerGroupRequest> request = null;
+		Response<DeleteBackendServerGroupResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteBackendServerGroupRequestMarshaller()
+						.marshall(deleteBackendServerGroupRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteBackendServerGroupResult> responseHandler = new StaxResponseHandler<DeleteBackendServerGroupResult>(
+					new DeleteBackendServerGroupResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeBackendServerGroupsResult describeBackendServerGroups(DescribeBackendServerGroupsRequest describeBackendServerGroupsRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeBackendServerGroupsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeBackendServerGroupsRequest> request = null;
+		Response<DescribeBackendServerGroupsResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeBackendServerGroupsRequestMarshaller()
+						.marshall(describeBackendServerGroupsRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeBackendServerGroupsResult> responseHandler = new StaxResponseHandler<DescribeBackendServerGroupsResult>(
+					new DescribeBackendServerGroupsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public RegisterBackendServerResult registerBackendServer(RegisterBackendServerRequest registerBackendServerRequest) {
+		ExecutionContext executionContext = createExecutionContext(registerBackendServerRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<RegisterBackendServerRequest> request = null;
+		Response<RegisterBackendServerResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new RegisterBackendServerRequestMarshaller()
+						.marshall(registerBackendServerRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<RegisterBackendServerResult> responseHandler = new StaxResponseHandler<RegisterBackendServerResult>(
+					new RegisterBackendServerResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyBackendServerResult modifyBackendServer(ModifyBackendServerRequest modifyBackendServerRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyBackendServerRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyBackendServerRequest> request = null;
+		Response<ModifyBackendServerResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyBackendServerRequestMarshaller()
+						.marshall(modifyBackendServerRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyBackendServerResult> responseHandler = new StaxResponseHandler<ModifyBackendServerResult>(
+					new ModifyBackendServerResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeregisterBackendServerResult deregisterBackendServer(DeregisterBackendServerRequest deregisterBackendServerRequest) {
+		ExecutionContext executionContext = createExecutionContext(deregisterBackendServerRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeregisterBackendServerRequest> request = null;
+		Response<DeregisterBackendServerResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeregisterBackendServerRequestMarshaller()
+						.marshall(deregisterBackendServerRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeregisterBackendServerResult> responseHandler = new StaxResponseHandler<DeregisterBackendServerResult>(
+					new DeregisterBackendServerResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeBackendServersResult describeBackendServers(DescribeBackendServersRequest describeBackendServersRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeBackendServersRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeBackendServersRequest> request = null;
+		Response<DescribeBackendServersResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeBackendServersRequestMarshaller()
+						.marshall(describeBackendServersRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeBackendServersResult> responseHandler = new StaxResponseHandler<DescribeBackendServersResult>(
+					new DescribeBackendServersResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
 
 
 	private void init() {

@@ -159,4 +159,59 @@ public interface KSCSLB {
      */
     public DisassociateLoadBalancerAclResult disassociateLoadBalancerAcl(DisassociateLoadBalancerAclRequest disassociateLoadBalancerAclRequest);
 
+    /**
+     * 创建规则
+     */
+    public CreateSlbRuleResult createSlbRule(CreateSlbRuleRequest createSlbRuleRequest);
+
+    /**
+     * 修改规则
+     */
+    public ModifySlbRuleResult modifySlbRule(ModifySlbRuleRequest modifySlbRuleRequest);
+
+    /**
+     * 删除规则
+     */
+    public DeleteRuleResult deleteRule(DeleteRuleRequest deleteRuleRequest);
+
+    /**
+     * 查询规则
+     */
+    public DescribeRulesResult describeRules(DescribeRulesRequest describeRulesRequest);
+
+    /**
+     * 创建后端服务组
+     */
+    public CreateBackendServerGroupResult createBackendServerGroup(CreateBackendServerGroupRequest createBackendServerGroupRequest);
+    /**
+     * 修改后端服务组
+     */
+    public ModifyBackendServerGroupResult modifyBackendServerGroup(ModifyBackendServerGroupRequest modifyBackendServerGroupRequest);
+    /**
+     * 删除后端服务组
+     */
+    public DeleteBackendServerGroupResult deleteBackendServerGroup(DeleteBackendServerGroupRequest deleteBackendServerGroupRequest);
+    /**
+     * 查询后端服务组
+     */
+    public DescribeBackendServerGroupsResult describeBackendServerGroups(DescribeBackendServerGroupsRequest describeBackendServerGroupsRequest);
+
+    /**
+     * 添加服务器至服务组
+     */
+    public RegisterBackendServerResult registerBackendServer(RegisterBackendServerRequest registerBackendServerRequest);
+    /**
+     * 修改服务器信息
+     */
+    public ModifyBackendServerResult modifyBackendServer(ModifyBackendServerRequest modifyBackendServerRequest);
+    /**
+     * 删除服务组中服务器
+     */
+    public DeregisterBackendServerResult deregisterBackendServer(DeregisterBackendServerRequest deregisterBackendServerRequest);
+    /**
+     * 查询服务组中服务器信息
+     */
+    public DescribeBackendServersResult describeBackendServers(DescribeBackendServersRequest describeBackendServersRequest);
+
+
 }

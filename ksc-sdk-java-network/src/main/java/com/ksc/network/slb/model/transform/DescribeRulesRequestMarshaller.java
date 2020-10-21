@@ -5,30 +5,30 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.model.Filter;
-import com.ksc.network.slb.model.DescribeLoadBalancerAclsRequest;
+import com.ksc.network.slb.model.DescribeRulesRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
-public class DescribeLoadBalancerAclsRequestMarshaller implements
-        Marshaller<Request<DescribeLoadBalancerAclsRequest>, DescribeLoadBalancerAclsRequest> {
+public class DescribeRulesRequestMarshaller implements
+        Marshaller<Request<DescribeRulesRequest>, DescribeRulesRequest> {
 
     @Override
-    public Request<DescribeLoadBalancerAclsRequest> marshall(DescribeLoadBalancerAclsRequest describeLoadBalancerAclsRequest) {
-        if (describeLoadBalancerAclsRequest == null) {
+    public Request<DescribeRulesRequest> marshall(DescribeRulesRequest describeRulesRequest) {
+        if (describeRulesRequest == null) {
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DescribeLoadBalancerAclsRequest> request = new DefaultRequest<DescribeLoadBalancerAclsRequest>(
-                describeLoadBalancerAclsRequest, "slb");
-        request.addParameter("Action", "DescribeLoadBalancerAcls");
-        String version = describeLoadBalancerAclsRequest.getVersion();
+        Request<DescribeRulesRequest> request = new DefaultRequest<DescribeRulesRequest>(
+                describeRulesRequest, "slb");
+        request.addParameter("Action", "DescribeRules");
+        String version = describeRulesRequest.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-03-04";
         }
         request.addParameter("Version", version);
         request.setHttpMethod(HttpMethodName.GET);
 
-        com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeLoadBalancerAclsRequest.getFilters();
+        com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeRulesRequest.getFilters();
         if (filtersList != null && (!filtersList.isEmpty() || !filtersList.isAutoConstruct())) {
             int filtersListIndex = 1;
             for (Filter filtersListValue : filtersList) {
@@ -49,23 +49,23 @@ public class DescribeLoadBalancerAclsRequestMarshaller implements
                 filtersListIndex++;
             }
         }
-        com.ksc.internal.SdkInternalList<String> loadBalancerAclIds = (com.ksc.internal.SdkInternalList<String>) describeLoadBalancerAclsRequest
-                .getLoadBalancerAclIds();
-        if (loadBalancerAclIds != null && (!loadBalancerAclIds.isEmpty() || !loadBalancerAclIds.isAutoConstruct())) {
+        com.ksc.internal.SdkInternalList<String> ruleIds = (com.ksc.internal.SdkInternalList<String>) describeRulesRequest
+                .getRuleIds();
+        if (ruleIds != null && (!ruleIds.isEmpty() || !ruleIds.isAutoConstruct())) {
             int index = 1;
 
-            for (String value : loadBalancerAclIds) {
+            for (String value : ruleIds) {
                 if (value != null) {
-                    request.addParameter("LoadBalancerAclId." + index, StringUtils.fromString(value));
+                    request.addParameter("RuleId." + index, StringUtils.fromString(value));
                 }
                 index++;
             }
         }
-        if (!StringUtils.isNullOrEmpty(describeLoadBalancerAclsRequest.getMaxResults())) {
-            request.addParameter("MaxResults", describeLoadBalancerAclsRequest.getMaxResults());
+        if (!StringUtils.isNullOrEmpty(describeRulesRequest.getMaxResults())) {
+            request.addParameter("MaxResults", describeRulesRequest.getMaxResults());
         }
-        if (!StringUtils.isNullOrEmpty(describeLoadBalancerAclsRequest.getNextToken())) {
-            request.addParameter("NextToken", describeLoadBalancerAclsRequest.getNextToken());
+        if (!StringUtils.isNullOrEmpty(describeRulesRequest.getNextToken())) {
+            request.addParameter("NextToken", describeRulesRequest.getNextToken());
         }
 
         return request;

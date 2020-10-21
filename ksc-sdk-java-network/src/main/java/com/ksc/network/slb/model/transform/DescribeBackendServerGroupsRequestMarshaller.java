@@ -5,30 +5,30 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.model.Filter;
-import com.ksc.network.slb.model.DescribeLoadBalancerAclsRequest;
+import com.ksc.network.slb.model.DescribeBackendServerGroupsRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
 
-public class DescribeLoadBalancerAclsRequestMarshaller implements
-        Marshaller<Request<DescribeLoadBalancerAclsRequest>, DescribeLoadBalancerAclsRequest> {
+public class DescribeBackendServerGroupsRequestMarshaller implements
+        Marshaller<Request<DescribeBackendServerGroupsRequest>, DescribeBackendServerGroupsRequest> {
 
     @Override
-    public Request<DescribeLoadBalancerAclsRequest> marshall(DescribeLoadBalancerAclsRequest describeLoadBalancerAclsRequest) {
-        if (describeLoadBalancerAclsRequest == null) {
+    public Request<DescribeBackendServerGroupsRequest> marshall(DescribeBackendServerGroupsRequest describeBackendServerGroupsRequest) {
+        if (describeBackendServerGroupsRequest == null) {
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
 
-        Request<DescribeLoadBalancerAclsRequest> request = new DefaultRequest<DescribeLoadBalancerAclsRequest>(
-                describeLoadBalancerAclsRequest, "slb");
-        request.addParameter("Action", "DescribeLoadBalancerAcls");
-        String version = describeLoadBalancerAclsRequest.getVersion();
+        Request<DescribeBackendServerGroupsRequest> request = new DefaultRequest<DescribeBackendServerGroupsRequest>(
+                describeBackendServerGroupsRequest, "slb");
+        request.addParameter("Action", "DescribeBackendServerGroups");
+        String version = describeBackendServerGroupsRequest.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-03-04";
         }
         request.addParameter("Version", version);
         request.setHttpMethod(HttpMethodName.GET);
 
-        com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeLoadBalancerAclsRequest.getFilters();
+        com.ksc.internal.SdkInternalList<Filter> filtersList = (com.ksc.internal.SdkInternalList<Filter>) describeBackendServerGroupsRequest.getFilters();
         if (filtersList != null && (!filtersList.isEmpty() || !filtersList.isAutoConstruct())) {
             int filtersListIndex = 1;
             for (Filter filtersListValue : filtersList) {
@@ -49,23 +49,23 @@ public class DescribeLoadBalancerAclsRequestMarshaller implements
                 filtersListIndex++;
             }
         }
-        com.ksc.internal.SdkInternalList<String> loadBalancerAclIds = (com.ksc.internal.SdkInternalList<String>) describeLoadBalancerAclsRequest
-                .getLoadBalancerAclIds();
-        if (loadBalancerAclIds != null && (!loadBalancerAclIds.isEmpty() || !loadBalancerAclIds.isAutoConstruct())) {
+        com.ksc.internal.SdkInternalList<String> backendServerGroupIds = (com.ksc.internal.SdkInternalList<String>) describeBackendServerGroupsRequest
+                .getBackendServerGroupIds();
+        if (backendServerGroupIds != null && (!backendServerGroupIds.isEmpty() || !backendServerGroupIds.isAutoConstruct())) {
             int index = 1;
 
-            for (String value : loadBalancerAclIds) {
+            for (String value : backendServerGroupIds) {
                 if (value != null) {
-                    request.addParameter("LoadBalancerAclId." + index, StringUtils.fromString(value));
+                    request.addParameter("BackendServerGroupId." + index, StringUtils.fromString(value));
                 }
                 index++;
             }
         }
-        if (!StringUtils.isNullOrEmpty(describeLoadBalancerAclsRequest.getMaxResults())) {
-            request.addParameter("MaxResults", describeLoadBalancerAclsRequest.getMaxResults());
+        if (!StringUtils.isNullOrEmpty(describeBackendServerGroupsRequest.getMaxResults())) {
+            request.addParameter("MaxResults", describeBackendServerGroupsRequest.getMaxResults());
         }
-        if (!StringUtils.isNullOrEmpty(describeLoadBalancerAclsRequest.getNextToken())) {
-            request.addParameter("NextToken", describeLoadBalancerAclsRequest.getNextToken());
+        if (!StringUtils.isNullOrEmpty(describeBackendServerGroupsRequest.getNextToken())) {
+            request.addParameter("NextToken", describeBackendServerGroupsRequest.getNextToken());
         }
 
         return request;

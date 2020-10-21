@@ -43,7 +43,7 @@ public class LoadBalancerAclStaxUnmarshaller implements Unmarshaller<LoadBalance
                     LoadBalancerAcl.setIpVersion(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
-                if (context.testExpression("loadBalancerAclEntrySet", targetDepth)) {
+                if (context.testExpression("LoadBalancerAclEntrySet/item", targetDepth)) {
                     LoadBalancerAcl.addLoadBalancerAclEntrySet(LoadBalancerAclEntryStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
