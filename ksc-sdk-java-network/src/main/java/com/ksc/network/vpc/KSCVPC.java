@@ -12,6 +12,7 @@ import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
+import com.ksc.network.vpc.model.peering.*;
 
 public interface KSCVPC {
 
@@ -226,8 +227,32 @@ public interface KSCVPC {
     /**
      * 描述Nat
      */
-    public DescribeNatsResult describeNats(
-            DescribeNatsRequest describeNatsRequest);
+    public DescribeNatsResult describeNats(DescribeNatsRequest describeNatsRequest);
+
+	/**
+	 * 创建对等连接
+	 */
+	public CreateVpcPeeringConnectionResult createVpcPeeringConnection(CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest);
+	/**
+	 * 修改对等连接
+	 */
+	public ModifyVpcPeeringConnectionResult modifyVpcPeeringConnection(ModifyVpcPeeringConnectionRequest modifyVpcPeeringConnectionRequest);
+	/**
+	 * 删除对等连接
+	 */
+	public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest);
+	/**
+	 * 查询对等连接
+	 */
+	public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest);
+	/**
+	 * 接受对等连接
+	 */
+	public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest);
+	/**
+	 * 拒绝对等连接
+	 */
+	public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest);
 
 }
 
