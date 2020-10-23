@@ -1712,5 +1712,109 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+	@Override
+	public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest createCustomerGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(createCustomerGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateCustomerGatewayRequest> request = null;
+		Response<CreateCustomerGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateCustomerGatewayRequestMarshaller()
+						.marshall(createCustomerGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateCustomerGatewayResult> responseHandler = new StaxResponseHandler<CreateCustomerGatewayResult>(
+					new CreateCustomerGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteCustomerGatewayResult deleteCustomerGateway(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteCustomerGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteCustomerGatewayRequest> request = null;
+		Response<DeleteCustomerGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteCustomerGatewayRequestMarshaller()
+						.marshall(deleteCustomerGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteCustomerGatewayResult> responseHandler = new StaxResponseHandler<DeleteCustomerGatewayResult>(
+					new DeleteCustomerGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyCustomerGatewayResult modifyCustomerGateway(ModifyCustomerGatewayRequest modifyCustomerGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyCustomerGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyCustomerGatewayRequest> request = null;
+		Response<ModifyCustomerGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyCustomerGatewayRequestMarshaller()
+						.marshall(modifyCustomerGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyCustomerGatewayResult> responseHandler = new StaxResponseHandler<ModifyCustomerGatewayResult>(
+					new ModifyCustomerGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeCustomerGatewaysRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeCustomerGatewaysRequest> request = null;
+		Response<DescribeCustomerGatewaysResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeCustomerGatewaysRequestMarshaller()
+						.marshall(describeCustomerGatewaysRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeCustomerGatewaysResult> responseHandler = new StaxResponseHandler<DescribeCustomerGatewaysResult>(
+					new DescribeCustomerGatewaysResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 
 }

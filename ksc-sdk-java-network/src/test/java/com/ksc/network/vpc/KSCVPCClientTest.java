@@ -661,4 +661,62 @@ public class KSCVPCClientTest {
         log.info(result);
     }
 
+    @Test
+    public void createCustomerGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateCustomerGatewayRequest request = new CreateCustomerGatewayRequest();
+        request.setCustomerGatewayName("sdk-test1");
+        request.setCustomerGatewayAddress("8.8.8.8");
+        request.setHaCustomerGatewayAddress("9.9.9.9");
+        CreateCustomerGatewayResult result = client.createCustomerGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteCustomerGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteCustomerGatewayRequest request = new DeleteCustomerGatewayRequest();
+        request.setCustomerGatewayId("411baf47-b927-4bf4-86e2-1303c94bbd12");
+        DeleteCustomerGatewayResult result = client.deleteCustomerGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyCustomerGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyCustomerGatewayRequest request = new ModifyCustomerGatewayRequest();
+        request.setCustomerGatewayId("65000661-5360-42fc-88f1-115821a32309");
+        request.setCustomerGatewayName("sdk-test");
+        request.setCustomerGatewayAddress("110.43.131.186");
+        request.setHaCustomerGatewayAddress("110.43.131.186");
+        ModifyCustomerGatewayResult result = client.modifyCustomerGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeCustomerGateways(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeCustomerGatewaysRequest request = new DescribeCustomerGatewaysRequest();
+        request.addCustomerGatewayIds("65000661-5360-42fc-88f1-115821a32309");
+        DescribeCustomerGatewaysResult result = client.describeCustomerGateways(request);
+        log.info(result);
+    }
+
+
 }

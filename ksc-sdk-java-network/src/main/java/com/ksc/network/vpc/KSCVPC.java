@@ -281,6 +281,22 @@ public interface KSCVPC {
 	 */
 	public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest);
 
+	/**
+	 * 创建客户网关
+	 */
+	public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest createCustomerGatewayRequest);
+	/**
+	 * 删除客户网关
+	 */
+	public DeleteCustomerGatewayResult deleteCustomerGateway(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest);
+	/**
+	 * 修改客户网关
+	 */
+	public ModifyCustomerGatewayResult modifyCustomerGateway(ModifyCustomerGatewayRequest modifyCustomerGatewayRequest);
+	/**
+	 * 获取客户网关
+	 */
+	public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest);
 
 
 }
