@@ -24,6 +24,7 @@ import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 import com.ksc.network.vpc.model.peering.*;
 import com.ksc.network.vpc.model.vpn.*;
+import com.ksc.network.vpc.model.NetworkInterface.*;
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesRequestMarshaller;
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysRequestMarshaller;
@@ -38,6 +39,7 @@ import com.ksc.network.vpc.transform.subnet.*;
 import com.ksc.network.vpc.transform.vpc.*;
 import com.ksc.network.vpc.transform.peering.*;
 import com.ksc.network.vpc.transform.vpn.*;
+import com.ksc.network.vpc.transform.NetworkInterface.*;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
@@ -1659,5 +1661,56 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+    @Override
+    public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest createNetworkInterfaceRequest) {
+        ExecutionContext executionContext = createExecutionContext(createNetworkInterfaceRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateNetworkInterfaceRequest> request = null;
+        Response<CreateNetworkInterfaceResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateNetworkInterfaceRequestMarshaller()
+                        .marshall(createNetworkInterfaceRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<CreateNetworkInterfaceResult> responseHandler = new StaxResponseHandler<CreateNetworkInterfaceResult>(
+                    new CreateNetworkInterfaceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteNetworkInterfaceRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteNetworkInterfaceRequest> request = null;
+        Response<DeleteNetworkInterfaceResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteNetworkInterfaceRequestMarshaller()
+                        .marshall(deleteNetworkInterfaceRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteNetworkInterfaceResult> responseHandler = new StaxResponseHandler<DeleteNetworkInterfaceResult>(
+                    new DeleteNetworkInterfaceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
 }

@@ -14,6 +14,7 @@ import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 import com.ksc.network.vpc.model.peering.*;
 import com.ksc.network.vpc.model.vpn.*;
+import com.ksc.network.vpc.model.NetworkInterface.*;
 
 public interface KSCVPC {
 
@@ -271,6 +272,16 @@ public interface KSCVPC {
 	 * 查询VPN网关
 	 */
 	public DescribeVpnGatewaysResult describeVpnGateways(DescribeVpnGatewaysRequest describeVpnGatewaysRequest);
+	/**
+	 * 创建弹性网卡
+	 */
+	public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest createNetworkInterfaceRequest);
+	/**
+	 * 删除弹性网卡
+	 */
+	public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest);
+
+
 
 }
 

@@ -9,8 +9,7 @@ import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysReques
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.Nat.*;
 import com.ksc.network.vpc.model.NetworkAcl.*;
-import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
-import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
+import com.ksc.network.vpc.model.NetworkInterface.*;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
@@ -634,5 +633,32 @@ public class KSCVPCClientTest {
         log.info(result);
     }
 
+    @Test
+    public void createNetworkInterface(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateNetworkInterfaceRequest request = new CreateNetworkInterfaceRequest();
+        //request.setPrivateIpAddress("");
+        request.setSubnetId("1c83a7ee-5dd9-4080-8fd7-07822b9b69cb");
+        request.addSecurityGroupIds("876255b8-2341-41f9-bcc6-e3520b79d570");
+        CreateNetworkInterfaceResult result = client.createNetworkInterface(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteNetworkInterface(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteNetworkInterfaceRequest request = new DeleteNetworkInterfaceRequest();
+        request.setNetworkInterfaceId("4eebc5af-6a6b-44ba-9cd1-3a7ac439bace");
+        DeleteNetworkInterfaceResult result = client.deleteNetworkInterface(request);
+        log.info(result);
+    }
 
 }
