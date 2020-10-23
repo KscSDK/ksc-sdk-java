@@ -13,6 +13,7 @@ import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 import com.ksc.network.vpc.model.peering.*;
+import com.ksc.network.vpc.model.vpn.*;
 
 public interface KSCVPC {
 
@@ -253,6 +254,23 @@ public interface KSCVPC {
 	 * 拒绝对等连接
 	 */
 	public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest);
+
+	/**
+	 * 创建VPN网关
+	 */
+	public CreateVpnGatewayResult createVpnGateway(CreateVpnGatewayRequest createVpnGatewayRequest);
+	/**
+	 * 修改VPN网关
+	 */
+	public ModifyVpnGatewayResult modifyVpnGateway(ModifyVpnGatewayRequest modifyVpnGatewayRequest);
+	/**
+	 * 删除VPN网关
+	 */
+	public DeleteVpnGatewayResult deleteVpnGateway(DeleteVpnGatewayRequest deleteVpnGatewayRequest);
+	/**
+	 * 查询VPN网关
+	 */
+	public DescribeVpnGatewaysResult describeVpnGateways(DescribeVpnGatewaysRequest describeVpnGatewaysRequest);
 
 }
 
