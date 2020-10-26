@@ -77,6 +77,11 @@ public class NatStaxUnmarshaller implements Unmarshaller<Nat, StaxUnmarshallerCo
                     continue;
                 }
 
+				if (context.testExpression("ProjectId", targetDepth)) {
+					nat.setProjectId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return nat;

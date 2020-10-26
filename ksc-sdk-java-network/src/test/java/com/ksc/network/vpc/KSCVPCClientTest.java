@@ -398,12 +398,14 @@ public class KSCVPCClientTest {
         client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("vpc");
         CreateNatRequest request = new CreateNatRequest();
-        request.setVpcId("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
+        request.setVpcId("9f0cd9aa-6a14-4a0d-88c4-530f559b13b2");
         request.setNatMode("Subnet");
-        request.setNatType("private");
-        request.setNatIpNumber(5);
-        request.setBandWidth(100);
+        request.setNatType("public");
+        request.setNatIpNumber(1);
+        request.setBandWidth(1);
         request.setNatName("gdg");
+        request.setChargeType("DailyPaidByTransfer");
+        request.setProjectId("472");
         CreateNatResult result = client.createNat(request);
         log.info(result);
     }
@@ -438,10 +440,11 @@ public class KSCVPCClientTest {
         client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("vpc");
         DescribeNatsRequest request = new DescribeNatsRequest();
-        Filter filter = new Filter();
+       /* Filter filter = new Filter();
         filter.setName("vpc-id");
         filter.withValues("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
-        request.withFilters(filter);
+        request.withFilters(filter);*/
+       request.addProjectIds("472");
 //        request.withNatIds("ac777893-6b9d-46ad-be3c-4eed2edadf56");
         DescribeNatsResult result = client.describeNats(request);
         log.info(result);

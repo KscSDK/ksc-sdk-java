@@ -4,6 +4,7 @@ import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.Nat.CreateNatRequestMarshaller;
+import lombok.Data;
 
 import java.io.Serializable;
 
@@ -12,6 +13,7 @@ import java.io.Serializable;
  * Contains the parameters for CreateNat.
  * </p>
  */
+@Data
 public class CreateNatRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<CreateNatRequest> {
 
@@ -47,98 +49,42 @@ public class CreateNatRequest extends KscWebServiceRequest implements
      * 包年包月类型NAT的购买时长，只有NAT类型为public并且计费类型为包年包月时不可缺省。单位：月。
      */
     private Integer PurchaseTime;
-
-    public String getVpcId() {
-        return VpcId;
-    }
-
-    public void setVpcId(String vpcId) {
-        VpcId = vpcId;
-    }
-
-    public String getNatName() {
-        return NatName;
-    }
-
-    public void setNatName(String natName) {
-        NatName = natName;
-    }
-
-    public String getNatMode() {
-        return NatMode;
-    }
-
-    public void setNatMode(String natMode) {
-        NatMode = natMode;
-    }
-
-    public String getNatType() {
-        return NatType;
-    }
-
-    public void setNatType(String natType) {
-        NatType = natType;
-    }
-
-    public Integer getNatIpNumber() {
-        return NatIpNumber;
-    }
-
-    public void setNatIpNumber(Integer natIpNumber) {
-        NatIpNumber = natIpNumber;
-    }
-
-    public Integer getBandWidth() {
-        return BandWidth;
-    }
-
-    public void setBandWidth(Integer bandWidth) {
-        BandWidth = bandWidth;
-    }
-
-    public String getChargeType() {
-        return ChargeType;
-    }
-
-    public void setChargeType(String chargeType) {
-        ChargeType = chargeType;
-    }
-
-    public Integer getPurchaseTime() {
-        return PurchaseTime;
-    }
-
-    public void setPurchaseTime(Integer purchaseTime) {
-        PurchaseTime = purchaseTime;
-    }
+    /**
+     * 项目的ID
+     */
+    private String projectId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         CreateNatRequest that = (CreateNatRequest) o;
 
-        if (!VpcId.equals(that.VpcId)) return false;
-        if (!NatName.equals(that.NatName)) return false;
-        if (!NatMode.equals(that.NatMode)) return false;
-        if (!NatType.equals(that.NatType)) return false;
-        if (!NatIpNumber.equals(that.NatIpNumber)) return false;
-        if (!BandWidth.equals(that.BandWidth)) return false;
-        if (!ChargeType.equals(that.ChargeType)) return false;
-        return PurchaseTime.equals(that.PurchaseTime);
+        if (VpcId != null ? !VpcId.equals(that.VpcId) : that.VpcId != null) return false;
+        if (NatName != null ? !NatName.equals(that.NatName) : that.NatName != null) return false;
+        if (NatMode != null ? !NatMode.equals(that.NatMode) : that.NatMode != null) return false;
+        if (NatType != null ? !NatType.equals(that.NatType) : that.NatType != null) return false;
+        if (NatIpNumber != null ? !NatIpNumber.equals(that.NatIpNumber) : that.NatIpNumber != null) return false;
+        if (BandWidth != null ? !BandWidth.equals(that.BandWidth) : that.BandWidth != null) return false;
+        if (ChargeType != null ? !ChargeType.equals(that.ChargeType) : that.ChargeType != null) return false;
+        if (PurchaseTime != null ? !PurchaseTime.equals(that.PurchaseTime) : that.PurchaseTime != null) return false;
+        return projectId != null ? projectId.equals(that.projectId) : that.projectId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = VpcId.hashCode();
-        result = 31 * result + NatName.hashCode();
-        result = 31 * result + NatMode.hashCode();
-        result = 31 * result + NatType.hashCode();
-        result = 31 * result + NatIpNumber.hashCode();
-        result = 31 * result + BandWidth.hashCode();
-        result = 31 * result + ChargeType.hashCode();
-        result = 31 * result + PurchaseTime.hashCode();
+        int result = super.hashCode();
+        result = 31 * result + (VpcId != null ? VpcId.hashCode() : 0);
+        result = 31 * result + (NatName != null ? NatName.hashCode() : 0);
+        result = 31 * result + (NatMode != null ? NatMode.hashCode() : 0);
+        result = 31 * result + (NatType != null ? NatType.hashCode() : 0);
+        result = 31 * result + (NatIpNumber != null ? NatIpNumber.hashCode() : 0);
+        result = 31 * result + (BandWidth != null ? BandWidth.hashCode() : 0);
+        result = 31 * result + (ChargeType != null ? ChargeType.hashCode() : 0);
+        result = 31 * result + (PurchaseTime != null ? PurchaseTime.hashCode() : 0);
+        result = 31 * result + (projectId != null ? projectId.hashCode() : 0);
         return result;
     }
 
