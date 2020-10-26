@@ -46,6 +46,10 @@ public class ModifyInstanceAttributeRequestMarshaller implements
             request.addParameter("InstancePassword",
                     StringUtils.fromString(modifyInstanceAttributeRequest.getInstancePassword()));
         }
+        if(modifyInstanceAttributeRequest.getHostName()!=null) {
+            request.addParameter("HostName",
+                    StringUtils.fromString(modifyInstanceAttributeRequest.getHostName()));
+        }
 
         return request;
     }

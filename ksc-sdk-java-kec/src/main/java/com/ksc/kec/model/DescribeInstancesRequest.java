@@ -1,6 +1,7 @@
 package com.ksc.kec.model;
 
 import java.io.Serializable;
+import java.util.List;
 
 import com.ksc.internal.SdkInternalList;
 import lombok.EqualsAndHashCode;
@@ -86,6 +87,21 @@ public class DescribeInstancesRequest extends KscWebServiceRequest implements
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<String> projectIds;
+
+
+	/**
+	 * <p>
+	 * 筛选器
+	 * 类型: 筛选器（Sort）
+	 * 有效值：支持如下筛选器名称
+	 * InstanceName –主机名称
+	 * CreationDate –创建时间
+	 * PrivateIpAddress - 主机内网IP（主网卡）
+	 * 是否可缺省：是
+	 * </p>
+	 */
+	private Sort sort;
+
 	public SdkInternalList<String> getProjectIds() {
 		if (projectIds == null) {
 			projectIds = new com.ksc.internal.SdkInternalList<String>();
@@ -401,5 +417,12 @@ public class DescribeInstancesRequest extends KscWebServiceRequest implements
 	public void setSearch(String search) {
 		Search = search;
 	}
-	
+
+	public Sort getSort() {
+		return sort;
+	}
+
+	public void setSort(Sort sort) {
+		this.sort = sort;
+	}
 }

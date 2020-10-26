@@ -1,9 +1,8 @@
 package com.ksc.services.kec;
 
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
+import com.ksc.kec.model.*;
 import org.apache.log4j.Logger;
 import org.junit.Test;
 
@@ -12,71 +11,6 @@ import com.ksc.KscClientException;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.kec.KSCKECClient;
-import com.ksc.kec.model.AttachNetworkInterfaceRequest;
-import com.ksc.kec.model.AttachNetworkInterfaceResult;
-import com.ksc.kec.model.CreateImageRequest;
-import com.ksc.kec.model.CreateImageResult;
-import com.ksc.kec.model.CreateLocalVolumeSnapshotRequest;
-import com.ksc.kec.model.CreateLocalVolumeSnapshotResult;
-import com.ksc.kec.model.DataDisk;
-import com.ksc.kec.model.DeleteLocalVolumeSnapshotRequest;
-import com.ksc.kec.model.DeleteLocalVolumeSnapshotResult;
-import com.ksc.kec.model.DescribeAvailabilityZonesRequest;
-import com.ksc.kec.model.DescribeAvailabilityZonesResult;
-import com.ksc.kec.model.DescribeImageSharePermissionRequest;
-import com.ksc.kec.model.DescribeImageSharePermissionResult;
-import com.ksc.kec.model.DescribeImagesRequest;
-import com.ksc.kec.model.DescribeImagesResult;
-import com.ksc.kec.model.DescribeInstanceFamilysRequest;
-import com.ksc.kec.model.DescribeInstanceFamilysResult;
-import com.ksc.kec.model.DescribeInstanceTypeConfigsRequest;
-import com.ksc.kec.model.DescribeInstanceTypeConfigsResult;
-import com.ksc.kec.model.DescribeInstanceVncRequest;
-import com.ksc.kec.model.DescribeInstanceVncResult;
-import com.ksc.kec.model.DescribeInstancesRequest;
-import com.ksc.kec.model.DescribeInstancesResult;
-import com.ksc.kec.model.DescribeLocalVolumeSnapshotsRequest;
-import com.ksc.kec.model.DescribeLocalVolumeSnapshotsResult;
-import com.ksc.kec.model.DescribeLocalVolumesRequest;
-import com.ksc.kec.model.DescribeLocalVolumesResult;
-import com.ksc.kec.model.DescribeRegionsRequest;
-import com.ksc.kec.model.DescribeRegionsResult;
-import com.ksc.kec.model.DetachNetworkInterfaceRequest;
-import com.ksc.kec.model.DetachNetworkInterfaceResult;
-import com.ksc.kec.model.ImageCopyRequest;
-import com.ksc.kec.model.ImageCopyResult;
-import com.ksc.kec.model.ImageImportRequest;
-import com.ksc.kec.model.ImageImportResult;
-import com.ksc.kec.model.ModifyImageAttributeRequest;
-import com.ksc.kec.model.ModifyImageAttributeResult;
-import com.ksc.kec.model.ModifyImageSharePermissionRequest;
-import com.ksc.kec.model.ModifyImageSharePermissionResult;
-import com.ksc.kec.model.ModifyInstanceAttributeRequest;
-import com.ksc.kec.model.ModifyInstanceAttributeResult;
-import com.ksc.kec.model.ModifyInstanceImageRequest;
-import com.ksc.kec.model.ModifyInstanceImageResult;
-import com.ksc.kec.model.ModifyInstanceTypeRequest;
-import com.ksc.kec.model.ModifyInstanceTypeResult;
-import com.ksc.kec.model.ModifyNetworkInterfaceAttributeRequest;
-import com.ksc.kec.model.ModifyNetworkInterfaceAttributeResult;
-import com.ksc.kec.model.MonitorInstancesRequest;
-import com.ksc.kec.model.MonitorInstancesResult;
-import com.ksc.kec.model.RebootInstancesRequest;
-import com.ksc.kec.model.RebootInstancesResult;
-import com.ksc.kec.model.RemoveImagesRequest;
-import com.ksc.kec.model.RemoveImagesResult;
-import com.ksc.kec.model.RollbackLocalVolumeRequest;
-import com.ksc.kec.model.RollbackLocalVolumeResult;
-import com.ksc.kec.model.RunInstancesRequest;
-import com.ksc.kec.model.RunInstancesResult;
-import com.ksc.kec.model.StartInstancesRequest;
-import com.ksc.kec.model.StartInstancesResult;
-import com.ksc.kec.model.StopInstancesRequest;
-import com.ksc.kec.model.StopInstancesResult;
-import com.ksc.kec.model.TerminateInstancesRequest;
-import com.ksc.kec.model.TerminateInstancesResult;
-import com.ksc.kec.model.UnmonitorInstancesRequest;
-import com.ksc.kec.model.UnmonitorInstancesResult;
 import com.ksc.model.Filter;
 
 public class KSCOpenAPISample {
@@ -84,6 +18,7 @@ public class KSCOpenAPISample {
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
 	public static final String AWS_AK = "";
 	public static final String AWS_SK = "";
+
 	@Test
 	public void startInstances(){
 		StartInstancesRequest request=new StartInstancesRequest();
@@ -96,6 +31,7 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("startInstance Result: "+gson.toJson(result));
 	}
+
 	@Test
 	public void stopInstances(){
 		StopInstancesRequest request=new StopInstancesRequest();
@@ -108,6 +44,7 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("stopInstance Result: "+gson.toJson(result));
 	}
+
 	@Test
 	public void rebootInstances(){
 		RebootInstancesRequest request=new RebootInstancesRequest();
@@ -120,6 +57,7 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("rebootInstances Result: "+gson.toJson(result));
 	}
+
 	@Test
 	public void describeInstances() {
 		//BasicConfigurator.configure();
@@ -153,14 +91,19 @@ public class KSCOpenAPISample {
 		kec_client.setServiceNameIntern("kec");
 
 		DescribeInstancesRequest describe_instances_request = new DescribeInstancesRequest();
-		describe_instances_request.withInstanceIds("c4d58cc8-335a-4776-b081-b200e725d988");
-		describe_instances_request.withProjectIds("0");
+//		describe_instances_request.withInstanceIds("3313990b-22d9-4ca7-b58c-eb75559a1b6f");
+		Sort sort = new Sort();
+		sort.setName("CreationDate");
+		sort.setValue("DESC");
+		describe_instances_request.setSort(sort);
+		describe_instances_request.withProjectIds("515");
 //		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult result = kec_client
 				.describeInstances(describe_instances_request);
 		Gson gson = new Gson();
 		log.info("describeInstances Result: "+gson.toJson(result));
 	}
+
 	@Test
 	public void DescribeImages(){
 		DescribeImagesRequest request=new DescribeImagesRequest();
@@ -180,33 +123,56 @@ public class KSCOpenAPISample {
 	@Test
 	public void runInstances(){
 		RunInstancesRequest request=new RunInstancesRequest();
-		request.setImageId("b2e78146-58f1-4298-9397-ebf942246a2b");
-		request.setInstanceType("N2.1A");
-		request.setDataDiskGb(50);
+		request.setImageId("e22d048a-e0b8-465e-a692-d3358981eeff");
+		request.setInstanceType("E1.2B");
+
+		SystemDisk systemDisk = new SystemDisk();
+		systemDisk.setDiskType("Local_SSD");
+		systemDisk.setDiskSize(25);
+		request.setSystemDisk(systemDisk);
+
+		request.setDataDiskGb(25);
+
 		request.setMaxCount(1);
 		request.setMinCount(1);
-		request.setSubnetId("9fd83a5e-33cf-4196-b8df-59fc57478488");
-		request.setInstancePassword("Qwer@1234");
-		request.setChargeType("Daily");
+		request.setSubnetId("afa859fc-65ea-410d-99f2-d686cf9da1d9");
+//		request.setInstancePassword("Qwer@1234");
+		request.setChargeType("HourlyInstantSettlement");
+
+//		request.setLocalVolumeSnapshotId("969829eb-8945-474c-a14e-70a7f09ae552");
+
+		request.setChargeType("Spot");
+//		request.setSpotStrategy("SpotWithPriceLimit");
+//		request.setSpotPriceLimit(0.51334);
+
 		request.setPurchaseTime(1);
-		request.setSecurityGroupId("31a5484d-8077-4aca-8f79-e093f9d4bbc1");
-		request.setInstanceName("sdk-test-ebs");
+		request.setSecurityGroupId("18523073-c6c0-44ba-9858-1c0f92cb453d");
+		request.setInstanceName("sdktest-1020");
 		request.setInstanceNameSuffix("1");
 		request.setSriovNetSupport(false);
-		request.setProjectId(208L);
+		request.setProjectId(515L);
+//		request.setModelId("5ae8bc0f-cdf2-416d-ab60-f2a2a69ce695");
 		
-		List<DataDisk> dataDiskList = new ArrayList<DataDisk>();
 		DataDisk dataDisk = new DataDisk();
-		dataDisk.setType("SSD3.0");
+		dataDisk.setType("EHDD");
 		dataDisk.setSize(10);
 		dataDisk.setDeleteWithInstance(true);
-		dataDiskList.add(dataDisk);
-		request.setDataDisk(dataDiskList);
-		
-		request.setAddressBandWidth(1);
-		request.setAddressChargeType("PostPaidByDay");
-		request.setLineId("111765e4-f55f-4822-9ed6-b2464252fab2");
-		request.setAddressPurchaseTime(0);
+		request.withDataDisks(dataDisk);
+
+//		request.setAddressBandWidth(1);
+//		request.setAddressChargeType("PrePaidByMonth");
+//		request.setLineId("111765e4-f55f-4822-9ed6-b2464252fab2");
+//		request.setAddressPurchaseTime(1);
+//		request.setAddressProjectId("515");
+
+		request.withKeyIds("c079a41f-beb4-4b73-a68c-69f25b9c8819");
+
+		request.setHostName("host-sdktest-1016");
+		request.setHostNameSuffix("1");
+
+		request.setDataGuardId("42832fe7-8d68-473f-b113-f0912de1622d");
+
+		request.setAutoDeleteTime("2020-10-20 17:00:00");
 
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
@@ -220,7 +186,7 @@ public class KSCOpenAPISample {
 	@Test
 	public void terminateInstances(){
 		TerminateInstancesRequest request=new TerminateInstancesRequest();
-		request.withInstanceIds("f1184ae3-accd-432e-bc0a-659d45b9ccd8");
+		request.withInstanceIds("7bb13875-fe64-4697-af5a-fe446e6bf1dd");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
@@ -357,7 +323,7 @@ public class KSCOpenAPISample {
 	@Test
 	public void describeLocalVolumes(){
 		DescribeLocalVolumesRequest request=new DescribeLocalVolumesRequest();
-//		request.setInstanceName("KSC170518204032_");
+		request.setInstanceName("openapi_test_server_1603256998446");
 		request.setMarker(0);
 		request.setMaxResults(5);
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
@@ -372,7 +338,9 @@ public class KSCOpenAPISample {
 	@Test
 	public void describeLocalVolumeSnapshots(){
 		DescribeLocalVolumeSnapshotsRequest request=new DescribeLocalVolumeSnapshotsRequest();
-		request.setLocalInstanceName("KSC170518204037_");
+		request.setLocalVolumeName("ksc-596a89ea-99cc-45e4-a31c-cdaef2f546ba-vdb");
+//		request.setLocalVolumeSnapshotId("a5646fd6-cb18-45b3-8014-8d8c2ccc575b");
+//		request.setSourceLocalVolumeId("596a89ea-99cc-45e4-a31c-cdaef2f546ba-b");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
@@ -564,6 +532,7 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("imageCopy Result: "+gson.toJson(result));
 	}
+
 	@Test
 	public void modifyImageSharePermission(){
 		ModifyImageSharePermissionRequest request = new ModifyImageSharePermissionRequest();
@@ -578,6 +547,7 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("modifyImageSharePermission Result: "+gson.toJson(result));
 	}
+
 	@Test
 	public void describeImageSharePermission(){
         DescribeImageSharePermissionRequest request = new DescribeImageSharePermissionRequest();
@@ -589,5 +559,32 @@ public class KSCOpenAPISample {
         DescribeImageSharePermissionResult result=kec_client.describeImageSharePermission(request);
 		Gson gson = new Gson();
 		log.info("describeImageSharePermission Result: "+gson.toJson(result));
+	}
+	@Test
+	public void attachKey(){
+		AttachKeyRequest request = new AttachKeyRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.withInstanceIds("714d8943-552e-4c17-b1bd-3c023bf7b0b4");
+		request.withKeyIds("c079a41f-beb4-4b73-a68c-69f25b9c8819");
+		AttachKeyResult result=kec_client.attachKey(request);
+		Gson gson = new Gson();
+		log.info("imageCopy Result: "+gson.toJson(result));
+	}
+
+	@Test
+	public void detachKey(){
+		DetachKeyRequest request = new DetachKeyRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.withInstanceIds("714d8943-552e-4c17-b1bd-3c023bf7b0b4");
+		request.withKeyIds("c079a41f-beb4-4b73-a68c-69f25b9c8819");
+		DetachKeyResult result=kec_client.detachKey(request);
+		Gson gson = new Gson();
+		log.info("imageCopy Result: "+gson.toJson(result));
 	}
 }

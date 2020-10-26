@@ -54,6 +54,18 @@ public class InstanceConfigureStaxUnmarshaller implements
 					continue;
 				}
 
+				if (context.testExpression("RootDiskGb", targetDepth)) {
+					ic.setRootDiskGb(IntegerStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("Spec", targetDepth)) {
+					ic.setSpec(StringStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
+				}
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return ic;

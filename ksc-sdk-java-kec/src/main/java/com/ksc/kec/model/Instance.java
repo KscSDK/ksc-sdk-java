@@ -2,7 +2,9 @@ package com.ksc.kec.model;
 
 import java.util.List;
 
+import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Setter;
 import lombok.ToString;
 
 import com.ksc.internal.SdkInternalList;
@@ -37,7 +39,7 @@ public class Instance {
 
 	private String AvailabilityZone;
 
-	private String ProjectId;
+	private Long ProjectId;
 
 	private String ServiceEndTime;
 
@@ -45,11 +47,41 @@ public class Instance {
 
 	private Integer ProductType;
 
-	public String getProjectId() {
+	private Boolean IsShowSriovNetSupport;
+
+	private String AvailabilityZoneName;
+
+	private String AutoScalingType;
+
+	private Integer ProductWhat;
+
+	private SystemDisk SystemDisk;
+
+	private String HostName;
+
+	private String UserData;
+
+	private String StoppedMode;
+
+	private String AutoDeleteTime;
+
+	private Boolean AutoDeleteEip;
+
+	private String SpotRecyclingTime;
+
+	private String SpotStrategy;
+
+	private Double SpotPriceLimit;
+
+	private List<DataDisk> DataDiskSet;
+
+	private DataGuard DataGuard;
+
+	public Long getProjectId() {
 		return ProjectId;
 	}
 
-	public void setProjectId(String projectId) {
+	public void setProjectId(Long projectId) {
 		ProjectId = projectId;
 	}
 
@@ -189,5 +221,151 @@ public class Instance {
 
 	public void setProductType(Integer productType) {
 		ProductType = productType;
+	}
+
+	public Boolean getShowSriovNetSupport() {
+		return IsShowSriovNetSupport;
+	}
+
+	public void setShowSriovNetSupport(Boolean showSriovNetSupport) {
+		IsShowSriovNetSupport = showSriovNetSupport;
+	}
+
+	public String getAvailabilityZoneName() {
+		return AvailabilityZoneName;
+	}
+
+	public void setAvailabilityZoneName(String availabilityZoneName) {
+		AvailabilityZoneName = availabilityZoneName;
+	}
+
+	public String getAutoScalingType() {
+		return AutoScalingType;
+	}
+
+	public void setAutoScalingType(String autoScalingType) {
+		AutoScalingType = autoScalingType;
+	}
+
+	public Integer getProductWhat() {
+		return ProductWhat;
+	}
+
+	public void setProductWhat(Integer productWhat) {
+		ProductWhat = productWhat;
+	}
+
+	public com.ksc.kec.model.SystemDisk getSystemDisk() {
+		return SystemDisk;
+	}
+
+	public void setSystemDisk(com.ksc.kec.model.SystemDisk systemDisk) {
+		SystemDisk = systemDisk;
+	}
+
+	public String getHostName() {
+		return HostName;
+	}
+
+	public void setHostName(String hostName) {
+		HostName = hostName;
+	}
+
+	public String getUserData() {
+		return UserData;
+	}
+
+	public void setUserData(String userData) {
+		UserData = userData;
+	}
+
+	public String getStoppedMode() {
+		return StoppedMode;
+	}
+
+	public void setStoppedMode(String stoppedMode) {
+		StoppedMode = stoppedMode;
+	}
+
+	public String getAutoDeleteTime() {
+		return AutoDeleteTime;
+	}
+
+	public void setAutoDeleteTime(String autoDeleteTime) {
+		AutoDeleteTime = autoDeleteTime;
+	}
+
+	public Boolean getAutoDeleteEip() {
+		return AutoDeleteEip;
+	}
+
+	public void setAutoDeleteEip(Boolean autoDeleteEip) {
+		AutoDeleteEip = autoDeleteEip;
+	}
+
+	public String getSpotRecyclingTime() {
+		return SpotRecyclingTime;
+	}
+
+	public void setSpotRecyclingTime(String spotRecyclingTime) {
+		SpotRecyclingTime = spotRecyclingTime;
+	}
+
+	public String getSpotStrategy() {
+		return SpotStrategy;
+	}
+
+	public void setSpotStrategy(String spotStrategy) {
+		SpotStrategy = spotStrategy;
+	}
+
+	public Double getSpotPriceLimit() {
+		return SpotPriceLimit;
+	}
+
+	public void setSpotPriceLimit(Double spotPriceLimit) {
+		SpotPriceLimit = spotPriceLimit;
+	}
+
+	public List<DataDisk> getDataDiskSet() {
+		return DataDiskSet;
+	}
+
+	public void setDataDiskSet(List<DataDisk> dataDiskSet) {
+		DataDiskSet = dataDiskSet;
+	}
+
+	public Instance.DataGuard getDataGuard() {
+		return DataGuard;
+	}
+
+	public void setDataGuard(Instance.DataGuard dataGuard) {
+		DataGuard = dataGuard;
+	}
+
+	public Instance withDataDisks(DataDisk... dataDisks) {
+		if (this.DataDiskSet == null) {
+			this.DataDiskSet = new SdkInternalList<DataDisk>();
+		}
+		for (DataDisk n : dataDisks) {
+			this.DataDiskSet.add(n);
+		}
+		return this;
+	}
+
+	@ToString
+	@Setter
+	public static class DataDisk {
+		private String DiskId;
+		private String DiskType;
+		private Integer DiskSize;
+		private Boolean DeleteWithInstance;
+	}
+
+	@Data
+	@ToString
+	public static class DataGuard {
+		private String DataGuardId;
+		private String DataGuardName;
 	}
 }

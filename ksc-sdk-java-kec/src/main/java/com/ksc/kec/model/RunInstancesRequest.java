@@ -1,7 +1,6 @@
 package com.ksc.kec.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import com.ksc.KscWebServiceRequest;
@@ -39,6 +38,14 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	private String InstanceType;
 	/**
 	 * <p>
+	 * 云主机系统盘配置参数。若不指定该参数，则按照系统默认值进行分配。
+	 * 类型：SystemDisk
+	 * 是否可缺省：是
+	 * </p>
+	 */
+	private SystemDisk SystemDisk;
+	/**
+	 * <p>
 	 * 数据卷容量，单位GB，容量限制依据 实例套餐类型定义 变化，如果调用时未指定，
 	 * 则为相应实例套餐类型最小值。InstanceType为通用型主机。此参数不生效。
 	 * 是否可缺省: 是
@@ -67,6 +74,16 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private String SubnetId;
+
+	/**
+	 * <p>
+	 * 本地数据盘快照ID，可基于快照创建数据盘；必须指定DataDiskGb且大小和快照大小相同，此参数才有效
+	 * 类型: String
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private String LocalVolumeSnapshotId;
+
 	/**
 	 * <p>
 	 * 实例开机密码
@@ -74,6 +91,27 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private String InstancePassword;
+
+	/**
+	 * <p>
+	 * 保留镜像设置登录。该参数只对使用自定义镜像有效。当该值填写为true，默认InstancePassword参数无效。（当InstancePassword、KeepImageLogin、KeyId.N都不传时，登录方式为创建后设置）
+	 * 类型：Boolean
+	 * 有效值：true | false
+	 * 默认值：false
+	 * 是否可以缺省：是
+	 * </p>
+	 */
+	private Boolean KeepImageLogin;
+
+	/**
+	 * KeyId.N
+	 *
+	 * 密钥ID（当InstancePassword、KeepImageLogin、KeyId.N都不传时，登录方式为创建后设置）
+	 * 类型：String
+	 * 是否可缺省：是
+	 */
+	private List<String> KeyIds;
+
 	/**
 	 * <p>
 	 * 计费类型，调用时需要明确指定，无默认值
@@ -134,6 +172,35 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private Long ProjectId;
+
+	/**
+	 * <p>
+	 * 容灾分组ID
+	 * 类型：String
+	 * 是否可缺省：是
+	 * </p>
+	 */
+	private String DataGuardId;
+
+	/**
+	 * <p>
+	 * 竞价实例的抢占策略，当参数ChargeType为Spot（竞价型实例）时生效
+	 * 类型: String
+	 * 有效值： SpotWithPriceLimit：设置上限价格的抢占式实例。合法值“当前市场价~按小时实时结算价格”区间，输入值不在此区间非法。 SpotAsPriceGo（默认）：系统自动出价，跟随当前市场实际价格
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private String SpotStrategy;
+
+	/**
+	 * <p>
+	 * 设置实例的每小时最高价格。参数SpotStrategy取值为SpotWithPriceLimit时生效
+	 * 类型：Float
+	 * 有效值：支持最大5位小数
+	 * 是否可缺省：是
+	 * </p>
+	 */
+	private Double SpotPriceLimit;
 	
 	/**
 	 * <p>
@@ -184,6 +251,58 @@ public class RunInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private String AddressProjectId;
+
+	/**
+	 * <p>
+	 * 实例启动模板ID，使用启动模板创建实例；如果批量创建，实例名称后缀依然存在
+	 * 类型: String
+	 * 是否可缺省: 是
+	 * 缺省值: 默认项目
+	 * </p>
+	 */
+	private String ModelId;
+
+	/**
+	 * <p>
+	 * 随主机定时删除绑定的弹性IP
+	 * 类型：Boolean
+	 * 是否可缺省：是
+	 * 默认值：false
+	 * 注：包年包月的弹性IP只解绑，不删除；只有AutoDeleteTime有效值生效时，该参数才生效
+	 * </p>
+	 */
+	private String AutoDeleteTime;
+
+	/**
+	 * <p>
+	 * 操作系统内部的计算机名
+	 * 类型：String
+	 * 有效值：字符长度为[2, 64]，不支持点号（.），每段允许字母（不限制大小写）、数字和短横线（-）组成
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private String HostName;
+
+	/**
+	 * <p>
+	 * 创建多台实例时为HostName增加有序后缀，有序后缀从1增加，例如host-1，
+	 * 类型：int
+	 * 有效值：0-9999
+	 * 是否可缺省: 是，默认值为空；
+	 * </p>
+	 */
+	private String HostNameSuffix;
+
+	/**
+	 * <p>
+	 * 提供给实例启动时使用的用户自定义数据，需要以 base64 方式编码，支持的最大数据大小为 16KB
+	 * 类型：String
+	 * 有效值：需要以 base64 方式编码
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private String UserData;
+
 
 	public Long getProjectId() {
 		return ProjectId;
@@ -361,4 +480,117 @@ public class RunInstancesRequest extends KscWebServiceRequest
 		AddressProjectId = addressProjectId;
 	}
 
+	public String getLocalVolumeSnapshotId() {
+		return LocalVolumeSnapshotId;
+	}
+
+	public void setLocalVolumeSnapshotId(String localVolumeSnapshotId) {
+		LocalVolumeSnapshotId = localVolumeSnapshotId;
+	}
+
+	public Boolean getKeepImageLogin() {
+		return KeepImageLogin;
+	}
+
+	public void setKeepImageLogin(Boolean keepImageLogin) {
+		KeepImageLogin = keepImageLogin;
+	}
+
+	public List<String> getKeyIds() {
+		return KeyIds;
+	}
+
+	public void setKeyIds(List<String> keyIds) {
+		KeyIds = keyIds;
+	}
+
+	public String getDataGuardId() {
+		return DataGuardId;
+	}
+
+	public void setDataGuardId(String dataGuardId) {
+		DataGuardId = dataGuardId;
+	}
+
+	public String getSpotStrategy() {
+		return SpotStrategy;
+	}
+
+	public void setSpotStrategy(String spotStrategy) {
+		SpotStrategy = spotStrategy;
+	}
+
+	public Double getSpotPriceLimit() {
+		return SpotPriceLimit;
+	}
+
+	public void setSpotPriceLimit(Double spotPriceLimit) {
+		SpotPriceLimit = spotPriceLimit;
+	}
+
+	public String getModelId() {
+		return ModelId;
+	}
+
+	public void setModelId(String modelId) {
+		ModelId = modelId;
+	}
+
+	public String getAutoDeleteTime() {
+		return AutoDeleteTime;
+	}
+
+	public void setAutoDeleteTime(String autoDeleteTime) {
+		AutoDeleteTime = autoDeleteTime;
+	}
+
+	public String getHostName() {
+		return HostName;
+	}
+
+	public void setHostName(String hostName) {
+		HostName = hostName;
+	}
+
+	public String getHostNameSuffix() {
+		return HostNameSuffix;
+	}
+
+	public void setHostNameSuffix(String hostNameSuffix) {
+		HostNameSuffix = hostNameSuffix;
+	}
+
+	public String getUserData() {
+		return UserData;
+	}
+
+	public void setUserData(String userData) {
+		UserData = userData;
+	}
+
+	public com.ksc.kec.model.SystemDisk getSystemDisk() {
+		return SystemDisk;
+	}
+
+	public void setSystemDisk(com.ksc.kec.model.SystemDisk systemDisk) {
+		SystemDisk = systemDisk;
+	}
+
+	public void withDataDisks(DataDisk... dataDisks) {
+		if (this.DataDisk == null) {
+			setDataDisk(new com.ksc.internal.SdkInternalList<DataDisk>());
+		}
+		for (DataDisk ele : dataDisks) {
+			this.DataDisk.add(ele);
+		}
+	}
+
+	public void withKeyIds(String... keyIds) {
+		if (this.KeyIds == null) {
+			setKeyIds(new com.ksc.internal.SdkInternalList<String>());
+		}
+		for (String ele : keyIds) {
+			this.KeyIds.add(ele);
+		}
+	}
 }

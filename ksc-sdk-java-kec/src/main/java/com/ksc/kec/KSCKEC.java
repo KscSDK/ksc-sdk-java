@@ -294,4 +294,18 @@ public interface KSCKEC {
 	 */
 	DescribeImageSharePermissionResult describeImageSharePermission(DescribeImageSharePermissionRequest describeImageSharePermissionRequest);
 
+	/**
+	 * 主机绑定密钥
+	 * @param attachKeyRequest
+	 * @return
+	 */
+	AttachKeyResult attachKey(AttachKeyRequest attachKeyRequest);
+
+	/**
+	 * 主机解绑密钥
+	 * @param detachKeyRequest
+	 * @return
+	 */
+	DetachKeyResult detachKey(DetachKeyRequest detachKeyRequest);
+
 }

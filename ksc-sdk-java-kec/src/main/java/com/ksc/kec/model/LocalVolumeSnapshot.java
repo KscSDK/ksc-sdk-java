@@ -14,6 +14,9 @@ public class LocalVolumeSnapshot {
 	private String SourceLocalVolumeId;
 	private String SourceLocalVolumeName;
 	private String SourceLocalVolumeCategory;
+	private String SourceLocalVolumeState;
+	private Integer DiskSize;
+	private String SnapshotType;
 	
 	public String getCreationDate() {
 		return CreationDate;
@@ -70,5 +73,29 @@ public class LocalVolumeSnapshot {
 
 	public void setSourceLocalVolumeCategory(String sourceLocalVolumeCategory) {
 		SourceLocalVolumeCategory = sourceLocalVolumeCategory;
+	}
+
+	public String getSourceLocalVolumeState() {
+		return SourceLocalVolumeState;
+	}
+
+	public void setSourceLocalVolumeState(String sourceLocalVolumeState) {
+		SourceLocalVolumeState = sourceLocalVolumeState;
+	}
+
+	public Integer getDiskSize() {
+		return DiskSize;
+	}
+
+	public void setDiskSize(Integer diskSize) {
+		DiskSize = diskSize;
+	}
+
+	public String getSnapshotType() {
+		return SnapshotType;
+	}
+
+	public void setSnapshotType(String snapshotType) {
+		SnapshotType = snapshotType;
 	}
 }
