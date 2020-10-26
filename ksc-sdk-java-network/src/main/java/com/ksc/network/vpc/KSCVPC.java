@@ -298,6 +298,22 @@ public interface KSCVPC {
 	 */
 	public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest);
 
+	/**
+	 * 创建VPN通道
+	 */
+	public CreateVpnTunnelResult createVpnTunnel(CreateVpnTunnelRequest createVpnTunnelRequest);
+	/**
+	 * 删除VPN通道
+	 */
+	public DeleteVpnTunnelResult deleteVpnTunnel(DeleteVpnTunnelRequest deleteVpnTunnelRequest);
+	/**
+	 * 修改VPN通道
+	 */
+	public ModifyVpnTunnelResult modifyVpnTunnel(ModifyVpnTunnelRequest modifyVpnTunnelRequest);
+	/**
+	 * 获取VPN通道
+	 */
+	public DescribeVpnTunnelsResult describeVpnTunnels(DescribeVpnTunnelsRequest describeVpnTunnelsRequest);
 
 }
 

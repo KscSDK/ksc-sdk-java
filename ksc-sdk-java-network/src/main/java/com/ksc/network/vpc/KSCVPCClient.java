@@ -1816,5 +1816,109 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
 		}
 	}
 
+	@Override
+	public CreateVpnTunnelResult createVpnTunnel(CreateVpnTunnelRequest createVpnTunnelRequest) {
+		ExecutionContext executionContext = createExecutionContext(createVpnTunnelRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateVpnTunnelRequest> request = null;
+		Response<CreateVpnTunnelResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateVpnTunnelRequestMarshaller()
+						.marshall(createVpnTunnelRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateVpnTunnelResult> responseHandler = new StaxResponseHandler<CreateVpnTunnelResult>(
+					new CreateVpnTunnelResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteVpnTunnelResult deleteVpnTunnel(DeleteVpnTunnelRequest deleteVpnTunnelRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteVpnTunnelRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteVpnTunnelRequest> request = null;
+		Response<DeleteVpnTunnelResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteVpnTunnelRequestMarshaller()
+						.marshall(deleteVpnTunnelRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteVpnTunnelResult> responseHandler = new StaxResponseHandler<DeleteVpnTunnelResult>(
+					new DeleteVpnTunnelResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyVpnTunnelResult modifyVpnTunnel(ModifyVpnTunnelRequest modifyVpnTunnelRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyVpnTunnelRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyVpnTunnelRequest> request = null;
+		Response<ModifyVpnTunnelResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyVpnTunnelRequestMarshaller()
+						.marshall(modifyVpnTunnelRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyVpnTunnelResult> responseHandler = new StaxResponseHandler<ModifyVpnTunnelResult>(
+					new ModifyVpnTunnelResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeVpnTunnelsResult describeVpnTunnels(DescribeVpnTunnelsRequest describeVpnTunnelsRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeVpnTunnelsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeVpnTunnelsRequest> request = null;
+		Response<DescribeVpnTunnelsResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeVpnTunnelsRequestMarshaller()
+						.marshall(describeVpnTunnelsRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeVpnTunnelsResult> responseHandler = new StaxResponseHandler<DescribeVpnTunnelsResult>(
+					new DescribeVpnTunnelsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 
 }
