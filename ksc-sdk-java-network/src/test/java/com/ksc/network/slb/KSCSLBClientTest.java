@@ -22,6 +22,7 @@ public class KSCSLBClientTest {
 //		request.addLoadBalancerIds("521a2e79-89f8-4a26-9e86-6ea9878d00eb");
 //		request.setState("associate");
 		//request.withVpcIds("147d81eb-f780-434d-8355-dc125013520e");
+        request.addProjectIds("472");
 		DescribeLoadBalancersResult result=client.describeLoadBalancers(request);
 		log.info(result);
 	}
@@ -32,10 +33,11 @@ public class KSCSLBClientTest {
 	    client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
 	    client.setServiceNameIntern("slb");
         CreateLoadBalancerRequest request = new CreateLoadBalancerRequest();
-        request.setVpcId("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
-        //request.setLoadBalancerName("iiii");
+        request.setVpcId("9f0cd9aa-6a14-4a0d-88c4-530f559b13b2");
+        request.setLoadBalancerName("sdk-test");
         //request.setSubnetId("73447731-8071-4a2c-b405-38dcb3b88544");
         //request.setType("internal");
+        request.setProjectId("472");
         CreateLoadBalancerResult result = client.createLoadBalancer(request);
         log.info(result);
     }

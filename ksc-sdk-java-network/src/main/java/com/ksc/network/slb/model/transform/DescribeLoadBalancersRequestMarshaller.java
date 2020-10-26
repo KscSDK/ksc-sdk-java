@@ -74,6 +74,18 @@ public class DescribeLoadBalancersRequestMarshaller
 		if (describeLoadBalancersRequest.getState() != null) {
 			request.addParameter("State", StringUtils.fromString(describeLoadBalancersRequest.getState()));
 		}
+		com.ksc.internal.SdkInternalList<String> projectIds = (com.ksc.internal.SdkInternalList<String>) describeLoadBalancersRequest
+				.getProjectIds();
+		if (projectIds != null && (!projectIds.isEmpty() || !projectIds.isAutoConstruct())) {
+			int index = 1;
+
+			for (String value : projectIds) {
+				if (value != null) {
+					request.addParameter("ProjectId." + index, StringUtils.fromString(value));
+				}
+				index++;
+			}
+		}
 		return request;
 	}
 

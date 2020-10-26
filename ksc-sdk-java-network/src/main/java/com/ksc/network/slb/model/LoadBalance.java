@@ -1,10 +1,10 @@
 package com.ksc.network.slb.model;
 
-import lombok.EqualsAndHashCode;
+import lombok.Data;
 import lombok.ToString;
 
+@Data
 @ToString
-@EqualsAndHashCode
 public class LoadBalance {
 	/**
 	 * 负载均衡创建时间
@@ -47,84 +47,49 @@ public class LoadBalance {
 	 */
 	private String LoadBalancerState;
 
-	public String getCreateTime() {
-		return CreateTime;
+	/**
+	 * 项目的ID
+	 */
+	private String ProjectId;
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		if (!super.equals(o)) return false;
+
+		LoadBalance that = (LoadBalance) o;
+
+		if (CreateTime != null ? !CreateTime.equals(that.CreateTime) : that.CreateTime != null) return false;
+		if (LoadBalancerName != null ? !LoadBalancerName.equals(that.LoadBalancerName) : that.LoadBalancerName != null)
+			return false;
+		if (VpcId != null ? !VpcId.equals(that.VpcId) : that.VpcId != null) return false;
+		if (LoadBalancerId != null ? !LoadBalancerId.equals(that.LoadBalancerId) : that.LoadBalancerId != null)
+			return false;
+		if (Type != null ? !Type.equals(that.Type) : that.Type != null) return false;
+		if (SubnetId != null ? !SubnetId.equals(that.SubnetId) : that.SubnetId != null) return false;
+		if (AllocationId != null ? !AllocationId.equals(that.AllocationId) : that.AllocationId != null) return false;
+		if (PublicIp != null ? !PublicIp.equals(that.PublicIp) : that.PublicIp != null) return false;
+		if (State != null ? !State.equals(that.State) : that.State != null) return false;
+		if (LoadBalancerState != null ? !LoadBalancerState.equals(that.LoadBalancerState) : that.LoadBalancerState != null)
+			return false;
+		return ProjectId != null ? ProjectId.equals(that.ProjectId) : that.ProjectId == null;
 	}
 
-	public void setCreateTime(String createTime) {
-		CreateTime = createTime;
+	@Override
+	public int hashCode() {
+		int result = super.hashCode();
+		result = 31 * result + (CreateTime != null ? CreateTime.hashCode() : 0);
+		result = 31 * result + (LoadBalancerName != null ? LoadBalancerName.hashCode() : 0);
+		result = 31 * result + (VpcId != null ? VpcId.hashCode() : 0);
+		result = 31 * result + (LoadBalancerId != null ? LoadBalancerId.hashCode() : 0);
+		result = 31 * result + (Type != null ? Type.hashCode() : 0);
+		result = 31 * result + (SubnetId != null ? SubnetId.hashCode() : 0);
+		result = 31 * result + (AllocationId != null ? AllocationId.hashCode() : 0);
+		result = 31 * result + (PublicIp != null ? PublicIp.hashCode() : 0);
+		result = 31 * result + (State != null ? State.hashCode() : 0);
+		result = 31 * result + (LoadBalancerState != null ? LoadBalancerState.hashCode() : 0);
+		result = 31 * result + (ProjectId != null ? ProjectId.hashCode() : 0);
+		return result;
 	}
-
-	public String getLoadBalancerName() {
-		return LoadBalancerName;
-	}
-
-	public void setLoadBalancerName(String loadBalancerName) {
-		LoadBalancerName = loadBalancerName;
-	}
-
-	public String getVpcId() {
-		return VpcId;
-	}
-
-	public void setVpcId(String vpcId) {
-		VpcId = vpcId;
-	}
-
-	public String getLoadBalancerId() {
-		return LoadBalancerId;
-	}
-
-	public void setLoadBalancerId(String loadBalancerId) {
-		LoadBalancerId = loadBalancerId;
-	}
-
-	public String getType() {
-		return Type;
-	}
-
-	public void setType(String type) {
-		Type = type;
-	}
-
-	public String getSubnetId() {
-		return SubnetId;
-	}
-
-	public void setSubnetId(String subnetId) {
-		SubnetId = subnetId;
-	}
-
-	public String getAllocationId() {
-		return AllocationId;
-	}
-
-	public void setAllocationId(String allocationId) {
-		AllocationId = allocationId;
-	}
-
-	public String getPublicIp() {
-		return PublicIp;
-	}
-
-	public void setPublicIp(String publicIp) {
-		PublicIp = publicIp;
-	}
-
-	public String getState() {
-		return State;
-	}
-
-	public void setState(String state) {
-		State = state;
-	}
-
-	public String getLoadBalancerState() {
-		return LoadBalancerState;
-	}
-
-	public void setLoadBalancerState(String loadBalancerState) {
-		LoadBalancerState = loadBalancerState;
-	}
-
 }
