@@ -15,7 +15,10 @@ public class DescribeCustomerGatewaysResult implements Serializable, Cloneable {
 
     private String RequestId;
     private SdkInternalList<CustomerGateway> CustomerGatewaySet;
-
+    /**
+     * 当返回结果被截断时，使用NextToken值用于标示下次调用查询用户操作的起始点，可以缺省
+     */
+    private String NextToken;
 
     @Override
     public boolean equals(Object o) {

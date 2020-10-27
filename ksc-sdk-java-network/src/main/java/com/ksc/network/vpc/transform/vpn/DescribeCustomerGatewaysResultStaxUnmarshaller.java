@@ -34,6 +34,10 @@ public class DescribeCustomerGatewaysResultStaxUnmarshaller implements Unmarshal
                     describeCustomerGatewaysResult.addCustomerGatewaySet(CustomerGatewayStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeCustomerGatewaysResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeCustomerGatewaysResult;

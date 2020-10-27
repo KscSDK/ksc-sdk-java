@@ -34,6 +34,10 @@ public class DescribeHostHeadersResultStaxUnmarshaller implements Unmarshaller<D
                     describeHostHeadersResult.addHostHeaderSet(HostHeaderStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeHostHeadersResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeHostHeadersResult;

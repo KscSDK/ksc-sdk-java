@@ -34,6 +34,10 @@ public class DescribeBackendServerGroupsResultStaxUnmarshaller implements Unmars
                     describeBackendServerGroupsResult.addBackendServerGroupSet(BackendServerGroupStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeBackendServerGroupsResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeBackendServerGroupsResult;

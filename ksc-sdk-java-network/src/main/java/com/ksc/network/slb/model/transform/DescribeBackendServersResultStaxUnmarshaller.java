@@ -34,6 +34,10 @@ public class DescribeBackendServersResultStaxUnmarshaller implements Unmarshalle
                     describeBackendServersResult.addBackendServerSet(BackendServerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeBackendServersResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeBackendServersResult;

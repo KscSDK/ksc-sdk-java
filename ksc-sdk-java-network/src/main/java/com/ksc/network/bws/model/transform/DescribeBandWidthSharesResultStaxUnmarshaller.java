@@ -34,6 +34,10 @@ public class DescribeBandWidthSharesResultStaxUnmarshaller implements Unmarshall
                     describeBandWidthSharesResult.addBandWidthShareSet(BandWidthShareStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeBandWidthSharesResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeBandWidthSharesResult;

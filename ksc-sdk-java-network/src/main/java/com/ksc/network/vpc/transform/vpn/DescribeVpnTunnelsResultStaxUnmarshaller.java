@@ -34,6 +34,10 @@ public class DescribeVpnTunnelsResultStaxUnmarshaller implements Unmarshaller<De
                     describeVpnTunnelsResult.addVpnTunnelSet(VpnTunnelStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeVpnTunnelsResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeVpnTunnelsResult;

@@ -34,6 +34,10 @@ public class DescribeVpnGatewaysResultStaxUnmarshaller implements Unmarshaller<D
                     describeVpnGatewaysResult.addVpnGatewaySet(VpnGatewayStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeVpnGatewaysResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeVpnGatewaysResult;

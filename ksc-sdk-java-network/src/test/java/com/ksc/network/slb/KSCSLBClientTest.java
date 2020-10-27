@@ -477,11 +477,12 @@ public class KSCSLBClientTest {
         Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
         client.setRegion(region);
         DescribeRulesRequest request = new DescribeRulesRequest();
+        request.setMaxResults("10");
         //request.addRuleIds("03c405df-498c-40e0-9e1a-bc5dfd61d012");
-        List<String> values = new ArrayList<String>();
+        /*List<String> values = new ArrayList<String>();
         values.add("772b5013-a058-465f-90b5-df2eba3bf907");
         Filter filter = new Filter("host-header-id", values);
-        request.addFilters(filter);
+        request.addFilters(filter);*/
         DescribeRulesResult result = client.describeRules(request);
         log.info(result);
     }

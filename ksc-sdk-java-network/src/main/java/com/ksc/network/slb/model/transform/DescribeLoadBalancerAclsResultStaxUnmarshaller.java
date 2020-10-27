@@ -34,6 +34,10 @@ public class DescribeLoadBalancerAclsResultStaxUnmarshaller implements Unmarshal
                     describeLoadBalancerAclsResult.addLoadBalancerAclSet(LoadBalancerAclStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+                if (context.testExpression("NextToken", targetDepth)) {
+                    describeLoadBalancerAclsResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {
                     return describeLoadBalancerAclsResult;
