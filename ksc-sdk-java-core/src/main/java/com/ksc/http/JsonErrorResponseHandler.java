@@ -14,15 +14,7 @@
  */
 package com.ksc.http;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
 import com.fasterxml.jackson.core.JsonFactory;
-
-import org.apache.commons.logging.Log;
-import org.apache.commons.logging.LogFactory;
-
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -32,17 +24,29 @@ import com.ksc.annotation.SdkInternalApi;
 import com.ksc.internal.http.JsonErrorCodeParser;
 import com.ksc.internal.http.JsonErrorMessageParser;
 import com.ksc.transform.JsonErrorUnmarshaller;
+import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.util.IOUtils;
+import com.ksc.util.XpathUtils;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
+import org.w3c.dom.Document;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.logging.Logger;
 
 @SdkInternalApi
 public class JsonErrorResponseHandler implements HttpResponseHandler<KscServiceException> {
 
 	private static final Log LOG = LogFactory.getLog(JsonErrorResponseHandler.class);
+	private static final Logger logger = Logger.getLogger(JsonErrorResponseHandler.class.getName());
 
 	private final List<JsonErrorUnmarshaller> unmarshallers;
 	private final JsonErrorCodeParser errorCodeParser;
 	private final JsonErrorMessageParser errorMessageParser;
 	private final JsonFactory jsonFactory;
+	private final StandardErrorUnmarshaller standardErrorUnmarshaller=new StandardErrorUnmarshaller();
 
 	public JsonErrorResponseHandler(List<JsonErrorUnmarshaller> errorUnmarshallers, JsonErrorCodeParser errorCodeParser,
 			JsonErrorMessageParser errorMessageParser, JsonFactory jsonFactory) {
@@ -60,6 +64,17 @@ public class JsonErrorResponseHandler implements HttpResponseHandler<KscServiceE
 	@Override
 	public KscServiceException handle(HttpResponse response) throws Exception {
 		JsonContent jsonContent = JsonContent.createJsonContent(response, jsonFactory);
+		if(jsonContent.jsonNode==null){
+			String content = new String(jsonContent.rawContent,"utf-8");
+			Document document;
+			document = XpathUtils.documentFrom(content);
+			KscServiceException ase = standardErrorUnmarshaller.unmarshall(document);
+			if (ase != null) {
+				ase.setStatusCode(response.getStatusCode());
+				return ase;
+			}
+			logger.info("error:"+content);
+		}
 		JsonNode errorNode = jsonContent.jsonNode.get("Error");
 		// String errorCode =
 		// errorCodeParser.parseErrorCode(response.getHeaders(),

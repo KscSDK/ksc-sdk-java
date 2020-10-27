@@ -13,6 +13,8 @@ public class InstanceNetwork {
 
 	private String NetworkInterfaceId;
 
+	private String NetworkInterfaceType;
+
 	private String VpcId;
 
 	private String SubnetId;
@@ -23,10 +25,24 @@ public class InstanceNetwork {
 
 	private List<InstanceSecurityGroup> GroupSet = new SdkInternalList<InstanceSecurityGroup>();
 
+	private List<InstanceNetworkSecurityGroup> SecurityGroupSet = new SdkInternalList<InstanceNetworkSecurityGroup>();
+
+	private String PublicIp;
+
+	private String AllocationId;
+
 	public InstanceNetwork withNetworkSecurityGroup(
 			InstanceSecurityGroup... sgs) {
 		for (InstanceSecurityGroup s : sgs) {
 			GroupSet.add(s);
+		}
+		return this;
+	}
+
+	public InstanceNetwork withInstanceNetworkSecurityGroup(
+			InstanceNetworkSecurityGroup... sgs) {
+		for (InstanceNetworkSecurityGroup s : sgs) {
+			SecurityGroupSet.add(s);
 		}
 		return this;
 	}
@@ -79,4 +95,35 @@ public class InstanceNetwork {
 		GroupSet = groupSet;
 	}
 
+	public String getNetworkInterfaceType() {
+		return NetworkInterfaceType;
+	}
+
+	public void setNetworkInterfaceType(String networkInterfaceType) {
+		NetworkInterfaceType = networkInterfaceType;
+	}
+
+	public List<InstanceNetworkSecurityGroup> getSecurityGroupSet() {
+		return SecurityGroupSet;
+	}
+
+	public void setSecurityGroupSet(List<InstanceNetworkSecurityGroup> securityGroupSet) {
+		SecurityGroupSet = securityGroupSet;
+	}
+
+	public String getPublicIp() {
+		return PublicIp;
+	}
+
+	public void setPublicIp(String publicIp) {
+		PublicIp = publicIp;
+	}
+
+	public String getAllocationId() {
+		return AllocationId;
+	}
+
+	public void setAllocationId(String allocationId) {
+		AllocationId = allocationId;
+	}
 }

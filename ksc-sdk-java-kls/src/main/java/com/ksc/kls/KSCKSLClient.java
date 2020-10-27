@@ -225,12 +225,7 @@ public class KSCKSLClient extends KscWebServiceClient implements KSCKLS {
 
         HttpResponseHandler<KscServiceException> errorResponseHandler = protocolFactory
                 .createErrorResponseHandler(new JsonErrorResponseMetadata());
-        try{
-            return client.execute(request, responseHandler, errorResponseHandler, executionContext);
-        }catch(Exception e){
-            log.error(e);
-            return null;
-        }
+        return client.execute(request, responseHandler, errorResponseHandler, executionContext);
     }
 
     @Override
