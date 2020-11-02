@@ -1,14 +1,13 @@
 package com.ksc.kec.model;
 
-import java.io.Serializable;
-
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.kec.model.transform.StopInstancesRequestMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
-
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.io.Serializable;
 
 /**
  * <p>
@@ -34,6 +33,23 @@ public class StopInstancesRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<String> instanceIds;
+
+	/**
+	 * <p>
+	 * 强制关闭。
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private Boolean forceStop = Boolean.FALSE;
+
+	/**
+	 * <p>
+	 * 关闭模式
+	 * 有效值： KeepCharging （默认参数）  保留并收费     StopCharging    关机不收费
+	 * 是否可缺省: 是
+	 * </p>
+	 */
+	private String stoppedMode;
 	
 	public com.ksc.internal.SdkInternalList<String> getInstanceIds() {
 		return instanceIds;
@@ -70,6 +86,23 @@ public class StopInstancesRequest extends KscWebServiceRequest
 			this.instanceIds.add(ele);
 		}
 	}
+
+	public Boolean getForceStop() {
+		return forceStop;
+	}
+
+	public void setForceStop(Boolean forceStop) {
+		this.forceStop = forceStop;
+	}
+
+	public String getStoppedMode() {
+		return stoppedMode;
+	}
+
+	public void setStoppedMode(String stoppedMode) {
+		this.stoppedMode = stoppedMode;
+	}
+
 	@Override
 	public Request<StopInstancesRequest> getDryRunRequest() {
 		Request<StopInstancesRequest> request = new StopInstancesRequestMarshaller()

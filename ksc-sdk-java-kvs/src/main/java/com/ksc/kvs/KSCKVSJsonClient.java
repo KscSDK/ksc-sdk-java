@@ -682,7 +682,34 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+	public FetchMetaInfoResult FetchMetaInfo(FetchMetaInfoRequest fetchMetaInfoRequest) {
+		ExecutionContext executionContext = createExecutionContext(fetchMetaInfoRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<FetchMetaInfoRequest> request = null;
+		Response<FetchMetaInfoResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new FetchMetaInfoRequestMarshaller()
+						.marshall(super.beforeMarshalling(fetchMetaInfoRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			HttpResponseHandler<KscWebServiceResponse<FetchMetaInfoResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new FetchMetaInfoResultJsonUnmarshaller());
 
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
 	private void init() {
 		setServiceNameIntern(DEFAULT_SIGNING_NAME);
 		setEndpointPrefix(DEFAULT_ENDPOINT_PREFIX);
@@ -719,6 +746,37 @@ public class KSCKVSJsonClient extends KscWebServiceClient {
 		} catch (Exception e) {
 			log.error(e);
 			return null;
+		}
+	}
+
+	public GetPlayInfoResult GetPlayInfo(GetPlayInfoRequest getPlayInfoRequest) {
+		// TODO Auto-generated method stub
+		ExecutionContext executionContext = createExecutionContext(getPlayInfoRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<GetPlayInfoRequest> request = null;
+		Response<GetPlayInfoResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new GetPlayInfoRequestMarshaller()
+						.marshall(super.beforeMarshalling(getPlayInfoRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			HttpResponseHandler<KscWebServiceResponse<GetPlayInfoResult>> responseHandler = protocolFactory
+					.createResponseHandler(
+							new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+							new GetPlayInfoResultJsonUnmarshaller());
+
+			response = invoke(request, responseHandler, executionContext);
+			return response.getKscResponse();
+
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
 

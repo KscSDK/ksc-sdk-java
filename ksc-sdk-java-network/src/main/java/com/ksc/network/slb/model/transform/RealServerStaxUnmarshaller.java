@@ -63,7 +63,7 @@ public class RealServerStaxUnmarshaller implements Unmarshaller<RealServer, Stax
                     realServer.setWeight(SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
-            }else if (xmlEvent.isEndDocument()){
+            }else if (xmlEvent.isEndElement()){
                 if (context.getCurrentDepth() < originalDepth){
                     return realServer;
                 }

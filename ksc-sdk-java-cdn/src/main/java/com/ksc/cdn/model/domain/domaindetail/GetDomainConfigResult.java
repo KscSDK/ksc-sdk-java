@@ -10,17 +10,23 @@ public class GetDomainConfigResult {
 
     private CacheRuleConfig CacheRuleConfig;
     private IpProtectionConfig IpProtectionConfig;
-    private GzipConfig GzipConfig;
     private IgnoreQueryStringConfig IgnoreQueryStringConfig;
     private BackOriginConfig BackOriginConfig;
     private ReferProtectionConfig ReferProtectionConfig;
     private UrlAuthConfig UrlAuthConfig;
+
     private BackOriginHostConfig BackOriginHostConfig;
     private VideoSeekConfig VideoSeekConfig;
     private OriginAdvancedConfig OriginAdvancedConfig;
     private DetectOriginConfig DetectOriginConfig;
     private TestUrlConfig TestUrlConfig;
     private HttpHeadersConfig HttpHeadersConfig;
+    private RequestAuthConfig RequestAuthConfig;
+    private Http2OptionConfig Http2OptionConfig;
+    private PageCompressConfig PageCompressConfig;
+    private ErrorPageConfig ErrorPageConfig;
+    private ForceRedirectConfig ForceRedirectConfig;
+
 
     public com.ksc.cdn.model.domain.domaindetail.CacheRuleConfig getCacheRuleConfig() {
         return CacheRuleConfig;
@@ -36,14 +42,6 @@ public class GetDomainConfigResult {
 
     public void setIpProtectionConfig(com.ksc.cdn.model.domain.domaindetail.IpProtectionConfig ipProtectionConfig) {
         IpProtectionConfig = ipProtectionConfig;
-    }
-
-    public com.ksc.cdn.model.domain.domaindetail.GzipConfig getGzipConfig() {
-        return GzipConfig;
-    }
-
-    public void setGzipConfig(com.ksc.cdn.model.domain.domaindetail.GzipConfig gzipConfig) {
-        GzipConfig = gzipConfig;
     }
 
     public com.ksc.cdn.model.domain.domaindetail.IgnoreQueryStringConfig getIgnoreQueryStringConfig() {
@@ -124,5 +122,45 @@ public class GetDomainConfigResult {
 
     public void setHttpHeadersConfig(com.ksc.cdn.model.domain.domaindetail.HttpHeadersConfig httpHeadersConfig) {
         HttpHeadersConfig = httpHeadersConfig;
+    }
+
+    public com.ksc.cdn.model.domain.domaindetail.RequestAuthConfig getRequestAuthConfig() {
+        return RequestAuthConfig;
+    }
+
+    public void setRequestAuthConfig(com.ksc.cdn.model.domain.domaindetail.RequestAuthConfig requestAuthConfig) {
+        RequestAuthConfig = requestAuthConfig;
+    }
+
+    public ErrorPageConfig getErrorPageConfig() {
+        return ErrorPageConfig;
+    }
+
+    public void setErrorPageConfig(ErrorPageConfig errorPageConfig) {
+        this.ErrorPageConfig = errorPageConfig;
+    }
+
+    public com.ksc.cdn.model.domain.domaindetail.PageCompressConfig getPageCompressConfig() {
+        return PageCompressConfig;
+    }
+
+    public void setPageCompressConfig(com.ksc.cdn.model.domain.domaindetail.PageCompressConfig pageCompressConfig) {
+        PageCompressConfig = pageCompressConfig;
+    }
+
+    public com.ksc.cdn.model.domain.domaindetail.Http2OptionConfig getHttp2OptionConfig() {
+        return Http2OptionConfig;
+    }
+
+    public void setHttp2OptionConfig(com.ksc.cdn.model.domain.domaindetail.Http2OptionConfig http2OptionConfig) {
+        Http2OptionConfig = http2OptionConfig;
+    }
+
+    public com.ksc.cdn.model.domain.domaindetail.ForceRedirectConfig getForceRedirectConfig() {
+        return ForceRedirectConfig;
+    }
+
+    public void setForceRedirectConfig(com.ksc.cdn.model.domain.domaindetail.ForceRedirectConfig forceRedirectConfig) {
+        ForceRedirectConfig = forceRedirectConfig;
     }
 }

@@ -28,20 +28,20 @@ import com.ksc.cdn.model.enums.SwitchEnum;
 public interface KscCdnDomain {
 
     /**
-     *加速域名后缀
+     * 加速域名后缀
      */
     String GETCNAMESUFFIXS_URL = "/2016-09-01/domain/GetCnameSuffixs";
     String GETCNAMESUFFIXS_VERSION = "2016-09-01";
     String GETCNAMESUFFIXS_ACTION = "GetCnameSuffixs";
 
     /**
-     *根据源站地址获取加速域名
+     * 根据源站地址获取加速域名
      */
     String GETDOMAINSBYORIGIN_URL = "/2016-09-01/domain/GetDomainsByOrigin";
     String GETDOMAINSBYORIGIN_VERSION = "2016-09-01";
     String GETDOMAINSBYORIGIN_ACTION = "GetDomainsByOrigin";
     /**
-     *单域名多项配置设置
+     * 单域名多项配置设置
      */
     String SETDOMAINCONFIGS_URL = "/2016-09-01/domain/SetDomainConfigs";
     String SETDOMAINCONFIGS_VERSION = "2016-09-01";
@@ -67,6 +67,13 @@ public interface KscCdnDomain {
     String ADD_DOMAIN_URL = "/2016-09-01/domain/AddCdnDomain";
     String ADD_DOMAIN_VERSION = "2016-09-01";
     String ADD_DOMAIN_ACTION = "AddCdnDomain";
+
+    /**
+     * 新增域名v2
+     */
+    String ADD_DOMAIN_V2_URL = "/2016-09-01/domain/AddCdnDomain";
+    String ADD_DOMAIN_V2_VERSION = "2016-09-01";
+    String ADD_DOMAIN_V2_ACTION = "AddCdnDomain";
 
     /**
      * 域名基本信息
@@ -194,6 +201,29 @@ public interface KscCdnDomain {
     String GETHTTPHEADERLIST_VERSION = "2016-09-01";
     String GETHTTPHEADERLIST_ACTION = "GetHttpHeaderList";
 
+    /**
+     * 时间戳防盗链
+     */
+    String SETREQUESTAUTHCONFIG_URL = "/2016-09-01/domain/SetRequestAuthConfig";
+    String SETREQUESTAUTHCONFIG_VERSION = "2016-09-01";
+    String SETREQUESTAUTHCONFIG_ACTION = "SetRequestAuthConfig";
+
+
+    String NOPAHT_URL = "/";
+    String VERSION_20160901 = "2016-09-01";
+    /**
+     * 设置强制跳转
+     */
+    String SETFORCEREDIRECTCONFIG_ACTION = "SetForceRedirectConfig";
+
+
+    String SETHTTP2OPTIONCONFIG_ACTION = "SetHttp2OptionConfig";
+
+
+    String SETERRORPAGECONFIG_ACTION = "SetErrorPageConfig";
+
+
+    String SETPAGECOMPRESSCONFIG_ACTION = "SetPageCompressConfig";
 
     /**
      * 获取域名列表
@@ -212,6 +242,15 @@ public interface KscCdnDomain {
      * @throws Exception
      */
     AddDomainResult addDomainBase(AddDomainRequest domainParam) throws Exception;
+
+    /**
+     * 添加加速域名v2
+     *
+     * @param domainParam
+     * @return
+     * @throws Exception
+     */
+    AddDomainResult addDomainV2Base(AddDomainRequest domainParam) throws Exception;
 
     /**
      * 获取指定加速域名配置的基本信息
@@ -345,6 +384,7 @@ public interface KscCdnDomain {
 
     /**
      * 设置视频拖拽配置
+     *
      * @param domainId
      * @param enable
      * @throws Exception
@@ -353,14 +393,16 @@ public interface KscCdnDomain {
 
     /**
      * 获取视频拖拽配置
+     *
      * @param domainId
      * @return
      * @throws Exception
      */
-    VideoSeekConfig getVideoSeekConfig(String domainId) throws  Exception;
+    VideoSeekConfig getVideoSeekConfig(String domainId) throws Exception;
 
     /**
      * 设置http响应头
+     *
      * @param domainId
      * @param httpHeaderKeyEnum
      * @param headerValue
@@ -370,6 +412,7 @@ public interface KscCdnDomain {
 
     /**
      * 删除http响应头
+     *
      * @param domainId
      * @param httpHeaderKeyEnum
      * @throws Exception
@@ -378,9 +421,52 @@ public interface KscCdnDomain {
 
     /**
      * 获取http响应头
+     *
      * @param domainId
      * @return
      * @throws Exception
      */
     HttpHeadersList getHttpHeaderList(String domainId) throws Exception;
+
+    /**
+     * 时间戳共享秘钥防盗链
+     * @param requestAuthConfig
+     * @throws Exception
+     */
+    void setRequestAuthConfig(RequestAuthConfig requestAuthConfig) throws Exception;
+
+    /**
+     * 设置强制跳转
+     * @param forceRedirectConfig
+     * @throws Exception
+     */
+    void setForceRedirectConfig(ForceRedirectConfig forceRedirectConfig) throws Exception;
+
+    /**
+     * 设置HTTP 2.0
+     * @param http2OptionConfig
+     * @throws Exception
+     */
+    void setHttp2OptionConfig(Http2OptionConfig http2OptionConfig) throws Exception;
+
+    /**
+     * 自定义错误页面
+     * @param errorPageConfig
+     * @throws Exception
+     */
+    void setErrorPageConfig(ErrorPageConfig errorPageConfig) throws Exception;
+
+    /**
+     * 设置智能压缩
+     * @param pageCompressConfig
+     * @throws Exception
+     */
+    void setPageCompressConfig(PageCompressConfig pageCompressConfig) throws Exception;
+
+    /**
+     * 设置过滤参数
+     * @param ignoreQueryStringConfig
+     * @throws Exception
+     */
+    void setIgnoreQueryStringConfig(IgnoreQueryStringConfig ignoreQueryStringConfig) throws Exception;
 }

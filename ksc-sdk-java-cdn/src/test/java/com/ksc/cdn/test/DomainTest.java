@@ -35,12 +35,9 @@ public class DomainTest {
         client = new KscCdnClient("your ak",
                 "your sk",
                 "http://cdn.api.ksyun.com",
-                "cn-shanghai-1",
+                "cn-shanghai-2",
                 "cdn");
-        /*client=new KscCdnClient("AKTPf-QTNRxOTfOJsue-gZ4Saw",
-                "OMmwuYGPZOoc0FtZqRi3Q6aKnIgna5yHoF7VNnQlQhPuyiOYwcI2edmU0DOLpM4fkg==");*/
-        domainId = "2D09X54";
-
+        domainId = "2D09555";
     }
 
 
@@ -68,10 +65,10 @@ public class DomainTest {
         //设置查询条件,可以多个条件组合查询,也可无查询条件查所有
         request.setPageNumber(1l);
         request.setPageSize(20l);
-        request.setCdnType(CdnTypeEnum.download.getValue());
+        request.setCdnType(CdnTypeEnum.video.getValue());
         request.setDomainStatus(DomainStatus.ONLINE.getCode());
-        request.setDomainName("");
-        request.setFuzzyMatch("");
+        request.setDomainName("zr");
+        request.setFuzzyMatch("on");
 
         GetCdnDomainsResult cdnDomains = client.getCdnDomains(request);
         Assert.assertTrue(cdnDomains.getDomains().length > 0);
@@ -113,7 +110,7 @@ public class DomainTest {
         AddDomainRequest request = new AddDomainRequest();
 
         request.setDomainName("www.qunar.com");//加速域名
-        request.setCdnType(CdnTypeEnum.download.getValue());//加速类型
+        request.setCdnType(CdnTypeEnum.video.getValue());//加速类型
         request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());//客户访问边缘节点的协议。默认http
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//源站类型
         request.setOrigin("www.ksyun.com");//源站域名
@@ -122,6 +119,29 @@ public class DomainTest {
         request.setRegions(RegionsEnum.CN.getValue());//加速区域，默认CN， 可以输入多个，以逗号间隔。
 
         AddDomainResult addDomainResult = client.addDomainBase(request);
+        Assert.assertNotNull(addDomainResult.getDomainId());
+        System.out.print(addDomainResult.getDomainId() + "\n");
+    }
+
+    /**
+     * 添加加速域名v2
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testAddDomainV2Base() throws Exception {
+        AddDomainRequest request = new AddDomainRequest();
+
+        request.setDomainName("testv2.qunar.com");//加速域名
+        request.setCdnType(CdnTypeEnum.video.getValue());//加速类型
+        request.setCdnProtocol(CdnProtocolEnum.HTTP.getValue());//客户访问边缘节点的协议。默认http
+        request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//源站类型
+        request.setOrigin("www.ksyun.com");//源站域名
+        request.setOriginProtocol(CdnProtocolEnum.HTTP.getValue());//回源协议
+        request.setOriginPort(80);//源站域名端口号
+        request.setRegions(RegionsEnum.CN.getValue());//加速区域，默认CN， 可以输入多个，以逗号间隔。
+
+        AddDomainResult addDomainResult = client.addDomainV2Base(request);
         Assert.assertNotNull(addDomainResult.getDomainId());
         System.out.print(addDomainResult.getDomainId() + "\n");
     }
@@ -181,8 +201,7 @@ public class DomainTest {
     public void testGetDomainConfigs() throws Exception {
         GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);//查所有配置
         GetDomainConfigResult domainConfigsFilter = client.getDomainConfigs(domainId, new DomainConfigEnum[]{
-                DomainConfigEnum.cache_expired, DomainConfigEnum.ip, DomainConfigEnum.ignore_query_string});//查某几项配置
-
+                });//查某几项配置
         Assert.assertEquals("www.qunar.com", domainConfigs.getBackOriginHostConfig().getBackOriginHost());
     }
 
@@ -277,17 +296,9 @@ public class DomainTest {
         request.setEnable(SwitchEnum.ON.getValue());//打开配置
         request.setOriginType(OriginTypeEnum.DOMAIN.getValue());//设置源站类型
         //源站信息
-        List<OriginAdvancedItem> items = new ArrayList<OriginAdvancedItem>();
-        OriginAdvancedItem advancedItems = new OriginAdvancedItem();
-        advancedItems.setOrigin("www.b.qunar.com");//设置回源地址
-        advancedItems.setOriginLine(OriginLineEnum.DEFAULT.getValue());//设置源站线路
-        items.add(advancedItems);
-        advancedItems = new OriginAdvancedItem();
-        advancedItems.setOrigin("www.c.qunar.com");
-        advancedItems.setOriginLine(OriginLineEnum.CM.getValue());
-        items.add(advancedItems);
-        request.setOriginAdvancedItems(items);
-
+        request.setOrigin("tets.com");
+        request.setBackupOrigin("1.1.1.1");
+        request.setBackupOriginType(OriginTypeEnum.IPADDR.getValue());
         request.setOriginPolicy(OriginPolicyEnum.QUALITY.getValue());//设置回源策略 rr: 轮询； quality: 按质量最优的topN来轮询回源
         request.setOriginPolicyBestCount(1l);//当OriginPolicy是quality时，该项必填。取值1-10
         client.setOriginAdvanced(request);
@@ -407,5 +418,112 @@ public class DomainTest {
     public void testGetHttpHeaderList() throws Exception{
         HttpHeadersList httpHeaderList = client.getHttpHeaderList("2D09HG3");
         Assert.assertEquals(HttpHeaderKeyEnum.Expires.getValue(), httpHeaderList.getHttpHeadList()[0].getHeaderKey());
+    }
+
+    /**
+     * 设置设置时间戳+共享密钥防盗链
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetRequestAuthConfig() throws Exception {
+        RequestAuthConfig request = new RequestAuthConfig();
+        request.setDomainId(domainId);//待设置域名id
+        request.setEnable(SwitchEnum.ON.getValue());//打开配置
+        request.setAuthType("typeA");
+        request.setKey1("aaaaaa");
+        request.setKey2("bbbbbb,cccccc");
+        request.setExpirationTime(100L);
+        client.setRequestAuthConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals(SwitchEnum.ON.getValue(), domainConfigs.getRequestAuthConfig().getEnable());
+        Assert.assertEquals("aaaaaa", domainConfigs.getRequestAuthConfig().getKey1());
+    }
+
+    /**
+     * 设置强制跳转
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetForceRedirectConfig() throws Exception {
+        ForceRedirectConfig request = new ForceRedirectConfig();
+        request.setDomainId(domainId);//待设置域名id
+        request.setRedirectType("off");
+        client.setForceRedirectConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals("off", domainConfigs.getForceRedirectConfig().getRedirectType());
+    }
+
+    /**
+     * 设置HTTP 2.0
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetHttp2OptionConfig() throws Exception {
+        Http2OptionConfig request = new Http2OptionConfig();
+        request.setDomainId(domainId);//待设置域名id
+        request.setEnable("off");
+        client.setHttp2OptionConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals("off", domainConfigs.getHttp2OptionConfig().getEnable());
+    }
+
+    /**
+     * 设置智能压缩
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetPageCompressConfig() throws Exception {
+        PageCompressConfig request = new PageCompressConfig();
+        request.setDomainId(domainId);//待设置域名id
+        request.setEnable("on");
+        client.setPageCompressConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals("on", domainConfigs.getPageCompressConfig().getEnable());
+    }
+
+    /**
+     * 设置过滤参数
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetIgnoreQueryStringConfigV2() throws Exception {
+        IgnoreQueryStringConfig request = new IgnoreQueryStringConfig();
+        request.setDomainId(domainId);//待设置域名id
+        request.setEnable("on");
+        request.setHashKeyArgs("params1");
+        client.setIgnoreQueryStringConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals("on", domainConfigs.getIgnoreQueryStringConfig().getEnable());
+        Assert.assertEquals("params1", domainConfigs.getIgnoreQueryStringConfig().getHashKeyArgs());
+    }
+
+    /**
+     * 自定义错误页面
+     *
+     * @throws Exception
+     */
+    @Test
+    public void testSetErrorPageConfig() throws Exception {
+        ErrorPageConfig request = new ErrorPageConfig();
+        request.setDomainId(domainId);//待设置域名id
+        List<ErrorPages> errorPages = new ArrayList<com.ksc.cdn.model.domain.domaindetail.ErrorPages>();
+        ErrorPages page1 = new ErrorPages();
+        page1.setCustomPageUrl("https://www.test.com/error400.html");
+        page1.setErrorHttpCode("400");
+        ErrorPages page2 = new ErrorPages();
+        page2.setCustomPageUrl("https://www.test.com/error403.html");
+        page2.setErrorHttpCode("403");
+        errorPages.add(page1);
+        errorPages.add(page2);
+        request.setErrorPages(errorPages);
+        client.setErrorPageConfig(request);
+        GetDomainConfigResult domainConfigs = client.getDomainConfigs(domainId);
+        Assert.assertEquals("https://www.test.com/error400.html", domainConfigs.getErrorPageConfig().getErrorPages().get(0).getCustomPageUrl());
+        Assert.assertEquals("https://www.test.com/error403.html", domainConfigs.getErrorPageConfig().getErrorPages().get(1).getCustomPageUrl());
     }
 }

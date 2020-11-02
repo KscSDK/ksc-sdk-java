@@ -160,6 +160,9 @@ public class DefaultRequest<T> implements Request<T> {
      * @see com.ksc.Request#addParameter(java.lang.String, java.lang.String)
      */
     public void addParameter(String name, String value) {
+        if(value == null){
+            return;
+        }
         List<String> paramList = parameters.get(name);
         if (paramList == null) {
             paramList = new ArrayList<String>();

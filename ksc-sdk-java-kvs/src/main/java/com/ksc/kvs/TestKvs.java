@@ -13,7 +13,7 @@ public class TestKvs {
 	public static void main(String[] args) throws JSONException {
 		AWSCredentials credentials = null;
 		try {
-			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxx", "xxxxxxxxxxxxxxxx");
+			credentials = new BasicAWSCredentials("xxxxxxxxxxxxxxxxxxxxxx", "xxxxxxxxxxxxxxxxxxxxxxxxxx");
 		} catch (Exception e) {
 			throw new KscClientException("Cannot load the credentials from the credential profiles file. "
 					+ "Please make sure that your credentials file is at the correct "
@@ -21,6 +21,12 @@ public class TestKvs {
 		}
 		KSCKVSJsonClient ksc = new KSCKVSJsonClient(credentials);
 		ksc.setEndpoint("http://kvs.cn-beijing-6.api.ksyun.com/");
+
+		GetPlayInfoRequest getPlayInfoRequest = new GetPlayInfoRequest();
+		getPlayInfoRequest.setVideoId(1L);
+		GetPlayInfoResult result = ksc.GetPlayInfo(getPlayInfoRequest);
+		System.out.println(result);
+
 
 		GetPresetListRequest getPresetListRequest = new GetPresetListRequest();
 		getPresetListRequest.setWithDetail(1);
@@ -113,6 +119,12 @@ public class TestKvs {
 		GetInterfaceNumberRequest getInterfaceNumberRequest = new GetInterfaceNumberRequest();
 		getMediaTransDurationRequest.setResultType(1);
 		GetInterfaceNumberResult getInterfaceNumberResult = ksc.GetInterfaceNumber(getInterfaceNumberRequest);
+		
+		FetchMetaInfoRequest fetchMetaInfoRequestRequest = new FetchMetaInfoRequest();
+		String data3 = setMetaInfo("xxx/xxxx.mp4");
+		fetchMetaInfoRequestRequest.setData(data3);
+		FetchMetaInfoResult fetchMetaInfoResult = ksc.FetchMetaInfo(fetchMetaInfoRequestRequest);
+		System.out.println(fetchMetaInfoResult.getMetaInfo());
 
 	}
 
@@ -216,5 +228,11 @@ public class TestKvs {
 		data.put("State", "Active");
 		return data.toString();
 
+	}
+	
+	private static String setMetaInfo(String srcPath) {
+		JSONObject data = new JSONObject();
+		data.put("SrcPath", srcPath);
+		return data.toString();
 	}
 }

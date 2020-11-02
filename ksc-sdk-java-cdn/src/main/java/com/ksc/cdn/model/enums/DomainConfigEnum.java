@@ -18,14 +18,15 @@ public enum DomainConfigEnum {
     req_auth("req_auth", "设置URL鉴权"),
     src_host("src_host", "设置回源host"),
     video_seek("video_seek", "设置拖拽"),
-    src_advanced("src_advanced", "设置高级回源"),
+    origin_advanced_config("origin_advanced_config", "设置高级回源"),
     src_probe("src_probe", "设置回源探测"),
     test_url("test_url", "设置测试URL"),
     error_page("error_page", "自定义404错误页面跳转"),
     optimize("optimize", "页面优化"),
     waf("waf", "Waf防护功能"),
     notify_url("notify_url", "视频直播notify url"),
-    redirect_type("redirect_type", "强制访问跳转方式");
+    redirect_type("redirect_type", "强制访问跳转方式"),
+    request_auth("request_auth", "时间戳共享秘钥防盗链");
 
     private String value;
     private String desc;

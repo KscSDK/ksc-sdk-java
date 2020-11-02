@@ -5,7 +5,8 @@
   <parent>
 	<groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java</artifactId>
-	<version>0.2.5</version>
+	<version>0.3.12</version>
+	<relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>ksc-sdk-java-bom</artifactId>
   <packaging>pom</packaging>
@@ -18,37 +19,37 @@
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java-core</artifactId>
 		<optional>false</optional>
-		<version>0.2.5</version>
+		<version>${project.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java-kec</artifactId>
 		<optional>false</optional>
-		<version>0.2.5</version>
+		<version>${project.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java-network</artifactId>
 		<optional>false</optional>
-		<version>0.2.5</version>
+		<version>${project.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java-monitor</artifactId>
 		<optional>false</optional>
-		<version>0.2.5</version>
+		<version>${project.version}</version>
 	</dependency>
 	<dependency>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java-epc</artifactId>
 		<optional>false</optional>
-		<version>0.2.5</version>
+		<version>${project.version}</version>
 	</dependency>
     <dependency>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java-vcs</artifactId>
 		<optional>false</optional>
-		<version>0.2.5</version>
+		<version>${project.version}</version>
 	</dependency>
 </dependencies>
   </dependencyManagement>
