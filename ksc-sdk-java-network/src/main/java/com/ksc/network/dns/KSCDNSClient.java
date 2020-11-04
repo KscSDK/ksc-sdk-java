@@ -17,6 +17,7 @@ import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
+import com.ksc.util.KscRequestMetrics.Field;
 import org.w3c.dom.Node;
 
 import java.util.ArrayList;
@@ -285,6 +286,136 @@ public class KSCDNSClient  extends KscWebServiceClient implements KSCDNS{
             }
             StaxResponseHandler<DescribeHostedZonesResult> responseHandler = new StaxResponseHandler<DescribeHostedZonesResult>(
                     new DescribeHostedZonesResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public CreateResourceRecordResult createResourceRecord(CreateResourceRecordRequest createResourceRecordRequest) {
+        ExecutionContext executionContext = createExecutionContext(createResourceRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateResourceRecordRequest> request = null;
+        Response<CreateResourceRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateResourceRecordRequestMarshaller()
+                        .marshall(createResourceRecordRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<CreateResourceRecordResult> responseHandler = new StaxResponseHandler<CreateResourceRecordResult>(
+                    new CreateResourceRecordResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeleteResourceRecordResult deleteResourceRecord(DeleteResourceRecordRequest deleteResourceRecordRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteResourceRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteResourceRecordRequest> request = null;
+        Response<DeleteResourceRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteResourceRecordRequestMarshaller()
+                        .marshall(deleteResourceRecordRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteResourceRecordResult> responseHandler = new StaxResponseHandler<DeleteResourceRecordResult>(
+                    new DeleteResourceRecordResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribeResourceRecordsResult describeResourceRecords(DescribeResourceRecordsRequest describeResourceRecordsRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeResourceRecordsRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeResourceRecordsRequest> request = null;
+        Response<DescribeResourceRecordsResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeResourceRecordsRequestMarshaller()
+                        .marshall(describeResourceRecordsRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribeResourceRecordsResult> responseHandler = new StaxResponseHandler<DescribeResourceRecordsResult>(
+                    new DescribeResourceRecordsResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ModifyResourceRecordResult modifyResourceRecord(ModifyResourceRecordRequest modifyResourceRecordRequest) {
+        ExecutionContext executionContext = createExecutionContext(modifyResourceRecordRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyResourceRecordRequest> request = null;
+        Response<ModifyResourceRecordResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyResourceRecordRequestMarshaller()
+                        .marshall(modifyResourceRecordRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<ModifyResourceRecordResult> responseHandler = new StaxResponseHandler<ModifyResourceRecordResult>(
+                    new ModifyResourceRecordResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public GetGeolocationsResult getGeolocations(GetGeolocationsRequest getGeolocationsRequest) {
+        ExecutionContext executionContext = createExecutionContext(getGeolocationsRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<GetGeolocationsRequest> request = null;
+        Response<GetGeolocationsResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new GetGeolocationsRequestMarshaller()
+                        .marshall(getGeolocationsRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<GetGeolocationsResult> responseHandler = new StaxResponseHandler<GetGeolocationsResult>(
+                    new GetGeolocationsResultStaxUnmarshaller());
             response = invoke(request, responseHandler, executionContext);
 
             return response.getKscResponse();
