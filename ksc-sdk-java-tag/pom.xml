@@ -3,7 +3,8 @@
   <parent>
     <groupId>com.ksyun</groupId>
     <artifactId>ksc-sdk-java</artifactId>
-    <version>0.3.9</version>
+    <version>0.3.12</version>
+	<relativePath>../pom.xml</relativePath>
   </parent>
   <artifactId>ksc-sdk-java-tag</artifactId>
   
