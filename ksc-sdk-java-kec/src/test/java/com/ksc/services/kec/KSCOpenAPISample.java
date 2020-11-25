@@ -107,7 +107,7 @@ public class KSCOpenAPISample {
 	@Test
 	public void DescribeImages(){
 		DescribeImagesRequest request=new DescribeImagesRequest();
-		request.setImageId("28adde6a-f33f-43a3-b1bd-09b81f6f2167");
+		request.setImageId("2b1d9503-0772-4291-800f-2eb07058f7ae");
 //		request.setImageType("share");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
@@ -240,8 +240,10 @@ public class KSCOpenAPISample {
 	@Test
 	public void createImage(){
 		CreateImageRequest request=new CreateImageRequest();
-		request.setInstanceId("6e6b4cbe-9b4f-4ce2-bd9c-1bf2bbf9bdf4");
-		request.setName("MyTestImage");
+		request.setInstanceId("b163dfc1-cd37-4cc7-a6bb-b4c45ecfa359");
+		request.withDataDiskIds("e8a2ecf9-00ec-43e7-a95c-fb32d05bad84");
+		request.setName("sdk-test-1125-2");
+//		request.withSnapshotIds("1bf81c33-85dd-4909-94b8-3e3f1e4abf0d","6657fa67-65a1-43ee-b74d-dcfdb0df8a95");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
@@ -513,6 +515,9 @@ public class KSCOpenAPISample {
 		request.setPlatform("centos-6");
 		request.setArchitecture("x86_64");
 		request.setImageFormat("qcow2");
+		request.withDataImageUrl("http://ks3-cn-shanghai.ksyun.com/my-test/centos_6.5.img.base");
+		request.withDataImageSize("20");
+		request.withDataImageFormat("raw");
 		ImageImportResult result=kec_client.imageImport(request);
 		Gson gson = new Gson();
 		log.info("imageImport Result: "+gson.toJson(result));

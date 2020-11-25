@@ -4,7 +4,6 @@ import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
-import com.ksc.kec.model.DescribeInstanceFamilysRequest;
 import com.ksc.kec.model.ImageImportRequest;
 import com.ksc.transform.Marshaller;
 import com.ksc.util.StringUtils;
@@ -49,6 +48,24 @@ public class ImageImportRequestMarshaller implements
         if(imageImportRequest.getImageFormat() != null){
             request.addParameter("ImageFormat",
                     StringUtils.fromString(imageImportRequest.getImageFormat()));
+        }
+        if (imageImportRequest.getDataImageUrl() != null && imageImportRequest.getDataImageUrl().size() > 0) {
+            for (int i = 0; i < imageImportRequest.getDataImageUrl().size(); i++) {
+                request.addParameter("DataImageUrl." + (i + 1),
+                        StringUtils.fromString(imageImportRequest.getDataImageUrl().get(i)));
+            }
+        }
+        if (imageImportRequest.getDataImageSize() != null && imageImportRequest.getDataImageSize().size() > 0) {
+            for (int i = 0; i < imageImportRequest.getDataImageSize().size(); i++) {
+                request.addParameter("DataImageSize." + (i + 1),
+                        StringUtils.fromString(imageImportRequest.getDataImageSize().get(i)));
+            }
+        }
+        if (imageImportRequest.getDataImageFormat() != null && imageImportRequest.getDataImageFormat().size() > 0) {
+            for (int i = 0; i < imageImportRequest.getDataImageFormat().size(); i++) {
+                request.addParameter("DataImageFormat." + (i + 1),
+                        StringUtils.fromString(imageImportRequest.getDataImageFormat().get(i)));
+            }
         }
         return request;
     }

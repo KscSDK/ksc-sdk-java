@@ -1,11 +1,15 @@
 package com.ksc.kec.model;
 
+import lombok.Data;
 import lombok.ToString;
 
+import java.util.List;
+
 @ToString
+@Data
 public class Image {
 	private String ImageId;
-	
+
 	private String Name;
 
 	private String ImageState;
@@ -27,100 +31,50 @@ public class Image {
 	private String ImageSource;
 
 	private String InstanceId;
+	
+	private Boolean CloudInitSupport;
 
-	public String getImageId() {
-		return ImageId;
+	private Boolean Ipv6Support;
+
+	private Boolean IsModifyType;
+
+	private Boolean IsCloudMarket;
+
+	private List<SnapShot> SnapShotSet;
+
+	public void withSnapShotSet(SnapShot... snapShots) {
+		if (this.SnapShotSet == null) {
+			this.setSnapShotSet(new com.ksc.internal.SdkInternalList<SnapShot>());
+		}
+		for (SnapShot ele : snapShots) {
+			this.SnapShotSet.add(ele);
+		}
 	}
 
-	public void setImageId(String imageId) {
-		ImageId = imageId;
-	}
+	@Data
+	public static class SnapShot{
 
-	public String getName() {
-		return Name;
-	}
+		/**
+		 * 快照ID
+		 */
+		private String SnapshotId;
 
-	public void setName(String name) {
-		Name = name;
-	}
+		/**
+		 * 系统盘和数据盘快照类型
+		 * 取值范围：local_snapshot本地盘快照，ebs_snapshot云盘快照
+		 */
+		private String DiskType;
 
-	public String getImageState() {
-		return ImageState;
-	}
+		/**
+		 * 创建此快照的磁盘大小，单位GB
+		 */
+		private Integer DiskSize;
 
-	public void setImageState(String imageState) {
-		ImageState = imageState;
-	}
+		/**
+		 * 磁盘类型
+		 * 取值范围：data数据盘， system系统盘
+		 */
+		private String Type;
 
-	public String getCreationDate() {
-		return CreationDate;
-	}
-
-	public void setCreationDate(String creationDate) {
-		CreationDate = creationDate;
-	}
-
-	public String getPlatform() {
-		return Platform;
-	}
-
-	public void setPlatform(String platform) {
-		Platform = platform;
-	}
-
-	public Boolean getIsPublic() {
-		return IsPublic;
-	}
-
-	public void setIsPublic(Boolean isPublic) {
-		IsPublic = isPublic;
-	}
-
-	public String getInstanceId() {
-		return InstanceId;
-	}
-
-	public void setInstanceId(String instanceId) {
-		InstanceId = instanceId;
-	}
-
-	public Boolean getIsNpe() {
-		return IsNpe;
-	}
-
-	public void setIsNpe(Boolean isNpe) {
-		IsNpe = isNpe;
-	}
-
-	public String getUserCategory() {
-		return UserCategory;
-	}
-
-	public void setUserCategory(String userCategory) {
-		UserCategory = userCategory;
-	}
-
-	public String getSysDisk() {
-		return SysDisk;
-	}
-
-	public void setSysDisk(String sysDisk) {
-		SysDisk = sysDisk;
-	}
-
-	public String getProgress() {
-		return Progress;
-	}
-
-	public void setProgress(String progress) {
-		Progress = progress;
-	}
-
-	public String getImageSource() {
-		return ImageSource;
-	}
-
-	public void setImageSource(String imageSource) {
-		ImageSource = imageSource;
 	}
 }
