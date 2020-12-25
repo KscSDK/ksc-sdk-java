@@ -49,6 +49,9 @@ public class CreateLoadBalancerRequestMarshaller implements
             request.addParameter("SubnetId", createLoadBalancerRequest.getSubnetId());
         }
 
+        if (!StringUtils.isEmpty(createLoadBalancerRequest.getProjectId())) {
+            request.addParameter("ProjectId", createLoadBalancerRequest.getProjectId());
+        }
         return request;
     }
 }

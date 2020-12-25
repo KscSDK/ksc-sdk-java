@@ -3,6 +3,7 @@ package com.ksc.network.vpc.transform.vpc;
 import javax.xml.stream.events.XMLEvent;
 
 import com.ksc.network.vpc.model.vpc.DescribeVpcsResult;
+import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
@@ -36,6 +37,9 @@ public class DescribeVpcsResultStaxUnmarshaller implements
 				}else if(context.testExpression("RequestId", targetDepth)){
 					describeVpcsResult.setRequestId(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
+					continue;
+				}else if (context.testExpression("NextToken", targetDepth)) {
+					describeVpcsResult.setNextToken(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
 				}
 

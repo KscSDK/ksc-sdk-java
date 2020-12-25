@@ -35,6 +35,9 @@ public class DescribeSecurityGroupsResultStaxUnmarshaller
 				} else if (context.testExpression("RequestId", targetDepth)) {
 					describeSecurityGroupsResult.setRequestId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
+				} else if (context.testExpression("NextToken", targetDepth)) {
+					describeSecurityGroupsResult.setNextToken(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
 				}
 
 			} else if (xmlEvent.isEndElement()) {

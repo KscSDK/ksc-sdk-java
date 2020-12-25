@@ -54,6 +54,11 @@ public class Address {
 	 */
 	private String internetGatewayId;
 
+	/**
+	 * 项目的ID
+	 */
+	private String projectId;
+
 	public String getPublicIp() {
 		return publicIp;
 	}
@@ -132,5 +137,13 @@ public class Address {
 
 	public void setInternetGatewayId(String internetGatewayId) {
 		this.internetGatewayId = internetGatewayId;
+	}
+
+	public String getProjectId() {
+		return projectId;
+	}
+
+	public void setProjectId(String projectId) {
+		this.projectId = projectId;
 	}
 }

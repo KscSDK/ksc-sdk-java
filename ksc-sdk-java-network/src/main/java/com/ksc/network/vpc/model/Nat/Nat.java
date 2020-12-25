@@ -1,9 +1,11 @@
 package com.ksc.network.vpc.model.Nat;
 
 import com.ksc.internal.SdkInternalList;
+import lombok.Data;
 import lombok.ToString;
 
 @ToString
+@Data
 public class Nat {
     /**
      * VPC创建时间
@@ -53,119 +55,48 @@ public class Nat {
     /**
      * Nat关联的子网信息
      */
-    private com.ksc.internal.SdkInternalList<AssociateNat> AssociateNatSet;
-
-    public String getCreateTime() {
-        return CreateTime;
-    }
-
-    public void setCreateTime(String createTime) {
-        CreateTime = createTime;
-    }
-
-    public String getVpcId() {
-        return VpcId;
-    }
-
-    public void setVpcId(String vpcId) {
-        VpcId = vpcId;
-    }
-
-    public String getNatId() {
-        return NatId;
-    }
-
-    public void setNatId(String natId) {
-        NatId = natId;
-    }
-
-    public String getNatName() {
-        return NatName;
-    }
-
-    public void setNatName(String natName) {
-        NatName = natName;
-    }
-
-    public String getNatMode() {
-        return NatMode;
-    }
-
-    public void setNatMode(String natMode) {
-        NatMode = natMode;
-    }
-
-    public String getNatType() {
-        return NatType;
-    }
-
-    public void setNatType(String natType) {
-        NatType = natType;
-    }
-
-    public SdkInternalList<NatIp> getNatIpSet() {
-        return NatIpSet;
-    }
-
-    public void setNatIpSet(SdkInternalList<NatIp> natIpSet) {
-        NatIpSet = natIpSet;
-    }
-
-    public Integer getNatIpNumber() {
-        return NatIpNumber;
-    }
-
-    public void setNatIpNumber(Integer natIpNumber) {
-        NatIpNumber = natIpNumber;
-    }
-
-    public Integer getBandWidth() {
-        return BandWidth;
-    }
-
-    public void setBandWidth(Integer bandWidth) {
-        BandWidth = bandWidth;
-    }
-
-    public SdkInternalList<AssociateNat> getAssociateNatSet() {
-        return AssociateNatSet;
-    }
-
-    public void setAssociateNatSet(SdkInternalList<AssociateNat> associateNatSet) {
-        AssociateNatSet = associateNatSet;
-    }
+    private SdkInternalList<AssociateNat> AssociateNatSet;
+    /**
+     * 项目的ID
+     */
+    private String ProjectId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
 
         Nat nat = (Nat) o;
 
-        if (!CreateTime.equals(nat.CreateTime)) return false;
-        if (!VpcId.equals(nat.VpcId)) return false;
-        if (!NatId.equals(nat.NatId)) return false;
-        if (!NatName.equals(nat.NatName)) return false;
-        if (!NatMode.equals(nat.NatMode)) return false;
-        if (!NatType.equals(nat.NatType)) return false;
-        if (!NatIpSet.equals(nat.NatIpSet)) return false;
-        if (!NatIpNumber.equals(nat.NatIpNumber)) return false;
-        if (!BandWidth.equals(nat.BandWidth)) return false;
-        return AssociateNatSet.equals(nat.AssociateNatSet);
+        if (CreateTime != null ? !CreateTime.equals(nat.CreateTime) : nat.CreateTime != null) return false;
+        if (VpcId != null ? !VpcId.equals(nat.VpcId) : nat.VpcId != null) return false;
+        if (NatId != null ? !NatId.equals(nat.NatId) : nat.NatId != null) return false;
+        if (NatName != null ? !NatName.equals(nat.NatName) : nat.NatName != null) return false;
+        if (NatMode != null ? !NatMode.equals(nat.NatMode) : nat.NatMode != null) return false;
+        if (NatType != null ? !NatType.equals(nat.NatType) : nat.NatType != null) return false;
+        if (NatIpSet != null ? !NatIpSet.equals(nat.NatIpSet) : nat.NatIpSet != null) return false;
+        if (NatIpNumber != null ? !NatIpNumber.equals(nat.NatIpNumber) : nat.NatIpNumber != null) return false;
+        if (BandWidth != null ? !BandWidth.equals(nat.BandWidth) : nat.BandWidth != null) return false;
+        if (AssociateNatSet != null ? !AssociateNatSet.equals(nat.AssociateNatSet) : nat.AssociateNatSet != null)
+            return false;
+        return ProjectId != null ? ProjectId.equals(nat.ProjectId) : nat.ProjectId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = CreateTime.hashCode();
-        result = 31 * result + VpcId.hashCode();
-        result = 31 * result + NatId.hashCode();
-        result = 31 * result + NatName.hashCode();
-        result = 31 * result + NatMode.hashCode();
-        result = 31 * result + NatType.hashCode();
-        result = 31 * result + NatIpSet.hashCode();
-        result = 31 * result + NatIpNumber.hashCode();
-        result = 31 * result + BandWidth.hashCode();
-        result = 31 * result + AssociateNatSet.hashCode();
+        int result = super.hashCode();
+        result = 31 * result + (CreateTime != null ? CreateTime.hashCode() : 0);
+        result = 31 * result + (VpcId != null ? VpcId.hashCode() : 0);
+        result = 31 * result + (NatId != null ? NatId.hashCode() : 0);
+        result = 31 * result + (NatName != null ? NatName.hashCode() : 0);
+        result = 31 * result + (NatMode != null ? NatMode.hashCode() : 0);
+        result = 31 * result + (NatType != null ? NatType.hashCode() : 0);
+        result = 31 * result + (NatIpSet != null ? NatIpSet.hashCode() : 0);
+        result = 31 * result + (NatIpNumber != null ? NatIpNumber.hashCode() : 0);
+        result = 31 * result + (BandWidth != null ? BandWidth.hashCode() : 0);
+        result = 31 * result + (AssociateNatSet != null ? AssociateNatSet.hashCode() : 0);
+        result = 31 * result + (ProjectId != null ? ProjectId.hashCode() : 0);
         return result;
     }
 

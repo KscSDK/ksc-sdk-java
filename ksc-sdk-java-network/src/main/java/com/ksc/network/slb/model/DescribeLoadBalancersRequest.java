@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
+import com.ksc.internal.SdkInternalList;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.slb.model.transform.DescribeLoadBalancersRequestMarshaller;
@@ -37,6 +38,12 @@ public class DescribeLoadBalancersRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private com.ksc.internal.SdkInternalList<String> loadBalancerIds;
+
+	/**
+	 * 项目ID
+	 */
+	private com.ksc.internal.SdkInternalList<String> projectIds;
+
 
 	/**
 	 * 负载均衡的状态，已绑定，未绑定
@@ -88,6 +95,23 @@ public class DescribeLoadBalancersRequest extends KscWebServiceRequest
 		}
 		for (String loadBalancerId : loadBalancerIds) {
 			this.loadBalancerIds.add(loadBalancerId);
+		}
+	}
+
+	public SdkInternalList<String> getProjectIds() {
+		return projectIds;
+	}
+
+	public void setProjectIds(SdkInternalList<String> projectIds) {
+		this.projectIds = projectIds;
+	}
+
+	public void addProjectIds(String... projectIds) {
+		if (this.projectIds == null) {
+			this.projectIds = new com.ksc.internal.SdkInternalList<String>();
+		}
+		for (String value : projectIds) {
+			this.projectIds.add(value);
 		}
 	}
 

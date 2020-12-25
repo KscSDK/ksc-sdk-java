@@ -35,6 +35,9 @@ public class DescribeNatsResultStaxUnmarshaller
 				} else if (context.testExpression("RequestId", targetDepth)) {
 					describeNatsResult.setRequestId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
+				}else if (context.testExpression("NextToken", targetDepth)) {
+					describeNatsResult.setNextToken(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
 				}
 
 			} else if (xmlEvent.isEndElement()) {

@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
+import com.ksc.internal.SdkInternalList;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 import com.ksc.network.eip.model.transform.DescribeAddressesRequestMarshaller;
@@ -63,6 +64,10 @@ public class DescribeAddressesRequest extends KscWebServiceRequest implements
 	private Integer maxResults;
 
 	private String nextToken;
+	/**
+	 * 项目ID
+	 */
+	private com.ksc.internal.SdkInternalList<String> projectIds;
 
 	public java.util.List<Filter> getFilters() {
 		if (filters == null) {
@@ -208,6 +213,15 @@ public class DescribeAddressesRequest extends KscWebServiceRequest implements
 				allocationIds);
 	}
 
+	public void addProjectIds(String... projectIds) {
+		if (this.projectIds == null) {
+			this.projectIds = new com.ksc.internal.SdkInternalList<String>();
+		}
+		for (String value : projectIds) {
+			this.projectIds.add(value);
+		}
+	}
+
 	/**
 	 * <p>
 	 * One or more allocation IDs.
@@ -279,6 +293,14 @@ public class DescribeAddressesRequest extends KscWebServiceRequest implements
 		this.nextToken = nextToken;
 	}
 
+	public SdkInternalList<String> getProjectIds() {
+		return projectIds;
+	}
+
+	public void setProjectIds(SdkInternalList<String> projectIds) {
+		this.projectIds = projectIds;
+	}
+
 	/**
 	 * This method is intended for internal use only. Returns the marshaled
 	 * request configured with additional parameters to enable operation
@@ -306,39 +328,28 @@ public class DescribeAddressesRequest extends KscWebServiceRequest implements
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
 
-		if (obj instanceof DescribeAddressesRequest == false)
+		DescribeAddressesRequest that = (DescribeAddressesRequest) o;
+
+		if (filters != null ? !filters.equals(that.filters) : that.filters != null) return false;
+		if (allocationIds != null ? !allocationIds.equals(that.allocationIds) : that.allocationIds != null)
 			return false;
-		DescribeAddressesRequest other = (DescribeAddressesRequest) obj;
-		if (other.getFilters() == null ^ this.getFilters() == null)
-			return false;
-		if (other.getFilters() != null
-				&& other.getFilters().equals(this.getFilters()) == false)
-			return false;
-		if (other.getAllocationIds() == null ^ this.getAllocationIds() == null)
-			return false;
-		if (other.getAllocationIds() != null
-				&& other.getAllocationIds().equals(this.getAllocationIds()) == false)
-			return false;
-		return true;
+		if (maxResults != null ? !maxResults.equals(that.maxResults) : that.maxResults != null) return false;
+		if (nextToken != null ? !nextToken.equals(that.nextToken) : that.nextToken != null) return false;
+		return projectIds != null ? projectIds.equals(that.projectIds) : that.projectIds == null;
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int hashCode = 1;
-		hashCode = prime * hashCode
-				+ ((getFilters() == null) ? 0 : getFilters().hashCode());
-		hashCode = prime
-				* hashCode
-				+ ((getAllocationIds() == null) ? 0 : getAllocationIds()
-						.hashCode());
-		return hashCode;
+		int result = filters != null ? filters.hashCode() : 0;
+		result = 31 * result + (allocationIds != null ? allocationIds.hashCode() : 0);
+		result = 31 * result + (maxResults != null ? maxResults.hashCode() : 0);
+		result = 31 * result + (nextToken != null ? nextToken.hashCode() : 0);
+		result = 31 * result + (projectIds != null ? projectIds.hashCode() : 0);
+		return result;
 	}
 
 	@Override

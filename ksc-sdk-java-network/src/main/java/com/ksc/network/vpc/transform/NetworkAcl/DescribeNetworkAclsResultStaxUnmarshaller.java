@@ -35,6 +35,9 @@ public class DescribeNetworkAclsResultStaxUnmarshaller
 				} else if (context.testExpression("RequestId", targetDepth)) {
 					describeNetworkAclsResult.setRequestId(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
+				} else if (context.testExpression("NextToken", targetDepth)) {
+					describeNetworkAclsResult.setNextToken(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
 				}
 
 			} else if (xmlEvent.isEndElement()) {

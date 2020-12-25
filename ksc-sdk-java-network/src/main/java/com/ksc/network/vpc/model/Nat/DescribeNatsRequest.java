@@ -2,6 +2,7 @@ package com.ksc.network.vpc.model.Nat;
 
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
+import com.ksc.internal.SdkInternalList;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.model.Filter;
 
@@ -14,11 +15,15 @@ import lombok.ToString;
  */
 @ToString
 public class DescribeNatsRequest extends KscWebServiceRequest implements
-         DryRunSupportedRequest<DescribeNatsRequest> {
+        DryRunSupportedRequest<DescribeNatsRequest> {
 
     private com.ksc.internal.SdkInternalList<String> natIds;
-    
+
     private com.ksc.internal.SdkInternalList<Filter> filters;
+    /**
+     * 项目ID
+     */
+    private com.ksc.internal.SdkInternalList<String> projectIds;
 
 
     public java.util.List<String> getNatIds() {
@@ -39,7 +44,6 @@ public class DescribeNatsRequest extends KscWebServiceRequest implements
     }
 
 
-
     public DescribeNatsRequest withNatIds(String... natIds) {
         if (this.natIds == null) {
             setNatIds(new com.ksc.internal.SdkInternalList<String>(
@@ -51,6 +55,22 @@ public class DescribeNatsRequest extends KscWebServiceRequest implements
         return this;
     }
 
+    public SdkInternalList<String> getProjectIds() {
+        return projectIds;
+    }
+
+    public void setProjectIds(SdkInternalList<String> projectIds) {
+        this.projectIds = projectIds;
+    }
+
+    public void addProjectIds(String... projectIds) {
+        if (this.projectIds == null) {
+            this.projectIds = new com.ksc.internal.SdkInternalList<String>();
+        }
+        for (String value : projectIds) {
+            this.projectIds.add(value);
+        }
+    }
 
 
     public DescribeNatsRequest withNatIds(java.util.Collection<String> natIds) {
@@ -120,7 +140,7 @@ public class DescribeNatsRequest extends KscWebServiceRequest implements
                 .marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
         return request;*/
-    	return null;
+        return null;
     }
-   
+
 }

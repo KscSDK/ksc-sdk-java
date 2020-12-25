@@ -18,11 +18,11 @@ public class KSCEIPClientTest {
         request.setLineId("111765e4-f55f-4822-9ed6-b2464252fab2");
         request.setBandWidth(20);
         request.setChargeType("Peak");
-//        request.setPurchaseTime(20);
+        request.setProjectId("472");
         AllocateAddressResult result=client.allocateAddress(request);
         log.info(result);
     }
-    
+
     @Test
     public void releaseAddress(){
         KSCEIPClient client=new KSCEIPClient();
@@ -33,7 +33,7 @@ public class KSCEIPClientTest {
         ReleaseAddressResult result=client.releaseAddress(request);
         log.info(result);
     }
-    
+
     @Test
     public void associateAddress(){
         KSCEIPClient client=new KSCEIPClient();
@@ -47,7 +47,7 @@ public class KSCEIPClientTest {
         AssociateAddressResult result=client.associateAddress(request);
         log.info(result);
     }
-    
+
     @Test
     public void disassociateAddress(){
         KSCEIPClient client=new KSCEIPClient();
@@ -76,6 +76,20 @@ public class KSCEIPClientTest {
         Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
         client.setRegion(region);
         GetLinesResult result=client.getLines();
+        log.info(result);
+    }
+
+    @Test
+    public void modifyAddress() {
+        KSCEIPClient client = new KSCEIPClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("eip");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyAddressRequest request = new ModifyAddressRequest();
+        request.setAllocationId("804d4bbf-8c25-4996-aacf-ebe9a7d0552f");
+        request.setBandWidth(2);
+        ModifyAddressResult result = client.modifyAddress(request);
         log.info(result);
     }
 

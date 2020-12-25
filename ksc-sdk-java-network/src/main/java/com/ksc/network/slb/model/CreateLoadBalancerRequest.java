@@ -4,12 +4,16 @@ import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.slb.model.transform.CreateLoadBalancerRequestMarshaller;
+import lombok.*;
 
 import java.io.Serializable;
 
 /**
  * Created by LIUHONGMING on 2017/4/21.
  */
+@Getter
+@Setter
+@ToString
 public class CreateLoadBalancerRequest extends KscWebServiceRequest implements
         Serializable, Cloneable, DryRunSupportedRequest<CreateLoadBalancerRequest>{
 
@@ -33,37 +37,10 @@ public class CreateLoadBalancerRequest extends KscWebServiceRequest implements
      */
     private String SubnetId;
 
-    public String getVpcId() {
-        return VpcId;
-    }
-
-    public void setVpcId(String vpcId) {
-        VpcId = vpcId;
-    }
-
-    public String getLoadBalancerName() {
-        return LoadBalancerName;
-    }
-
-    public void setLoadBalancerName(String loadBalancerName) {
-        LoadBalancerName = loadBalancerName;
-    }
-
-    public String getType() {
-        return Type;
-    }
-
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public String getSubnetId() {
-        return SubnetId;
-    }
-
-    public void setSubnetId(String subnetId) {
-        SubnetId = subnetId;
-    }
+    /**
+     * 项目的ID
+     */
+    private String ProjectId;
 
     @Override
     public boolean equals(Object o) {
@@ -72,18 +49,21 @@ public class CreateLoadBalancerRequest extends KscWebServiceRequest implements
 
         CreateLoadBalancerRequest that = (CreateLoadBalancerRequest) o;
 
-        if (!VpcId.equals(that.VpcId)) return false;
-        if (!LoadBalancerName.equals(that.LoadBalancerName)) return false;
-        if (!Type.equals(that.Type)) return false;
-        return SubnetId.equals(that.SubnetId);
+        if (VpcId != null ? !VpcId.equals(that.VpcId) : that.VpcId != null) return false;
+        if (LoadBalancerName != null ? !LoadBalancerName.equals(that.LoadBalancerName) : that.LoadBalancerName != null)
+            return false;
+        if (Type != null ? !Type.equals(that.Type) : that.Type != null) return false;
+        if (SubnetId != null ? !SubnetId.equals(that.SubnetId) : that.SubnetId != null) return false;
+        return ProjectId != null ? ProjectId.equals(that.ProjectId) : that.ProjectId == null;
     }
 
     @Override
     public int hashCode() {
-        int result = VpcId.hashCode();
-        result = 31 * result + LoadBalancerName.hashCode();
-        result = 31 * result + Type.hashCode();
-        result = 31 * result + SubnetId.hashCode();
+        int result = VpcId != null ? VpcId.hashCode() : 0;
+        result = 31 * result + (LoadBalancerName != null ? LoadBalancerName.hashCode() : 0);
+        result = 31 * result + (Type != null ? Type.hashCode() : 0);
+        result = 31 * result + (SubnetId != null ? SubnetId.hashCode() : 0);
+        result = 31 * result + (ProjectId != null ? ProjectId.hashCode() : 0);
         return result;
     }
 

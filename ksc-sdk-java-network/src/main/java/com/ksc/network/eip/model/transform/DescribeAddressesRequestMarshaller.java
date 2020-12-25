@@ -80,6 +80,18 @@ public class DescribeAddressesRequestMarshaller implements
                 allocationIdsListIndex++;
             }
         }
+        com.ksc.internal.SdkInternalList<String> projectIds = (com.ksc.internal.SdkInternalList<String>) describeAddressesRequest
+                .getProjectIds();
+        if (projectIds != null && (!projectIds.isEmpty() || !projectIds.isAutoConstruct())) {
+            int index = 1;
+
+            for (String value : projectIds) {
+                if (value != null) {
+                    request.addParameter("ProjectId." + index, StringUtils.fromString(value));
+                }
+                index++;
+            }
+        }
         if (describeAddressesRequest.getNextToken() != null) {
             request.addParameter("NextToken", StringUtils
                     .fromString(describeAddressesRequest.getNextToken()));
