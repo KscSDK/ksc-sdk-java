@@ -10,7 +10,6 @@ public class DescribeRedisResponse {
     private String cacheId;
     private String az;
     private String name;
-    private String securityGroupId;
     private String engine;
     private Byte mode;
     private Integer size;
@@ -61,14 +60,6 @@ public class DescribeRedisResponse {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getSecurityGroupId() {
-        return securityGroupId;
-    }
-
-    public void setSecurityGroupId(String securityGroupId) {
-        this.securityGroupId = securityGroupId;
     }
 
     public String getEngine() {

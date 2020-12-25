@@ -49,7 +49,6 @@ public class ListRedisResponse {
         private String region;
         private String az;
         private String name;
-        private String securityGroupId;
         private String engine;
         private Byte mode;
         private Integer size;
@@ -100,14 +99,6 @@ public class ListRedisResponse {
 
         public void setName(String name) {
             this.name = name;
-        }
-
-        public String getSecurityGroupId() {
-            return securityGroupId;
-        }
-
-        public void setSecurityGroupId(String securityGroupId) {
-            this.securityGroupId = securityGroupId;
         }
 
         public String getEngine() {

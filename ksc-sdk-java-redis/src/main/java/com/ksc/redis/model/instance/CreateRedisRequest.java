@@ -23,6 +23,7 @@ public class CreateRedisRequest extends KscWebServiceRequest implements Serializ
     private String iamProjectId = "0";
     private Byte netType = 2;
     private Integer port = 6379;
+    private String securityGroupId;
 
     public String getName() {
         return name;
@@ -134,6 +135,14 @@ public class CreateRedisRequest extends KscWebServiceRequest implements Serializ
 
     public Integer getPort() {
         return port;
+    }
+
+    public String getSecurityGroupId() {
+        return securityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        this.securityGroupId = securityGroupId;
     }
 
     public Request<CreateRedisRequest> getDryRunRequest() {

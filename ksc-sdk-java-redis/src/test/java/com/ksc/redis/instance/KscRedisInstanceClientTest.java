@@ -3,7 +3,19 @@ package com.ksc.redis.instance;
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.redis.client.support.KscRedisInstanceClient;
 import com.ksc.redis.model.RedisResponseConversion;
-import com.ksc.redis.model.instance.*;
+import com.ksc.redis.model.instance.CreateReadOnlyRedisRequest;
+import com.ksc.redis.model.instance.CreateRedisRequest;
+import com.ksc.redis.model.instance.DeleteReadOnlyRedisRequest;
+import com.ksc.redis.model.instance.DeleteRedisRequest;
+import com.ksc.redis.model.instance.DescribeAvailabilityZonesRequest;
+import com.ksc.redis.model.instance.DescribeRedisRequest;
+import com.ksc.redis.model.instance.DescribeRegionsRequest;
+import com.ksc.redis.model.instance.FlushRedisRequest;
+import com.ksc.redis.model.instance.ListReadOnlyRedisRequest;
+import com.ksc.redis.model.instance.ListRedisRequest;
+import com.ksc.redis.model.instance.RenameRedisRequest;
+import com.ksc.redis.model.instance.ResizeRedisRequest;
+import com.ksc.redis.model.instance.StatisticDBInstancesRequest;
 import com.ksc.regions.RegionUtils;
 import org.apache.log4j.Logger;
 import org.junit.Before;
@@ -22,12 +34,13 @@ public class KscRedisInstanceClientTest {
     @Test
     public void createRedis() {
         CreateRedisRequest createRedisRequest = new CreateRedisRequest();
-        createRedisRequest.setName("name");
+        createRedisRequest.setName("testJavaSdk");
         createRedisRequest.setMode(new Byte("2"));
         createRedisRequest.setCapacity(1);
         createRedisRequest.setBillType(5);
         createRedisRequest.setVnetId("vnetId");
         createRedisRequest.setVpcId("vpcId");
+        createRedisRequest.setSecurityGroupId("securityGroupId");
         log.debug(RedisResponseConversion.toJson(kscRedisInstanceClient.createRedis(createRedisRequest)));
     }
 
