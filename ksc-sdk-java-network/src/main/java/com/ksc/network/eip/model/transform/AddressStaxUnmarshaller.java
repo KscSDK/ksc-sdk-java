@@ -68,6 +68,10 @@ public class AddressStaxUnmarshaller implements
                     address.setCreateTime(StringStaxUnmarshaller
                             .getInstance().unmarshall(context));
                     continue;
+                } else if (context.testExpression("ProjectId", targetDepth)) {
+                    address.setProjectId(StringStaxUnmarshaller
+                            .getInstance().unmarshall(context));
+                    continue;
                 }
             } else if (xmlEvent.isEndElement()) {
                 if (context.getCurrentDepth() < originalDepth) {

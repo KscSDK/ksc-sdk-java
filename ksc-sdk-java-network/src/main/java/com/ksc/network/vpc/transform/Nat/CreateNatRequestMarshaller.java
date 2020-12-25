@@ -60,6 +60,9 @@ public class CreateNatRequestMarshaller implements
             request.addParameter("PurchaseTime", StringUtils
                     .fromInteger(createNatRequest.getPurchaseTime()));
         }
+        if (!StringUtils.isNullOrEmpty(createNatRequest.getProjectId())) {
+            request.addParameter("ProjectId", createNatRequest.getProjectId());
+        }
 
         return request;
     }

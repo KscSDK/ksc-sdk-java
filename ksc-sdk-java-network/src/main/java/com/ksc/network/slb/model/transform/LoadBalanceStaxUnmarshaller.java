@@ -56,6 +56,9 @@ public class LoadBalanceStaxUnmarshaller implements Unmarshaller<LoadBalance, St
 				} else if (context.testExpression("LoadBalancerState", targetDepth)) {
 					loadBalance.setLoadBalancerState(StringStaxUnmarshaller.getInstance().unmarshall(context));
 					continue;
+				} else if (context.testExpression("ProjectId", targetDepth)) {
+					loadBalance.setProjectId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
 				}
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {

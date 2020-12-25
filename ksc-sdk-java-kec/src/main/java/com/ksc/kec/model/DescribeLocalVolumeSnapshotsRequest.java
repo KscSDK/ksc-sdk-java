@@ -16,8 +16,29 @@ public class DescribeLocalVolumeSnapshotsRequest extends KscWebServiceRequest
        implements Serializable, Cloneable, DryRunSupportedRequest<DescribeLocalVolumeSnapshotsRequest>{
 	
 	private static final long serialVersionUID = 1L;
-	private String LocalInstanceName;
-    
+
+	/**
+	 * 本地硬盘名称
+	 * 类型: String
+	 * 是否可缺省: 是
+	 */
+	private String LocalVolumeName;
+
+	/**
+	 * 本地硬盘ID
+	 * 类型: String
+	 * 是否可缺省: 是
+	 */
+	private String SourceLocalVolumeId;
+
+	/**
+	 * 本地硬盘快照ID
+	 * 类型: String
+	 * 是否可缺省: 是
+	 */
+	private String LocalVolumeSnapshotId;
+
+
     @Override
 	public Request<DescribeLocalVolumeSnapshotsRequest> getDryRunRequest() {
 		Request<DescribeLocalVolumeSnapshotsRequest> request = new DescribeLocalVolumeSnapshotsRequestMarshaller()
@@ -26,12 +47,27 @@ public class DescribeLocalVolumeSnapshotsRequest extends KscWebServiceRequest
 		return request;
 	}
 
-	public String getLocalInstanceName() {
-		return LocalInstanceName;
+	public String getLocalVolumeName() {
+		return LocalVolumeName;
 	}
 
-	public void setLocalInstanceName(String localInstanceName) {
-		LocalInstanceName = localInstanceName;
+	public void setLocalVolumeName(String localVolumeName) {
+		LocalVolumeName = localVolumeName;
 	}
-    
+
+	public String getSourceLocalVolumeId() {
+		return SourceLocalVolumeId;
+	}
+
+	public void setSourceLocalVolumeId(String sourceLocalVolumeId) {
+		SourceLocalVolumeId = sourceLocalVolumeId;
+	}
+
+	public String getLocalVolumeSnapshotId() {
+		return LocalVolumeSnapshotId;
+	}
+
+	public void setLocalVolumeSnapshotId(String localVolumeSnapshotId) {
+		LocalVolumeSnapshotId = localVolumeSnapshotId;
+	}
 }

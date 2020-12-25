@@ -9,12 +9,15 @@ import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysReques
 import com.ksc.network.vpc.model.InternetGateways.DescribeInternetGatewaysResult;
 import com.ksc.network.vpc.model.Nat.*;
 import com.ksc.network.vpc.model.NetworkAcl.*;
-import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesRequest;
-import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
+import com.ksc.network.vpc.model.NetworkInterface.*;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
+import com.ksc.network.vpc.model.peering.*;
+import com.ksc.network.vpc.model.vpn.*;
+import com.ksc.regions.InMemoryRegionImpl;
+import com.ksc.regions.Region;
 import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Test;
@@ -395,12 +398,14 @@ public class KSCVPCClientTest {
         client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("vpc");
         CreateNatRequest request = new CreateNatRequest();
-        request.setVpcId("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
+        request.setVpcId("9f0cd9aa-6a14-4a0d-88c4-530f559b13b2");
         request.setNatMode("Subnet");
-        request.setNatType("private");
-        request.setNatIpNumber(5);
-        request.setBandWidth(100);
+        request.setNatType("public");
+        request.setNatIpNumber(1);
+        request.setBandWidth(1);
         request.setNatName("gdg");
+        request.setChargeType("DailyPaidByTransfer");
+        request.setProjectId("472");
         CreateNatResult result = client.createNat(request);
         log.info(result);
     }
@@ -435,10 +440,11 @@ public class KSCVPCClientTest {
         client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
         client.setServiceNameIntern("vpc");
         DescribeNatsRequest request = new DescribeNatsRequest();
-        Filter filter = new Filter();
+       /* Filter filter = new Filter();
         filter.setName("vpc-id");
         filter.withValues("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
-        request.withFilters(filter);
+        request.withFilters(filter);*/
+       request.addProjectIds("472");
 //        request.withNatIds("ac777893-6b9d-46ad-be3c-4eed2edadf56");
         DescribeNatsResult result = client.describeNats(request);
         log.info(result);
@@ -479,6 +485,311 @@ public class KSCVPCClientTest {
 //        filter.withValues("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
 //        request.withFilters(filter);
         DescribeInternetGatewaysResult result = client.describeInternetGateways(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createVpcPeeringConnection(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateVpcPeeringConnectionRequest request = new CreateVpcPeeringConnectionRequest();
+        request.setBandWidth(1000);
+        request.setPeerAccountId("73404680");
+        request.setPeeringName("sdk-test");
+        request.setPeerRegion("cn-shanghai-3");
+        request.setPeerVpcId("f908be08-58f0-48e2-b7fa-e438d057a94d");
+        request.setProjectId("472");
+        request.setRegion("cn-shanghai-3");
+        request.setVpcId("9cd0989a-a584-45d1-8b61-c09566d9cd83");
+        CreateVpcPeeringConnectionResult result = client.createVpcPeeringConnection(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyVpcPeeringConnection(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyVpcPeeringConnectionRequest request = new ModifyVpcPeeringConnectionRequest();
+        request.setBandWidth(1001);
+        request.setVpcPeeringConnectionId("59df1a74-03de-4de5-bb0f-da6ae9fc6ede");
+        request.setPeeringName("fsdsdf");
+        ModifyVpcPeeringConnectionResult result = client.modifyVpcPeeringConnection(request);log.info(result);
+    }
+
+    @Test
+    public void deleteVpcPeeringConnection(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteVpcPeeringConnectionRequest request = new DeleteVpcPeeringConnectionRequest();
+        request.setVpcPeeringConnectionId("7e65ca33-fad7-45e1-9c88-6b74e7b85df7");
+        DeleteVpcPeeringConnectionResult result = client.deleteVpcPeeringConnection(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeVpcPeeringConnections(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeVpcPeeringConnectionsRequest request = new DescribeVpcPeeringConnectionsRequest();
+        request.addProjectIds("0");
+        /*Filter filter=new Filter(); filter.setName("vpc-id");
+        filter.withValues("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
+        request.addFilters(filter);*/
+        DescribeVpcPeeringConnectionsResult result = client.describeVpcPeeringConnections(request);
+        log.info(result);
+    }
+
+    @Test
+    public void acceptVpcPeeringConnection(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AcceptVpcPeeringConnectionRequest request = new AcceptVpcPeeringConnectionRequest();
+        request.setVpcPeeringConnectionId("a2eefce4-a664-432a-a6a3-d3f426ef5263");
+        AcceptVpcPeeringConnectionResult result = client.acceptVpcPeeringConnection(request);
+        log.info(result);
+    }
+
+    @Test
+    public void rejectVpcPeeringConnection(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        RejectVpcPeeringConnectionRequest request = new RejectVpcPeeringConnectionRequest();
+        request.setVpcPeeringConnectionId("2b38b6d1-4e62-4b12-a2ac-4b016f0394ce");
+        RejectVpcPeeringConnectionResult result = client.rejectVpcPeeringConnection(request);
+        log.info(result);
+    }
+    
+    @Test
+    public void createVpnGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateVpnGatewayRequest request = new CreateVpnGatewayRequest();
+        request.setBandWidth(5);
+        request.setProjectId("472");
+        request.setVpcId("9cd0989a-a584-45d1-8b61-c09566d9cd83");
+        request.setVpnGatewayName("sdk-test-1");
+        request.setChargeType("Daily");
+        CreateVpnGatewayResult result = client.createVpnGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyVpnGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyVpnGatewayRequest request = new ModifyVpnGatewayRequest();
+        request.setBandWidth(10);
+        request.setVpnGatewayId("90f009e2-138f-4b0f-9412-78e8988faf2a");
+        request.setVpnGatewayName("sdk-test");
+        ModifyVpnGatewayResult result = client.modifyVpnGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteVpnGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteVpnGatewayRequest request = new DeleteVpnGatewayRequest();
+        request.setVpnGatewayId("f919d207-59e5-460e-a4dc-ebd5ed7e6903");
+        DeleteVpnGatewayResult result = client.deleteVpnGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeVpnGateways(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeVpnGatewaysRequest request = new DescribeVpnGatewaysRequest();
+        request.addProjectIds("472");
+        //request.addVpnGatewayIds("90f009e2-138f-4b0f-9412-78e8988faf2a");
+        DescribeVpnGatewaysResult result = client.describeVpnGateways(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createNetworkInterface(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateNetworkInterfaceRequest request = new CreateNetworkInterfaceRequest();
+        //request.setPrivateIpAddress("");
+        request.setSubnetId("1c83a7ee-5dd9-4080-8fd7-07822b9b69cb");
+        request.addSecurityGroupIds("876255b8-2341-41f9-bcc6-e3520b79d570");
+        CreateNetworkInterfaceResult result = client.createNetworkInterface(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteNetworkInterface(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteNetworkInterfaceRequest request = new DeleteNetworkInterfaceRequest();
+        request.setNetworkInterfaceId("4eebc5af-6a6b-44ba-9cd1-3a7ac439bace");
+        DeleteNetworkInterfaceResult result = client.deleteNetworkInterface(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createCustomerGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateCustomerGatewayRequest request = new CreateCustomerGatewayRequest();
+        request.setCustomerGatewayName("sdk-test1");
+        request.setCustomerGatewayAddress("8.8.8.8");
+        request.setHaCustomerGatewayAddress("9.9.9.9");
+        CreateCustomerGatewayResult result = client.createCustomerGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteCustomerGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteCustomerGatewayRequest request = new DeleteCustomerGatewayRequest();
+        request.setCustomerGatewayId("411baf47-b927-4bf4-86e2-1303c94bbd12");
+        DeleteCustomerGatewayResult result = client.deleteCustomerGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyCustomerGateway(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyCustomerGatewayRequest request = new ModifyCustomerGatewayRequest();
+        request.setCustomerGatewayId("65000661-5360-42fc-88f1-115821a32309");
+        request.setCustomerGatewayName("sdk-test");
+        request.setCustomerGatewayAddress("110.43.131.186");
+        request.setHaCustomerGatewayAddress("110.43.131.186");
+        ModifyCustomerGatewayResult result = client.modifyCustomerGateway(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeCustomerGateways(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeCustomerGatewaysRequest request = new DescribeCustomerGatewaysRequest();
+        request.addCustomerGatewayIds("65000661-5360-42fc-88f1-115821a32309");
+        DescribeCustomerGatewaysResult result = client.describeCustomerGateways(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createVpnTunnel(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateVpnTunnelRequest request = new CreateVpnTunnelRequest();
+        request.setVpnTunnelName("zhy_sdk_test");
+        request.setVpnGatewayId("bbaa0c7c-7854-4c72-82ba-6dc44198adfc");
+        request.setCustomerGatewayId("65000661-5360-42fc-88f1-115821a32309");
+        request.setType("Ipsec");
+        request.setPreSharedKey("sdsfsdf");
+        request.setVpnGreIp("5.5.5.1/30");
+        request.setHaVpnGreIp("6.6.6.1/30");
+        request.setCustomerGreIp("5.5.5.2/30");
+        request.setHaCustomerGreIp("6.6.6.2/30");
+        request.setIkeAuthenAlgorithm("md5");
+        request.setIkeEncryAlgorithm("3des");
+        request.setIkeDHGroup("2");
+        request.setIpsecAuthenAlgorithm("esp-sha-hmac");
+        request.setIpsecEncryAlgorithm("esp-3des");
+        request.setIpsecLifetimeSecond(3600);
+        request.setIpsecLifetimeTraffic(3600);
+        CreateVpnTunnelResult result = client.createVpnTunnel(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteVpnTunnel(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteVpnTunnelRequest request = new DeleteVpnTunnelRequest();
+        request.setVpnTunnelId("a7c5b8cd-3fc3-4992-8dd3-a4b5bcd06c56");
+        DeleteVpnTunnelResult result = client.deleteVpnTunnel(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyVpnTunnel(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyVpnTunnelRequest request = new ModifyVpnTunnelRequest();
+        request.setVpnTunnelId("da852437-7971-4891-b49c-e3117a58e131");
+        request.setVpnTunnelName("sdk-test");
+        ModifyVpnTunnelResult result = client.modifyVpnTunnel(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeVpnTunnels(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeVpnTunnelsRequest request = new DescribeVpnTunnelsRequest();
+        /*request.addVpnTunnelIds("da852437-7971-4891-b49c-e3117a58e131");
+        Filter filter = new Filter();
+        filter.setName("vpn-gateway-id");
+        filter.withValues("d3b2d66d-0051-4d6a-9412-1fbd24728a4c");
+        request.addFilters(filter);*/
+        DescribeVpnTunnelsResult result = client.describeVpnTunnels(request);
         log.info(result);
     }
 

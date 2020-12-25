@@ -112,6 +112,13 @@ public class DescribeInstancesRequestMarshaller implements
             request.addParameter("Search", StringUtils
                     .fromString(describeInstancesRequest.getSearch()));
         }
+
+        if(describeInstancesRequest.getSort()!=null){
+            request.addParameter("Sort.Name", StringUtils
+                    .fromString(describeInstancesRequest.getSort().getName()));
+            request.addParameter("Sort.Value", StringUtils
+                    .fromString(describeInstancesRequest.getSort().getValue()));
+        }
         
         return request;
     }

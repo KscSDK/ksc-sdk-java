@@ -3,6 +3,7 @@ package com.ksc.kec.model.transform;
 import javax.xml.stream.events.XMLEvent;
 
 import com.ksc.kec.model.LocalVolumeSnapshot;
+import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -77,6 +78,24 @@ public class LocalVolumeSnapshotDetailStaxUnmarshaller implements
 
 				if (context.testExpression("SourceLocalVolumeCategory", targetDepth)) {
 					localVolumeSnapshot.setSourceLocalVolumeCategory(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("sourceLocalVolumeState", targetDepth)) {
+					localVolumeSnapshot.setSourceLocalVolumeState(StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("DiskSize", targetDepth)) {
+					localVolumeSnapshot.setDiskSize(SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("SnapshotType", targetDepth)) {
+					localVolumeSnapshot.setSnapshotType(StringStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;
 				}

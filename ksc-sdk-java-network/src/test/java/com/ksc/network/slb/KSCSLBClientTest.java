@@ -1,8 +1,14 @@
 package com.ksc.network.slb;
 
+import com.ksc.model.Filter;
 import com.ksc.network.slb.model.*;
+import com.ksc.regions.InMemoryRegionImpl;
+import com.ksc.regions.Region;
 import org.apache.log4j.Logger;
 import org.junit.Test;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class KSCSLBClientTest {
 	private static final Logger log = Logger.getLogger(KSCSLBClientTest.class);
@@ -16,6 +22,7 @@ public class KSCSLBClientTest {
 //		request.addLoadBalancerIds("521a2e79-89f8-4a26-9e86-6ea9878d00eb");
 //		request.setState("associate");
 		//request.withVpcIds("147d81eb-f780-434d-8355-dc125013520e");
+        request.addProjectIds("472");
 		DescribeLoadBalancersResult result=client.describeLoadBalancers(request);
 		log.info(result);
 	}
@@ -26,10 +33,11 @@ public class KSCSLBClientTest {
 	    client.setEndpoint("http://slb.cn-shanghai-3.api.ksyun.com");
 	    client.setServiceNameIntern("slb");
         CreateLoadBalancerRequest request = new CreateLoadBalancerRequest();
-        request.setVpcId("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
-        //request.setLoadBalancerName("iiii");
+        request.setVpcId("9f0cd9aa-6a14-4a0d-88c4-530f559b13b2");
+        request.setLoadBalancerName("sdk-test");
         //request.setSubnetId("73447731-8071-4a2c-b405-38dcb3b88544");
         //request.setType("internal");
+        request.setProjectId("472");
         CreateLoadBalancerResult result = client.createLoadBalancer(request);
         log.info(result);
     }
@@ -233,4 +241,375 @@ public class KSCSLBClientTest {
         DescribeInstancesWithListenerResult result=client.describeInstancesWithListener(request);
         log.info(result);
     }
+
+    @Test
+    public void createHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateHostHeaderRequest request = new CreateHostHeaderRequest();
+        request.setHostHeader("www.baidu.stop1");
+        request.setListenerId("eb9729de-93e6-48c6-946e-f75cb92ccb26");
+
+        CreateHostHeaderResult result = client.createHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyHostHeaderRequest request = new ModifyHostHeaderRequest();
+        request.setHostHeaderId("04f81a2e-bb2a-46e4-9dff-ec4510cc7636");
+        request.setCertificateId("8998c583-d2b2-4141-ae40-d62286d58051");
+
+        ModifyHostHeaderResult result = client.modifyHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteHostHeaderRequest request = new DeleteHostHeaderRequest();
+        request.setHostHeaderId("b2ed60ce-8377-48ac-bbe4-d43215275629");
+
+        DeleteHostHeaderResult result = client.deleteHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeHostHeader(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeHostHeadersRequest request = new DescribeHostHeadersRequest();
+        /*List<String> values = new ArrayList<String>();
+        values.add("eb9729de-93e6-48c6-946e-f75cb92ccb26");
+        Filter filter = new Filter("listener-id", values);
+        request.addFilters(filter);*/
+        DescribeHostHeadersResult result = client.describeHostHeader(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateLoadBalancerAclRequest request = new CreateLoadBalancerAclRequest();
+        request.setLoadBalancerAclName("test");
+        request.setIpVersion("ipv4");
+        CreateLoadBalancerAclResult result = client.createLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteLoadBalancerAclRequest request = new DeleteLoadBalancerAclRequest();
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        DeleteLoadBalancerAclResult result = client.deleteLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyLoadBalancerAclRequest request = new ModifyLoadBalancerAclRequest();
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        request.setLoadBalancerAclName("test1");
+        ModifyLoadBalancerAclResult result = client.modifyLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeLoadBalancerAcls(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeLoadBalancerAclsRequest request = new DescribeLoadBalancerAclsRequest();
+        com.ksc.internal.SdkInternalList<String> ids = new com.ksc.internal.SdkInternalList<String>();
+        ids.add("e3ff23b1-2f14-41bc-aada-fd21df585f47");
+        request.setLoadBalancerAclIds(ids);
+        DescribeLoadBalancerAclsResult result = client.describeLoadBalancerAcls(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteLoadBalancerAclEntry(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteLoadBalancerAclEntryRequest request = new DeleteLoadBalancerAclEntryRequest();
+        request.setLoadBalancerAclEntryId("e357ee65-a123-47b4-ab55-c07e2dd2c63b");
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        DeleteLoadBalancerAclEntryResult result = client.deleteLoadBalancerAclEntry(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createLoadBalancerAclEntry(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateLoadBalancerAclEntryRequest request = new CreateLoadBalancerAclEntryRequest();
+        request.setCidrBlock("6.0.0.0/8");
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        request.setProtocol("ip");
+        request.setRuleAction("allow");
+        request.setRuleNumber(170);
+        CreateLoadBalancerAclEntryResult result = client.createLoadBalancerAclEntry(request);
+        log.info(result);
+    }
+
+    @Test
+    public void associateLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AssociateLoadBalancerAclRequest request = new AssociateLoadBalancerAclRequest();
+        request.setLoadBalancerAclId("1b69fc05-c080-400a-8f8d-21b5cb58a7ff");
+        request.setListenerId("2d8c3d4f-365c-4dd8-ac3d-68038ccbedff");
+        AssociateLoadBalancerAclResult result = client.associateLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void disassociateLoadBalancerAcl(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DisassociateLoadBalancerAclRequest request = new DisassociateLoadBalancerAclRequest();
+        request.setListenerId("2d8c3d4f-365c-4dd8-ac3d-68038ccbedff");
+        DisassociateLoadBalancerAclResult result = client.disassociateLoadBalancerAcl(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createSlbRule(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateSlbRuleRequest request = new CreateSlbRuleRequest();
+        request.setBackendServerGroupId("ceb181ff-67c6-4b3d-b74a-3929583aac7b");
+        request.setSessionState("stop");
+        request.setHealthCheckState("start");
+        request.setHostHeaderId("92391365-d37f-4f35-b3b9-7db72dca6b00");
+        request.setUrlPath("/1d");
+        request.setHealthyThreshold(5);
+        request.setInterval(3);
+        request.setTimeout(3);
+        request.setUnhealthyThreshold(5);
+        request.setCookieName("saa");
+        request.setCookieType("ImplantCookie");
+        request.setPath("/sdsf1sf");
+        request.setListenerSync("off");
+        request.setMethod("LeastConnections");
+        CreateSlbRuleResult result = client.createSlbRule(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifySlbRule(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifySlbRuleRequest request = new ModifySlbRuleRequest();
+        request.setRuleId("1126f5b3-93e8-4c86-9b1a-662e07c6fbd9");
+        request.setBackendServerGroupId("ceb181ff-67c6-4b3d-b74a-3929583aac7b");
+        ModifySlbRuleResult result = client.modifySlbRule(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteRule(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteRuleRequest request = new DeleteRuleRequest();
+        request.setRuleId("03c405df-498c-40e0-9e1a-bc5dfd61d012");
+        DeleteRuleResult result = client.deleteRule(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeRules(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeRulesRequest request = new DescribeRulesRequest();
+        request.setMaxResults("10");
+        //request.addRuleIds("03c405df-498c-40e0-9e1a-bc5dfd61d012");
+        /*List<String> values = new ArrayList<String>();
+        values.add("772b5013-a058-465f-90b5-df2eba3bf907");
+        Filter filter = new Filter("host-header-id", values);
+        request.addFilters(filter);*/
+        DescribeRulesResult result = client.describeRules(request);
+        log.info(result);
+    }
+
+    @Test
+    public void createBackendServerGroup(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateBackendServerGroupRequest request = new CreateBackendServerGroupRequest();
+        request.setBackendServerGroupName("test-sdk");
+        request.setBackendServerGroupType("Mirror");
+        request.setVpcId("f908be08-58f0-48e2-b7fa-e438d057a94d");
+        request.setHealthCheckState("start");
+        request.setHealthyThreshold(5);
+        request.setUnhealthyThreshold(5);
+        request.setInterval(3);
+        request.setTimeout(5);
+        request.setUrlPath("/");
+        CreateBackendServerGroupResult result = client.createBackendServerGroup(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyBackendServerGroup(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyBackendServerGroupRequest request = new ModifyBackendServerGroupRequest();
+        request.setBackendServerGroupId("d62e8319-5342-4651-a296-843fea9ae62b");
+        request.setBackendServerGroupName("abc-mirror-2");
+        ModifyBackendServerGroupResult result = client.modifyBackendServerGroup(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteBackendServerGroup(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteBackendServerGroupRequest request = new DeleteBackendServerGroupRequest();
+        request.setBackendServerGroupId("d2fb12c0-52fa-4b4f-8a10-e90165b1217a");
+        DeleteBackendServerGroupResult result = client.deleteBackendServerGroup(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeBackendServerGroups(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeBackendServerGroupsRequest request = new DescribeBackendServerGroupsRequest();
+        /*request.addBackendServerGroupIds("d2fb12c0-52fa-4b4f-8a10-e90165b1217a");
+        List<String> values = new ArrayList<String>();
+        values.add("eb9729de-93e6-48c6-946e-f75cb92ccb26");
+        Filter filter = new Filter("vpc-id", values);
+        request.addFilters(filter);*/
+        DescribeBackendServerGroupsResult result = client.describeBackendServerGroups(request);
+        log.info(result);
+    }
+
+    @Test
+    public void registerBackendServer(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        RegisterBackendServerRequest request = new RegisterBackendServerRequest();
+        request.setBackendServerGroupId("aabec64a-0e6e-44c3-a915-7367b3d087de");
+        request.setBackendServerIp("155.0.30.36");
+        request.setBackendServerPort("9090");
+        request.setWeight(100);
+        RegisterBackendServerResult result = client.registerBackendServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyBackendServer(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyBackendServerRequest request = new ModifyBackendServerRequest();
+        request.setRegisterId("3c5410a2-4c88-4a3b-ab6e-d8a126f6a9af");
+        request.setWeight(30);
+        ModifyBackendServerResult result = client.modifyBackendServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deregisterBackendServer(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeregisterBackendServerRequest request = new DeregisterBackendServerRequest();
+        request.setRegisterId("e844ef08-5e89-4589-ab52-4eed1852e96e");
+        DeregisterBackendServerResult result = client.deregisterBackendServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeBackendServers(){
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribeBackendServersRequest request = new DescribeBackendServersRequest();
+        request.addRegisterIds("3c5410a2-4c88-4a3b-ab6e-d8a126f6a9af");
+        List<String> values = new ArrayList<String>();
+        values.add("aabec64a-0e6e-44c3-a915-7367b3d087de");
+        Filter filter = new Filter("backend-server-group-id", values);
+        request.addFilters(filter);
+        DescribeBackendServersResult result = client.describeBackendServers(request);
+        log.info(result);
+    }
+
 }

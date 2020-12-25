@@ -36,6 +36,11 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
      */
     private Integer PurchaseTime;
 
+    /**
+     * 项目的ID
+     */
+    private String projectId;
+
 	public String getLineId() {
 		return LineId;
 	}
@@ -68,6 +73,14 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
 		PurchaseTime = purchaseTime;
 	}
 
+    public String getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(String projectId) {
+        this.projectId = projectId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -78,7 +91,8 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
         if (LineId != null ? !LineId.equals(that.LineId) : that.LineId != null) return false;
         if (BandWidth != null ? !BandWidth.equals(that.BandWidth) : that.BandWidth != null) return false;
         if (ChargeType != null ? !ChargeType.equals(that.ChargeType) : that.ChargeType != null) return false;
-        return PurchaseTime != null ? PurchaseTime.equals(that.PurchaseTime) : that.PurchaseTime == null;
+        if (PurchaseTime != null ? !PurchaseTime.equals(that.PurchaseTime) : that.PurchaseTime != null) return false;
+        return projectId != null ? projectId.equals(that.projectId) : that.projectId == null;
     }
 
     @Override
@@ -87,6 +101,7 @@ public class AllocateAddressRequest extends KscWebServiceRequest implements
         result = 31 * result + (BandWidth != null ? BandWidth.hashCode() : 0);
         result = 31 * result + (ChargeType != null ? ChargeType.hashCode() : 0);
         result = 31 * result + (PurchaseTime != null ? PurchaseTime.hashCode() : 0);
+        result = 31 * result + (projectId != null ? projectId.hashCode() : 0);
         return result;
     }
 

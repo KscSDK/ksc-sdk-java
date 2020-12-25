@@ -108,8 +108,8 @@ public class InstanceDetailStaxUnmarshaller implements
 					continue;
 				}
 
-				if (context.testExpression("ProjectId", targetDepth)) {
-					vm.setProjectId(StringStaxUnmarshaller
+				if (context.testExpression("projectId", targetDepth)) {
+					vm.setProjectId(SimpleTypeStaxUnmarshallers.LongStaxUnmarshaller
 							.getInstance().unmarshall(context));
 					continue;
 				}
@@ -128,6 +128,96 @@ public class InstanceDetailStaxUnmarshaller implements
 							.getInstance().unmarshall(context));
 					continue;
 				}
+
+				if (context.testExpression("IsShowSriovNetSupport", targetDepth)) {
+					vm.setShowSriovNetSupport(SimpleTypeStaxUnmarshallers.BooleanStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("AvailabilityZoneName", targetDepth)) {
+					vm.setAvailabilityZoneName(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("AutoScalingType", targetDepth)) {
+					vm.setAutoScalingType(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("ProductWhat", targetDepth)) {
+					vm.setProductWhat(SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("SystemDisk", targetDepth)) {
+					vm.setSystemDisk(SystemDiskStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("HostName", targetDepth)) {
+					vm.setHostName(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("UserData", targetDepth)) {
+					vm.setUserData(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("StoppedMode", targetDepth)) {
+					vm.setStoppedMode(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("AutoDeleteTime", targetDepth)) {
+					vm.setAutoDeleteTime(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("AutoDeleteEip", targetDepth)) {
+					vm.setAutoDeleteEip(SimpleTypeStaxUnmarshallers.BooleanStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("SpotRecyclingTime", targetDepth)) {
+					vm.setSpotRecyclingTime(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("spotStrategy", targetDepth)) {
+					vm.setSpotStrategy(SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("spotPriceLimit", targetDepth)) {
+					vm.setSpotPriceLimit(SimpleTypeStaxUnmarshallers.DoubleStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("DataDisks", targetDepth)) {
+					vm.withDataDisks(InstanceDataDiskStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("DataGuardSet/Item", targetDepth)) {
+					vm.setDataGuard(InstanceDataGuardStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return vm;

@@ -12,6 +12,9 @@ import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
+import com.ksc.network.vpc.model.peering.*;
+import com.ksc.network.vpc.model.vpn.*;
+import com.ksc.network.vpc.model.NetworkInterface.*;
 
 public interface KSCVPC {
 
@@ -226,8 +229,91 @@ public interface KSCVPC {
     /**
      * 描述Nat
      */
-    public DescribeNatsResult describeNats(
-            DescribeNatsRequest describeNatsRequest);
+    public DescribeNatsResult describeNats(DescribeNatsRequest describeNatsRequest);
+
+	/**
+	 * 创建对等连接
+	 */
+	public CreateVpcPeeringConnectionResult createVpcPeeringConnection(CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest);
+	/**
+	 * 修改对等连接
+	 */
+	public ModifyVpcPeeringConnectionResult modifyVpcPeeringConnection(ModifyVpcPeeringConnectionRequest modifyVpcPeeringConnectionRequest);
+	/**
+	 * 删除对等连接
+	 */
+	public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest);
+	/**
+	 * 查询对等连接
+	 */
+	public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest);
+	/**
+	 * 接受对等连接
+	 */
+	public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest);
+	/**
+	 * 拒绝对等连接
+	 */
+	public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest);
+
+	/**
+	 * 创建VPN网关
+	 */
+	public CreateVpnGatewayResult createVpnGateway(CreateVpnGatewayRequest createVpnGatewayRequest);
+	/**
+	 * 修改VPN网关
+	 */
+	public ModifyVpnGatewayResult modifyVpnGateway(ModifyVpnGatewayRequest modifyVpnGatewayRequest);
+	/**
+	 * 删除VPN网关
+	 */
+	public DeleteVpnGatewayResult deleteVpnGateway(DeleteVpnGatewayRequest deleteVpnGatewayRequest);
+	/**
+	 * 查询VPN网关
+	 */
+	public DescribeVpnGatewaysResult describeVpnGateways(DescribeVpnGatewaysRequest describeVpnGatewaysRequest);
+	/**
+	 * 创建弹性网卡
+	 */
+	public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest createNetworkInterfaceRequest);
+	/**
+	 * 删除弹性网卡
+	 */
+	public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest);
+
+	/**
+	 * 创建客户网关
+	 */
+	public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest createCustomerGatewayRequest);
+	/**
+	 * 删除客户网关
+	 */
+	public DeleteCustomerGatewayResult deleteCustomerGateway(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest);
+	/**
+	 * 修改客户网关
+	 */
+	public ModifyCustomerGatewayResult modifyCustomerGateway(ModifyCustomerGatewayRequest modifyCustomerGatewayRequest);
+	/**
+	 * 获取客户网关
+	 */
+	public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest);
+
+	/**
+	 * 创建VPN通道
+	 */
+	public CreateVpnTunnelResult createVpnTunnel(CreateVpnTunnelRequest createVpnTunnelRequest);
+	/**
+	 * 删除VPN通道
+	 */
+	public DeleteVpnTunnelResult deleteVpnTunnel(DeleteVpnTunnelRequest deleteVpnTunnelRequest);
+	/**
+	 * 修改VPN通道
+	 */
+	public ModifyVpnTunnelResult modifyVpnTunnel(ModifyVpnTunnelRequest modifyVpnTunnelRequest);
+	/**
+	 * 获取VPN通道
+	 */
+	public DescribeVpnTunnelsResult describeVpnTunnels(DescribeVpnTunnelsRequest describeVpnTunnelsRequest);
 
 }
 

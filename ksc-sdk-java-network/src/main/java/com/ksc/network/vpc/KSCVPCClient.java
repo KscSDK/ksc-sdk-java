@@ -22,6 +22,9 @@ import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
+import com.ksc.network.vpc.model.peering.*;
+import com.ksc.network.vpc.model.vpn.*;
+import com.ksc.network.vpc.model.NetworkInterface.*;
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesRequestMarshaller;
 import com.ksc.network.vpc.transform.AvailabilityZone.DescribeAvailabilityZonesResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.InternetGateways.DescribeInternetGatewaysRequestMarshaller;
@@ -34,6 +37,9 @@ import com.ksc.network.vpc.transform.Routes.*;
 import com.ksc.network.vpc.transform.SecurityGroups.*;
 import com.ksc.network.vpc.transform.subnet.*;
 import com.ksc.network.vpc.transform.vpc.*;
+import com.ksc.network.vpc.transform.peering.*;
+import com.ksc.network.vpc.transform.vpn.*;
+import com.ksc.network.vpc.transform.NetworkInterface.*;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
@@ -1396,5 +1402,523 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
             endClientExecution(kscRequestMetrics, request, response);
         }
     }
+
+	@Override
+	public CreateVpcPeeringConnectionResult createVpcPeeringConnection(CreateVpcPeeringConnectionRequest createVpcPeeringConnectionRequest) {
+		ExecutionContext executionContext = createExecutionContext(createVpcPeeringConnectionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateVpcPeeringConnectionRequest> request = null;
+		Response<CreateVpcPeeringConnectionResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateVpcPeeringConnectionRequestMarshaller()
+						.marshall(createVpcPeeringConnectionRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateVpcPeeringConnectionResult> responseHandler = new StaxResponseHandler<CreateVpcPeeringConnectionResult>(
+					new CreateVpcPeeringConnectionResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyVpcPeeringConnectionResult modifyVpcPeeringConnection(ModifyVpcPeeringConnectionRequest modifyVpcPeeringConnectionRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyVpcPeeringConnectionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyVpcPeeringConnectionRequest> request = null;
+		Response<ModifyVpcPeeringConnectionResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyVpcPeeringConnectionRequestMarshaller()
+						.marshall(modifyVpcPeeringConnectionRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyVpcPeeringConnectionResult> responseHandler = new StaxResponseHandler<ModifyVpcPeeringConnectionResult>(
+					new ModifyVpcPeeringConnectionResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteVpcPeeringConnectionResult deleteVpcPeeringConnection(DeleteVpcPeeringConnectionRequest deleteVpcPeeringConnectionRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteVpcPeeringConnectionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteVpcPeeringConnectionRequest> request = null;
+		Response<DeleteVpcPeeringConnectionResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteVpcPeeringConnectionRequestMarshaller()
+						.marshall(deleteVpcPeeringConnectionRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteVpcPeeringConnectionResult> responseHandler = new StaxResponseHandler<DeleteVpcPeeringConnectionResult>(
+					new DeleteVpcPeeringConnectionResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeVpcPeeringConnectionsResult describeVpcPeeringConnections(DescribeVpcPeeringConnectionsRequest describeVpcPeeringConnectionsRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeVpcPeeringConnectionsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeVpcPeeringConnectionsRequest> request = null;
+		Response<DescribeVpcPeeringConnectionsResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeVpcPeeringConnectionsRequestMarshaller()
+						.marshall(describeVpcPeeringConnectionsRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeVpcPeeringConnectionsResult> responseHandler = new StaxResponseHandler<DescribeVpcPeeringConnectionsResult>(
+					new DescribeVpcPeeringConnectionsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public AcceptVpcPeeringConnectionResult acceptVpcPeeringConnection(AcceptVpcPeeringConnectionRequest acceptVpcPeeringConnectionRequest) {
+		ExecutionContext executionContext = createExecutionContext(acceptVpcPeeringConnectionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<AcceptVpcPeeringConnectionRequest> request = null;
+		Response<AcceptVpcPeeringConnectionResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new AcceptVpcPeeringConnectionRequestMarshaller()
+						.marshall(acceptVpcPeeringConnectionRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<AcceptVpcPeeringConnectionResult> responseHandler = new StaxResponseHandler<AcceptVpcPeeringConnectionResult>(
+					new AcceptVpcPeeringConnectionResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public RejectVpcPeeringConnectionResult rejectVpcPeeringConnection(RejectVpcPeeringConnectionRequest rejectVpcPeeringConnectionRequest) {
+		ExecutionContext executionContext = createExecutionContext(rejectVpcPeeringConnectionRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<RejectVpcPeeringConnectionRequest> request = null;
+		Response<RejectVpcPeeringConnectionResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new RejectVpcPeeringConnectionRequestMarshaller()
+						.marshall(rejectVpcPeeringConnectionRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<RejectVpcPeeringConnectionResult> responseHandler = new StaxResponseHandler<RejectVpcPeeringConnectionResult>(
+					new RejectVpcPeeringConnectionResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+	@Override
+	public CreateVpnGatewayResult createVpnGateway(CreateVpnGatewayRequest createVpnGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(createVpnGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateVpnGatewayRequest> request = null;
+		Response<CreateVpnGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateVpnGatewayRequestMarshaller()
+						.marshall(createVpnGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateVpnGatewayResult> responseHandler = new StaxResponseHandler<CreateVpnGatewayResult>(
+					new CreateVpnGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyVpnGatewayResult modifyVpnGateway(ModifyVpnGatewayRequest modifyVpnGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyVpnGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyVpnGatewayRequest> request = null;
+		Response<ModifyVpnGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyVpnGatewayRequestMarshaller()
+						.marshall(modifyVpnGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyVpnGatewayResult> responseHandler = new StaxResponseHandler<ModifyVpnGatewayResult>(
+					new ModifyVpnGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteVpnGatewayResult deleteVpnGateway(DeleteVpnGatewayRequest deleteVpnGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteVpnGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteVpnGatewayRequest> request = null;
+		Response<DeleteVpnGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteVpnGatewayRequestMarshaller()
+						.marshall(deleteVpnGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteVpnGatewayResult> responseHandler = new StaxResponseHandler<DeleteVpnGatewayResult>(
+					new DeleteVpnGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeVpnGatewaysResult describeVpnGateways(DescribeVpnGatewaysRequest describeVpnGatewaysRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeVpnGatewaysRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeVpnGatewaysRequest> request = null;
+		Response<DescribeVpnGatewaysResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeVpnGatewaysRequestMarshaller()
+						.marshall(describeVpnGatewaysRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeVpnGatewaysResult> responseHandler = new StaxResponseHandler<DescribeVpnGatewaysResult>(
+					new DescribeVpnGatewaysResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+    @Override
+    public CreateNetworkInterfaceResult createNetworkInterface(CreateNetworkInterfaceRequest createNetworkInterfaceRequest) {
+        ExecutionContext executionContext = createExecutionContext(createNetworkInterfaceRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateNetworkInterfaceRequest> request = null;
+        Response<CreateNetworkInterfaceResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateNetworkInterfaceRequestMarshaller()
+                        .marshall(createNetworkInterfaceRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<CreateNetworkInterfaceResult> responseHandler = new StaxResponseHandler<CreateNetworkInterfaceResult>(
+                    new CreateNetworkInterfaceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeleteNetworkInterfaceResult deleteNetworkInterface(DeleteNetworkInterfaceRequest deleteNetworkInterfaceRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteNetworkInterfaceRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteNetworkInterfaceRequest> request = null;
+        Response<DeleteNetworkInterfaceResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteNetworkInterfaceRequestMarshaller()
+                        .marshall(deleteNetworkInterfaceRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteNetworkInterfaceResult> responseHandler = new StaxResponseHandler<DeleteNetworkInterfaceResult>(
+                    new DeleteNetworkInterfaceResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+	@Override
+	public CreateCustomerGatewayResult createCustomerGateway(CreateCustomerGatewayRequest createCustomerGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(createCustomerGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateCustomerGatewayRequest> request = null;
+		Response<CreateCustomerGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateCustomerGatewayRequestMarshaller()
+						.marshall(createCustomerGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateCustomerGatewayResult> responseHandler = new StaxResponseHandler<CreateCustomerGatewayResult>(
+					new CreateCustomerGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteCustomerGatewayResult deleteCustomerGateway(DeleteCustomerGatewayRequest deleteCustomerGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteCustomerGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteCustomerGatewayRequest> request = null;
+		Response<DeleteCustomerGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteCustomerGatewayRequestMarshaller()
+						.marshall(deleteCustomerGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteCustomerGatewayResult> responseHandler = new StaxResponseHandler<DeleteCustomerGatewayResult>(
+					new DeleteCustomerGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyCustomerGatewayResult modifyCustomerGateway(ModifyCustomerGatewayRequest modifyCustomerGatewayRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyCustomerGatewayRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyCustomerGatewayRequest> request = null;
+		Response<ModifyCustomerGatewayResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyCustomerGatewayRequestMarshaller()
+						.marshall(modifyCustomerGatewayRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyCustomerGatewayResult> responseHandler = new StaxResponseHandler<ModifyCustomerGatewayResult>(
+					new ModifyCustomerGatewayResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeCustomerGatewaysResult describeCustomerGateways(DescribeCustomerGatewaysRequest describeCustomerGatewaysRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeCustomerGatewaysRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeCustomerGatewaysRequest> request = null;
+		Response<DescribeCustomerGatewaysResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeCustomerGatewaysRequestMarshaller()
+						.marshall(describeCustomerGatewaysRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeCustomerGatewaysResult> responseHandler = new StaxResponseHandler<DescribeCustomerGatewaysResult>(
+					new DescribeCustomerGatewaysResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public CreateVpnTunnelResult createVpnTunnel(CreateVpnTunnelRequest createVpnTunnelRequest) {
+		ExecutionContext executionContext = createExecutionContext(createVpnTunnelRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<CreateVpnTunnelRequest> request = null;
+		Response<CreateVpnTunnelResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new CreateVpnTunnelRequestMarshaller()
+						.marshall(createVpnTunnelRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<CreateVpnTunnelResult> responseHandler = new StaxResponseHandler<CreateVpnTunnelResult>(
+					new CreateVpnTunnelResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DeleteVpnTunnelResult deleteVpnTunnel(DeleteVpnTunnelRequest deleteVpnTunnelRequest) {
+		ExecutionContext executionContext = createExecutionContext(deleteVpnTunnelRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DeleteVpnTunnelRequest> request = null;
+		Response<DeleteVpnTunnelResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DeleteVpnTunnelRequestMarshaller()
+						.marshall(deleteVpnTunnelRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DeleteVpnTunnelResult> responseHandler = new StaxResponseHandler<DeleteVpnTunnelResult>(
+					new DeleteVpnTunnelResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public ModifyVpnTunnelResult modifyVpnTunnel(ModifyVpnTunnelRequest modifyVpnTunnelRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyVpnTunnelRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyVpnTunnelRequest> request = null;
+		Response<ModifyVpnTunnelResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyVpnTunnelRequestMarshaller()
+						.marshall(modifyVpnTunnelRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<ModifyVpnTunnelResult> responseHandler = new StaxResponseHandler<ModifyVpnTunnelResult>(
+					new ModifyVpnTunnelResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DescribeVpnTunnelsResult describeVpnTunnels(DescribeVpnTunnelsRequest describeVpnTunnelsRequest) {
+		ExecutionContext executionContext = createExecutionContext(describeVpnTunnelsRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribeVpnTunnelsRequest> request = null;
+		Response<DescribeVpnTunnelsResult> response = null;
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribeVpnTunnelsRequestMarshaller()
+						.marshall(describeVpnTunnelsRequest);
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+			StaxResponseHandler<DescribeVpnTunnelsResult> responseHandler = new StaxResponseHandler<DescribeVpnTunnelsResult>(
+					new DescribeVpnTunnelsResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+		} finally {
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
 
 }

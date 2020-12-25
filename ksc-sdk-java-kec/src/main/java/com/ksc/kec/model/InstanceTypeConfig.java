@@ -12,12 +12,11 @@ public class InstanceTypeConfig {
     private List<AvailabilityZoneInfo> AvailabilityZoneSet;
 	private String InstanceType;
 	private String InstanceFamily;
-	private Integer GPU;
+	private String InstanceFamilyName;
+	private List<SystemDiskQuotaInfo> SystemDiskQuotaSet;
+	private List<DataDiskQuotaInfo> DataDiskQuotaSet;
 	private Integer CPU;
 	private Integer Memory;
-	private Integer DataDiskMax;
-	private Integer DataDiskMin;
-	private Boolean SriovNetSupport;
 
 
 	public InstanceTypeConfig withAvailabilityZoneSet(AvailabilityZoneInfo... availabilityZoneInfo_set) {
@@ -54,14 +53,6 @@ public class InstanceTypeConfig {
 		InstanceFamily = instanceFamily;
 	}
 
-	public Integer getGPU() {
-		return GPU;
-	}
-
-	public void setGPU(Integer gPU) {
-		GPU = gPU;
-	}
-
 	public Integer getCPU() {
 		return CPU;
 	}
@@ -78,28 +69,47 @@ public class InstanceTypeConfig {
 		Memory = memory;
 	}
 
-	public Integer getDataDiskMax() {
-		return DataDiskMax;
+	public String getInstanceFamilyName() {
+		return InstanceFamilyName;
 	}
 
-	public void setDataDiskMax(Integer dataDiskMax) {
-		DataDiskMax = dataDiskMax;
+	public void setInstanceFamilyName(String instanceFamilyName) {
+		InstanceFamilyName = instanceFamilyName;
 	}
 
-	public Integer getDataDiskMin() {
-		return DataDiskMin;
+	public List<SystemDiskQuotaInfo> getSystemDiskQuotaSet() {
+		return SystemDiskQuotaSet;
 	}
 
-	public void setDataDiskMin(Integer dataDiskMin) {
-		DataDiskMin = dataDiskMin;
+	public void setSystemDiskQuotaSet(List<SystemDiskQuotaInfo> systemDiskQuotaSet) {
+		SystemDiskQuotaSet = systemDiskQuotaSet;
 	}
 
-	public Boolean getSriovNetSupport() {
-		return SriovNetSupport;
+	public List<DataDiskQuotaInfo> getDataDiskQuotaSet() {
+		return DataDiskQuotaSet;
 	}
 
-	public void setSriovNetSupport(Boolean sriovNetSupport) {
-		SriovNetSupport = sriovNetSupport;
+	public void setDataDiskQuotaSet(List<DataDiskQuotaInfo> dataDiskQuotaSet) {
+		DataDiskQuotaSet = dataDiskQuotaSet;
 	}
 
+	public InstanceTypeConfig withSystemDiskQuotaSet(SystemDiskQuotaInfo... systemDiskQuotaInfos) {
+		if (this.SystemDiskQuotaSet == null) {
+			this.SystemDiskQuotaSet = new SdkInternalList<SystemDiskQuotaInfo>();
+		}
+		for (SystemDiskQuotaInfo n : systemDiskQuotaInfos) {
+			this.SystemDiskQuotaSet.add(n);
+		}
+		return this;
+	}
+
+	public InstanceTypeConfig withDataDiskQuotaSet(DataDiskQuotaInfo... dataDiskQuotaInfos) {
+		if (this.DataDiskQuotaSet == null) {
+			this.DataDiskQuotaSet = new SdkInternalList<DataDiskQuotaInfo>();
+		}
+		for (DataDiskQuotaInfo n : dataDiskQuotaInfos) {
+			this.DataDiskQuotaSet.add(n);
+		}
+		return this;
+	}
 }

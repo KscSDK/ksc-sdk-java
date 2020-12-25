@@ -1,29 +1,39 @@
 package com.ksc.epc.model;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+
+@Data
 @ToString
+@EqualsAndHashCode
 public class Disk {
-	private String DiskName;
-	private String Raid;
-	private String Space;
-	public String getDiskName() {
-		return DiskName;
-	}
-	public void setDiskName(String diskName) {
-		DiskName = diskName;
-	}
-	public String getRaid() {
-		return Raid;
-	}
-	public void setRaid(String raid) {
-		Raid = raid;
-	}
-	public String getSpace() {
-		return Space;
-	}
-	public void setSpace(String space) {
-		Space = space;
-	}
-	
+
+    /**
+     * 磁盘类型
+     */
+    private String diskType;
+    /**
+     * 系统盘大小，单位G，仅在磁盘类型
+     */
+    private String systemDiskSpace;
+    /**
+     * Raid等级
+     */
+    private String raid;
+    /**
+     * 磁盘属性
+     */
+    private String diskAttribute;
+    /**
+     * 磁盘数量
+     */
+    private String diskCount;
+    /**
+     * 磁盘可用容量，单位G
+     */
+    private String space;
+
+
 }
