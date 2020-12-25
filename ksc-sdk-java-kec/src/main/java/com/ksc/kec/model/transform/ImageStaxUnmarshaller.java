@@ -14,56 +14,66 @@ import com.ksc.transform.Unmarshaller;
  *
  */
 public class ImageStaxUnmarshaller implements Unmarshaller<Image, StaxUnmarshallerContext> {
-	private static ImageStaxUnmarshaller instance;
+    private static ImageStaxUnmarshaller instance;
 
-	public static ImageStaxUnmarshaller getInstance() {
-		if (instance == null)
-			instance = new ImageStaxUnmarshaller();
-		return instance;
-	}
+    public static ImageStaxUnmarshaller getInstance() {
+        if (instance == null)
+            instance = new ImageStaxUnmarshaller();
+        return instance;
+    }
 
-	@Override
-	public Image unmarshall(StaxUnmarshallerContext context) throws Exception {
+    @Override
+    public Image unmarshall(StaxUnmarshallerContext context) throws Exception {
 		// TODO Auto-generated method stub
-		Image info = new Image();
-		int originalDepth = context.getCurrentDepth();
-		int targetDepth = originalDepth + 1;
-		while (true) {
-			XMLEvent xmlEvent = context.nextEvent();
-			if (xmlEvent.isEndDocument())
-				return info;
-			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				if (context.testExpression("InstanceId", targetDepth)) {
-					info.setInstanceId(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				} else if (context.testExpression("Name", targetDepth)) {
-					info.setName(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("ImageId", targetDepth)) {
-					info.setImageId(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("CreationDate", targetDepth)) {
-					info.setCreationDate(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("IsPublic", targetDepth)) {
-					info.setIsPublic(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("Platform", targetDepth)) {
-					info.setPlatform(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("ImageState", targetDepth)) {
-					info.setImageState(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("IsNpe", targetDepth)) {
-					info.setIsNpe(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("UserCategory", targetDepth)) {
-					info.setUserCategory(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("SysDisk", targetDepth)) {
-					info.setSysDisk(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("Progress", targetDepth)) {
-					info.setProgress(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}else if (context.testExpression("ImageSource", targetDepth)) {
-					info.setImageSource(StringStaxUnmarshaller.getInstance().unmarshall(context));
-				}
-			} else if (xmlEvent.isEndElement()) {
-				if (context.getCurrentDepth() < originalDepth) {
-					return info;
-				}
-			}
-		}
-	}
+        Image info = new Image();
+        int originalDepth = context.getCurrentDepth();
+        int targetDepth = originalDepth + 1;
+        while (true) {
+            XMLEvent xmlEvent = context.nextEvent();
+            if (xmlEvent.isEndDocument())
+                return info;
+            if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
+                if (context.testExpression("InstanceId", targetDepth)) {
+                    info.setInstanceId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("Name", targetDepth)) {
+                    info.setName(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("ImageId", targetDepth)) {
+                    info.setImageId(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("CreationDate", targetDepth)) {
+                    info.setCreationDate(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("IsPublic", targetDepth)) {
+                    info.setIsPublic(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("Platform", targetDepth)) {
+                    info.setPlatform(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("ImageState", targetDepth)) {
+                    info.setImageState(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("IsNpe", targetDepth)) {
+                    info.setIsNpe(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("UserCategory", targetDepth)) {
+                    info.setUserCategory(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("SysDisk", targetDepth)) {
+                    info.setSysDisk(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("Progress", targetDepth)) {
+                    info.setProgress(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("ImageSource", targetDepth)) {
+                    info.setImageSource(StringStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("CloudInitSupport", targetDepth)) {
+                    info.setCloudInitSupport(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("Ipv6Support", targetDepth)) {
+                    info.setIpv6Support(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("IsModifyType", targetDepth)) {
+                    info.setIsModifyType(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("IsCloudMarket", targetDepth)) {
+                    info.setIsCloudMarket(BooleanStaxUnmarshaller.getInstance().unmarshall(context));
+                } else if (context.testExpression("SnapshotSet", targetDepth)) {
+                    info.withSnapShotSet(ImageSnapshotStaxUnmarshaller.getInstance().unmarshall(context));
+                }
+            } else if (xmlEvent.isEndElement()) {
+                if (context.getCurrentDepth() < originalDepth) {
+                    return info;
+                }
+            }
+        }
+    }
 
 }

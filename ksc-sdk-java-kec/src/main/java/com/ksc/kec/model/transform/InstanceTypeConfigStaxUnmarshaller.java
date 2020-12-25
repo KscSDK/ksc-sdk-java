@@ -3,7 +3,6 @@ package com.ksc.kec.model.transform;
 import javax.xml.stream.events.XMLEvent;
 
 import com.ksc.kec.model.InstanceTypeConfig;
-import com.ksc.transform.SimpleTypeStaxUnmarshallers.BooleanStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
@@ -43,8 +42,8 @@ public class InstanceTypeConfigStaxUnmarshaller implements
 					continue;
 				}
 
-				if (context.testExpression("GPU", targetDepth)) {
-					instanceTypeConfig.setGPU(IntegerStaxUnmarshaller.getInstance()
+				if (context.testExpression("instanceFamilyName", targetDepth)) {
+					instanceTypeConfig.setInstanceFamilyName(StringStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}
@@ -60,26 +59,20 @@ public class InstanceTypeConfigStaxUnmarshaller implements
 					continue;
 				}
 
-				if (context.testExpression("DataDiskMax", targetDepth)) {
-					instanceTypeConfig.setDataDiskMax(IntegerStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}
-
-				if (context.testExpression("DataDiskMin", targetDepth)) {
-					instanceTypeConfig.setDataDiskMin(IntegerStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}
-
-				if (context.testExpression("SriovNetSupport", targetDepth)) {
-					instanceTypeConfig.setSriovNetSupport(BooleanStaxUnmarshaller.getInstance()
-							.unmarshall(context));
-					continue;
-				}
-
 				if (context.testExpression("AvailabilityZoneSet/AvailabilityZone", targetDepth)) {
 					instanceTypeConfig.withAvailabilityZoneSet(AvailabilityZoneInfoStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("systemDiskQuotaList", targetDepth)) {
+					instanceTypeConfig.withSystemDiskQuotaSet(SystemDiskQuotaInfoStaxUnmarshaller.getInstance()
+							.unmarshall(context));
+					continue;
+				}
+
+				if (context.testExpression("dataDiskQuotaList", targetDepth)) {
+					instanceTypeConfig.withDataDiskQuotaSet(DataDiskQuotaInfoStaxUnmarshaller.getInstance()
 							.unmarshall(context));
 					continue;
 				}

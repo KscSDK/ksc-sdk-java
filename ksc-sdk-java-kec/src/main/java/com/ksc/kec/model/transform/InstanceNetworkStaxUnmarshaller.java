@@ -88,6 +88,12 @@ public class InstanceNetworkStaxUnmarshaller implements
 					continue;
 				}
 
+				if (context.testExpression("Ipv6PublicIpAddressSet/Item", targetDepth)) {
+					n.withIpv6PublicIpAddressSet(InstanceIpv6PublicIpAddressStaxUnmarshaller
+							.getInstance().unmarshall(context));
+					continue;
+				}
+
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return n;

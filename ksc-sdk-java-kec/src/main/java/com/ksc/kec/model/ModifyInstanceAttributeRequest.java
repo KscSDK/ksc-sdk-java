@@ -44,6 +44,16 @@ public class ModifyInstanceAttributeRequest extends KscWebServiceRequest
 	 */
     private String InstancePassword;
 
+	/**
+	 * <p>
+	 * 操作系统内部的计算机名
+	 * 类型：String
+	 * 有效值：字符长度为[2, 64]，不支持点号（.），每段允许字母（不限制大小写）、数字和短横线（-）组成
+	 * 是否可缺省: 是，重启后生效
+	 * </p>
+	 */
+	private String HostName;
+
 	public String getInstanceId() {
 		return InstanceId;
 	}
@@ -68,8 +78,15 @@ public class ModifyInstanceAttributeRequest extends KscWebServiceRequest
 		InstanceName = instanceName;
 	}
 
+	public String getHostName() {
+		return HostName;
+	}
 
-    @Override
+	public void setHostName(String hostName) {
+		HostName = hostName;
+	}
+
+	@Override
 	public Request<ModifyInstanceAttributeRequest> getDryRunRequest() {
 		Request<ModifyInstanceAttributeRequest> request = new ModifyInstanceAttributeRequestMarshaller()
 				.marshall(this);

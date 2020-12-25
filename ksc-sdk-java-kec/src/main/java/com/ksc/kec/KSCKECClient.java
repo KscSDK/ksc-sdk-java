@@ -1280,4 +1280,66 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+
+	@Override
+	public AttachKeyResult attachKey(AttachKeyRequest attachKeyRequest) {
+		ExecutionContext executionContext = createExecutionContext(attachKeyRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<AttachKeyRequest> request = null;
+		Response<AttachKeyResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new AttachKeyRequestMarshaller()
+						.marshall(super.beforeMarshalling(attachKeyRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<AttachKeyResult> responseHandler = new StaxResponseHandler<AttachKeyResult>(
+					new AttachKeyResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
+	public DetachKeyResult detachKey(DetachKeyRequest detachKeyRequest) {
+		ExecutionContext executionContext = createExecutionContext(detachKeyRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DetachKeyRequest> request = null;
+		Response<DetachKeyResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DetachKeyRequestMarshaller()
+						.marshall(super.beforeMarshalling(detachKeyRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DetachKeyResult> responseHandler = new StaxResponseHandler<DetachKeyResult>(
+					new DetachKeyResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
 }
