@@ -576,7 +576,7 @@ public class KSCOpenAPISample {
 		request.withKeyIds("c079a41f-beb4-4b73-a68c-69f25b9c8819");
 		AttachKeyResult result=kec_client.attachKey(request);
 		Gson gson = new Gson();
-		log.info("imageCopy Result: "+gson.toJson(result));
+		log.info("attachKey Result: "+gson.toJson(result));
 	}
 
 	@Test
@@ -590,7 +590,7 @@ public class KSCOpenAPISample {
 		request.withKeyIds("c079a41f-beb4-4b73-a68c-69f25b9c8819");
 		DetachKeyResult result=kec_client.detachKey(request);
 		Gson gson = new Gson();
-		log.info("imageCopy Result: "+gson.toJson(result));
+		log.info("detachKey Result: "+gson.toJson(result));
 	}
 
 	@Test
