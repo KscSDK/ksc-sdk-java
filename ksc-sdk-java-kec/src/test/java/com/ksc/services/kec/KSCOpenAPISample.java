@@ -592,4 +592,19 @@ public class KSCOpenAPISample {
 		Gson gson = new Gson();
 		log.info("imageCopy Result: "+gson.toJson(result));
 	}
+
+	@Test
+	public void modifyInstanceAutoDeleteTime(){
+		ModifyInstanceAutoDeleteTimeRequest request = new ModifyInstanceAutoDeleteTimeRequest();
+		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
+		KSCKECClient kec_client = new KSCKECClient(credentials);
+		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setServiceNameIntern("kec");
+		request.withInstanceIds("b416944f-6980-4709-ab0b-c9c1458211b6");
+		request.setAutoDeleteTime("2021-01-26 10:45");
+		request.setAutoDeleteEip(true);
+		ModifyInstanceAutoDeleteTimeResult result=kec_client.modifyInstanceAutoDeleteTime(request);
+		Gson gson = new Gson();
+		log.info("modifyInstanceAutoDeleteTime Result: "+gson.toJson(result));
+	}
 }

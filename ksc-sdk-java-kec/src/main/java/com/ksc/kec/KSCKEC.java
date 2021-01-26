@@ -308,4 +308,11 @@ public interface KSCKEC {
 	 */
 	DetachKeyResult detachKey(DetachKeyRequest detachKeyRequest);
 
+	/**
+	 * 设置主机自动删除时间
+	 * @param detachKeyRequest
+	 * @return
+	 */
+	ModifyInstanceAutoDeleteTimeResult modifyInstanceAutoDeleteTime(ModifyInstanceAutoDeleteTimeRequest detachKeyRequest);
+
 }
