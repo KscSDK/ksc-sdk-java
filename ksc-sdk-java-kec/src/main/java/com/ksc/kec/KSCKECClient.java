@@ -1342,4 +1342,35 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 			endClientExecution(kscRequestMetrics, request, response);
 		}
 	}
+
+	@Override
+	public ModifyInstanceAutoDeleteTimeResult modifyInstanceAutoDeleteTime(ModifyInstanceAutoDeleteTimeRequest modifyInstanceAutoDeleteTimeRequest) {
+		ExecutionContext executionContext = createExecutionContext(modifyInstanceAutoDeleteTimeRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<ModifyInstanceAutoDeleteTimeRequest> request = null;
+		Response<ModifyInstanceAutoDeleteTimeResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new ModifyInstanceAutoDeleteTimeRequestMarshaller()
+						.marshall(super.beforeMarshalling(modifyInstanceAutoDeleteTimeRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<ModifyInstanceAutoDeleteTimeResult> responseHandler = new StaxResponseHandler<ModifyInstanceAutoDeleteTimeResult>(
+					new ModifyInstanceAutoDeleteTimeResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
 }
