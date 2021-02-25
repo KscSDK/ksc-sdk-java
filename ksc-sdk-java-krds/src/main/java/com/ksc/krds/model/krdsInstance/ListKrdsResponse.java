@@ -25,6 +25,33 @@ public class ListKrdsResponse {
 
     public class Data{
         List<Instance> Instances;
+        private Integer TotalCount;
+        private Integer MaxRecords;
+        private Integer Marker;
+
+        public Integer getTotalCount() {
+            return TotalCount;
+        }
+
+        public void setTotalCount(Integer totalCount) {
+            TotalCount = totalCount;
+        }
+
+        public Integer getMaxRecords() {
+            return MaxRecords;
+        }
+
+        public void setMaxRecords(Integer maxRecords) {
+            MaxRecords = maxRecords;
+        }
+
+        public Integer getMarker() {
+            return Marker;
+        }
+
+        public void setMarker(Integer marker) {
+            Marker = marker;
+        }
 
         public List<Instance> getInstances() {
             return Instances;
