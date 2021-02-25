@@ -36,6 +36,18 @@ public class ListKrdsResponseJsonUnmarshaller implements Unmarshaller<ListKrdsRe
                     context.nextToken();
                     result.setRequestId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+                if (context.testExpression("TotalCount", targetDepth+1)) {
+                    context.nextToken();
+                    result.getData().setTotalCount(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("MaxRecords", targetDepth+1)) {
+                    context.nextToken();
+                    result.getData().setMaxRecords(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+                if (context.testExpression("Marker", targetDepth+1)) {
+                    context.nextToken();
+                    result.getData().setMarker(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
 
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null
