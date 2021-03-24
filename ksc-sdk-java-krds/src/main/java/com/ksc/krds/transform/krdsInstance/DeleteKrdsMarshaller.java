@@ -21,7 +21,7 @@ public class DeleteKrdsMarshaller implements Marshaller<Request<DeleteKrdsReques
         }
         request.addParameter("Version", version);
         request.setHttpMethod(HttpMethodName.GET);
-        request.addHeader("x-ksc-request-id", "wwstestCreate123456");
+        request.addHeader("x-ksc-request-id", deleteKrdsRequest.getRequestId());
 
         request.addParameter("DBInstanceIdentifier", deleteKrdsRequest.getDBInstanceIdentifier());
         return request;
