@@ -24,7 +24,7 @@ public class CreateKrdsMarshaller implements Marshaller<Request<CreateKrdsReques
         }
         request.addParameter("Version", version);
         request.setHttpMethod(HttpMethodName.GET);
-        request.addHeader("x-ksc-request-id", "RequestId123");
+        request.addHeader("x-ksc-request-id", createKrdsRequest.getRequestId());
 
         for (Field field: createKrdsRequest.getClass().getDeclaredFields()){
             try {

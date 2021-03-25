@@ -12,6 +12,7 @@ public class ListKrdsRequest extends KscWebServiceRequest
 
     private Integer Marker=0;
     private Integer MaxRecords=10;
+    private String RequestId;
 
     public Integer getMarker() {
         return Marker;
@@ -27,6 +28,14 @@ public class ListKrdsRequest extends KscWebServiceRequest
 
     public void setMaxRecords(Integer maxRecords) {
         MaxRecords = maxRecords;
+    }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
     }
 
     public Request<ListKrdsRequest> getDryRunRequest() {
