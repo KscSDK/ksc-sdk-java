@@ -11,6 +11,7 @@ public class DeleteKrdsRequest extends KscWebServiceRequest
         implements Serializable, Cloneable, DryRunSupportedRequest<DeleteKrdsRequest> {
 
     private String DBInstanceIdentifier;
+    private String RequestId;
 
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
@@ -18,6 +19,14 @@ public class DeleteKrdsRequest extends KscWebServiceRequest
 
     public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
         this.DBInstanceIdentifier = DBInstanceIdentifier;
+    }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
     }
 
     public Request<DeleteKrdsRequest> getDryRunRequest() {

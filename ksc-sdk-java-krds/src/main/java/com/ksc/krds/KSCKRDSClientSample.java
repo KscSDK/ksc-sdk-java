@@ -54,13 +54,16 @@ public class KSCKRDSClientSample {
         CreateKrdsRequest request=new CreateKrdsRequest();
         request.setDBInstanceName("testKRDSInstance");
         request.setDBInstanceType("HRDS");
-        request.setDBInstanceClass("db.ram.1|db.disk.5");
+        request.setMem(1);
+        request.setDisk(10);
         request.setEngine("MySQL");
         request.setEngineVersion("5.6");
         request.setMasterUserName("admin");
         request.setMasterUserPassword("testAA123");
-        request.setVpcId("c1d332f1-164b-4066-902a-149e75a51ad4");
-        request.setSubnetId("2f8b762b-b8c9-400d-a989-96ea2ea7a5f9");
+        request.setVpcId("214a1292-108e-45d1-8b9c-b45d2ab41c0c");
+        request.setSubnetId("f80ce68d-eca2-475e-938b-666d90308212");
+        request.setBillType("DAY");
+        request.setProjectId(103800);
 
         KSCKRDSClient client=new KSCKRDSClient(credentials);
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
@@ -71,7 +74,7 @@ public class KSCKRDSClientSample {
         AWSCredentials credentials = new BasicAWSCredentials("AK",
                 "SK");
         DeleteKrdsRequest request = new DeleteKrdsRequest();
-        request.setDBInstanceIdentifier("6c943f2d-b648-43f0-a51b-a7a862a5d316");
+        request.setDBInstanceIdentifier("97cb0cb2-87f5-4809-9bf3-73fc954d19e2");
         KSCKRDSClient client=new KSCKRDSClient(credentials);
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
         return client.deleteKRDS(request);
@@ -100,7 +103,8 @@ public class KSCKRDSClientSample {
         KSCKRDSClientSample ksckrdsClientSample = new KSCKRDSClientSample();
 //        System.out.println(ksckrdsClientSample.createKRDS().getData().getDBInstance());
         ListKrdsResponse listKrdsResponse = ksckrdsClientSample.listAllKrds();
-        System.out.println(listKrdsResponse.getData().getInstances());
+//        System.out.println(listKrdsResponse.getData().getInstances());
+//        ksckrdsClientSample.deleteKRDS();
 //        System.out.println(ksckrdsClientSample.describeSecurityGroup().getData().getSecurityGroups());
 //        System.out.println(ksckrdsClientSample.listKrdsBackup().getData().getDBBackup());
 
