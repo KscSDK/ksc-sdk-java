@@ -1,7 +1,11 @@
 package com.ksc.krds.model.krdsInstance;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class Instance {
@@ -180,6 +184,68 @@ public class Instance {
             return  objectMapper.writeValueAsString(this);
         } catch (JsonProcessingException e){
             return null;
+        }
+    }
+
+    public static class Schema{
+        @JsonProperty("SchemaName")
+        private String SchemaName;
+
+        public Schema(String schemaName) {
+            SchemaName = schemaName;
+        }
+
+        public Schema() {
+        }
+
+        public String getSchemaName() {
+            return SchemaName;
+        }
+
+        public void setSchemaName(String schemaName) {
+            SchemaName = schemaName;
+        }
+    }
+
+    public static class WithData{
+        @JsonProperty("SourceInstanceIdentifier")
+        private String SourceInstanceIdentifier;
+        @JsonProperty("GivenTime")
+        private String GivenTime;
+        @JsonProperty("Schemas")
+        List<Schema> Schemas = new ArrayList<Schema>();
+
+        public String getSourceInstanceIdentifier() {
+            return SourceInstanceIdentifier;
+        }
+
+        public void setSourceInstanceIdentifier(String sourceInstanceIdentifier) {
+            SourceInstanceIdentifier = sourceInstanceIdentifier;
+        }
+
+        public String getGivenTime() {
+            return GivenTime;
+        }
+
+        public void setGivenTime(String givenTime) {
+            GivenTime = givenTime;
+        }
+
+        public List<Schema> getSchemas() {
+            return Schemas;
+        }
+
+        public void setSchemas(List<Schema> schemas) {
+            Schemas = schemas;
+        }
+
+        public WithData() {
+        }
+
+        public WithData(String sourceInstanceIdentifier, String givenTime, List<Schema> schemas) {
+            SourceInstanceIdentifier = sourceInstanceIdentifier;
+            GivenTime = givenTime;
+            Schemas = schemas;
         }
     }
 }
