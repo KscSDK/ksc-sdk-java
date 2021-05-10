@@ -1,6 +1,8 @@
 package com.ksc.krds.transform;
 
 import com.ksc.krds.model.krdsInstance.*;
+import com.ksc.krds.model.securityGroup.CreateSecurityGroupRequest;
+import com.ksc.krds.model.securityGroup.DeleteSecurityGroupRequest;
 
 public enum ActionEnum {
     /** -------------------instance------------------- **/
@@ -38,8 +40,14 @@ public enum ActionEnum {
     RELEASE_INNER_EIP(BaseRequest.class, "ReleaseDBInstanceInnerEip"),
 
     /** -------------------securityGroup------------------- **/
-
-    DESCRIBE_SECURITY_GROUP(BaseRequest.class,"DescribeSecurityGroup");
+    CREATE_SECURITY_GROUP(CreateSecurityGroupRequest.class,"CreateSecurityGroup"),
+    DELETE_SECURITY_GROUP(DeleteSecurityGroupRequest.class,"DeleteSecurityGroup"),
+    MODIFY_SECURITY_GROUP(CreateSecurityGroupRequest.class,"ModifySecurityGroup"),
+    CLONE_SECURITY_GROUP(CreateSecurityGroupRequest.class,"CloneSecurityGroup"),
+    DESCRIBE_SECURITY_GROUP(BaseRequest.class,"DescribeSecurityGroup"),
+    MODIFY_SECURITY_GROUP_RULE(BaseRequest.class,"ModifySecurityGroupRule"),
+    SECURITY_GROUP_RELATION(BaseRequest.class,"SecurityGroupRelation"),
+    MODIFY_SECURITY_GROUP_RULE_NAME(BaseRequest.class,"ModifySecurityGroupRuleName");
 
     private String val;
 

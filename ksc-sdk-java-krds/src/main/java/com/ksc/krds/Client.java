@@ -19,12 +19,12 @@ public class Client extends KSCKRDSClient {
         super(awsCredentials);
     }
 
-    public <T extends KrdsResponse, R extends BaseRequest> Response<T> execute(BaseMarshaller<R> marshaller, Unmarshaller unmarshaller, R in) {
+    public <R extends KrdsResponse, T extends BaseRequest> Response<R> execute(BaseMarshaller<T> marshaller, Unmarshaller unmarshaller, T in) {
         ExecutionContext context = createExecutionContext(in);
         KscRequestMetrics kscRequestMetrics = context.getKscRequestMetrics();
         kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<R> request = null;
-        Response<T> response = null;
+        Request<T> request = null;
+        Response<R> response = null;
 
         try {
             kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
@@ -38,7 +38,7 @@ public class Client extends KSCKRDSClient {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
 
-            HttpResponseHandler<KscWebServiceResponse<T>> responseHandler = protocolFactory
+            HttpResponseHandler<KscWebServiceResponse<R>> responseHandler = protocolFactory
                     .createResponseHandler(
                             new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
                             unmarshaller);

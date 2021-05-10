@@ -45,11 +45,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         request = new DefaultRequest<T>(req, SERVICE_NAME);
         request.addParameter("Action", action.val());
         request.setHttpMethod(method);
-        String version = req.getVersion();
-        if (StringUtils.isBlank(version)) {
-            version = "2016-07-01";
-        }
-        request.addParameter("Version", version);
+        setVersion(req);
         request.addHeader("x-ksc-request-id", req.getRequestId());
         request.addHeader("Accept", "application/json");
         for (Field field : req.getClass().getDeclaredFields()) {
@@ -66,6 +62,14 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         }
 
         return request;
+    }
+
+    public void setVersion(BaseRequest req) {
+        String version = req.getVersion();
+        if (StringUtils.isBlank(version)) {
+            version = "2016-07-01";
+        }
+        request.addParameter("Version", version);
     }
 
     private String upperCaseFirstLetter(String str) {
