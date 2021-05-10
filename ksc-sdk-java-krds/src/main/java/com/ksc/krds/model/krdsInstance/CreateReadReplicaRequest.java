@@ -6,6 +6,10 @@ import java.util.List;
 
 public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaRequest>{
 
+    private String DBInstanceIdentifier;
+
+    private String DBInstanceName;
+
     private String DBInstanceClass;
 
     private String AttachedVipId;
@@ -23,6 +27,22 @@ public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaReque
     private BigInteger ProjectId;
 
     private String SecurityGroupId;
+
+    public String getDBInstanceIdentifier() {
+        return DBInstanceIdentifier;
+    }
+
+    public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
+        this.DBInstanceIdentifier = DBInstanceIdentifier;
+    }
+
+    public String getDBInstanceName() {
+        return DBInstanceName;
+    }
+
+    public void setDBInstanceName(String DBInstanceName) {
+        this.DBInstanceName = DBInstanceName;
+    }
 
     public String getDBInstanceClass() {
         return DBInstanceClass;

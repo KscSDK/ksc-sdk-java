@@ -7,12 +7,10 @@ public class ModifyDBInstanceAvailabilityZoneRequest extends BaseRequest<ModifyD
     private String DBInstanceIdentifier;
     private List<String> AvailabilityZone;
 
-    @Override
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
     }
 
-    @Override
     public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
         this.DBInstanceIdentifier = DBInstanceIdentifier;
     }

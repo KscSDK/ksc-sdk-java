@@ -7,10 +7,8 @@ import com.ksc.model.DryRunSupportedRequest;
 
 import java.io.Serializable;
 
-public class ListKrdsRequest extends BaseRequest<ListKrdsRequest>
-//        KscWebServiceRequest
-//        implements Serializable, Cloneable, DryRunSupportedRequest<ListKrdsRequest>
-        {
+public class ListKrdsRequest extends KscWebServiceRequest
+        implements Serializable, Cloneable, DryRunSupportedRequest<ListKrdsRequest> {
 
     private Integer Marker=0;
     private Integer MaxRecords=10;

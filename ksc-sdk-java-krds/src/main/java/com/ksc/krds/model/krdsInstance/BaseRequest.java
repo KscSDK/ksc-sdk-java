@@ -14,32 +14,12 @@ public abstract class BaseRequest<T extends BaseRequest> extends KscWebServiceRe
 
     private String RequestId;
 
-    private String DBInstanceIdentifier;
-
-    private String DBInstanceName;
-
     public String getRequestId() {
         return RequestId;
     }
 
     public void setRequestId(String requestId) {
         RequestId = requestId;
-    }
-
-    public String getDBInstanceIdentifier() {
-        return DBInstanceIdentifier;
-    }
-
-    public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
-        this.DBInstanceIdentifier = DBInstanceIdentifier;
-    }
-
-    public String getDBInstanceName() {
-        return DBInstanceName;
-    }
-
-    public void setDBInstanceName(String DBInstanceName) {
-        this.DBInstanceName = DBInstanceName;
     }
 
     protected  ActionEnum action(){

@@ -3,6 +3,7 @@ package com.ksc.krds.transform;
 import com.ksc.krds.model.krdsInstance.*;
 
 public enum ActionEnum {
+    /** -------------------instance------------------- **/
     MODIFY(ModifyInstanceRequest.class, "ModifyDBInstance"),
     CREATE(BaseRequest.class, "CreateDBInstance"),
     CREATE_READ_REPLICA(CreateReadReplicaRequest.class, "CreateDBInstanceReadReplica"),
@@ -34,7 +35,11 @@ public enum ActionEnum {
     HISTORY_DATABASE_INFO(BaseRequest.class, "GetHistoryDatabaseInfo"),
     OVERRIDE_POINT_IN_TIME(BaseRequest.class, "OverrideDBInstanceByPointInTime"),
     ALLOCATE_INNER_EIP(BaseRequest.class, "AllocateDBInstanceInnerEip"),
-    RELEASE_INNER_EIP(BaseRequest.class, "ReleaseDBInstanceInnerEip");
+    RELEASE_INNER_EIP(BaseRequest.class, "ReleaseDBInstanceInnerEip"),
+
+    /** -------------------securityGroup------------------- **/
+
+    DESCRIBE_SECURITY_GROUP(BaseRequest.class,"DescribeSecurityGroup");
 
     private String val;
 

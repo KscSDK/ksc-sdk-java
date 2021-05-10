@@ -74,11 +74,6 @@ public class InstanceClient extends Client {
         return response.getKscResponse();
     }
 
-    public KrdsResponse listInstances(ListKrdsRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<ListKrdsRequest>(DESCRIBE));
-        return response.getKscResponse();
-    }
-
     public <T extends BaseRequest> Response<InstanceResponse> doExecute(T in, BaseMarshaller<T> marshaller) {
         return execute(marshaller, new InstanceUnmarshaller<InstanceResponse>(), in);
     }

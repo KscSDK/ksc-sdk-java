@@ -2,13 +2,15 @@ package com.ksc.krds.model.securityGroup;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.krdsInstance.InstanceBrief;
+import com.ksc.krds.transform.BaseData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class DescribeSecurityGroupResponse {
+public class DescribeSecurityGroupResponse extends KrdsResponse {
 
     private Data Data = new Data();
     private String RequestId;
@@ -30,7 +32,7 @@ public class DescribeSecurityGroupResponse {
     }
 
 
-    public class Data {
+    public class Data extends BaseData {
         private List<SecurityGroup> SecurityGroups = new ArrayList<SecurityGroup>();
 
         public List<SecurityGroup> getSecurityGroups() {
