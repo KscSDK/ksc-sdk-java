@@ -54,11 +54,6 @@ public class InstanceClient extends Client {
         return response.getKscResponse();
     }
 
-    public KrdsResponse unLockDBInstance(UnLockDBInstanceRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<UnLockDBInstanceRequest>(UN_LOCK));
-        return response.getKscResponse();
-    }
-
     public KrdsResponse modifyDBInstanceAvailabilityZone(ModifyDBInstanceAvailabilityZoneRequest request) {
         Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<ModifyDBInstanceAvailabilityZoneRequest>(MODIFY_AVAILABILITY_ZONE));
         return response.getKscResponse();
@@ -70,9 +65,31 @@ public class InstanceClient extends Client {
     }
 
     public KrdsResponse lockDBInstance(LockDBInstanceRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<LockDBInstanceRequest>(REBOOT));
+        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<LockDBInstanceRequest>(LOCK));
         return response.getKscResponse();
     }
+
+    public KrdsResponse unLockDBInstance(UnLockDBInstanceRequest request) {
+        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<UnLockDBInstanceRequest>(UN_LOCK));
+        return response.getKscResponse();
+    }
+
+    public KrdsResponse sdkRestoreDBInstanceFromDBBackup(SDKRestoreDBInstanceFromDBBackupRequest request){
+        Response<InstanceResponse> response = doExecute(request,
+                new BaseMarshaller<SDKRestoreDBInstanceFromDBBackupRequest>(RESTORE_FROM_BACKUP));
+        return response.getKscResponse();
+    }
+
+    public KrdsResponse overrideDBInstance(OverrideDBInstanceRequest request){
+        Response<InstanceResponse> response = doExecute(request,
+                new BaseMarshaller<OverrideDBInstanceRequest>(OVERRIDE));
+        return response.getKscResponse();
+    }
+
+//    public KrdsResponse listInstances(ListKrdsRequest request) {
+//        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<ListKrdsRequest>(DESCRIBE));
+//        return response.getKscResponse();
+//    }
 
     public <T extends BaseRequest> Response<InstanceResponse> doExecute(T in, BaseMarshaller<T> marshaller) {
         return execute(marshaller, new InstanceUnmarshaller<InstanceResponse>(), in);

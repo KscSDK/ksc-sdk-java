@@ -54,9 +54,11 @@ public class SecurityGroupClient extends Client {
 
     public KrdsResponse modifySecurityGroupRuleName(ModifySecurityGroupRuleNameRequest request){
         Response<DescribeSecurityGroupResponse> response = doExecute(request,
-                new BaseMarshaller<ModifySecurityGroupRuleNameRequest>(SECURITY_GROUP_RELATION));
+                new BaseMarshaller<ModifySecurityGroupRuleNameRequest>(MODIFY_SECURITY_GROUP_RULE_NAME));
         return response.getKscResponse();
     }
+
+
 
     public <T extends BaseRequest> Response<DescribeSecurityGroupResponse> doExecute(T in, BaseMarshaller<T> marshaller) {
         return execute(marshaller, new DescribeSecurityGroupJsonUnmarshaller(), in);

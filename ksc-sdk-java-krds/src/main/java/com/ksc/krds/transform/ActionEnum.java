@@ -1,8 +1,10 @@
 package com.ksc.krds.transform;
 
+import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
+import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
+import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
 import com.ksc.krds.model.krdsInstance.*;
-import com.ksc.krds.model.securityGroup.CreateSecurityGroupRequest;
-import com.ksc.krds.model.securityGroup.DeleteSecurityGroupRequest;
+import com.ksc.krds.model.securityGroup.*;
 
 public enum ActionEnum {
     /** -------------------instance------------------- **/
@@ -10,7 +12,7 @@ public enum ActionEnum {
     CREATE(BaseRequest.class, "CreateDBInstance"),
     CREATE_READ_REPLICA(CreateReadReplicaRequest.class, "CreateDBInstanceReadReplica"),
     DELETE(BaseRequest.class, "DeleteDBInstance"),
-    LOCK(BaseRequest.class, "LockDBInstance"),
+    LOCK(LockDBInstanceRequest.class, "LockDBInstance"),
     UN_LOCK(UnLockDBInstanceRequest.class, "UnLockDBInstance"),
     ALLOCATE_EIP(BaseRequest.class, "AllocateDBInstanceEip"),
     RELEASE_EIP(BaseRequest.class, "ReleaseDBInstanceEip"),
@@ -19,11 +21,11 @@ public enum ActionEnum {
     GENERATE_ADMIN_URL(BaseRequest.class, "GenerateDBAdminURL"),
     DESCRIBE_RESTORE_TIME(BaseRequest.class, "DescribeDBInstanceRestorableTime"),
     RESTORE_TO_POINT_IN_TIME(BaseRequest.class, "RestoreDBInstanceToPointInTime"),
-    RESTORE_FROM_BACKUP(BaseRequest.class, "RestoreDBInstanceFromDBBackup"),
+    RESTORE_FROM_BACKUP(SDKRestoreDBInstanceFromDBBackupRequest.class, "RestoreDBInstanceFromDBBackup"),
     MODIFY_SPEC(ModifyDBInstanceSpecRequest.class, "ModifyDBInstanceSpec"),
     UPGRADE_ENGINE_VERSION(UpgradeDBInstanceEngineVersionRequest.class, "UpgradeDBInstanceEngineVersion"),
     MODIFY_TYPE(ModifyInstanceTypeRequest.class, "ModifyDBInstanceType"),
-    OVERRIDE(BaseRequest.class, "OverrideDBInstance"),
+    OVERRIDE(OverrideDBInstanceRequest.class, "OverrideDBInstance"),
     DESCRIBE_ENGINE_VERSIONS(DescribeDBEngineVersionsRequest.class, "DescribeDBEngineVersions"),
     DESCRIBE_PARAMETERS(BaseRequest.class, "DescribeDBInstanceParameters"),
     LIST(BaseRequest.class, "ListDBInstance"),
@@ -45,10 +47,25 @@ public enum ActionEnum {
     MODIFY_SECURITY_GROUP(CreateSecurityGroupRequest.class,"ModifySecurityGroup"),
     CLONE_SECURITY_GROUP(CreateSecurityGroupRequest.class,"CloneSecurityGroup"),
     DESCRIBE_SECURITY_GROUP(BaseRequest.class,"DescribeSecurityGroup"),
-    MODIFY_SECURITY_GROUP_RULE(BaseRequest.class,"ModifySecurityGroupRule"),
-    SECURITY_GROUP_RELATION(BaseRequest.class,"SecurityGroupRelation"),
-    MODIFY_SECURITY_GROUP_RULE_NAME(BaseRequest.class,"ModifySecurityGroupRuleName");
+    MODIFY_SECURITY_GROUP_RULE(ModifySecurityGroupRuleRequest.class,"ModifySecurityGroupRule"),
+    SECURITY_GROUP_RELATION(SecurityGroupRelationRequest.class,"SecurityGroupRelation"),
+    MODIFY_SECURITY_GROUP_RULE_NAME(ModifySecurityGroupRuleNameRequest.class,"ModifySecurityGroupRuleName"),
 
+    /** -------------------parameterGroup------------------- **/
+    CREATE_PARAMETER_GROUP(BaseRequest.class,"CreateDBParameterGroup"),
+    MODIFY_PARAMETER_GROUP(BaseRequest.class,"ModifyDBParameterGroup"),
+    DELETE_PARAMETER_GROUP(BaseRequest.class,"DeleteDBParameterGroup"),
+    RESET_PARAMETER_GROUP(BaseRequest.class,"ResetDBParameterGroup"),
+    DESCRIBE_PARAMETER_GROUP(BaseRequest.class,"DescribeDBParameterGroup"),
+    DESCRIBE_ENGINE_DEFAULT_PARAMETERS(BaseRequest.class,"DescribeEngineDefaultParameters"),
+
+    /** -------------------parameterGroup------------------- **/
+    CREATE_BACKUP(CreateDBBackupRequest.class,"CreateDBBackup"),
+    DELETE_BACKUP(DeleteDBBackupRequest.class,"DeleteDBBackup"),
+    DESCRIBE_BACKUPS(BaseRequest.class,"DescribeDBBackups"),
+    MODIFY_BACKUP_POLICY(ModifyDBInstanceRequest.class,"ModifyDBBackupPolicy"),
+
+    ;
     private String val;
 
     private Class<? extends BaseRequest> req;

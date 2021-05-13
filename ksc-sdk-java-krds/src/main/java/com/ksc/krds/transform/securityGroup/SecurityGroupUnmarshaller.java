@@ -14,6 +14,11 @@ import java.util.List;
 public class SecurityGroupUnmarshaller<R extends KrdsResponse> extends BaseUnmarshaller<R> {
 
     @Override
+    protected void init() {
+        setResult((R) new DescribeSecurityGroupResponse());
+    }
+
+    @Override
     protected void doInvokeMethod(JsonUnmarshallerContext context, Method method, Field field, BaseData data)
             throws Exception {
         if (field.getType().getName().equals("java.util.List")) {

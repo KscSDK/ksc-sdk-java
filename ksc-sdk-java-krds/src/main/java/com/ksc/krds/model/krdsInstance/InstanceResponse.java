@@ -1,7 +1,9 @@
 package com.ksc.krds.model.krdsInstance;
 
+import com.ksc.krds.annotations.Unmarshaller;
 import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.transform.BaseData;
+import com.ksc.krds.transform.krdsInstance.KrdsInstanceJsonUnmarshaller;
 
 import java.util.List;
 
@@ -22,7 +24,11 @@ public class InstanceResponse extends KrdsResponse {
     }
 
     public class Data extends BaseData {
+
+        @Unmarshaller(clazz = KrdsInstanceJsonUnmarshaller.class)
         private List<Instance> Instances;
+
+        @Unmarshaller(clazz = KrdsInstanceJsonUnmarshaller.class)
         private Instance DBInstance;
 
         private Integer TotalCount;
