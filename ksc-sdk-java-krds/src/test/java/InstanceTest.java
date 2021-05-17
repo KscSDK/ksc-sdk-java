@@ -1,15 +1,13 @@
 import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.krds.InstanceClient;
 import com.ksc.krds.model.KrdsResponse;
+import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
-import com.ksc.krds.transform.BaseData;
-import org.apache.commons.lang.math.RandomUtils;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 import java.util.UUID;
 
 public class InstanceTest {
@@ -62,9 +60,12 @@ public class InstanceTest {
         RebootDBInstanceRequest request = new RebootDBInstanceRequest();
         request.setRequestId(UUID.randomUUID().toString());
         request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
-        KrdsResponse response = client.rebootDBInstance(request);
-        BaseData data = response.getData();
-        System.out.println(data.getDBInstance());
+//        KrdsResponse response = client.rebootDBInstance(request);
+//        BaseData data = response.getData();
+//        System.out.println(data.getDBInstance());
+        RdsResponse<TestResponse> response = client.rebootDBInstance(request);
+        TestResponse data = response.getData();
+        System.out.println(data);
     }
 
     @Test

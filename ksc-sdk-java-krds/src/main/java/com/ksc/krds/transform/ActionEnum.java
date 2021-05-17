@@ -4,6 +4,7 @@ import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
 import com.ksc.krds.model.krdsInstance.*;
+import com.ksc.krds.model.parametergroup.*;
 import com.ksc.krds.model.securityGroup.*;
 
 public enum ActionEnum {
@@ -52,11 +53,11 @@ public enum ActionEnum {
     MODIFY_SECURITY_GROUP_RULE_NAME(ModifySecurityGroupRuleNameRequest.class,"ModifySecurityGroupRuleName"),
 
     /** -------------------parameterGroup------------------- **/
-    CREATE_PARAMETER_GROUP(BaseRequest.class,"CreateDBParameterGroup"),
-    MODIFY_PARAMETER_GROUP(BaseRequest.class,"ModifyDBParameterGroup"),
-    DELETE_PARAMETER_GROUP(BaseRequest.class,"DeleteDBParameterGroup"),
-    RESET_PARAMETER_GROUP(BaseRequest.class,"ResetDBParameterGroup"),
-    DESCRIBE_PARAMETER_GROUP(BaseRequest.class,"DescribeDBParameterGroup"),
+    CREATE_PARAMETER_GROUP(CreateDBParameterGroupRequest.class,"CreateDBParameterGroup"),
+    MODIFY_PARAMETER_GROUP(ModifyDBParameterGroupRequest.class,"ModifyDBParameterGroup"),
+    DELETE_PARAMETER_GROUP(DeleteDBParameterGroupRequest.class,"DeleteDBParameterGroup"),
+    RESET_PARAMETER_GROUP(ResetDBParameterGroupRequest.class,"ResetDBParameterGroup"),
+    DESCRIBE_PARAMETER_GROUP(DescribeDBParameterGroupRequest.class,"DescribeDBParameterGroup"),
     DESCRIBE_ENGINE_DEFAULT_PARAMETERS(BaseRequest.class,"DescribeEngineDefaultParameters"),
 
     /** -------------------parameterGroup------------------- **/

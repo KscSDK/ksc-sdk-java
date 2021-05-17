@@ -3,9 +3,11 @@ package com.ksc.krds;
 import com.ksc.Response;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.KrdsResponse;
+import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
 import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
 import com.ksc.krds.transform.krdsInstance.InstanceUnmarshaller;
+import com.ksc.krds.transform.krdsInstance.TestUnmarshaller;
 
 import static com.ksc.krds.transform.ActionEnum.*;
 
@@ -59,9 +61,11 @@ public class InstanceClient extends Client {
         return response.getKscResponse();
     }
 
-    public KrdsResponse rebootDBInstance(RebootDBInstanceRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<RebootDBInstanceRequest>(REBOOT));
-        return response.getKscResponse();
+    public RdsResponse<TestResponse> rebootDBInstance(RebootDBInstanceRequest request) {
+
+        return invoke(new BaseMarshaller<RebootDBInstanceRequest>(REBOOT), new TestUnmarshaller(), request)
+                .getKscResponse();
+//        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<RebootDBInstanceRequest>(REBOOT));
     }
 
     public KrdsResponse lockDBInstance(LockDBInstanceRequest request) {
@@ -74,13 +78,13 @@ public class InstanceClient extends Client {
         return response.getKscResponse();
     }
 
-    public KrdsResponse sdkRestoreDBInstanceFromDBBackup(SDKRestoreDBInstanceFromDBBackupRequest request){
+    public KrdsResponse sdkRestoreDBInstanceFromDBBackup(SDKRestoreDBInstanceFromDBBackupRequest request) {
         Response<InstanceResponse> response = doExecute(request,
                 new BaseMarshaller<SDKRestoreDBInstanceFromDBBackupRequest>(RESTORE_FROM_BACKUP));
         return response.getKscResponse();
     }
 
-    public KrdsResponse overrideDBInstance(OverrideDBInstanceRequest request){
+    public KrdsResponse overrideDBInstance(OverrideDBInstanceRequest request) {
         Response<InstanceResponse> response = doExecute(request,
                 new BaseMarshaller<OverrideDBInstanceRequest>(OVERRIDE));
         return response.getKscResponse();
@@ -92,6 +96,7 @@ public class InstanceClient extends Client {
 //    }
 
     public <T extends BaseRequest> Response<InstanceResponse> doExecute(T in, BaseMarshaller<T> marshaller) {
-        return execute(marshaller, new InstanceUnmarshaller<InstanceResponse>(), in);
+//        return execute(marshaller, new InstanceUnmarshaller<InstanceResponse>(), in);
+        return null;
     }
 }
