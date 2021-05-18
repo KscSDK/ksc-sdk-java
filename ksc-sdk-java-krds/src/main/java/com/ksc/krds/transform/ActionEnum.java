@@ -1,10 +1,14 @@
 package com.ksc.krds.transform;
 
+import com.ksc.krds.Client;
 import com.ksc.krds.model.audit.*;
 import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
 import com.ksc.krds.model.krdsInstance.*;
+import com.ksc.krds.model.log.DeleteDBBinlogRequest;
+import com.ksc.krds.model.log.DescribeDBLogFilesRequest;
+import com.ksc.krds.model.log.DescribeDBLogRequest;
 import com.ksc.krds.model.parametergroup.*;
 import com.ksc.krds.model.securityGroup.*;
 
@@ -75,6 +79,10 @@ public enum ActionEnum {
     START_AUDIT_DETAIL_EXPORT_TASK(StartAuditDetailExportTaskRequest.class,"StartAuditDetailExportTask"),
     LIST_AUDIT_DETAIL_EXPORT_TASK(ListAuditDetailExportTaskRequest.class,"ListAuditDetailExportTask"),
 
+    /** -------------------log------------------- **/
+    DESCRIBE_LOG_FILES(DescribeDBLogFilesRequest.class, "DescribeDBLogFiles"),
+    DELETE_BIN_LOG(DeleteDBBinlogRequest.class,"DeleteDBBinlog"),
+    DESCRIBE_LAST_LOG(DescribeDBLogRequest.class,"DescribeLastLog"),
     ;
     private String val;
 

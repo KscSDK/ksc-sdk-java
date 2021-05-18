@@ -164,6 +164,16 @@ public class Instance {
         private Integer Ram;
         private Integer Disk;
 
+        private String Id;
+
+        private Integer Iops;
+
+        private Integer Vcpus;
+
+        private Integer Mem;
+
+        private Integer MaxConn;
+
         public Integer getRam() {
             return Ram;
         }
@@ -178,6 +188,46 @@ public class Instance {
 
         public void setDisk(Integer disk) {
             Disk = disk;
+        }
+
+        public String getId() {
+            return Id;
+        }
+
+        public void setId(String id) {
+            Id = id;
+        }
+
+        public Integer getIops() {
+            return Iops;
+        }
+
+        public void setIops(Integer iops) {
+            Iops = iops;
+        }
+
+        public Integer getVcpus() {
+            return Vcpus;
+        }
+
+        public void setVcpus(Integer vcpus) {
+            Vcpus = vcpus;
+        }
+
+        public Integer getMem() {
+            return Mem;
+        }
+
+        public void setMem(Integer mem) {
+            Mem = mem;
+        }
+
+        public Integer getMaxConn() {
+            return MaxConn;
+        }
+
+        public void setMaxConn(Integer maxConn) {
+            MaxConn = maxConn;
         }
     }
 
