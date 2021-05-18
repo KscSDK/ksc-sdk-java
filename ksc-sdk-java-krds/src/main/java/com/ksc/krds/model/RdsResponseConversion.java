@@ -20,7 +20,10 @@ public class RdsResponseConversion {
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
         JsonNode jsonNode = objectMapper.readTree(jsonParser);
-        rdsResponse.setRequestId(jsonNode.get("RequestId").asText());
+        JsonNode requestId = jsonNode.get("RequestId");
+        if (requestId != null) {
+            rdsResponse.setRequestId(requestId.asText());
+        }
         if (clazz != null) {
             rdsResponse.setData(objectMapper.convertValue(jsonNode.get("Data"), clazz));
         }
@@ -30,7 +33,7 @@ public class RdsResponseConversion {
 
     public static <T> T invoke1(JsonParser jsonParser, Class<T> clazz) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
+        objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
         objectMapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
         objectMapper.setDateFormat(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"));
         return objectMapper.convertValue(objectMapper.readTree(jsonParser), clazz);

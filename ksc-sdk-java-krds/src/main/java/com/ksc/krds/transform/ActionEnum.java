@@ -1,5 +1,6 @@
 package com.ksc.krds.transform;
 
+import com.ksc.krds.model.audit.*;
 import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
@@ -60,11 +61,19 @@ public enum ActionEnum {
     DESCRIBE_PARAMETER_GROUP(DescribeDBParameterGroupRequest.class,"DescribeDBParameterGroup"),
     DESCRIBE_ENGINE_DEFAULT_PARAMETERS(BaseRequest.class,"DescribeEngineDefaultParameters"),
 
-    /** -------------------parameterGroup------------------- **/
+    /** -------------------backup------------------- **/
     CREATE_BACKUP(CreateDBBackupRequest.class,"CreateDBBackup"),
     DELETE_BACKUP(DeleteDBBackupRequest.class,"DeleteDBBackup"),
     DESCRIBE_BACKUPS(BaseRequest.class,"DescribeDBBackups"),
     MODIFY_BACKUP_POLICY(ModifyDBInstanceRequest.class,"ModifyDBBackupPolicy"),
+
+    /** -------------------parameterGroup------------------- **/
+    START_AUDIT(StartAuditRequest.class,"StartAudit"),
+    STOP_AUDIT(StopAuditRequest.class,"StopAudit"),
+    LIST_AUDIT(ListAuditRequest.class,"ListAudit"),
+    AUDIT_STATISTIC(AuditStatisticRequest.class,"AuditStatistic"),
+    START_AUDIT_DETAIL_EXPORT_TASK(StartAuditDetailExportTaskRequest.class,"StartAuditDetailExportTask"),
+    LIST_AUDIT_DETAIL_EXPORT_TASK(ListAuditDetailExportTaskRequest.class,"ListAuditDetailExportTask"),
 
     ;
     private String val;

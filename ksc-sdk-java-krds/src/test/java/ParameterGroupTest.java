@@ -1,14 +1,9 @@
 import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.krds.InstanceClient;
 import com.ksc.krds.ParameterGroupClient;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.parametergroup.*;
-import com.sun.tools.doclets.formats.html.SourceToHTMLConverter;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.HashMap;
-import java.util.Map;
 
 public class ParameterGroupTest {
 

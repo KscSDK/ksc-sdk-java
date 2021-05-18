@@ -22,7 +22,7 @@ public abstract class BaseRequest<T extends BaseRequest> extends KscWebServiceRe
         RequestId = requestId;
     }
 
-    protected  ActionEnum action(){
+    public ActionEnum action(){
         Class<T> clazz = (Class<T>) ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         return ActionEnum.getByReq(clazz);
     }

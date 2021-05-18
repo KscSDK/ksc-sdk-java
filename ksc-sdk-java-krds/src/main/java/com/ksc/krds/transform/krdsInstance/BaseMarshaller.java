@@ -32,8 +32,11 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
     }
 
     public BaseMarshaller(ActionEnum action) {
-        this.action = action;
-        this.method = HttpMethodName.GET;
+        this(action,HttpMethodName.GET);
+    }
+
+    public BaseMarshaller() {
+        this(null);
     }
 
     @Override
@@ -43,7 +46,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         }
         BaseRequest req = (BaseRequest)in;
         request = new DefaultRequest<T>(req, SERVICE_NAME);
-        request.addParameter("Action", action.val());
+        request.addParameter("Action", req.action().val());
         request.setHttpMethod(method);
         request.addHeader("x-ksc-request-id", req.getRequestId());
         request.addHeader("Accept", "application/json");

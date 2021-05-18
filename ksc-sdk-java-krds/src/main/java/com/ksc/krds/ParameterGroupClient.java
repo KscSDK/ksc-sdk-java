@@ -15,32 +15,32 @@ public class ParameterGroupClient extends Client {
     }
 
     public RdsResponse<CreateDBParameterGroupResponse> createDBParameterGroup(CreateDBParameterGroupRequest request) {
-        return invoke(new BaseMarshaller<CreateDBParameterGroupRequest>(CREATE_PARAMETER_GROUP),
+        return invoke(new BaseMarshaller<CreateDBParameterGroupRequest>(),
                 new CreateDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
     public RdsResponse modifyDBParameterGroup(ModifyDBParameterGroupRequest request) {
-        return invoke(new BaseMarshaller<ModifyDBParameterGroupRequest>(MODIFY_PARAMETER_GROUP),
+        return invoke(new BaseMarshaller<ModifyDBParameterGroupRequest>(),
                 new ModifyDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
     public RdsResponse deleteDBParameterGroup(DeleteDBParameterGroupRequest request) {
-        return invoke(new BaseMarshaller<DeleteDBParameterGroupRequest>(DELETE_PARAMETER_GROUP),
+        return invoke(new BaseMarshaller<DeleteDBParameterGroupRequest>(),
                 new DeleteDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
     public RdsResponse resetDBParameterGroup(ResetDBParameterGroupRequest request){
-        return invoke(new BaseMarshaller<ResetDBParameterGroupRequest>(RESET_PARAMETER_GROUP),
+        return invoke(new BaseMarshaller<ResetDBParameterGroupRequest>(),
                 new ResetDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
     public RdsResponse<DescribeDBParameterGroupResponse> describeDBParameterGroup(DescribeDBParameterGroupRequest request){
-        return invoke(new BaseMarshaller<DescribeDBParameterGroupRequest>(DESCRIBE_PARAMETER_GROUP),
+        return invoke(new BaseMarshaller<DescribeDBParameterGroupRequest>(),
                 new DescribeDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
     public RdsResponse describeEngineDefaultParameters(DescribeEngineDefaultParametersRequest request){
-        return invoke(new BaseMarshaller<DescribeEngineDefaultParametersRequest>(DESCRIBE_PARAMETER_GROUP),
+        return invoke(new BaseMarshaller<DescribeEngineDefaultParametersRequest>(),
                 new DescribeDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
