@@ -2,6 +2,10 @@ package com.ksc.krds.transform;
 
 import com.ksc.krds.Client;
 import com.ksc.krds.model.audit.*;
+import com.ksc.krds.model.auditstatistic.AuditHotStatisticRequest;
+import com.ksc.krds.model.auditstatistic.AuditTemplateRequest;
+import com.ksc.krds.model.auditstatistic.DescribeAuditHotDurationRequest;
+import com.ksc.krds.model.auditstatistic.SqlAuditLineChartRequest;
 import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
@@ -83,6 +87,12 @@ public enum ActionEnum {
     DESCRIBE_LOG_FILES(DescribeDBLogFilesRequest.class, "DescribeDBLogFiles"),
     DELETE_BIN_LOG(DeleteDBBinlogRequest.class,"DeleteDBBinlog"),
     DESCRIBE_LAST_LOG(DescribeDBLogRequest.class,"DescribeLastLog"),
+
+    /** -------------------auditStatistic------------------- **/
+    DESCRIBE_AUDIT_HOT_COUNT(AuditHotStatisticRequest.class, "DescribeAuditHotCount"),
+    DESCRIBE_AUDIT_HOT_DURATION(DescribeAuditHotDurationRequest.class, "DescribeAuditHotDuration"),
+    SQL_AUDIT_REPORT(AuditTemplateRequest.class,"SqlAuditReport"),
+    SQL_AUDIT_LINE_CHART(SqlAuditLineChartRequest.class,"SqlAuditLineChart")
     ;
     private String val;
 

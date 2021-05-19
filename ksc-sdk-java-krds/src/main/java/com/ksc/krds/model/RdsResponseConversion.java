@@ -39,13 +39,6 @@ public class RdsResponseConversion {
         return objectMapper.convertValue(objectMapper.readTree(jsonParser), clazz);
     }
 
-    /**
-     * Jackson parses JSON objects as strings
-     *
-     * @param t
-     * @param <T>
-     * @return
-     */
     public static <T> String toJson(T t) {
         if (t == null) {
             return null;
