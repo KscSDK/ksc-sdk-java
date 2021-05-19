@@ -1,6 +1,7 @@
 package com.ksc.krds.transform;
 
 import com.ksc.krds.Client;
+import com.ksc.krds.model.account.*;
 import com.ksc.krds.model.audit.*;
 import com.ksc.krds.model.auditstatistic.AuditHotStatisticRequest;
 import com.ksc.krds.model.auditstatistic.AuditTemplateRequest;
@@ -92,7 +93,15 @@ public enum ActionEnum {
     DESCRIBE_AUDIT_HOT_COUNT(AuditHotStatisticRequest.class, "DescribeAuditHotCount"),
     DESCRIBE_AUDIT_HOT_DURATION(DescribeAuditHotDurationRequest.class, "DescribeAuditHotDuration"),
     SQL_AUDIT_REPORT(AuditTemplateRequest.class,"SqlAuditReport"),
-    SQL_AUDIT_LINE_CHART(SqlAuditLineChartRequest.class,"SqlAuditLineChart")
+    SQL_AUDIT_LINE_CHART(SqlAuditLineChartRequest.class,"SqlAuditLineChart"),
+
+    /** -------------------account------------------- **/
+    LIST_ACCOUNT(ListAccountRequest.class,"ListAccount"),
+    CREATE_ACCOUNT(CreateAccountRequest.class,"CreateAccount"),
+    DESCRIBE_ACCOUNT(DescribeAccountRequest.class, "DescribeAccount"),
+    MODIFY_ACCOUNT(ModifyAccountRequest.class,"ModifyAccount"),
+    LIST_ACCOUNT_SUPPORT_PRIVILEGES(ListAccountSupportPrivilegesRequest.class,"ListAccountSupportPrivileges"),
+    DELETE_ACCOUNT(DeleteAccountRequest.class,"DeleteAccount"),
     ;
     private String val;
 
