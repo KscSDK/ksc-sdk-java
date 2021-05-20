@@ -2,11 +2,16 @@ package com.ksc.krds.transform;
 
 import com.ksc.krds.Client;
 import com.ksc.krds.model.account.*;
+import com.ksc.krds.model.account.CreateAccountRequest;
+import com.ksc.krds.model.account.DeleteAccountRequest;
+import com.ksc.krds.model.account.DescribeAccountRequest;
+import com.ksc.krds.model.account.ModifyAccountRequest;
 import com.ksc.krds.model.audit.*;
 import com.ksc.krds.model.auditstatistic.AuditHotStatisticRequest;
 import com.ksc.krds.model.auditstatistic.AuditTemplateRequest;
 import com.ksc.krds.model.auditstatistic.DescribeAuditHotDurationRequest;
 import com.ksc.krds.model.auditstatistic.SqlAuditLineChartRequest;
+import com.ksc.krds.model.database.*;
 import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
 import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
@@ -102,6 +107,19 @@ public enum ActionEnum {
     MODIFY_ACCOUNT(ModifyAccountRequest.class,"ModifyAccount"),
     LIST_ACCOUNT_SUPPORT_PRIVILEGES(ListAccountSupportPrivilegesRequest.class,"ListAccountSupportPrivileges"),
     DELETE_ACCOUNT(DeleteAccountRequest.class,"DeleteAccount"),
+
+    /** -------------------account------------------- **/
+    CreateInstanceAccount(com.ksc.krds.model.database.CreateAccountRequest.class,"CreateInstanceAccount"),
+    DescribeInstanceAccounts(com.ksc.krds.model.database.DescribeAccountRequest.class,"DescribeInstanceAccounts"),
+    ModifyInstanceAccountInfo(ModifyAccountPasswordRequest.class,"ModifyInstanceAccountInfo"),
+    ModifyInstanceAccountPrivileges(com.ksc.krds.model.database.ModifyAccountRequest.class,"ModifyInstanceAccountPrivileges"),
+    DeleteInstanceAccount(com.ksc.krds.model.database.DeleteAccountRequest.class,"DeleteInstanceAccount"),
+    DescribeCollations(InstanceRequest.class,"DescribeCollations"),
+    CreateInstanceDatabase(CreateDatabaseRequest.class,"CreateInstanceDatabase"),
+    ModifyInstanceDatabasePrivileges(ModifyDatabasePrivilegesRequest.class,"ModifyInstanceDatabasePrivileges"),
+    DescribeInstanceDatabases(DescribeDatabaseRequest.class,"DescribeInstanceDatabases"),
+    DeleteInstanceDatabase(DeleteDatabaseRequest.class,"DeleteInstanceDatabase"),
+    ModifyInstanceDatabaseInfo(ModifyDatabaseInfoRequest.class,"ModifyInstanceDatabaseInfo"),
     ;
     private String val;
 
