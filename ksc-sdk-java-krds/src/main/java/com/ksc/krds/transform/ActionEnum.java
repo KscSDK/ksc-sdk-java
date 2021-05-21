@@ -1,6 +1,5 @@
 package com.ksc.krds.transform;
 
-import com.ksc.krds.Client;
 import com.ksc.krds.model.account.*;
 import com.ksc.krds.model.account.CreateAccountRequest;
 import com.ksc.krds.model.account.DeleteAccountRequest;
@@ -21,6 +20,9 @@ import com.ksc.krds.model.log.DescribeDBLogFilesRequest;
 import com.ksc.krds.model.log.DescribeDBLogRequest;
 import com.ksc.krds.model.parametergroup.*;
 import com.ksc.krds.model.securityGroup.*;
+import com.ksc.krds.model.slowlog.SlowLogDetailRequest;
+import com.ksc.krds.model.slowlog.SlowLogLineChartRequest;
+import com.ksc.krds.model.slowlog.SlowLogReportRequest;
 
 public enum ActionEnum {
     /** -------------------instance------------------- **/
@@ -120,6 +122,13 @@ public enum ActionEnum {
     DescribeInstanceDatabases(DescribeDatabaseRequest.class,"DescribeInstanceDatabases"),
     DeleteInstanceDatabase(DeleteDatabaseRequest.class,"DeleteInstanceDatabase"),
     ModifyInstanceDatabaseInfo(ModifyDatabaseInfoRequest.class,"ModifyInstanceDatabaseInfo"),
+
+    /** -------------------slowLog------------------- **/
+    SlowLogLineChart(SlowLogLineChartRequest.class,"SlowLogLineChart"),
+    SlowLogReport(SlowLogReportRequest.class,"SlowLogReport"),
+    SlowLogDetail(SlowLogDetailRequest.class, "SlowLogDetail"),
+    StartSlowLogDetailExportTask(com.ksc.krds.model.slowlog.StartAuditDetailExportTaskRequest.class,"StartSlowLogDetailExportTask"),
+    ListSlowLogDetailExportTask(com.ksc.krds.model.slowlog.ListAuditRequest.class,"ListSlowLogDetailExportTask"),
     ;
     private String val;
 

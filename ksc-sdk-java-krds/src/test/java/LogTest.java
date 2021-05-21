@@ -1,5 +1,4 @@
 import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.krds.AuditClient;
 import com.ksc.krds.LogClient;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.log.DBLogType;
