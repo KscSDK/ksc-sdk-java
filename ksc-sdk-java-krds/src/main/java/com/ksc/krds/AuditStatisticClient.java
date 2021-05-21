@@ -2,15 +2,14 @@ package com.ksc.krds;
 
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.auditstatistic.AuditHotStatisticRequest;
-import com.ksc.krds.model.auditstatistic.AuditTemplateRequest;
-import com.ksc.krds.model.auditstatistic.DescribeAuditHotDurationRequest;
-import com.ksc.krds.model.auditstatistic.SqlAuditLineChartRequest;
+import com.ksc.krds.model.auditstatistic.*;
 import com.ksc.krds.transform.auditstatistic.AuditHotStatisticUnmarshaller;
 import com.ksc.krds.transform.auditstatistic.AuditTemplateUnmarshaller;
 import com.ksc.krds.transform.auditstatistic.DescribeAuditHotDurationUnmarshaller;
 import com.ksc.krds.transform.auditstatistic.SqlAuditLineChartUnmarshaller;
 import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
+
+import java.util.List;
 
 public class AuditStatisticClient extends Client{
 
@@ -18,22 +17,22 @@ public class AuditStatisticClient extends Client{
         super(awsCredentials);
     }
 
-    public RdsResponse describeAuditHotCount(AuditHotStatisticRequest request){
+    public RdsResponse<List<AuditHotStatisticResponse>> describeAuditHotCount(AuditHotStatisticRequest request){
         return invoke(new BaseMarshaller<AuditHotStatisticRequest>(),
                 new AuditHotStatisticUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse describeAuditHotDuration(DescribeAuditHotDurationRequest request){
+    public RdsResponse<List<AuditHotDurationResponse>> describeAuditHotDuration(DescribeAuditHotDurationRequest request){
         return invoke(new BaseMarshaller<DescribeAuditHotDurationRequest>(),
                 new DescribeAuditHotDurationUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse sqlAuditReport(AuditTemplateRequest request){
+    public AuditTemplateResponse<List<AuditTemplateData>> sqlAuditReport(AuditTemplateRequest request){
         return invoke(new BaseMarshaller<AuditTemplateRequest>(),
                 new AuditTemplateUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse sqlAuditLineChart(SqlAuditLineChartRequest request){
+    public RdsResponse<List<SqlAuditLineChartData>> sqlAuditLineChart(SqlAuditLineChartRequest request){
         return invoke(new BaseMarshaller<SqlAuditLineChartRequest>(),
                 new SqlAuditLineChartUnmarshaller(), request).getKscResponse();
     }

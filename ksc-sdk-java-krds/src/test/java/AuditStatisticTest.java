@@ -1,30 +1,55 @@
-import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.krds.AuditClient;
 import com.ksc.krds.AuditStatisticClient;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.auditstatistic.DescribeAuditHotDurationRequest;
+import com.ksc.krds.model.auditstatistic.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AuditStatisticTest {
+import java.util.List;
+
+public class AuditStatisticTest extends BaseTest {
 
     private AuditStatisticClient client;
 
     @Before
     public void init() {
-        String accessKey = System.getenv("KSYUN_ACCESS_KEY");
-        String secretKey = System.getenv("KSYUN_SECRET_KEY");
-        BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-        client = new AuditStatisticClient(credentials);
+        client = new AuditStatisticClient(getCredentials());
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
     }
 
     @Test
-    public void testDescribe() {
+    public void testDescribeAuditHotDuration() {
         DescribeAuditHotDurationRequest request = new DescribeAuditHotDurationRequest();
-        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
+        request.setDBInstanceIdentifier(getInstanceId());
         request.setTimeRange("LASTEST_ONE_WEEK");
-        RdsResponse response = client.describeAuditHotDuration(request);
+        RdsResponse<List<AuditHotDurationResponse>> response = client.describeAuditHotDuration(request);
         System.out.println(response.getData());
+    }
+
+    @Test
+    public void testSqlAuditReport() {
+        AuditTemplateRequest request = new AuditTemplateRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setTimeRange("LASTEST_ONE_WEEK");
+        AuditTemplateResponse<List<AuditTemplateData>> response = client.sqlAuditReport(request);
+        System.out.println(response.getData());
+    }
+
+    @Test
+    public void testSqlAuditLineChart() {
+        SqlAuditLineChartRequest request = new SqlAuditLineChartRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setTimeRange("LASTEST_ONE_WEEK");
+        RdsResponse<List<SqlAuditLineChartData>> response = client.sqlAuditLineChart(request);
+        System.out.println(response.getData());
+    }
+
+    @Test
+    public void testDescribeAuditHotCount() {
+        AuditHotStatisticRequest request = new AuditHotStatisticRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setTimeRange("LASTEST_ONE_WEEK");
+        RdsResponse<List<AuditHotStatisticResponse>> response = client.describeAuditHotCount(request);
+        System.out.println(response.getData());
+
     }
 }

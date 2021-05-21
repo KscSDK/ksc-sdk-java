@@ -2,29 +2,58 @@ import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.krds.AccountClient;
 import com.ksc.krds.AuditStatisticClient;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.account.ListAccountRequest;
-import com.ksc.krds.model.account.ListAccountResponse;
+import com.ksc.krds.model.account.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AccountTest {
+public class AccountTest extends BaseTest {
 
     private AccountClient client;
 
     @Before
     public void init() {
-        String accessKey = System.getenv("KSYUN_ACCESS_KEY");
-        String secretKey = System.getenv("KSYUN_SECRET_KEY");
-        BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-        client = new AccountClient(credentials);
+        client = new AccountClient(getCredentials());
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
     }
 
     @Test
     public void testList() {
         ListAccountRequest request = new ListAccountRequest();
-        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
+        request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse<ListAccountResponse> response = client.listAccount(request);
+        System.out.println(response.getData());
+    }
+
+    @Test
+    public void testCreate() {
+        CreateAccountRequest request = new CreateAccountRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setUser("lzs");
+        request.setPassword("Aq123.@1sdi");
+        request.setHost(getHost());
+        RdsResponse<DescribeAccountResponse> response = client.createAccount(request);
+        System.out.println(response.getData());
+    }
+
+    @Test
+    public void testModify() {
+        ModifyAccountRequest request = new ModifyAccountRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        client.modifyAccount(request);
+    }
+
+    @Test
+    public void testDelete() {
+        DeleteAccountRequest request = new DeleteAccountRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        client.deleteAccount(request);
+    }
+
+    @Test
+    public void testDescribe() {
+        DescribeAccountRequest request = new DescribeAccountRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<DescribeAccountResponse> response = client.describeAccount(request);
         System.out.println(response.getData());
     }
 }

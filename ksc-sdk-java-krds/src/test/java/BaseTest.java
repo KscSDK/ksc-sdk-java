@@ -17,4 +17,8 @@ public class BaseTest {
     public String getInstanceId() {
         return  "f0b9614c-979e-4cf4-8b58-28ebc65fd329";
     }
+
+    public String getHost() {
+        return "10.8.1.150";
+    }
 }

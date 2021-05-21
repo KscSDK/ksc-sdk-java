@@ -1,5 +1,5 @@
-import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.krds.InstanceClient;
+import com.ksc.krds.KSCKRDSClient;
 import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
@@ -10,16 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
-public class InstanceTest {
+public class InstanceTest extends BaseTest{
 
     private InstanceClient client;
 
     @Before
     public void init() {
-        String accessKey = System.getenv("KSYUN_ACCESS_KEY");
-        String secretKey = System.getenv("KSYUN_SECRET_KEY");
-        BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-        client = new InstanceClient(credentials);
+        client = new InstanceClient(getCredentials());
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
     }
 
@@ -89,28 +86,26 @@ public class InstanceTest {
     }
 
     @Test
-    public void describe() {
+    public void testDescribe() {
+        KSCKRDSClient client1 =new KSCKRDSClient(getCredentials());
         ListKrdsRequest request = new ListKrdsRequest();
 //        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
         ListKrdsResponse allResponse = new ListKrdsResponse();
-        if (allResponse.getData().getInstances() == null) {
+        if (allResponse.getData().getInstances() == null){
             allResponse.getData().setInstances(new ArrayList<Instance>());
         }
-
-//        while (true) {
-//            KrdsResponse response = client.listInstances(request);
-//
-//            allResponse.getData().getInstances().addAll(response.getData().getInstances());
-//            if (response.getData().getMarker() >= response.getData().getTotalCount()) {
-//                allResponse.getData().setTotalCount(response.getData().getTotalCount());
-//                allResponse.getData().setMarker(response.getData().getMarker());
-//                allResponse.getData().setMaxRecords(response.getData().getMaxRecords());
-//                allResponse.setRequestId(response.getRequestId());
-//                break;
-//            }
-//            request.setMarker(response.getData().getMarker());
-//        }
-
+        while (true){
+            ListKrdsResponse response = client.listkrds(request);
+            allResponse.getData().getInstances().addAll(response.getData().getInstances());
+            if (response.getData().getMarker() >= response.getData().getTotalCount()){
+                allResponse.getData().setTotalCount(response.getData().getTotalCount());
+                allResponse.getData().setMarker(response.getData().getMarker());
+                allResponse.getData().setMaxRecords(response.getData().getMaxRecords());
+                allResponse.setRequestId(response.getRequestId());
+                break;
+            }
+            request.setMarker(response.getData().getMarker());
+        }
         System.out.println(allResponse.getData().getInstances());
     }
 
