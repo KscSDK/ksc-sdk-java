@@ -1,6 +1,5 @@
 import com.ksc.krds.InstanceClient;
 import com.ksc.krds.KSCKRDSClient;
-import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
 import org.junit.Before;
@@ -21,35 +20,19 @@ public class InstanceTest extends BaseTest{
     }
 
     @Test
-    public void testCreate() {
-        CreateKrdsRequest request = new CreateKrdsRequest();
-        request.setDBInstanceName("testKRDSInstance");
-        request.setDBInstanceType("HRDS");
-        request.setMem(1);
-        request.setDisk(10);
-        request.setEngine("MySQL");
-        List<String> availabilityZoneList = new ArrayList<String>(1);
-        availabilityZoneList.add("cn-beijing-6a");
-//        availabilityZoneList.add("cn-beijing-6b");
-        request.setAvailabilityZone(availabilityZoneList);
-        request.setEngineVersion("5.6");
-        request.setMasterUserName("admin");
-        request.setMasterUserPassword("testAA123");
-        request.setVpcId("214a1292-108e-45d1-8b9c-b45d2ab41c0c");
-        request.setSubnetId("f80ce68d-eca2-475e-938b-666d90308212");
-        request.setBillType("DAY");
-        request.setProjectId(103800);
-        CreateKrdsResponse response = client.createKRDS(request);
-        CreateKrdsResponse.Data data = response.getData();
-        System.out.println(data);
+    public void testLock() {
+        LockDBInstanceRequest request = new LockDBInstanceRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<InstanceResponse> response = client.lockDBInstance(request);
+        System.out.println(response.getData());
     }
 
     @Test
-    public void testLock() {
-        LockDBInstanceRequest request = new LockDBInstanceRequest();
-        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
-        KrdsResponse response = client.lockDBInstance(request);
-        System.out.println(response);
+    public void testUnLock() {
+        UnLockDBInstanceRequest request = new UnLockDBInstanceRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<InstanceResponse> response = client.unLockDBInstance(request);
+        System.out.println(response.getData());
     }
 
     @Test
@@ -60,8 +43,8 @@ public class InstanceTest extends BaseTest{
 //        KrdsResponse response = client.rebootDBInstance(request);
 //        BaseData data = response.getData();
 //        System.out.println(data.getDBInstance());
-        RdsResponse<TestResponse> response = client.rebootDBInstance(request);
-        TestResponse data = response.getData();
+        RdsResponse<InstanceResponse> response = client.rebootDBInstance(request);
+        InstanceResponse data = response.getData();
         System.out.println(data);
     }
 
@@ -71,7 +54,7 @@ public class InstanceTest extends BaseTest{
         request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
         request.setEngine("mysql");
         request.setEngineVersion("5.7");
-        client.upgradeDBInstanceEngineVersion(request);
+//        client.upgradeDBInstanceEngineVersion(request);
     }
 
     @Test
@@ -82,7 +65,7 @@ public class InstanceTest extends BaseTest{
 //        List<String> availabilityZones = new ArrayList<String>();
 //        availabilityZones.add("cn-beijing-6a");
 //        request.setAvailabilityZone(availabilityZones);
-        client.createDBInstanceReadReplica(request);
+//        client.createDBInstanceReadReplica(request);
     }
 
     @Test
@@ -107,6 +90,19 @@ public class InstanceTest extends BaseTest{
             request.setMarker(response.getData().getMarker());
         }
         System.out.println(allResponse.getData().getInstances());
+    }
+
+    @Test
+    public void testModifyInstance() {
+        ModifyInstanceRequest request = new ModifyInstanceRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceName("lzs-mysql-1");
+        RdsResponse<InstancesResponse> response = client.modifyInstance(request);
+        System.out.println(response.getData());
+    }
+
+    @Test
+    public void test() {
     }
 
 }

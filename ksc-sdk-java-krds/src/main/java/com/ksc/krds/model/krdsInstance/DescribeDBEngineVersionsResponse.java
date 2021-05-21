@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class DescribeDBEngineVersionsResponse extends InstanceResponse {
+public class DescribeDBEngineVersionsResponse extends InstancesResponse {
 
     private Data data;
 

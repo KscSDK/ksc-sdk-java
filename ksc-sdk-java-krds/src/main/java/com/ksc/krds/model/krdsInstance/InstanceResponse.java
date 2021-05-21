@@ -1,78 +1,14 @@
 package com.ksc.krds.model.krdsInstance;
 
-import com.ksc.krds.annotations.Unmarshaller;
-import com.ksc.krds.model.KrdsResponse;
-import com.ksc.krds.transform.BaseData;
-import com.ksc.krds.transform.krdsInstance.KrdsInstanceJsonUnmarshaller;
+public class InstanceResponse {
 
-import java.util.List;
+    private RetInstance DBInstance;
 
-public class InstanceResponse extends KrdsResponse {
-
-    private Data data;
-
-    public InstanceResponse() {
-        this.data = new Data();
+    public RetInstance getDBInstance() {
+        return DBInstance;
     }
 
-    public BaseData getData() {
-        return data;
-    }
-
-    public void setData(Data data) {
-        this.data = data;
-    }
-
-    public class Data extends BaseData {
-
-        @Unmarshaller(clazz = KrdsInstanceJsonUnmarshaller.class)
-        private List<Instance> Instances;
-
-        @Unmarshaller(clazz = KrdsInstanceJsonUnmarshaller.class)
-        private Instance DBInstance;
-
-        private Integer TotalCount;
-        private Integer MaxRecords;
-        private Integer Marker;
-
-        public List<Instance> getInstances() {
-            return Instances;
-        }
-
-        public void setInstances(List<Instance> instances) {
-            Instances = instances;
-        }
-
-        public Instance getDBInstance() {
-            return DBInstance;
-        }
-
-        public void setDBInstance(Instance DBInstance) {
-            this.DBInstance = DBInstance;
-        }
-
-        public Integer getTotalCount() {
-            return TotalCount;
-        }
-
-        public void setTotalCount(Integer totalCount) {
-            TotalCount = totalCount;
-        }
-
-        public Integer getMaxRecords() {
-            return MaxRecords;
-        }
-
-        public void setMaxRecords(Integer maxRecords) {
-            MaxRecords = maxRecords;
-        }
-
-        public Integer getMarker() {
-            return Marker;
-        }
-
-        public void setMarker(Integer marker) {
-            Marker = marker;
-        }
+    public void setDBInstance(RetInstance DBInstance) {
+        this.DBInstance = DBInstance;
     }
 }

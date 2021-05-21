@@ -1,4 +1,4 @@
 package com.ksc.krds.model.krdsInstance;
 
-public class ModifyInstanceTypeResp extends InstanceResponse {
+public class ModifyInstanceTypeResp extends InstancesResponse {
 }

@@ -1,40 +1,16 @@
 package com.ksc.krds.transform.krdsInstance;
 
-import com.ksc.krds.annotations.Unmarshaller;
-import com.ksc.krds.model.KrdsResponse;
-import com.ksc.krds.model.krdsInstance.Instance;
+import com.ksc.krds.model.RdsResponse;
+import com.ksc.krds.model.RdsResponseConversion;
 import com.ksc.krds.model.krdsInstance.InstanceResponse;
-import com.ksc.krds.transform.BaseData;
-import com.ksc.krds.transform.BaseUnmarshaller;
 import com.ksc.transform.JsonUnmarshallerContext;
-import com.ksc.transform.ListUnmarshaller;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.List;
+import com.ksc.transform.Unmarshaller;
 
 
-public class InstanceUnmarshaller<R extends KrdsResponse> extends BaseUnmarshaller<R> {
+public class InstanceUnmarshaller implements Unmarshaller<RdsResponse<InstanceResponse>, JsonUnmarshallerContext> {
 
     @Override
-    protected void init() {
-        setResult((R) new InstanceResponse());
+    public RdsResponse<InstanceResponse> unmarshall(JsonUnmarshallerContext in) throws Exception {
+        return RdsResponseConversion.invoke(in.getJsonParser(), InstanceResponse.class);
     }
-
-    @Override
-    public void doInvokeMethod(JsonUnmarshallerContext context, Method method, Field field, BaseData data) throws Exception {
-        String typeName = field.getType().getName();
-        if ("java.util.List".equals(typeName)) {
-            context.nextToken();
-            List<Instance> list = new ListUnmarshaller<Instance>(getUnmarshaller(field)).unmarshall(context);
-            method.invoke(data, list);
-            return;
-        }
-
-        context.nextToken();
-        Instance instance = (Instance) getUnmarshaller(field).unmarshall(context);
-        method.invoke(data, instance);
-
-    }
-
 }

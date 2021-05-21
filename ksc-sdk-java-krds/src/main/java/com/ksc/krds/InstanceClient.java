@@ -2,12 +2,9 @@ package com.ksc.krds;
 
 import com.ksc.Response;
 import com.ksc.auth.AWSCredentials;
-import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
-import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
-import com.ksc.krds.transform.krdsInstance.InstanceUnmarshaller;
-import com.ksc.krds.transform.krdsInstance.TestUnmarshaller;
+import com.ksc.krds.transform.krdsInstance.*;
 
 import static com.ksc.krds.transform.ActionEnum.*;
 
@@ -21,77 +18,63 @@ public class InstanceClient extends Client {
         return null;
     }
 
-    public KrdsResponse modifyInstance(ModifyInstanceRequest req) {
-        Response<InstanceResponse> execute = doExecute(req, new BaseMarshaller<ModifyInstanceRequest>(MODIFY));
-        return execute.getKscResponse();
+    public RdsResponse<InstancesResponse> modifyInstance(ModifyInstanceRequest request) {
+        return invoke(new BaseMarshaller<ModifyInstanceRequest>(),
+                new ModifyInstanceUnmarshaller(), request).getKscResponse();
     }
 
-    public KrdsResponse modifyInstanceType(ModifyInstanceTypeRequest req) {
-        Response<InstanceResponse> response = doExecute(req, new BaseMarshaller<ModifyInstanceTypeRequest>(MODIFY_TYPE));
-        return response.getKscResponse();
-    }
-
-    public KrdsResponse SwitchDBInstanceHA(SwitchHARequest req) {
-        Response<InstanceResponse> response = doExecute(req, new BaseMarshaller<SwitchHARequest>(SWITCH_HA));
-        return response.getKscResponse();
-    }
-
-    public KrdsResponse createDBInstanceReadReplica(CreateReadReplicaRequest req) {
-        Response<InstanceResponse> response = doExecute(req, new BaseMarshaller<CreateReadReplicaRequest>(CREATE_READ_REPLICA));
-
-        return response.getKscResponse();
-    }
-
-    public KrdsResponse upgradeDBInstanceEngineVersion(UpgradeDBInstanceEngineVersionRequest request) {
-        Response<InstanceResponse> response = doExecute(request,
-                new BaseMarshaller<UpgradeDBInstanceEngineVersionRequest>(UPGRADE_ENGINE_VERSION)
-        );
-
-        return response.getKscResponse();
-    }
-
-    public KrdsResponse modifyDBInstanceSpec(ModifyDBInstanceSpecRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<ModifyDBInstanceSpecRequest>(MODIFY_SPEC));
-
-        return response.getKscResponse();
-    }
-
-    public KrdsResponse modifyDBInstanceAvailabilityZone(ModifyDBInstanceAvailabilityZoneRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<ModifyDBInstanceAvailabilityZoneRequest>(MODIFY_AVAILABILITY_ZONE));
-        return response.getKscResponse();
-    }
-
-    public RdsResponse<TestResponse> rebootDBInstance(RebootDBInstanceRequest request) {
-
-        return invoke(new BaseMarshaller<RebootDBInstanceRequest>(REBOOT), new TestUnmarshaller(), request)
+    public RdsResponse<InstanceResponse> modifyInstanceType(ModifyInstanceTypeRequest request) {
+        return invoke(new BaseMarshaller<ModifyInstanceTypeRequest>(), new RebootUnmarshaller(), request)
                 .getKscResponse();
-//        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<RebootDBInstanceRequest>(REBOOT));
     }
 
-    public KrdsResponse lockDBInstance(LockDBInstanceRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<LockDBInstanceRequest>(LOCK));
-        return response.getKscResponse();
+    public RdsResponse<InstanceResponse> SwitchDBInstanceHA(SwitchHARequest request) {
+        return invoke(new BaseMarshaller<SwitchHARequest>(), new RebootUnmarshaller(), request)
+                .getKscResponse();
     }
 
-    public KrdsResponse unLockDBInstance(UnLockDBInstanceRequest request) {
-        Response<InstanceResponse> response = doExecute(request, new BaseMarshaller<UnLockDBInstanceRequest>(UN_LOCK));
-        return response.getKscResponse();
+    public RdsResponse<InstanceResponse> createDBInstanceReadReplica(CreateReadReplicaRequest request) {
+        return invoke(new BaseMarshaller<CreateReadReplicaRequest>(), new RebootUnmarshaller(), request)
+                .getKscResponse();
     }
 
-    public KrdsResponse sdkRestoreDBInstanceFromDBBackup(SDKRestoreDBInstanceFromDBBackupRequest request) {
-        Response<InstanceResponse> response = doExecute(request,
-                new BaseMarshaller<SDKRestoreDBInstanceFromDBBackupRequest>(RESTORE_FROM_BACKUP));
-        return response.getKscResponse();
+    public RdsResponse<InstanceResponse> upgradeDBInstanceEngineVersion(UpgradeDBInstanceEngineVersionRequest request) {
+        return invoke(new BaseMarshaller<UpgradeDBInstanceEngineVersionRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
     }
 
-    public KrdsResponse overrideDBInstance(OverrideDBInstanceRequest request) {
-        Response<InstanceResponse> response = doExecute(request,
-                new BaseMarshaller<OverrideDBInstanceRequest>(OVERRIDE));
-        return response.getKscResponse();
+    public RdsResponse<InstanceResponse> modifyDBInstanceSpec(ModifyDBInstanceSpecRequest request) {
+        return invoke(new BaseMarshaller<ModifyDBInstanceSpecRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
     }
 
-    public <T extends BaseRequest> Response<InstanceResponse> doExecute(T in, BaseMarshaller<T> marshaller) {
-//        return execute(marshaller, new InstanceUnmarshaller<InstanceResponse>(), in);
-        return null;
+    public RdsResponse<InstanceResponse> modifyDBInstanceAvailabilityZone(ModifyDBInstanceAvailabilityZoneRequest request) {
+        return invoke(new BaseMarshaller<ModifyDBInstanceAvailabilityZoneRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
+    }
+
+    public RdsResponse<InstanceResponse> rebootDBInstance(RebootDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<RebootDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
+    }
+
+    public RdsResponse<InstanceResponse> lockDBInstance(LockDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<LockDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
+    }
+
+    public RdsResponse<InstanceResponse> unLockDBInstance(UnLockDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<UnLockDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
+    }
+
+    public RdsResponse<InstanceResponse> sdkRestoreDBInstanceFromDBBackup(SDKRestoreDBInstanceFromDBBackupRequest request) {
+        return invoke(new BaseMarshaller<SDKRestoreDBInstanceFromDBBackupRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
+    }
+
+    public RdsResponse<InstanceResponse> overrideDBInstance(OverrideDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<OverrideDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+                .getKscResponse();
     }
 }
