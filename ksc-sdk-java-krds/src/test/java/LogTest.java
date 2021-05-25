@@ -33,6 +33,7 @@ public class LogTest extends BaseTest {
         log.info("result:{}",response.getData());
     }
 
+    //TODO
     @Test
     public void testDeleteDBBinlog() {
         DeleteDBBinlogRequest request = new DeleteDBBinlogRequest();

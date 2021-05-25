@@ -35,7 +35,8 @@ public class SlowLogLineChartUnmarshaller implements Unmarshaller<SlowLogLineCha
             response.setQuerySum(querySum.asLong());
         }
         ArrayList<SlowLogReportGlobalPubResultBean> list = new ArrayList<SlowLogReportGlobalPubResultBean>();
-        response.setData(objectMapper.convertValue(jsonNode.get("Data"), list.getClass()));
-        return null;
+        response.setData(objectMapper.convertValue(jsonNode.get("data"), list.getClass()));
+
+        return response;
     }
 }

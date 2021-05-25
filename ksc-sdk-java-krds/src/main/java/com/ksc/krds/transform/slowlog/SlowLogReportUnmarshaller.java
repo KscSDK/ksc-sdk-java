@@ -11,11 +11,12 @@ import com.ksc.transform.Unmarshaller;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.List;
 
-public class SlowLogReportUnmarshaller implements Unmarshaller<SlowLogReportResponse, JsonUnmarshallerContext> {
+public class SlowLogReportUnmarshaller implements Unmarshaller<SlowLogReportResponse<List<SlowLogReportPub>>, JsonUnmarshallerContext> {
 
     @Override
-    public SlowLogReportResponse unmarshall(JsonUnmarshallerContext in) throws Exception {
+    public SlowLogReportResponse<List<SlowLogReportPub>> unmarshall(JsonUnmarshallerContext in) throws Exception {
         SlowLogReportResponse response = new SlowLogReportResponse();
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
@@ -34,8 +35,8 @@ public class SlowLogReportUnmarshaller implements Unmarshaller<SlowLogReportResp
         if (marker != null) {
             response.setMarker(marker.asInt());
         }
-        ArrayList<SlowLogReportPub> list = new ArrayList<SlowLogReportPub>();
-        response.setData(objectMapper.convertValue(jsonNode.get("Data"), list.getClass()));
+        List<SlowLogReportPub> list = new ArrayList<SlowLogReportPub>();
+        response.setData(objectMapper.convertValue(jsonNode.get("data"), list.getClass()));
 
         return response;
     }

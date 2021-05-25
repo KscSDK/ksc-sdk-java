@@ -6,6 +6,8 @@ import com.ksc.krds.model.slowlog.*;
 import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
 import com.ksc.krds.transform.slowlog.*;
 
+import java.util.List;
+
 
 public class SlowLogClient extends Client{
 
@@ -13,12 +15,12 @@ public class SlowLogClient extends Client{
         super(awsCredentials);
     }
     
-    public RdsResponse slowLogLineChart(SlowLogLineChartRequest request){
+    public SlowLogLineChartResponse<List<SlowLogReportGlobalPubResultBean>> slowLogLineChart(SlowLogLineChartRequest request){
         return invoke(new BaseMarshaller<SlowLogLineChartRequest>(),
                 new SlowLogLineChartUnmarshaller(), request).getKscResponse();
     }
     
-    public RdsResponse slowLogReport(SlowLogReportRequest request)  {
+    public SlowLogReportResponse<List<SlowLogReportPub>> slowLogReport(SlowLogReportRequest request)  {
         return invoke(new BaseMarshaller<SlowLogReportRequest>(),
                 new SlowLogReportUnmarshaller(), request).getKscResponse();
     }
@@ -28,12 +30,12 @@ public class SlowLogClient extends Client{
                 new SlowLogDetailUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse StartAuditDetailExportTask(StartAuditDetailExportTaskRequest request){
+    public RdsResponse startAuditDetailExportTask(StartAuditDetailExportTaskRequest request){
         return invoke(new BaseMarshaller<StartAuditDetailExportTaskRequest>(),
                 new StartAuditDetailExportTaskUnmarshaller(), request).getKscResponse();
     }
     
-    public ExportListResponse ListAuditDetailExportTask(ListAuditRequest request){
+    public ExportListResponse listAuditDetailExportTask(ListAuditRequest request){
         return invoke(new BaseMarshaller<ListAuditRequest>(),
                 new ListAuditUnmarshaller(), request).getKscResponse();
     }
