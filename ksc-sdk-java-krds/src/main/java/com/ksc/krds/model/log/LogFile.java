@@ -3,18 +3,10 @@ package com.ksc.krds.model.log;
 public class LogFile {
 
     private String LogFileName;
-
-    private Double Size;
-
-    private Double RawSize;
-
-    private String Date;
-
-    private String StartTime;
-
-    private String EndTime;
-
-    private String SrcInstanceId;
+    private String Size;
+    private String DBLogType;
+    private Long WaitSeconds;
+    private String Status;
 
     public String getLogFileName() {
         return LogFileName;
@@ -24,51 +16,35 @@ public class LogFile {
         LogFileName = logFileName;
     }
 
-    public Double getSize() {
+    public String getSize() {
         return Size;
     }
 
-    public void setSize(Double size) {
+    public void setSize(String size) {
         Size = size;
     }
 
-    public Double getRawSize() {
-        return RawSize;
+    public String getDBLogType() {
+        return DBLogType;
     }
 
-    public void setRawSize(Double rawSize) {
-        RawSize = rawSize;
+    public void setDBLogType(String DBLogType) {
+        this.DBLogType = DBLogType;
     }
 
-    public String getDate() {
-        return Date;
+    public Long getWaitSeconds() {
+        return WaitSeconds;
     }
 
-    public void setDate(String date) {
-        Date = date;
+    public void setWaitSeconds(Long waitSeconds) {
+        WaitSeconds = waitSeconds;
     }
 
-    public String getStartTime() {
-        return StartTime;
+    public String getStatus() {
+        return Status;
     }
 
-    public void setStartTime(String startTime) {
-        StartTime = startTime;
-    }
-
-    public String getEndTime() {
-        return EndTime;
-    }
-
-    public void setEndTime(String endTime) {
-        EndTime = endTime;
-    }
-
-    public String getSrcInstanceId() {
-        return SrcInstanceId;
-    }
-
-    public void setSrcInstanceId(String srcInstanceId) {
-        SrcInstanceId = srcInstanceId;
+    public void setStatus(String status) {
+        Status = status;
     }
 }
