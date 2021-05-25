@@ -13,6 +13,10 @@ import java.text.SimpleDateFormat;
 public class RdsResponseConversion {
 
     public static <T> RdsResponse<T> invoke(JsonParser jsonParser, Class<T> clazz) throws IOException {
+        return doInvoke(jsonParser, clazz,"data");
+    }
+
+    public static <T> RdsResponse<T> doInvoke(JsonParser jsonParser, Class<T> clazz,String key) throws IOException {
         RdsResponse<T> response = new RdsResponse<T>();
         ObjectMapper objectMapper = createObjectMapper();
         JsonNode jsonNode = objectMapper.readTree(jsonParser);
@@ -21,17 +25,17 @@ public class RdsResponseConversion {
             response.setRequestId(requestId.asText());
         }
         if (clazz != null) {
-            JsonNode data = getData(jsonNode);
+            JsonNode data = getData(jsonNode,key);
             response.setData(objectMapper.convertValue(data, clazz));
         }
 
         return response;
     }
 
-    private static JsonNode getData(JsonNode jsonNode) {
-        JsonNode data = jsonNode.get("Data");
+    private static JsonNode getData(JsonNode jsonNode,String key) {
+        JsonNode data = jsonNode.get(key);
         if (data == null) {
-            data = jsonNode.get("data");
+            data = jsonNode.get(upperCaseFirstLetter(key));
         }
         return data;
     }
@@ -65,5 +69,13 @@ public class RdsResponseConversion {
         }
 
         return null;
+    }
+
+    private static String upperCaseFirstLetter(String str) {
+        char[] ch = str.toCharArray();
+        if (ch[0] >= 'a' && ch[0] <= 'z') {
+            ch[0] = (char) (ch[0] - 32);
+        }
+        return new String(ch);
     }
 }

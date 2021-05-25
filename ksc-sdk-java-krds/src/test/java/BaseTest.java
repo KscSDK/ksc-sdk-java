@@ -1,8 +1,12 @@
 import com.ksc.auth.BasicAWSCredentials;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class BaseTest {
 
     private BasicAWSCredentials credentials;
+
+    Logger log = LoggerFactory.getLogger(BaseTest.class);
 
     public BaseTest() {
         String accessKey = System.getenv("KSYUN_ACCESS_KEY");
