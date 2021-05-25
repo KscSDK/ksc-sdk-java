@@ -6,7 +6,7 @@
 	<parent>
 		<groupId>com.ksyun</groupId>
 		<artifactId>ksc-sdk-java</artifactId>
-		<version>0.3.16</version>
+		<version>0.3.17</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>ksc-sdk-java-monitor</artifactId>

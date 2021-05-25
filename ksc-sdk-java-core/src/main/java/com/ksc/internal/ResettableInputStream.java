@@ -17,16 +17,15 @@
  */
 package com.ksc.internal;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.nio.channels.FileChannel;
-
+import com.ksc.KscClientException;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.http.annotation.NotThreadSafe;
 
-import com.ksc.KscClientException;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.channels.FileChannel;
 
 /**
  * A mark-and-resettable input stream that can be used on files or file input
@@ -136,11 +135,11 @@ public class ResettableInputStream extends ReleasableInputStream {
      * {@link ResettableInputStream#disableClose()}, so that the release method
      * becomes the only way to truly close the opened file.
      * 
-     * @param _
+     * @param i
      *            ignored
      */
     @Override
-    public void mark(int _) {
+    public void mark(int i) {
         abortIfNeeded();
         try {
             markPos = fileChannel.position();
