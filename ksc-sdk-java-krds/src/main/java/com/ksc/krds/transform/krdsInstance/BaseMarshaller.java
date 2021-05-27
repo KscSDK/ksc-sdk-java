@@ -13,6 +13,8 @@ import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
 
@@ -32,7 +34,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
     }
 
     public BaseMarshaller(ActionEnum action) {
-        this(action,HttpMethodName.GET);
+        this(action, HttpMethodName.GET);
     }
 
     public BaseMarshaller() {
@@ -44,7 +46,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         if (!(in instanceof KscWebServiceRequest)) {
             throw new IllegalArgumentException("req type must be KscWebServiceRequest");
         }
-        BaseRequest req = (BaseRequest)in;
+        BaseRequest req = (BaseRequest) in;
         request = new DefaultRequest<T>(req, SERVICE_NAME);
         request.addParameter("Action", req.action().val());
         request.setHttpMethod(method);
@@ -56,15 +58,30 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
                 String getter = "get" + upperCaseFirstLetter(field.getName());
                 Method getMethod = req.getClass().getMethod(getter);
                 Object value = getMethod.invoke(req);
-                if (value != null) {
-                    request.addParameter(field.getName(), value.toString());
-                }
+                addParameter(field, value);
             } catch (Exception e) {
                 log.warn(e);
             }
         }
 
         return request;
+    }
+
+    private void addParameter(Field field, Object value) {
+        if (value == null) {
+            return;
+        }
+        String type = field.getType().getName();
+        if ("java.util.Map".equals(type)) {
+            HashMap<String, String> valueMap = (HashMap<String, String>) value;
+            int index = 1;
+            for (Map.Entry<String, String> entry : valueMap.entrySet()) {
+                request.addParameter("Parameters.Name." + index, entry.getKey());
+                request.addParameter("Parameters.Value." + index++, entry.getValue());
+            }
+            return;
+        }
+        request.addParameter(field.getName(), value.toString());
     }
 
     public String getOrDefaultVersion(BaseRequest req) {

@@ -75,7 +75,7 @@ public enum ActionEnum {
     DELETE_PARAMETER_GROUP(DeleteDBParameterGroupRequest.class,"DeleteDBParameterGroup"),
     RESET_PARAMETER_GROUP(ResetDBParameterGroupRequest.class,"ResetDBParameterGroup"),
     DESCRIBE_PARAMETER_GROUP(DescribeDBParameterGroupRequest.class,"DescribeDBParameterGroup"),
-    DESCRIBE_ENGINE_DEFAULT_PARAMETERS(BaseRequest.class,"DescribeEngineDefaultParameters"),
+    DESCRIBE_ENGINE_DEFAULT_PARAMETERS(DescribeEngineDefaultParametersRequest.class,"DescribeEngineDefaultParameters"),
 
     /** -------------------backup------------------- **/
     CREATE_BACKUP(CreateDBBackupRequest.class,"CreateDBBackup"),

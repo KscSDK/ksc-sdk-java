@@ -1,10 +1,8 @@
 package com.ksc.krds.model.parametergroup;
 
-import com.ksc.krds.model.KrdsResponse;
-
 import java.util.Map;
 
-public class DBParameterGroup extends KrdsResponse {
+public class DBParameterGroup  {
 
     private String DBParameterGroupId;
 

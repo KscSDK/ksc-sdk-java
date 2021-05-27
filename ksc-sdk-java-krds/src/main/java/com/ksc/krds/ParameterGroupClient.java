@@ -19,7 +19,7 @@ public class ParameterGroupClient extends Client {
                 new CreateDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse modifyDBParameterGroup(ModifyDBParameterGroupRequest request) {
+    public RdsResponse<ResetDBParameterGroupResponse> modifyDBParameterGroup(ModifyDBParameterGroupRequest request) {
         return invoke(new BaseMarshaller<ModifyDBParameterGroupRequest>(),
                 new ModifyDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
@@ -29,7 +29,7 @@ public class ParameterGroupClient extends Client {
                 new DeleteDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse resetDBParameterGroup(ResetDBParameterGroupRequest request){
+    public RdsResponse<ModifyDBParameterGroupResponse> resetDBParameterGroup(ResetDBParameterGroupRequest request){
         return invoke(new BaseMarshaller<ResetDBParameterGroupRequest>(),
                 new ResetDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
@@ -39,9 +39,9 @@ public class ParameterGroupClient extends Client {
                 new DescribeDBParameterGroupUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse describeEngineDefaultParameters(DescribeEngineDefaultParametersRequest request){
+    public RdsResponse<DescribeEngineDefaultParametersResponse> describeEngineDefaultParameters(DescribeEngineDefaultParametersRequest request){
         return invoke(new BaseMarshaller<DescribeEngineDefaultParametersRequest>(),
-                new DescribeDBParameterGroupUnmarshaller(), request).getKscResponse();
+                new DescribeEngineDefaultParametersUnmarshaller(), request).getKscResponse();
     }
 
 }
