@@ -13,7 +13,6 @@ import java.util.List;
 public class DescribeSecurityGroupResponse extends KrdsResponse {
 
     private Data Data = new Data();
-    private String RequestId;
 
     public DescribeSecurityGroupResponse.Data getData() {
         return Data;
@@ -22,15 +21,6 @@ public class DescribeSecurityGroupResponse extends KrdsResponse {
     public void setData(DescribeSecurityGroupResponse.Data data) {
         Data = data;
     }
-
-    public String getRequestId() {
-        return RequestId;
-    }
-
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
-
 
     public class Data extends BaseData {
         private List<SecurityGroup> SecurityGroups = new ArrayList<SecurityGroup>();

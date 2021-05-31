@@ -13,7 +13,9 @@ import org.apache.commons.logging.LogFactory;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
@@ -48,17 +50,17 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         }
         BaseRequest req = (BaseRequest) in;
         request = new DefaultRequest<T>(req, SERVICE_NAME);
-        request.addParameter("Action", req.action().val());
+        request.addParameter("Action", getAction(req).val());
         request.setHttpMethod(method);
         request.addHeader("x-ksc-request-id", req.getRequestId());
         request.addHeader("Accept", "application/json");
         request.addParameter("Version", getOrDefaultVersion(req));
         for (Field field : req.getClass().getDeclaredFields()) {
             try {
-                String getter = "get" + upperCaseFirstLetter(field.getName());
-                Method getMethod = req.getClass().getMethod(getter);
-                Object value = getMethod.invoke(req);
-                addParameter(field, value);
+//                String getter = "get" + upperCaseFirstLetter(field.getName());
+//                Method getMethod = req.getClass().getMethod(getter);
+//                Object value = getMethod.invoke(req);
+                addParameter(field);
             } catch (Exception e) {
                 log.warn(e);
             }
@@ -67,12 +69,23 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         return request;
     }
 
-    private void addParameter(Field field, Object value) {
+    private ActionEnum getAction(BaseRequest req) {
+        if (action != null) {
+            return action;
+        }
+        return req.action();
+    }
+
+    private void addParameter(Field field) throws Exception {
+        String getter = "get" + upperCaseFirstLetter(field.getName());
+        KscWebServiceRequest originalRequest = request.getOriginalRequest();
+        Method method = originalRequest.getClass().getMethod(getter);
+        Object value = method.invoke(originalRequest);
         if (value == null) {
             return;
         }
-        String type = field.getType().getName();
-        if ("java.util.Map".equals(type)) {
+        Class<?> type = field.getType();
+        if (Map.class.equals(type)) {
             HashMap<String, String> valueMap = (HashMap<String, String>) value;
             int index = 1;
             for (Map.Entry<String, String> entry : valueMap.entrySet()) {
@@ -81,7 +94,37 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
             }
             return;
         }
+        if (List.class.isAssignableFrom(type)) {
+            addListParameter(field, value);
+            return;
+        }
         request.addParameter(field.getName(), value.toString());
+    }
+
+    private void addListParameter(Field field, Object value) throws Exception{
+        int index = 1;
+        ArrayList<Object> valueList = (ArrayList<Object>) value;
+        for (Object v : valueList) {
+            if (v instanceof String || v instanceof Integer) {
+                request.addParameter(getName(field, index), v.toString());
+                continue;
+            }
+            Field[] fields = v.getClass().getDeclaredFields();
+            for (Field f : fields) {
+                Method method = v.getClass().getMethod("get" + upperCaseFirstLetter(f.getName()));
+                Object o = method.invoke(v);
+                request.addParameter(getListName(field, index, f),o.toString());
+            }
+            index++;
+        }
+    }
+
+    private String getListName(Field field, int index, Field f) {
+        return field.getName() + "." + f.getName() + "." + index;
+    }
+
+    private String getName(Field field, int index) {
+        return field.getName() + "." + index;
     }
 
     public String getOrDefaultVersion(BaseRequest req) {

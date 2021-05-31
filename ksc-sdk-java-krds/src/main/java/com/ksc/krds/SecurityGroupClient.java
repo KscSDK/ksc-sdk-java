@@ -16,13 +16,13 @@ public class SecurityGroupClient extends Client {
         super(awsCredentials);
     }
 
-    public KrdsResponse createSecurityGroupRule(CreateSecurityGroupRequest request) {
+    public DescribeSecurityGroupResponse createSecurityGroupRule(CreateSecurityGroupRequest request) {
         Response<DescribeSecurityGroupResponse> response = doExecute(request,
                 new BaseMarshaller<CreateSecurityGroupRequest>(CREATE_SECURITY_GROUP));
         return response.getKscResponse();
     }
 
-    public KrdsResponse modifySecurityGroup(CreateSecurityGroupRequest request) {
+    public DescribeSecurityGroupResponse modifySecurityGroup(CreateSecurityGroupRequest request) {
         Response<DescribeSecurityGroupResponse> response = doExecute(request,
                 new BaseMarshaller<CreateSecurityGroupRequest>(MODIFY_SECURITY_GROUP));
         return response.getKscResponse();
@@ -34,19 +34,19 @@ public class SecurityGroupClient extends Client {
         return response.getKscResponse();
     }
 
-    public KrdsResponse cloneSecurityGroup(CreateSecurityGroupRequest request){
+    public DescribeSecurityGroupResponse cloneSecurityGroup(CreateSecurityGroupRequest request){
         Response<DescribeSecurityGroupResponse> response = doExecute(request,
                 new BaseMarshaller<CreateSecurityGroupRequest>(CLONE_SECURITY_GROUP));
         return response.getKscResponse();
     }
 
-    public KrdsResponse modifySecurityGroupRule(ModifySecurityGroupRuleRequest request){
+    public DescribeSecurityGroupResponse modifySecurityGroupRule(ModifySecurityGroupRuleRequest request){
         Response<DescribeSecurityGroupResponse> response = doExecute(request,
                 new BaseMarshaller<ModifySecurityGroupRuleRequest>(MODIFY_SECURITY_GROUP_RULE));
         return response.getKscResponse();
     }
 
-    public KrdsResponse securityGroupRelation(SecurityGroupRelationRequest request){
+    public DescribeSecurityGroupResponse securityGroupRelation(SecurityGroupRelationRequest request){
         Response<DescribeSecurityGroupResponse> response = doExecute(request,
                 new BaseMarshaller<SecurityGroupRelationRequest>(SECURITY_GROUP_RELATION));
         return response.getKscResponse();

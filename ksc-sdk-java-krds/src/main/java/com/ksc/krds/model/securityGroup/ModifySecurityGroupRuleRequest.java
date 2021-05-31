@@ -10,7 +10,7 @@ public class ModifySecurityGroupRuleRequest extends BaseRequest<ModifySecurityGr
 
     private String SecurityGroupId;
 
-    private List<DescribeSecurityGroupResponse.SecurityGroupRule> SecurityGroupRule;
+    private List<CreateSecurityGroupRequest.SecurityGroupRule> SecurityGroupRule;
 
     public String getSecurityGroupRuleAction() {
         return SecurityGroupRuleAction;
@@ -28,11 +28,11 @@ public class ModifySecurityGroupRuleRequest extends BaseRequest<ModifySecurityGr
         SecurityGroupId = securityGroupId;
     }
 
-    public List<DescribeSecurityGroupResponse.SecurityGroupRule> getSecurityGroupRule() {
+    public List<CreateSecurityGroupRequest.SecurityGroupRule> getSecurityGroupRule() {
         return SecurityGroupRule;
     }
 
-    public void setSecurityGroupRule(List<DescribeSecurityGroupResponse.SecurityGroupRule> securityGroupRule) {
+    public void setSecurityGroupRule(List<CreateSecurityGroupRequest.SecurityGroupRule> securityGroupRule) {
         SecurityGroupRule = securityGroupRule;
     }
 }
