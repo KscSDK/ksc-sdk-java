@@ -1,6 +1,5 @@
 package com.ksc.krds;
 
-import com.ksc.KscWebServiceRequest;
 import com.ksc.KscWebServiceResponse;
 import com.ksc.Request;
 import com.ksc.Response;
