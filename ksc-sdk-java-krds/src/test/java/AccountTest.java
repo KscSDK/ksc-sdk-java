@@ -4,6 +4,8 @@ import com.ksc.krds.model.account.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.crypto.Cipher;
+
 public class AccountTest extends BaseTest {
 
     private AccountClient client;
@@ -15,7 +17,7 @@ public class AccountTest extends BaseTest {
     }
 
     @Test
-    public void testList() {
+    public void testListAccount() {
         ListAccountRequest request = new ListAccountRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse<ListAccountResponse> response = client.listAccount(request);
@@ -23,21 +25,25 @@ public class AccountTest extends BaseTest {
     }
 
     @Test
-    public void testCreate() {
+    public void testCreateAccount() {
         CreateAccountRequest request = new CreateAccountRequest();
         request.setDBInstanceIdentifier(getInstanceId());
-        request.setUser("lzs");
-        request.setPassword("Aq123.@1sdi");
+        request.setUser("lzs3");
+        request.setPassword("Co0perate");
         request.setHost(getHost());
         RdsResponse<DescribeAccountResponse> response = client.createAccount(request);
-        System.out.println(response.getData());
+        log.info("{}",response);
     }
 
     @Test
-    public void testModify() {
+    public void testModifyAccount() {
         ModifyAccountRequest request = new ModifyAccountRequest();
         request.setDBInstanceIdentifier(getInstanceId());
-        client.modifyAccount(request);
+        request.setUser("lzs");
+        request.setHost(getHost());
+        request.setPassword("Co0perate1");
+        RdsResponse<DescribeAccountResponse> response = client.modifyAccount(request);
+        log.info("{}",response);
     }
 
     @Test
@@ -48,10 +54,20 @@ public class AccountTest extends BaseTest {
     }
 
     @Test
-    public void testDescribe() {
+    public void testDescribeAccount() {
         DescribeAccountRequest request = new DescribeAccountRequest();
         request.setDBInstanceIdentifier(getInstanceId());
+        request.setHost(getHost());
+        request.setUser("lzs");
         RdsResponse<DescribeAccountResponse> response = client.describeAccount(request);
-        System.out.println(response.getData());
+        log.info("{}",response);
+    }
+
+    @Test
+    public void testListAccountSupportPrivileges() {
+        ListAccountSupportPrivilegesRequest request = new ListAccountSupportPrivilegesRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<ListAccountSupportPrivilegesResponse> response = client.listAccountSupportPrivileges(request);
+        log.info("{}",response);
     }
 }

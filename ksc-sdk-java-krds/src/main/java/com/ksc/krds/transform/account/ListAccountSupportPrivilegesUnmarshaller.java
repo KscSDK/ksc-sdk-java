@@ -10,8 +10,8 @@ public class ListAccountSupportPrivilegesUnmarshaller implements Unmarshaller<Rd
 
     @Override
     public RdsResponse<ListAccountSupportPrivilegesResponse> unmarshall(JsonUnmarshallerContext in) throws Exception {
-        RdsResponse<ListAccountSupportPrivilegesResponse> response = RdsResponseConversion.invoke(in.getJsonParser(), null);
-        response.setData(RdsResponseConversion.invoke1(in.getJsonParser(), ListAccountSupportPrivilegesResponse.class));
+        RdsResponse<ListAccountSupportPrivilegesResponse> response = RdsResponseConversion.invoke(in.getJsonParser(), ListAccountSupportPrivilegesResponse.class);
+//        response.setData(RdsResponseConversion.invoke1(in.getJsonParser(), ListAccountSupportPrivilegesResponse.class));
         return response;
     }
 }

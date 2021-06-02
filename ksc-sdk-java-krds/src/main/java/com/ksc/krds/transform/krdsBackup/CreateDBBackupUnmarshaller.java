@@ -10,6 +10,6 @@ public class CreateDBBackupUnmarshaller implements Unmarshaller<RdsResponse<Crea
 
     @Override
     public RdsResponse<CreateDBBackupResponse> unmarshall(JsonUnmarshallerContext in) throws Exception {
-        return RdsResponseConversion.doInvoke(in.getJsonParser(), CreateDBBackupResponse.class,"DBBackup");
+        return RdsResponseConversion.invoke(in.getJsonParser(), CreateDBBackupResponse.class);
     }
 }

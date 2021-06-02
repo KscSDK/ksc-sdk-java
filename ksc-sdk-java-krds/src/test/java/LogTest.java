@@ -15,13 +15,12 @@ public class LogTest extends BaseTest {
     }
 
     @Test
-    public void testDescribe() {
+    public void testDescribeDBLogFiles() {
         DescribeDBLogFilesRequest request = new DescribeDBLogFilesRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         request.setDBLogType(DBLogType.SlowLog);
         RdsResponse<DescribeDBLogFilesResponse> response = client.describeDBLogFiles(request);
-        DescribeDBLogFilesResponse data = response.getData();
-        log.info("result:{}",data);
+        print(response);
     }
 
     @Test
