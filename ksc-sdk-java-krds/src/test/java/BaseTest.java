@@ -19,10 +19,14 @@ public class BaseTest {
     }
 
     public String getInstanceId() {
-        return  "f0b9614c-979e-4cf4-8b58-28ebc65fd329";
+        return  "33db571f-167b-40bd-972f-62e7718a888a";
     }
 
     public String getHost() {
-        return "10.8.1.150";
+        return "10.0.1.179";
+    }
+
+    public void print(Object o) {
+        log.info("{}",o);
     }
 }

@@ -1,12 +1,9 @@
 package com.ksc.krds;
 
-import com.ksc.Response;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
 import com.ksc.krds.transform.krdsInstance.*;
-
-import static com.ksc.krds.transform.ActionEnum.*;
 
 public class InstanceClient extends Client {
 
@@ -28,7 +25,7 @@ public class InstanceClient extends Client {
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> SwitchDBInstanceHA(SwitchHARequest request) {
+    public RdsResponse<InstanceResponse> switchDBInstanceHA(SwitchHARequest request) {
         return invoke(new BaseMarshaller<SwitchHARequest>(), new RebootUnmarshaller(), request)
                 .getKscResponse();
     }
@@ -73,8 +70,8 @@ public class InstanceClient extends Client {
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> overrideDBInstance(OverrideDBInstanceRequest request) {
-        return invoke(new BaseMarshaller<OverrideDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+    public RdsResponse<OverrideDBInstanceResponse> overrideDBInstance(OverrideDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<OverrideDBInstanceRequest>(), new OverrideUnmarshaller(), request)
                 .getKscResponse();
     }
 }

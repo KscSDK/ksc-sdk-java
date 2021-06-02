@@ -56,14 +56,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         request.addHeader("Accept", "application/json");
         request.addParameter("Version", getOrDefaultVersion(req));
         for (Field field : req.getClass().getDeclaredFields()) {
-            try {
-//                String getter = "get" + upperCaseFirstLetter(field.getName());
-//                Method getMethod = req.getClass().getMethod(getter);
-//                Object value = getMethod.invoke(req);
                 addParameter(field);
-            } catch (Exception e) {
-                log.warn(e);
-            }
         }
 
         return request;

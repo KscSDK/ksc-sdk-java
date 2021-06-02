@@ -14,15 +14,15 @@ public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaReque
 
     private String AttachedVipId;
 
-    private Integer Duration = 1;
+    private Integer Duration;
 
-    private DURATION_UNIT DurationUnit = DURATION_UNIT.M;
+    private DURATION_UNIT DurationUnit;
 
-    private BILLTYPE BillType= BILLTYPE.YEAR_MONTH;
+    private BILLTYPE BillType;
 
-    private PRODUCTWHAT ProductWhat = PRODUCTWHAT.REGULAR;
+    private PRODUCTWHAT ProductWhat;
 
-    private List<String> AvailabilityZone = new ArrayList<String>();
+    private List<String> AvailabilityZone;
 
     private BigInteger ProjectId;
 

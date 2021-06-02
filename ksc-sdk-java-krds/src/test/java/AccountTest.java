@@ -1,6 +1,4 @@
-import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.krds.AccountClient;
-import com.ksc.krds.AuditStatisticClient;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.account.*;
 import org.junit.Before;
@@ -21,7 +19,7 @@ public class AccountTest extends BaseTest {
         ListAccountRequest request = new ListAccountRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse<ListAccountResponse> response = client.listAccount(request);
-        System.out.println(response.getData());
+        log.info("{}",response);
     }
 
     @Test

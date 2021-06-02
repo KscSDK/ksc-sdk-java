@@ -6,7 +6,7 @@ public class ModifyDBInstanceSpecRequest extends BaseRequest<ModifyDBInstanceSpe
 
     private String DBInstanceClass;
 
-    private Boolean OrderOnly = false;
+    private Boolean OrderOnly;
 
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
