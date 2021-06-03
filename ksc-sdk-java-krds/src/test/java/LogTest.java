@@ -4,6 +4,8 @@ import com.ksc.krds.model.log.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.concurrent.CountDownLatch;
+
 public class LogTest extends BaseTest {
 
     private LogClient client;
@@ -30,6 +32,7 @@ public class LogTest extends BaseTest {
         request.setDBLogType(DBLogType.SlowLog);
         RdsResponse<DescribeDBLogResponse> response = client.describeLastLog(request);
         log.info("result:{}",response.getData());
+
     }
 
     //TODO

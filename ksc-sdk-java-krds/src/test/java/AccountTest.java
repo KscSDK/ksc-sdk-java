@@ -4,8 +4,6 @@ import com.ksc.krds.model.account.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.crypto.Cipher;
-
 public class AccountTest extends BaseTest {
 
     private AccountClient client;
@@ -47,10 +45,13 @@ public class AccountTest extends BaseTest {
     }
 
     @Test
-    public void testDelete() {
+    public void testDeleteAccount() {
         DeleteAccountRequest request = new DeleteAccountRequest();
         request.setDBInstanceIdentifier(getInstanceId());
-        client.deleteAccount(request);
+        request.setUser("lzs3");
+        request.setHost(getHost());
+        RdsResponse response = client.deleteAccount(request);
+        print(response);
     }
 
     @Test
