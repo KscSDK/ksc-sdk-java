@@ -1,32 +1,48 @@
-import com.ksc.auth.BasicAWSCredentials;
-import com.ksc.auth.policy.Resource;
 import com.ksc.krds.AuditClient;
-import com.ksc.krds.ParameterGroupClient;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.audit.ListAuditRequest;
-import com.ksc.krds.model.audit.ListAuditResponse;
+import com.ksc.krds.model.audit.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class AuditTest {
+public class AuditTest extends BaseTest{
 
     private AuditClient client;
 
     @Before
     public void init() {
-        String accessKey = System.getenv("KSYUN_ACCESS_KEY");
-        String secretKey = System.getenv("KSYUN_SECRET_KEY");
-        BasicAWSCredentials credentials = new BasicAWSCredentials(accessKey, secretKey);
-        client = new AuditClient(credentials);
+        client = new AuditClient(getCredentials());
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
     }
 
     @Test
-    public void testList() {
+    public void testListAudit() {
         ListAuditRequest request = new ListAuditRequest();
-        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
+        request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse<ListAuditResponse> response = client.listAudit(request);
-        ListAuditResponse data = response.getData();
-        System.out.println(data);
+        print(response);
+    }
+
+    @Test
+    public void testAuditStatistic() {
+        AuditStatisticRequest request = new AuditStatisticRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse response = client.auditStatistic(request);
+        print(response);
+    }
+
+    @Test
+    public void testStartAuditDetailExportTask() {
+        StartAuditDetailExportTaskRequest request = new StartAuditDetailExportTaskRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse response = client.startAuditDetailExportTask(request);
+        print(response);
+    }
+
+    @Test
+    public void test() {
+        ListAuditDetailExportTaskRequest request = new ListAuditDetailExportTaskRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<ListAuditDetailExportTaskResponse> response = client.listAuditDetailExportTask(request);
+        print(response);
     }
 }

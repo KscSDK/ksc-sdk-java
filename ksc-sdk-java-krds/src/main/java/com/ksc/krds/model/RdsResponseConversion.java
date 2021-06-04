@@ -5,7 +5,6 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.JsonNodeType;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
@@ -34,12 +33,6 @@ public class RdsResponseConversion {
             if (clazz == null) {
                 continue;
             }
-            JsonNodeType nodeType = value.getNodeType();
-
-            if (nodeType == JsonNodeType.NUMBER) {
-
-            }
-
             response.setData(objectMapper.convertValue(value, clazz));
         }
 
@@ -56,7 +49,8 @@ public class RdsResponseConversion {
 
     public static <T> T invoke1(JsonParser jsonParser, Class<T> clazz) throws IOException {
         ObjectMapper objectMapper = createObjectMapper();
-        return objectMapper.convertValue(objectMapper.readTree(jsonParser), clazz);
+        return objectMapper.convertValue(jsonParser, clazz);
+//        return objectMapper.convertValue(objectMapper.readTree(jsonParser), clazz);
     }
 
 }
