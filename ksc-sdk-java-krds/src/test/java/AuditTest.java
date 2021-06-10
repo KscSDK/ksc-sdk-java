@@ -4,6 +4,8 @@ import com.ksc.krds.model.audit.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.lang.annotation.Retention;
+
 public class AuditTest extends BaseTest{
 
     private AuditClient client;
@@ -39,10 +41,26 @@ public class AuditTest extends BaseTest{
     }
 
     @Test
-    public void test() {
+    public void testListAuditDetailExportTask() {
         ListAuditDetailExportTaskRequest request = new ListAuditDetailExportTaskRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse<ListAuditDetailExportTaskResponse> response = client.listAuditDetailExportTask(request);
+        print(response);
+    }
+
+    @Test
+    public void testStartAudit() {
+        StartAuditRequest request = new StartAuditRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse response = client.startAudit(request);
+        print(response);
+    }
+
+    @Test
+    public void testStopAudit() {
+        StopAuditRequest request = new StopAuditRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse response = client.stopAudit(request);
         print(response);
     }
 }
