@@ -4,9 +4,7 @@ import com.ksc.krds.model.securityGroup.*;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.lang.annotation.Retention;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SecurityGroupTest extends BaseTest{
@@ -59,7 +57,7 @@ public class SecurityGroupTest extends BaseTest{
     public void testDeleteSecurityGroup() {
         DeleteSecurityGroupRequest request = new DeleteSecurityGroupRequest();
         List<String> securityGroupIds = new ArrayList<String>(1);
-        securityGroupIds.add("64236");
+        securityGroupIds.add("64269");
         request.setSecurityGroupId(securityGroupIds);
         KrdsResponse response = client.deleteSecurityGroup(request);
         log.info("{}", response);

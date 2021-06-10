@@ -106,6 +106,9 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
             for (Field f : fields) {
                 Method method = v.getClass().getMethod("get" + upperCaseFirstLetter(f.getName()));
                 Object o = method.invoke(v);
+                if (o == null) {
+                    continue;
+                }
                 request.addParameter(getListName(field, index, f),o.toString());
             }
             index++;

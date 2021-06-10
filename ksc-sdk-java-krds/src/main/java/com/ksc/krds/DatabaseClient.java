@@ -18,7 +18,7 @@ public class DatabaseClient extends Client{
                 new CreateAccountUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse describeAccount(DescribeAccountRequest request){
+    public RdsResponse<DescribeAccountResponse> describeAccount(DescribeAccountRequest request){
         return invoke(new BaseMarshaller<DescribeAccountRequest>(),
                 new DescribeAccountUnmarshaller(), request).getKscResponse();
     }
@@ -38,7 +38,7 @@ public class DatabaseClient extends Client{
                 new DeleteAccountUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse describeCollations(InstanceRequest request){
+    public RdsResponse<GetMysqlCollationsResponse> describeCollations(InstanceRequest request){
         return invoke(new BaseMarshaller<InstanceRequest>(),
                 new InstanceUnmarshaller(), request).getKscResponse();
     }
@@ -53,7 +53,7 @@ public class DatabaseClient extends Client{
                 new ModifyDatabasePrivilegesUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse describeInstanceDatabases(DescribeDatabaseRequest request){
+    public RdsResponse<DescribeDatabaseResponse> describeInstanceDatabases(DescribeDatabaseRequest request){
         return invoke(new BaseMarshaller<DescribeDatabaseRequest>(),
                 new DescribeDatabaseUnmarshaller(), request).getKscResponse();
     }

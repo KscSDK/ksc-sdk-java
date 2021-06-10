@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class ParameterGroupTest extends BaseTest{
 
@@ -33,8 +34,10 @@ public class ParameterGroupTest extends BaseTest{
     @Test
     public void testModifyDBParameterGroup() {
         ModifyDBParameterGroupRequest request = new ModifyDBParameterGroupRequest();
-        request.setDBParameterGroupId("bd696e5c-3f39-44f5-8afb-3b9e6dd20d7f");
-        request.setDBParameterGroupName("lzs-test-1");
+        request.setDBParameterGroupId("4ab8ba1d-ad0c-4931-9b20-efacfc75ed78");
+        Map<String, String> parameter = new HashMap<String, String>();
+        parameter.put("back_log","2000");
+        request.setParameters(parameter);
         RdsResponse<ResetDBParameterGroupResponse> response = client.modifyDBParameterGroup(request);
         log.info("{}", response);
     }
@@ -42,7 +45,7 @@ public class ParameterGroupTest extends BaseTest{
     @Test
     public void testDescribeDBParameterGroup(){
         DescribeDBParameterGroupRequest request = new DescribeDBParameterGroupRequest();
-//        request.setDBParameterGroupId("bd696e5c-3f39-44f5-8afb-3b9e6dd20d7f");
+        request.setDBParameterGroupId("e4168fad-f1c6-4793-bbd8-994dbf346dff");
         RdsResponse<DescribeDBParameterGroupResponse> response = client.describeDBParameterGroup(request);
         log.info("{}", response);
     }

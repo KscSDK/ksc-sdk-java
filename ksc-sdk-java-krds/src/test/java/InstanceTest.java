@@ -1,6 +1,5 @@
 import com.ksc.krds.InstanceClient;
 import com.ksc.krds.KSCKRDSClient;
-import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
 import org.junit.Before;
@@ -72,7 +71,7 @@ public class InstanceTest extends BaseTest{
     public void testDescribe() {
         KSCKRDSClient client1 =new KSCKRDSClient(getCredentials());
         ListKrdsRequest request = new ListKrdsRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("867d573f-e80a-4584-8cc9-42ac089eb88b");
         ListKrdsResponse allResponse = new ListKrdsResponse();
         if (allResponse.getData().getInstances() == null){
             allResponse.getData().setInstances(new ArrayList<Instance>());

@@ -26,6 +26,9 @@ public class RdsResponseConversion {
             Map.Entry<String, JsonNode> next = fields.next();
             String field = next.getKey();
             JsonNode value = next.getValue();
+            if (value == null) {
+                continue;
+            }
             if ("RequestId".equals(field)) {
                 response.setRequestId(value.asText());
                 continue;

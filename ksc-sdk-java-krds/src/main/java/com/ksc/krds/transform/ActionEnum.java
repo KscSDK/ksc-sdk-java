@@ -110,7 +110,7 @@ public enum ActionEnum {
     LIST_ACCOUNT_SUPPORT_PRIVILEGES(ListAccountSupportPrivilegesRequest.class,"ListAccountSupportPrivileges"),
     DELETE_ACCOUNT(DeleteAccountRequest.class,"DeleteAccount"),
 
-    /** -------------------account------------------- **/
+    /** -------------------database------------------- **/
     CreateInstanceAccount(com.ksc.krds.model.database.CreateAccountRequest.class,"CreateInstanceAccount"),
     DescribeInstanceAccounts(com.ksc.krds.model.database.DescribeAccountRequest.class,"DescribeInstanceAccounts"),
     ModifyInstanceAccountInfo(ModifyAccountPasswordRequest.class,"ModifyInstanceAccountInfo"),

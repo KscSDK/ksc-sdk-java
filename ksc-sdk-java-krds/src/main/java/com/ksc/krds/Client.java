@@ -13,8 +13,12 @@ import com.ksc.protocol.json.JsonOperationMetadata;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.KscRequestMetrics;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class Client extends KSCKRDSClient {
+
+    Logger log = LoggerFactory.getLogger(Client.class);
 
     public Client(AWSCredentials awsCredentials) {
         super(awsCredentials);
@@ -34,7 +38,7 @@ public class Client extends KSCKRDSClient {
                 request = marshaller.marshall(super.beforeMarshalling(in));
                 request.setKscRequestMetrics(kscRequestMetrics);
             } catch (Exception e) {
-//                log.warn(e);
+                log.warn(e.getLocalizedMessage());
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
@@ -65,7 +69,7 @@ public class Client extends KSCKRDSClient {
                 request = marshaller.marshall(super.beforeMarshalling(in));
                 request.setKscRequestMetrics(kscRequestMetrics);
             } catch (Exception e) {
-//                log.warn(e);
+                log.warn(e.getLocalizedMessage());
             } finally {
                 kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
             }
