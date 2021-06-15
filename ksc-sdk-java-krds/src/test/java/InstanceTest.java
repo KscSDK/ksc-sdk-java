@@ -24,7 +24,7 @@ public class InstanceTest extends BaseTest{
         LockDBInstanceRequest request = new LockDBInstanceRequest();
         request.setRequestId(UUID.randomUUID().toString());
         request.setDBInstanceIdentifier(getInstanceId());
-        RdsResponse<InstanceResponse> response = client.lockDBInstance(request);
+        RdsResponse<InstancesResponse> response = client.lockDBInstance(request);
         log.info("{}",response);
     }
 
@@ -32,7 +32,7 @@ public class InstanceTest extends BaseTest{
     public void testUnLock() {
         UnLockDBInstanceRequest request = new UnLockDBInstanceRequest();
         request.setDBInstanceIdentifier(getInstanceId());
-        RdsResponse<InstanceResponse> response = client.unLockDBInstance(request);
+        RdsResponse<InstancesResponse> response = client.unLockDBInstance(request);
         System.out.println(response.getData());
     }
 
@@ -40,7 +40,7 @@ public class InstanceTest extends BaseTest{
     public void testReboot() {
         RebootDBInstanceRequest request = new RebootDBInstanceRequest();
         request.setRequestId(UUID.randomUUID().toString());
-        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
+        request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse<InstanceResponse> response = client.rebootDBInstance(request);
         log.info("{}",response);
     }
@@ -48,7 +48,7 @@ public class InstanceTest extends BaseTest{
     @Test
     public void testUpgradeDBInstanceEngineVersion() {
         UpgradeDBInstanceEngineVersionRequest request = new UpgradeDBInstanceEngineVersionRequest();
-        request.setDBInstanceIdentifier("f0b9614c-979e-4cf4-8b58-28ebc65fd329");
+        request.setDBInstanceIdentifier(getInstanceId());
         request.setEngine("mysql");
         request.setEngineVersion("5.7");
         RdsResponse<InstanceResponse> response = client.upgradeDBInstanceEngineVersion(request);
@@ -60,6 +60,7 @@ public class InstanceTest extends BaseTest{
         CreateReadReplicaRequest request = new CreateReadReplicaRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         request.setDBInstanceName("lzs_test_rr");
+        request.setDBInstanceClass("db.ram.1|db.disk.5");
         List<String> availabilityZones = new ArrayList<String>();
         availabilityZones.add("cn-beijing-6a");
         request.setAvailabilityZone(availabilityZones);
@@ -121,8 +122,8 @@ public class InstanceTest extends BaseTest{
     public void testModifyDBInstanceSpec() {
         ModifyDBInstanceSpecRequest request = new ModifyDBInstanceSpecRequest();
         request.setDBInstanceIdentifier(getInstanceId());
-        request.setDBInstanceClass("db.ram.2|db.disk.30");
-        RdsResponse<InstanceResponse> response = client.modifyDBInstanceSpec(request);
+        request.setDBInstanceClass("db.ram.8|db.disk.50");
+        RdsResponse<ModifyInstanceTypeResp> response = client.modifyDBInstanceSpec(request);
         print(response);
     }
 
@@ -131,7 +132,7 @@ public class InstanceTest extends BaseTest{
         ModifyDBInstanceAvailabilityZoneRequest request = new ModifyDBInstanceAvailabilityZoneRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         List<String> availabilityZones = new ArrayList<String>();
-        availabilityZones.add("cn-beijing-6b");
+        availabilityZones.add("cn-beijing-6c");
         request.setAvailabilityZone(availabilityZones);
         RdsResponse<InstanceResponse> response = client.modifyDBInstanceAvailabilityZone(request);
         print(response);

@@ -21,17 +21,17 @@ public class InstanceClient extends Client {
     }
 
     public RdsResponse<InstanceResponse> modifyInstanceType(ModifyInstanceTypeRequest request) {
-        return invoke(new BaseMarshaller<ModifyInstanceTypeRequest>(), new RebootUnmarshaller(), request)
+        return invoke(new BaseMarshaller<ModifyInstanceTypeRequest>(), new InstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
     public RdsResponse<InstanceResponse> switchDBInstanceHA(SwitchHARequest request) {
-        return invoke(new BaseMarshaller<SwitchHARequest>(), new RebootUnmarshaller(), request)
+        return invoke(new BaseMarshaller<SwitchHARequest>(), new InstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
     public RdsResponse<InstanceResponse> createDBInstanceReadReplica(CreateReadReplicaRequest request) {
-        return invoke(new BaseMarshaller<CreateReadReplicaRequest>(), new RebootUnmarshaller(), request)
+        return invoke(new BaseMarshaller<CreateReadReplicaRequest>(), new InstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
@@ -40,8 +40,8 @@ public class InstanceClient extends Client {
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> modifyDBInstanceSpec(ModifyDBInstanceSpecRequest request) {
-        return invoke(new BaseMarshaller<ModifyDBInstanceSpecRequest>(), new InstanceUnmarshaller(), request)
+    public RdsResponse<ModifyInstanceTypeResp> modifyDBInstanceSpec(ModifyDBInstanceSpecRequest request) {
+        return invoke(new BaseMarshaller<ModifyDBInstanceSpecRequest>(), new ModifyDBInstanceSpecUnmarshaller(), request)
                 .getKscResponse();
     }
 
@@ -55,13 +55,13 @@ public class InstanceClient extends Client {
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> lockDBInstance(LockDBInstanceRequest request) {
-        return invoke(new BaseMarshaller<LockDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+    public RdsResponse<InstancesResponse> lockDBInstance(LockDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<LockDBInstanceRequest>(), new InstancesUnmarshaller(), request)
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> unLockDBInstance(UnLockDBInstanceRequest request) {
-        return invoke(new BaseMarshaller<UnLockDBInstanceRequest>(), new InstanceUnmarshaller(), request)
+    public RdsResponse<InstancesResponse> unLockDBInstance(UnLockDBInstanceRequest request) {
+        return invoke(new BaseMarshaller<UnLockDBInstanceRequest>(), new InstancesUnmarshaller(), request)
                 .getKscResponse();
     }
 

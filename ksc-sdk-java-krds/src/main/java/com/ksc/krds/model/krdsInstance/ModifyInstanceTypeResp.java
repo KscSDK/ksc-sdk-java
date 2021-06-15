@@ -1,4 +1,15 @@
 package com.ksc.krds.model.krdsInstance;
 
-public class ModifyInstanceTypeResp extends InstancesResponse {
+import java.util.List;
+
+public class ModifyInstanceTypeResp {
+    private List<Instance> Instances;
+
+    public List<Instance> getInstances() {
+        return Instances;
+    }
+
+    public void setInstances(List<Instance> instances) {
+        Instances = instances;
+    }
 }

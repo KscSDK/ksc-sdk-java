@@ -99,7 +99,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         ArrayList<Object> valueList = (ArrayList<Object>) value;
         for (Object v : valueList) {
             if (v instanceof String || v instanceof Integer) {
-                request.addParameter(getName(field, index), v.toString());
+                request.addParameter(getName(field, index++), v.toString());
                 continue;
             }
             Field[] fields = v.getClass().getDeclaredFields();
@@ -109,9 +109,8 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
                 if (o == null) {
                     continue;
                 }
-                request.addParameter(getListName(field, index, f),o.toString());
+                request.addParameter(getListName(field, index++, f),o.toString());
             }
-            index++;
         }
     }
 
