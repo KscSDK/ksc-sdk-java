@@ -2,9 +2,12 @@ import com.ksc.krds.InstanceClient;
 import com.ksc.krds.KSCKRDSClient;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
+import com.sun.jmx.remote.internal.ClientListenerInfo;
+import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import org.junit.Before;
 import org.junit.Test;
 
+import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -158,4 +161,102 @@ public class InstanceTest extends BaseTest{
         print(response);
     }
 
+    @Test
+    public void testGenerateDBAdminURL() {
+        GenerateDBAdminURLRequest request = new GenerateDBAdminURLRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<String> response = client.generateDBAdminURL(request);
+        print(response);
+    }
+
+    @Test
+    public void testAllocateDBInstanceEip() {
+        AllocateDBInstanceEipRequest request = new AllocateDBInstanceEipRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setPort(33061);
+        RdsResponse response = client.allocateDBInstanceEip(request);
+        print(response);
+    }
+
+    @Test
+    public void testReleaseDBInstanceEip() {
+        ReleaseDBInstanceEipRequest request = new ReleaseDBInstanceEipRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<InstanceResponse> response = client.releaseDBInstanceEip(request);
+        print(response);
+    }
+
+    @Test
+    public void testDescribeDBInstanceRestorableTime() {
+        DescribeDBInstanceRestoredTimeRequest request = new DescribeDBInstanceRestoredTimeRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<DescribeDBInstanceRestoredResponse> response = client.describeDBInstanceRestorableTime(request);
+        print(response);
+    }
+
+    @Test
+    public void testSDKRestoreDBInstanceToPointInTime() {
+        SDKRestoreDBInstanceToPointInTimeRequest request = new SDKRestoreDBInstanceToPointInTimeRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        request.setRestorableTime("2021-06-15 00:00:00");
+        RdsResponse response = client.sdkRestoreDBInstanceToPointInTime(request);
+        print(response);
+    }
+
+    @Test
+    public void testListDBInstance() {
+        ListDBInstanceRequest request = new ListDBInstanceRequest();
+        request.setMaxRecords(10);
+        request.setMarker(0);
+        RdsResponse response = client.listDBInstance(request);
+        print(response);
+    }
+
+    @Test
+    public void testListZone() {
+        ListZoneRequest request = new ListZoneRequest();
+        RdsResponse response = client.listZone(request);
+        print(response);
+    }
+
+    @Test
+    public void testStatisticDBInstances() {
+        StatisticDBInstancesRequest request = new StatisticDBInstancesRequest();
+        RdsResponse response = client.statisticDBInstances(request);
+        print(response);
+    }
+
+    @Test
+    public void testCreateInstanceOrder() {
+        CreateInstanceOrderRequest request = new CreateInstanceOrderRequest();
+        request.setBillType(BILLTYPE.DAY);
+        request.setDuration(1);
+        request.setProductWhat(PRODUCTWHAT.TRIAL);
+        RdsResponse response = client.createInstanceOrder(request);
+        print(response);
+    }
+
+    @Test
+    public void testGetCurrentDatabaseInfo() {
+        GetCurrentDatabaseInfoReq request = new GetCurrentDatabaseInfoReq();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse<GetCurrentDatabaseInfoResponse> response = client.getCurrentDatabaseInfo(request);
+        print(response);
+    }
+
+    @Test
+    public void testAllocateDBInstanceInnerEip() {
+        AllocateDBInstanceInnerEipRequest request = new AllocateDBInstanceInnerEipRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse response = client.allocateDBInstanceInnerEip(request);
+        print(response);
+    }
+
+    @Test
+    public void test() {
+        ReleaseDBInstanceInnerEipRequest request = new ReleaseDBInstanceInnerEipRequest();
+        request.setDBInstanceIdentifier(getInstanceId());
+        RdsResponse response = client.releaseDBInstanceInnerEip(request);
+        print(response);
+    }
 }

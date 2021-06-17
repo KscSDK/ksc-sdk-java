@@ -13,7 +13,7 @@ import org.apache.commons.logging.LogFactory;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 
-public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
+public class BaseMarshaller1<T> implements Marshaller<Request<T>, T> {
 
     private Request<T> request;
 
@@ -23,14 +23,14 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
 
     private final static String SERVICE_NAME = "krds";
 
-    static final Log log = LogFactory.getLog(BaseMarshaller.class);
+//    static final Log log = LogFactory.getLog(BaseMarshaller.class);
 
-    public BaseMarshaller(ActionEnum action, HttpMethodName method) {
+    public BaseMarshaller1(ActionEnum action, HttpMethodName method) {
         this.action = action;
         this.method = method;
     }
 
-    public BaseMarshaller(ActionEnum action) {
+    public BaseMarshaller1(ActionEnum action) {
         this.action = action;
         this.method = HttpMethodName.GET;
     }
@@ -60,7 +60,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
                     request.addParameter(field.getName(), value.toString());
                 }
             } catch (Exception e) {
-                log.warn(e);
+//                log.warn(e);
             }
         }
 
