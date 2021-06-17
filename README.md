@@ -8,6 +8,27 @@
 
 ### Requirements ###
 运行 SDK需要jdk **Java 1.6+**. 你可以下载最新的版本： http://developers.sun.com/downloads/.
+如果 SDK版本 高于或者等于 **Java 9** 请使用 0.3.17+版本的 SDK 
+由于在高于或者等于 **Java 9** 中 javax.xml.bind 被移除 
+
+请在使用中引用
+```xml
+<dependency>
+  <groupId>javax.xml.bind</groupId>
+  <artifactId>jaxb-api</artifactId>
+  <version>2.3.0</version>
+</dependency>
+<dependency>
+  <groupId>com.sun.xml.bind</groupId>
+  <artifactId>jaxb-core</artifactId>
+  <version>2.3.0</version>
+</dependency>
+<dependency>
+  <groupId>com.sun.xml.bind</groupId>
+  <artifactId>jaxb-impl</artifactId>
+  <version>2.3.0</version>
+</dependency>
+```
 
 ### Usage ###
 * Getting Started
