@@ -75,7 +75,7 @@ public class InstanceTest extends BaseTest{
     public void testDescribe() {
         KSCKRDSClient client1 =new KSCKRDSClient(getCredentials());
         ListKrdsRequest request = new ListKrdsRequest();
-        request.setDBInstanceIdentifier("867d573f-e80a-4584-8cc9-42ac089eb88b");
+//        request.setDBInstanceIdentifier("867d573f-e80a-4584-8cc9-42ac089eb88b");
         ListKrdsResponse allResponse = new ListKrdsResponse();
         if (allResponse.getData().getInstances() == null){
             allResponse.getData().setInstances(new ArrayList<Instance>());
