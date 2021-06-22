@@ -6,6 +6,9 @@ import com.ksc.krds.transform.krdsInstance.CreateKrdsMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
 
 import java.io.Serializable;
+import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CreateKrdsRequest extends KscWebServiceRequest
         implements Serializable, Cloneable, DryRunSupportedRequest<CreateKrdsRequest> {
@@ -29,6 +32,204 @@ public class CreateKrdsRequest extends KscWebServiceRequest
     private String DurationUnit;
     private Integer ProjectId;
     private String RequestId;
+
+    private Integer MaxConn;
+
+    private Integer Iops;
+
+    private Integer Vcpus;
+
+    private String DBInstanceIdentifier;
+
+    private String FlavorId;
+
+    private String SecurityGroupId;
+
+    private String VipId;
+
+    private String Vip;
+
+    private String DesignatedHost;
+
+    private String EndTime;
+
+    private List<String> AvailabilityZone = new ArrayList<String>();
+
+    private String SubOrderId;
+
+    private Integer VolumeSize;
+
+    private String VolumeType;
+
+    private Integer CountNodes;
+
+    private List<SecurityGroups> SecurityGroups = new ArrayList<SecurityGroups>();
+
+    private Boolean SupportIPV6 = false;
+
+    private Instance.WithData WithData;
+
+    private String PreSubmitId;
+
+    public Integer getMaxConn() {
+        return MaxConn;
+    }
+
+    public void setMaxConn(Integer maxConn) {
+        MaxConn = maxConn;
+    }
+
+    public Integer getIops() {
+        return Iops;
+    }
+
+    public void setIops(Integer iops) {
+        Iops = iops;
+    }
+
+    public Integer getVcpus() {
+        return Vcpus;
+    }
+
+    public void setVcpus(Integer vcpus) {
+        Vcpus = vcpus;
+    }
+
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    public String getDBInstanceIdentifier() {
+        return DBInstanceIdentifier;
+    }
+
+    public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
+        this.DBInstanceIdentifier = DBInstanceIdentifier;
+    }
+
+    public String getFlavorId() {
+        return FlavorId;
+    }
+
+    public void setFlavorId(String flavorId) {
+        FlavorId = flavorId;
+    }
+
+    public String getSecurityGroupId() {
+        return SecurityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
+
+    public String getVipId() {
+        return VipId;
+    }
+
+    public void setVipId(String vipId) {
+        VipId = vipId;
+    }
+
+    public String getVip() {
+        return Vip;
+    }
+
+    public void setVip(String vip) {
+        Vip = vip;
+    }
+
+    public String getDesignatedHost() {
+        return DesignatedHost;
+    }
+
+    public void setDesignatedHost(String designatedHost) {
+        DesignatedHost = designatedHost;
+    }
+
+    public String getEndTime() {
+        return EndTime;
+    }
+
+    public void setEndTime(String endTime) {
+        EndTime = endTime;
+    }
+
+    public List<String> getAvailabilityZone() {
+        return AvailabilityZone;
+    }
+
+    public void setAvailabilityZone(List<String> availabilityZone) {
+        AvailabilityZone = availabilityZone;
+    }
+
+    public String getSubOrderId() {
+        return SubOrderId;
+    }
+
+    public void setSubOrderId(String subOrderId) {
+        SubOrderId = subOrderId;
+    }
+
+    public Integer getVolumeSize() {
+        return VolumeSize;
+    }
+
+    public void setVolumeSize(Integer volumeSize) {
+        VolumeSize = volumeSize;
+    }
+
+    public String getVolumeType() {
+        return VolumeType;
+    }
+
+    public void setVolumeType(String volumeType) {
+        VolumeType = volumeType;
+    }
+
+    public Integer getCountNodes() {
+        return CountNodes;
+    }
+
+    public void setCountNodes(Integer countNodes) {
+        CountNodes = countNodes;
+    }
+
+    public List<CreateKrdsRequest.SecurityGroups> getSecurityGroups() {
+        return SecurityGroups;
+    }
+
+    public void setSecurityGroups(List<CreateKrdsRequest.SecurityGroups> securityGroups) {
+        SecurityGroups = securityGroups;
+    }
+
+    public Boolean getSupportIPV6() {
+        return SupportIPV6;
+    }
+
+    public void setSupportIPV6(Boolean supportIPV6) {
+        SupportIPV6 = supportIPV6;
+    }
+
+    public Instance.WithData getWithData() {
+        return WithData;
+    }
+
+    public void setWithData(Instance.WithData withData) {
+        WithData = withData;
+    }
+
+    public String getPreSubmitId() {
+        return PreSubmitId;
+    }
+
+    public void setPreSubmitId(String preSubmitId) {
+        PreSubmitId = preSubmitId;
+    }
 
     public String getDBInstanceClass() {
         return DBInstanceClass;
@@ -174,17 +375,40 @@ public class CreateKrdsRequest extends KscWebServiceRequest
         ProjectId = projectId;
     }
 
-    public String getRequestId() {
-        return RequestId;
-    }
 
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
 
     public Request<CreateKrdsRequest> getDryRunRequest() {
         Request<CreateKrdsRequest> request = new CreateKrdsMarshaller().marshall(this);
         request.addParameter("DryRun", Boolean.toString(true));
         return request;
+    }
+
+    public static class SecurityGroups{
+        private String SecurityGroupId;
+        private String SecurityGroupType;
+
+        public String getSecurityGroupId() {
+            return SecurityGroupId;
+        }
+
+        public void setSecurityGroupId(String securityGroupId) {
+            SecurityGroupId = securityGroupId;
+        }
+
+        public String getSecurityGroupType() {
+            return SecurityGroupType;
+        }
+
+        public void setSecurityGroupType(String securityGroupType) {
+            SecurityGroupType = securityGroupType;
+        }
+
+        public SecurityGroups() {
+        }
+
+        public SecurityGroups(String securityGroupId, String securityGroupType) {
+            SecurityGroupId = securityGroupId;
+            SecurityGroupType = securityGroupType;
+        }
     }
 }

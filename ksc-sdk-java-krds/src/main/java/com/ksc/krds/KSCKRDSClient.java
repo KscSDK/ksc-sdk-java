@@ -42,7 +42,7 @@ public class KSCKRDSClient extends KscWebServiceClient {
      * this client
      */
     protected static final ClientConfigurationFactory configFactory = new ClientConfigurationFactory();
-    private final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(
+    protected final SdkJsonProtocolFactory protocolFactory = new SdkJsonProtocolFactory(
             new JsonClientMetadata().withSupportsCbor(false));
 
 
@@ -177,35 +177,6 @@ public class KSCKRDSClient extends KscWebServiceClient {
 
     }
 
-    public CreateKrdsResponse createKRDS(CreateKrdsRequest createKrdsRequest) {
-        ExecutionContext executionContext = createExecutionContext(createKrdsRequest);
-        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
-        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-        Request<CreateKrdsRequest> request = null;
-        Response<CreateKrdsResponse> response = null;
-        try {
-            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
-            try {
-                request = new CreateKrdsMarshaller().marshall(super.beforeMarshalling(createKrdsRequest));
-                request.addHeader("Accept", "application/json");
-                request.setKscRequestMetrics(kscRequestMetrics);
-            } finally {
-                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
-            }
-
-            HttpResponseHandler<KscWebServiceResponse<CreateKrdsResponse>> responseHandler = protocolFactory
-                    .createResponseHandler(
-                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
-                            new CreateKrdsResponseJsonUnmarshaller());
-            response = invoke(request, responseHandler, executionContext);
-            return response.getKscResponse();
-
-        } finally {
-            endClientExecution(kscRequestMetrics, request, response);
-        }
-
-    }
-
     public KrdsResponse deleteKRDS(DeleteKrdsRequest deleteKrdsRequest) {
         ExecutionContext executionContext = createExecutionContext(deleteKrdsRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -263,6 +234,35 @@ public class KSCKRDSClient extends KscWebServiceClient {
         }
     }
 
+    public CreateKrdsResponse createKRDS(CreateKrdsRequest createKrdsRequest) {
+        ExecutionContext executionContext = createExecutionContext(createKrdsRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<CreateKrdsRequest> request = null;
+        Response<CreateKrdsResponse> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new CreateKrdsMarshaller().marshall(super.beforeMarshalling(createKrdsRequest));
+                request.addHeader("Accept", "application/json");
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<KscWebServiceResponse<CreateKrdsResponse>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new CreateKrdsResponseJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+            return response.getKscResponse();
+
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+
+    }
+
     public ListKrdsBackupResponse listKrdsBackup(ListKrdsBackupRequest listKrdsBackupRequest){
         ExecutionContext executionContext = createExecutionContext(listKrdsBackupRequest);
         KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
@@ -301,7 +301,7 @@ public class KSCKRDSClient extends KscWebServiceClient {
      * Normal invoke with authentication. Credentials are required and may be
      * overriden at the request level.
      **/
-    private <X, Y extends KscWebServiceRequest> Response<X> invoke(Request<Y> request,
+    protected  <X, Y extends KscWebServiceRequest> Response<X> invoke(Request<Y> request,
                                                                    HttpResponseHandler<KscWebServiceResponse<X>> responseHandler, ExecutionContext executionContext) {
 
         executionContext.setCredentialsProvider(
