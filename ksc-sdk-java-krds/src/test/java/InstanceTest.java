@@ -2,12 +2,9 @@ import com.ksc.krds.InstanceClient;
 import com.ksc.krds.KSCKRDSClient;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
-import com.sun.jmx.remote.internal.ClientListenerInfo;
-import com.sun.org.apache.xml.internal.resolver.helpers.PublicId;
 import org.junit.Before;
 import org.junit.Test;
 
-import javax.swing.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
