@@ -13,6 +13,8 @@ public class ListKrdsRequest extends KscWebServiceRequest
     private Integer Marker=0;
     private Integer MaxRecords=10;
     private String RequestId;
+    private String DBInstanceIdentifier;
+    private String Keyword;
 
     public Integer getMarker() {
         return Marker;
@@ -36,6 +38,22 @@ public class ListKrdsRequest extends KscWebServiceRequest
 
     public void setRequestId(String requestId) {
         RequestId = requestId;
+    }
+
+    public String getKeyword() {
+        return Keyword;
+    }
+
+    public void setKeyword(String keyword) {
+        Keyword = keyword;
+    }
+
+    public String getDBInstanceIdentifier() {
+        return DBInstanceIdentifier;
+    }
+
+    public void setDBInstanceIdentifier(String DBInstanceIdentifier) {
+        this.DBInstanceIdentifier = DBInstanceIdentifier;
     }
 
     public Request<ListKrdsRequest> getDryRunRequest() {

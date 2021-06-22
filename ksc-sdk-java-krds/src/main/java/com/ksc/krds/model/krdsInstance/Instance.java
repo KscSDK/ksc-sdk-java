@@ -1,9 +1,15 @@
 package com.ksc.krds.model.krdsInstance;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.util.ArrayList;
+import java.util.List;
 
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Instance {
 
     private DBInstanceClass DBInstanceClass;
@@ -153,9 +159,20 @@ public class Instance {
 
     //@Getter
     //@Setter
+    @JsonIgnoreProperties(ignoreUnknown = true)
     public class DBInstanceClass {
         private Integer Ram;
         private Integer Disk;
+
+        private String Id;
+
+        private Integer Iops;
+
+        private Integer Vcpus;
+
+        private Integer Mem;
+
+        private Integer MaxConn;
 
         public Integer getRam() {
             return Ram;
@@ -172,6 +189,46 @@ public class Instance {
         public void setDisk(Integer disk) {
             Disk = disk;
         }
+
+        public String getId() {
+            return Id;
+        }
+
+        public void setId(String id) {
+            Id = id;
+        }
+
+        public Integer getIops() {
+            return Iops;
+        }
+
+        public void setIops(Integer iops) {
+            Iops = iops;
+        }
+
+        public Integer getVcpus() {
+            return Vcpus;
+        }
+
+        public void setVcpus(Integer vcpus) {
+            Vcpus = vcpus;
+        }
+
+        public Integer getMem() {
+            return Mem;
+        }
+
+        public void setMem(Integer mem) {
+            Mem = mem;
+        }
+
+        public Integer getMaxConn() {
+            return MaxConn;
+        }
+
+        public void setMaxConn(Integer maxConn) {
+            MaxConn = maxConn;
+        }
     }
 
     public String toString(){
@@ -180,6 +237,68 @@ public class Instance {
             return  objectMapper.writeValueAsString(this);
         } catch (JsonProcessingException e){
             return null;
+        }
+    }
+
+    public static class Schema{
+        @JsonProperty("SchemaName")
+        private String SchemaName;
+
+        public Schema(String schemaName) {
+            SchemaName = schemaName;
+        }
+
+        public Schema() {
+        }
+
+        public String getSchemaName() {
+            return SchemaName;
+        }
+
+        public void setSchemaName(String schemaName) {
+            SchemaName = schemaName;
+        }
+    }
+
+    public static class WithData{
+        @JsonProperty("SourceInstanceIdentifier")
+        private String SourceInstanceIdentifier;
+        @JsonProperty("GivenTime")
+        private String GivenTime;
+        @JsonProperty("Schemas")
+        List<Schema> Schemas = new ArrayList<Schema>();
+
+        public String getSourceInstanceIdentifier() {
+            return SourceInstanceIdentifier;
+        }
+
+        public void setSourceInstanceIdentifier(String sourceInstanceIdentifier) {
+            SourceInstanceIdentifier = sourceInstanceIdentifier;
+        }
+
+        public String getGivenTime() {
+            return GivenTime;
+        }
+
+        public void setGivenTime(String givenTime) {
+            GivenTime = givenTime;
+        }
+
+        public List<Schema> getSchemas() {
+            return Schemas;
+        }
+
+        public void setSchemas(List<Schema> schemas) {
+            Schemas = schemas;
+        }
+
+        public WithData() {
+        }
+
+        public WithData(String sourceInstanceIdentifier, String givenTime, List<Schema> schemas) {
+            SourceInstanceIdentifier = sourceInstanceIdentifier;
+            GivenTime = givenTime;
+            Schemas = schemas;
         }
     }
 }

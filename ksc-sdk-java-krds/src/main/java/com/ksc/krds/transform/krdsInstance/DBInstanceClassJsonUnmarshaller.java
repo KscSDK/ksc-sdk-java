@@ -41,6 +41,21 @@ public class DBInstanceClassJsonUnmarshaller implements Unmarshaller<Instance.DB
                 } else if (context.testExpression("Disk", targetDepth)) {
                     context.nextToken();
                     dbInstanceClass.setDisk(context.getUnmarshaller(Integer.class).unmarshall(context));
+                } else if (context.testExpression("Id", targetDepth)) {
+                    context.nextToken();
+                    dbInstanceClass.setId(context.getUnmarshaller(String.class).unmarshall(context));
+                } else if (context.testExpression("Iops", targetDepth)) {
+                    context.nextToken();
+                    dbInstanceClass.setIops(context.getUnmarshaller(Integer.class).unmarshall(context));
+                } else if (context.testExpression("Vcpus", targetDepth)) {
+                    context.nextToken();
+                    dbInstanceClass.setVcpus(context.getUnmarshaller(Integer.class).unmarshall(context));
+                } else if (context.testExpression("Mem", targetDepth)) {
+                    context.nextToken();
+                    dbInstanceClass.setMem(context.getUnmarshaller(Integer.class).unmarshall(context));
+                } else if (context.testExpression("MaxConn", targetDepth)) {
+                    context.nextToken();
+                    dbInstanceClass.setMaxConn(context.getUnmarshaller(Integer.class).unmarshall(context));
                 }
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null
