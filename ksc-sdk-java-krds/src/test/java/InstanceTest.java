@@ -256,4 +256,12 @@ public class InstanceTest extends BaseTest{
         RdsResponse response = client.releaseDBInstanceInnerEip(request);
         print(response);
     }
+
+    @Test
+    public void describeInstances() {
+        ListKrdsRequest request = new ListKrdsRequest();
+        request.setDBInstanceIdentifier("fbd67f4b-bfb2-4900-9435-8ac4d0b1e534");
+        RdsResponse response = client.describeInstances(request);
+        print(response);
+    }
 }

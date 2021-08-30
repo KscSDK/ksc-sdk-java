@@ -1,5 +1,6 @@
 package com.ksc.krds;
 
+import com.ksc.Request;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
@@ -81,58 +82,63 @@ public class InstanceClient extends Client {
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> allocateDBInstanceEip(AllocateDBInstanceEipRequest request){
+    public RdsResponse<InstanceResponse> allocateDBInstanceEip(AllocateDBInstanceEipRequest request) {
         return invoke(new BaseMarshaller<AllocateDBInstanceEipRequest>(), new InstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> releaseDBInstanceEip(ReleaseDBInstanceEipRequest request){
+    public RdsResponse<InstanceResponse> releaseDBInstanceEip(ReleaseDBInstanceEipRequest request) {
         return invoke(new BaseMarshaller<ReleaseDBInstanceEipRequest>(), new InstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
-    public RdsResponse<DescribeDBInstanceRestoredResponse> describeDBInstanceRestorableTime(DescribeDBInstanceRestoredTimeRequest request){
+    public RdsResponse<DescribeDBInstanceRestoredResponse> describeDBInstanceRestorableTime(DescribeDBInstanceRestoredTimeRequest request) {
         return invoke(new BaseMarshaller<DescribeDBInstanceRestoredTimeRequest>(), new BaseUnmarshaller<DescribeDBInstanceRestoredResponse>() {
         }, request).getKscResponse();
     }
 
-    public RdsResponse<InstanceResponse> sdkRestoreDBInstanceToPointInTime(SDKRestoreDBInstanceToPointInTimeRequest request){
+    public RdsResponse<InstanceResponse> sdkRestoreDBInstanceToPointInTime(SDKRestoreDBInstanceToPointInTimeRequest request) {
         return invoke(new BaseMarshaller<SDKRestoreDBInstanceToPointInTimeRequest>(), new InstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
-    public RdsResponse<ListDBInstanceResponse> listDBInstance(ListDBInstanceRequest request){
+    public RdsResponse<ListDBInstanceResponse> listDBInstance(ListDBInstanceRequest request) {
         return invoke(new BaseMarshaller<ListDBInstanceRequest>(), new ListDBInstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 
-    public RdsResponse<ListZoneResponse> listZone(ListZoneRequest request){
+    public RdsResponse<ListZoneResponse> listZone(ListZoneRequest request) {
         return invoke(new BaseMarshaller<ListZoneRequest>(), new ListZoneUnmarshaller(), request)
                 .getKscResponse();
     }
 
-    public RdsResponse<StatisticDBInstancesResponse> statisticDBInstances(StatisticDBInstancesRequest request){
+    public RdsResponse<StatisticDBInstancesResponse> statisticDBInstances(StatisticDBInstancesRequest request) {
         return invoke(new BaseMarshaller<StatisticDBInstancesRequest>(), new BaseUnmarshaller<StatisticDBInstancesResponse>() {
         }, request).getKscResponse();
     }
 
-    public RdsResponse createInstanceOrder(CreateInstanceOrderRequest request){
+    public RdsResponse createInstanceOrder(CreateInstanceOrderRequest request) {
         return invoke(new BaseMarshaller<CreateInstanceOrderRequest>(), new BaseUnmarshaller<Object>() {
         }, request).getKscResponse();
     }
 
-    public RdsResponse<GetCurrentDatabaseInfoResponse> getCurrentDatabaseInfo(GetCurrentDatabaseInfoReq request){
+    public RdsResponse<GetCurrentDatabaseInfoResponse> getCurrentDatabaseInfo(GetCurrentDatabaseInfoReq request) {
         return invoke(new BaseMarshaller<GetCurrentDatabaseInfoReq>(), new BaseUnmarshaller<GetCurrentDatabaseInfoResponse>() {
         }, request).getKscResponse();
     }
 
-    public RdsResponse allocateDBInstanceInnerEip(AllocateDBInstanceInnerEipRequest request){
+    public RdsResponse allocateDBInstanceInnerEip(AllocateDBInstanceInnerEipRequest request) {
         return invoke(new BaseMarshaller<AllocateDBInstanceInnerEipRequest>(), new BaseUnmarshaller<Object>() {
         }, request).getKscResponse();
     }
 
-    public RdsResponse releaseDBInstanceInnerEip(ReleaseDBInstanceInnerEipRequest request){
+    public RdsResponse releaseDBInstanceInnerEip(ReleaseDBInstanceInnerEipRequest request) {
         return invoke(new BaseMarshaller<ReleaseDBInstanceInnerEipRequest>(), new BaseUnmarshaller<Object>() {
+        }, request).getKscResponse();
+    }
+
+    public RdsResponse<DescribeInstanceResponse> describeInstances(ListKrdsRequest request) {
+        return invoke(new BaseMarshaller<ListKrdsRequest>(), new DescribeUnmarshaller() {
         }, request).getKscResponse();
     }
 }
