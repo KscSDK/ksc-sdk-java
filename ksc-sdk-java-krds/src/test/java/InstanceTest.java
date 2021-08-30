@@ -2,6 +2,7 @@ import com.ksc.krds.InstanceClient;
 import com.ksc.krds.KSCKRDSClient;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -250,7 +251,7 @@ public class InstanceTest extends BaseTest{
     }
 
     @Test
-    public void test() {
+    public void testReleaseDBInstanceInnerEip() {
         ReleaseDBInstanceInnerEipRequest request = new ReleaseDBInstanceInnerEipRequest();
         request.setDBInstanceIdentifier(getInstanceId());
         RdsResponse response = client.releaseDBInstanceInnerEip(request);
@@ -262,6 +263,6 @@ public class InstanceTest extends BaseTest{
         ListKrdsRequest request = new ListKrdsRequest();
         request.setDBInstanceIdentifier("fbd67f4b-bfb2-4900-9435-8ac4d0b1e534");
         RdsResponse response = client.describeInstances(request);
-        print(response);
+        Assert.assertNotNull(response);
     }
 }
