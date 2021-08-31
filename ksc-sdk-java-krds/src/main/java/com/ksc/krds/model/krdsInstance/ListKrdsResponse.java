@@ -63,4 +63,21 @@ public class ListKrdsResponse {
             Instances = instances;
         }
     }
+
+    public ListKrdsResponse() {
+    }
+
+    public ListKrdsResponse(DescribeInstanceResponse response, String requestId) {
+        setRequestId(requestId);
+        fillData(response);
+    }
+
+    private void fillData(DescribeInstanceResponse response) {
+        ListKrdsResponse.Data data = this.getData();
+        data.setInstances(response.getInstances());
+        data.setMarker(response.getMarker());
+        data.setMaxRecords(response.getMaxRecords());
+        data.setTotalCount(response.getTotalCount());
+    }
+
 }

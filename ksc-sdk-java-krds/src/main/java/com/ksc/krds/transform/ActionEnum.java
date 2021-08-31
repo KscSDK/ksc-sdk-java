@@ -35,7 +35,7 @@ public enum ActionEnum {
     ALLOCATE_EIP(AllocateDBInstanceEipRequest.class, "AllocateDBInstanceEip"),
     RELEASE_EIP(ReleaseDBInstanceEipRequest.class, "ReleaseDBInstanceEip"),
     REBOOT(RebootDBInstanceRequest.class, "RebootDBInstance"),
-    DESCRIBE(BaseRequest.class, "DescribeDBInstances"),
+    DESCRIBE(ListKrdsRequest.class, "DescribeDBInstances"),
     GENERATE_ADMIN_URL(GenerateDBAdminURLRequest.class, "GenerateDBAdminURL"),
     DESCRIBE_RESTORE_TIME(DescribeDBInstanceRestoredTimeRequest.class, "DescribeDBInstanceRestorableTime"),
     RESTORE_TO_POINT_IN_TIME(SDKRestoreDBInstanceToPointInTimeRequest.class, "RestoreDBInstanceToPointInTime"),
