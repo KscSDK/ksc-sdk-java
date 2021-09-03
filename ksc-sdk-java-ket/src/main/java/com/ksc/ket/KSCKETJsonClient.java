@@ -756,7 +756,7 @@ public class KSCKETJsonClient extends KscWebServiceClient {
 		try {
 			return client.execute(request, responseHandler, errorResponseHandler, executionContext);
 		} catch (Exception e) {
-			log.error(e);
+			log.error("", e);
 			return null;
 		}
 	}

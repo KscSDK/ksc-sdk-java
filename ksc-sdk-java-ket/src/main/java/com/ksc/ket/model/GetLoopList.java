@@ -2,7 +2,7 @@ package com.ksc.ket.model;
 
 public class GetLoopList {
 	private String outputFormat = "";
-	private com.ksc.internal.SdkInternalList<String> srcInfo;
+	private com.ksc.internal.SdkInternalList<LoopSrcInfo> srcInfo;
 	private String app = "";
 	private String pubDomain = "";
 	private String preset = "";
@@ -11,17 +11,17 @@ public class GetLoopList {
 	private String streamID = "";
 	private String createTime = "";
 
-	public void setSrcInfo(java.util.Collection<String> srcInfo) {
+	public void setSrcInfo(java.util.Collection<LoopSrcInfo> srcInfo) {
 		if (srcInfo != null) {
-			this.srcInfo = new com.ksc.internal.SdkInternalList<String>(srcInfo);
+			this.srcInfo = new com.ksc.internal.SdkInternalList<LoopSrcInfo>(srcInfo);
 		}
 	}
 
-	public void addSrcInfo(String... srcInfos) {
+	public void addSrcInfo(LoopSrcInfo... srcInfos) {
 		if (this.srcInfo == null) {
-			this.srcInfo = new com.ksc.internal.SdkInternalList<String>();
+			this.srcInfo = new com.ksc.internal.SdkInternalList<LoopSrcInfo>();
 		}
-		for (String srcInfo : srcInfos) {
+		for (LoopSrcInfo srcInfo : srcInfos) {
 			this.srcInfo.add(srcInfo);
 		}
 	}
@@ -34,11 +34,11 @@ public class GetLoopList {
 		this.outputFormat = outputFormat;
 	}
 
-	public com.ksc.internal.SdkInternalList<String> getSrcInfo() {
+	public com.ksc.internal.SdkInternalList<LoopSrcInfo> getSrcInfo() {
 		return srcInfo;
 	}
 
-	public void setSrcInfo(com.ksc.internal.SdkInternalList<String> srcInfo) {
+	public void setSrcInfo(com.ksc.internal.SdkInternalList<LoopSrcInfo> srcInfo) {
 		this.srcInfo = srcInfo;
 	}
 

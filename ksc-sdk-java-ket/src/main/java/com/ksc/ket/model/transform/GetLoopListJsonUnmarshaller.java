@@ -8,6 +8,7 @@ import static com.fasterxml.jackson.core.JsonToken.VALUE_NULL;
 
 import com.fasterxml.jackson.core.JsonToken;
 import com.ksc.ket.model.GetLoopList;
+import com.ksc.ket.model.LoopSrcInfo;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.ListUnmarshaller;
 import com.ksc.transform.SimpleTypeJsonUnmarshallers;
@@ -34,8 +35,8 @@ public class GetLoopListJsonUnmarshaller implements Unmarshaller<GetLoopList, Js
 
 				if (context.testExpression("SrcInfo", targetDepth)) {
 					context.nextToken();
-					result.setSrcInfo(new ListUnmarshaller<String>(
-							SimpleTypeJsonUnmarshallers.StringJsonUnmarshaller.getInstance()).unmarshall(context));
+					result.setSrcInfo(new ListUnmarshaller<LoopSrcInfo>(
+							LoopSrcInfoJsonUnmarshaller.getInstance()).unmarshall(context));
 				} else if (context.testExpression("OutputFormat", targetDepth)) {
 					context.nextToken();
 					result.setOutputFormat((context.getUnmarshaller(String.class).unmarshall(context)));
