@@ -54,7 +54,7 @@
 <dependencyManagement>
   <dependencies>
     <dependency>
-      <groupId>com.ksc</groupId>
+      <groupId>com.ksyun</groupId>
 	  <artifactId>ksc-sdk-java-bom</artifactId>
         <version>0.3.20</version>
 	  <type>pom</type>
@@ -70,7 +70,7 @@
 ```xml
 <dependencies>
   <dependency>
-    <groupId>com.ksc</groupId>
+    <groupId>com.ksyun</groupId>
 	<artifactId>ksc-sdk-java-kec</artifactId>
   </dependency>
 </dependencies>
