@@ -56,7 +56,7 @@
     <dependency>
       <groupId>com.ksc</groupId>
 	  <artifactId>ksc-sdk-java-bom</artifactId>
-	  <version>0.2.1</version>
+        <version>0.3.20</version>
 	  <type>pom</type>
       <scope>import</scope>
     </dependency>
