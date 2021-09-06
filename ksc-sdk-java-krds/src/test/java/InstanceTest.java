@@ -261,7 +261,7 @@ public class InstanceTest extends BaseTest{
     @Test
     public void describeInstances() {
         ListKrdsRequest request = new ListKrdsRequest();
-        request.setDBInstanceIdentifier("fbd67f4b-bfb2-4900-9435-8ac4d0b1e534");
+//        request.setDBInstanceIdentifier("fbd67f4b-bfb2-4900-9435-8ac4d0b1e534");
         RdsResponse response = client.describeInstances(request);
         Assert.assertNotNull(response);
     }
