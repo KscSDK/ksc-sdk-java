@@ -15,6 +15,15 @@ public class ListRedisRequest extends KscWebServiceRequest implements Serializab
     private String iamProjectId;
     private Integer offset = 0;
     private Integer limit = 10;
+    private String vpcId;
+    private String vnetId;
+    private String orderBy;
+    private String proxy;
+    private String fuzzySearch;
+    private String taskStatus;
+    private String mode;
+    private String tagKey;
+    private String tagValue;
 
     public String getName() {
         return name;
@@ -70,6 +79,78 @@ public class ListRedisRequest extends KscWebServiceRequest implements Serializab
 
     public void setLimit(Integer limit) {
         this.limit = limit;
+    }
+
+    public String getVpcId() {
+        return vpcId;
+    }
+
+    public void setVpcId(String vpcId) {
+        this.vpcId = vpcId;
+    }
+
+    public String getVnetId() {
+        return vnetId;
+    }
+
+    public void setVnetId(String vnetId) {
+        this.vnetId = vnetId;
+    }
+
+    public String getOrderBy() {
+        return orderBy;
+    }
+
+    public void setOrderBy(String orderBy) {
+        this.orderBy = orderBy;
+    }
+
+    public String getProxy() {
+        return proxy;
+    }
+
+    public void setProxy(String proxy) {
+        this.proxy = proxy;
+    }
+
+    public String getFuzzySearch() {
+        return fuzzySearch;
+    }
+
+    public void setFuzzySearch(String fuzzySearch) {
+        this.fuzzySearch = fuzzySearch;
+    }
+
+    public String getTaskStatus() {
+        return taskStatus;
+    }
+
+    public void setTaskStatus(String taskStatus) {
+        this.taskStatus = taskStatus;
+    }
+
+    public String getMode() {
+        return mode;
+    }
+
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
+
+    public String getTagKey() {
+        return tagKey;
+    }
+
+    public void setTagKey(String tagKey) {
+        this.tagKey = tagKey;
+    }
+
+    public String getTagValue() {
+        return tagValue;
+    }
+
+    public void setTagValue(String tagValue) {
+        this.tagValue = tagValue;
     }
 
     public Request<ListRedisRequest> getDryRunRequest() {
