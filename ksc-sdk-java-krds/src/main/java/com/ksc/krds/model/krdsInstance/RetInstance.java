@@ -729,6 +729,7 @@ public class RetInstance {
         private String DBBackupIdentifier;
         private String DBBackupName;
         private String PointInTime;
+        private String DBInstanceStatus;
 
         public String getDBInstanceIdentifier() {
             return DBInstanceIdentifier;
@@ -776,6 +777,14 @@ public class RetInstance {
 
         public void setPointInTime(String pointInTime) {
             PointInTime = pointInTime;
+        }
+
+        public String getDBInstanceStatus() {
+            return DBInstanceStatus;
+        }
+
+        public void setDBInstanceStatus(String DBInstanceStatus) {
+            this.DBInstanceStatus = DBInstanceStatus;
         }
     }
 

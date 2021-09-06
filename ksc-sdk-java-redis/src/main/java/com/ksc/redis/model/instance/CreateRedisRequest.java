@@ -24,6 +24,8 @@ public class CreateRedisRequest extends KscWebServiceRequest implements Serializ
     private Byte netType = 2;
     private Integer port = 6379;
     private String securityGroupId;
+    private String slaveVip;
+    private String vip;
 
     public String getName() {
         return name;
@@ -143,6 +145,22 @@ public class CreateRedisRequest extends KscWebServiceRequest implements Serializ
 
     public void setSecurityGroupId(String securityGroupId) {
         this.securityGroupId = securityGroupId;
+    }
+
+    public String getSlaveVip() {
+        return slaveVip;
+    }
+
+    public void setSlaveVip(String slaveVip) {
+        this.slaveVip = slaveVip;
+    }
+
+    public String getVip() {
+        return vip;
+    }
+
+    public void setVip(String vip) {
+        this.vip = vip;
     }
 
     public Request<CreateRedisRequest> getDryRunRequest() {
