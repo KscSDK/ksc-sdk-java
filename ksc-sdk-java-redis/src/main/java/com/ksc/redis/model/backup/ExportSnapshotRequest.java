@@ -11,6 +11,17 @@ public class ExportSnapshotRequest extends KscWebServiceRequest implements Seria
     private String snapshotId;
     private String bucketName;
 
+    
+    private String ObjectName;
+    public String getObjectName() {
+        return ObjectName;
+    }
+
+    public void setObjectName(String objectName) {
+        this.ObjectName = objectName;
+    }
+
+
     public String getSnapshotId() {
         return snapshotId;
     }
