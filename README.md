@@ -56,7 +56,7 @@
     <dependency>
       <groupId>com.ksyun</groupId>
 	  <artifactId>ksc-sdk-java-bom</artifactId>
-        <version>0.3.23</version>
+        <version>0.3.24</version>
 	  <type>pom</type>
       <scope>import</scope>
     </dependency>
