@@ -6,13 +6,9 @@ import com.ksc.auth.AWSCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
 import com.ksc.redis.client.KscRedisClient;
 import com.ksc.redis.model.RedisResponse;
-import com.ksc.redis.model.parameter.ListRedisParametersRequest;
-import com.ksc.redis.model.parameter.ListRedisParametersResponse;
-import com.ksc.redis.model.parameter.SetRedisParametersRequest;
-import com.ksc.redis.transform.parameter.ListRedisParametersMarshaller;
-import com.ksc.redis.transform.parameter.ListRedisParametersUnmarshaller;
-import com.ksc.redis.transform.parameter.SetRedisParametersMarshaller;
-import com.ksc.redis.transform.parameter.SetRedisParametersUnmarshaller;
+import com.ksc.redis.model.parameter.*;
+import com.ksc.redis.transform.parameter.*;
+import lombok.SneakyThrows;
 
 public class KscRedisParameterClient extends KscRedisClient {
     public KscRedisParameterClient() {
@@ -44,4 +40,22 @@ public class KscRedisParameterClient extends KscRedisClient {
         return doAction(new SetRedisParametersMarshaller().marshall(super.beforeMarshalling(setRedisParametersRequest)),
                 new SetRedisParametersUnmarshaller()).getKscResponse();
     }
+    /*
+     *参数组列表
+    */
+    public RedisResponse<DescribeCacheParameterGroupsResponse> DescribeCacheParameterGroups(DescribeCacheParameterGroupsRequest req) {
+        return doAction(new DescribeCacheParameterGroupsMarshaller().marshall(super.beforeMarshalling(req)),
+                new DescribeCacheParameterGroupsUnmarshaller()).getKscResponse();
+    }
+    /*
+    *参数组修改
+    */
+
+    @SneakyThrows
+    public RedisResponse<ModifyCacheParameterGroupResponse> ModifyCacheParameterGroup(ModifyCacheParameterGroupRequest req)  {
+        return doAction(new ModifyCacheParameterGroupMarshaller().marshall(super.beforeMarshalling(req)),
+                new ModifyCacheParameterGroupUnmarshaller()).getKscResponse();
+    }
+
+
 }

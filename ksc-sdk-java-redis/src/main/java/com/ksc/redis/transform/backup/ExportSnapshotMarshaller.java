@@ -20,6 +20,7 @@ public class ExportSnapshotMarshaller implements Marshaller<Request<ExportSnapsh
         request.addParameter("Version", "2016-07-01");
         request.addParameter("SnapshotId", in.getSnapshotId());
         request.addParameter("BucketName", in.getBucketName());
+        request.addParameter("ObjectName",in.getObjectName());
         return request;
     }
 }

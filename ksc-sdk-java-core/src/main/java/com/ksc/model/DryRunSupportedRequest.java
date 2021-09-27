@@ -31,6 +31,6 @@ public interface DryRunSupportedRequest<X extends KscWebServiceRequest> {
      * Returns the marshaled request configured with additional parameters to
      * enable operation dry-run.
      */
-    public Request<X> getDryRunRequest();
+    public Request<X> getDryRunRequest() throws Exception;
 
 }
