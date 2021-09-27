@@ -57,6 +57,9 @@ public class KscRedisBackupClientTest {
     @Test
     public void exportSnapshot() {
         ExportSnapshotRequest request = new ExportSnapshotRequest();
+        request.setSnapshotId("56cbe74c-3845-42ea-b2ad-301c88cae168");
+        request.setObjectName("testFile1");
+        request.setBucketName("dts");
         log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.exportSnapshot(request)));
     }
 

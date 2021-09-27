@@ -24,6 +24,169 @@ public class CreateMemcachedRequest extends KscWebServiceRequest implements Seri
     private Byte netType = 2;
     private Integer port = 11211;
 
+
+    private String cacheId;
+    /**
+     * 为用户指专用的VIP的信息
+     */
+    private String vip;
+    /**
+     * 创建主从实例+只读实例时，只读实例指定内网ip的字段
+     */
+    private String slaveVip;
+    /**
+     * 默认为1,订单用途 - 1：普通购买, 2：续费, 3：升级, 4：试用购买, 5：转正, 7：退订, 8：延期
+     */
+    private Integer orderUse;
+    /**
+     * 时长单位 默认值：月
+     */
+    private String durationUnit = "月";
+    /**
+     * 创建服务的数量， 默认为1
+     */
+    private Integer num = 1;
+    private String subOrderId;
+    /**
+     * 套餐CODE
+     */
+    private String packageCode;
+    private String iamProjectName;
+    private String backupTimezone;
+    private String securityGroupId;
+    //主从实例的主所在可用区，或者集群所在可用区
+    private Integer area;
+    //主从实例的从所在可用区
+    private Integer slave_area;
+    private Integer ro_area = area;
+    public void setNetType(Byte netType) {
+        this.netType = netType;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getCacheId() {
+        return cacheId;
+    }
+
+    public void setCacheId(String cacheId) {
+        this.cacheId = cacheId;
+    }
+
+    public String getVip() {
+        return vip;
+    }
+
+    public void setVip(String vip) {
+        this.vip = vip;
+    }
+
+    public String getSlaveVip() {
+        return slaveVip;
+    }
+
+    public void setSlaveVip(String slaveVip) {
+        this.slaveVip = slaveVip;
+    }
+
+    public Integer getOrderUse() {
+        return orderUse;
+    }
+
+    public void setOrderUse(Integer orderUse) {
+        this.orderUse = orderUse;
+    }
+
+    public String getDurationUnit() {
+        return durationUnit;
+    }
+
+    public void setDurationUnit(String durationUnit) {
+        this.durationUnit = durationUnit;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public String getSubOrderId() {
+        return subOrderId;
+    }
+
+    public void setSubOrderId(String subOrderId) {
+        this.subOrderId = subOrderId;
+    }
+
+    public String getPackageCode() {
+        return packageCode;
+    }
+
+    public void setPackageCode(String packageCode) {
+        this.packageCode = packageCode;
+    }
+
+    public String getIamProjectName() {
+        return iamProjectName;
+    }
+
+    public void setIamProjectName(String iamProjectName) {
+        this.iamProjectName = iamProjectName;
+    }
+
+    public String getBackupTimezone() {
+        return backupTimezone;
+    }
+
+    public void setBackupTimezone(String backupTimezone) {
+        this.backupTimezone = backupTimezone;
+    }
+
+    public String getSecurityGroupId() {
+        return securityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        this.securityGroupId = securityGroupId;
+    }
+
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Integer getSlave_area() {
+        return slave_area;
+    }
+
+    public void setSlave_area(Integer slave_area) {
+        this.slave_area = slave_area;
+    }
+
+    public Integer getRo_area() {
+        return ro_area;
+    }
+
+    public void setRo_area(Integer ro_area) {
+        this.ro_area = ro_area;
+    }
+
+
+
+
+
+
+
+
+
     public String getName() {
         return name;
     }

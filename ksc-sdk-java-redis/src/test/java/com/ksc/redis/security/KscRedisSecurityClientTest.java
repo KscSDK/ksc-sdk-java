@@ -29,7 +29,6 @@ public class KscRedisSecurityClientTest {
         kscRedisSecurityClient = new KscRedisSecurityClient(new BasicAWSCredentials("ak", "sk"), "az");
         kscRedisSecurityClient.setRegion(RegionUtils.getRegion("region"));
     }
-
     @Test
     public void createSecurityGroup() {
         CreateSecurityGroupRequest request = new CreateSecurityGroupRequest();
@@ -41,9 +40,9 @@ public class KscRedisSecurityClientTest {
     @Test
     public void cloneSecurityGroup() {
         CloneSecurityGroupRequest request = new CloneSecurityGroupRequest();
-        request.setSrcSecurityGroupId("srcSecurityGroupId");
-        request.setName("testSecSdkClone");
-        request.setDescription("testSecSdkClone");
+        request.setSrcSecurityGroupId("b88c99c3-0554-43a4-bdf7-42b07c2fe830");
+        request.setName("libai_test");
+        request.setDescription("libai测试");
         log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.cloneSecurityGroup(request)));
     }
 
@@ -57,9 +56,9 @@ public class KscRedisSecurityClientTest {
     @Test
     public void modifySecurityGroup() {
         ModifySecurityGroupRequest request = new ModifySecurityGroupRequest();
-        request.setSecurityGroupId("securityGroupId");
-        request.setName("testSecSdk777");
-        request.setDescription("testSecSdk777");
+        request.setSecurityGroupId("b88c99c3-0554-43a4-bdf7-42b07c2fe830");
+        request.setName("libai_test");
+        request.setDescription("libai测试");
         log.debug(RedisResponseConversion.toJson(kscRedisSecurityClient.modifySecurityGroup(request)));
     }
 
