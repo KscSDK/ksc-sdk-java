@@ -2,7 +2,9 @@ package com.ksc.krds.model.log;
 
 import com.ksc.krds.model.krdsInstance.BaseRequest;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class DescribeDBLogFilesRequest extends BaseRequest<DescribeDBLogFilesRequest> {
 
@@ -19,6 +21,46 @@ public class DescribeDBLogFilesRequest extends BaseRequest<DescribeDBLogFilesReq
     private Date EndTime;
 
     private Integer MaxRecords;
+
+    private String SecurityGroupIds;
+
+
+
+    private List<String> SecurityGroupIdList = new ArrayList<String>();
+    private List<String> SecurityGroupId;
+    private String Type;
+    public String getSecurityGroupIds() {
+        return SecurityGroupIds;
+    }
+
+    public void setSecurityGroupIds(String securityGroupIds) {
+        SecurityGroupIds = securityGroupIds;
+    }
+
+    public List<String> getSecurityGroupIdList() {
+        return SecurityGroupIdList;
+    }
+
+    public void setSecurityGroupIdList(List<String> securityGroupIdList) {
+        SecurityGroupIdList = securityGroupIdList;
+    }
+
+    public List<String> getSecurityGroupId() {
+        return SecurityGroupId;
+    }
+
+    public void setSecurityGroupId(List<String> securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
+    }
+
 
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;

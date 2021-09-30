@@ -14,6 +14,25 @@ public class DescribeDBParameterGroupResponse {
 
     private Integer Marker;
 
+
+    private String RequestId;
+    private String Message;
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String message) {
+        Message = message;
+    }
+
     public List<DBParameterGroup> getDBParameterGroups() {
         return DBParameterGroups;
     }

@@ -1,5 +1,6 @@
 package com.ksc.krds.transform.krdsInstance;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ksc.DefaultRequest;
 import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
@@ -11,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import java.io.ByteArrayInputStream;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -55,6 +57,7 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
         request.addHeader("x-ksc-request-id", req.getRequestId());
         request.addHeader("Accept", "application/json");
         request.addParameter("Version", getOrDefaultVersion(req));
+
         for (Field field : req.getClass().getDeclaredFields()) {
                 addParameter(field);
         }
@@ -109,8 +112,9 @@ public class BaseMarshaller<T> implements Marshaller<Request<T>, T> {
                 if (o == null) {
                     continue;
                 }
-                request.addParameter(getListName(field, index++, f),o.toString());
+                request.addParameter(getListName(field, index, f),o.toString());
             }
+            index++;
         }
     }
 

@@ -11,6 +11,33 @@ public class DescribeDBLogFilesResponse {
 
     private Integer MaxRecords;
 
+    private String RequestId;
+    private String Message;
+    private Boolean Return;
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
+
+    public String getMessage() {
+        return Message;
+    }
+
+    public void setMessage(String message) {
+        Message = message;
+    }
+
+    public Boolean getReturn() {
+        return Return;
+    }
+
+    public void setReturn(Boolean aReturn) {
+        Return = aReturn;
+    }
+
     public List<LogFile> getDescribeDBLogFiles() {
         return DescribeDBLogFiles;
     }

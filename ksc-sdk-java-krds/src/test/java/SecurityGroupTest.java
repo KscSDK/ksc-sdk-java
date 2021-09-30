@@ -20,19 +20,21 @@ public class SecurityGroupTest extends BaseTest{
     @Test
     public void testCreateSecurityGroupRule() {
         CreateSecurityGroupRequest request = new CreateSecurityGroupRequest();
-        List<String> instanceIds = new ArrayList<String>();
+        /*List<String> instanceIds = new ArrayList<String>();
         instanceIds.add(getInstanceId());
         request.setDBInstanceIdentifier(instanceIds);
-        request.setSecurityGroupName("lzs-security-group-1");
+        request.setSecurityGroupName("libai-security-group");
         List<CreateSecurityGroupRequest.SecurityGroupRule> securityGroupRule = new ArrayList<CreateSecurityGroupRequest.SecurityGroupRule>();
         CreateSecurityGroupRequest.SecurityGroupRule e = new CreateSecurityGroupRequest.SecurityGroupRule();
-        e.setSecurityGroupRuleName("lzs-security-group-rule-1");
+        e.setSecurityGroupRuleName("libai-security-group-rule");
         e.setSecurityGroupRuleProtocol("0.0.0.1/1");
         securityGroupRule.add(e);
         request.setSecurityGroupRule(securityGroupRule);
         request.setType("mysql");
-        request.setSecurityGroupDescription("lzs-test");
-
+        request.setSecurityGroupDescription("lzs-test");*/
+        request.setSecurityGroupName("libai-security-group");
+        request.setSecurityGroupDescription("测试");
+        request.setVersion("2020-08-25");
         DescribeSecurityGroupResponse response = client.createSecurityGroupRule(request);
         log.info("{}", response);
     }
@@ -40,6 +42,7 @@ public class SecurityGroupTest extends BaseTest{
     @Test
     public void testDescribeSecurityGroup() {
         DescribeSecurityGroupRequest request = new DescribeSecurityGroupRequest();
+        request.setSecurityGroupId("64630");
         DescribeSecurityGroupResponse response = client.describeSecurityGroup(request);
         log.info("{}", response);
     }
@@ -57,7 +60,7 @@ public class SecurityGroupTest extends BaseTest{
     public void testDeleteSecurityGroup() {
         DeleteSecurityGroupRequest request = new DeleteSecurityGroupRequest();
         List<String> securityGroupIds = new ArrayList<String>(1);
-        securityGroupIds.add("64269");
+        securityGroupIds.add("64643");
         request.setSecurityGroupId(securityGroupIds);
         KrdsResponse response = client.deleteSecurityGroup(request);
         log.info("{}", response);

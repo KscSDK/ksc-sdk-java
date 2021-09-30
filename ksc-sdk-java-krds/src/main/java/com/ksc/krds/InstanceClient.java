@@ -3,8 +3,11 @@ package com.ksc.krds;
 import com.ksc.Request;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.RdsResponse;
+import com.ksc.krds.model.database.DescribeAccountRequest;
+import com.ksc.krds.model.database.DescribeInstanceAccountsResponse;
 import com.ksc.krds.model.krdsInstance.*;
 import com.ksc.krds.transform.BaseUnmarshaller;
+import com.ksc.krds.transform.database.DescribeInstanceAccountsUnmarshaller;
 import com.ksc.krds.transform.krdsInstance.*;
 
 public class InstanceClient extends Client {
@@ -141,4 +144,14 @@ public class InstanceClient extends Client {
         return invoke(new BaseMarshaller<ListKrdsRequest>(), new DescribeUnmarshaller() {
         }, request).getKscResponse();
     }
+    //TODO  待实现
+    /*
+     *    EIP-修改
+     **/
+  /* public RdsResponse ModifyDBNetwork(ModifyDBNetworkRequest request){
+        return invoke(new BaseMarshaller<ModifyDBNetworkRequest>(),
+                new ModifyDBNetworkUnmarshaller(), request).getKscResponse();
+    }*/
+
+
 }

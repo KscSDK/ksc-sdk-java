@@ -8,6 +8,25 @@ public class ModifyDBInstanceSpecRequest extends BaseRequest<ModifyDBInstanceSpe
 
     private Boolean OrderOnly;
 
+
+    private Integer Mem;
+    private Integer Disk;
+    public Integer getMem() {
+        return Mem;
+    }
+
+    public void setMem(Integer mem) {
+        Mem = mem;
+    }
+
+    public Integer getDisk() {
+        return Disk;
+    }
+
+    public void setDisk(Integer disk) {
+        Disk = disk;
+    }
+
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
     }

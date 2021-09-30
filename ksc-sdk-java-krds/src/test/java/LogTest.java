@@ -19,7 +19,7 @@ public class LogTest extends BaseTest {
     @Test
     public void testDescribeDBLogFiles() {
         DescribeDBLogFilesRequest request = new DescribeDBLogFilesRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("06ecdc79-adb7-455b-a3c4-6e1cf242c758");
         request.setDBLogType(DBLogType.SlowLog);
         RdsResponse<DescribeDBLogFilesResponse> response = client.describeDBLogFiles(request);
         print(response);
@@ -28,11 +28,10 @@ public class LogTest extends BaseTest {
     @Test
     public void testDescribeLastLog() {
         DescribeDBLogRequest request = new DescribeDBLogRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
-        request.setDBLogType(DBLogType.SlowLog);
+        request.setDBInstanceIdentifier("91ea5165-7ed9-427a-9fc4-b48402612980");
+        request.setDBLogType(DBLogType.ErrorLog);
         RdsResponse<DescribeDBLogResponse> response = client.describeLastLog(request);
         log.info("result:{}",response.getData());
-
     }
 
     //TODO

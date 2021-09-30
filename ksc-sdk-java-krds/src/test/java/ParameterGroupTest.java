@@ -1,5 +1,6 @@
 import com.ksc.krds.ParameterGroupClient;
 import com.ksc.krds.model.RdsResponse;
+import com.ksc.krds.model.krdsInstance.ListKrdsRequest;
 import com.ksc.krds.model.parametergroup.*;
 import org.junit.Before;
 import org.junit.Test;
@@ -45,7 +46,8 @@ public class ParameterGroupTest extends BaseTest{
     @Test
     public void testDescribeDBParameterGroup(){
         DescribeDBParameterGroupRequest request = new DescribeDBParameterGroupRequest();
-        request.setDBParameterGroupId("e4168fad-f1c6-4793-bbd8-994dbf346dff");
+        //request.setDBParameterGroupId("91ea5165-7ed9-427a-9fc4-b48402612980");
+        request.setSource("INSTANCE");
         RdsResponse<DescribeDBParameterGroupResponse> response = client.describeDBParameterGroup(request);
         log.info("{}", response);
     }
@@ -74,4 +76,18 @@ public class ParameterGroupTest extends BaseTest{
         RdsResponse<ModifyDBParameterGroupResponse> response = client.resetDBParameterGroup(request);
         log.info("{}",response);
     }
+    /*
+    *   查看当前实例数据库参数运行值列表
+    */
+    @Test
+    public void testDescribeDBInstanceParameters(){
+        DescribeDBInstanceParametersRequest request = new DescribeDBInstanceParametersRequest();
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
+        RdsResponse<DescribeDBInstanceParametersResponse> response = client.DescribeDBInstanceParameters(request);
+        log.info("{}", response);
+        System.out.println(response.getData());
+    }
+
+
+
 }

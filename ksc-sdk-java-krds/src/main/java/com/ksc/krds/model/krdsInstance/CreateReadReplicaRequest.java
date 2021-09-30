@@ -1,5 +1,7 @@
 package com.ksc.krds.model.krdsInstance;
 
+import com.ksc.annotation.SdkTestInternalApi;
+
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaReque
 
     private String DBInstanceName;
 
-    private String DBInstanceClass;
+    //private String DBInstanceClass;
 
     private String AttachedVipId;
 
@@ -28,6 +30,93 @@ public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaReque
 
     private String SecurityGroupId;
 
+    private String Vip;
+    private Integer Mem;
+    private Integer Disk;
+
+
+    private String Engine;
+
+    private String EngineVersion;
+
+    private String MasterUserPassword;
+
+    private String MasterUserName;
+
+    private String DBInstanceType;
+
+    private String PubliclyAccessible;
+
+    private String VpcId;
+
+    private String SubnetId;
+
+    public String getEngine() {
+        return Engine;
+    }
+
+    public void setEngine(String engine) {
+        Engine = engine;
+    }
+
+    public String getEngineVersion() {
+        return EngineVersion;
+    }
+
+    public void setEngineVersion(String engineVersion) {
+        EngineVersion = engineVersion;
+    }
+
+    public String getMasterUserPassword() {
+        return MasterUserPassword;
+    }
+
+    public void setMasterUserPassword(String masterUserPassword) {
+        MasterUserPassword = masterUserPassword;
+    }
+
+    public String getMasterUserName() {
+        return MasterUserName;
+    }
+
+    public void setMasterUserName(String masterUserName) {
+        MasterUserName = masterUserName;
+    }
+
+    public String getDBInstanceType() {
+        return DBInstanceType;
+    }
+
+    public void setDBInstanceType(String DBInstanceType) {
+        this.DBInstanceType = DBInstanceType;
+    }
+
+    public String getPubliclyAccessible() {
+        return PubliclyAccessible;
+    }
+
+    public void setPubliclyAccessible(String publiclyAccessible) {
+        PubliclyAccessible = publiclyAccessible;
+    }
+
+    public String getVpcId() {
+        return VpcId;
+    }
+
+    public void setVpcId(String vpcId) {
+        VpcId = vpcId;
+    }
+
+    public String getSubnetId() {
+        return SubnetId;
+    }
+
+    public void setSubnetId(String subnetId) {
+        SubnetId = subnetId;
+    }
+
+
+
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
     }
@@ -42,14 +131,6 @@ public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaReque
 
     public void setDBInstanceName(String DBInstanceName) {
         this.DBInstanceName = DBInstanceName;
-    }
-
-    public String getDBInstanceClass() {
-        return DBInstanceClass;
-    }
-
-    public void setDBInstanceClass(String DBInstanceClass) {
-        this.DBInstanceClass = DBInstanceClass;
     }
 
     public String getAttachedVipId() {
@@ -114,5 +195,29 @@ public class CreateReadReplicaRequest extends BaseRequest<CreateReadReplicaReque
 
     public void setSecurityGroupId(String securityGroupId) {
         SecurityGroupId = securityGroupId;
+    }
+
+    public String getVip() {
+        return Vip;
+    }
+
+    public void setVip(String vip) {
+        Vip = vip;
+    }
+
+    public Integer getMem() {
+        return Mem;
+    }
+
+    public void setMem(Integer mem) {
+        Mem = mem;
+    }
+
+    public Integer getDisk() {
+        return Disk;
+    }
+
+    public void setDisk(Integer disk) {
+        Disk = disk;
     }
 }

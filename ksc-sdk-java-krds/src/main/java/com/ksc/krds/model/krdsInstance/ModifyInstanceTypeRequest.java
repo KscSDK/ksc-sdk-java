@@ -17,6 +17,25 @@ public class ModifyInstanceTypeRequest extends BaseRequest<ModifyInstanceTypeReq
 
     private List<String> AvailabilityZone = new ArrayList<String>();
 
+
+    private Integer Mem;
+    private Integer Disk;
+    public Integer getMem() {
+        return Mem;
+    }
+
+    public void setMem(Integer mem) {
+        Mem = mem;
+    }
+
+    public Integer getDisk() {
+        return Disk;
+    }
+
+    public void setDisk(Integer disk) {
+        Disk = disk;
+    }
+
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
     }
