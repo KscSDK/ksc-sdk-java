@@ -22,8 +22,8 @@ public class BackupTest extends BaseTest {
     @Test
     public void testCreate() {
         CreateDBBackupRequest request = new CreateDBBackupRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
-        request.setDBBackupName("lzs-backup-1");
+        request.setDBInstanceIdentifier("91ea5165-7ed9-427a-9fc4-b48402612980");
+        request.setDBBackupName("北京");
         RdsResponse<CreateDBBackupResponse> response = client.createDBBackup(request);
         log.info("",response.getData());
     }
@@ -32,8 +32,8 @@ public class BackupTest extends BaseTest {
     @Test
     public void testModify() {
         ModifyDBInstanceRequest request = new ModifyDBInstanceRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
-        request.setDBInstanceName("lzs-mysql-01");
+        request.setDBInstanceIdentifier("726adc59-ff96-4fc9-9836-47f98d60ea2c");
+        request.setPreferredBackupTime("03:00-04:00");
         RdsResponse response = client.modifyDBBackupPolicy(request);
         log.info("%s", response.getData());
     }

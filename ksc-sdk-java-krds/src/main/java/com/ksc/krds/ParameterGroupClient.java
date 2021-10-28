@@ -1,7 +1,9 @@
 package com.ksc.krds;
 
+import com.ksc.Response;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.RdsResponse;
+import com.ksc.krds.model.krdsInstance.ListKrdsRequest;
 import com.ksc.krds.model.parametergroup.*;
 import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
 import com.ksc.krds.transform.parametergroup.*;
@@ -42,6 +44,13 @@ public class ParameterGroupClient extends Client {
     public RdsResponse<DescribeEngineDefaultParametersResponse> describeEngineDefaultParameters(DescribeEngineDefaultParametersRequest request){
         return invoke(new BaseMarshaller<DescribeEngineDefaultParametersRequest>(),
                 new DescribeEngineDefaultParametersUnmarshaller(), request).getKscResponse();
+    }
+    /*
+     *   查看当前实例数据库参数运行值列表
+     */
+    public RdsResponse<DescribeDBInstanceParametersResponse> DescribeDBInstanceParameters(DescribeDBInstanceParametersRequest request){
+        return invoke(new BaseMarshaller<DescribeDBInstanceParametersRequest>(),
+                new DescribeDBInstanceParametersUnmarshaller(), request).getKscResponse();
     }
 
 }
