@@ -19,7 +19,7 @@ public class AuditTest extends BaseTest{
     @Test
     public void testListAudit() {
         ListAuditRequest request = new ListAuditRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
         RdsResponse<ListAuditResponse> response = client.listAudit(request);
         print(response);
     }
@@ -27,7 +27,7 @@ public class AuditTest extends BaseTest{
     @Test
     public void testAuditStatistic() {
         AuditStatisticRequest request = new AuditStatisticRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
         RdsResponse response = client.auditStatistic(request);
         print(response);
     }
@@ -35,7 +35,10 @@ public class AuditTest extends BaseTest{
     @Test
     public void testStartAuditDetailExportTask() {
         StartAuditDetailExportTaskRequest request = new StartAuditDetailExportTaskRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
+        request.setExportFileds("ExecTime,Sql,RunResult");
+        request.setAuditBeginTime("2021-09-24 17:20:40");
+        request.setAuditEndTime("2021-09-24 17:20:40");
         RdsResponse response = client.startAuditDetailExportTask(request);
         print(response);
     }
@@ -43,7 +46,9 @@ public class AuditTest extends BaseTest{
     @Test
     public void testListAuditDetailExportTask() {
         ListAuditDetailExportTaskRequest request = new ListAuditDetailExportTaskRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
+        //request.setMarker(0L);
+        //request.setMaxRecords(10);
         RdsResponse<ListAuditDetailExportTaskResponse> response = client.listAuditDetailExportTask(request);
         print(response);
     }
@@ -51,7 +56,7 @@ public class AuditTest extends BaseTest{
     @Test
     public void testStartAudit() {
         StartAuditRequest request = new StartAuditRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
         RdsResponse response = client.startAudit(request);
         print(response);
     }
@@ -59,7 +64,7 @@ public class AuditTest extends BaseTest{
     @Test
     public void testStopAudit() {
         StopAuditRequest request = new StopAuditRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
         RdsResponse response = client.stopAudit(request);
         print(response);
     }

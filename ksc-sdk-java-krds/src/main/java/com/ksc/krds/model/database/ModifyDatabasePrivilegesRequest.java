@@ -2,6 +2,7 @@ package com.ksc.krds.model.database;
 
 import com.ksc.krds.model.krdsInstance.BaseRequest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ModifyDatabasePrivilegesRequest extends BaseRequest<ModifyDatabasePrivilegesRequest> {

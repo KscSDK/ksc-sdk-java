@@ -54,7 +54,8 @@ public class RdsResponseConversion {
 
     public static <T> T invoke1(JsonParser jsonParser, Class<T> clazz) throws IOException {
         ObjectMapper objectMapper = createObjectMapper();
-        return objectMapper.convertValue(jsonParser, clazz);
+        JsonNode jsonNode = objectMapper.readTree(jsonParser);
+        return objectMapper.convertValue(jsonNode, clazz);
 //        return objectMapper.convertValue(objectMapper.readTree(jsonParser), clazz);
     }
 

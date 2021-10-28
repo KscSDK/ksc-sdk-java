@@ -32,8 +32,6 @@ public enum ActionEnum {
     DELETE(BaseRequest.class, "DeleteDBInstance"),
     LOCK(LockDBInstanceRequest.class, "LockDBInstance"),
     UN_LOCK(UnLockDBInstanceRequest.class, "UnLockDBInstance"),
-    ALLOCATE_EIP(AllocateDBInstanceEipRequest.class, "AllocateDBInstanceEip"),
-    RELEASE_EIP(ReleaseDBInstanceEipRequest.class, "ReleaseDBInstanceEip"),
     REBOOT(RebootDBInstanceRequest.class, "RebootDBInstance"),
     DESCRIBE(ListKrdsRequest.class, "DescribeDBInstances"),
     GENERATE_ADMIN_URL(GenerateDBAdminURLRequest.class, "GenerateDBAdminURL"),
@@ -45,7 +43,7 @@ public enum ActionEnum {
     MODIFY_TYPE(ModifyInstanceTypeRequest.class, "ModifyDBInstanceType"),
     OVERRIDE(OverrideDBInstanceRequest.class, "OverrideDBInstance"),
     DESCRIBE_ENGINE_VERSIONS(DescribeDBEngineVersionsRequest.class, "DescribeDBEngineVersions"),
-    DESCRIBE_PARAMETERS(BaseRequest.class, "DescribeDBInstanceParameters"),
+    DESCRIBE_PARAMETERS(DescribeDBInstanceParametersRequest.class, "DescribeDBInstanceParameters"),
     LIST(ListDBInstanceRequest.class, "ListDBInstance"),
     LIST_ZONE(ListZoneRequest.class, "ListZone"),
     SWITCH_HA(SwitchHARequest.class, "SwitchDBInstanceHA"),
@@ -81,7 +79,7 @@ public enum ActionEnum {
     CREATE_BACKUP(CreateDBBackupRequest.class,"CreateDBBackup"),
     DELETE_BACKUP(DeleteDBBackupRequest.class,"DeleteDBBackup"),
     DESCRIBE_BACKUPS(BaseRequest.class,"DescribeDBBackups"),
-    MODIFY_BACKUP_POLICY(ModifyDBInstanceRequest.class,"ModifyDBBackupPolicy"),
+    MODIFY_BACKUP_POLICY(ModifyDBInstanceRequest.class,"ModifyDBInstance"),
 
     /** -------------------parameterGroup------------------- **/
     START_AUDIT(StartAuditRequest.class,"StartAudit"),
@@ -109,6 +107,8 @@ public enum ActionEnum {
     MODIFY_ACCOUNT(ModifyAccountRequest.class,"ModifyAccount"),
     LIST_ACCOUNT_SUPPORT_PRIVILEGES(ListAccountSupportPrivilegesRequest.class,"ListAccountSupportPrivileges"),
     DELETE_ACCOUNT(DeleteAccountRequest.class,"DeleteAccount"),
+    ModifyInstanceAccountPrivilegesAction(ModifyInstanceAccountPrivilegesActionRequest.class,"ModifyInstanceAccountPrivilegesAction"),
+    CreateInstanceAccountAction(CreateInstanceAccountActionRequest.class,"CreateInstanceAccountAction"),
 
     /** -------------------database------------------- **/
     CreateInstanceAccount(com.ksc.krds.model.database.CreateAccountRequest.class,"CreateInstanceAccount"),
@@ -122,6 +122,11 @@ public enum ActionEnum {
     DescribeInstanceDatabases(DescribeDatabaseRequest.class,"DescribeInstanceDatabases"),
     DeleteInstanceDatabase(DeleteDatabaseRequest.class,"DeleteInstanceDatabase"),
     ModifyInstanceDatabaseInfo(ModifyDatabaseInfoRequest.class,"ModifyInstanceDatabaseInfo"),
+
+    /** -------------------eip------------------- **/
+    ALLOCATE_EIP(AllocateDBInstanceEipRequest.class, "AllocateDBInstanceEip"),
+    RELEASE_EIP(ReleaseDBInstanceEipRequest.class, "ReleaseDBInstanceEip"),
+    ModifyDBNetwork(ModifyDBNetworkRequest.class, "ModifyDBNetwork"),
 
     /** -------------------slowLog------------------- **/
     SlowLogLineChart(SlowLogLineChartRequest.class,"SlowLogLineChart"),
