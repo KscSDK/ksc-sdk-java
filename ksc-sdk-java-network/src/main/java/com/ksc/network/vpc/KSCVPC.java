@@ -10,6 +10,7 @@ import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesReque
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
+import com.ksc.network.vpc.model.havip.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 import com.ksc.network.vpc.model.peering.*;
@@ -24,21 +25,21 @@ public interface KSCVPC {
 	 * <p>
 	 * Describes one or more of your VPCs.
 	 * </p>
-	 * 
+	 *
 	 * @param describeVpcsRequest
 	 *            Contains the parameters for DescribeVpcs.
 	 * @return Result of the DescribeVpcs operation returned by the service.
 	 * @sample KSC.DescribeVpcs
 	 */
 	public DescribeVpcsResult describeVpcs(DescribeVpcsRequest describeVpcsRequest);
-	
+
 	public DescribeAvailabilityZonesResult describeAvailabilityZones(DescribeAvailabilityZonesRequest describeAvailabilityZonesRequest);
 
 	/**
 	 * <p>
 	 * Describes one or more of your NetworkInterfaces.
 	 * </p>
-	 * 
+	 *
 	 * @param describeNetworkInterfacesRequest
 	 *            Contains the parameters for DescribeNetworkInterfaces.
 	 * @return Result of the DescribeNetworkInterfaces operation returned by the
@@ -52,7 +53,7 @@ public interface KSCVPC {
 	 * <p>
 	 * Describes one or more of your Subnets.
 	 * </p>
-	 * 
+	 *
 	 * @param describeSubnetsRequest
 	 *            Contains the parameters for DescribeSubnets.
 	 * @return Result of the DescribeSubnets operation returned by the service.
@@ -64,7 +65,7 @@ public interface KSCVPC {
 	 * <p>
 	 * Describes one or more of your SecurityGroups.
 	 * </p>
-	 * 
+	 *
 	 * @param describeSecurityGroupsRequest
 	 *            Contains the parameters for DescribeSecurityGroups.
 	 * @return Result of the DescribeSecurityGroups operation returned by the
@@ -78,7 +79,7 @@ public interface KSCVPC {
 	 * <p>
 	 * Describes one or more of your InternetGateways.
 	 * </p>
-	 * 
+	 *
 	 * @param describeInternetGatewaysRequest
 	 *            Contains the parameters for DescribeInternetGateways.
 	 * @return Result of the DescribeInternetGateways operation returned by the
@@ -92,7 +93,7 @@ public interface KSCVPC {
      * 创建VPC
      */
     public CreateVpcResult createVpc(CreateVpcRequest createVpcRequest);
-    
+
     /**
      * 删除VPC
      */
@@ -102,7 +103,7 @@ public interface KSCVPC {
      * 创建Subnet
      */
     public CreateSubnetResult createSubnet(CreateSubnetRequest createSubnetRequest);
-    
+
     /**
      * 删除Subnet
      */
@@ -117,37 +118,37 @@ public interface KSCVPC {
      * 子网解绑ACL
      */
     public DisassociateNetworkAclResult disassociateNetworkAcl(DisassociateNetworkAclRequest disassociateNetworkAclRequest);
-    
+
     /**
      * 创建安全组
      */
     public CreateSecurityGroupResult createSecurityGroup(CreateSecurityGroupRequest createSecurityGroup);
-    
+
     /**
      * 删除安全组
      */
     public DeleteSecurityGroupResult deleteSecurityGroup(DeleteSecurityGroupRequest deleteSecurityGroupRequest);
-    
+
     /**
      * 更改安全组信息
      */
     public ModifySecurityGroupResult modifySecurityGroup(ModifySecurityGroupRequest modifySecurityGroupRequest);
-    
+
     /**
      * 创建安全组规则
      */
     public AuthorizeSecurityGroupEntryResult authorizeSecurityGroupEntry(AuthorizeSecurityGroupEntryRequest authorizeSecurityGroupEntryRequest);
-    
+
     /**
      * 删除安全组规则
      */
     public RevokeSecurityGroupEntryResult revokeSecurityGroupEntry(RevokeSecurityGroupEntryRequest revokeSecurityGroupEntryRequest);
-    
+
     /**
      * 创建路由
      */
     public CreateRouteResult createRoute(CreateRouteRequest createRoute);
-    
+
     /**
      * 删除路由
      */
@@ -314,6 +315,42 @@ public interface KSCVPC {
 	 * 获取VPN通道
 	 */
 	public DescribeVpnTunnelsResult describeVpnTunnels(DescribeVpnTunnelsRequest describeVpnTunnelsRequest);
+    /**
+	 * 添加VPC附加网段
+	 */
+	public AddSecondaryCidrBlockResult addSecondaryCidrBlock(AddSecondaryCidrBlockRequest addSecondaryCidrBlockRequest);
+	/**
+	 * 删除VPC附加网段
+	 */
+	public DeleteSecondaryCidrBlockResult deleteSecondaryCidrBlock(DeleteSecondaryCidrBlockRequest deleteSecondaryCidrBlockRequest);
+    /**
+	 * 创建HaVip
+	 */
+	public CreateHaVipResult createHaVip(CreateHaVipRequest createHaVipRequest);
+	/**
+	 * 删除HaVip
+	 */
+	public DeleteHaVipResult deleteHaVip(DeleteHaVipRequest deleteHaVipRequest);
+    /**
+	 * 查询HaVip
+	 */
+	public DescribeHaVipResult describeHaVip(DescribeHaVipRequest describeHaVipRequest);
+	/**
+	 * HaVip绑定网卡
+	 */
+	public AssociateHaVipResult associateHaVip(AssociateHaVipRequest associateHaVipRequest);
+	/**
+	 * HaVip解绑网卡
+	 */
+	public UnAssociateHaVipResult unAssociateHaVip(UnAssociateHaVipRequest unAssociateHaVipRequest);
+	/**
+	 * 分配辅助私网IP
+	 */
+	public AssignPrivateIpAddressResult assignPrivateIpAddress(AssignPrivateIpAddressRequest assignPrivateIpAddressRequest);
+	/**
+	 * 取消辅助私网IP
+	 */
+	public UnassignPrivateIpAddressResult unassignPrivateIpAddress(UnassignPrivateIpAddressRequest unassignPrivateIpAddressRequest);
 
 }
 

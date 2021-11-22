@@ -3,6 +3,8 @@ package com.ksc.network.vpc.model.vpc;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.List;
+
 @ToString
 @EqualsAndHashCode
 
@@ -27,6 +29,10 @@ public class Vpc {
 	 * 是否为默认Vpc
 	 */
 	private Boolean isDefault;
+    /**
+     * SecondaryCidr的信息
+     */
+    private List<SecondaryCidr> secondaryCidrSet;
 
 	public String getCreateTime() {
 		return createTime;
@@ -67,4 +73,21 @@ public class Vpc {
 	public void setDefault(Boolean aDefault) {
 		isDefault = aDefault;
 	}
+
+    public List<SecondaryCidr> getSecondaryCidrSet() {
+        return secondaryCidrSet;
+    }
+
+    public void setSecondaryCidrSet(List<SecondaryCidr> secondaryCidrSet) {
+        this.secondaryCidrSet = secondaryCidrSet;
+    }
+
+    public void addSecondaryCidrSet(SecondaryCidr... secondaryCidrs) {
+        if (secondaryCidrSet == null) {
+            secondaryCidrSet = new com.ksc.internal.SdkInternalList<SecondaryCidr>();
+        }
+        for (SecondaryCidr s : secondaryCidrs) {
+            secondaryCidrSet.add(s);
+        }
+    }
 }

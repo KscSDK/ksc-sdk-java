@@ -20,6 +20,7 @@ import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesReque
 import com.ksc.network.vpc.model.NetworkInterface.DescribeNetworkInterfacesResult;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
+import com.ksc.network.vpc.model.havip.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 import com.ksc.network.vpc.model.peering.*;
@@ -35,6 +36,7 @@ import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesR
 import com.ksc.network.vpc.transform.NetworkInterface.DescribeNetworkInterfacesResultStaxUnmarshaller;
 import com.ksc.network.vpc.transform.Routes.*;
 import com.ksc.network.vpc.transform.SecurityGroups.*;
+import com.ksc.network.vpc.transform.havip.*;
 import com.ksc.network.vpc.transform.subnet.*;
 import com.ksc.network.vpc.transform.vpc.*;
 import com.ksc.network.vpc.transform.peering.*;
@@ -1920,5 +1922,238 @@ public class KSCVPCClient extends KscWebServiceClient implements KSCVPC {
 		}
 	}
 
+    @Override
+    public AddSecondaryCidrBlockResult addSecondaryCidrBlock(AddSecondaryCidrBlockRequest addSecondaryCidrBlockRequest) {
+        ExecutionContext executionContext = createExecutionContext(addSecondaryCidrBlockRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AddSecondaryCidrBlockRequest> request = null;
+        Response<AddSecondaryCidrBlockResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AddSecondaryCidrBlockRequestMarshaller()
+                        .marshall(addSecondaryCidrBlockRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<AddSecondaryCidrBlockResult> responseHandler = new StaxResponseHandler<AddSecondaryCidrBlockResult>(
+                    new AddSecondaryCidrBlockResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeleteSecondaryCidrBlockResult deleteSecondaryCidrBlock(DeleteSecondaryCidrBlockRequest deleteSecondaryCidrBlockRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteSecondaryCidrBlockRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteSecondaryCidrBlockRequest> request = null;
+        Response<DeleteSecondaryCidrBlockResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteSecondaryCidrBlockRequestMarshaller()
+                        .marshall(deleteSecondaryCidrBlockRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteSecondaryCidrBlockResult> responseHandler = new StaxResponseHandler<DeleteSecondaryCidrBlockResult>(
+                    new DeleteSecondaryCidrBlockResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public CreateHaVipResult createHaVip(CreateHaVipRequest createHaVipRequest) {
+        ExecutionContext executionContext = createExecutionContext(createHaVipRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreateHaVipRequest> request = null;
+        Response<CreateHaVipResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreateHaVipRequestMarshaller()
+                        .marshall(createHaVipRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<CreateHaVipResult> responseHandler = new StaxResponseHandler<CreateHaVipResult>(
+                    new CreateHaVipResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeleteHaVipResult deleteHaVip(DeleteHaVipRequest deleteHaVipRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteHaVipRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeleteHaVipRequest> request = null;
+        Response<DeleteHaVipResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeleteHaVipRequestMarshaller()
+                        .marshall(deleteHaVipRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeleteHaVipResult> responseHandler = new StaxResponseHandler<DeleteHaVipResult>(
+                    new DeleteHaVipResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribeHaVipResult describeHaVip(DescribeHaVipRequest describeHaVipRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeHaVipRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeHaVipRequest> request = null;
+        Response<DescribeHaVipResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeHaVipRequestMarshaller()
+                        .marshall(describeHaVipRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribeHaVipResult> responseHandler = new StaxResponseHandler<DescribeHaVipResult>(
+                    new DescribeHaVipResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public AssociateHaVipResult associateHaVip(AssociateHaVipRequest associateHaVipRequest) {
+        ExecutionContext executionContext = createExecutionContext(associateHaVipRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociateHaVipRequest> request = null;
+        Response<AssociateHaVipResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociateHaVipRequestMarshaller()
+                        .marshall(associateHaVipRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<AssociateHaVipResult> responseHandler = new StaxResponseHandler<AssociateHaVipResult>(
+                    new AssociateHaVipResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public UnAssociateHaVipResult unAssociateHaVip(UnAssociateHaVipRequest unAssociateHaVipRequest) {
+        ExecutionContext executionContext = createExecutionContext(unAssociateHaVipRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UnAssociateHaVipRequest> request = null;
+        Response<UnAssociateHaVipResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UnAssociateHaVipRequestMarshaller()
+                        .marshall(unAssociateHaVipRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<UnAssociateHaVipResult> responseHandler = new StaxResponseHandler<UnAssociateHaVipResult>(
+                    new UnAssociateHaVipResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public AssignPrivateIpAddressResult assignPrivateIpAddress(AssignPrivateIpAddressRequest assignPrivateIpAddressRequest) {
+        ExecutionContext executionContext = createExecutionContext(assignPrivateIpAddressRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssignPrivateIpAddressRequest> request = null;
+        Response<AssignPrivateIpAddressResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssignPrivateIpAddressRequestMarshaller()
+                        .marshall(assignPrivateIpAddressRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<AssignPrivateIpAddressResult> responseHandler = new StaxResponseHandler<AssignPrivateIpAddressResult>(
+                    new AssignPrivateIpAddressResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public UnassignPrivateIpAddressResult unassignPrivateIpAddress(UnassignPrivateIpAddressRequest unassignPrivateIpAddressRequest) {
+        ExecutionContext executionContext = createExecutionContext(unassignPrivateIpAddressRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<UnassignPrivateIpAddressRequest> request = null;
+        Response<UnassignPrivateIpAddressResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new UnassignPrivateIpAddressRequestMarshaller()
+                        .marshall(unassignPrivateIpAddressRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<UnassignPrivateIpAddressResult> responseHandler = new StaxResponseHandler<UnassignPrivateIpAddressResult>(
+                    new UnassignPrivateIpAddressResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
 }
