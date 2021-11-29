@@ -7,8 +7,7 @@ import com.ksc.transform.Unmarshaller;
 
 import static com.fasterxml.jackson.core.JsonToken.*;
 
-public class ModifyDBNetworkUnmarshaller implements Unmarshaller<RdsResponse, JsonUnmarshallerContext> {
-
+public class RestoreToCurInstanceUnmarshaller implements Unmarshaller<RdsResponse, JsonUnmarshallerContext> {
     public RdsResponse unmarshall(JsonUnmarshallerContext context) throws Exception {
         RdsResponse result = new RdsResponse();
         int originalDepth = context.getCurrentDepth();
@@ -28,6 +27,7 @@ public class ModifyDBNetworkUnmarshaller implements Unmarshaller<RdsResponse, Js
                     context.nextToken();
                     result.setRequestId(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null
                         || context.getLastParsedParentElement().equals(currentParentElement)) {
@@ -37,10 +37,12 @@ public class ModifyDBNetworkUnmarshaller implements Unmarshaller<RdsResponse, Js
             }
             token = context.nextToken();
         }
+
         return result;
     }
 
     private static ListKrdsResponseJsonUnmarshaller instance;
+
 
     public static ListKrdsResponseJsonUnmarshaller getInstance() {
         if (instance == null)

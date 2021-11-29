@@ -2,13 +2,14 @@ package com.ksc.krds;
 
 import com.ksc.auth.AWSCredentials;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
-import com.ksc.krds.model.krdsBackup.CreateDBBackupResponse;
-import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
-import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
+import com.ksc.krds.model.krdsBackup.*;
 import com.ksc.krds.transform.krdsBackup.CreateDBBackupUnmarshaller;
+import com.ksc.krds.transform.krdsBackup.GetHistoryDatabaseInfoUnmarshaller;
+import com.ksc.krds.transform.krdsBackup.GetTableRestorableTimeUnmarshaller;
 import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
 
+import java.io.IOException;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 public class BackupClient extends Client {
@@ -30,5 +31,23 @@ public class BackupClient extends Client {
     public RdsResponse modifyDBBackupPolicy(ModifyDBInstanceRequest request) {
         return invoke(new BaseMarshaller<ModifyDBInstanceRequest>(),
                 new CreateDBBackupUnmarshaller(), request).getKscResponse();
+    }
+
+    /**
+     * 获取指定时间点附近或者备份集的库表信息
+     * GetHistoryDatabaseInfo   GET
+     */
+    public GetHistoryDatabaseInfoResponse getHistoryDatabaseInfo(GetHistoryDatabaseInfoRequest request) {
+       return invoke(new BaseMarshaller<GetHistoryDatabaseInfoRequest>(),
+                new GetHistoryDatabaseInfoUnmarshaller(), request).getKscResponse();
+    }
+
+    /**
+     * 获取库表可恢复时间段
+     * GetTableRestorableTime   GET
+     */
+    public GetTableRestorableTimeResponse getTableRestorableTime(GetTableRestorableTimeRequest request) {
+        return invoke(new BaseMarshaller<GetTableRestorableTimeRequest>(),
+                new GetTableRestorableTimeUnmarshaller(), request).getKscResponse();
     }
 }

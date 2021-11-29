@@ -1,30 +1,17 @@
-package com.ksc.krds.model.database;
+package com.ksc.krds.model.account;
 
+import com.ksc.krds.model.database.AccountPrivilege;
 import com.ksc.krds.model.krdsInstance.BaseRequest;
 
-import java.io.Serializable;
 import java.util.List;
-import java.util.Map;
 
-/***
- * @ClassName: CreateInstanceAccountActionRequest
- * @Description:TODO
- * @version : V1.0
- */
-public class CreateInstanceAccountActionRequest  extends BaseRequest<CreateInstanceAccountActionRequest> {
+public class ModifyInstanceAccountInfoRequest extends BaseRequest<ModifyInstanceAccountInfoRequest> {
+
     private String DBInstanceIdentifier;
     private String InstanceAccountName;
     private String InstanceAccountPassword;
     private String InstanceAccountDescription;
     private List<AccountPrivilege> InstanceAccountPrivileges;
-
-    public List<AccountPrivilege> getInstanceAccountPrivileges() {
-        return InstanceAccountPrivileges;
-    }
-
-    public void setInstanceAccountPrivileges(List<AccountPrivilege> instanceAccountPrivileges) {
-        InstanceAccountPrivileges = instanceAccountPrivileges;
-    }
 
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
@@ -58,4 +45,11 @@ public class CreateInstanceAccountActionRequest  extends BaseRequest<CreateInsta
         InstanceAccountDescription = instanceAccountDescription;
     }
 
+    public List<AccountPrivilege> getInstanceAccountPrivileges() {
+        return InstanceAccountPrivileges;
+    }
+
+    public void setInstanceAccountPrivileges(List<AccountPrivilege> instanceAccountPrivileges) {
+        InstanceAccountPrivileges = instanceAccountPrivileges;
+    }
 }

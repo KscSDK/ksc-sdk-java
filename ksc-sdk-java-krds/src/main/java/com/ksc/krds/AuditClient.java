@@ -37,7 +37,7 @@ public class AuditClient extends Client{
                 new StartAuditDetailExportTaskUnmarshaller(), request).getKscResponse();
     }
 
-    public RdsResponse<ListAuditDetailExportTaskResponse> listAuditDetailExportTask(ListAuditDetailExportTaskRequest request){
+    public ListAuditDetailExportTaskResponse listAuditDetailExportTask(ListAuditDetailExportTaskRequest request){
         return invoke(new BaseMarshaller<ListAuditDetailExportTaskRequest>(),
                 new ListAuditDetailExportTaskUnmarshaller(), request).getKscResponse();
     }

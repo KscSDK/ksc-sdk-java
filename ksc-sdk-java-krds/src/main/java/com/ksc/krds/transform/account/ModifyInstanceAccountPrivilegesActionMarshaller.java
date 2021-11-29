@@ -1,25 +1,15 @@
-package com.ksc.krds.transform.krdsInstance;
+package com.ksc.krds.transform.account;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import com.ksc.DefaultRequest;
 import com.ksc.KscClientException;
 import com.ksc.Request;
-import com.ksc.krds.model.database.CreateInstanceAccountActionRequest;
-import com.ksc.krds.model.database.ModifyInstanceAccountPrivilegesActionRequest;
-import com.ksc.transform.Marshaller;
+import com.ksc.http.HttpMethodName;
+import com.ksc.krds.model.account.ModifyInstanceAccountPrivilegesActionRequest;
+import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
 
 import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
-import java.io.InputStream;
-import java.io.ObjectOutputStream;
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
 
-/***
- * @ClassName: ModifyInstanceAccountPrivilegesActionMarshaller
- * @Description:TODO
- * @version : V1.0
- */
 public class ModifyInstanceAccountPrivilegesActionMarshaller extends BaseMarshaller<ModifyInstanceAccountPrivilegesActionRequest> {
 
     @Override
@@ -28,17 +18,20 @@ public class ModifyInstanceAccountPrivilegesActionMarshaller extends BaseMarshal
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
         Request<ModifyInstanceAccountPrivilegesActionRequest> request = new DefaultRequest<ModifyInstanceAccountPrivilegesActionRequest>(in, "krds");
-        request.addParameter("Action", "CreateInstanceAccountAction");
+        request.addParameter("Action", "ModifyInstanceAccountPrivilegesAction");
         String version = in.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-07-01";
         }
         request.addParameter("Version", version);
-        ObjectMapper objectMapper = new ObjectMapper();
-        String s = objectMapper.writeValueAsString(request);
+        request.addHeader("Accept", "application/json");
 
-        request.setContent(new ByteArrayInputStream(s.getBytes()));
+        byte[] content = new Gson().toJson(in).getBytes();
+        request.addHeader("Content-Type", "application/json");
+        request.addHeader("Content-Length", Integer.toString(content.length));
+        request.setContent(new ByteArrayInputStream(content));
 
-        return  request;
+        request.setHttpMethod(HttpMethodName.POST);
+        return request;
     }
 }

@@ -4,26 +4,18 @@ import java.util.List;
 
 public class ListAuditDetailExportTaskResponse {
 
+    private List<ExportTaskResp> taskResps;
+    private Integer totalCount;
 
-    public List<String> getTaskResps() {
+    private String RequestId;
+
+    public List<ExportTaskResp> getTaskResps() {
         return taskResps;
     }
 
-    public void setTaskResps(List<String> taskResps) {
+    public void setTaskResps(List<ExportTaskResp> taskResps) {
         this.taskResps = taskResps;
     }
-
-    private List<String> taskResps;
-    private Integer totalCount;
-   /* private String RequestId;
-
-    public String getRequestId() {
-        return RequestId;
-    }
-
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }*/
 
     public Integer getTotalCount() {
         return totalCount;
@@ -33,4 +25,11 @@ public class ListAuditDetailExportTaskResponse {
         this.totalCount = totalCount;
     }
 
+    public String getRequestId() {
+        return RequestId;
+    }
+
+    public void setRequestId(String requestId) {
+        RequestId = requestId;
+    }
 }

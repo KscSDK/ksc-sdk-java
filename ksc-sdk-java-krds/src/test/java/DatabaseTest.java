@@ -1,14 +1,15 @@
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.annotation.JsonTypeResolver;
 import com.ksc.krds.DatabaseClient;
-import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.RdsResponse;
+import com.ksc.krds.model.account.*;
 import com.ksc.krds.model.database.*;
-import com.ksc.krds.model.krdsInstance.RebootDBInstanceRequest;
+import com.ksc.krds.model.database.CreateAccountRequest;
+import com.ksc.krds.model.database.DeleteAccountRequest;
+import com.ksc.krds.model.database.DescribeAccountRequest;
+import com.ksc.krds.model.database.DescribeAccountResponse;
+import com.ksc.krds.model.database.ModifyAccountRequest;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class DatabaseTest extends BaseTest{
     @Test
     public void testDescribeAccount() {
         DescribeAccountRequest request = new DescribeAccountRequest();
-        request.setDBInstanceIdentifier(getInstanceId());
+        request.setDBInstanceIdentifier("1fc2e73e-51cd-4853-b722-7b93e5506b2c");
         RdsResponse<DescribeAccountResponse> response = client.describeAccount(request);
         print(response);
     }
@@ -100,7 +101,7 @@ public class DatabaseTest extends BaseTest{
         DeleteDatabaseRequest request = new DeleteDatabaseRequest();
         request.setDBInstanceIdentifier("726adc59-ff96-4fc9-9836-47f98d60ea2c");
         request.setInstanceDatabaseName("test-01,test-02");
-        RdsResponse response = client.DeleteInstanceDatabaseAction(request);
+        RdsResponse response = client.deleteInstanceDatabase(request);
         print(response);
     }
 
@@ -109,12 +110,10 @@ public class DatabaseTest extends BaseTest{
         DeleteAccountRequest request = new DeleteAccountRequest();
         request.setDBInstanceIdentifier("726adc59-ff96-4fc9-9836-47f98d60ea2c");
         request.setInstanceAccountName("test_0011112");
-        RdsResponse response = client.DeleteInstanceAccountAction(request);
+        RdsResponse response = client.deleteInstanceAccount(request);
         print(response);
     }
-   /*
-   *数据库库表-授权
-   */
+
     @Test
     public void testModifyInstanceDatabasePrivileges() {
         ModifyDatabasePrivilegesRequest request = new ModifyDatabasePrivilegesRequest();
@@ -129,62 +128,15 @@ public class DatabaseTest extends BaseTest{
         RdsResponse response = client.modifyInstanceDatabasePrivileges(request);
         print(response);
     }
-    /*
-     *    数据库账号 列表
-     **/
+
+
     @Test
-    public void testDescribeInstanceAccounts(){
-        DescribeAccountRequest request = new DescribeAccountRequest();
-        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
-        RdsResponse response = client.DescribeInstanceAccounts(request);
-        print(response);
+    public void testDeleteInstanceDatabaseAction() throws Exception {
+        DeleteInstanceDatabaseActionRequest request = new DeleteInstanceDatabaseActionRequest();
+        request.setDBInstanceIdentifier("1fc2e73e-51cd-4853-b722-7b93e5506b2c");
+        request.setInstanceDatabaseName("a1,a2");
+        RdsResponse rdsResponse = client.deleteInstanceDatabaseAction(request);
+        print(rdsResponse);
+
     }
-    /*
-     *   数据库账号-创建/克隆
-     */
-    /*@Test
-    public void testCreateInstanceAccountAction(){
-        CreateInstanceAccountActionRequest request = new CreateInstanceAccountActionRequest();
-        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
-        request.setInstanceAccountName("testzhanghao2");
-        request.setInstanceAccountPassword("Password111");
-        request.setInstanceAccountDescription("测试接口222");
-        RdsResponse response = client.CreateInstanceAccountAction(request);
-        print(response);
-    }*/
-
-    /*
-     *   数据库账号-修改/重置密码
-     */
-    @Test
-    public void testModifyInstanceAccountInfo(){
-        ModifyAccountPasswordRequest request = new ModifyAccountPasswordRequest();
-        request.setDBInstanceIdentifier("726adc59-ff96-4fc9-9836-47f98d60ea2c");
-        request.setInstanceAccountName("test_id123");
-        request.setInstanceAccountPassword("Test0000");
-        RdsResponse response = client.ModifyInstanceAccountInfo(request);
-        print(response);
-    }
-    /*
-     *   数据库账号-授权
-     */
-    /*@Test
-    public void testModifyInstanceAccountPrivilegesAction() {
-        ModifyInstanceAccountPrivilegesActionRequest request = new ModifyInstanceAccountPrivilegesActionRequest();
-        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
-        request.setInstanceAccountName("test_id");
-       *//* List<AccountPrivilege> InstanceAccountPrivilege = new ArrayList<AccountPrivilege>();
-        AccountPrivilege privilege = new AccountPrivilege();
-        privilege.setInstanceDatabaseName("test-table");
-        privilege.setPrivilege(MysqlPrivilegeMap.FrontPrivilege.ReadOnly);
-        InstanceAccountPrivilege.add(privilege);
-        request.setInstanceAccountDescription(String.valueOf(InstanceAccountPrivilege));*//*
-
-        RdsResponse response = client.ModifyInstanceAccountPrivilegesAction(request);
-        print(response);
-    }*/
-
-
-
-
 }

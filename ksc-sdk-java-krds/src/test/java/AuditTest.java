@@ -46,10 +46,8 @@ public class AuditTest extends BaseTest{
     @Test
     public void testListAuditDetailExportTask() {
         ListAuditDetailExportTaskRequest request = new ListAuditDetailExportTaskRequest();
-        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
-        //request.setMarker(0L);
-        //request.setMaxRecords(10);
-        RdsResponse<ListAuditDetailExportTaskResponse> response = client.listAuditDetailExportTask(request);
+        request.setDBInstanceIdentifier("5e5e661f-00a4-4329-ba94-152e4d88a205");
+        ListAuditDetailExportTaskResponse response = client.listAuditDetailExportTask(request);
         print(response);
     }
 
