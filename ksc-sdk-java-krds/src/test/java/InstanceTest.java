@@ -312,24 +312,38 @@ public class InstanceTest extends BaseTest{
         print(response);
     }
 
+    //删除实例  新
+    @Test
+    public void testDeleteDBInstance(){
+        DeleteKrdsRequest request = new DeleteKrdsRequest();
+        request.setDBInstanceIdentifier("d7f960c3-0614-4f31-b75f-6ff918b8b0e4");
+        RdsResponse response = client.deleteDBInstance(request);
+        print(response);
+    }
+
     //创建实例
     @Test
     public void testCreateDBInstance() {
         CreateKrdsRequest request = new CreateKrdsRequest();
-        request.setDBInstanceName("test_libai111");
+        request.setDBInstanceName("zhebin_sdk");
+
         request.setEngine("mysql");
         request.setEngineVersion("5.7");
+
         request.setMasterUserName("admin");
         request.setMasterUserPassword("Test1234");
-        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
+
         request.setBillType("DAY");
         request.setDBInstanceType("HRDS");
+
         request.setDisk(15);
         request.setMem(1);
+
         request.setVpcId("7e8ff294-5fb3-4a83-9e0f-eb9a286eb5ee");
         request.setSubnetId("d0fc5c60-7cdd-4712-92dd-42d32fd4cabf");
-        CreateKrdsResponse krds = client.createKRDS(request);
-        print(krds);
+
+        RdsResponse<InstanceResponse> response = client.createDBInstance(request);
+        print(response);
     }
 
 

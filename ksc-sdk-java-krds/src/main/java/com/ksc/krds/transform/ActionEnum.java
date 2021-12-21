@@ -26,7 +26,7 @@ import com.ksc.krds.model.account.DescribeInstanceAccountsRequest;
 public enum ActionEnum {
     /** -------------------instance------------------- **/
     MODIFY(ModifyInstanceRequest.class, "ModifyDBInstance"),
-    CREATE(BaseRequest.class, "CreateDBInstance"),
+    CREATE(CreateKrdsRequest.class, "CreateDBInstance"),
     CREATE_READ_REPLICA(CreateReadReplicaRequest.class, "CreateDBInstanceReadReplica"),
     DELETE(BaseRequest.class, "DeleteDBInstance"),
     LOCK(LockDBInstanceRequest.class, "LockDBInstance"),
