@@ -126,6 +126,9 @@ public enum ActionEnum {
 
     DESCRIBE_INSTANCE_ACCOUNTS(DescribeInstanceAccountsRequest.class,"DescribeInstanceAccounts"),
     MODIFY_INSTANCE_ACCOUNT_INFO(ModifyInstanceAccountInfoRequest.class,"ModifyInstanceAccountInfo"),
+    CREATE_INSTANCE_ACCOUNT_ACTION(CreateInstanceAccountActionRequest.class,"CreateInstanceAccountAction"),
+    MODIFY_INSTANCE_ACCOUNT_PRIVILEGES_ACTION(ModifyInstanceAccountPrivilegesActionRequest.class,"ModifyInstanceAccountPrivilegesAction"),
+    DELETE_INSTANCE_ACCOUNT_ACTION(DeleteInstanceAccountActionRequest.class,"DeleteInstanceAccountAction"),
 
     /** -------------------eip------------------- **/
     ALLOCATE_EIP(AllocateDBInstanceEipRequest.class, "AllocateDBInstanceEip"),

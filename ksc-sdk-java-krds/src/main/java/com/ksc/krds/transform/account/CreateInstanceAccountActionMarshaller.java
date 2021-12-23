@@ -6,6 +6,7 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.krds.model.account.CreateInstanceAccountActionRequest;
+import com.ksc.krds.transform.ActionEnum;
 import com.ksc.transform.Marshaller;
 
 import java.io.ByteArrayInputStream;
@@ -18,7 +19,7 @@ public class CreateInstanceAccountActionMarshaller implements Marshaller<Request
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
         Request<CreateInstanceAccountActionRequest> request = new DefaultRequest<CreateInstanceAccountActionRequest>(in, "krds");
-        request.addParameter("Action", "CreateInstanceAccountAction");
+        request.addParameter("Action", ActionEnum.CREATE_INSTANCE_ACCOUNT_ACTION.val());
         String version = in.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-07-01";

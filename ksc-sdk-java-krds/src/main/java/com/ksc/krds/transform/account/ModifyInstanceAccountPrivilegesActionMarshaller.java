@@ -6,6 +6,7 @@ import com.ksc.KscClientException;
 import com.ksc.Request;
 import com.ksc.http.HttpMethodName;
 import com.ksc.krds.model.account.ModifyInstanceAccountPrivilegesActionRequest;
+import com.ksc.krds.transform.ActionEnum;
 import com.ksc.krds.transform.krdsInstance.BaseMarshaller;
 
 import java.io.ByteArrayInputStream;
@@ -18,7 +19,7 @@ public class ModifyInstanceAccountPrivilegesActionMarshaller extends BaseMarshal
             throw new KscClientException("Invalid argument passed to marshall(...)");
         }
         Request<ModifyInstanceAccountPrivilegesActionRequest> request = new DefaultRequest<ModifyInstanceAccountPrivilegesActionRequest>(in, "krds");
-        request.addParameter("Action", "ModifyInstanceAccountPrivilegesAction");
+        request.addParameter("Action", ActionEnum.MODIFY_INSTANCE_ACCOUNT_PRIVILEGES_ACTION.val());
         String version = in.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-07-01";
