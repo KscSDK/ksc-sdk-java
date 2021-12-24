@@ -150,10 +150,12 @@ public class InstanceTest extends BaseTest{
     @Test
     public void testSdkRestoreDBInstanceFromDBBackup() {
         SDKRestoreDBInstanceFromDBBackupRequest request = new SDKRestoreDBInstanceFromDBBackupRequest();
-        request.setDBBackupIdentifier(getInstanceId());
-        request.setDBBackupIdentifier("4579ce8a-a3db-4dbf-9ba6-606455c6d643");
-        request.setDBInstanceName("test-linai-o1");
+        request.setDBBackupIdentifier("cb504436-15b7-4114-8ffd-7f000df86041");
+        request.setDBInstanceName("zb-bkres-xxxxx");
         request.setDBInstanceType("HRDS");
+
+        request.setDuration(1);
+        request.setDurationUnit(DURATION_UNIT.D);
         RdsResponse<InstanceResponse> response = client.sdkRestoreDBInstanceFromDBBackup(request);
         print(response);
     }
@@ -316,7 +318,7 @@ public class InstanceTest extends BaseTest{
     @Test
     public void testDeleteDBInstance(){
         DeleteKrdsRequest request = new DeleteKrdsRequest();
-        request.setDBInstanceIdentifier("d7f960c3-0614-4f31-b75f-6ff918b8b0e4");
+        request.setDBInstanceIdentifier("2c93d39a-15c8-4107-934f-5d5ae79251db");
         RdsResponse response = client.deleteDBInstance(request);
         print(response);
     }

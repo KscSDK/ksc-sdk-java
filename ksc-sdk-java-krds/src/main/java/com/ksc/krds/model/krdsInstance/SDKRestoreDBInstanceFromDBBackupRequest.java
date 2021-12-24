@@ -1,7 +1,6 @@
 package com.ksc.krds.model.krdsInstance;
 
 import java.math.BigInteger;
-import java.util.ArrayList;
 import java.util.List;
 
 public class SDKRestoreDBInstanceFromDBBackupRequest extends BaseRequest<SDKRestoreDBInstanceFromDBBackupRequest>{
@@ -14,7 +13,7 @@ public class SDKRestoreDBInstanceFromDBBackupRequest extends BaseRequest<SDKRest
 
     private Integer Duration;
 
-    private String DurationUnit;
+    private DURATION_UNIT DurationUnit;
 
     private List<String> AvailabilityZone;
 
@@ -58,14 +57,6 @@ public class SDKRestoreDBInstanceFromDBBackupRequest extends BaseRequest<SDKRest
         Duration = duration;
     }
 
-    public String getDurationUnit() {
-        return DurationUnit;
-    }
-
-    public void setDurationUnit(String durationUnit) {
-        DurationUnit = durationUnit;
-    }
-
     public List<String> getAvailabilityZone() {
         return AvailabilityZone;
     }
@@ -104,5 +95,13 @@ public class SDKRestoreDBInstanceFromDBBackupRequest extends BaseRequest<SDKRest
 
     public void setSubnetId(String subnetId) {
         SubnetId = subnetId;
+    }
+
+    public DURATION_UNIT getDurationUnit() {
+        return DurationUnit;
+    }
+
+    public void setDurationUnit(DURATION_UNIT durationUnit) {
+        DurationUnit = durationUnit;
     }
 }
