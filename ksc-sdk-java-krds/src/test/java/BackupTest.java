@@ -60,7 +60,12 @@ public class BackupTest extends BaseTest {
     public void testDescribeDBBackups(){
         ListKrdsBackupRequest request = new ListKrdsBackupRequest();
         request.setDBInatanceIdentifier("3cc79b94-a363-4f0b-9941-0ac2e847688f");
+        request.setBackupType(BackupType.Snapshot);
+        request.setKeyword("mao");
+        request.setMarker(0);
+        request.setMaxRecords(10);
         ListKrdsBackupResponse listKrdsBackupResponse = client.describeDBBackups(request);
+        print(request);
         print(listKrdsBackupResponse);
     }
 
