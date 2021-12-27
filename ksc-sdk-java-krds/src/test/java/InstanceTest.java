@@ -344,7 +344,7 @@ public class InstanceTest extends BaseTest{
         request.setVpcId("7e8ff294-5fb3-4a83-9e0f-eb9a286eb5ee");
         request.setSubnetId("d0fc5c60-7cdd-4712-92dd-42d32fd4cabf");
 
-        RdsResponse<InstanceResponse> response = client.createDBInstance(request);
+        RdsResponse<CreateDBInstanceResponse> response = client.createDBInstance(request);
         print(response);
     }
 

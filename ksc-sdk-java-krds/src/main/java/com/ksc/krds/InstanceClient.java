@@ -311,8 +311,8 @@ public class InstanceClient extends Client {
      * @param request
      * @return
      */
-    public RdsResponse<InstanceResponse> createDBInstance(CreateKrdsRequest request) {
-        return invoke(new BaseMarshaller<CreateKrdsRequest>(), new InstanceUnmarshaller(), request)
+    public RdsResponse<CreateDBInstanceResponse> createDBInstance(CreateKrdsRequest request) {
+        return invoke(new BaseMarshaller<CreateKrdsRequest>(), new CreateDBInstanceUnmarshaller(), request)
                 .getKscResponse();
     }
 }
