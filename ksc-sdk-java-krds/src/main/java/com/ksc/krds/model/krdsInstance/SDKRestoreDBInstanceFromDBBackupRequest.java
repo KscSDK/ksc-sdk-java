@@ -25,6 +25,17 @@ public class SDKRestoreDBInstanceFromDBBackupRequest extends BaseRequest<SDKRest
 
     private String SubnetId;
 
+    //仅支持：YEAR_MONTH,DAY,HourlyInstantSettlement
+    private BILLTYPE BillType;
+
+    public BILLTYPE getBillType() {
+        return BillType;
+    }
+
+    public void setBillType(BILLTYPE billType) {
+        BillType = billType;
+    }
+
     public String getDBBackupIdentifier() {
         return DBBackupIdentifier;
     }
