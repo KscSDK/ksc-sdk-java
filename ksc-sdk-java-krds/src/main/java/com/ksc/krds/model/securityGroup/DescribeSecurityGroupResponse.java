@@ -38,6 +38,7 @@ public class DescribeSecurityGroupResponse extends KrdsResponse {
         private String SecurityGroupRuleId;
         private String SecurityGroupRuleName;
         private String SecurityGroupRuleProtocol;
+        private String SecurityGroupRuleCidr;
         private String Created;
 
         public String getSecurityGroupRuleId() {
@@ -71,12 +72,21 @@ public class DescribeSecurityGroupResponse extends KrdsResponse {
         public void setCreated(String created) {
             Created = created;
         }
+
+        public String getSecurityGroupRuleCidr() {
+            return SecurityGroupRuleCidr;
+        }
+
+        public void setSecurityGroupRuleCidr(String securityGroupRuleCidr) {
+            SecurityGroupRuleCidr = securityGroupRuleCidr;
+        }
     }
 
     public class SecurityGroup {
         private String SecurityGroupId;
         private String SecurityGroupName;
         private String SecurityGroupDescription;
+        private String SecurityGroupType;
         private String Created;
         private List<InstanceBrief> Instances = new ArrayList<InstanceBrief>();
         private List<SecurityGroupRule> SecurityGroupRules = new ArrayList<SecurityGroupRule>();
@@ -127,6 +137,14 @@ public class DescribeSecurityGroupResponse extends KrdsResponse {
 
         public void setSecurityGroupRules(List<SecurityGroupRule> securityGroupRules) {
             SecurityGroupRules = securityGroupRules;
+        }
+
+        public String getSecurityGroupType() {
+            return SecurityGroupType;
+        }
+
+        public void setSecurityGroupType(String securityGroupType) {
+            SecurityGroupType = securityGroupType;
         }
 
         public String toString(){

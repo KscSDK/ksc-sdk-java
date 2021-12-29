@@ -2,17 +2,15 @@ package com.ksc.krds.model.auditstatistic;
 
 import com.ksc.krds.model.krdsInstance.BaseRequest;
 
-import java.util.Date;
-
 public class DescribeAuditHotDurationRequest extends BaseRequest<DescribeAuditHotDurationRequest> {
 
     private String dBInstanceIdentifier;
 
     private String timeRange;
 
-    private Date startTime;
+    private String startTime;
 
-    private Date endTime;
+    private String endTime;
 
     public String getDBInstanceIdentifier() {
         return dBInstanceIdentifier;
@@ -30,19 +28,20 @@ public class DescribeAuditHotDurationRequest extends BaseRequest<DescribeAuditHo
         this.timeRange = timeRange;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
+
 }

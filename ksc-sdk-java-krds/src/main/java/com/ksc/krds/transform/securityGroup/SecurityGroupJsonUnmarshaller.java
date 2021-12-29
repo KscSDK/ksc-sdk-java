@@ -49,6 +49,9 @@ public class SecurityGroupJsonUnmarshaller implements Unmarshaller<DescribeSecur
                 } else if (context.testExpression("Created", targetDepth)) {
                     context.nextToken();
                     securityGroup.setCreated(context.getUnmarshaller(String.class).unmarshall(context));
+                }else if (context.testExpression("SecurityGroupType", targetDepth)) {
+                    context.nextToken();
+                    securityGroup.setSecurityGroupType(context.getUnmarshaller(String.class).unmarshall(context));
                 } else if (context.testExpression("Instances", targetDepth)) {
                     context.nextToken();
                     securityGroup.setInstances(new ListUnmarshaller<InstanceBrief>(KrdsInstanceBriefJsonUnmarshaller.getInstance()).unmarshall(context));

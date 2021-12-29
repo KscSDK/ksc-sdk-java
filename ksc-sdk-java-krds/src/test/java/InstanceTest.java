@@ -1,26 +1,29 @@
-import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.krds.InstanceClient;
 import com.ksc.krds.KSCKRDSClient;
+import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.krdsInstance.*;
-import com.ksc.regions.RegionUtils;
-import org.apache.log4j.Logger;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.Collections;
+import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
 public class InstanceTest extends BaseTest{
+
     private InstanceClient client;
+    private KSCKRDSClient ksckrdsClient;
+
     @Before
     public void init() {
         client = new InstanceClient(getCredentials());
         client.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
 
+        ksckrdsClient = new KSCKRDSClient(getCredentials());
+        ksckrdsClient.setEndpoint("https://krds.cn-beijing-6.api.ksyun.com");
     }
     @Test
     public void testLock() {
@@ -147,10 +150,12 @@ public class InstanceTest extends BaseTest{
     @Test
     public void testSdkRestoreDBInstanceFromDBBackup() {
         SDKRestoreDBInstanceFromDBBackupRequest request = new SDKRestoreDBInstanceFromDBBackupRequest();
-        request.setDBBackupIdentifier(getInstanceId());
-        request.setDBBackupIdentifier("4579ce8a-a3db-4dbf-9ba6-606455c6d643");
-        request.setDBInstanceName("test-linai-o1");
+        request.setDBBackupIdentifier("cb504436-15b7-4114-8ffd-7f000df86041");
+        request.setDBInstanceName("zb-bkres-xxxxx");
         request.setDBInstanceType("HRDS");
+
+        request.setDuration(1);
+        request.setDurationUnit(DURATION_UNIT.D);
         RdsResponse<InstanceResponse> response = client.sdkRestoreDBInstanceFromDBBackup(request);
         print(response);
     }
@@ -177,7 +182,7 @@ public class InstanceTest extends BaseTest{
     public void testAllocateDBInstanceEip() {
         AllocateDBInstanceEipRequest request = new AllocateDBInstanceEipRequest();
         request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
-        request.setPort(65535);
+        request.setPort(65500); // rang[10000,65500]
         RdsResponse response = client.allocateDBInstanceEip(request);
         print(response);
     }
@@ -190,10 +195,11 @@ public class InstanceTest extends BaseTest{
         print(response);
     }
 
+    //查看实例恢复时间-DescribeDBInstanceRestorableTime
     @Test
     public void testDescribeDBInstanceRestorableTime() {
         DescribeDBInstanceRestoredTimeRequest request = new DescribeDBInstanceRestoredTimeRequest();
-        request.setDBInstanceIdentifier("49ffe987-5a70-4652-89c7-40e6b409ee9b");
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
         RdsResponse<DescribeDBInstanceRestoredResponse> response = client.describeDBInstanceRestorableTime(request);
         print(response);
     }
@@ -272,15 +278,195 @@ public class InstanceTest extends BaseTest{
         RdsResponse response = client.describeInstances(request);
         Assert.assertNotNull(response);
     }
-    /*
-     *  EIP-修改
-     **/
-    /*@Test
+
+
+    /**
+     * 修改实例ip，port，vpc
+     * modify instance eip
+     */
+    @Test
     public void testModifyDBNetwork() {
         ModifyDBNetworkRequest request = new ModifyDBNetworkRequest();
-        request.setDBInstanceIdentifier("56575e69-dad4-4dd3-a7db-9f75141e6ac0");
-        request.setVpcId("30048550-1af2-4d5a-ad59-ef3363b3ca09");
-        RdsResponse response = client.ModifyDBNetwork(request);
-        Assert.assertNotNull(response);
-    }*/
+        request.setDBInstanceIdentifier("f71f5e7a-381a-439d-8535-d702b313142a");
+        request.setSubnetId("953b854b-099c-41dd-9f4f-18f31ccb3936");
+        request.setVpcId("530b5d42-1c88-4ea0-adad-1993c9902751");
+        RdsResponse response = client.modifyDBNetwork(request);
+        print(response);
+    }
+
+    /**
+     * 查看默认数据库引擎版本
+     * describe database engine versions
+     */
+    @Test
+    public void testDescribeDBEngineVersions(){
+        DescribeDBEngineVersionsRequest request = new DescribeDBEngineVersionsRequest();
+        RdsResponse response = client.describeDBEngineVersions(request);
+        print(response);
+    }
+
+    //删除实例
+    @Test
+    public void deleteKRDS(){
+        DeleteKrdsRequest request = new DeleteKrdsRequest();
+        request.setDBInstanceIdentifier("84a1d937-6254-425d-9597-74d21671e14d");
+        KrdsResponse response = ksckrdsClient.deleteKRDS(request);
+        print(response);
+    }
+
+    //删除实例  新
+    @Test
+    public void testDeleteDBInstance(){
+        DeleteKrdsRequest request = new DeleteKrdsRequest();
+        request.setDBInstanceIdentifier("2c93d39a-15c8-4107-934f-5d5ae79251db");
+        RdsResponse response = client.deleteDBInstance(request);
+        print(response);
+    }
+
+    //创建实例
+    @Test
+    public void testCreateDBInstance() {
+        CreateKrdsRequest request = new CreateKrdsRequest();
+        request.setDBInstanceName("zhebin_sdk");
+
+        request.setEngine("mysql");
+        request.setEngineVersion("5.7");
+
+        request.setMasterUserName("admin");
+        request.setMasterUserPassword("Test1234");
+
+        request.setBillType("DAY");
+        request.setDBInstanceType("HRDS");
+
+        request.setDisk(15);
+        request.setMem(1);
+
+        request.setVpcId("7e8ff294-5fb3-4a83-9e0f-eb9a286eb5ee");
+        request.setSubnetId("d0fc5c60-7cdd-4712-92dd-42d32fd4cabf");
+
+        RdsResponse<CreateDBInstanceResponse> response = client.createDBInstance(request);
+        print(response);
+    }
+
+
+    //修改自动备份时间，使用的接口为ModifyDBInstance
+    @Test
+    public void testModiftDBInstance(){
+
+        ModifyInstanceRequest request = new ModifyInstanceRequest();
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        request.setPreferredBackupTime("07:00-08:00");
+        RdsResponse<InstancesResponse> response = client.modifyInstance(request);
+        print(response);
+    }
+
+
+    //OverrideDBInstanceByPointInTime
+    @Test
+    public void testOverrideDBInstanceByPointInTime(){
+        OverrideDBInstanceByPointInTimeRequest request = new OverrideDBInstanceByPointInTimeRequest();
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        request.setDBBackupIdentifier("b0ffe4fd-663a-4b58-82cb-d6444a69176e");
+        RdsResponse response = client.overrideDBInstanceByPointInTime(request);
+        print(response);
+    }
+
+    //RestoreToCurInstance
+    @Test
+    public void testRestoreToCurInstance(){
+        RestoreToCurInstanceRequest request = new RestoreToCurInstanceRequest();
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        request.setDBBackupIdentifier("6a5109a9-e192-4ab5-90e3-f8c46fa34f38");
+
+        RestoreToCurInstanceRequest.SrcDatabases srcDatabases = new RestoreToCurInstanceRequest.SrcDatabases();
+        RestoreToCurInstanceRequest.DstDatabases dstDatabases = new RestoreToCurInstanceRequest.DstDatabases();
+
+        srcDatabases.setDatabaseName("ksyusers");
+        srcDatabases.setWholeDatabase("True");
+        srcDatabases.setTableNames(new String[]{"dbaas_auth_group",
+                "dbaas_authorization",
+                "dbaas_default",
+                "dbaas_login",
+                "dbaas_menu",
+                "dbaas_project",
+                "dbaas_project_account",
+                "dbaas_role",
+                "dbaas_role_menu",
+                "dbaas_subaccount",
+                "dbaas_user",
+                "dbaas_user_role",
+                "dbaas_user_signout"});
+
+        dstDatabases.setDatabaseName("_ksyusers");
+        dstDatabases.setWholeDatabase("True");
+        dstDatabases.setTableNames(new String[]{"dbaas_auth_group",
+                "dbaas_authorization",
+                "dbaas_default",
+                "dbaas_login",
+                "dbaas_menu",
+                "dbaas_project",
+                "dbaas_project_account",
+                "dbaas_role",
+                "dbaas_role_menu",
+                "dbaas_subaccount",
+                "dbaas_user",
+                "dbaas_user_role",
+                "dbaas_user_signout"});
+
+        request.setSrcDatabases(Arrays.asList(srcDatabases));
+        request.setDstDatabases(Arrays.asList(dstDatabases));
+
+        RdsResponse rdsResponse = client.restoreToCurInstance(request);
+        print(rdsResponse);
+    }
+
+
+    //RestoreToSgInstance
+    @Test
+    public void testRestoreToSgInstance(){
+        RestoreToSgInstanceRequest request = new RestoreToSgInstanceRequest();
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        request.setDBBackupIdentifier("6a5109a9-e192-4ab5-90e3-f8c46fa34f38");
+
+        RestoreToSgInstanceRequest.SrcDatabases srcDatabases = new RestoreToSgInstanceRequest.SrcDatabases();
+        RestoreToSgInstanceRequest.DstDatabases dstDatabases = new RestoreToSgInstanceRequest.DstDatabases();
+
+        srcDatabases.setDatabaseName("ksyusers");
+        srcDatabases.setWholeDatabase("True");
+        srcDatabases.setTableNames(new String[]{"dbaas_auth_group",
+                "dbaas_authorization",
+                "dbaas_default",
+                "dbaas_login",
+                "dbaas_menu",
+                "dbaas_project",
+                "dbaas_project_account",
+                "dbaas_role",
+                "dbaas_role_menu",
+                "dbaas_subaccount",
+                "dbaas_user",
+                "dbaas_user_role",
+                "dbaas_user_signout"});
+
+        dstDatabases.setDatabaseName("_ksyusers");
+        dstDatabases.setWholeDatabase("True");
+        dstDatabases.setTableNames(new String[]{"dbaas_auth_group",
+                "dbaas_authorization",
+                "dbaas_default",
+                "dbaas_login",
+                "dbaas_menu",
+                "dbaas_project",
+                "dbaas_project_account",
+                "dbaas_role",
+                "dbaas_role_menu",
+                "dbaas_subaccount",
+                "dbaas_user",
+                "dbaas_user_role",
+                "dbaas_user_signout"});
+
+        request.setSrcDatabases(Arrays.asList(srcDatabases));
+        request.setDstDatabases(Arrays.asList(dstDatabases));
+
+        RdsResponse rdsResponse = client.restoreToSgInstance(request);
+        print(rdsResponse);
+    }
 }

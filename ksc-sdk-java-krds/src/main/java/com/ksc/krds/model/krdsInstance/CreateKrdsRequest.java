@@ -1,16 +1,14 @@
 package com.ksc.krds.model.krdsInstance;
 
-import com.ksc.KscWebServiceRequest;
 import com.ksc.Request;
 import com.ksc.krds.transform.krdsInstance.CreateKrdsMarshaller;
 import com.ksc.model.DryRunSupportedRequest;
 
 import java.io.Serializable;
-import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CreateKrdsRequest extends KscWebServiceRequest
+public class CreateKrdsRequest extends BaseRequest<CreateKrdsRequest>
         implements Serializable, Cloneable, DryRunSupportedRequest<CreateKrdsRequest> {
 
     private String DBInstanceClass;

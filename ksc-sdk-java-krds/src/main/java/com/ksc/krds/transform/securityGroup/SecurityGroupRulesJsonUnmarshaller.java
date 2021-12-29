@@ -43,6 +43,9 @@ public class SecurityGroupRulesJsonUnmarshaller implements Unmarshaller<Describe
                 } else if (context.testExpression("SecurityGroupRuleProtocol", targetDepth)) {
                     context.nextToken();
                     securityGroupRule.setSecurityGroupRuleProtocol(context.getUnmarshaller(String.class).unmarshall(context));
+                } else if (context.testExpression("SecurityGroupRuleCidr", targetDepth)) {
+                    context.nextToken();
+                    securityGroupRule.setSecurityGroupRuleCidr(context.getUnmarshaller(String.class).unmarshall(context));
                 } else if (context.testExpression("Created", targetDepth)) {
                     context.nextToken();
                     securityGroupRule.setCreated(context.getUnmarshaller(String.class).unmarshall(context));

@@ -1,4 +1,4 @@
-package com.ksc.krds.transform.database;
+package com.ksc.krds.transform.account;
 
 import com.ksc.krds.model.RdsResponse;
 import com.ksc.krds.model.RdsResponseConversion;
@@ -6,11 +6,6 @@ import com.ksc.krds.model.database.DescribeInstanceAccountsResponse;
 import com.ksc.transform.JsonUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
 
-/***
- * @ClassName: DescribeInstanceAccountsUnmarshaller
- * @Description:TODO
- * @version : V1.0
- */
 public class DescribeInstanceAccountsUnmarshaller implements Unmarshaller<RdsResponse, JsonUnmarshallerContext> {
 
     @Override

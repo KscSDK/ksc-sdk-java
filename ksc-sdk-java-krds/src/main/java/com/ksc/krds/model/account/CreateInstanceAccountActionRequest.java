@@ -1,23 +1,24 @@
-package com.ksc.krds.model.database;
+package com.ksc.krds.model.account;
 
+import com.ksc.krds.model.database.AccountPrivilege;
 import com.ksc.krds.model.krdsInstance.BaseRequest;
-import lombok.Getter;
-import lombok.Setter;
 
-import java.util.ArrayList;
 import java.util.List;
 
-/***
- * @ClassName: ModifyInstanceAccountPrivilegesActionRequest
- * @Description:TODO
- * @version : V1.0
- */
-public class ModifyInstanceAccountPrivilegesActionRequest  extends BaseRequest<ModifyInstanceAccountPrivilegesActionRequest> {
+public class CreateInstanceAccountActionRequest  extends BaseRequest<CreateInstanceAccountActionRequest> {
     private String DBInstanceIdentifier;
     private String InstanceAccountName;
     private String InstanceAccountPassword;
     private String InstanceAccountDescription;
     private List<AccountPrivilege> InstanceAccountPrivileges;
+
+    public List<AccountPrivilege> getInstanceAccountPrivileges() {
+        return InstanceAccountPrivileges;
+    }
+
+    public void setInstanceAccountPrivileges(List<AccountPrivilege> instanceAccountPrivileges) {
+        InstanceAccountPrivileges = instanceAccountPrivileges;
+    }
 
     public String getDBInstanceIdentifier() {
         return DBInstanceIdentifier;
@@ -49,14 +50,6 @@ public class ModifyInstanceAccountPrivilegesActionRequest  extends BaseRequest<M
 
     public void setInstanceAccountDescription(String instanceAccountDescription) {
         InstanceAccountDescription = instanceAccountDescription;
-    }
-
-    public List<AccountPrivilege> getInstanceAccountPrivileges() {
-        return InstanceAccountPrivileges;
-    }
-
-    public void setInstanceAccountPrivileges(List<AccountPrivilege> instanceAccountPrivileges) {
-        InstanceAccountPrivileges = instanceAccountPrivileges;
     }
 
 }
