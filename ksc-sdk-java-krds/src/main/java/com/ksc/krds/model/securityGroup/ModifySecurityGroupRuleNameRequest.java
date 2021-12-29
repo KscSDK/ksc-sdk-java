@@ -4,15 +4,15 @@ import com.ksc.krds.model.krdsInstance.BaseRequest;
 
 public class ModifySecurityGroupRuleNameRequest extends BaseRequest<ModifySecurityGroupRuleNameRequest> {
 
-    private String SecurityGroupRuleId;
-
+    private String SecurityGroupId;
+    private Integer SecurityGroupRuleId;
     private String SecurityGroupRuleName;
 
-    public String getSecurityGroupRuleId() {
+    public Integer getSecurityGroupRuleId() {
         return SecurityGroupRuleId;
     }
 
-    public void setSecurityGroupRuleId(String securityGroupRuleId) {
+    public void setSecurityGroupRuleId(Integer securityGroupRuleId) {
         SecurityGroupRuleId = securityGroupRuleId;
     }
 
@@ -23,4 +23,13 @@ public class ModifySecurityGroupRuleNameRequest extends BaseRequest<ModifySecuri
     public void setSecurityGroupRuleName(String securityGroupRuleName) {
         SecurityGroupRuleName = securityGroupRuleName;
     }
+
+    public String getSecurityGroupId() {
+        return SecurityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
+
 }

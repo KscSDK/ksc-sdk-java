@@ -1,14 +1,17 @@
 package com.ksc.krds;
 
+import com.ksc.KscWebServiceResponse;
 import com.ksc.Request;
+import com.ksc.Response;
 import com.ksc.auth.AWSCredentials;
+import com.ksc.http.ExecutionContext;
+import com.ksc.http.HttpResponseHandler;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.database.DescribeAccountRequest;
-import com.ksc.krds.model.database.DescribeInstanceAccountsResponse;
 import com.ksc.krds.model.krdsInstance.*;
 import com.ksc.krds.transform.BaseUnmarshaller;
-import com.ksc.krds.transform.database.DescribeInstanceAccountsUnmarshaller;
 import com.ksc.krds.transform.krdsInstance.*;
+import com.ksc.protocol.json.JsonOperationMetadata;
+import com.ksc.util.KscRequestMetrics;
 
 public class InstanceClient extends Client {
 
@@ -144,14 +147,172 @@ public class InstanceClient extends Client {
         return invoke(new BaseMarshaller<ListKrdsRequest>(), new DescribeUnmarshaller() {
         }, request).getKscResponse();
     }
-    //TODO  待实现
-    /*
-     *    EIP-修改
-     **/
-  /* public RdsResponse ModifyDBNetwork(ModifyDBNetworkRequest request){
-        return invoke(new BaseMarshaller<ModifyDBNetworkRequest>(),
-                new ModifyDBNetworkUnmarshaller(), request).getKscResponse();
-    }*/
+
+    /**
+     * 查询数据库引擎版本
+     * https://docs.ksyun.com/documents/331
+     * Query database engine version
+     * @param request DescribeDBEngineVersionsRequest
+     * @return RdsResponse<Object>
+     */
+    public RdsResponse<Object> describeDBEngineVersions(DescribeDBEngineVersionsRequest request){
+        return invoke(new BaseMarshaller<DescribeDBEngineVersionsRequest>(), new BaseUnmarshaller<Object>() {
+        }, request).getKscResponse();
+    }
+
+    /**
+     * 选择时间点恢复到原实例(或者备份) GET
+     * https://docs.ksyun.com/documents/40951
+     * @param request
+     * @return
+     */
+    public RdsResponse overrideDBInstanceByPointInTime(OverrideDBInstanceByPointInTimeRequest request) {
+        return invoke(new BaseMarshaller<OverrideDBInstanceByPointInTimeRequest>(), new DescribeUnmarshaller() {
+        }, request).getKscResponse();
+    }
+
+    /**
+     * 修改IP/VPC PORT
+     * https://docs.ksyun.com/documents/41001
+     * modified instance ip or port
+     * @methods POST
+     * @return ModifyDBNetworkResponse
+     */
+    public RdsResponse modifyDBNetwork(ModifyDBNetworkRequest baseRequest){
+        ExecutionContext executionContext = createExecutionContext(baseRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<ModifyDBNetworkRequest> request = null;
+        Response<RdsResponse> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new ModifyDBNetworkMarshaller().marshall(super.beforeMarshalling(baseRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<KscWebServiceResponse<RdsResponse>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new ModifyDBNetworkUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+            return response.getKscResponse();
+
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * RestoreToCurInstance POST
+     * https://docs.ksyun.com/documents/40952
+     * @param baseRequest
+     * @return
+     */
+    public RdsResponse restoreToCurInstance(RestoreToCurInstanceRequest baseRequest){
+        ExecutionContext executionContext = createExecutionContext(baseRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<RestoreToCurInstanceRequest> request = null;
+        Response<RdsResponse> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new RestoreToCurInstanceMarshaller().marshall(super.beforeMarshalling(baseRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<KscWebServiceResponse<RdsResponse>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new RestoreToCurInstanceUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+            return response.getKscResponse();
+
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    /**
+     * RestoreToSgInstance POST
+     * https://docs.ksyun.com/documents/40953
+     * @param baseRequest
+     * @return
+     */
+    public RdsResponse restoreToSgInstance(RestoreToSgInstanceRequest baseRequest){
+        ExecutionContext executionContext = createExecutionContext(baseRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<RestoreToSgInstanceRequest> request = null;
+        Response<RdsResponse> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new RestoreToSgInstanceMarshaller().marshall(super.beforeMarshalling(baseRequest));
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<KscWebServiceResponse<RdsResponse>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new RestoreToSgInstanceUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+            return response.getKscResponse();
+
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
 
+    /**
+     * DeleteDBInstance 删除实例
+     * @param deleteKrdsRequest
+     * @return
+     */
+    public RdsResponse deleteDBInstance(DeleteKrdsRequest deleteKrdsRequest) {
+        ExecutionContext executionContext = createExecutionContext(deleteKrdsRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
+        Request<DeleteKrdsRequest> request = null;
+        Response<RdsResponse> response = null;
+        try {
+            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            try {
+                request = new DeleteKrdsMarshaller().marshall(super.beforeMarshalling(deleteKrdsRequest));
+                request.addHeader("Accept", "application/json");
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
+            }
+
+            HttpResponseHandler<KscWebServiceResponse<RdsResponse>> responseHandler = protocolFactory
+                    .createResponseHandler(
+                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
+                            new DeleteDBInstanceJsonUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+            return response.getKscResponse();
+
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+
+    }
+
+    /**
+     * CreateDBInstance 创建实例
+     * @param request
+     * @return
+     */
+    public RdsResponse<CreateDBInstanceResponse> createDBInstance(CreateKrdsRequest request) {
+        return invoke(new BaseMarshaller<CreateKrdsRequest>(), new CreateDBInstanceUnmarshaller(), request)
+                .getKscResponse();
+    }
 }

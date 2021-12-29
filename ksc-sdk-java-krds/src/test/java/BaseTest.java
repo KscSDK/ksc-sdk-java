@@ -1,8 +1,7 @@
+import com.google.gson.Gson;
 import com.ksc.auth.BasicAWSCredentials;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.Map;
 
 public class BaseTest {
 
@@ -29,6 +28,6 @@ public class BaseTest {
     }
 
     public void print(Object o) {
-        log.info("{}",o);
+        log.info("{}",new Gson().toJson(o));
     }
 }

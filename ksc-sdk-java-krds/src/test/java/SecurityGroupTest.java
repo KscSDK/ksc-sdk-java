@@ -42,7 +42,7 @@ public class SecurityGroupTest extends BaseTest{
     @Test
     public void testDescribeSecurityGroup() {
         DescribeSecurityGroupRequest request = new DescribeSecurityGroupRequest();
-        request.setSecurityGroupId("64630");
+//        request.setSecurityGroupId("64630");
         DescribeSecurityGroupResponse response = client.describeSecurityGroup(request);
         log.info("{}", response);
     }
@@ -69,7 +69,7 @@ public class SecurityGroupTest extends BaseTest{
     @Test
     public void testModifySecurityGroupRuleName() {
         ModifySecurityGroupRuleNameRequest request = new ModifySecurityGroupRuleNameRequest();
-        request.setSecurityGroupRuleId("127370");
+//        request.setSecurityGroupRuleId("127370");
         request.setSecurityGroupRuleName("lzs-security-group-rule-111");
         KrdsResponse response = client.modifySecurityGroupRuleName(request);
         log.info("{}", response);
@@ -82,7 +82,7 @@ public class SecurityGroupTest extends BaseTest{
         List<CreateSecurityGroupRequest.SecurityGroupRule> securityGroupRule = new ArrayList<CreateSecurityGroupRequest.SecurityGroupRule>();
         CreateSecurityGroupRequest.SecurityGroupRule e = new CreateSecurityGroupRequest.SecurityGroupRule();
         e.setSecurityGroupRuleName("lzs-security-group-rule-1");
-        e.setSecurityGroupRuleProtocol("0.0.0.1/1");
+//        e.setSecurityGroupRuleProtocol("0.0.0.1/1");
         request.setSecurityGroupRule(securityGroupRule);
         request.setSecurityGroupRuleAction("Attach");
         DescribeSecurityGroupResponse response = client.modifySecurityGroupRule(request);

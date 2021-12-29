@@ -154,32 +154,6 @@ public class KSCKRDSClient extends KscWebServiceClient {
         RdsResponse<DescribeInstanceResponse> rdsResponse = client.describeInstances(listKrdsRequest);
         return new ListKrdsResponse(rdsResponse.getData(), rdsResponse.getRequestId());
 
-//        ExecutionContext executionContext = createExecutionContext(listKrdsRequest);
-//        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
-//        kscRequestMetrics.startEvent(KscRequestMetrics.Field.ClientExecuteTime);
-//        Request<ListKrdsRequest> request = null;
-//        Response<ListKrdsResponse> response = null;
-//        try {
-//            kscRequestMetrics.startEvent(KscRequestMetrics.Field.RequestMarshallTime);
-//            try {
-//                request = new ListKrdsMarshaller().marshall(super.beforeMarshalling(listKrdsRequest));
-//                request.addHeader("Accept", "application/json");
-//                request.setKscRequestMetrics(kscRequestMetrics);
-//            } finally {
-//                kscRequestMetrics.endEvent(KscRequestMetrics.Field.RequestMarshallTime);
-//            }
-//
-//            HttpResponseHandler<KscWebServiceResponse<ListKrdsResponse>> responseHandler = protocolFactory
-//                    .createResponseHandler(
-//                            new JsonOperationMetadata().withPayloadJson(true).withHasStreamingSuccessResponse(false),
-//                            new ListKrdsResponseJsonUnmarshaller());
-//            response = invoke(request, responseHandler, executionContext);
-//
-//            return response.getKscResponse();
-//        } finally {
-//            endClientExecution(kscRequestMetrics, request, response);
-//        }
-
     }
 
     public KrdsResponse deleteKRDS(DeleteKrdsRequest deleteKrdsRequest) {

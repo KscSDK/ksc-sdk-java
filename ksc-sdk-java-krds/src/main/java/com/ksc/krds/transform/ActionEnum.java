@@ -11,9 +11,7 @@ import com.ksc.krds.model.auditstatistic.AuditTemplateRequest;
 import com.ksc.krds.model.auditstatistic.DescribeAuditHotDurationRequest;
 import com.ksc.krds.model.auditstatistic.SqlAuditLineChartRequest;
 import com.ksc.krds.model.database.*;
-import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
-import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
-import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
+import com.ksc.krds.model.krdsBackup.*;
 import com.ksc.krds.model.krdsInstance.*;
 import com.ksc.krds.model.log.DeleteDBBinlogRequest;
 import com.ksc.krds.model.log.DescribeDBLogFilesRequest;
@@ -23,11 +21,12 @@ import com.ksc.krds.model.securityGroup.*;
 import com.ksc.krds.model.slowlog.SlowLogDetailRequest;
 import com.ksc.krds.model.slowlog.SlowLogLineChartRequest;
 import com.ksc.krds.model.slowlog.SlowLogReportRequest;
+import com.ksc.krds.model.account.DescribeInstanceAccountsRequest;
 
 public enum ActionEnum {
     /** -------------------instance------------------- **/
     MODIFY(ModifyInstanceRequest.class, "ModifyDBInstance"),
-    CREATE(BaseRequest.class, "CreateDBInstance"),
+    CREATE(CreateKrdsRequest.class, "CreateDBInstance"),
     CREATE_READ_REPLICA(CreateReadReplicaRequest.class, "CreateDBInstanceReadReplica"),
     DELETE(BaseRequest.class, "DeleteDBInstance"),
     LOCK(LockDBInstanceRequest.class, "LockDBInstance"),
@@ -51,9 +50,13 @@ public enum ActionEnum {
     STATISTIC(StatisticDBInstancesRequest.class, "StatisticDBInstances"),
     CREATE_ORDER(CreateInstanceOrderRequest.class, "CreateInstanceOrder"),
     CURRENT_INFO(GetCurrentDatabaseInfoReq.class, "GetCurrentDatabaseInfo"),
-    TABLE_RESTORE_TIME(BaseRequest.class, "GetTableRestorableTime"),
-    HISTORY_DATABASE_INFO(BaseRequest.class, "GetHistoryDatabaseInfo"),
-    OVERRIDE_POINT_IN_TIME(BaseRequest.class, "OverrideDBInstanceByPointInTime"),
+
+    TABLE_RESTORE_TIME(GetTableRestorableTimeRequest.class, "GetTableRestorableTime"),
+    HISTORY_DATABASE_INFO(GetHistoryDatabaseInfoRequest.class, "GetHistoryDatabaseInfo"),
+    OVERRIDE_POINT_IN_TIME(OverrideDBInstanceByPointInTimeRequest.class, "OverrideDBInstanceByPointInTime"),
+    RESTORE_TO_CUR_INSTANCE(RestoreToCurInstanceRequest.class, "RestoreToCurInstance"),
+    RESTORE_TO_SG_INSTANCE(RestoreToSgInstanceRequest.class, "RestoreToSgInstance"),
+
     ALLOCATE_INNER_EIP(GetCurrentDatabaseInfoReq.class, "AllocateDBInstanceInnerEip"),
     RELEASE_INNER_EIP(AllocateDBInstanceInnerEipRequest.class, "ReleaseDBInstanceInnerEip"),
 
@@ -107,8 +110,6 @@ public enum ActionEnum {
     MODIFY_ACCOUNT(ModifyAccountRequest.class,"ModifyAccount"),
     LIST_ACCOUNT_SUPPORT_PRIVILEGES(ListAccountSupportPrivilegesRequest.class,"ListAccountSupportPrivileges"),
     DELETE_ACCOUNT(DeleteAccountRequest.class,"DeleteAccount"),
-    ModifyInstanceAccountPrivilegesAction(ModifyInstanceAccountPrivilegesActionRequest.class,"ModifyInstanceAccountPrivilegesAction"),
-    CreateInstanceAccountAction(CreateInstanceAccountActionRequest.class,"CreateInstanceAccountAction"),
 
     /** -------------------database------------------- **/
     CreateInstanceAccount(com.ksc.krds.model.database.CreateAccountRequest.class,"CreateInstanceAccount"),
@@ -123,10 +124,15 @@ public enum ActionEnum {
     DeleteInstanceDatabase(DeleteDatabaseRequest.class,"DeleteInstanceDatabase"),
     ModifyInstanceDatabaseInfo(ModifyDatabaseInfoRequest.class,"ModifyInstanceDatabaseInfo"),
 
+    DESCRIBE_INSTANCE_ACCOUNTS(DescribeInstanceAccountsRequest.class,"DescribeInstanceAccounts"),
+    MODIFY_INSTANCE_ACCOUNT_INFO(ModifyInstanceAccountInfoRequest.class,"ModifyInstanceAccountInfo"),
+    CREATE_INSTANCE_ACCOUNT_ACTION(CreateInstanceAccountActionRequest.class,"CreateInstanceAccountAction"),
+    MODIFY_INSTANCE_ACCOUNT_PRIVILEGES_ACTION(ModifyInstanceAccountPrivilegesActionRequest.class,"ModifyInstanceAccountPrivilegesAction"),
+    DELETE_INSTANCE_ACCOUNT_ACTION(DeleteInstanceAccountActionRequest.class,"DeleteInstanceAccountAction"),
+
     /** -------------------eip------------------- **/
     ALLOCATE_EIP(AllocateDBInstanceEipRequest.class, "AllocateDBInstanceEip"),
     RELEASE_EIP(ReleaseDBInstanceEipRequest.class, "ReleaseDBInstanceEip"),
-    ModifyDBNetwork(ModifyDBNetworkRequest.class, "ModifyDBNetwork"),
 
     /** -------------------slowLog------------------- **/
     SlowLogLineChart(SlowLogLineChartRequest.class,"SlowLogLineChart"),

@@ -1,13 +1,10 @@
-import com.google.gson.JsonObject;
-import com.ksc.auth.BasicAWSCredentials;
 import com.ksc.krds.BackupClient;
 import com.ksc.krds.model.RdsResponse;
-import com.ksc.krds.model.krdsBackup.CreateDBBackupRequest;
-import com.ksc.krds.model.krdsBackup.CreateDBBackupResponse;
-import com.ksc.krds.model.krdsBackup.DeleteDBBackupRequest;
-import com.ksc.krds.model.krdsBackup.ModifyDBInstanceRequest;
+import com.ksc.krds.model.krdsBackup.*;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.io.IOException;
 
 public class BackupTest extends BaseTest {
 
@@ -44,6 +41,52 @@ public class BackupTest extends BaseTest {
         request.setDBBackupIdentifier("0a14ec2b-08ef-4eb7-aa4b-304716913669");
         RdsResponse response = client.deleteDBBackup(request);
         log.info("%s",response.getData());
+    }
+
+
+
+    //search backup list
+    @Test
+    public void testListKrdsBackup(){
+        ListKrdsBackupRequest request = new ListKrdsBackupRequest();
+        request.setDBInatanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        ListKrdsBackupResponse listKrdsBackupResponse = client.listKrdsBackup(request);
+        print(listKrdsBackupResponse);
+    }
+
+
+    //search backup list new
+    @Test
+    public void testDescribeDBBackups(){
+        ListKrdsBackupRequest request = new ListKrdsBackupRequest();
+        request.setDBInatanceIdentifier("3cc79b94-a363-4f0b-9941-0ac2e847688f");
+        request.setBackupType(BackupType.Snapshot);
+        request.setKeyword("mao");
+        request.setMarker(0);
+        request.setMaxRecords(10);
+        ListKrdsBackupResponse listKrdsBackupResponse = client.describeDBBackups(request);
+        print(request);
+        print(listKrdsBackupResponse);
+    }
+
+
+    //GetHistoryDatabaseInfo
+    @Test
+    public void testGetHistoryDatabaseInfo() throws IOException {
+        GetHistoryDatabaseInfoRequest request = new GetHistoryDatabaseInfoRequest();
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        request.setDBBackupIdentifier("c502a62b-adf5-4d07-beaf-b756070bc2c2");
+        Object response = client.getHistoryDatabaseInfo(request);
+        print(response);
+    }
+
+    //GetTableRestorableTime
+    @Test
+    public void testGetTableRestorableTime() {
+        GetTableRestorableTimeRequest request = new GetTableRestorableTimeRequest();
+        request.setDBInstanceIdentifier("12f991de-6808-4b06-bba9-50a8bd22d352");
+        Object response = client.getTableRestorableTime(request);
+        print(response);
     }
 
 }

@@ -10,20 +10,42 @@ public class CreateSecurityGroupRequest extends BaseRequest<CreateSecurityGroupR
     private String SecurityGroupDescription;
     private List<SecurityGroupRule> SecurityGroupRule;
     private List<String> DBInstanceIdentifier;
-    private String Type;
+    private String SecurityGroupType;
+    
+    //for clone security group
     private String SecurityGroupId;
+
+    public String getSecurityGroupId() {
+        return SecurityGroupId;
+    }
+
+    public void setSecurityGroupId(String securityGroupId) {
+        SecurityGroupId = securityGroupId;
+    }
 
 
     public static class SecurityGroupRule {
-        private String SecurityGroupRuleProtocol;
-        private String SecurityGroupRuleName;
 
-        public String getSecurityGroupRuleProtocol() {
-            return SecurityGroupRuleProtocol;
+        private String SecurityGroupRuleName;
+        private String SecurityGroupRuleCidr;
+
+        //use for modifySecurityGroupRule
+        private String SecurityGroupRuleId;
+
+        public String getSecurityGroupRuleId() {
+            return SecurityGroupRuleId;
         }
 
-        public void setSecurityGroupRuleProtocol(String securityGroupRuleProtocol) {
-            SecurityGroupRuleProtocol = securityGroupRuleProtocol;
+        public void setSecurityGroupRuleId(String securityGroupRuleId) {
+            SecurityGroupRuleId = securityGroupRuleId;
+        }
+
+        public String getSecurityGroupRuleCidr() {
+            return SecurityGroupRuleCidr;
+        }
+
+        public void setSecurityGroupRuleCidr(String securityGroupRuleCidr) {
+            SecurityGroupRuleCidr = securityGroupRuleCidr;
         }
 
         public String getSecurityGroupRuleName() {
@@ -67,19 +89,11 @@ public class CreateSecurityGroupRequest extends BaseRequest<CreateSecurityGroupR
         this.DBInstanceIdentifier = DBInstanceIdentifier;
     }
 
-    public String getType() {
-        return Type;
+    public String getSecurityGroupType() {
+        return SecurityGroupType;
     }
 
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public String getSecurityGroupId() {
-        return SecurityGroupId;
-    }
-
-    public void setSecurityGroupId(String securityGroupId) {
-        SecurityGroupId = securityGroupId;
+    public void setSecurityGroupType(String securityGroupType) {
+        SecurityGroupType = securityGroupType;
     }
 }
