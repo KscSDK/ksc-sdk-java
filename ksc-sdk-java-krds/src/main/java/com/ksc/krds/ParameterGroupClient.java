@@ -52,5 +52,13 @@ public class ParameterGroupClient extends Client {
         return invoke(new BaseMarshaller<DescribeDBInstanceParametersRequest>(),
                 new DescribeDBInstanceParametersUnmarshaller(), request).getKscResponse();
     }
+    /*
+     *   参数组修改历史记录查询
+     */
+    public TDescribeDBParameterGroupModifyHistoryResponse DescribeEngineParametersModifyHistory(DescribeEngineParametersModifyHistoryRequest request){
+        return invoke(new BaseMarshaller<DescribeEngineParametersModifyHistoryRequest>(),
+                new DescribeEngineParametersModifyHistoryUnmarshaller(), request).getKscResponse();
+    }
+
 
 }

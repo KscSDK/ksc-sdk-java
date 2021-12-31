@@ -59,6 +59,7 @@ public enum ActionEnum {
 
     ALLOCATE_INNER_EIP(GetCurrentDatabaseInfoReq.class, "AllocateDBInstanceInnerEip"),
     RELEASE_INNER_EIP(AllocateDBInstanceInnerEipRequest.class, "ReleaseDBInstanceInnerEip"),
+    DESCRIBE_ENGINE_PARAMETERS_MODIFY_HISTORY(DescribeEngineParametersModifyHistoryRequest.class,"DescribeEngineParametersModifyHistory"),
 
     /** -------------------securityGroup------------------- **/
     CREATE_SECURITY_GROUP(CreateSecurityGroupRequest.class,"CreateSecurityGroup"),

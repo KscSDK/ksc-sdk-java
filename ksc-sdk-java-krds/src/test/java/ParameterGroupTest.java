@@ -87,6 +87,17 @@ public class ParameterGroupTest extends BaseTest{
         log.info("{}", response);
         System.out.println(response.getData());
     }
+    /*
+     * 参数组修改历史记录查询
+     **/
+    @Test
+    public void testDescribeEngineParametersModifyHistory(){
+        DescribeEngineParametersModifyHistoryRequest request = new DescribeEngineParametersModifyHistoryRequest();
+        request.setDBParameterGroupId("881d6624-0479-4e2b-ac7d-459c6def542a");
+        request.setName("connect_timeout");
+        TDescribeDBParameterGroupModifyHistoryResponse response = client.DescribeEngineParametersModifyHistory(request);
+        log.info("{}", response);
+    }
 
 
 
