@@ -57,4 +57,28 @@ public class KscRedisBackupClient extends KscRedisClient {
     public RedisResponse setTimingSnapshot(SetTimingSnapshotRequest req) {
         return doAction(new SetTimingSnapshotMarshaller().marshall(super.beforeMarshalling(req)), new SetTimingSnapshotUnmarshaller()).getKscResponse();
     }
+    /*
+     * Redis集群备份数据层级下载
+     **/
+    public RedisResponse<DownloadLevelSnapshotResponse> DownloadLevelSnapshot(DownloadLevelSnapshotRequest req) throws Exception {
+        return doAction(new DownloadLevelSnapshotMarshaller().marshall(super.beforeMarshalling(req)), new DownloadLevelSnapshotUnmarshaller()).getKscResponse();
+    }
+    /*
+     * Redis集群备份数据层级删除
+     **/
+    public RedisResponse DeleteLevelSnapshots(DeleteLevelSnapshotsRequest req) throws Exception {
+        return doAction(new DeleteLevelSnapshotsMarshaller().marshall(super.beforeMarshalling(req)), new DeleteLevelSnapshotsUnmarshaller()).getKscResponse();
+    }
+    /*
+     * Redis集群缓存服务子列表备份数据查询
+     **/
+    public RedisResponse<DescribeBackUpsSnapshotsDetailResponse[]> DescribeBackUpsSnapshotsDetail(DescribeBackUpsSnapshotsDetailRequest req) throws Exception {
+        return doAction(new DescribeBackUpsSnapshotsDetailMarshaller().marshall(super.beforeMarshalling(req)), new DescribeBackUpsSnapshotsDetailUnmarshaller()).getKscResponse();
+    }
+    /*
+     *Redis集群缓存服务获取某个集群的全部parent record
+     **/
+    public RedisResponse<DescribeParentBackUpsSnapshotsResponse[]> DescribeParentBackUpsSnapshots(DescribeParentBackUpsSnapshotsRequest req) throws Exception {
+        return doAction(new DescribeParentBackUpsSnapshotsMarshaller().marshall(super.beforeMarshalling(req)), new DescribeParentBackUpsSnapshotsUnmarshaller()).getKscResponse();
+    }
 }
