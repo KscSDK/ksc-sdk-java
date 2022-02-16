@@ -2,11 +2,12 @@ package com.ksc.krds.model.krdsBackup;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ksc.krds.model.RdsResponse;
 
 import java.util.List;
 
 
-public class ListKrdsBackupResponse {
+public class ListKrdsBackupResponse extends RdsResponse {
     private Data Data = new Data();
     private String RequestId;
 
@@ -29,6 +30,25 @@ public class ListKrdsBackupResponse {
     public class Data{
         List<DBBackup> DBBackup;
 
+        public Integer getTotalCount() {
+            return TotalCount;
+        }
+
+        public void setTotalCount(Integer totalCount) {
+            TotalCount = totalCount;
+        }
+
+        public Integer getMaxRecords() {
+            return MaxRecords;
+        }
+
+        public void setMaxRecords(Integer maxRecords) {
+            MaxRecords = maxRecords;
+        }
+
+        Integer TotalCount;
+        Integer MaxRecords;
+
         public List<ListKrdsBackupResponse.DBBackup> getDBBackup() {
             return DBBackup;
         }
@@ -39,6 +59,10 @@ public class ListKrdsBackupResponse {
     }
 
     public class DBBackup{
+
+        //TODO：
+        private String BackupLocationRef;
+        private String MD5;
 
         private String DBBackupIdentifier;
         private String DBBackupName;
@@ -54,6 +78,24 @@ public class ListKrdsBackupResponse {
         private String DBInstanceIdentifier;
         private String Engine;
         private String EngineVersion;
+
+
+        public String getBackupLocationRef() {
+            return BackupLocationRef;
+        }
+
+        public void setBackupLocationRef(String backupLocationRef) {
+            BackupLocationRef = backupLocationRef;
+        }
+
+        public String getMD5() {
+            return MD5;
+        }
+
+        public void setMD5(String MD5) {
+            this.MD5 = MD5;
+        }
+
 
         public String getDBBackupIdentifier() {
             return DBBackupIdentifier;

@@ -64,7 +64,19 @@ public class KrdsBackupJsonUnmarshaller implements Unmarshaller<ListKrdsBackupRe
                 } else if (context.testExpression("EngineVersion", targetDepth)) {
                     context.nextToken();
                     result.setEngineVersion(context.getUnmarshaller(String.class).unmarshall(context));
+                }else if (context.testExpression("BackupLocationRef", targetDepth)) {
+                    context.nextToken();
+                    result.setBackupLocationRef(context.getUnmarshaller(String.class).unmarshall(context));
+                }else if (context.testExpression("MD5", targetDepth)) {
+                    context.nextToken();
+                    result.setMD5(context.getUnmarshaller(String.class).unmarshall(context));
                 }
+
+
+                else if (context.testExpression("MaxRecords", targetDepth)) {
+                    System.err.println(context.getUnmarshaller(Integer.class).unmarshall(context));
+                }
+
 
             } else if (token == END_ARRAY || token == END_OBJECT) {
                 if (context.getLastParsedParentElement() == null
@@ -75,7 +87,6 @@ public class KrdsBackupJsonUnmarshaller implements Unmarshaller<ListKrdsBackupRe
             }
             token = context.nextToken();
         }
-
         return result;
     }
 

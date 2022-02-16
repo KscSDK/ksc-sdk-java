@@ -24,6 +24,119 @@ public class CreateRedisRequest extends KscWebServiceRequest implements Serializ
     private Byte netType = 2;
     private Integer port = 6379;
     private String securityGroupId;
+    private String slaveVip;
+    private String vip;
+
+
+    private String cacheId;
+    private Integer orderUse;
+    private String durationUnit = "月";
+    private Integer num = 1;
+    private String subOrderId;
+    private String packageCode;
+    private String iamProjectName;
+    private String backupTimezone;
+    private Integer area;
+    private Integer slave_area;
+    private Integer ro_area = area;
+    public void setNetType(Byte netType) {
+        this.netType = netType;
+    }
+
+    public void setPort(Integer port) {
+        this.port = port;
+    }
+
+    public String getCacheId() {
+        return cacheId;
+    }
+
+    public void setCacheId(String cacheId) {
+        this.cacheId = cacheId;
+    }
+
+    public Integer getOrderUse() {
+        return orderUse;
+    }
+
+    public void setOrderUse(Integer orderUse) {
+        this.orderUse = orderUse;
+    }
+
+    public String getDurationUnit() {
+        return durationUnit;
+    }
+
+    public void setDurationUnit(String durationUnit) {
+        this.durationUnit = durationUnit;
+    }
+
+    public Integer getNum() {
+        return num;
+    }
+
+    public void setNum(Integer num) {
+        this.num = num;
+    }
+
+    public String getSubOrderId() {
+        return subOrderId;
+    }
+
+    public void setSubOrderId(String subOrderId) {
+        this.subOrderId = subOrderId;
+    }
+
+    public String getPackageCode() {
+        return packageCode;
+    }
+
+    public void setPackageCode(String packageCode) {
+        this.packageCode = packageCode;
+    }
+
+    public String getIamProjectName() {
+        return iamProjectName;
+    }
+
+    public void setIamProjectName(String iamProjectName) {
+        this.iamProjectName = iamProjectName;
+    }
+
+    public String getBackupTimezone() {
+        return backupTimezone;
+    }
+
+    public void setBackupTimezone(String backupTimezone) {
+        this.backupTimezone = backupTimezone;
+    }
+
+    public Integer getArea() {
+        return area;
+    }
+
+    public void setArea(Integer area) {
+        this.area = area;
+    }
+
+    public Integer getSlave_area() {
+        return slave_area;
+    }
+
+    public void setSlave_area(Integer slave_area) {
+        this.slave_area = slave_area;
+    }
+
+    public Integer getRo_area() {
+        return ro_area;
+    }
+
+    public void setRo_area(Integer ro_area) {
+        this.ro_area = ro_area;
+    }
+
+
+
 
     public String getName() {
         return name;
@@ -144,6 +257,24 @@ public class CreateRedisRequest extends KscWebServiceRequest implements Serializ
     public void setSecurityGroupId(String securityGroupId) {
         this.securityGroupId = securityGroupId;
     }
+
+    public String getSlaveVip() {
+        return slaveVip;
+    }
+
+    public void setSlaveVip(String slaveVip) {
+        this.slaveVip = slaveVip;
+    }
+
+    public String getVip() {
+        return vip;
+    }
+
+    public void setVip(String vip) {
+        this.vip = vip;
+    }
+
+
 
     public Request<CreateRedisRequest> getDryRunRequest() {
         Request<CreateRedisRequest> request = new CreateRedisMarshaller().marshall(this);

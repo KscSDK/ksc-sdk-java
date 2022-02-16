@@ -57,6 +57,9 @@ public class KscRedisBackupClientTest {
     @Test
     public void exportSnapshot() {
         ExportSnapshotRequest request = new ExportSnapshotRequest();
+        request.setSnapshotId("56cbe74c-3845-42ea-b2ad-301c88cae168");
+        request.setObjectName("testFile1");
+        request.setBucketName("dts");
         log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.exportSnapshot(request)));
     }
 
@@ -67,5 +70,48 @@ public class KscRedisBackupClientTest {
         request.setTimingSwitch("On");
         request.setTimezone("00:00-01:00");
         log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.setTimingSnapshot(request)));
+    }
+    /*
+     * Redis集群备份数据层级下载
+     **/
+    @Test
+    public void testDownloadLevelSnapshot() throws Exception {
+        DownloadLevelSnapshotRequest request = new DownloadLevelSnapshotRequest();
+        request.setCacheId("CacheId");
+        //request.setShareId("shareId");
+        request.setSnapshotId("SnapshotId");
+        log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.DownloadLevelSnapshot(request)));
+    }
+    /*
+     * Redis集群备份数据层级删除
+     **/
+    @Test
+    public void testDeleteLevelSnapshots() throws Exception {
+        DeleteLevelSnapshotsRequest request = new DeleteLevelSnapshotsRequest();
+        request.setCacheId("CacheId");
+        //request.setShareId("shareId");
+        request.setSnapshotId("SnapshotId");
+        log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.DeleteLevelSnapshots(request)));
+    }
+    /*
+     * Redis集群缓存服务子列表备份数据查询
+     **/
+    @Test
+    public void testDescribeBackUpsSnapshotsDetail() throws Exception {
+        DescribeBackUpsSnapshotsDetailRequest request = new DescribeBackUpsSnapshotsDetailRequest();
+        request.setCacheId("CacheId");
+        //request.setShareId("shareId");
+        request.setSnapshotId("SnapshotId");
+        log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.DescribeBackUpsSnapshotsDetail(request)));
+    }
+    /*
+     * Redis集群缓存服务获取某个集群的全部parent record
+     **/
+    @Test
+    public void testDescribeParentBackUpsSnapshots() throws Exception {
+        DescribeParentBackUpsSnapshotsRequest request = new DescribeParentBackUpsSnapshotsRequest();
+        request.setCacheId("CacheId");
+        //request.setShareId("shareId");
+        log.debug(RedisResponseConversion.toJson(kscRedisBackupClient.DescribeParentBackUpsSnapshots(request)));
     }
 }

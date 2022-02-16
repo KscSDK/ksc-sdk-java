@@ -354,7 +354,7 @@ public class Instance {
 	}
 
 	@ToString
-	@Setter
+	@Data
 	public static class DataDisk {
 		private String DiskId;
 		private String DiskType;

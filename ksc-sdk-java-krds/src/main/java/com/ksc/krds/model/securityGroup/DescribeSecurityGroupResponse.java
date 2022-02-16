@@ -2,16 +2,17 @@ package com.ksc.krds.model.securityGroup;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ksc.krds.model.KrdsResponse;
 import com.ksc.krds.model.krdsInstance.InstanceBrief;
+import com.ksc.krds.transform.BaseData;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class DescribeSecurityGroupResponse {
+public class DescribeSecurityGroupResponse extends KrdsResponse {
 
     private Data Data = new Data();
-    private String RequestId;
 
     public DescribeSecurityGroupResponse.Data getData() {
         return Data;
@@ -21,16 +22,7 @@ public class DescribeSecurityGroupResponse {
         Data = data;
     }
 
-    public String getRequestId() {
-        return RequestId;
-    }
-
-    public void setRequestId(String requestId) {
-        RequestId = requestId;
-    }
-
-
-    public class Data {
+    public class Data extends BaseData {
         private List<SecurityGroup> SecurityGroups = new ArrayList<SecurityGroup>();
 
         public List<SecurityGroup> getSecurityGroups() {
@@ -46,6 +38,7 @@ public class DescribeSecurityGroupResponse {
         private String SecurityGroupRuleId;
         private String SecurityGroupRuleName;
         private String SecurityGroupRuleProtocol;
+        private String SecurityGroupRuleCidr;
         private String Created;
 
         public String getSecurityGroupRuleId() {
@@ -79,12 +72,21 @@ public class DescribeSecurityGroupResponse {
         public void setCreated(String created) {
             Created = created;
         }
+
+        public String getSecurityGroupRuleCidr() {
+            return SecurityGroupRuleCidr;
+        }
+
+        public void setSecurityGroupRuleCidr(String securityGroupRuleCidr) {
+            SecurityGroupRuleCidr = securityGroupRuleCidr;
+        }
     }
 
     public class SecurityGroup {
         private String SecurityGroupId;
         private String SecurityGroupName;
         private String SecurityGroupDescription;
+        private String SecurityGroupType;
         private String Created;
         private List<InstanceBrief> Instances = new ArrayList<InstanceBrief>();
         private List<SecurityGroupRule> SecurityGroupRules = new ArrayList<SecurityGroupRule>();
@@ -135,6 +137,14 @@ public class DescribeSecurityGroupResponse {
 
         public void setSecurityGroupRules(List<SecurityGroupRule> securityGroupRules) {
             SecurityGroupRules = securityGroupRules;
+        }
+
+        public String getSecurityGroupType() {
+            return SecurityGroupType;
+        }
+
+        public void setSecurityGroupType(String securityGroupType) {
+            SecurityGroupType = securityGroupType;
         }
 
         public String toString(){

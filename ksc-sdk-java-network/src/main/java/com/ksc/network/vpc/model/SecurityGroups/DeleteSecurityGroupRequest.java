@@ -6,6 +6,8 @@ import com.ksc.model.DryRunSupportedRequest;
 import com.ksc.network.vpc.transform.SecurityGroups.DeleteSecurityGroupRequestMarshaller;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * <p>
@@ -19,11 +21,17 @@ public class DeleteSecurityGroupRequest extends KscWebServiceRequest implements
      * 安全组的ID
      */
     private String SecurityGroupId;
-    
+
+	private String SecurityGroupIds;
+	private List<String> SecurityGroupIdList = new ArrayList<String>();
+	private String Type;
+
+
 
 	public String getSecurityGroupId() {
 		return SecurityGroupId;
 	}
+
 
 	public void setSecurityGroupId(String securityGroupId) {
 		SecurityGroupId = securityGroupId;

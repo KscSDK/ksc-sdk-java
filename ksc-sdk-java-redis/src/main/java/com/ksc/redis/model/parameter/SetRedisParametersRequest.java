@@ -7,6 +7,7 @@ import com.ksc.redis.transform.parameter.SetRedisParametersMarshaller;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
 
 
 public class SetRedisParametersRequest extends KscWebServiceRequest implements Serializable, Cloneable, DryRunSupportedRequest<SetRedisParametersRequest> {
@@ -14,6 +15,34 @@ public class SetRedisParametersRequest extends KscWebServiceRequest implements S
     private Boolean resetAllParameters = false;
     private List<String> parameterName;
     private List<String> parameterValue;
+
+
+    /**
+     * 暂不使用
+     */
+    private String cacheParameterGroupFamily;
+    /**
+     * 参数配置信息
+     */
+    private Map<String, Object> cacheParams;
+
+    public String getCacheParameterGroupFamily() {
+        return cacheParameterGroupFamily;
+    }
+
+    public void setCacheParameterGroupFamily(String cacheParameterGroupFamily) {
+        this.cacheParameterGroupFamily = cacheParameterGroupFamily;
+    }
+
+    public Map<String, Object> getCacheParams() {
+        return cacheParams;
+    }
+
+    public void setCacheParams(Map<String, Object> cacheParams) {
+        this.cacheParams = cacheParams;
+    }
+
+
 
     public String getCacheId() {
         return cacheId;

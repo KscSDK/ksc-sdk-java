@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.ksyun</groupId>
     <artifactId>ksc-sdk-java</artifactId>
-   <version>0.3.17</version>
+   <version>0.3.27</version>
     <packaging>pom</packaging>
     <name>KSC SDK for Java</name>
     <description>
@@ -57,6 +57,7 @@
         <module>ksc-sdk-java-krds</module>
         <module>ksc-sdk-java-redis</module>
         <module>ksc-sdk-java-memcached</module>
+        <module>ksc-sdk-java-bill</module>
     </modules>
     <scm>
         <url>https://github.com/ksc/ksc-sdk-java.git</url>
