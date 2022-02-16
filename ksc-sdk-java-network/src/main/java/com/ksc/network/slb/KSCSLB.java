@@ -213,5 +213,59 @@ public interface KSCSLB {
      */
     public DescribeBackendServersResult describeBackendServers(DescribeBackendServersRequest describeBackendServersRequest);
 
+    /**
+     * 创建私网连接服务端
+     */
+    CreatePrivateLinkServerResult createPrivateLinkServer(CreatePrivateLinkServerRequest createPrivateLinkServerRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    DeletePrivateLinkServerResult deletePrivateLinkServer(DeletePrivateLinkServerRequest deletePrivateLinkServerRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    DescribePrivateLinkServerResult describePrivateLinkServer(DescribePrivateLinkServerRequest describePrivateLinkServerRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    ModifyPrivateLinkServerResult modifyPrivateLinkServer(ModifyPrivateLinkServerRequest modifyPrivateLinkServerRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    AssociatePrivateLinkServerResult associatePrivateLinkServer(AssociatePrivateLinkServerRequest associatePrivateLinkServerRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    DeletePrivateLinkResult deletePrivateLink(DeletePrivateLinkRequest deletePrivateLinkRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    DescribePrivateLinkResult describePrivateLink(DescribePrivateLinkRequest describePrivateLinkRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    ListPrivateLinkServerResult listPrivateLinkServer(ListPrivateLinkServerRequest listPrivateLinkServerRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    RemovePrivateLinkResult removePrivateLink(RemovePrivateLinkRequest removePrivateLinkRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    AcceptPrivateLinkResult acceptPrivateLink(AcceptPrivateLinkRequest acceptPrivateLinkRequest);
+
+    /**
+     * 删除私网连接服务端
+     */
+    RejectPrivateLinkResult rejectPrivateLink(RejectPrivateLinkRequest rejectPrivateLinkRequest);
 
 }

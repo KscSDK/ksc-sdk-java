@@ -58,6 +58,11 @@ public class VpcStaxUnmarshaller implements
 							.unmarshall(context));
 					continue;
 				}
+
+				if (context.testExpression("SecondaryCidrSet/item", targetDepth)) {
+					vpc.addSecondaryCidrSet(SecondaryCidrStaxUnmarshaller.getInstance().unmarshall(context));
+					continue;
+				}
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {
 					return vpc;

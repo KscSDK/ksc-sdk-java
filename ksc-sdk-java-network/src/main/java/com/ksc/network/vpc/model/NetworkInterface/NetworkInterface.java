@@ -51,6 +51,10 @@ public class NetworkInterface {
      * 网卡的MAC地址
      */
     private String MacAddress;
+    /**
+     * 辅助私网ip地址的信息
+     */
+    private com.ksc.internal.SdkInternalList<AssignedPrivateIpAddress> AssignedPrivateIpAddressSet;
 
     public String getDNS2() {
         return DNS2;
@@ -146,6 +150,23 @@ public class NetworkInterface {
         }
         for (GroupIdentifier group : groups) {
             SecurityGroupSet.add(group);
+        }
+    }
+
+    public SdkInternalList<AssignedPrivateIpAddress> getAssignedPrivateIpAddressSet() {
+        return AssignedPrivateIpAddressSet;
+    }
+
+    public void setAssignedPrivateIpAddressSet(SdkInternalList<AssignedPrivateIpAddress> assignedPrivateIpAddressSet) {
+        AssignedPrivateIpAddressSet = assignedPrivateIpAddressSet;
+    }
+
+    public void addAssignedPrivateIpAddressSet(AssignedPrivateIpAddress... assignedPrivateIpAddresses) {
+        if (AssignedPrivateIpAddressSet == null) {
+            AssignedPrivateIpAddressSet = new com.ksc.internal.SdkInternalList<AssignedPrivateIpAddress>();
+        }
+        for (AssignedPrivateIpAddress ipAddress : assignedPrivateIpAddresses) {
+            AssignedPrivateIpAddressSet.add(ipAddress);
         }
     }
 }

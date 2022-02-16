@@ -1,20 +1,6 @@
 package com.ksc.network.slb;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import com.ksc.network.slb.model.*;
-import com.ksc.network.slb.model.transform.*;
-import org.w3c.dom.Node;
-
-import com.ksc.ClientConfiguration;
-import com.ksc.ClientConfigurationFactory;
-import com.ksc.KscServiceException;
-import com.ksc.KscWebServiceClient;
-import com.ksc.KscWebServiceRequest;
-import com.ksc.KscWebServiceResponse;
-import com.ksc.Request;
-import com.ksc.Response;
+import com.ksc.*;
 import com.ksc.auth.AWSCredentials;
 import com.ksc.auth.AWSCredentialsProvider;
 import com.ksc.auth.DefaultAWSCredentialsProviderChain;
@@ -24,12 +10,18 @@ import com.ksc.http.HttpResponseHandler;
 import com.ksc.http.StaxResponseHandler;
 import com.ksc.internal.StaticCredentialsProvider;
 import com.ksc.metrics.RequestMetricCollector;
+import com.ksc.network.slb.model.*;
+import com.ksc.network.slb.model.transform.*;
 import com.ksc.transform.LegacyErrorUnmarshaller;
 import com.ksc.transform.StandardErrorUnmarshaller;
 import com.ksc.transform.Unmarshaller;
 import com.ksc.util.CredentialUtils;
 import com.ksc.util.KscRequestMetrics;
 import com.ksc.util.KscRequestMetrics.Field;
+import org.w3c.dom.Node;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 	/** Provider for AWS credentials. */
@@ -1209,34 +1201,321 @@ public class KSCSLBClient extends KscWebServiceClient implements KSCSLB{
 		}
 	}
 
-	@Override
-	public DescribeBackendServersResult describeBackendServers(DescribeBackendServersRequest describeBackendServersRequest) {
-		ExecutionContext executionContext = createExecutionContext(describeBackendServersRequest);
-		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
-		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
-		Request<DescribeBackendServersRequest> request = null;
-		Response<DescribeBackendServersResult> response = null;
-		try {
-			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
-			try {
-				request = new DescribeBackendServersRequestMarshaller()
-						.marshall(describeBackendServersRequest);
-				request.setKscRequestMetrics(kscRequestMetrics);
-			} finally {
-				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
-			}
-			StaxResponseHandler<DescribeBackendServersResult> responseHandler = new StaxResponseHandler<DescribeBackendServersResult>(
-					new DescribeBackendServersResultStaxUnmarshaller());
-			response = invoke(request, responseHandler, executionContext);
+    @Override
+    public DescribeBackendServersResult describeBackendServers(DescribeBackendServersRequest describeBackendServersRequest) {
+        ExecutionContext executionContext = createExecutionContext(describeBackendServersRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribeBackendServersRequest> request = null;
+        Response<DescribeBackendServersResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribeBackendServersRequestMarshaller()
+                        .marshall(describeBackendServersRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribeBackendServersResult> responseHandler = new StaxResponseHandler<DescribeBackendServersResult>(
+                    new DescribeBackendServersResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
 
-			return response.getKscResponse();
-		} finally {
-			endClientExecution(kscRequestMetrics, request, response);
-		}
-	}
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
 
 
-	private void init() {
+    @Override
+    public CreatePrivateLinkServerResult createPrivateLinkServer(CreatePrivateLinkServerRequest createPrivateLinkServerRequest) {
+        ExecutionContext executionContext = createExecutionContext(createPrivateLinkServerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<CreatePrivateLinkServerRequest> request = null;
+        Response<CreatePrivateLinkServerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new CreatePrivateLinkServerRequestMarshaller()
+                        .marshall(createPrivateLinkServerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<CreatePrivateLinkServerResult> responseHandler = new StaxResponseHandler<CreatePrivateLinkServerResult>(
+                    new CreatePrivateLinkServerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeletePrivateLinkServerResult deletePrivateLinkServer(DeletePrivateLinkServerRequest deletePrivateLinkServerRequest) {
+        ExecutionContext executionContext = createExecutionContext(deletePrivateLinkServerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeletePrivateLinkServerRequest> request = null;
+        Response<DeletePrivateLinkServerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeletePrivateLinkServerRequestMarshaller()
+                        .marshall(deletePrivateLinkServerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeletePrivateLinkServerResult> responseHandler = new StaxResponseHandler<DeletePrivateLinkServerResult>(
+                    new DeletePrivateLinkServerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribePrivateLinkServerResult describePrivateLinkServer(DescribePrivateLinkServerRequest describePrivateLinkServerRequest) {
+        ExecutionContext executionContext = createExecutionContext(describePrivateLinkServerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribePrivateLinkServerRequest> request = null;
+        Response<DescribePrivateLinkServerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribePrivateLinkServerRequestMarshaller()
+                        .marshall(describePrivateLinkServerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribePrivateLinkServerResult> responseHandler = new StaxResponseHandler<DescribePrivateLinkServerResult>(
+                    new DescribePrivateLinkServerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ModifyPrivateLinkServerResult modifyPrivateLinkServer(ModifyPrivateLinkServerRequest modifyPrivateLinkServerRequest) {
+        ExecutionContext executionContext = createExecutionContext(modifyPrivateLinkServerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ModifyPrivateLinkServerRequest> request = null;
+        Response<ModifyPrivateLinkServerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ModifyPrivateLinkServerRequestMarshaller()
+                        .marshall(modifyPrivateLinkServerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<ModifyPrivateLinkServerResult> responseHandler = new StaxResponseHandler<ModifyPrivateLinkServerResult>(
+                    new ModifyPrivateLinkServerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public AssociatePrivateLinkServerResult associatePrivateLinkServer(AssociatePrivateLinkServerRequest associatePrivateLinkServerRequest) {
+        ExecutionContext executionContext = createExecutionContext(associatePrivateLinkServerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AssociatePrivateLinkServerRequest> request = null;
+        Response<AssociatePrivateLinkServerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AssociatePrivateLinkServerRequestMarshaller()
+                        .marshall(associatePrivateLinkServerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<AssociatePrivateLinkServerResult> responseHandler = new StaxResponseHandler<AssociatePrivateLinkServerResult>(
+                    new AssociatePrivateLinkServerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DeletePrivateLinkResult deletePrivateLink(DeletePrivateLinkRequest deletePrivateLinkRequest) {
+        ExecutionContext executionContext = createExecutionContext(deletePrivateLinkRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DeletePrivateLinkRequest> request = null;
+        Response<DeletePrivateLinkResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DeletePrivateLinkRequestMarshaller()
+                        .marshall(deletePrivateLinkRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DeletePrivateLinkResult> responseHandler = new StaxResponseHandler<DeletePrivateLinkResult>(
+                    new DeletePrivateLinkResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public DescribePrivateLinkResult describePrivateLink(DescribePrivateLinkRequest describePrivateLinkRequest) {
+        ExecutionContext executionContext = createExecutionContext(describePrivateLinkRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<DescribePrivateLinkRequest> request = null;
+        Response<DescribePrivateLinkResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new DescribePrivateLinkRequestMarshaller()
+                        .marshall(describePrivateLinkRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<DescribePrivateLinkResult> responseHandler = new StaxResponseHandler<DescribePrivateLinkResult>(
+                    new DescribePrivateLinkResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public ListPrivateLinkServerResult listPrivateLinkServer(ListPrivateLinkServerRequest listPrivateLinkServerRequest) {
+        ExecutionContext executionContext = createExecutionContext(listPrivateLinkServerRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<ListPrivateLinkServerRequest> request = null;
+        Response<ListPrivateLinkServerResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new ListPrivateLinkServerRequestMarshaller()
+                        .marshall(listPrivateLinkServerRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<ListPrivateLinkServerResult> responseHandler = new StaxResponseHandler<ListPrivateLinkServerResult>(
+                    new ListPrivateLinkServerResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public RemovePrivateLinkResult removePrivateLink(RemovePrivateLinkRequest removePrivateLinkRequest) {
+        ExecutionContext executionContext = createExecutionContext(removePrivateLinkRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<RemovePrivateLinkRequest> request = null;
+        Response<RemovePrivateLinkResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new RemovePrivateLinkRequestMarshaller()
+                        .marshall(removePrivateLinkRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<RemovePrivateLinkResult> responseHandler = new StaxResponseHandler<RemovePrivateLinkResult>(
+                    new RemovePrivateLinkResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public AcceptPrivateLinkResult acceptPrivateLink(AcceptPrivateLinkRequest acceptPrivateLinkRequest) {
+        ExecutionContext executionContext = createExecutionContext(acceptPrivateLinkRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<AcceptPrivateLinkRequest> request = null;
+        Response<AcceptPrivateLinkResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new AcceptPrivateLinkRequestMarshaller()
+                        .marshall(acceptPrivateLinkRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<AcceptPrivateLinkResult> responseHandler = new StaxResponseHandler<AcceptPrivateLinkResult>(
+                    new AcceptPrivateLinkResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+    @Override
+    public RejectPrivateLinkResult rejectPrivateLink(RejectPrivateLinkRequest rejectPrivateLinkRequest) {
+        ExecutionContext executionContext = createExecutionContext(rejectPrivateLinkRequest);
+        KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+        kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+        Request<RejectPrivateLinkRequest> request = null;
+        Response<RejectPrivateLinkResult> response = null;
+        try {
+            kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+            try {
+                request = new RejectPrivateLinkRequestMarshaller()
+                        .marshall(rejectPrivateLinkRequest);
+                request.setKscRequestMetrics(kscRequestMetrics);
+            } finally {
+                kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+            }
+            StaxResponseHandler<RejectPrivateLinkResult> responseHandler = new StaxResponseHandler<RejectPrivateLinkResult>(
+                    new RejectPrivateLinkResultStaxUnmarshaller());
+            response = invoke(request, responseHandler, executionContext);
+
+            return response.getKscResponse();
+        } finally {
+            endClientExecution(kscRequestMetrics, request, response);
+        }
+    }
+
+
+    private void init() {
 		exceptionUnmarshallers.add(new StandardErrorUnmarshaller());
 		exceptionUnmarshallers.add(new LegacyErrorUnmarshaller());
 		setServiceNameIntern(DEFAULT_SIGNING_NAME);

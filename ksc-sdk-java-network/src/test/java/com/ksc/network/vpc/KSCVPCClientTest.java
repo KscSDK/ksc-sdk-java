@@ -12,6 +12,7 @@ import com.ksc.network.vpc.model.NetworkAcl.*;
 import com.ksc.network.vpc.model.NetworkInterface.*;
 import com.ksc.network.vpc.model.Route.*;
 import com.ksc.network.vpc.model.SecurityGroups.*;
+import com.ksc.network.vpc.model.havip.*;
 import com.ksc.network.vpc.model.subnet.*;
 import com.ksc.network.vpc.model.vpc.*;
 import com.ksc.network.vpc.model.peering.*;
@@ -790,6 +791,141 @@ public class KSCVPCClientTest {
         filter.withValues("d3b2d66d-0051-4d6a-9412-1fbd24728a4c");
         request.addFilters(filter);*/
         DescribeVpnTunnelsResult result = client.describeVpnTunnels(request);
+        log.info(result);
+    }
+
+
+    @Test
+    public void addSecondaryCidrBlock(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AddSecondaryCidrBlockRequest request = new AddSecondaryCidrBlockRequest();
+        request.setVpcId("8c4d9b5c-f627-4052-9523-b2efed238ff3");
+        request.setCidrBlock("10.20.0.0/16");
+
+        AddSecondaryCidrBlockResult result = client.addSecondaryCidrBlock(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteSecondaryCidrBlock(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteSecondaryCidrBlockRequest request = new DeleteSecondaryCidrBlockRequest();
+        request.setVpcId("8c4d9b5c-f627-4052-9523-b2efed238ff3");
+        request.setSecondaryCidrId("a72c9b48-78fd-4fdb-9883-879e6146e819");
+        DeleteSecondaryCidrBlockResult result = client.deleteSecondaryCidrBlock(request);
+        log.info(result);
+    }
+
+
+    @Test
+    public void createHaVip(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreateHaVipRequest request = new CreateHaVipRequest();
+        request.setSubnetId("1e52c20a-43df-45ff-9a3e-b1160f6ba5a7");
+        request.setIpAddress("10.0.0.200");
+
+        CreateHaVipResult result = client.createHaVip(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deleteHaVip(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeleteHaVipRequest request = new DeleteHaVipRequest();
+        request.setHaVipId("1658ec9f-6e92-4907-9688-06c652cfc89f");
+        DeleteHaVipResult result = client.deleteHaVip(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describeHaVip() {
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.cn-shanghai-3.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        DescribeHaVipRequest request = new DescribeHaVipRequest();
+//        Filter filter = new Filter();
+//        filter.setName("vpc-id");
+//        filter.withValues("3f8737a9-31d8-45b1-afe8-e4d87af24d0f");
+//        request.withFilters(filter);
+//        request.withHaVipIds("ac777893-6b9d-46ad-be3c-4eed2edadf56");
+        DescribeHaVipResult result = client.describeHaVip(request);
+        log.info(result);
+    }
+
+    @Test
+    public void associateHaVip(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AssociateHaVipRequest request = new AssociateHaVipRequest();
+        request.setHaVipId("72f9b1c4-da29-4a96-bacb-74c390d60801");
+        request.setNetworkInterfaceId("2662302d-f3e2-4a0f-8011-d67603695d38");
+
+        AssociateHaVipResult result = client.associateHaVip(request);
+        log.info(result);
+    }
+
+    @Test
+    public void unAssociateHaVip(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        UnAssociateHaVipRequest request = new UnAssociateHaVipRequest();
+        request.setHaVipId("72f9b1c4-da29-4a96-bacb-74c390d60801");
+        request.setNetworkInterfaceId("2662302d-f3e2-4a0f-8011-d67603695d38");
+        UnAssociateHaVipResult result = client.unAssociateHaVip(request);
+        log.info(result);
+    }
+
+    @Test
+    public void assignPrivateIpAddress(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AssignPrivateIpAddressRequest request = new AssignPrivateIpAddressRequest();
+        request.setNetworkInterfaceId("72e5ea6f-fc21-4cef-83c5-ffb831ae0c5b");
+        request.addPrivateIpAddressList("87.36.0.234");
+        request.setSecondaryPrivateIpAddressCount(2);
+
+        AssignPrivateIpAddressResult result = client.assignPrivateIpAddress(request);
+        log.info(result);
+    }
+
+    @Test
+    public void unassignPrivateIpAddress(){
+        KSCVPCClient client = new KSCVPCClient();
+        client.setEndpoint("http://vpc.inner.api.ksyun.com");
+        client.setServiceNameIntern("vpc");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        UnassignPrivateIpAddressRequest request = new UnassignPrivateIpAddressRequest();
+        request.setNetworkInterfaceId("72e5ea6f-fc21-4cef-83c5-ffb831ae0c5b");
+        request.addPrivateIpAddressList("87.36.0.149");
+        request.addPrivateIpAddressList("87.36.0.252");
+        request.addPrivateIpAddressList("87.36.0.104");
+        UnassignPrivateIpAddressResult result = client.unassignPrivateIpAddress(request);
         log.info(result);
     }
 
