@@ -74,6 +74,10 @@ public class NetworkInterfaceStaxUnmarshaller implements Unmarshaller<NetworkInt
                     networkInterface.addSecurityGroupSet(GroupIdentifierStaxUnmarshaller.getInstance().unmarshall(context));
                     continue;
                 }
+                if (context.testExpression("AssignedPrivateIpAddressSet/item", targetDepth)) {
+                    networkInterface.addAssignedPrivateIpAddressSet(AssignedPrivateIpAddressStaxUnmarshaller.getInstance().unmarshall(context));
+                    continue;
+                }
 
 			} else if (xmlEvent.isEndElement()) {
 				if (context.getCurrentDepth() < originalDepth) {

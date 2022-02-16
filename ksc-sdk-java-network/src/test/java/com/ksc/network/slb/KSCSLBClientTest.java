@@ -612,4 +612,168 @@ public class KSCSLBClientTest {
         log.info(result);
     }
 
+    @Test
+    public void createPrivateLinkServer() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        CreatePrivateLinkServerRequest request = new CreatePrivateLinkServerRequest();
+        request.setPrivateLinkServerName("hss-test-001");
+        request.setListenerId("b5230cfe-362a-49e0-b63b-8fe23e758609");
+        request.setDescription("123123");
+        request.setProjectId("0");
+        CreatePrivateLinkServerResult result = client.createPrivateLinkServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describePrivateLinkServer() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribePrivateLinkServerRequest request = new DescribePrivateLinkServerRequest();
+        request.addPrivateLinkServerIds("140819b8-bbfb-4710-b6c9-08151bf802cf");
+
+        DescribePrivateLinkServerResult result = client.describePrivateLinkServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void modifyPrivateLinkServer() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ModifyPrivateLinkServerRequest request = new ModifyPrivateLinkServerRequest();
+        request.setPrivateLinkServerName("hss-test-123123");
+        request.setPrivateLinkServerId("140819b8-bbfb-4710-b6c9-08151bf802cf");
+        request.setDescription("321312");
+
+        ModifyPrivateLinkServerResult result = client.modifyPrivateLinkServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deletePrivateLinkServer() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeletePrivateLinkServerRequest request = new DeletePrivateLinkServerRequest();
+        request.setPrivateLinkServerId("140819b8-bbfb-4710-b6c9-08151bf802cf");
+
+        DeletePrivateLinkServerResult result = client.deletePrivateLinkServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void associatePrivateLinkServer() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AssociatePrivateLinkServerRequest request = new AssociatePrivateLinkServerRequest();
+        request.setPrivateLinkServerId("8721d4a3-08b2-4c88-bfd4-21ee4aa6c5d1");
+        request.setLoadBalancerId("ec85068f-e441-4066-a48f-8ac6b2f4e044");
+        request.setListenerPort("8090");
+        request.setProjectId("0");
+
+        AssociatePrivateLinkServerResult result = client.associatePrivateLinkServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void describePrivateLink() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DescribePrivateLinkRequest request = new DescribePrivateLinkRequest();
+        request.addPrivateLinkIds("61b0ffcf-32bf-400b-8604-c25f2b58b063");
+
+        DescribePrivateLinkResult result = client.describePrivateLink(request);
+        log.info(result);
+    }
+
+    @Test
+    public void deletePrivateLink() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        DeletePrivateLinkRequest request = new DeletePrivateLinkRequest();
+        request.setPrivateLinkId("61b0ffcf-32bf-400b-8604-c25f2b58b063");
+
+        DeletePrivateLinkResult result = client.deletePrivateLink(request);
+        log.info(result);
+    }
+
+
+    @Test
+    public void listPrivateLinkServer() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        ListPrivateLinkServerRequest request = new ListPrivateLinkServerRequest();
+        request.setPrivateLinkServerId("140819b8-bbfb-4710-b6c9-08151bf802cf");
+
+        ListPrivateLinkServerResult result = client.listPrivateLinkServer(request);
+        log.info(result);
+    }
+
+    @Test
+    public void removePrivateLink() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        RemovePrivateLinkRequest request = new RemovePrivateLinkRequest();
+        request.setPrivateLinkId("ea9521a6-4b51-4912-b0ed-ac2a5c1dd0b0");
+
+        RemovePrivateLinkResult result = client.removePrivateLink(request);
+        log.info(result);
+    }
+
+
+    @Test
+    public void acceptPrivateLink() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        AcceptPrivateLinkRequest request = new AcceptPrivateLinkRequest();
+        request.setPrivateLinkId("9f69e757-d33d-45db-a1af-8f7953d74d64");
+
+        AcceptPrivateLinkResult result = client.acceptPrivateLink(request);
+        log.info(result);
+    }
+
+
+    @Test
+    public void rejectPrivateLink() {
+        KSCSLBClient client = new KSCSLBClient();
+        client.setEndpoint("http://eip.inner.api.ksyun.com");
+        client.setServiceNameIntern("slb");
+        Region region = new Region(new InMemoryRegionImpl("cn-shanghai-3", null));
+        client.setRegion(region);
+        RejectPrivateLinkRequest request = new RejectPrivateLinkRequest();
+        request.setPrivateLinkId("ea9521a6-4b51-4912-b0ed-ac2a5c1dd0b0");
+
+        RejectPrivateLinkResult result = client.rejectPrivateLink(request);
+        log.info(result);
+    }
+
 }
