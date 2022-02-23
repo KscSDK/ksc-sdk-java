@@ -51,7 +51,7 @@ public class StopInstancesRequestMarshaller implements
             request.addParameter("ForceStop", String.valueOf(stopInstancesRequest.getForceStop()));
         }
 
-        if(StringUtils.isNullOrEmpty(stopInstancesRequest.getStoppedMode())){
+        if(!StringUtils.isNullOrEmpty(stopInstancesRequest.getStoppedMode())){
             request.addParameter("StoppedMode", stopInstancesRequest.getStoppedMode());
         }
 
