@@ -494,6 +494,37 @@ public class KSCKECClient extends KscWebServiceClient implements KSCKEC {
 	}
 
 	@Override
+	public DescribePriceResult describePrice(DescribePriceRequest describePriceRequest) {
+		ExecutionContext executionContext = createExecutionContext(describePriceRequest);
+		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
+		kscRequestMetrics.startEvent(Field.ClientExecuteTime);
+		Request<DescribePriceRequest> request = null;
+		Response<DescribePriceResult> response = null;
+
+		try {
+			kscRequestMetrics.startEvent(Field.RequestMarshallTime);
+			try {
+				request = new DescribePriceRequestMarshaller()
+						.marshall(super.beforeMarshalling(describePriceRequest));
+				// Binds the request metrics to the current request.
+				request.setKscRequestMetrics(kscRequestMetrics);
+			} finally {
+				kscRequestMetrics.endEvent(Field.RequestMarshallTime);
+			}
+
+			StaxResponseHandler<DescribePriceResult> responseHandler = new StaxResponseHandler<DescribePriceResult>(
+					new DescribePriceResultStaxUnmarshaller());
+			response = invoke(request, responseHandler, executionContext);
+
+			return response.getKscResponse();
+
+		} finally {
+
+			endClientExecution(kscRequestMetrics, request, response);
+		}
+	}
+
+	@Override
 	public MonitorInstancesResult monitorInstances(MonitorInstancesRequest monitorInstancesRequest) {
 		ExecutionContext executionContext = createExecutionContext(monitorInstancesRequest);
 		KscRequestMetrics kscRequestMetrics = executionContext.getKscRequestMetrics();
