@@ -2,6 +2,7 @@ package com.ksc.kec.model.transform;
 
 import com.ksc.kec.model.DescribeAvailabilityZonesResult;
 import com.ksc.kec.model.DescribePriceResult;
+import com.ksc.kec.model.PriceInfo;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
 import com.ksc.transform.StaxUnmarshallerContext;
 import com.ksc.transform.Unmarshaller;
@@ -26,18 +27,13 @@ public class DescribePriceResultStaxUnmarshaller implements
 				return describePriceResult;
 
 			if (xmlEvent.isAttribute() || xmlEvent.isStartElement()) {
-				DescribePriceResult.PriceInfo priceInfo=new DescribePriceResult.PriceInfo();
-				describePriceResult.setPriceInfo(priceInfo);
-				if (context.testExpression("PriceInfo/InstancePrice", targetDepth)) {
 
-					priceInfo.setInstancePrice(PriceInfoDetailStaxUnmarshaller.getInstance().unmarshall(context));
+				if (context.testExpression("PriceInfo", targetDepth)) {
+					PriceInfo priceInfo=PriceInfoStaxUnmarshaller.getInstance().unmarshall(context);
+					describePriceResult.setPriceInfo(priceInfo);
 					continue;
 				}
-				if(context.testExpression("PriceInfo/EbsPrice", targetDepth)){
 
-					priceInfo.setEBSPrice(PriceInfoDetailStaxUnmarshaller.getInstance().unmarshall(context));
-					continue;
-				}
 
 				if (context.testExpression("RequestId", targetDepth)) {
 					describePriceResult.setRequestId(StringStaxUnmarshaller

@@ -53,6 +53,10 @@ public class DescribePriceRequest extends KscWebServiceRequest
 	private Integer MaxCount;
 
 
+
+	private Integer MinCount;
+
+
 	/**
 	 * <p>
 	 * 计费类型，调用时需要明确指定，无默认值
@@ -60,6 +64,10 @@ public class DescribePriceRequest extends KscWebServiceRequest
 	 * </p>
 	 */
 	private String ChargeType;
+
+
+
+	private String SecurityGroupId;
 	/**
 	 * <p>
 	 * 购买时长，单位月
@@ -88,7 +96,13 @@ public class DescribePriceRequest extends KscWebServiceRequest
 	private Integer DataDiskGb;
 
 
+	public String getSecurityGroupId() {
+		return SecurityGroupId;
+	}
 
+	public void setSecurityGroupId(String securityGroupId) {
+		SecurityGroupId = securityGroupId;
+	}
 
 	public String getImageId() {
 		return ImageId;
@@ -138,6 +152,14 @@ public class DescribePriceRequest extends KscWebServiceRequest
 
 	public void setPurchaseTime(Integer purchaseTime) {
 		PurchaseTime = purchaseTime;
+	}
+
+	public Integer getMinCount() {
+		return MinCount;
+	}
+
+	public void setMinCount(Integer minCount) {
+		MinCount = minCount;
 	}
 
 

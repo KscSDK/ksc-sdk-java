@@ -27,6 +27,7 @@ public class DescribePriceResult implements Serializable, Cloneable {
 
 
 
+
 	public String getRequestId() {
 		return RequestId;
 	}
@@ -40,7 +41,7 @@ public class DescribePriceResult implements Serializable, Cloneable {
 	}
 
 	public void setPriceInfo(PriceInfo priceInfo) {
-		priceInfo = priceInfo;
+		this.priceInfo = priceInfo;
 	}
 
 
@@ -56,28 +57,6 @@ public class DescribePriceResult implements Serializable, Cloneable {
 		}
 	}
 
-	@Data
-	public static class PriceInfo {
-
-		private PriceInfoDetail instancePrice;
 
 
-		private PriceInfoDetail eBSPrice;
-	}
-
-	@Data
-	public static class PriceInfoDetail {
-
-		private BigDecimal discountPrice;
-
-		private BigDecimal originalPrice;
-
-		private BigDecimal tradePrice;
-
-
-		private String priceUnit;
-
-
-		private BigDecimal userDiscount;
-	}
 }
