@@ -17,8 +17,8 @@ import com.ksc.model.Filter;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "";
-	public static final String AWS_SK = "";
+	public static final String AWS_AK = "AKLTdp0vMEzAQdihsE8eb5ABGg";
+	public static final String AWS_SK = "OLz41dJ7nGeKG4qXDxo3nX4A7TZ6MVrruyAXN8lrOcRmoeLXENJQHWfJOCFNWw";
 
 	@Test
 	public void startInstances(){
@@ -55,8 +55,8 @@ public class KSCOpenAPISample {
 		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
 		kec_client.setServiceNameIntern("kec");
 		RebootInstancesResult result=kec_client.rebootInstances(request);
-		Gson gson = new Gson();
-		log.info("rebootInstances Result: "+gson.toJson(result));
+		/*Gson gson = new Gson();
+		log.info("rebootInstances Result: "+gson.toJson(result));*/
 	}
 
 	@Test
@@ -340,17 +340,20 @@ public class KSCOpenAPISample {
 
 	@Test
 	public void describeLocalVolumeSnapshots(){
-		DescribeLocalVolumeSnapshotsRequest request=new DescribeLocalVolumeSnapshotsRequest();
-		request.setLocalVolumeName("ksc-596a89ea-99cc-45e4-a31c-cdaef2f546ba-vdb");
 //		request.setLocalVolumeSnapshotId("a5646fd6-cb18-45b3-8014-8d8c2ccc575b");
 //		request.setSourceLocalVolumeId("596a89ea-99cc-45e4-a31c-cdaef2f546ba-b");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
-		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setEndpoint("http://kec.cn-beijing-6.api.ksyun.com");
 		kec_client.setServiceNameIntern("kec");
-		DescribeLocalVolumeSnapshotsResult result=kec_client.describeLocalVolumeSnapshots(request);
+		DescribePriceRequest request=new DescribePriceRequest();
+		request.setInstanceType("N3.4B");
+		request.setImageId("641a7f08-c8dc-543a-8931-7448eeba0e5f");
+		request.setMaxCount(10);
+
+		kec_client.describePrice(request);
 		Gson gson = new Gson();
-		log.info("describeLocalVolumeSnapshots Result: "+gson.toJson(result));
+		log.info("describeLocalVolumeSnapshots Result: "+gson.toJson(kec_client.describePrice(request)));
 	}
 
 	@Test
@@ -389,7 +392,7 @@ public class KSCOpenAPISample {
 		request.setInstanceId("28aa5ae4-f995-490f-a53d-d645af47f357");
 		AWSCredentials credentials = new BasicAWSCredentials(AWS_AK, AWS_SK);
 		KSCKECClient kec_client = new KSCKECClient(credentials);
-		kec_client.setEndpoint("http://kec.cn-shanghai-3.api.ksyun.com");
+		kec_client.setEndpoint("http://kec.cn-beijing-6.api.ksyun.com");
 		kec_client.setServiceNameIntern("kec");
 		DescribeInstanceVncResult result=kec_client.describeInstanceVnc(request);
 		Gson gson = new Gson();

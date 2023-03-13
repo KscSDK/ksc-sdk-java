@@ -2,6 +2,7 @@ package com.ksc.kec.model.transform;
 
 import com.ksc.kec.model.DescribePriceResult;
 import com.ksc.kec.model.InstanceConfigure;
+import com.ksc.kec.model.PriceInfoDetail;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.IntegerStaxUnmarshaller;
 import com.ksc.transform.SimpleTypeStaxUnmarshallers.StringStaxUnmarshaller;
@@ -14,11 +15,11 @@ import javax.xml.stream.events.XMLEvent;
  * Reservation StAX Unmarshaller
  */
 public class PriceInfoDetailStaxUnmarshaller implements
-		Unmarshaller<DescribePriceResult.PriceInfoDetail, StaxUnmarshallerContext> {
+		Unmarshaller<PriceInfoDetail, StaxUnmarshallerContext> {
 
-	public DescribePriceResult.PriceInfoDetail unmarshall(StaxUnmarshallerContext context)
+	public PriceInfoDetail unmarshall(StaxUnmarshallerContext context)
 			throws Exception {
-		DescribePriceResult.PriceInfoDetail ic = new DescribePriceResult.PriceInfoDetail();
+		PriceInfoDetail ic = new PriceInfoDetail();
 		int originalDepth = context.getCurrentDepth();
 		int targetDepth = originalDepth + 1;
 

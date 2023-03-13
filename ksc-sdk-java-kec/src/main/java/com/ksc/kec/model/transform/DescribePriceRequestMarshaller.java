@@ -25,7 +25,7 @@ public class DescribePriceRequestMarshaller implements
 
         Request<DescribePriceRequest> request = new DefaultRequest<DescribePriceRequest>(
                 describePriceRequest, "kec");
-        request.addParameter("Action", "RunInstances");
+        request.addParameter("Action", "DescribePrice");
         String version = describePriceRequest.getVersion();
         if (org.apache.commons.lang.StringUtils.isBlank(version)) {
             version = "2016-03-04";
@@ -49,6 +49,15 @@ public class DescribePriceRequestMarshaller implements
         if (describePriceRequest.getMaxCount() != null) {
             request.addParameter("MaxCount",
                     StringUtils.fromInteger(describePriceRequest.getMaxCount()));
+        }
+
+        if (describePriceRequest.getMinCount() != null) {
+            request.addParameter("MinCount",
+                    StringUtils.fromInteger(describePriceRequest.getMinCount()));
+        }
+        if (describePriceRequest.getSecurityGroupId() != null) {
+            request.addParameter("SecurityGroupId",
+                    StringUtils.fromString(describePriceRequest.getSecurityGroupId()));
         }
 
         if (describePriceRequest.getChargeType() != null) {
