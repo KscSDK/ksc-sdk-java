@@ -63,6 +63,8 @@ public interface KSCKEC {
 	 */
 	StopInstancesResult stopInstances(StopInstancesRequest stopInstancesRequest);
 
+	 DescribePriceResult describePrice(DescribePriceRequest describePriceRequest);
+
 	/**
 	 * <p>
 	 * Reboot an kec instance that you've previously stopped.

@@ -2,6 +2,7 @@ package com.ksc.services.kec;
 
 import java.util.Arrays;
 
+import com.fasterxml.jackson.databind.util.JSONPObject;
 import com.ksc.kec.model.*;
 import org.apache.log4j.Logger;
 import org.junit.Test;
@@ -100,8 +101,8 @@ public class KSCOpenAPISample {
 //		describe_instances_request.setSearch("csg_test_SriovNet-11");
 		DescribeInstancesResult result = kec_client
 				.describeInstances(describe_instances_request);
-		Gson gson = new Gson();
-		log.info("describeInstances Result: "+gson.toJson(result));
+		/*JSONPObject gson = new Gson();
+		log.info("describeInstances Result: "+gson.toJson(result));*/
 	}
 
 	@Test
