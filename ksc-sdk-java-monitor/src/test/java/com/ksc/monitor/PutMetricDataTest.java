@@ -13,8 +13,8 @@ import com.ksc.monitor.model.PutMetricDataResponse;
 
 public class PutMetricDataTest {
     private static final Logger log = Logger.getLogger(GetMetricStatisticsTest.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AKLT3xyBQOb6S7CwdWeXRujrOQ",
-            "ODLW7kNlzfELyMk58GN0l3GUmk97nU3ZTAW1uLwh0Jw/HkGV8LtCTG/Ii0cLIghYQg==");
+    private AWSCredentials credentials = new BasicAWSCredentials("ak",
+            "sk");
 
     @Test
     public void putMetricData() {

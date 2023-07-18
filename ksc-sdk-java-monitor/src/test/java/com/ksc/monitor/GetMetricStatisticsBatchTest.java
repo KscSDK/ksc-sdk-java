@@ -13,8 +13,8 @@ import com.ksc.monitor.model.GetMetricStatisticsBatchResponse;
 
 public class GetMetricStatisticsBatchTest {
     private static final Logger log = Logger.getLogger(GetMetricStatisticsBatchTest.class);
-    private AWSCredentials credentials = new BasicAWSCredentials("AKLTdsdasdsTiSmB10O3nDiAw",
-            "ODohMFYQQUPnU0fxOUdfdsgfdgfgfgOoMgTt+yy1W7F0d/oK9t9R9A==");
+    private AWSCredentials credentials = new BasicAWSCredentials("ak",
+            "sk");
 
     @Test
     public void getMetricStatisticsBatch() {

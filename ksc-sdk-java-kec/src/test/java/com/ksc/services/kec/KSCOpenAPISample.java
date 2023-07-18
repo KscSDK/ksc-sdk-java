@@ -17,8 +17,8 @@ import com.ksc.model.Filter;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "AKLTdp0vMEzAQdihsE8eb5ABGg";
-	public static final String AWS_SK = "OLz41dJ7nGeKG4qXDxo3nX4A7TZ6MVrruyAXN8lrOcRmoeLXENJQHWfJOCFNWw";
+	public static final String AWS_AK = "ak";
+	public static final String AWS_SK = "sk";
 
 	@Test
 	public void startInstances(){
@@ -67,10 +67,8 @@ public class KSCOpenAPISample {
 		log.info("Welcome to the KSC Java SDK!");
 		log.info("===========================================");
 		try {
-		/*	credentials = new BasicAWSCredentials("AKLTeIj3GT9LT5yYrtGPw6U_CA",
-					"OGPZPr4RvfuiDFCEgKUpo9LTsy0BTA0IMGE8c/pUChUrTJMelyeg1KKshiPvGE0NfA==");*/
-			/*credentials = new BasicAWSCredentials("AKLTcI-Ek8zhT-mWMBhNYN_xkg111",
-					"OD0g8h/czdeVy+z/oCOk031yKpVWbAFJVddvFHd87D/L9Tb/tmia8tRJiaAmdyqy4w==");*/
+		/*	credentials = new BasicAWSCredentials("ak",
+					"sk");*/
 		} catch (Exception e) {
 			throw new KscClientException(
 					"Cannot load the credentials from the credential profiles file. "
