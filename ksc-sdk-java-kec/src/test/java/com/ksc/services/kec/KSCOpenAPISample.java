@@ -17,8 +17,8 @@ import com.ksc.model.Filter;
 public class KSCOpenAPISample {
 
 	private static final Logger log = Logger.getLogger(KSCOpenAPISample.class);
-	public static final String AWS_AK = "AKLTdp0vMEzAQdihsE8eb5ABGg";
-	public static final String AWS_SK = "OLz41dJ7nGeKG4qXDxo3nX4A7TZ6MVrruyAXN8lrOcRmoeLXENJQHWfJOCFNWw";
+	public static final String AWS_AK = "AK";
+	public static final String AWS_SK = "SK";
 
 	@Test
 	public void startInstances(){
