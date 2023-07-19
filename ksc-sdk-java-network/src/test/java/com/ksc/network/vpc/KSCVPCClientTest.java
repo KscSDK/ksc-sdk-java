@@ -26,8 +26,8 @@ import org.junit.Test;
 public class KSCVPCClientTest {
 	private static final Logger log = Logger.getLogger(KSCVPCClientTest.class);
 	private AWSCredentials credentials = new BasicAWSCredentials(
-			"AKLTcI-Ek8zhT-mWMBhNYN_xkg111111",
-			"OD0g8h/czdeVy+z/oCOk031yKpVWbAFJVddvFHd87D/L9Tb/tmia8tRJiaAmdyqy4w==");;
+			"ak",
+			"sk");;
 
 	/*
 	 * @BeforeClass public void before() {
